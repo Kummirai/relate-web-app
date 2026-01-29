@@ -1,65 +1,86 @@
-import Image from "next/image";
+import Link from "next/link";
+import { FaHome, FaFileAlt, FaPlusCircle, FaDatabase } from "react-icons/fa";
 
-export default function Home() {
+export default function HomePage() {
+  const features = [
+    {
+      title: "Create Records",
+      description: "Add new family support records with comprehensive details",
+      icon: <FaPlusCircle className="text-4xl text-blue-600" />,
+      link: "/records/create",
+      linkText: "Create New Record",
+    },
+    {
+      title: "View Records",
+      description: "Access and manage all family support records",
+      icon: <FaFileAlt className="text-4xl text-green-600" />,
+      link: "/records",
+      linkText: "View Records",
+    },
+    {
+      title: "Database",
+      description: "Securely stored data with MongoDB",
+      icon: <FaDatabase className="text-4xl text-purple-600" />,
+      link: "/records",
+      linkText: "View Database",
+    },
+  ];
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.js file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <div>
+      <div className="text-center mb-12">
+        <h1 className="text-4xl font-bold text-gray-800 mb-4">
+          Family Support System
+        </h1>
+        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          A comprehensive system for managing family care records and support
+          services. Maintain confidentiality while providing effective
+          assistance.
+        </p>
+      </div>
+
+      <div className="grid md:grid-cols-3 gap-8 mb-12">
+        {features.map((feature, index) => (
+          <div key={index} className="bg-white p-6 rounded-lg shadow-lg">
+            <div className="flex flex-col items-center text-center">
+              <div className="mb-4">{feature.icon}</div>
+              <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+              <p className="text-gray-600 mb-4">{feature.description}</p>
+              <Link
+                href={feature.link}
+                className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+              >
+                {feature.linkText}
+              </Link>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="bg-white p-8 rounded-lg shadow-lg">
+        <h2 className="text-2xl font-bold mb-4">About This System</h2>
+        <div className="prose max-w-none">
+          <p className="mb-4">
+            This system is designed to help social workers and case managers
+            efficiently track and manage family support cases. It includes:
           </p>
+          <ul className="list-disc pl-5 mb-4">
+            <li>Secure family information storage</li>
+            <li>Assessment and urgency level tracking</li>
+            <li>Short-term and long-term need identification</li>
+            <li>Action log and follow-up management</li>
+            <li>Print-friendly record output</li>
+          </ul>
+          <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4">
+            <p className="font-semibold">Confidentiality Notice:</p>
+            <p className="text-sm">
+              This system contains private and confidential information. It is
+              to be used only by authorized personnel involved in the support
+              project.
+            </p>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+      </div>
     </div>
   );
 }
