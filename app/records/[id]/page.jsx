@@ -16,19 +16,27 @@ import {
 } from "react-icons/fa";
 import connectDB from "@/lib/mongodb";
 import { FamilyRecord } from "@/lib/models";
+import RecordDetailFooter from "@/components/RecordDetailFooter";
+import mongoose from "mongoose";
 
 async function getRecord(id) {
   try {
     await connectDB();
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return null;
+    }
     const record = await FamilyRecord.findById(id);
+    if (!record) return null;
     return JSON.parse(JSON.stringify(record));
   } catch (error) {
+    console.error("Error fetching record:", error);
     return null;
   }
 }
 
 export default async function RecordDetailPage({ params }) {
-  const record = await getRecord(params.id);
+  const { id } = await params;
+  const record = await getRecord(id);
 
   if (!record) {
     notFound();
@@ -39,16 +47,6 @@ export default async function RecordDetailPage({ params }) {
       year: "numeric",
       month: "long",
       day: "numeric",
-    });
-  };
-
-  const formatDateTime = (date) => {
-    return new Date(date).toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
     });
   };
 
@@ -576,32 +574,7 @@ export default async function RecordDetailPage({ params }) {
         </div>
       </div>
 
-      {/* Footer Actions */}
-      <div className="mt-8 flex justify-between items-center">
-        <div className="text-sm text-gray-500">
-          <p>Record last modified: {formatDateTime(record.updatedAt)}</p>
-        </div>
-
-        <div className="flex space-x-4">
-          <button
-            onClick={() => window.print()}
-            className="flex items-center space-x-2 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50"
-          >
-            <FaPrint />
-            <span>Print Preview</span>
-          </button>
-
-          {!record.caseClosedDate && (
-            <Link
-              href={`/records/${params.id}/edit?close=true`}
-              className="flex items-center space-x-2 px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700"
-            >
-              <FaFileSignature />
-              <span>Close Case</span>
-            </Link>
-          )}
-        </div>
-      </div>
+      <RecordDetailFooter record={record} params={params} />
     </div>
   );
 }

@@ -8,7 +8,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center space-x-2">
             <FaHome className="text-xl" />
-            <span className="font-bold text-xl">Family Support System</span>
+            <span className="font-bold text-xl">Relate</span>
           </Link>
 
           <div className="flex space-x-6">
