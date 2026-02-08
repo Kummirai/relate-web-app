@@ -63,7 +63,7 @@ export default async function RecordDetailPage({ params }) {
 
         <div className="flex space-x-4">
           <Link
-            href={`/records/${params.id}/edit`}
+            href={`/records/${id}/edit`}
             className="flex items-center space-x-2 bg-yellow-600 text-white px-4 py-2 rounded-lg hover:bg-yellow-700 transition-colors"
           >
             <FaEdit />
@@ -71,7 +71,7 @@ export default async function RecordDetailPage({ params }) {
           </Link>
 
           <Link
-            href={`/print/${params.id}`}
+            href={`/print/${id}`}
             className="flex items-center space-x-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors"
           >
             <FaPrint />
@@ -85,7 +85,7 @@ export default async function RecordDetailPage({ params }) {
         <div className="bg-blue-800 text-white p-6">
           <div className="flex justify-between items-start">
             <div>
-              <h1 className="text-3xl font-bold">Family Care Record</h1>
+              <h1 className="text-3xl font-bold">Record</h1>
               <p className="mt-2 opacity-90">Record ID: {record.recordId}</p>
             </div>
             <div className="text-right">

@@ -29,9 +29,7 @@ export default function HomePage() {
   return (
     <div>
       <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-gray-800 mb-4">
-          Family Support System
-        </h1>
+        <h1 className="text-4xl font-bold text-gray-800 mb-4">Relate</h1>
         <p className="text-lg text-gray-600 max-w-2xl mx-auto">
           A comprehensive system for managing family care records and support
           services. Maintain confidentiality while providing effective

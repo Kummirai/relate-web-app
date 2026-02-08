@@ -38,21 +38,18 @@ export async function PUT(
   { params }: { params: { id: string } },
 ) {
   try {
+    const { id } = await params;
     await connectDB();
 
-    if (!mongoose.Types.ObjectId.isValid(params.id)) {
+    if (!mongoose.Types.ObjectId.isValid(id)) {
       return NextResponse.json({ error: "Invalid ID format" }, { status: 400 });
     }
 
     const data = await request.json();
-    const updatedRecord = await FamilyRecord.findByIdAndUpdate(
-      params.id,
-      data,
-      {
-        new: true,
-        runValidators: true,
-      },
-    );
+    const updatedRecord = await FamilyRecord.findByIdAndUpdate(id, data, {
+      new: true,
+      runValidators: true,
+    });
 
     if (!updatedRecord) {
       return NextResponse.json({ error: "Record not found" }, { status: 404 });

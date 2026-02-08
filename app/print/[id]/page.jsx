@@ -43,9 +43,7 @@ export default async function PrintPage({ params }) {
       </div>
 
       <div className="bg-white p-8 print:p-0 print:shadow-none shadow-lg rounded-lg">
-        <h1 className="text-3xl font-bold mb-8 text-center">
-          Family Care Record
-        </h1>
+        <h1 className="text-3xl font-bold mb-8 text-center">Family Record</h1>
 
         <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-8 print:break-inside-avoid">
           <p className="font-bold">Confidentiality Notice:</p>
