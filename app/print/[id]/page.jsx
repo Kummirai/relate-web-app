@@ -29,7 +29,11 @@ export default async function PrintPage({ params }) {
 
   const formatDate = (date) => {
     if (!date) return "Not specified";
-    return new Date(date).toLocaleDateString();
+    try {
+      return new Date(date).toLocaleDateString();
+    } catch (error) {
+      return "Invalid date";
+    }
   };
 
   return (
@@ -73,8 +77,18 @@ export default async function PrintPage({ params }) {
                   {record.caseManager || "Not specified"}
                 </p>
                 <p>
-                  <strong>Physical Address:</strong>{" "}
-                  {record.physicalAddress || "Not specified"}
+                  <strong>Status:</strong>{" "}
+                  <span
+                    className={`font-semibold ${
+                      record.status === "Active"
+                        ? "text-green-600"
+                        : record.status === "Closed"
+                          ? "text-gray-600"
+                          : "text-yellow-600"
+                    }`}
+                  >
+                    {record.status || "Active"}
+                  </span>
                 </p>
               </div>
               <div>
@@ -96,11 +110,19 @@ export default async function PrintPage({ params }) {
                 </p>
               </div>
             </div>
-            <div className="mt-4">
-              <p>
-                <strong>Preferred Contact Method:</strong>{" "}
-                {formatArray(record.preferredContactMethod)}
-              </p>
+            <div className="grid md:grid-cols-2 gap-4 mt-4">
+              <div>
+                <p>
+                  <strong>Physical Address:</strong>{" "}
+                  {record.physicalAddress || "Not specified"}
+                </p>
+              </div>
+              <div>
+                <p>
+                  <strong>Preferred Contact Method:</strong>{" "}
+                  {formatArray(record.preferredContactMethod)}
+                </p>
+              </div>
             </div>
           </section>
 
@@ -119,7 +141,7 @@ export default async function PrintPage({ params }) {
               <div>
                 <h3 className="text-lg font-semibold mb-2">Urgency Level</h3>
                 <div
-                  className={`px-4 py-2 rounded font-semibold ${
+                  className={`px-4 py-2 rounded font-semibold inline-block ${
                     record.urgencyLevel === "High"
                       ? "bg-red-100 text-red-800"
                       : record.urgencyLevel === "Medium"
@@ -213,7 +235,13 @@ export default async function PrintPage({ params }) {
                 </table>
               </div>
             ) : (
-              <p>No household members recorded.</p>
+              <div className="text-center py-4 border border-gray-200 rounded">
+                <p className="text-gray-500">No household members recorded.</p>
+                <p className="text-sm text-gray-400 mt-1">
+                  (Head of Household:{" "}
+                  {record.headOfHousehold || "Not specified"})
+                </p>
+              </div>
             )}
           </section>
 
@@ -226,38 +254,60 @@ export default async function PrintPage({ params }) {
                 {record.actionLog.map((log, index) => (
                   <div
                     key={index}
-                    className="border-l-4 border-blue-500 pl-4 py-2"
+                    className="border-l-4 border-blue-500 pl-4 py-3 bg-gray-50 rounded-r"
                   >
-                    <div className="flex justify-between items-start">
-                      <p className="font-semibold">
-                        {log.action || "Action not specified"}
-                      </p>
-                      <p className="text-sm text-gray-600">
-                        {formatDate(log.date)}
-                      </p>
+                    <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-2">
+                      <div>
+                        <p className="font-semibold text-lg">
+                          {log.actionTaken || "Action not specified"}
+                        </p>
+                        <p className="text-gray-700 mt-1">
+                          <strong>By:</strong> {log.byWhom || "Not specified"}
+                        </p>
+                      </div>
+                      <div className="text-right">
+                        <p className="text-sm font-medium text-gray-600">
+                          {formatDate(log.date)}
+                        </p>
+                        <p className="text-sm text-gray-600">
+                          <strong>Due:</strong> {formatDate(log.dueDate)}
+                        </p>
+                      </div>
                     </div>
-                    {log.notes && (
-                      <p className="mt-1 text-gray-700">{log.notes}</p>
+                    {log.nextStep && (
+                      <div className="mt-3 pt-3 border-t border-gray-200">
+                        <p className="font-medium">Next Step:</p>
+                        <p className="text-gray-700">{log.nextStep}</p>
+                      </div>
                     )}
-                    <p className="text-sm text-gray-600 mt-1">
-                      <strong>Status:</strong> {log.status || "Not specified"} |
-                      <strong> Assigned to:</strong>{" "}
-                      {log.assignedTo || "Not assigned"}
-                    </p>
                   </div>
                 ))}
               </div>
             ) : (
-              <p>No actions logged.</p>
+              <div className="text-center py-6 border border-gray-200 rounded">
+                <p className="text-gray-500">No actions logged yet.</p>
+              </div>
             )}
           </section>
 
-          {(record.reasonForClosure || record.finalOutcome) && (
+          {record.reasonForClosure ||
+          record.finalOutcome ||
+          record.caseClosedDate ? (
             <section className="print:break-inside-avoid">
               <h2 className="text-2xl font-bold mb-4 border-b pb-2">
                 Section 5: Case Closure
               </h2>
               <div className="grid md:grid-cols-2 gap-6">
+                {record.caseClosedDate && (
+                  <div>
+                    <h3 className="text-lg font-semibold mb-2">
+                      Case Closed Date
+                    </h3>
+                    <p className="bg-gray-50 p-4 rounded">
+                      {formatDate(record.caseClosedDate)}
+                    </p>
+                  </div>
+                )}
                 {record.reasonForClosure && (
                   <div>
                     <h3 className="text-lg font-semibold mb-2">
@@ -269,7 +319,7 @@ export default async function PrintPage({ params }) {
                   </div>
                 )}
                 {record.finalOutcome && (
-                  <div>
+                  <div className="md:col-span-2">
                     <h3 className="text-lg font-semibold mb-2">
                       Final Outcome
                     </h3>
@@ -280,22 +330,40 @@ export default async function PrintPage({ params }) {
                 )}
               </div>
             </section>
-          )}
+          ) : null}
 
-          <div className="print:break-inside-avoid pt-8 border-t">
-            <p className="text-sm text-gray-600">
-              <strong>Document Generated:</strong>{" "}
-              {new Date().toLocaleDateString()}{" "}
-              {new Date().toLocaleTimeString()}
-            </p>
-            <p className="text-sm text-gray-600">
-              <strong>Total Household Members:</strong>{" "}
-              {record.householdMembers?.length || 0}
-            </p>
-            <p className="text-sm text-gray-600">
-              <strong>Total Actions Logged:</strong>{" "}
-              {record.actionLog?.length || 0}
-            </p>
+          <div className="print:break-inside-avoid pt-8 border-t mt-8">
+            <div className="grid md:grid-cols-3 gap-4 text-sm text-gray-600">
+              <div>
+                <p>
+                  <strong>Document Generated:</strong>
+                </p>
+                <p>
+                  {new Date().toLocaleDateString()}{" "}
+                  {new Date().toLocaleTimeString()}
+                </p>
+              </div>
+              <div>
+                <p>
+                  <strong>Total Household Members:</strong>
+                </p>
+                <p>{record.householdMembers?.length || 0}</p>
+              </div>
+              <div>
+                <p>
+                  <strong>Total Actions Logged:</strong>
+                </p>
+                <p>{record.actionLog?.length || 0}</p>
+              </div>
+            </div>
+            <div className="mt-4 pt-4 border-t border-gray-200 text-xs text-gray-500">
+              <p>
+                <strong>Record Created:</strong> {formatDate(record.createdAt)}
+              </p>
+              <p>
+                <strong>Last Updated:</strong> {formatDate(record.updatedAt)}
+              </p>
+            </div>
           </div>
         </div>
       </div>
