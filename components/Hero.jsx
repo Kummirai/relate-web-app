@@ -33,8 +33,8 @@ export default function Hero({ verseOfTheDay }) {
             </span>
           </button>
         </div>
-        <h5 className="text-4xl md:text-7xl font-medium max-w-212.5 text-center mx-auto mt-8">
-          Build apps faster with ui components
+        <h5 className="text-4xl md:text-6xl font-medium max-w-212.5 text-center mx-auto mt-8">
+          Changing Lives Through Prayer and Community
         </h5>
 
         <p className="text-sm md:text-base mx-auto max-w-2xl text-center mt-6 max-md:px-2">

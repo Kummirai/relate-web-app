@@ -30,7 +30,7 @@ export default function About() {
           <h2 className="text-4xl font-semibold text-center mx-auto mt-4 text-zinc-950">
             About Us
           </h2>
-          <p className="text-sm md:text-base mx-auto max-w-2xl text-center mt-6 max-md:px-2 text-zinc-600">
+          <p className="text-sm md:text-base mx-auto max-w-2xl text-center mt-6 max-md:px-2 text-neutral-600">
             We are Relate — a faith-rooted community bound together by prayer,
             love, and a shared calling to serve. We believe that no one should
             walk their spiritual and life journey alone. We come alongside

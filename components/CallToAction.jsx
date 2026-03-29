@@ -14,14 +14,15 @@ export default function CallToAction() {
         <div className="max-w-5xl mx-auto bg-linear-to-b from-[#F8FAFF] to-[#EEF2FF] border border-[#dbdbdb] rounded-[20px] px-8 py-12 md:py-20  bg-[url('https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/hero/gridBackground.png')] bg-cover bg-center bg-no-repeat">
           <div className="text-center">
             <h1 className="text-3xl md:text-5xl/14 leading-tight font-semibold tracking-tighter max-w-xl mx-auto mb-4">
-              Build website{" "}
-              <span className="bg-linear-to-r from-[#A5B4FC] to-[#666666] bg-clip-text text-transparent">
-                without writing Code
+              You Don't
+              <span className=" ml-2 bg-linear-to-r from-[#A5B4FC] to-[#666666] bg-clip-text text-transparent">
+                Have to Carry This Alone
               </span>
             </h1>
             <p className="text-sm text-neutral-600 max-w-md mx-auto mb-8">
-              Create high-quality landing pages and websites faster using
-              ready-made, customizable components.
+              Whatever you are facing, bring it to us in prayer. We believe in
+              the power of intercession and we would be honoured to stand with
+              you.
             </p>
             <button className="bg-linear-to-b from-[#1E1E1E] to-[#050505] text-white text-sm px-6 py-3 rounded-lg border border-[#242424] inline-flex items-center gap-2 hover:opacity-90 transition-opacity cursor-pointer group">
               <div className="relative overflow-hidden">
