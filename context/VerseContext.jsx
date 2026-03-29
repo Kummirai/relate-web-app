@@ -1,13 +1,6 @@
-// context/VerseContext.tsx
 "use client";
 
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-  ReactNode,
-} from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 const VerseContext = createContext();
 

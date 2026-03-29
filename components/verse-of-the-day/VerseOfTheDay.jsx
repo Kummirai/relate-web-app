@@ -1,13 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { IoBookOutline } from "react-icons/io5";
 import { useVerse } from "@/context/VerseContext";
+import Loading from "../Loading";
 
 export default function VerseOfTheDay() {
   const { verse, loading, error, refetch } = useVerse();
 
-  if (loading) return <p></p>;
+  if (loading) return <Loading />;
   if (error)
     return (
       <p>

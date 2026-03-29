@@ -5,18 +5,22 @@ import { IoBookOutline } from "react-icons/io5";
 import { useVerse } from "@/context/VerseContext";
 
 export default function Hero() {
-  const { verse, loading, error, refetch } = useVerse();
-  console.log(verse);
+  const { verse, } = useVerse();
 
-  if (loading) return <p></p>;
-  if (error)
-    return (
-      <p>
-        {error} <button onClick={refetch}>Retry</button>
-      </p>
-    );
+  const placeholderVerse = {
+    verse: {
+      details: {
+        text: "Praise be to the God and Father of our Lord Jesus Christ! In his great mercy he has given us new birth into a living hope through the resurrection of Jesus Christ from the dead",
+        reference: "1 Peter 1:3",
+        version: "NIV",
+        verseurl: "http://www.ourmanna.com/",
+      },
+      notice: "Powered by OurManna.com",
+    },
+  };
 
-  const { reference, version } = verse?.verse.details;
+  const { reference, version } =
+    verse?.verse.details || placeholderVerse.verse.details;
 
   return (
     <>
@@ -66,8 +70,8 @@ export default function Hero() {
           </button>
 
           <button className="flex items-center gap-2 border border-slate-300 hover:bg-slate-200/30 rounded-full px-6 py-3">
-            <Link href={"/study"}>
-              <span>View Bible Studies</span>
+            <Link href={"https://chat.whatsapp.com/F9LcrZZxk5iA12Bv82rNku"}>
+              <span>Join Relate Community</span>
             </Link>
             <svg
               width="6"
