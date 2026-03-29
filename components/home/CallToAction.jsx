@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function CallToAction() {
   return (
     <>
@@ -24,7 +26,10 @@ export default function CallToAction() {
               the power of intercession and we would be honoured to stand with
               you.
             </p>
-            <button className="bg-linear-to-b from-[#1E1E1E] to-[#050505] text-white text-sm px-6 py-3 rounded-lg border border-[#242424] inline-flex items-center gap-2 hover:opacity-90 transition-opacity cursor-pointer group">
+            <Link
+              href="/request"
+              className="bg-linear-to-b from-[#1E1E1E] to-[#050505] text-white text-sm px-6 py-3 rounded-lg border border-[#242424] inline-flex items-center gap-2 hover:opacity-90 transition-opacity cursor-pointer group"
+            >
               <div className="relative overflow-hidden">
                 <span className="block transition-transform duration-200 group-hover:-translate-y-full">
                   Submit A Prayer Request
@@ -48,7 +53,7 @@ export default function CallToAction() {
                   strokeLinejoin="round"
                 />
               </svg>
-            </button>
+            </Link>
           </div>
         </div>
       </section>
