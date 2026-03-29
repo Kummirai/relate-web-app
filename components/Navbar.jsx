@@ -9,7 +9,7 @@ export default function Navbar() {
   const navItems = [
     { id: 1, title: "Home", path: "/" },
     { id: 2, title: "Bible Study", path: "/study" },
-    { id: 3, title: "Prayer Requests", path: "/requests" },
+    { id: 3, title: "Prayer Request", path: "/request" },
     { id: 4, title: "Records", path: "/records" },
     { id: 5, title: "About", path: "/about" },
     { id: 6, title: "Contact", path: "/contact" },
