@@ -1,17 +1,34 @@
+"use client";
+
 import Link from "next/link";
 import { IoBookOutline } from "react-icons/io5";
+import { useVerse } from "@/context/VerseContext";
 
-export default function Hero({ verseOfTheDay }) {
+export default function Hero() {
+  const { verse, loading, error, refetch } = useVerse();
+  console.log(verse);
+
+  if (loading) return <p></p>;
+  if (error)
+    return (
+      <p>
+        {error} <button onClick={refetch}>Retry</button>
+      </p>
+    );
+
+  const { reference, version } = verse?.verse.details;
+
   return (
     <>
       <section className=" text-sm pb-44 pt-20 h-[calc(100vh-76px)]">
         <div className="flex items-center gap-2 border border-slate-300 hover:border-slate-400/70 rounded-full w-max mx-auto px-4 py-2">
           <span>Verse of the Day</span>
-          <button className="hidden md:flex items-center gap-2.5 bg-linear-to-r from-zinc-950 to-zinc-500 text-zinc-50 hover:text-zinc-200 text-sm font-medium pl-5 pr-2 py-2 rounded-full cursor-pointer border-0">
-            <span className="mr-1">
-              {verseOfTheDay.verse.details.reference}
-            </span>
-            <span>{verseOfTheDay.verse.details.version}</span>
+          <Link
+            href={"/verse"}
+            className="hidden md:flex items-center gap-2.5 bg-linear-to-r from-zinc-950 to-zinc-500 text-zinc-50 hover:text-zinc-200 text-sm font-medium pl-5 pr-2 py-2 rounded-full cursor-pointer border-0"
+          >
+            <span className="mr-1">{reference}</span>
+            <span>{version}</span>
 
             <span className="size-7 rounded-full bg-white flex items-center justify-center">
               {/* <svg
@@ -31,7 +48,7 @@ export default function Hero({ verseOfTheDay }) {
               </svg> */}
               <IoBookOutline className="text-zinc-950" />
             </span>
-          </button>
+          </Link>
         </div>
         <h5 className="text-4xl md:text-6xl font-medium max-w-212.5 text-center mx-auto mt-8">
           Changing Lives Through Prayer and Community

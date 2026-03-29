@@ -8,24 +8,24 @@ export default function RecordList({ records }) {
     <div className="bg-white rounded-lg shadow overflow-hidden">
       <div className="overflow-x-auto">
         <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50">
+          <thead className="bg-zinc-950">
             <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-50 uppercase tracking-wider">
                 Record ID
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-50 uppercase tracking-wider">
                 Head of Household
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-50 uppercase tracking-wider">
                 Intake Date
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-50 uppercase tracking-wider">
                 Urgency Level
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-50 uppercase tracking-wider">
                 Status
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-50 uppercase tracking-wider">
                 Actions
               </th>
             </tr>
@@ -42,7 +42,7 @@ export default function RecordList({ records }) {
                   <div className="text-sm text-gray-900">
                     {record.headOfHousehold}
                   </div>
-                  <div className="text-sm text-gray-500">
+                  <div className="text-sm text-gray-50">
                     {record.contactNumber}
                   </div>
                 </td>
@@ -58,8 +58,8 @@ export default function RecordList({ records }) {
                       record.urgencyLevel === "High"
                         ? "bg-red-100 text-red-800"
                         : record.urgencyLevel === "Medium"
-                        ? "bg-yellow-100 text-yellow-800"
-                        : "bg-green-100 text-green-800"
+                          ? "bg-yellow-100 text-yellow-800"
+                          : "bg-green-100 text-green-800"
                     }`}
                   >
                     {record.urgencyLevel}

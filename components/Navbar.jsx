@@ -33,8 +33,8 @@ export default function Navbar() {
       </style>
       <header>
         <nav className="max-w-6xl mx-auto py-6 flex items-center justify-between relative">
-          <Link href="/">
-            <svg
+          <Link href="/" className="font-semibold text-2xl text-zinc-950">
+            {/* <svg
               width="151"
               height="36"
               viewBox="0 0 151 36"
@@ -52,7 +52,9 @@ export default function Navbar() {
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
-            </svg>
+            </svg> */}
+            {/* <img src="/logo.png" alt="logo" className="h-5" /> */}
+            Relate
           </Link>
 
           <div className="hidden md:flex items-center  border border-zinc-100 rounded-full px-1 py-1 gap-2">

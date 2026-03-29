@@ -24,7 +24,7 @@ export default function HomePage() {
     <div className="max-w-6xl mx-auto pt-10 pb-20">
       <div className="text-center mb-12">
         <h1 className="text-5xl font-medium text-zinc-950 mb-4">Records</h1>
-        <p className="text-lg font-light text-neutral-600 max-w-2xl mx-auto">
+        <p className="text-sm md:text-base mx-auto max-w-2xl text-center mt-6 max-md:px-2">
           Every record represents a life being transformed. Track and manage the
           journeys of those we walk with — with care, confidentiality, and a
           heart for lasting change.
