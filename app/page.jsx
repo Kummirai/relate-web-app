@@ -1,4 +1,5 @@
 import About from "@/components/About";
+import CallToAction from "@/components/CallToAction";
 import Hero from "@/components/Hero";
 import WhatWeDo from "@/components/WhatWeDo";
 
@@ -30,6 +31,7 @@ export default async function page() {
       <Hero verseOfTheDay={verseOfTheDay} />
       <About />
       <WhatWeDo />
+      <CallToAction />
     </>
   );
 }

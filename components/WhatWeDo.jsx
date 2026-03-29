@@ -47,17 +47,20 @@ export default function WhatWeDo() {
           </h1>
           <div className="w-24 h-0.75 rounded-full bg-linear-to-r from-zinc-600 to-[#DDD9FF]"></div>
           <p className="mt-8">
-            PrebuiltUI helps you build faster by transforming your design vision
-            into fully functional, production-ready UI components.{" "}
+            At Relate, we walk with individuals and families through life's most
+            difficult seasons — praying with them, mentoring them, and
+            connecting them to the support they need to rise.
           </p>
           <p className="mt-4">
-            Whether you're launching a SaaS app, landing page, or dashboard, our
-            collection of Tailwind CSS components is crafted to boost your
-            development speed and improve user experience.
+            We identify those who are struggling and come alongside them with
+            compassion and purpose. Through one-on-one mentoring, home visits,
+            and a strong network of partners, we address not just immediate
+            needs but the deeper journey toward wholeness and independence.
           </p>
           <p className="mt-4">
-            From UI design systems to automation-ready layouts, PrebuiltUI
-            empowers you to build beautifully and scale effortlessly.
+            We pray together, we plan together, and we walk together — because
+            we believe lasting change happens in the context of genuine,
+            Spirit-led relationship.
           </p>
           <a
             href="#"
