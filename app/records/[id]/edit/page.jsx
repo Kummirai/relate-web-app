@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter, useParams } from "next/navigation";
-import RecordForm from "@/components/RecordForm";
+import RecordForm from "@/components/record/RecordForm";
 
 export default function EditRecordPage() {
   const router = useRouter();

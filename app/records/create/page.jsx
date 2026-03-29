@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import RecordForm from "@/components/RecordForm";
+import RecordForm from "@/components/record/RecordForm";
 
 export default function CreateRecordPage() {
   const router = useRouter();

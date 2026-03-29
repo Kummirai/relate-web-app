@@ -11,7 +11,7 @@ export default function CallToAction() {
       </style>
 
       <section className="bg-white py-16 px-4">
-        <div className="max-w-5xl mx-auto bg-linear-to-b from-[#F8FAFF] to-[#EEF2FF] border border-[#dbdbdb] rounded-[20px] px-8 py-12 md:py-20  bg-[url('https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/hero/gridBackground.png')] bg-cover bg-center bg-no-repeat">
+        <div className="max-w-5xl mx-auto bg-linear-to-b from-[#F8FAFF] to-[#EEF2FF] border border-[#e9e9e9] rounded-[20px] px-8 py-12 md:py-20  bg-[url('https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/hero/gridBackground.png')] bg-cover bg-center bg-no-repeat">
           <div className="text-center">
             <h1 className="text-3xl md:text-5xl/14 leading-tight font-semibold tracking-tighter max-w-xl mx-auto mb-4">
               You Don't

@@ -16,7 +16,7 @@ import {
 } from "react-icons/fa";
 import connectDB from "@/lib/mongodb";
 import { FamilyRecord } from "@/lib/models";
-import RecordDetailFooter from "@/components/RecordDetailFooter";
+import RecordDetailFooter from "@/components/record/RecordDetailFooter";
 import mongoose from "mongoose";
 
 async function getRecord(id) {

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { FaPlus } from "react-icons/fa";
 import connectDB from "../../../lib/mongodb";
 import { FamilyRecord } from "../../../lib/models";
-import RecordList from "@/components/RecordList";
+import RecordList from "@/components/record/RecordList";
 
 async function getRecords() {
   try {

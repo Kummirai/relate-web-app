@@ -1,6 +1,6 @@
 import connectDB from "../../../lib/mongodb";
 import { FamilyRecord } from "../../../lib/models";
-import PrintButton from "@/components/PrintButton";
+import PrintButton from "@/components/record/PrintButton";
 
 async function getRecordForPrint(id) {
   try {
