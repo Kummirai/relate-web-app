@@ -5,14 +5,21 @@ import Link from "next/link";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [tabTitle, setTabTitle] = useState("Home");
   const navItems = [
-    "Home",
-    "Resources",
-    "Prayer Requests",
-    "Records",
-    "About",
-    "Contact",
+    { id: 1, title: "Home", path: "/" },
+    { id: 2, title: "Bible Study", path: "/study" },
+    { id: 3, title: "Prayer Requests", path: "/requests" },
+    { id: 4, title: "Records", path: "/records" },
+    { id: 5, title: "About", path: "/about" },
+    { id: 6, title: "Contact", path: "/contact" },
   ];
+
+  const handleSelectTab = (title) => {
+    console.log(title);
+
+    setTabTitle(title);
+  };
 
   return (
     <>
@@ -51,11 +58,12 @@ export default function Navbar() {
           <div className="hidden md:flex items-center bg-zinc-50 border border-zinc-200 rounded-full px-1 py-1 gap-2">
             {navItems.map((item) => (
               <Link
-                key={item}
-                href="#"
-                className={`px-4 py-1.5 rounded-full text-sm transition-colors ${item === "Home" ? "bg-white border border-zinc-200 font-medium text-zinc-800 hover:text-zinc-600" : "text-zinc-500 hover:text-zinc-400"}`}
+                key={item.id}
+                href={item.path}
+                onClick={() => handleSelectTab(item.title)}
+                className={`px-4 py-1.5 rounded-full text-sm transition-colors ${item.title === tabTitle ? "bg-white border border-zinc-200 font-medium text-zinc-800 hover:text-zinc-600" : "text-zinc-500 hover:text-zinc-400"}`}
               >
-                {item}
+                {item.title}
               </Link>
             ))}
           </div>
@@ -100,11 +108,11 @@ export default function Navbar() {
             <div className="absolute top-full left-0 w-full bg-white border-t border-zinc-200 flex flex-col p-5 gap-1 md:hidden z-50">
               {navItems.map((item) => (
                 <Link
-                  key={item}
-                  href="#"
-                  className={`px-4 py-2.5 rounded-lg text-sm ${item === "Products" ? "bg-zinc-50 font-medium text-zinc-800" : "text-zinc-500 hover:bg-zinc-50"}`}
+                  key={item.id}
+                  href={item.path}
+                  className={`px-4 py-2.5 rounded-lg text-sm ${item.title === "Products" ? "bg-zinc-50 font-medium text-zinc-800" : "text-zinc-500 hover:bg-zinc-50"}`}
                 >
-                  {item}
+                  {item.title}
                 </Link>
               ))}
               <button className="flex items-center justify-center gap-2.5 bg-linear-to-r from-zinc-950 to-zinc-500 text-zinc-50 text-sm font-medium px-5 py-2.5 rounded-full cursor-pointer border-0 mt-3 w-fit">
