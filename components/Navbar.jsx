@@ -32,7 +32,7 @@ export default function Navbar() {
                 `}
       </style>
       <header>
-        <nav className="max-w-6xl mx-auto py-4 flex items-center justify-between relative">
+        <nav className="max-w-6xl mx-auto py-6 flex items-center justify-between relative">
           <Link href="/">
             <svg
               width="151"
@@ -69,7 +69,7 @@ export default function Navbar() {
           </div>
 
           <button className="hidden md:flex items-center gap-2.5 bg-linear-to-r from-zinc-950 to-zinc-500 text-zinc-50 hover:text-zinc-200 text-sm font-medium pl-5 pr-2 py-2 rounded-full cursor-pointer border-0">
-            Get started
+            Log In
             <span className="size-7 rounded-full bg-white flex items-center justify-center">
               <svg
                 width="12"
@@ -116,7 +116,7 @@ export default function Navbar() {
                 </Link>
               ))}
               <button className="flex items-center justify-center gap-2.5 bg-linear-to-r from-zinc-950 to-zinc-500 text-zinc-50 text-sm font-medium px-5 py-2.5 rounded-full cursor-pointer border-0 mt-3 w-fit">
-                Get started
+                Log In
                 <span className="size-7 rounded-full bg-white flex items-center justify-center">
                   <svg
                     width="12"

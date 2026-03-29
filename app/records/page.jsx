@@ -17,36 +17,36 @@ export default function HomePage() {
       link: "/records/view-records",
       linkText: "View Records",
     },
-    {
-      title: "Database",
-      description: "Securely stored data with MongoDB",
-      icon: <FaDatabase className="text-4xl text-purple-600" />,
-      link: "/records/view-records",
-      linkText: "View Database",
-    },
   ];
 
   return (
-    <div className="max-w-6xl mx-auto py-20">
+    <div className="max-w-6xl mx-auto pt-10 pb-20">
       <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-gray-800 mb-4">Relate</h1>
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+        <h1 className="text-5xl font-medium text-zinc-950 mb-4">Records</h1>
+        <p className="text-lg text-neutral-600 max-w-2xl mx-auto">
           A comprehensive system for managing family care records and support
           services. Maintain confidentiality while providing effective
           assistance.
         </p>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-8 mb-12">
+      <div className="grid md:grid-cols-2 gap-8 mb-12 max-w-3xl mx-auto">
         {features.map((feature, index) => (
-          <div key={index} className="bg-white p-6 rounded-lg shadow-lg">
+          <div
+            key={index}
+            className="bg-white p-6 rounded-lg shadow-lg max-w-90.5"
+          >
             <div className="flex flex-col items-center text-center">
               <div className="mb-4">{feature.icon}</div>
-              <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-              <p className="text-gray-600 mb-4">{feature.description}</p>
+              <h3 className="text-xl font-medium text-zinc-950 mb-2">
+                {feature.title}
+              </h3>
+              <p className="text-neutral-600 mb-5 text-[14px]">
+                {feature.description}
+              </p>
               <Link
                 href={feature.link}
-                className="bg-zinc-950 to-zinc-500 text-zinc-50  px-7 py-3 rounded-full font-medium transition text-sm"
+                className="bg-zinc-950 to-zinc-500 text-neutral-50  px-7 py-3 rounded-full font-medium transition text-[14px]"
               >
                 {feature.linkText}
               </Link>
@@ -56,13 +56,15 @@ export default function HomePage() {
       </div>
 
       <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h2 className="text-2xl font-bold mb-4">About This System</h2>
+        <h2 className="text-2xl text-zinc-950 font-bold mb-4">
+          About This System
+        </h2>
         <div className="prose max-w-none">
           <p className="mb-4">
             This system is designed to help social workers and case managers
             efficiently track and manage family support cases. It includes:
           </p>
-          <ul className="list-disc pl-5 mb-4">
+          <ul className="list-disc pl-5 mb-4 text-neutral-700">
             <li>Secure family information storage</li>
             <li>Assessment and urgency level tracking</li>
             <li>Short-term and long-term need identification</li>
