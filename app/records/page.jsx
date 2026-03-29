@@ -1,19 +1,20 @@
 import Link from "next/link";
-import { FaHome, FaFileAlt, FaPlusCircle, FaDatabase } from "react-icons/fa";
+import { IoMdAddCircle } from "react-icons/io";
+import { FaBookReader } from "react-icons/fa";
 
 export default function HomePage() {
   const features = [
     {
       title: "Create Records",
       description: "Add new family support records with comprehensive details",
-      icon: <FaPlusCircle className="text-4xl text-blue-600" />,
+      icon: <IoMdAddCircle className="text-4xl text-zinc-950" />,
       link: "/records/create",
       linkText: "Create New Record",
     },
     {
       title: "View Records",
       description: "Access and manage all family support records",
-      icon: <FaFileAlt className="text-4xl text-green-600" />,
+      icon: <FaBookReader className="text-4xl text-zinc-950" />,
       link: "/records/view-records",
       linkText: "View Records",
     },
@@ -23,10 +24,10 @@ export default function HomePage() {
     <div className="max-w-6xl mx-auto pt-10 pb-20">
       <div className="text-center mb-12">
         <h1 className="text-5xl font-medium text-zinc-950 mb-4">Records</h1>
-        <p className="text-lg text-neutral-600 max-w-2xl mx-auto">
-          A comprehensive system for managing family care records and support
-          services. Maintain confidentiality while providing effective
-          assistance.
+        <p className="text-lg font-light text-neutral-600 max-w-2xl mx-auto">
+          Every record represents a life being transformed. Track and manage the
+          journeys of those we walk with — with care, confidentiality, and a
+          heart for lasting change.
         </p>
       </div>
 
@@ -46,7 +47,7 @@ export default function HomePage() {
               </p>
               <Link
                 href={feature.link}
-                className="bg-zinc-950 to-zinc-500 text-neutral-50  px-7 py-3 rounded-full font-medium transition text-[14px]"
+                className="bg-zinc-950 to-zinc-500 text-neutral-50  px-6 py-2.5 rounded-full transition text-[14px]"
               >
                 {feature.linkText}
               </Link>
@@ -56,15 +57,16 @@ export default function HomePage() {
       </div>
 
       <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h2 className="text-2xl text-zinc-950 font-bold mb-4">
+        <h2 className="text-2xl text-zinc-950 font-medium mb-4">
           About This System
         </h2>
         <div className="prose max-w-none">
-          <p className="mb-4">
-            This system is designed to help social workers and case managers
-            efficiently track and manage family support cases. It includes:
+          <p className="mb-4 text-sm">
+            Built to support those who serve, this system helps our team
+            faithfully steward every family's journey — with accuracy,
+            compassion, and the confidentiality each person deserves.
           </p>
-          <ul className="list-disc pl-5 mb-4 text-neutral-700">
+          <ul className="list-disc pl-5 mb-4 text-neutral-700 font-light text-sm">
             <li>Secure family information storage</li>
             <li>Assessment and urgency level tracking</li>
             <li>Short-term and long-term need identification</li>
@@ -74,9 +76,9 @@ export default function HomePage() {
           <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4">
             <p className="font-semibold">Confidentiality Notice:</p>
             <p className="text-sm">
-              This system contains private and confidential information. It is
-              to be used only by authorized personnel involved in the support
-              project.
+              This system holds sacred the trust families place in us. All
+              information is private and confidential, accessible only to
+              authorized members of the Relate team.
             </p>
           </div>
         </div>

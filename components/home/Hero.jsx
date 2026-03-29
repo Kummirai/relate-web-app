@@ -38,8 +38,9 @@ export default function Hero({ verseOfTheDay }) {
         </h5>
 
         <p className="text-sm md:text-base mx-auto max-w-2xl text-center mt-6 max-md:px-2">
-          Build sleek, consistent UIs without wrestling with design systems, our
-          components handle the heavy lifting so you can ship faster.
+          We believe we are stronger together. Through prayer and genuine
+          relationship, we walk alongside families — trusting God for
+          breakthroughs none of us could find alone.
         </p>
 
         <div className="mx-auto w-full flex items-center justify-center gap-3 mt-4">

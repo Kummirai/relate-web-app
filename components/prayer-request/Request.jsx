@@ -37,7 +37,9 @@ export default function Request() {
   return (
     <section className="min-h-screen">
       <form className="flex flex-col items-center text-sm text-slate-800 pt-10 pb-20 max-w-3xl mx-auto">
-        <h1 className="text-4xl font-bold py-4 text-center">Prayer Request</h1>
+        <h1 className="text-4xl font-medium text-zinc-950 py-4 text-center">
+          Prayer Request
+        </h1>
         <p className="max-md:text-sm text-gray-500 pb-10 text-center">
           Or just reach out manually to us at{" "}
           <a href="#" className="text-zinc-600 hover:underline">

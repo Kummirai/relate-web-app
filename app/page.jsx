@@ -24,7 +24,6 @@ export default async function page() {
   };
 
   const verseOfTheDay = await fetchVerseOfTheDay();
-  console.log(verseOfTheDay);
 
   return (
     <div className="flex flex-col">
