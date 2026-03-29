@@ -31,7 +31,7 @@ export default function Navbar() {
                     }
                 `}
       </style>
-      <header className="bg-white">
+      <header>
         <nav className="max-w-6xl mx-auto py-4 flex items-center justify-between relative">
           <Link href="/">
             <svg
@@ -55,7 +55,7 @@ export default function Navbar() {
             </svg>
           </Link>
 
-          <div className="hidden md:flex items-center bg-zinc-50 border border-zinc-200 rounded-full px-1 py-1 gap-2">
+          <div className="hidden md:flex items-center  border border-zinc-100 rounded-full px-1 py-1 gap-2">
             {navItems.map((item) => (
               <Link
                 key={item.id}
