@@ -1,28 +1,36 @@
 import Link from "next/link";
+import { IoBookOutline } from "react-icons/io5";
 
-export default function Hero() {
+export default function Hero({ verseOfTheDay }) {
   return (
     <>
       <section className=" text-sm pb-44 pt-20 h-[calc(100vh-76px)]">
         <div className="flex items-center gap-2 border border-slate-300 hover:border-slate-400/70 rounded-full w-max mx-auto px-4 py-2">
-          <span>New announcement on your inbox</span>
-          <button className="flex items-center gap-1 font-medium">
-            <span>Read more</span>
-            <svg
-              width="19"
-              height="19"
-              viewBox="0 0 19 19"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M3.959 9.5h11.083m0 0L9.501 3.958M15.042 9.5l-5.541 5.54"
-                stroke="#050040"
-                strokeWidth="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
+          <span>Verse of the Day</span>
+          <button className="hidden md:flex items-center gap-2.5 bg-linear-to-r from-zinc-950 to-zinc-500 text-zinc-50 hover:text-zinc-200 text-sm font-medium pl-5 pr-2 py-2 rounded-full cursor-pointer border-0">
+            <span className="mr-1">
+              {verseOfTheDay.verse.details.reference}
+            </span>
+            <span>{verseOfTheDay.verse.details.version}</span>
+
+            <span className="size-7 rounded-full bg-white flex items-center justify-center">
+              {/* <svg
+                width="12"
+                height="10"
+                viewBox="0 0 12 10"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M.6 4.602h10m-4-4 4 4-4 4"
+                  stroke="#3f3f47"
+                  strokeWidth="1.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg> */}
+              <IoBookOutline className="text-zinc-950" />
+            </span>
           </button>
         </div>
         <h5 className="text-4xl md:text-7xl font-medium max-w-212.5 text-center mx-auto mt-8">
@@ -53,9 +61,9 @@ export default function Hero() {
               <path
                 d="M1.25.5 4.75 4l-3.5 3.5"
                 stroke="#050040"
-                stroke-opacity=".4"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeOpacity=".4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </svg>
           </button>

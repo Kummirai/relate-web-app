@@ -8,7 +8,7 @@ export default function WhatWeDo() {
                     font-family: 'Poppins', sans-serif;
                 }
             `}</style>
-      <section className="bg-white h-screen flex flex-col md:flex-row items-center justify-center gap-10 max-md:px-4">
+      <section className=" h-screen flex flex-col md:flex-row items-center justify-center gap-10 max-md:px-4">
         <div className="relative shadow-2xl shadow-zinc-600/40 rounded-2xl overflow-hidden shrink-0">
           <img
             className="max-w-md w-full object-cover rounded-2xl"
@@ -32,7 +32,7 @@ export default function WhatWeDo() {
                 alt="image"
                 className="size-9 rounded-full border-[3px] border-white hover:-translate-y-1 transition z-[3]"
               />
-              <div className="flex items-center justify-center text-xs  text-white size-9 rounded-full border-[3px] border-white bg-zinc-600 hover:-translate-y-1 transition z-[4]">
+              <div className="flex items-center justify-center text-xs  text-white size-9 rounded-full border-[3px] border-white bg-zinc-600 hover:-translate-y-1 transition z-4">
                 50+
               </div>
             </div>
@@ -42,10 +42,10 @@ export default function WhatWeDo() {
           </div>
         </div>
         <div className="text-sm text-slate-600 max-w-lg">
-          <h1 className="text-xl uppercase font-semibold text-slate-700">
+          <h1 className="text-2xl uppercase font-semibold text-slate-700">
             What we do?
           </h1>
-          <div className="w-24 h-[3px] rounded-full bg-gradient-to-r from-zinc-600 to-[#DDD9FF]"></div>
+          <div className="w-24 h-0.75 rounded-full bg-linear-to-r from-zinc-600 to-[#DDD9FF]"></div>
           <p className="mt-8">
             PrebuiltUI helps you build faster by transforming your design vision
             into fully functional, production-ready UI components.{" "}
