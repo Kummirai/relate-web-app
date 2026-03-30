@@ -17,14 +17,12 @@ export default function Navbar({ session }) {
   ];
 
   const handleSelectTab = (title) => {
-    console.log(title);
+   
 
     setTabTitle(title);
   };
 
   const adminEmails = process.env.ADMIN_EMAILS;
-
-  console.log(session);
 
   return (
     <>
