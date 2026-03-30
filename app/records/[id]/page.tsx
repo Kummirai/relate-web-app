@@ -19,7 +19,45 @@ import { ObjectId } from "mongodb";
 
 import RecordDetailFooter from "@/components/record/RecordDetailFooter";
 
-async function getRecord(id) {
+interface HouseholdMember {
+  name: string;
+  age: number;
+  relationship: string;
+}
+
+interface ActionLogEntry {
+  date: Date;
+  actionTaken: string;
+  byWhom: string;
+  nextStep: string;
+  dueDate?: Date;
+}
+
+interface FamilyRecord {
+  _id: ObjectId;
+  recordId: string;
+  dateOfIntake: Date;
+  caseManager: string;
+  headOfHousehold: string;
+  contactNumber: string;
+  alternateContactNumber?: string;
+  emailAddress?: string;
+  physicalAddress: string;
+  preferredContactMethod?: string[];
+  householdMembers?: HouseholdMember[];
+  summary: string;
+  urgencyLevel: "High" | "Medium" | "Low";
+  caseClosedDate?: Date;
+  updatedAt: Date;
+  createdAt: Date;
+  immediateNeeds?: string[];
+  longTermNeeds?: string[];
+  actionLog?: ActionLogEntry[];
+  reasonForClosure?: string;
+  finalOutcome?: string;
+}
+
+async function getRecord(id: string): Promise<FamilyRecord | null> {
   try {
     const db = await getDb();
     if (!ObjectId.isValid(id)) return null;
@@ -27,7 +65,6 @@ async function getRecord(id) {
     const record = await db
       .collection("familyrecords")
       .findOne({ _id: new ObjectId(id) });
-
     return record ?? null;
   } catch (error) {
     console.error("Error fetching record:", error);
@@ -35,7 +72,11 @@ async function getRecord(id) {
   }
 }
 
-export default async function RecordDetailPage({ params }) {
+export default async function RecordDetailPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
   const { id } = await params;
   const record = await getRecord(id);
 
@@ -492,7 +533,7 @@ export default async function RecordDetailPage({ params }) {
                 <div className="p-6 bg-gray-50 rounded-lg text-center">
                   <p className="text-gray-600">No action log entries yet</p>
                   <Link
-                    href={`/records/${params.id}/edit`}
+                    href={`/records/${id}/edit`}
                     className="inline-block mt-2 text-blue-600 hover:text-blue-800"
                   >
                     Add first action log entry →
