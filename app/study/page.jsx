@@ -8,7 +8,7 @@ import Loading from "./my-loading";
 const PAGE_SIZE = 9;
 
 export default function page() {
-  const [selectedTab, setSelectedTab] = useState(2);
+  const [selectedTab, setSelectedTab] = useState(10);
   const [data, setData] = useState([]);
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
   const [loading, setLoading] = useState(false);
@@ -21,17 +21,17 @@ export default function page() {
     { id: 5, title: "Articles", api: "articles" },
     { id: 6, title: "Books", api: "books" },
     { id: 7, title: "Student Workbooks", api: "student-workbooks" },
-    { id: 8, title: "Teacher's Guides", api: "teachers-guides" },
+    { id: 8, title: "Teacher's Guides", api: "guides" },
     { id: 9, title: "Audiobooks", api: "audiobooks" },
     { id: 10, title: "Podcasts", api: "podcasts" },
     { id: 11, title: "Collections", api: "collections" },
-    { id: 12, title: "Church 101", api: "church-101" },
+    { id: 12, title: "Church 101", api: "101" },
     { id: 13, title: "Help Guides", api: "help-guides" },
   ];
 
   const handleTabSelection = (id) => {
     setSelectedTab(id);
-    setVisibleCount(PAGE_SIZE); // reset to first 9 when tab changes
+    setVisibleCount(PAGE_SIZE);
   };
 
   const fetchSeries = async () => {
@@ -45,6 +45,8 @@ export default function page() {
       }
 
       const data = await response.json();
+      console.log(data);
+
       setData(data);
     } catch (error) {
       console.error("Failed to fetch series:", error);
@@ -105,9 +107,10 @@ export default function page() {
         <div className="flex items-center justify-center h-40">
           <button
             onClick={handleLoadMore}
-            className="px-8 py-3 border border-gray-300 rounded-md text-sm font-medium hover:bg-gray-50 transition-colors"
+            className="px-8 py-3 border bg-white border-gray-300 rounded-md text-sm font-medium hover:bg-zinc-950 hover:text-white cursor-pointer transition-colors"
           >
-            Load more ({data.length - visibleCount} remaining)
+            Load More {studyMaterial[selectedTab - 1].title} (
+            {data.length - visibleCount} remaining)
           </button>
         </div>
       )}
