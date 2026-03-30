@@ -1,9 +1,10 @@
 import { betterAuth } from "better-auth";
-import Database from "better-sqlite3";
-import { nextCookies } from "better-auth/next-js";
+import { mongodbAdapter } from "better-auth/adapters/mongodb";
+import { client } from "@/lib/mongodb";
+import { nextCookies } from "better-auth/next-js"; // your mongodb client
 
 export const auth = betterAuth({
-  database: new Database("./sqlite.db"),
+  database: mongodbAdapter(client.db()),
   emailAndPassword: {
     enabled: true,
   },

@@ -1,19 +1,21 @@
-import connectDB from "../../../lib/mongodb";
-import { FamilyRecord } from "../../../lib/models";
+import { getDb } from "@/lib/mongodb";
 import PrintButton from "@/components/record/PrintButton";
 
 async function getRecordForPrint(id) {
   try {
-    await connectDB();
-    const record = await FamilyRecord.findById(id);
-    if (!record) return null;
-    return record.toJSON();
+    const db = await getDb();
+    if (!ObjectId.isValid(id)) return null;
+
+    const record = await db
+      .collection("familyrecords")
+      .findOne({ _id: new ObjectId(id) });
+
+    return record ?? null;
   } catch (error) {
     console.error("Error fetching record for print:", error);
     return null;
   }
 }
-
 export default async function PrintPage({ params }) {
   const { id } = await params;
   const record = await getRecordForPrint(id);

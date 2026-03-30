@@ -14,20 +14,21 @@ import {
   FaTasks,
   FaFileSignature,
 } from "react-icons/fa";
-import connectDB from "@/lib/mongodb";
-import { FamilyRecord } from "@/lib/models";
+import { getDb } from "@/lib/mongodb";
+import { ObjectId } from "mongodb";
+
 import RecordDetailFooter from "@/components/record/RecordDetailFooter";
-import mongoose from "mongoose";
 
 async function getRecord(id) {
   try {
-    await connectDB();
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-      return null;
-    }
-    const record = await FamilyRecord.findById(id);
-    if (!record) return null;
-    return JSON.parse(JSON.stringify(record));
+    const db = await getDb();
+    if (!ObjectId.isValid(id)) return null;
+
+    const record = await db
+      .collection("familyrecords")
+      .findOne({ _id: new ObjectId(id) });
+
+    return record ?? null;
   } catch (error) {
     console.error("Error fetching record:", error);
     return null;
