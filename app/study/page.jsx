@@ -45,7 +45,6 @@ export default function page() {
       }
 
       const data = await response.json();
-      console.log(data);
 
       setData(data);
     } catch (error) {
