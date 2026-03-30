@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { signOutAction } from "@/app/actions/auth";
 
-export default function Navbar() {
+export default function Navbar({ session }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [tabTitle, setTabTitle] = useState("Home");
   const navItems = [
@@ -20,6 +21,10 @@ export default function Navbar() {
 
     setTabTitle(title);
   };
+
+  const adminEmails = process.env.ADMIN_EMAILS;
+
+  console.log(session);
 
   return (
     <>
@@ -58,38 +63,65 @@ export default function Navbar() {
           </Link>
 
           <div className="hidden md:flex items-center  border border-zinc-100 rounded-full px-1 py-1 gap-2">
-            {navItems.map((item) => (
-              <Link
-                key={item.id}
-                href={item.path}
-                onClick={() => handleSelectTab(item.title)}
-                className={`px-4 py-1.5 rounded-full text-sm transition-colors ${item.title === tabTitle ? "bg-white border border-zinc-200 font-medium text-zinc-800 hover:text-zinc-600" : "text-zinc-500 hover:text-zinc-400"}`}
-              >
-                {item.title}
-              </Link>
-            ))}
+            {navItems.map((item) =>
+              !session && item.title === "Records" ? null : (
+                <Link
+                  key={item.id}
+                  href={item.path}
+                  onClick={() => handleSelectTab(item.title)}
+                  className={`px-4 py-1.5 rounded-full text-sm transition-colors ${item.title === tabTitle ? "bg-white border border-zinc-200 font-medium text-zinc-800 hover:text-zinc-600" : "text-zinc-500 hover:text-zinc-400"}`}
+                >
+                  {item.title}
+                </Link>
+              ),
+            )}
           </div>
-
-          <button className="hidden md:flex items-center gap-2.5 bg-linear-to-r from-zinc-950 to-zinc-500 text-zinc-50 hover:text-zinc-200 text-sm font-medium pl-5 pr-2 py-2 rounded-full cursor-pointer border-0">
-            Log In
-            <span className="size-7 rounded-full bg-white flex items-center justify-center">
-              <svg
-                width="12"
-                height="10"
-                viewBox="0 0 12 10"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M.6 4.602h10m-4-4 4 4-4 4"
-                  stroke="#3f3f47"
-                  strokeWidth="1.2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </span>
-          </button>
+          {!session ? (
+            <button className="hidden md:flex items-center gap-2.5 bg-linear-to-r from-zinc-950 to-zinc-500 text-zinc-50 hover:text-zinc-200 text-sm font-medium pl-5 pr-2 py-2 rounded-full cursor-pointer border-0">
+              <Link href="/signin">Log In</Link>
+              <span className="size-7 rounded-full bg-white flex items-center justify-center">
+                <svg
+                  width="12"
+                  height="10"
+                  viewBox="0 0 12 10"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M.6 4.602h10m-4-4 4 4-4 4"
+                    stroke="#3f3f47"
+                    strokeWidth="1.2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </span>
+            </button>
+          ) : (
+            <button
+              className="hidden md:flex items-center gap-2.5 bg-linear-to-r from-zinc-950 to-zinc-500 text-zinc-50 hover:text-zinc-200 text-sm font-medium pl-5 pr-2 py-2 rounded-full cursor-pointer border-0"
+              onClick={signOutAction}
+            >
+              Log Out
+              <span className="size-7 rounded-full bg-white flex items-center justify-center">
+                <svg
+                  width="12"
+                  height="10"
+                  viewBox="0 0 12 10"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M.6 4.602h10m-4-4 4 4-4 4"
+                    stroke="#3f3f47"
+                    strokeWidth="1.2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </span>
+            </button>
+          )}
 
           <button
             onClick={() => setMenuOpen(!menuOpen)}
