@@ -1,14 +1,19 @@
 import Link from "next/link";
 import { FaPlus } from "react-icons/fa";
-import connectDB from "../../../lib/mongodb";
-import { FamilyRecord } from "../../../lib/models";
+import { getDb } from "@/lib/mongodb";
 import RecordList from "@/components/record/RecordList";
 
 async function getRecords() {
   try {
-    await connectDB();
-    const records = await FamilyRecord.find({}).sort({ createdAt: -1 });
-    return JSON.parse(JSON.stringify(records));
+    const db = await getDb();
+    const records = await db
+      .collection("familyrecords")
+      .find({})
+      .sort({ createdAt: -1 })
+      .toArray();
+    console.log(records);
+
+    return records;
   } catch (error) {
     console.error("Error fetching records:", error);
     return [];

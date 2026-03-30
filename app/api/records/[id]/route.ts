@@ -1,7 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
-import connectDB from "../../../../lib/mongodb";
-import { FamilyRecord } from "../../../../lib/models";
-import mongoose from "mongoose";
+import { ObjectId } from "mongodb";
+import { getDb } from "@/lib/mongodb";
+
+function isValidId(id: string) {
+  return ObjectId.isValid(id);
+}
 
 // Get a single record by ID
 export async function GET(
@@ -10,13 +13,14 @@ export async function GET(
 ) {
   try {
     const { id } = await params;
-    await connectDB();
-
-    if (!mongoose.Types.ObjectId.isValid(id)) {
+    if (!isValidId(id)) {
       return NextResponse.json({ error: "Invalid ID format" }, { status: 400 });
     }
 
-    const record = await FamilyRecord.findById(id);
+    const db = await getDb();
+    const record = await db
+      .collection("familyrecords")
+      .findOne({ _id: new ObjectId(id) });
 
     if (!record) {
       return NextResponse.json({ error: "Record not found" }, { status: 404 });
@@ -39,23 +43,30 @@ export async function PUT(
 ) {
   try {
     const { id } = await params;
-    await connectDB();
-
-    if (!mongoose.Types.ObjectId.isValid(id)) {
+    if (!isValidId(id)) {
       return NextResponse.json({ error: "Invalid ID format" }, { status: 400 });
     }
 
+    const db = await getDb();
     const data = await request.json();
-    const updatedRecord = await FamilyRecord.findByIdAndUpdate(id, data, {
-      new: true,
-      runValidators: true,
-    });
 
-    if (!updatedRecord) {
+    // Mirror the pre-save hook
+    if (data.caseClosedDate) data.status = "Closed";
+    data.updatedAt = new Date();
+
+    const result = await db
+      .collection("familyrecords")
+      .findOneAndUpdate(
+        { _id: new ObjectId(id) },
+        { $set: data },
+        { returnDocument: "after" },
+      );
+
+    if (!result) {
       return NextResponse.json({ error: "Record not found" }, { status: 404 });
     }
 
-    return NextResponse.json(updatedRecord);
+    return NextResponse.json(result);
   } catch (error) {
     console.error("PUT /api/records/[id] error:", error);
     return NextResponse.json(
@@ -72,15 +83,16 @@ export async function DELETE(
 ) {
   const { id } = await params;
   try {
-    await connectDB();
-
-    if (!mongoose.Types.ObjectId.isValid(id)) {
+    if (!isValidId(id)) {
       return NextResponse.json({ error: "Invalid ID format" }, { status: 400 });
     }
 
-    const deletedRecord = await FamilyRecord.findByIdAndDelete(id);
+    const db = await getDb();
+    const result = await db
+      .collection("familyrecords")
+      .findOneAndDelete({ _id: new ObjectId(id) });
 
-    if (!deletedRecord) {
+    if (!result) {
       return NextResponse.json({ error: "Record not found" }, { status: 404 });
     }
 
