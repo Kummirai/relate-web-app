@@ -63,18 +63,26 @@ export default function Navbar({ session }) {
           </Link>
 
           <div className="hidden md:flex items-center  border border-zinc-100 rounded-full px-1 py-1 gap-2">
-            {navItems.map((item) =>
-              !session && item.title === "Records" ? null : (
+            {navItems.map((item) => {
+              const isAdmin = session?.user.role === "admin";
+
+              if (item.title === "Records" && !isAdmin) return null;
+
+              return (
                 <Link
                   key={item.id}
                   href={item.path}
                   onClick={() => handleSelectTab(item.title)}
-                  className={`px-4 py-1.5 rounded-full text-sm transition-colors ${item.title === tabTitle ? "bg-white border border-zinc-200 font-medium text-zinc-800 hover:text-zinc-600" : "text-zinc-500 hover:text-zinc-400"}`}
+                  className={`px-4 py-1.5 rounded-full text-sm transition-colors ${
+                    item.title === tabTitle
+                      ? "bg-white border border-zinc-200 font-medium text-zinc-800 hover:text-zinc-600"
+                      : "text-zinc-500 hover:text-zinc-400"
+                  }`}
                 >
                   {item.title}
                 </Link>
-              ),
-            )}
+              );
+            })}
           </div>
           {!session ? (
             <button className="hidden md:flex items-center gap-2.5 bg-linear-to-r from-zinc-950 to-zinc-500 text-zinc-50 hover:text-zinc-200 text-sm font-medium pl-5 pr-2 py-2 rounded-full cursor-pointer border-0">
