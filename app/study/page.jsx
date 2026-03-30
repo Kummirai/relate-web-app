@@ -1,50 +1,68 @@
 "use client";
 
 import Card from "@/components/bible-study/Card";
-import Pagination from "@/components/pagination/Pagination";
 import Tab from "@/components/tabs/Tab";
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
+import Loading from "./my-loading";
+
+const PAGE_SIZE = 9;
 
 export default function page() {
   const [selectedTab, setSelectedTab] = useState(2);
   const [data, setData] = useState([]);
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+  const [loading, setLoading] = useState(false);
 
   const studyMaterial = [
-    { id: 1, title: "Study Plans" },
-    { id: 2, title: "Series" },
-    { id: 3, title: "Sermons" },
-    { id: 4, title: "Devos" },
-    { id: 5, title: "Articles" },
-    { id: 6, title: "Books" },
-    { id: 7, title: "Student Workbooks" },
-    { id: 8, title: "Teacher's Guides" },
-    { id: 9, title: "Audiobooks" },
-    { id: 10, title: "Podcasts" },
-    { id: 11, title: "Collections" },
-    { id: 12, title: "Church 101" },
-    { id: 13, title: "Help Guides" },
+    { id: 1, title: "Study Plans", api: "study-plans" },
+    { id: 2, title: "Series", api: "series" },
+    { id: 3, title: "Sermons", api: "sermons" },
+    { id: 4, title: "Devos", api: "devos" },
+    { id: 5, title: "Articles", api: "articles" },
+    { id: 6, title: "Books", api: "books" },
+    { id: 7, title: "Student Workbooks", api: "student-workbooks" },
+    { id: 8, title: "Teacher's Guides", api: "teachers-guides" },
+    { id: 9, title: "Audiobooks", api: "audiobooks" },
+    { id: 10, title: "Podcasts", api: "podcasts" },
+    { id: 11, title: "Collections", api: "collections" },
+    { id: 12, title: "Church 101", api: "church-101" },
+    { id: 13, title: "Help Guides", api: "help-guides" },
   ];
 
   const handleTabSelection = (id) => {
     setSelectedTab(id);
+    setVisibleCount(PAGE_SIZE); // reset to first 9 when tab changes
   };
 
   const fetchSeries = async () => {
     try {
-      const response = await fetch("/api/series");
+      setLoading(true);
+      const response = await fetch(
+        `/api/${studyMaterial[selectedTab - 1].api}`,
+      );
       if (!response.ok) {
         throw new Error(`Request failed with status: ${response.status}`);
       }
+
       const data = await response.json();
       setData(data);
     } catch (error) {
       console.error("Failed to fetch series:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
   useEffect(() => {
     fetchSeries();
   }, [selectedTab]);
+
+  const visibleData = data.slice(0, visibleCount);
+  const hasMore = visibleCount < data.length;
+
+  const handleLoadMore = () => {
+    setVisibleCount((prev) => prev + PAGE_SIZE);
+  };
 
   return (
     <section className="">
@@ -59,6 +77,7 @@ export default function page() {
           breakthroughs none of us could find alone.
         </p>
       </div>
+
       <div className="max-w-4xl mx-auto pb-10">
         <Tab
           studyMaterial={studyMaterial}
@@ -66,14 +85,32 @@ export default function page() {
           selectedTab={selectedTab}
         />
       </div>
-      <div className="max-w-6xl mx-auto grid gap-10 sm:grid-cols-3 min-h-screen">
-        {data?.map((item) => {
-          return <Card key={item.tag} item={item} />;
-        })}
-      </div>
-      <div className="flex items-center justify-center h-40">
-        <Pagination />
-      </div>
+
+      {selectedTab && (
+        <Suspense fallback={<Loading />}>
+          {loading ? (
+            <Loading />
+          ) : (
+            <div className="max-w-6xl mx-auto grid gap-10 sm:grid-cols-3 min-h-screen">
+              {visibleData?.map((item) => (
+                <Card key={item.tag} item={item} />
+              ))}
+            </div>
+          )}
+        </Suspense>
+      )}
+
+      {/* Load More Button */}
+      {hasMore && !loading && (
+        <div className="flex items-center justify-center h-40">
+          <button
+            onClick={handleLoadMore}
+            className="px-8 py-3 border border-gray-300 rounded-md text-sm font-medium hover:bg-gray-50 transition-colors"
+          >
+            Load more ({data.length - visibleCount} remaining)
+          </button>
+        </div>
+      )}
     </section>
   );
 }
