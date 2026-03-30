@@ -9,7 +9,7 @@ function isValidId(id: string) {
 // Get a single record by ID
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } },
+  { params }: { params: Promise<{ id: string }> },
 ) {
   try {
     const { id } = await params;
@@ -39,7 +39,7 @@ export async function GET(
 // Update a record by ID
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } },
+  { params }: { params: Promise<{ id: string }> },
 ) {
   try {
     const { id } = await params;
@@ -50,7 +50,6 @@ export async function PUT(
     const db = await getDb();
     const data = await request.json();
 
-    // Mirror the pre-save hook
     if (data.caseClosedDate) data.status = "Closed";
     data.updatedAt = new Date();
 
@@ -79,10 +78,10 @@ export async function PUT(
 // Delete a record by ID
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } },
+  { params }: { params: Promise<{ id: string }> },
 ) {
-  const { id } = await params;
   try {
+    const { id } = await params;
     if (!isValidId(id)) {
       return NextResponse.json({ error: "Invalid ID format" }, { status: 400 });
     }
