@@ -1,27 +1,20 @@
 // middleware.ts
 import { NextRequest, NextResponse } from "next/server";
-import { headers } from "next/headers";
-import { auth } from "@/lib/auth";
 
-export async function middleware(request: NextRequest) {
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
+export function middleware(request: NextRequest) {
+  // Better Auth sets a session cookie - just check if it exists
+  const sessionCookie =
+    request.cookies.get("better-auth.session_token") ||
+    request.cookies.get("__Secure-better-auth.session_token");
 
   // Not logged in → redirect to sign in
-  if (!session) {
+  if (!sessionCookie) {
     return NextResponse.redirect(new URL("/signin", request.url));
-  }
-
-  // Logged in but not admin → redirect to unauthorized
-  if (session.user.role !== "admin") {
-    return NextResponse.redirect(new URL("/unauthorized", request.url));
   }
 
   return NextResponse.next();
 }
 
 export const config = {
-  runtime: "nodejs",
   matcher: "/records/:path*",
 };
