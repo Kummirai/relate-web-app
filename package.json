@@ -9,7 +9,7 @@
     "lint": "eslint"
   },
   "engines": {
-    "node": ">=18 <19"
+     "node": ">=20.9.0"
   },
   "dependencies": {
     "@types/mongoose": "^5.11.96",
