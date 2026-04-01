@@ -9,16 +9,15 @@ export default function Navbar({ session }) {
   const [tabTitle, setTabTitle] = useState("Home");
   const navItems = [
     { id: 1, title: "Home", path: "/" },
-    { id: 2, title: "Bible Study", path: "/study" },
-    { id: 3, title: "Prayer Request", path: "/request" },
-    { id: 4, title: "Records", path: "/records" },
-    { id: 5, title: "About", path: "/about" },
-    { id: 6, title: "Contact", path: "/contact" },
+    { id: 2, title: "Bible", path: "/bible" },
+    { id: 3, title: "Bible Study", path: "/study" },
+    { id: 4, title: "Prayer Request", path: "/request" },
+    { id: 5, title: "Records", path: "/records" },
+    { id: 6, title: "About", path: "/about" },
+    { id: 7, title: "Contact", path: "/contact" },
   ];
 
   const handleSelectTab = (title) => {
-   
-
     setTabTitle(title);
   };
 

@@ -5,7 +5,7 @@ import { IoBookOutline } from "react-icons/io5";
 import { useVerse } from "@/context/VerseContext";
 
 export default function Hero() {
-  const { verse, } = useVerse();
+  const { verse } = useVerse();
 
   const placeholderVerse = {
     verse: {
@@ -70,8 +70,8 @@ export default function Hero() {
           </button>
 
           <button className="flex items-center gap-2 border border-slate-300 hover:bg-slate-200/30 rounded-full px-6 py-3">
-            <Link href={"https://chat.whatsapp.com/F9LcrZZxk5iA12Bv82rNku"}>
-              <span>Join Relate Community</span>
+            <Link href={"#"}>
+              <span>Request A Bible Study</span>
             </Link>
             <svg
               width="6"
