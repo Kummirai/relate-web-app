@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getDb } from "@/lib/mongodb"; // Adjust the path based on your project structure
+import { getDb } from "@/lib/mongodb";
 import { ObjectId } from "mongodb";
 
 export async function GET() {
