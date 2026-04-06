@@ -71,6 +71,10 @@ export default function page() {
     setSelectedChapter(e);
   };
 
+  const handleTranslationChange = (e) => {
+    setTranslation(e);
+  };
+
   return (
     <section className="min-h-[calc(100vh-92px)]">
       <div className="max-w-6xl mx-auto">
@@ -114,10 +118,13 @@ export default function page() {
             <label htmlFor="">
               <span>Translation</span>
             </label>
-            <select name="" id="">
-              {/* {translations.translations.map((translation) => {
-                <option value="genesis">{translation.name}</option>;
-              })} */}
+            <select
+              name=""
+              id=""
+              onChange={(e) => handleTranslationChange(e.target.value)}
+            >
+              <option value={"BSB"}>BSB</option>
+              <option value={"eng_kja"}>King James Version</option>
             </select>
           </div>
         </div>
