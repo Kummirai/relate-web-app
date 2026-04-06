@@ -41,7 +41,7 @@ export default function page() {
 
       try {
         const response = await fetch(
-          `http://localhost:3000/api/verses?${params}`,
+          `/api/verses?${params}`,
         );
 
         if (!response.ok) {
