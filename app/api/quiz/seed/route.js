@@ -1,12 +1,12 @@
 import { NextResponse } from "next/server";
 import { getDb } from "@/lib/mongodb";
-import { seedLeaderboard } from "@/lib/quiz";
+import { seedLeaderboard, seedSessions, seedBooks } from "@/lib/quiz";
 
 const TEAMS = [
-  "Faithful Warriors", "Bible Explorers", "Wisdom Seekers",
-  "Grace Guardians", "Truth Hunters", "Light Bearers",
-  "Courage Crew", "Hope Heroes", "Victory Vipers",
-  "Destiny Defenders", "Kingdom Kids", "Scripture Stars",
+  "Crown of Life", "Armor Bearers", "Kingdom Heirs",
+  "Morning Stars", "Light Bearers", "Peacemakers",
+  "Truth Bearers", "Grace Guardians", "Watchmen",
+  "Cornerstone", "Chosen Vessels", "Covenant Keepers",
 ];
 
 const SESSIONS = [
@@ -25,9 +25,9 @@ const SESSIONS = [
 ];
 
 const CHAMPIONS = [
-  { team: "Faithful Warriors", members: ["Thando M.", "Liam K.", "Nomsa D."], season: "1", year: "2026", img: "https://images.unsplash.com/photo-1560252829-804f1aedf1be?q=80&w=600&h=400&auto=format&fit=crop" },
-  { team: "Bible Explorers", members: ["Sarah K.", "David O.", "Grace N."], season: "1", year: "2026", img: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=600&h=400&auto=format&fit=crop" },
-  { team: "Wisdom Seekers", members: ["Michael A.", "Emma W.", "Joshua T."], season: "2", year: "2026", img: "https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=600&h=400&auto=format&fit=crop" },
+  { team: "Crown of Life", members: ["Thando M.", "Liam K.", "Nomsa D."], season: "1", year: "2026", img: "https://images.unsplash.com/photo-1560252829-804f1aedf1be?q=80&w=600&h=400&auto=format&fit=crop" },
+  { team: "Armor Bearers", members: ["Sarah K.", "David O.", "Grace N."], season: "1", year: "2026", img: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=600&h=400&auto=format&fit=crop" },
+  { team: "Kingdom Heirs", members: ["Michael A.", "Emma W.", "Joshua T."], season: "2", year: "2026", img: "https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=600&h=400&auto=format&fit=crop" },
 ];
 
 export async function POST() {
@@ -48,10 +48,13 @@ export async function POST() {
     }
 
     const leaderboard = await seedLeaderboard();
+    const sessions = await seedSessions();
+    const books = await seedBooks();
 
     return NextResponse.json({
       success: true,
-      sessions: SESSIONS.length,
+      sessions: sessions.length,
+      books: books.length,
       champions: CHAMPIONS.length,
       teams: TEAMS.length,
       leaderboard: leaderboard.length,

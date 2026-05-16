@@ -32,18 +32,18 @@ const sessions = [
 ];
 
 const teams = [
-  { name: "Faithful Warriors", played: 6, scores: [2, 2, 2, 2, 0, 2] },
-  { name: "Scripture Seekers", played: 6, scores: [2, 0, 2, 2, 2, 2] },
-  { name: "Light of the Word", played: 6, scores: [2, 0, 2, 0, 2, 2] },
-  { name: "Bible Champions", played: 6, scores: [0, 2, 2, 2, 0, 2] },
-  { name: "Grace Defenders", played: 6, scores: [2, 0, 2, 0, 2, 0] },
-  { name: "Truth Bearers", played: 6, scores: [0, 2, 0, 2, 0, 2] },
-  { name: "Living Stones", played: 6, scores: [2, 2, 0, 0, 2, 0] },
-  { name: "Salt & Light", played: 6, scores: [0, 2, 0, 2, 0, 0] },
-  { name: "Bread of Life", played: 6, scores: [2, 0, 0, 2, 0, 0] },
-  { name: "New Creation", played: 6, scores: [0, 0, 2, 0, 2, 0] },
-  { name: "Mighty Vessels", played: 6, scores: [0, 2, 0, 0, 0, 0] },
-  { name: "Rising Disciples", played: 6, scores: [0, 0, 0, 2, 0, 0] },
+  { name: "Crown of Life", played: 6, scores: [2, 2, 2, 2, 0, 2] },
+  { name: "Armor Bearers", played: 6, scores: [2, 0, 2, 2, 2, 2] },
+  { name: "Kingdom Heirs", played: 6, scores: [2, 0, 2, 0, 2, 2] },
+  { name: "Morning Stars", played: 6, scores: [0, 2, 2, 2, 0, 2] },
+  { name: "Light Bearers", played: 6, scores: [2, 0, 2, 0, 2, 0] },
+  { name: "Peacemakers", played: 6, scores: [0, 2, 0, 2, 0, 2] },
+  { name: "Truth Bearers", played: 6, scores: [2, 2, 0, 0, 2, 0] },
+  { name: "Grace Guardians", played: 6, scores: [0, 2, 0, 2, 0, 0] },
+  { name: "Watchmen", played: 6, scores: [2, 0, 0, 2, 0, 0] },
+  { name: "Cornerstone", played: 6, scores: [0, 0, 2, 0, 2, 0] },
+  { name: "Chosen Vessels", played: 6, scores: [0, 2, 0, 0, 0, 0] },
+  { name: "Covenant Keepers", played: 6, scores: [0, 0, 0, 2, 0, 0] },
 ];
 
 const rankIcons = [
@@ -163,6 +163,17 @@ function OverviewSection() {
 
 function BooksSection() {
   const [scheduleFull, setScheduleFull] = useState(false);
+  const [books, setBooks] = useState([]);
+  const [sessions, setSessions] = useState([]);
+
+  useEffect(() => {
+    Promise.all([
+      fetch("/api/quiz/books").then((r) => r.json()),
+      fetch("/api/quiz/sessions").then((r) => r.json()),
+    ])
+      .then(([b, s]) => { setBooks(b); setSessions(s); })
+      .catch(() => {});
+  }, []);
 
   return (
     <section className="py-16 md:py-20 px-4" style={{ backgroundColor: "white" }}>
@@ -511,21 +522,21 @@ function PrizesSection() {
 
 const champions = [
   {
-    team: "Faithful Warriors",
+    team: "Crown of Life",
     members: ["Thando M.", "Liam K.", "Nomsa D."],
     season: "1",
     year: "2026",
     img: "https://images.unsplash.com/photo-1560252829-804f1aedf1be?q=80&w=600&h=400&auto=format&fit=crop",
   },
   {
-    team: "Bible Explorers",
+    team: "Armor Bearers",
     members: ["Sarah K.", "David O.", "Grace N."],
     season: "1",
     year: "2026",
     img: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=600&h=400&auto=format&fit=crop",
   },
   {
-    team: "Wisdom Seekers",
+    team: "Kingdom Heirs",
     members: ["Michael A.", "Emma W.", "Joshua T."],
     season: "2",
     year: "2026",
@@ -800,6 +811,14 @@ function RegistrationCTA({ onRegister }) {
                 Grab 2 friends, pick a team name, and secure your spot. Only 12 teams get in!
               </p>
             </div>
+            {availableTeams.length === 0 ? (
+              <div className="max-w-md mx-auto mt-8 text-center">
+                <div className="rounded-lg p-6" style={{ backgroundColor: "rgba(255,255,255,0.08)" }}>
+                  <p className="text-white font-medium">Registration Full</p>
+                  <p className="text-xs text-white/60 mt-1">All 12 teams are in. Registration will open soon for the next season!</p>
+                </div>
+              </div>
+            ) : (
             <form onSubmit={handleSubmit} className="max-w-lg mx-auto mt-8 space-y-4">
               <div>
                 <label className="block text-xs mb-1 text-white/80 font-medium">Team Name</label>
@@ -877,6 +896,7 @@ function RegistrationCTA({ onRegister }) {
                 {loading ? "Registering..." : "Register"}
               </button>
             </form>
+            )}
           </div>
         </div>
       </div>
