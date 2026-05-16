@@ -24,7 +24,7 @@ export default function Hero() {
 
   return (
     <>
-      <section className="relative text-sm pb-20 pt-14 min-h-[calc(100vh-76px)] md:pb-44 md:pt-20 overflow-hidden">
+      <section className="relative text-sm min-h-[calc(100vh-76px)] overflow-hidden flex flex-col items-center justify-evenly px-4 py-8 md:py-12">
         <div className="absolute inset-0 -z-10">
           <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, #eff5f9 0%, white 35%, #f2f8fc 65%, #eff5f9 100%)" }} />
           <div className="absolute -top-[25%] -right-[15%] w-[70%] h-[70%] rounded-full opacity-25 blur-[120px]" style={{ background: "radial-gradient(circle, #13c5dd, transparent 70%)" }} />
@@ -48,16 +48,18 @@ export default function Hero() {
             </span>
           </Link>
         </div>
-          <h5 className="text-3xl md:text-6xl font-medium max-w-212.5 text-center mx-auto mt-8 max-md:px-4" style={{ color: "#1d2a4d" }}>
-          Growing Together Through Shared Skills
-        </h5>
+        <div className="text-center max-md:px-4">
+          <h5 className="text-3xl md:text-6xl font-medium max-w-212.5 mx-auto" style={{ color: "#1d2a4d" }}>
+            Growing Together Through Shared Skills
+          </h5>
 
-        <p className="text-sm md:text-base mx-auto max-w-2xl text-center mt-6 max-md:px-2" style={{ color: "#1d2a4d" }}>
-          We believe we are stronger together. Share your skills, learn from
+          <p className="text-sm md:text-base mx-auto max-w-2xl mt-4 max-md:px-2" style={{ color: "#1d2a4d" }}>
+            We believe we are stronger together. Share your skills, learn from
             others, and help our community grow through knowledge and connection.
-        </p>
+          </p>
+        </div>
 
-        <div className="mx-auto w-full flex items-center justify-center gap-3 mt-4 max-md:flex-col max-md:px-4">
+        <div className="mx-auto w-full flex items-center justify-center gap-3 max-md:flex-col max-md:px-4">
           <button className="bg-[#13c5dd] text-white px-7 py-3 rounded-full font-medium transition hover:opacity-90 w-full md:w-auto">
             <Link href={"/skills"}>Explore Skills Exchange</Link>
           </button>

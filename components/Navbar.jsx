@@ -12,10 +12,11 @@ export default function Navbar({ session }) {
     { id: 1, title: "Home", path: "/" },
     { id: 2, title: "Bible", path: "/bible" },
     { id: 3, title: "Bible Study", path: "/study" },
-    { id: 4, title: "Skills", path: "/skills" },
-    { id: 5, title: "Records", path: "/records" },
-    { id: 6, title: "About", path: "/about" },
-    { id: 7, title: "Contact", path: "/contact" },
+    { id: 4, title: "Youth", path: "/youth" },
+    { id: 5, title: "Skills", path: "/skills" },
+    { id: 6, title: "Records", path: "/records" },
+    { id: 7, title: "About", path: "/about" },
+    { id: 8, title: "Contact", path: "/contact" },
   ];
 
   const handleSelectTab = (title) => {

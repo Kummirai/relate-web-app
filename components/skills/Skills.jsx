@@ -1,269 +1,415 @@
 "use client";
 
 import { useState } from "react";
+import { HiOutlineLightBulb, HiOutlineHeart, HiOutlineUserGroup, HiOutlineArrowRight, HiOutlineBriefcase, HiOutlineScissors, HiOutlineWrench, HiOutlineSparkles, HiOutlineAcademicCap } from "react-icons/hi2";
+import { LiaLaptopCodeSolid } from "react-icons/lia";
+import { MdOutlineBakeryDining, MdOutlinePlumbing } from "react-icons/md";
 
-export default function Skills() {
-  const [mode, setMode] = useState("learn");
+const skills = [
+  {
+    icon: <HiOutlineBriefcase />,
+    title: "Entrepreneurial",
+    slug: "entrepreneurial",
+    desc: "Business basics, financial literacy, marketing, and starting a small enterprise.",
+    img: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?q=80&w=600&h=400&auto=format&fit=crop",
+  },
+  {
+    icon: <MdOutlineBakeryDining />,
+    title: "Baking",
+    slug: "baking",
+    desc: "Bread, pastries, cakes, and other baked goods — from basic recipes to advanced techniques.",
+    img: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?q=80&w=600&h=400&auto=format&fit=crop",
+  },
+  {
+    icon: <HiOutlineScissors />,
+    title: "Sewing",
+    slug: "sewing",
+    desc: "Mending, tailoring, dressmaking, and creative fabric projects for everyday use.",
+    img: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=600&h=400&auto=format&fit=crop",
+  },
+  {
+    icon: <LiaLaptopCodeSolid />,
+    title: "Programming",
+    slug: "programming",
+    desc: "Web development, mobile apps, automation, and basic computer literacy.",
+    img: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=600&h=400&auto=format&fit=crop",
+  },
+  {
+    icon: <MdOutlinePlumbing />,
+    title: "Plumbing",
+    slug: "plumbing",
+    desc: "Pipe repairs, fixture installation, drainage solutions, and essential home maintenance.",
+    img: "https://images.unsplash.com/photo-1585704032915-c3400ca199e7?q=80&w=600&h=400&auto=format&fit=crop",
+  },
+  {
+    icon: <HiOutlineSparkles />,
+    title: "Basic Life Skills",
+    slug: "life-skills",
+    desc: "Cooking, cleaning, budgeting, time management, and other foundational skills for daily living.",
+    img: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=600&h=400&auto=format&fit=crop",
+  },
+];
 
-  const skillCategories = [
-    { id: 1, skill: "Music (Singing, Instruments, Production)", value: "music" },
-    { id: 2, skill: "Art & Design", value: "art_design" },
-    { id: 3, skill: "Photography & Video", value: "photography_video" },
-    { id: 4, skill: "Writing & Content Creation", value: "writing_content" },
-    { id: 5, skill: "Programming & Technology", value: "programming_tech" },
-    { id: 6, skill: "Cooking & Baking", value: "cooking_baking" },
-    { id: 7, skill: "Languages", value: "languages" },
-    { id: 8, skill: "Sports & Fitness", value: "sports_fitness" },
-    { id: 9, skill: "Business & Entrepreneurship", value: "business_entrepreneurship" },
-    { id: 10, skill: "Academic Subjects", value: "academic_subjects" },
-    { id: 11, skill: "Life Skills", value: "life_skills" },
-    { id: 12, skill: "Other", value: "other" },
+const skillCategories = [
+  { id: 1, skill: "Entrepreneurial (Business, Marketing, Finance)", value: "entrepreneurial" },
+  { id: 2, skill: "Baking & Culinary", value: "baking" },
+  { id: 3, skill: "Sewing & Tailoring", value: "sewing" },
+  { id: 4, skill: "Programming & Technology", value: "programming" },
+  { id: 5, skill: "Plumbing & Home Maintenance", value: "plumbing" },
+  { id: 6, skill: "Basic Life Skills", value: "life_skills" },
+  { id: 7, skill: "Other (Please Specify)", value: "other" },
+];
+
+function HeroSection() {
+  return (
+    <section className="relative min-h-[70vh] overflow-hidden flex flex-col items-center justify-evenly px-4 py-16">
+      <div className="absolute inset-0 -z-10">
+        <img
+          src="https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=1920&auto=format&fit=crop"
+          alt=""
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(29,42,77,0.9) 0%, rgba(29,42,77,0.55) 100%)" }} />
+      </div>
+
+      <div className="text-center max-w-3xl mx-auto">
+        <div className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs mb-6" style={{ backgroundColor: "rgba(239,245,249,0.9)", color: "#13c5dd" }}>
+          <HiOutlineHeart className="text-sm" />
+          <span>Community-Powered Skills Exchange</span>
+        </div>
+        <h1 className="text-4xl md:text-6xl font-medium leading-tight text-white">
+          Share Your Skills.
+          <br />
+          <span style={{ color: "#13c5dd" }}>
+            Strengthen Our Community.
+          </span>
+        </h1>
+        <p className="text-sm md:text-base max-w-xl mx-auto mt-6 leading-relaxed" style={{ color: "#eff5f9" }}>
+          Every skill you share plants a seed of growth in someone else&apos;s life.
+          Whether you&apos;re teaching baking, mentoring in plumbing, or guiding in
+          entrepreneurship — your knowledge becomes a gift that keeps giving.
+        </p>
+      </div>
+    </section>
+  );
+}
+
+function SkillsCards() {
+  return (
+    <section id="skills" className="py-16 md:py-20 px-4" style={{ background: "linear-gradient(180deg, #eff5f9 0%, white 50%, #eff5f9 100%)" }}>
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-14">
+          <h2 className="text-4xl font-medium" style={{ color: "#1d2a4d" }}>
+            Available Skills
+          </h2>
+          <p className="text-sm md:text-base max-w-2xl mx-auto mt-4" style={{ color: "#1d2a4d" }}>
+            Practical skills that build self-reliance and community strength — from baking and sewing to programming and plumbing.
+          </p>
+        </div>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {skills.map((skill, i) => (
+            <div
+              key={i}
+              className="group rounded-lg overflow-hidden transition-all duration-300 hover:-translate-y-1"
+              style={{ backgroundColor: "white" }}
+            >
+              <div className="overflow-hidden">
+                <img
+                  src={skill.img}
+                  alt={skill.title}
+                  className="w-full aspect-[3/2] object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+              </div>
+              <div className="p-5 md:p-6">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="size-10 rounded-lg flex items-center justify-center text-lg shrink-0" style={{ backgroundColor: "#eff5f9", color: "#13c5dd" }}>
+                    {skill.icon}
+                  </div>
+                  <h3 className="text-lg font-medium" style={{ color: "#1d2a4d" }}>
+                    {skill.title}
+                  </h3>
+                </div>
+                <p className="text-sm leading-relaxed mb-4" style={{ color: "#1d2a4d" }}>
+                  {skill.desc}
+                </p>
+                <a
+                  href={`/resources?skill=${skill.slug}`}
+                  className="inline-block text-sm px-5 py-2 rounded-lg text-white transition-all hover:opacity-90"
+                  style={{ backgroundColor: "#13c5dd" }}
+                >
+                  View Resources
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function PurposeSection() {
+  const reasons = [
+    {
+      icon: <HiOutlineAcademicCap />,
+      title: "Grow Together",
+      desc: "When you teach, you reinforce your own knowledge. When you learn, you open new doors. Everyone benefits when skills circulate freely in the community.",
+    },
+    {
+      icon: <HiOutlineHeart />,
+      title: "Give Back",
+      desc: "Your skills can transform someone's life — whether it's helping them start a small business, fix a leak, or bake bread to feed their family.",
+    },
+    {
+      icon: <HiOutlineUserGroup />,
+      title: "Build Community",
+      desc: "Skills exchange creates real connections. It's not just about what you learn — it's about who you meet and the relationships you build along the way.",
+    },
   ];
 
   return (
-    <section className="min-h-screen" style={{ background: "radial-gradient(ellipse at 50% 0%, #eff5f9 0%, white 70%)" }}>
-      <div className="h-1 w-full" style={{ backgroundColor: "#13c5dd" }} />
+    <section className="relative py-16 md:py-20 px-4 overflow-hidden" style={{ backgroundColor: "#1d2a4d" }}>
+      <div className="absolute inset-0 opacity-[0.06]" style={{ background: "radial-gradient(ellipse at 30% 50%, #13c5dd 0%, transparent 50%), radial-gradient(ellipse at 70% 50%, #13c5dd 0%, transparent 50%)" }} />
+      <div className="max-w-6xl mx-auto relative z-10">
+        <div className="text-center mb-14">
+          <h2 className="text-4xl font-medium text-white">
+            Why Share Skills?
+          </h2>
+          <p className="text-sm md:text-base max-w-2xl mx-auto mt-4" style={{ color: "#13c5dd" }}>
+            Skills exchange is about more than learning — it&apos;s about lifting each other up.
+          </p>
+        </div>
 
-      <div className="max-w-lg mx-auto px-6 pt-14 pb-24">
-        <div className="text-center mb-10">
-          <div className="flex justify-center mb-5">
-            <div className="w-10 h-10 relative flex items-center justify-center">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#13c5dd" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 2L2 7l10 5 10-5-10-5z" />
-                <path d="M2 17l10 5 10-5" />
-                <path d="M2 12l10 5 10-5" />
-              </svg>
+        <div className="grid md:grid-cols-3 gap-8">
+          {reasons.map((reason, i) => (
+            <div key={i} className="text-center rounded-lg p-6 md:p-8 transition-all duration-300 hover:-translate-y-1" style={{ backgroundColor: "#eff5f9" }}>
+              <div className="size-14 rounded-lg flex items-center justify-center text-2xl mx-auto mb-5" style={{ backgroundColor: "#13c5dd", color: "white" }}>
+                {reason.icon}
+              </div>
+              <h3 className="text-lg font-medium mb-3" style={{ color: "#1d2a4d" }}>
+                {reason.title}
+              </h3>
+              <p className="text-sm leading-relaxed" style={{ color: "#1d2a4d" }}>
+                {reason.desc}
+              </p>
             </div>
-          </div>
-          <h1
-            className="text-4xl mb-3 tracking-tight"
-            style={{
-              color: "#1d2a4d",
-              fontFamily: "'Georgia', 'Times New Roman', serif",
-              fontWeight: 400,
-            }}
-          >
-            Skills Exchange
-          </h1>
-          <p
-            className="text-[13px] tracking-wide"
-            style={{ color: "#1d2a4d", fontFamily: "Georgia, serif", fontStyle: "italic" }}
-          >
-            Share what you know. Learn what you don&apos;t.
-          </p>
-          <p className="text-sm mt-4" style={{ color: "#1d2a4d" }}>
-            Or reach out to us directly at{" "}
-            <a
-              href="mailto:ajaxmilton@hotmail.com"
-              className="underline underline-offset-2 transition-colors"
-              style={{ color: "#13c5dd" }}
-            >
-              ajaxmilton@hotmail.com
-            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function HowItWorks() {
+  const steps = [
+    { number: "01", title: "Choose Your Path", desc: "Decide whether you want to learn a new skill or share one you already have. Browse the categories to find what interests you." },
+    { number: "02", title: "Get Connected", desc: "Fill out the form and tell us about yourself. We&apos;ll match you with the right people based on your interests and availability." },
+    { number: "03", title: "Grow Together", desc: "Start learning or teaching in a supportive community environment. Build skills, confidence, and lasting relationships." },
+  ];
+
+  return (
+    <section className="py-16 md:py-20 px-4" style={{ background: "linear-gradient(160deg, white 0%, #f0f6fa 50%, white 100%)" }}>
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-14">
+          <h2 className="text-4xl font-medium" style={{ color: "#1d2a4d" }}>
+            How It Works
+          </h2>
+          <p className="text-sm md:text-base max-w-2xl mx-auto mt-4" style={{ color: "#1d2a4d" }}>
+            Three simple steps to start sharing and growing your skills.
           </p>
         </div>
 
-        <div className="flex items-center gap-3 mb-8">
-          <div className="flex-1 h-px" style={{ backgroundColor: "#1d2a4d" }} />
-          <div className="w-1 h-1 rounded-full" style={{ backgroundColor: "#13c5dd" }} />
-          <div className="flex-1 h-px" style={{ backgroundColor: "#1d2a4d" }} />
+        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          {steps.map((step, i) => (
+            <div key={i} className="relative text-center">
+              <div className="size-16 rounded-full flex items-center justify-center mx-auto mb-5" style={{ backgroundColor: "#eff5f9" }}>
+                <span className="text-lg font-medium" style={{ color: "#13c5dd" }}>{step.number}</span>
+              </div>
+              <div className="absolute top-8 left-[calc(50%+3rem)] hidden md:block w-[calc(100%-6rem)] h-px" style={{ backgroundColor: "#13c5dd", opacity: 0.3 }} />
+              <h3 className="text-lg font-medium mb-3" style={{ color: "#1d2a4d" }}>
+                {step.title}
+              </h3>
+              <p className="text-sm leading-relaxed max-w-xs mx-auto" style={{ color: "#1d2a4d" }}>
+                {step.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function FormSection() {
+  const [mode, setMode] = useState("learn");
+
+  return (
+    <section id="form" className="py-16 md:py-20 px-4" style={{ background: "radial-gradient(ellipse at 50% 0%, #eff5f9 0%, white 70%)" }}>
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-14">
+          <h2 className="text-4xl font-medium" style={{ color: "#1d2a4d" }}>
+            Get Started Today
+          </h2>
+          <p className="text-sm md:text-base max-w-2xl mx-auto mt-4" style={{ color: "#1d2a4d" }}>
+            Ready to share or learn a skill? Fill out the form below and we&apos;ll connect you with the right people.
+          </p>
         </div>
 
-        {/* Mode Toggle */}
-        <div className="rounded-2xl px-8 pt-8 pb-6 mb-6" style={{ backgroundColor: "white" }}>
-          <div className="flex rounded-xl p-1" style={{ backgroundColor: "#eff5f9" }}>
-            <button
-              onClick={() => setMode("learn")}
-              className={`flex-1 py-2.5 text-sm font-medium rounded-lg transition-all ${
-                mode === "learn"
-                  ? "bg-white shadow-sm"
-                  : "hover:opacity-70"
-              }`}
-              style={{ color: mode === "learn" ? "#13c5dd" : "#1d2a4d" }}
-            >
-              I Want to Learn
-            </button>
-            <button
-              onClick={() => setMode("teach")}
-              className={`flex-1 py-2.5 text-sm font-medium rounded-lg transition-all ${
-                mode === "teach"
-                  ? "bg-white shadow-sm"
-                  : "hover:opacity-70"
-              }`}
-              style={{ color: mode === "teach" ? "#13c5dd" : "#1d2a4d" }}
-            >
-              I Want to Teach
-            </button>
-          </div>
-        </div>
+        <div className="max-w-2xl mx-auto">
+          <div className="rounded-lg p-6 md:p-8" style={{ backgroundColor: "white" }}>
+            <div className="flex rounded-lg p-1 mb-8" style={{ backgroundColor: "#eff5f9" }}>
+              <button
+                onClick={() => setMode("learn")}
+                className={`flex-1 py-2.5 text-sm font-medium rounded-lg transition-all ${mode === "learn" ? "bg-white shadow-sm" : "hover:opacity-70"}`}
+                style={{ color: mode === "learn" ? "#13c5dd" : "#1d2a4d" }}
+              >
+                I Want to Learn
+              </button>
+              <button
+                onClick={() => setMode("teach")}
+                className={`flex-1 py-2.5 text-sm font-medium rounded-lg transition-all ${mode === "teach" ? "bg-white shadow-sm" : "hover:opacity-70"}`}
+                style={{ color: mode === "teach" ? "#13c5dd" : "#1d2a4d" }}
+              >
+                I Want to Teach
+              </button>
+            </div>
 
-        <div className="rounded-2xl px-8 py-8" style={{ backgroundColor: "white" }}>
-          <form className="flex flex-col gap-5 text-sm">
-            <div>
-              <label className="block text-[11px] font-semibold uppercase tracking-widest mb-2" style={{ color: "#1d2a4d" }}>
-                Full Name
-              </label>
-              <div className="flex items-center gap-2.5 h-11 px-3.5 rounded-xl transition-all" style={{ border: "1px solid #13c5dd", backgroundColor: "#eff5f9" }}>
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  className="shrink-0"
-                  style={{ color: "#13c5dd" }}
-                >
-                  <path
-                    d="M18.311 16.406a9.64 9.64 0 0 0-4.748-4.158 5.938 5.938 0 1 0-7.125 0 9.64 9.64 0 0 0-4.749 4.158.937.937 0 1 0 1.623.938c1.416-2.447 3.916-3.906 6.688-3.906 2.773 0 5.273 1.46 6.689 3.906a.938.938 0 0 0 1.622-.938M5.938 7.5a4.063 4.063 0 1 1 8.125 0 4.063 4.063 0 0 1-8.125 0"
-                    fill="currentColor"
-                  />
-                </svg>
+            <form className="flex flex-col gap-5 text-sm">
+              <div>
+                <label className="block text-xs mb-1.5" style={{ color: "#1d2a4d" }}>
+                  Full Name
+                </label>
                 <input
                   type="text"
-                  className="h-full w-full outline-none bg-transparent text-[14px]"
-                  style={{ color: "#1d2a4d" }}
+                  className="w-full px-4 py-3 rounded-lg outline-none"
+                  style={{ backgroundColor: "#eff5f9", color: "#1d2a4d", border: "1px solid transparent" }}
                   placeholder="Your full name"
                   required
                 />
               </div>
-            </div>
 
-            <div>
-              <label className="block text-[11px] font-semibold uppercase tracking-widest mb-2" style={{ color: "#1d2a4d" }}>
-                Email Address
-              </label>
-              <div className="flex items-center gap-2.5 h-11 px-3.5 rounded-xl transition-all" style={{ border: "1px solid #13c5dd", backgroundColor: "#eff5f9" }}>
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  className="shrink-0"
-                  style={{ color: "#13c5dd" }}
-                >
-                  <path
-                    d="M17.5 3.438h-15a.937.937 0 0 0-.937.937V15a1.563 1.563 0 0 0 1.562 1.563h13.75A1.563 1.563 0 0 0 18.438 15V4.375a.94.94 0 0 0-.938-.937m-2.41 1.874L10 9.979 4.91 5.313zM3.438 14.688v-8.18l5.928 5.434a.937.937 0 0 0 1.268 0l5.929-5.435v8.182z"
-                    fill="currentColor"
-                  />
-                </svg>
+              <div>
+                <label className="block text-xs mb-1.5" style={{ color: "#1d2a4d" }}>
+                  Email Address
+                </label>
                 <input
                   type="email"
-                  className="h-full w-full outline-none bg-transparent text-[14px]"
-                  style={{ color: "#1d2a4d" }}
+                  className="w-full px-4 py-3 rounded-lg outline-none"
+                  style={{ backgroundColor: "#eff5f9", color: "#1d2a4d", border: "1px solid transparent" }}
                   placeholder="your@email.com"
                   required
                 />
               </div>
-            </div>
 
-            <div>
-              <label className="block text-[11px] font-semibold uppercase tracking-widest mb-2" style={{ color: "#1d2a4d" }}>
-                {mode === "learn" ? "Skill I Want to Learn" : "Skill I Can Teach"}
-              </label>
-              <div className="flex items-center gap-2.5 h-11 px-3.5 rounded-xl transition-all" style={{ border: "1px solid #13c5dd", backgroundColor: "#eff5f9" }}>
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  className="shrink-0"
-                  style={{ color: "#13c5dd" }}
-                >
-                  <path
-                    d="M10 1.875a8.125 8.125 0 1 0 0 16.25A8.125 8.125 0 0 0 10 1.875m0 14.375a6.25 6.25 0 1 1 0-12.5 6.25 6.25 0 0 1 0 12.5m2.813-6.25a2.813 2.813 0 1 1-5.626 0 2.813 2.813 0 0 1 5.625 0"
-                    fill="currentColor"
-                  />
-                </svg>
-                <select
-                  className="h-full w-full outline-none bg-transparent text-[14px] appearance-none cursor-pointer"
-                  style={{ color: "#1d2a4d" }}
-                  defaultValue=""
-                  required
-                >
-                  <option value="" disabled hidden>
-                    {mode === "learn" ? "Select a skill to learn" : "Select a skill to teach"}
-                  </option>
-                  {skillCategories.map((category) => (
-                    <option key={category.id} value={category.value}>
-                      {category.skill}
+              <div>
+                <label className="block text-xs mb-1.5" style={{ color: "#1d2a4d" }}>
+                  {mode === "learn" ? "Skill I Want to Learn" : "Skill I Can Teach"}
+                </label>
+                <div className="relative">
+                  <select
+                    className="w-full px-4 py-3 rounded-lg outline-none appearance-none cursor-pointer"
+                    style={{ backgroundColor: "#eff5f9", color: "#1d2a4d", border: "1px solid transparent" }}
+                    defaultValue=""
+                    required
+                  >
+                    <option value="" disabled hidden>
+                      {mode === "learn" ? "Select a skill to learn" : "Select a skill to teach"}
                     </option>
-                  ))}
-                </select>
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  className="shrink-0 pointer-events-none"
-                  style={{ color: "#13c5dd" }}
-                >
-                  <path
-                    d="M5 7.5l5 5 5-5"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
+                    {skillCategories.map((category) => (
+                      <option key={category.id} value={category.value}>
+                        {category.skill}
+                      </option>
+                    ))}
+                  </select>
+                  <svg className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none" width="14" height="14" viewBox="0 0 20 20" fill="none">
+                    <path d="M5 7.5l5 5 5-5" stroke="#1d2a4d" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
               </div>
-            </div>
 
-            <div>
-              <label className="block text-[11px] font-semibold uppercase tracking-widest mb-2" style={{ color: "#1d2a4d" }}>
-                {mode === "learn" ? "Why This Skill?" : "About Your Offer"}
-              </label>
-              <textarea
-                rows={6}
-                className="w-full px-3.5 py-3 rounded-xl resize-none outline-none text-[14px] transition-all leading-relaxed"
-                style={{ border: "1px solid #13c5dd", backgroundColor: "#eff5f9", color: "#1d2a4d" }}
-                placeholder={
-                  mode === "learn"
-                    ? "Tell us why you want to learn this skill and your experience level..."
-                    : "Describe what you can teach and your experience level..."
-                }
-                required
-              />
-            </div>
-
-            <p
-              className="text-[12px] text-center -mt-1"
-              style={{ color: "#1d2a4d", fontStyle: "italic" }}
-            >
-              {mode === "learn"
-                ? "We'll connect you with someone who can help."
-                : "Your offer will help someone in our community grow."}
-            </p>
-
-            <button
-              type="submit"
-              className="group relative mt-1 flex items-center justify-center gap-2 text-white text-[13px] font-medium tracking-wide uppercase py-3.5 w-full rounded-xl transition-all duration-300 overflow-hidden hover:opacity-90"
-              style={{ backgroundColor: "#13c5dd" }}
-            >
-              <span className="relative z-10">
-                {mode === "learn" ? "Submit Learning Request" : "Submit Teaching Offer"}
-              </span>
-              <svg
-                className="relative z-10 transition-transform duration-300 group-hover:translate-x-0.5"
-                width="16"
-                height="16"
-                viewBox="0 0 21 20"
-                fill="none"
-              >
-                <path
-                  d="m18.038 10.663-5.625 5.625a.94.94 0 0 1-1.328-1.328l4.024-4.023H3.625a.938.938 0 0 1 0-1.875h11.484l-4.022-4.025a.94.94 0 0 1 1.328-1.328l5.625 5.625a.935.935 0 0 1-.002 1.33"
-                  fill="#fff"
+              <div>
+                <label className="block text-xs mb-1.5" style={{ color: "#1d2a4d" }}>
+                  {mode === "learn" ? "Why This Skill?" : "About Your Offer"}
+                </label>
+                <textarea
+                  rows={5}
+                  className="w-full px-4 py-3 rounded-lg outline-none resize-none leading-relaxed"
+                  style={{ backgroundColor: "#eff5f9", color: "#1d2a4d", border: "1px solid transparent" }}
+                  placeholder={
+                    mode === "learn"
+                      ? "Tell us why you want to learn this skill and your experience level..."
+                      : "Describe what you can teach and your experience level..."
+                  }
+                  required
                 />
-              </svg>
-            </button>
-          </form>
-        </div>
+              </div>
 
-        <p
-          className="text-center text-[12px] mt-8"
-          style={{ color: "#1d2a4d", fontFamily: "Georgia, serif", fontStyle: "italic" }}
-        >
-          Every skill shared strengthens our community.
-        </p>
+              <button
+                type="submit"
+                className="w-full py-3.5 rounded-lg text-sm text-white transition-all hover:opacity-90"
+                style={{ backgroundColor: "#13c5dd" }}
+              >
+                {mode === "learn" ? "Submit Learning Request" : "Submit Teaching Offer"}
+              </button>
+
+              <p className="text-xs text-center" style={{ color: "#1d2a4d" }}>
+                {mode === "learn"
+                  ? "We'll connect you with someone who can help."
+                  : "Your offer will help someone in our community grow."}
+              </p>
+            </form>
+          </div>
+        </div>
       </div>
     </section>
+  );
+}
+
+function ClosingCTA() {
+  return (
+    <section className="py-16 md:py-20 px-4">
+      <div className="max-w-4xl mx-auto text-center">
+        <div className="rounded-lg px-8 py-12 md:py-16" style={{ background: "linear-gradient(135deg, #1d2a4d 0%, #1d2a4d 100%)" }}>
+          <HiOutlineLightBulb className="text-4xl mx-auto mb-4" style={{ color: "#13c5dd" }} />
+          <h2 className="text-3xl md:text-4xl font-medium text-white mb-4">
+            Ready to Make a Difference?
+          </h2>
+          <p className="text-sm max-w-lg mx-auto mb-8" style={{ color: "#13c5dd" }}>
+            Every skill shared is a life impacted. Join our community today and start making a difference.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a
+              href="#form"
+              className="inline-flex items-center gap-2 text-white text-sm px-8 py-3.5 rounded-lg transition-all hover:opacity-90"
+              style={{ backgroundColor: "#13c5dd" }}
+            >
+              <span>Join Skills Exchange</span>
+              <HiOutlineArrowRight className="text-base" />
+            </a>
+            <a
+              href="mailto:ajaxmilton@hotmail.com"
+              className="text-sm px-8 py-3.5 rounded-lg transition-all hover:opacity-80"
+              style={{ border: "1px solid #13c5dd", color: "white" }}
+            >
+              Contact Us
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export default function SkillsPage() {
+  return (
+    <>
+      <HeroSection />
+      <SkillsCards />
+      <PurposeSection />
+      <HowItWorks />
+      <FormSection />
+      <ClosingCTA />
+    </>
   );
 }
