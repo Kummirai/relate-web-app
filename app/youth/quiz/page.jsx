@@ -1,12 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import SlideUp from "@/components/SlideUp";
 import {
   HiOutlineBookOpen, HiOutlineTrophy, HiOutlineCalendarDays, HiOutlineUsers,
   HiOutlineLightBulb, HiOutlineArrowRight, HiOutlineClock, HiOutlineMapPin,
   HiOutlineStar, HiOutlineQuestionMarkCircle, HiOutlineFlag, HiOutlineHeart,
-  HiOutlineCheckCircle,
+  HiOutlineCheckCircle, HiOutlineChevronLeft, HiOutlineChevronRight,
 } from "react-icons/hi2";
 
 const books = [
@@ -239,8 +239,43 @@ function BooksSection() {
   );
 }
 
-function LeagueTableSection() {
+function LeagueTableSection({ refetchKey }) {
   const [fullView, setFullView] = useState(false);
+  const [teams, setTeams] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [selectedTeam, setSelectedTeam] = useState(null);
+  const [teamDetail, setTeamDetail] = useState(null);
+  const [detailLoading, setDetailLoading] = useState(false);
+
+  const fetchLeaderboard = useCallback(() => {
+    setLoading(true);
+    fetch("/api/quiz/leaderboard")
+      .then((r) => {
+        if (!r.ok) throw new Error("Leaderboard fetch failed");
+        return r.json();
+      })
+      .then((data) => setTeams(data))
+      .catch((err) => console.error("Leaderboard error:", err))
+      .finally(() => setLoading(false));
+  }, []);
+
+  useEffect(() => {
+    fetchLeaderboard();
+  }, [refetchKey, fetchLeaderboard]);
+
+  const handleTeamClick = (name) => {
+    setSelectedTeam(name);
+    setDetailLoading(true);
+    setTeamDetail(null);
+    fetch("/api/quiz/registrations")
+      .then((r) => r.json())
+      .then((data) => {
+        const reg = data.find((r) => r.teamName === name);
+        setTeamDetail(reg || null);
+      })
+      .catch(() => {})
+      .finally(() => setDetailLoading(false));
+  };
 
   return (
     <section className="py-16 md:py-20 px-4" style={{ background: "linear-gradient(180deg, #eff5f9 0%, white 50%, #eff5f9 100%)" }}>
@@ -261,6 +296,11 @@ function LeagueTableSection() {
             {fullView ? "Minimal View" : "Full View"}
           </button>
         </div>
+        {loading ? (
+          <div className="text-center py-12">
+            <div className="w-8 h-8 border-2 rounded-full animate-spin mx-auto" style={{ borderColor: "#13c5dd", borderTopColor: "transparent" }} />
+          </div>
+        ) : (
         <div className="overflow-x-auto rounded-xl" style={{ boxShadow: "0 4px 20px rgba(29,42,77,0.1)" }}>
           <table className="w-full text-xs md:text-sm">
             <thead>
@@ -278,10 +318,7 @@ function LeagueTableSection() {
               </tr>
             </thead>
             <tbody>
-              {teams
-                .map((t) => ({ ...t, gpa: t.scores.reduce((a, b) => a + b, 0) / t.scores.length }))
-                .sort((a, b) => b.gpa - a.gpa)
-                .map((team, i) => {
+              {teams.map((team, i) => {
                 const rowColors = [
                   "rgba(255,215,0,0.12)",
                   "rgba(192,192,192,0.12)",
@@ -304,7 +341,15 @@ function LeagueTableSection() {
                         )}
                       </div>
                     </td>
-                    <td className="p-2 md:p-3 font-bold text-xs md:text-sm">{team.name}</td>
+                    <td className="p-2 md:p-3 font-bold text-xs md:text-sm">
+                      <button
+                        onClick={() => handleTeamClick(team.name)}
+                        className="text-left underline-offset-2 hover:underline cursor-pointer border-0 bg-transparent p-0 font-bold text-xs md:text-sm"
+                        style={{ color: "#1d2a4d" }}
+                      >
+                        {team.name}
+                      </button>
+                    </td>
                     <td className="p-2 md:p-3 text-center">{team.played}</td>
                     {team.scores.map((score, si) => (
                       <td key={si} className={`p-2 md:p-3 text-center font-medium ${fullView ? "" : "hidden"}`} style={{ color: score === 2 ? "#13c5dd" : "#1d2a4d" }}>{score}</td>
@@ -316,10 +361,67 @@ function LeagueTableSection() {
             </tbody>
           </table>
         </div>
+        )}
         <p className="text-xs mt-3 text-center" style={{ color: "#1d2a4d" }}>
           S1&ndash;S6 = score per session (2 = win, 0 = loss) &middot; GPA = average per session
         </p>
       </div>
+
+      {selectedTeam && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4"
+          style={{ backgroundColor: "rgba(29,42,77,0.5)" }}
+          onClick={() => setSelectedTeam(null)}
+        >
+          <div
+            className="rounded-xl w-full max-w-md overflow-hidden"
+            style={{ backgroundColor: "white", boxShadow: "0 8px 32px rgba(29,42,77,0.2)" }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="p-5 md:p-6" style={{ backgroundColor: "#1d2a4d" }}>
+              <div className="flex items-center justify-between">
+                <h3 className="text-lg font-bold text-white">{selectedTeam}</h3>
+                <button
+                  onClick={() => setSelectedTeam(null)}
+                  className="text-white/60 hover:text-white cursor-pointer border-0 bg-transparent text-lg"
+                >
+                  &times;
+                </button>
+              </div>
+            </div>
+            <div className="p-5 md:p-6">
+              {detailLoading ? (
+                <div className="flex justify-center py-6">
+                  <div className="w-6 h-6 border-2 rounded-full animate-spin" style={{ borderColor: "#13c5dd", borderTopColor: "transparent" }} />
+                </div>
+              ) : teamDetail ? (
+                <div className="space-y-3 text-sm" style={{ color: "#1d2a4d" }}>
+                  <div>
+                    <span className="text-xs font-medium" style={{ color: "#13c5dd" }}>Captain</span>
+                    <p className="font-medium">{teamDetail.name}</p>
+                  </div>
+                  <div>
+                    <span className="text-xs font-medium" style={{ color: "#13c5dd" }}>Phone</span>
+                    <p className="font-medium">{teamDetail.phone}</p>
+                  </div>
+                  <div>
+                    <span className="text-xs font-medium" style={{ color: "#13c5dd" }}>Member 2</span>
+                    <p className="font-medium">{teamDetail.member2}</p>
+                  </div>
+                  <div>
+                    <span className="text-xs font-medium" style={{ color: "#13c5dd" }}>Member 3</span>
+                    <p className="font-medium">{teamDetail.member3}</p>
+                  </div>
+                </div>
+              ) : (
+                <p className="text-sm text-center py-4" style={{ color: "#1d2a4d" }}>
+                  No registration details available.
+                </p>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
@@ -407,6 +509,150 @@ function PrizesSection() {
   );
 }
 
+const champions = [
+  {
+    team: "Faithful Warriors",
+    members: ["Thando M.", "Liam K.", "Nomsa D."],
+    season: "1",
+    year: "2026",
+    img: "https://images.unsplash.com/photo-1560252829-804f1aedf1be?q=80&w=600&h=400&auto=format&fit=crop",
+  },
+  {
+    team: "Bible Explorers",
+    members: ["Sarah K.", "David O.", "Grace N."],
+    season: "1",
+    year: "2026",
+    img: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=600&h=400&auto=format&fit=crop",
+  },
+  {
+    team: "Wisdom Seekers",
+    members: ["Michael A.", "Emma W.", "Joshua T."],
+    season: "2",
+    year: "2026",
+    img: "https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=600&h=400&auto=format&fit=crop",
+  },
+];
+
+const galleryImages = [
+  { src: "https://images.unsplash.com/photo-1529543544282-ea99307427d3?q=80&w=600&h=400&auto=format&fit=crop", caption: "Season 1 Opening Session" },
+  { src: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=600&h=400&auto=format&fit=crop", caption: "Teams in Action" },
+  { src: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=600&h=400&auto=format&fit=crop", caption: "Quiz Master at Work" },
+  { src: "https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=600&h=400&auto=format&fit=crop", caption: "Team Study Session" },
+  { src: "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?q=80&w=600&h=400&auto=format&fit=crop", caption: "Award Ceremony" },
+  { src: "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=600&h=400&auto=format&fit=crop", caption: "Champions Celebration" },
+];
+
+const galleryImages2 = [
+  { src: "https://images.unsplash.com/photo-1472162072942-cd5147eb3902?q=80&w=600&h=400&auto=format&fit=crop", caption: "Group Photo Day" },
+  { src: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=600&h=400&auto=format&fit=crop", caption: "Final Round" },
+  { src: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=600&h=400&auto=format&fit=crop", caption: "Season Wrap-Up" },
+];
+
+function ChampionsSection() {
+  const [current, setCurrent] = useState(0);
+  const c = champions[current];
+  const prev = () => setCurrent((i) => (i === 0 ? champions.length - 1 : i - 1));
+  const next = () => setCurrent((i) => (i === champions.length - 1 ? 0 : i + 1));
+
+  return (
+    <section className="py-16 md:py-20" style={{ backgroundColor: "white" }}>
+      <div className="text-center px-4 mb-8 md:mb-10">
+        <div className="flex justify-center mb-2">
+          <HiOutlineTrophy className="text-3xl" style={{ color: "#FFD700" }} />
+        </div>
+        <h2 className="text-2xl md:text-3xl font-medium" style={{ color: "#1d2a4d" }}>Champions</h2>
+        <p className="text-xs md:text-sm mt-2" style={{ color: "#1d2a4d" }}>
+          Past and current title holders
+        </p>
+      </div>
+      <div className="max-w-5xl mx-auto px-4 relative">
+        <div className="rounded-sm overflow-hidden transition-all duration-500" style={{ backgroundColor: "white", border: "1px solid rgba(19,197,221,0.2)", boxShadow: "0 4px 20px rgba(255,215,0,0.15)" }}>
+          <img src={c.img} alt={c.team} className="w-full h-[80vh] object-cover" />
+          <div className="p-5 md:p-6 text-center">
+            <h3 className="text-lg font-bold" style={{ color: "#1d2a4d" }}>{c.team}</h3>
+            <p className="text-xs mt-1 mb-3" style={{ color: "#13c5dd" }}>{c.members.join(" · ")}</p>
+            <div className="inline-flex items-center gap-1 text-xs rounded-full px-3 py-1" style={{ backgroundColor: "#fff8e1", color: "#b8860b" }}>
+              <HiOutlineTrophy /> Season {c.season} Champions
+            </div>
+          </div>
+        </div>
+        <button
+          onClick={prev}
+          className="absolute left-2 md:left-4 top-[calc(50%-5rem)] md:top-[calc(50%-6rem)] -translate-y-1/2 w-9 h-9 rounded-full flex items-center justify-center text-white transition-all hover:opacity-90 cursor-pointer border-0"
+          style={{ backgroundColor: "#13c5dd" }}
+          aria-label="Previous champion"
+        >
+            <HiOutlineChevronLeft className="text-sm" />
+          </button>
+          <button
+            onClick={next}
+            className="absolute right-2 md:right-4 top-[calc(50%-5rem)] md:top-[calc(50%-6rem)] -translate-y-1/2 w-9 h-9 rounded-full flex items-center justify-center text-white transition-all hover:opacity-90 cursor-pointer border-0"
+            style={{ backgroundColor: "#13c5dd" }}
+            aria-label="Next champion"
+          >
+            <HiOutlineChevronRight className="text-sm" />
+        </button>
+        <div className="flex justify-center gap-2 mt-4">
+          {champions.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrent(i)}
+              className="w-2 h-2 rounded-full border-0 cursor-pointer transition-all"
+              style={{ backgroundColor: i === current ? "#13c5dd" : "rgba(19,197,221,0.3)" }}
+              aria-label={`Go to champion ${i + 1}`}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function GallerySection() {
+  const allImages = [...galleryImages, ...galleryImages2];
+  const [showAll, setShowAll] = useState(false);
+  const visible = showAll ? allImages : allImages.slice(0, 6);
+
+  return (
+    <section className="py-16 md:py-20 px-4" style={{ backgroundColor: "white" }}>
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-10 md:mb-12">
+          <div className="flex justify-center mb-2">
+            <HiOutlineStar className="text-2xl md:text-3xl" style={{ color: "#13c5dd" }} />
+          </div>
+          <h2 className="text-2xl md:text-3xl font-medium" style={{ color: "#1d2a4d" }}>Session Gallery</h2>
+          <p className="text-xs md:text-sm mt-2" style={{ color: "#1d2a4d" }}>
+            Photos from past quiz sessions and events
+          </p>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-5">
+          {visible.map((img, i) => (
+            <SlideUp key={i} delay={i * 60}>
+              <div className="rounded-lg overflow-hidden group cursor-pointer">
+                <img src={img.src} alt={img.caption} className="w-full aspect-[3/2] object-cover transition-transform duration-500 group-hover:scale-110" />
+                <div className="p-2 md:p-3">
+                  <p className="text-xs" style={{ color: "#1d2a4d" }}>{img.caption}</p>
+                </div>
+              </div>
+            </SlideUp>
+          ))}
+        </div>
+        {!showAll && allImages.length > 6 && (
+          <div className="text-center mt-8">
+            <button
+              onClick={() => setShowAll(true)}
+              className="inline-flex items-center gap-1.5 text-xs px-5 py-2.5 rounded-full text-white transition-all hover:opacity-90 cursor-pointer border-0"
+              style={{ backgroundColor: "#13c5dd" }}
+            >
+              View All Photos
+            </button>
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}
+
 function SampleQuestionsSection() {
   const [openIndex, setOpenIndex] = useState(null);
 
@@ -465,19 +711,50 @@ function SampleQuestionsSection() {
   );
 }
 
-function RegistrationCTA() {
+function RegistrationCTA({ onRegister }) {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [teamName, setTeamName] = useState("");
   const [member2, setMember2] = useState("");
   const [member3, setMember3] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [registeredNames, setRegisteredNames] = useState([]);
 
-  const handleSubmit = (e) => {
+  useEffect(() => {
+    fetch("/api/quiz/registrations")
+      .then((r) => r.json())
+      .then((data) => setRegisteredNames(data.map((r) => r.teamName)))
+      .catch(() => {});
+  }, [submitted]);
+
+  useEffect(() => {
+    if (teamName && registeredNames.includes(teamName)) {
+      setTeamName("");
+    }
+  }, [registeredNames, teamName]);
+
+  const availableTeams = teams.filter((t) => !registeredNames.includes(t.name));
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const registration = { teamName, name, phone, member2, member3 };
-    console.log("Registration data (backend pending):", registration);
-    setSubmitted(true);
+    setLoading(true);
+    setError("");
+    try {
+      const res = await fetch("/api/quiz/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ teamName, name, phone, member2, member3 }),
+      });
+      if (!res.ok) throw new Error("Failed to register");
+      setSubmitted(true);
+      if (onRegister) onRegister(teamName);
+    } catch (err) {
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (submitted) {
@@ -488,7 +765,10 @@ function RegistrationCTA() {
             <HiOutlineCheckCircle className="text-4xl mx-auto mb-4" style={{ color: "#13c5dd" }} />
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">Registration Received!</h2>
             <p className="text-sm text-white/70 max-w-md mx-auto">
-              Your team <strong style={{ color: "#13c5dd" }}>{teamName}</strong> has been registered. We will confirm your spot soon.
+              Your team <strong style={{ color: "#13c5dd" }}>{teamName}</strong> has been registered.
+            </p>
+            <p className="text-xs text-white/60 mt-2 max-w-md mx-auto">
+              Find your team on the <strong style={{ color: "#13c5dd" }}>Leaderboard</strong> below. Your name will appear as soon as you play your first session.
             </p>
             <button
               onClick={() => { setSubmitted(false); setName(""); setPhone(""); setTeamName(""); setMember2(""); setMember3(""); }}
@@ -531,9 +811,11 @@ function RegistrationCTA() {
                   required
                 >
                   <option value="" disabled style={{ color: "#1d2a4d" }}>Select your team</option>
-                  {teams.map((t) => (
+                  {availableTeams.length > 0 ? availableTeams.map((t) => (
                     <option key={t.name} value={t.name} style={{ color: "#1d2a4d" }}>{t.name}</option>
-                  ))}
+                  )) : (
+                    <option value="" disabled style={{ color: "#1d2a4d" }}>All teams registered</option>
+                  )}
                 </select>
               </div>
               <div className="grid sm:grid-cols-2 gap-4">
@@ -583,12 +865,16 @@ function RegistrationCTA() {
                   required
                 />
               </div>
+              {error && (
+                <p className="text-xs text-red-400 text-center">{error}</p>
+              )}
               <button
                 type="submit"
-                className="w-full py-3.5 rounded-xl text-sm font-bold text-white transition-all hover:opacity-90 hover:-translate-y-0.5 cursor-pointer border-0"
+                disabled={loading}
+                className="w-full py-3.5 rounded-xl text-sm font-bold text-white transition-all hover:opacity-90 hover:-translate-y-0.5 cursor-pointer border-0 disabled:opacity-60 disabled:hover:translate-y-0"
                 style={{ backgroundColor: "#13c5dd", boxShadow: "0 4px 14px rgba(19,197,221,0.35)" }}
               >
-                Register
+                {loading ? "Registering..." : "Register"}
               </button>
             </form>
           </div>
@@ -599,15 +885,19 @@ function RegistrationCTA() {
 }
 
 export default function QuizPage() {
+  const [refetchKey, setRefetchKey] = useState(0);
+
   return (
     <>
       <HeroSection />
       <OverviewSection />
+      <ChampionsSection />
       <PrizesSection />
       <BooksSection />
-      <LeagueTableSection />
+      <LeagueTableSection refetchKey={refetchKey} />
+      <GallerySection />
       <SampleQuestionsSection />
-      <RegistrationCTA />
+      <RegistrationCTA onRegister={() => setRefetchKey((k) => k + 1)} />
     </>
   );
 }

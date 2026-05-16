@@ -5,8 +5,10 @@ import { client } from "@/lib/mongodb";
 import { nextCookies } from "better-auth/next-js";
 import { admin } from "better-auth/plugins";
 
+const dbName = process.env.MONGODB_DB || "test";
+
 export const auth = betterAuth({
-  database: mongodbAdapter(client.db()),
+  database: mongodbAdapter(client.db(dbName)),
   emailAndPassword: {
     enabled: true,
   },
