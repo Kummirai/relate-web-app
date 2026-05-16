@@ -8,8 +8,8 @@ export default function WhatWeDo() {
                     font-family: 'Poppins', sans-serif;
                 }
             `}</style>
-      <section className=" h-screen flex flex-col md:flex-row items-center justify-center gap-10 max-md:px-4">
-        <div className="relative shadow-2xl shadow-zinc-600/40 rounded-2xl overflow-hidden shrink-0">
+      <section className="h-screen flex flex-col md:flex-row items-center justify-center gap-10 max-md:px-4" style={{ backgroundColor: "#eff5f9" }}>
+        <div className="relative shadow-2xl shadow-[#13c5dd]/20 rounded-2xl overflow-hidden shrink-0">
           <img
             className="max-w-md w-full object-cover rounded-2xl"
             src="https://images.unsplash.com/photo-1531497865144-0464ef8fb9a9?q=80&w=451&h=451&auto=format&fit=crop"
@@ -32,20 +32,20 @@ export default function WhatWeDo() {
                 alt="image"
                 className="size-9 rounded-full border-[3px] border-white hover:-translate-y-1 transition z-[3]"
               />
-              <div className="flex items-center justify-center text-xs  text-white size-9 rounded-full border-[3px] border-white bg-zinc-600 hover:-translate-y-1 transition z-4">
+              <div className="flex items-center justify-center text-xs text-white size-9 rounded-full border-[3px] border-white hover:-translate-y-1 transition z-4" style={{ backgroundColor: "#13c5dd" }}>
                 50+
               </div>
             </div>
-            <p className="text-sm font-medium text-slate-800">
-              Join our developer community
+            <p className="text-sm font-medium" style={{ color: "#1d2a4d" }}>
+              Join our community
             </p>
           </div>
         </div>
-        <div className="text-sm text-slate-600 max-w-lg">
-          <h1 className="text-2xl uppercase font-semibold text-slate-700">
+        <div className="text-sm max-w-lg" style={{ color: "#1d2a4d" }}>
+          <h1 className="text-2xl uppercase font-semibold" style={{ color: "#1d2a4d" }}>
             What we do?
           </h1>
-          <div className="w-24 h-0.75 rounded-full bg-linear-to-r from-zinc-600 to-[#DDD9FF]"></div>
+          <div className="w-24 h-0.75 rounded-full bg-linear-to-r from-[#13c5dd] to-[#1d2a4d]"></div>
           <p className="mt-8">
             At Relate, we walk with individuals and families through life's most
             difficult seasons — praying with them, mentoring them, and
@@ -64,7 +64,8 @@ export default function WhatWeDo() {
           </p>
           <a
             href="#"
-            className="flex items-center justify-center gap-2.5 bg-linear-to-r from-zinc-950 to-zinc-500 text-zinc-50 text-sm font-medium px-5 py-2.5 rounded-full cursor-pointer border-0 mt-3 w-fit"
+            className="flex items-center justify-center gap-2.5 text-white text-sm font-medium px-5 py-2.5 rounded-full cursor-pointer border-0 mt-3 w-fit hover:opacity-90 transition"
+            style={{ backgroundColor: "#13c5dd" }}
           >
             <span>Read more</span>
             <svg

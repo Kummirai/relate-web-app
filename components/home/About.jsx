@@ -24,13 +24,13 @@ export default function About() {
     },
   ];
   return (
-    <section className="h-screen text-zinc-950 bg-white flex items-center justify-center">
+    <section className="h-screen" style={{ backgroundColor: "#eff5f9", color: "#1d2a4d" }}>
       <div className="  max-w-6xl mx-auto">
         <div className="text-center">
-          <h2 className="text-4xl font-semibold text-center mx-auto mt-4 text-zinc-950">
+          <h2 className="text-4xl font-semibold text-center mx-auto mt-4" style={{ color: "#1d2a4d" }}>
             About Us
           </h2>
-          <p className="text-sm md:text-base mx-auto max-w-2xl text-center mt-6 max-md:px-2 text-neutral-700 font-light">
+          <p className="text-sm md:text-base mx-auto max-w-2xl text-center mt-6 max-md:px-2 font-light" style={{ color: "#1d2a4d" }}>
             We are Relate — a faith-rooted community bound together by prayer,
             love, and a shared calling to serve. We believe that no one should
             walk their spiritual and life journey alone. We come alongside
@@ -43,15 +43,15 @@ export default function About() {
           {featuresData.map((feature, index) => (
             <div
               key={index}
-              className={`hover:-translate-y-0.5 transition duration-300 h-[266px]${index === 1 ? "p-px rounded-[13px] bg-linear-to-br from-[#9544FF] to-[#223B60]" : ""}`}
+              className={`hover:-translate-y-0.5 transition duration-300 h-[266px]${index === 1 ? "p-px rounded-[13px] bg-linear-to-br from-[#13c5dd] to-[#1d2a4d]" : ""}`}
             >
-              <div className="p-6 rounded-xl space-y-4 border border-slate-800 bg-zinc-950  max-w-80 w-full flex flex-col items-center">
+              <div className="p-6 rounded-xl space-y-4 border border-[#13c5dd] max-w-80 w-full flex flex-col items-center" style={{ backgroundColor: "#1d2a4d" }}>
                 <p className="text-white text-2xl">{feature.icon}</p>
 
                 <h3 className="text-xl font-medium text-white">
                   {feature.title}
                 </h3>
-                <p className="text-slate-300 line-clamp-6 pb-4 text-sm text-center">
+                <p className="text-sm line-clamp-6 pb-4 text-center" style={{ color: "#eff5f9" }}>
                   {feature.description}
                 </p>
               </div>
