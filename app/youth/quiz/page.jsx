@@ -396,21 +396,23 @@ function BooksSection() {
             </button>
           </div>
           <div
-            className="overflow-x-auto rounded-lg"
+            className={`rounded-lg overflow-x-auto ${scheduleFull ? "" : "md:overflow-visible md:table md:mx-auto"}`}
             style={{ boxShadow: "0 2px 12px rgba(29,42,77,0.08)" }}
           >
-            <table className="w-full text-xs md:text-sm">
+            <table className={`${scheduleFull ? "w-full" : ""} text-sm`} style={{ borderCollapse: "separate", borderSpacing: 0, minWidth: scheduleFull ? undefined : "520px" }}>
               <thead>
                 <tr style={{ backgroundColor: "#1d2a4d" }}>
                   <th
-                    className={`p-2 md:p-3 text-white font-medium ${scheduleFull ? "" : "hidden"}`}
+                    className={`p-3 md:p-4 text-white text-[11px] md:text-xs font-medium uppercase tracking-wider text-center ${scheduleFull ? "" : "hidden"}`}
+                    style={{ width: "44px" }}
                   >
                     #
                   </th>
-                  <th className="p-2 md:p-3 text-white font-medium">Date</th>
-                  <th className="p-2 md:p-3 text-white font-medium">Books</th>
+                  <th className="p-3 md:p-4 text-white text-[11px] md:text-xs font-medium uppercase tracking-wider text-left">Date</th>
+                  <th className="p-3 md:p-4 text-white text-[11px] md:text-xs font-medium uppercase tracking-wider text-left">Books</th>
                   <th
-                    className={`p-2 md:p-3 text-white font-medium ${scheduleFull ? "" : "hidden"}`}
+                    className={`p-3 md:p-4 text-white text-[11px] md:text-xs font-medium uppercase tracking-wider text-center ${scheduleFull ? "" : "hidden"}`}
+                    style={{ width: "80px" }}
                   >
                     Season
                   </th>
@@ -420,21 +422,22 @@ function BooksSection() {
                 {sessions.map((s) => (
                   <tr
                     key={s.session}
-                    className="border-t"
-                    style={{ borderColor: "#eff5f9", color: "#1d2a4d" }}
+                    style={{ borderBottom: "1px solid #eff5f9", color: "#1d2a4d" }}
                   >
                     <td
-                      className={`p-2 md:p-3 font-medium ${scheduleFull ? "" : "hidden"}`}
+                      className={`py-3 md:py-3.5 text-center ${scheduleFull ? "" : "hidden"}`}
+                      style={{ borderBottom: "1px solid #eff5f9" }}
                     >
                       {s.session}
                     </td>
-                    <td className="p-2 md:p-3">{s.date}</td>
-                    <td className="p-2 md:p-3">{s.books}</td>
+                    <td className="py-3 md:py-3.5 pl-3 md:pl-4" style={{ borderBottom: "1px solid #eff5f9" }}>{s.date}</td>
+                    <td className="py-3 md:py-3.5 pl-3 md:pl-4" style={{ borderBottom: "1px solid #eff5f9" }}>{s.books}</td>
                     <td
-                      className={`p-2 md:p-3 ${scheduleFull ? "" : "hidden"}`}
+                      className={`py-3 md:py-3.5 text-center ${scheduleFull ? "" : "hidden"}`}
+                      style={{ borderBottom: "1px solid #eff5f9" }}
                     >
                       <span
-                        className="text-xs px-2 py-0.5 rounded-full text-white"
+                        className="text-[11px] md:text-xs px-2 py-0.5 rounded-full text-white"
                         style={{
                           backgroundColor:
                             s.season === 1 ? "#13c5dd" : "#1d2a4d",
@@ -573,7 +576,7 @@ function LeagueTableSection({ refetchKey }) {
         ) : (
           <div
             ref={tableRef}
-            className={`rounded-xl ${capturing ? "capturing" : ""} ${!fullView ? "w-fit mx-auto overflow-hidden" : "overflow-hidden"}`}
+            className={`rounded-xl overflow-hidden ${capturing ? "capturing" : ""}`}
             style={{
               boxShadow: capturing ? "none" : "0 4px 20px rgba(29,42,77,0.1)",
               backgroundColor: "white",
@@ -623,7 +626,12 @@ function LeagueTableSection({ refetchKey }) {
                 />
               </div>
             </div>
-            <div className={fullView ? "overflow-x-auto" : "flex justify-center"}>
+            <div
+  style={{
+    overflowX: "auto",
+    ...(!fullView ? { display: "table", margin: "0 auto" } : {}),
+  }}
+>
               <table className={`${fullView ? "w-full" : ""}`} style={{ borderCollapse: "separate", borderSpacing: 0, minWidth: fullView ? undefined : "520px" }}>
                 <thead>
                   <tr style={{ backgroundColor: "#1d2a4d" }}>
@@ -661,10 +669,10 @@ function LeagueTableSection({ refetchKey }) {
                             )}
                           </div>
                         </td>
-                        <td className="py-3 md:py-3.5" style={{ borderBottom: "1px solid #eff5f9" }}>
+                        <td className="py-3 md:py-3.5 pl-3 md:pl-4 pr-2" style={{ borderBottom: "1px solid #eff5f9" }}>
                           <button
                             onClick={() => handleTeamClick(team.name)}
-                            className="text-left cursor-pointer border-0 bg-transparent p-0 text-xs md:text-sm hover:opacity-70 transition-opacity"
+                            className="text-left cursor-pointer border-0 bg-transparent p-0 text-xs md:text-sm hover:opacity-70 transition-opacity whitespace-nowrap"
                             style={{ color: "#1d2a4d" }}
                           >
                             {team.name}
@@ -861,54 +869,56 @@ function PrizesSection() {
           {prizes.map((p, i) => (
             <div
               key={p.rank}
-              className="rounded-xl p-6 text-center transition-all duration-300 hover:-translate-y-1 flex flex-col items-center"
+              className="rounded-xl p-6 md:p-8 text-center flex flex-col items-center"
               style={{
                 backgroundColor: "white",
-                border: `1px solid rgba(19,197,221,0.2)`,
+                boxShadow: "0 2px 12px rgba(29,42,77,0.06)",
               }}
             >
-              <div className="flex items-center justify-center gap-1.5 mb-3">
-                <HiOutlineTrophy
-                  className="text-2xl"
-                  style={{ color: p.medalColor }}
-                />
-                <HiOutlineStar
-                  className="text-lg"
-                  style={{ color: p.medalColor }}
-                />
+              <div
+                className="w-12 h-12 rounded-full flex items-center justify-center text-xl mb-4"
+                style={{ backgroundColor: "#eff5f9", color: p.medalColor }}
+              >
+                <HiOutlineTrophy />
               </div>
               <div
-                className="inline-flex items-center justify-center rounded-full text-xs font-bold text-white px-4 py-1 mb-2"
-                style={{ backgroundColor: p.accent }}
+                className="text-xs font-semibold tracking-wider uppercase mb-1"
+                style={{ color: p.medalColor }}
               >
                 {p.rank} Place
               </div>
               <div
-                className="text-sm font-medium mb-4"
+                className="text-lg font-medium mb-5"
                 style={{ color: "#1d2a4d" }}
               >
                 {p.label}
               </div>
-              <ul className="space-y-2 w-full text-left max-w-[200px] mx-auto">
+              <ul className="space-y-2.5 w-full max-w-[200px] mx-auto">
                 {p.items.map((item, j) => {
                   const isMedal = item.includes("Medal");
                   const isTrophy = item === "Trophy";
                   return (
                     <li
                       key={j}
-                      className="flex items-center gap-2 text-sm"
+                      className="flex items-center gap-3 text-xs md:text-sm"
                       style={{ color: "#1d2a4d" }}
                     >
-                      <span className="shrink-0 flex items-center justify-center size-4">
-                        {isTrophy || isMedal ? (
-                          <span style={{ color: p.medalColor }}>
-                            {isTrophy ? <HiOutlineTrophy /> : <HiOutlineStar />}
-                          </span>
+                      <span
+                        className="shrink-0 w-5 h-5 rounded-full flex items-center justify-center"
+                        style={{
+                          backgroundColor: isTrophy || isMedal ? p.medalColor : "#13c5dd",
+                          color: "white",
+                        }}
+                      >
+                        {isTrophy ? (
+                          <HiOutlineTrophy className="text-[10px]" />
+                        ) : isMedal ? (
+                          <HiOutlineStar className="text-[10px]" />
                         ) : (
-                          <HiOutlineCheckCircle style={{ color: "#13c5dd" }} />
+                          <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1.5 4L3.5 6L6.5 2" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                         )}
                       </span>
-                      <span>{item}</span>
+                      <span className="text-left">{item}</span>
                     </li>
                   );
                 })}
