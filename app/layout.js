@@ -21,7 +21,7 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${inter.className} bg-[url('https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/hero/gridBackground.png')] w-full bg-repeat bg-top bg-contain `}
+        className={`${inter.className} bg-gradient-to-b from-[#eff5f9] via-white to-[#eff5f9]`}
       >
         <VerseProvider>
           <Navbar session={session} />

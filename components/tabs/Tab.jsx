@@ -11,7 +11,12 @@ export default function Tab({
         return (
           <div key={study.id} className="">
             <button
-              className={`${selectedTab === study.id ? "bg-zinc-950 text-white border border-zinc-950" : "text-zinc-950 bg-white"} cursor-pointer  rounded-full py-2 px-9  transition-colors duration-200 bg-white border border-zinc-300 hover:bg-zinc-50 `}
+              className={`${selectedTab === study.id ? "text-white" : "bg-white"} cursor-pointer rounded-full py-2 px-9 transition-colors duration-200`}
+              style={{
+                backgroundColor: selectedTab === study.id ? "#1d2a4d" : "white",
+                border: selectedTab === study.id ? "1px solid #1d2a4d" : "1px solid #13c5dd",
+                color: selectedTab === study.id ? "white" : "#1d2a4d",
+              }}
               onClick={() => handleTabSelection(study.id)}
             >
               {study.title}

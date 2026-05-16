@@ -4,17 +4,19 @@ export default function page() {
   return (
     <section>
       <form
-        className="flex w-full flex-col items-center justify-center max-w-100 mx-auto my-10 bg-white p-10 rounded-lg shadow"
+        className="flex w-full flex-col items-center justify-center max-w-100 mx-auto my-10 p-10 rounded-lg"
+        style={{ backgroundColor: "white" }}
         action={signInAction}
       >
-        <h2 className="text-4xl font-medium text-gray-900">Sign in</h2>
-        <p className="mt-3 text-sm text-gray-500/90">
+        <h2 className="text-4xl font-medium" style={{ color: "#1d2a4d" }}>Sign in</h2>
+        <p className="mt-3 text-sm" style={{ color: "#1d2a4d" }}>
           Welcome back! Please sign in to continue
         </p>
         <div className="mt-10 mb-2 grid w-full grid-cols-3 gap-6">
           <button
             type="button"
-            className="flex items-center justify-center rounded-full border border-gray-200 py-2.5 hover:bg-gray-50 focus:border-gray-300 cursor-pointer"
+            className="flex items-center justify-center rounded-full py-2.5 cursor-pointer"
+            style={{ border: "1px solid #13c5dd" }}
           >
             <svg
               width="24"
@@ -50,7 +52,8 @@ export default function page() {
           </button>
           <button
             type="button"
-            className="flex items-center justify-center rounded-full border border-gray-200 py-2.5 hover:bg-gray-50 focus:border-gray-300 cursor-pointer"
+            className="flex items-center justify-center rounded-full py-2.5 cursor-pointer"
+            style={{ border: "1px solid #13c5dd" }}
           >
             <svg
               width="22"
@@ -74,7 +77,8 @@ export default function page() {
           </button>
           <button
             type="button"
-            className="flex items-center justify-center rounded-full border border-gray-200 py-2.5 hover:bg-gray-50 focus:border-gray-300 cursor-pointer"
+            className="flex items-center justify-center rounded-full py-2.5 cursor-pointer"
+            style={{ border: "1px solid #13c5dd" }}
           >
             <svg
               width="24"
@@ -102,13 +106,13 @@ export default function page() {
           </button>
         </div>
         <div className="my-5 flex w-full items-center gap-4">
-          <div className="h-px w-full bg-gray-300/90"></div>
-          <p className="w-full text-sm text-nowrap text-gray-500/90">
+          <div className="h-px w-full" style={{ backgroundColor: "#1d2a4d" }}></div>
+          <p className="w-full text-sm text-nowrap" style={{ color: "#1d2a4d" }}>
             or sign in with email
           </p>
-          <div className="h-px w-full bg-gray-300/90"></div>
+          <div className="h-px w-full" style={{ backgroundColor: "#1d2a4d" }}></div>
         </div>
-        <div className="flex h-12 w-full items-center gap-2 overflow-hidden rounded-full border border-gray-200 bg-transparent pl-5 focus-within:border-gray-300">
+        <div className="flex h-12 w-full items-center gap-2 overflow-hidden rounded-full pl-5" style={{ border: "1px solid #13c5dd" }}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="18"
@@ -119,7 +123,7 @@ export default function page() {
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="lucide lucide-mail text-gray-400"
+            style={{ color: "#13c5dd" }}
             aria-hidden="true"
           >
             <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path>
@@ -127,13 +131,14 @@ export default function page() {
           </svg>
           <input
             placeholder="Email id"
-            className="h-full w-full bg-transparent text-sm placeholder-gray-400 outline-none"
+            className="h-full w-full bg-transparent text-sm outline-none"
+            style={{ color: "#1d2a4d" }}
             required=""
             type="email"
             name="email"
           />
         </div>
-        <div className="mt-6 flex h-12 w-full items-center gap-2 overflow-hidden rounded-full border border-gray-200 bg-transparent pl-5 focus-within:border-gray-300">
+        <div className="mt-6 flex h-12 w-full items-center gap-2 overflow-hidden rounded-full pl-5" style={{ border: "1px solid #13c5dd" }}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="18"
@@ -144,7 +149,7 @@ export default function page() {
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="lucide lucide-lock text-gray-400"
+            style={{ color: "#13c5dd" }}
             aria-hidden="true"
           >
             <rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect>
@@ -152,7 +157,8 @@ export default function page() {
           </svg>
           <input
             placeholder="Password"
-            className="h-full w-full bg-transparent text-sm placeholder-gray-400 outline-none"
+            className="h-full w-full bg-transparent text-sm outline-none"
+            style={{ color: "#1d2a4d" }}
             required=""
             type="password"
             name="password"
@@ -161,7 +167,7 @@ export default function page() {
         <div className="mt-8 flex w-full items-center justify-between">
           <label className="flex cursor-pointer items-center gap-2">
             <input className="peer hidden" type="checkbox" checked="" />
-            <span className="relative flex size-4.5 items-center justify-center rounded border border-slate-300 peer-checked:border-gray-800 peer-checked:bg-gray-800">
+            <span className="relative flex size-4.5 items-center justify-center rounded" style={{ border: "1px solid #13c5dd" }}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -172,27 +178,29 @@ export default function page() {
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="lucide lucide-check size-3 text-white"
+                className="lucide lucide-check size-3"
+                style={{ color: "#13c5dd" }}
                 aria-hidden="true"
               >
                 <path d="M20 6 9 17l-5-5"></path>
               </svg>
             </span>
-            <span className="text-gray-500 select-none">Remember me</span>
+            <span className="select-none" style={{ color: "#1d2a4d" }}>Remember me</span>
           </label>
-          <a className="text-gray-800 underline" href="#">
+          <a className="underline" style={{ color: "#13c5dd" }} href="#">
             Forgot password?
           </a>
         </div>
         <button
           type="submit"
-          className="mt-8 h-11 w-full cursor-pointer rounded-full bg-linear-to-b from-gray-600 to-gray-800 text-white transition hover:from-gray-700 hover:to-gray-900"
+          className="mt-8 h-11 w-full cursor-pointer rounded-full text-white transition hover:opacity-90"
+          style={{ backgroundColor: "#13c5dd" }}
         >
           Login
         </button>
-        <p className="mt-4 text-gray-500/90">
-          Don’t have an account?
-          <a className="text-gray-800 underline" href="#">
+        <p className="mt-4" style={{ color: "#1d2a4d" }}>
+          Don&apos;t have an account?
+          <a className="underline ml-1" style={{ color: "#13c5dd" }} href="#">
             Sign up
           </a>
         </p>

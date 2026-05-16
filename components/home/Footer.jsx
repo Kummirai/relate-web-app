@@ -9,25 +9,11 @@ export default function Footer() {
                     }`}
       </style>
 
-      <footer className="bg-zinc-950 text-white py-12 md:py-16 px-4 sm:px-6 md:px-8 lg:px-20">
+      <footer className="text-white py-12 md:py-16 px-4 sm:px-6 md:px-8 lg:px-20" style={{ backgroundColor: "#1d2a4d" }}>
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-6 gap-8 md:gap-16">
           <div className="lg:col-span-3 space-y-6">
-            <a href="https://prebuiltui.com" className="block">
-              <svg
-                width="157"
-                height="40"
-                viewBox="0 0 157 40"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="m8.75 11.3 6.75 3.884 6.75-3.885M8.75 34.58v-7.755L2 22.939m27 0-6.75 3.885v7.754M2.405 15.408 15.5 22.954l13.095-7.546M15.5 38V22.939M29 28.915V16.962a2.98 2.98 0 0 0-1.5-2.585L17 8.4a3.01 3.01 0 0 0-3 0L3.5 14.377A3 3 0 0 0 2 16.962v11.953A2.98 2.98 0 0 0 3.5 31.5L14 37.477a3.01 3.01 0 0 0 3 0L27.5 31.5a3 3 0 0 0 1.5-2.585"
-                  stroke="white"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
+            <a href="/" className="text-2xl font-semibold" style={{ color: "#13c5dd" }}>
+              Relate
             </a>
             <p className="text-sm md:text-base">
               Join our newsletter for regular updates.
@@ -36,32 +22,38 @@ export default function Footer() {
               <input
                 type="email"
                 placeholder="example@email.com"
-                className="bg-[#14171A] text-white/70 border border-white/10 px-3 py-3 rounded-md w-full sm:flex-1 sm:max-w-xs placeholder:text-sm placeholder:font-light focus:outline-none focus:ring-1 focus:ring-gray-600"
+                className="px-3 py-3 rounded-md w-full sm:flex-1 sm:max-w-xs placeholder:text-sm placeholder:font-light focus:outline-none focus:ring-1"
+                style={{ backgroundColor: "#eff5f9", color: "#1d2a4d" }}
               />
-              <button className="bg-[#14171A] text-white px-5 py-3 rounded-md border border-white/10 text-sm hover:bg-gray-800 transition-colors">
+              <button className="text-white px-5 py-3 rounded-md text-sm hover:opacity-90 transition-colors" style={{ backgroundColor: "#13c5dd" }}>
                 Subscribe
               </button>
             </div>
           </div>
 
           <div className="lg:col-span-3 grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-12 lg:gap-28 items-start">
-            {/* Products */}
+            {/* Ministries */}
             <div>
-              <h3 className="font-medium text-sm mb-4 md:mb-6">Products</h3>
+              <h3 className="font-medium text-sm mb-4 md:mb-6">Ministries</h3>
               <ul className="space-y-3 md:space-y-4 text-sm text-white/70">
                 <li>
-                  <a href="#" className="hover:text-white">
-                    Components
+                  <a href="/bible" className="hover:text-white">
+                    Bible Reading
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white">
-                    Templates
+                  <a href="/study" className="hover:text-white">
+                    Bible Study
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white">
-                    Icons
+                  <a href="/youth" className="hover:text-white">
+                    Youth Ministry
+                  </a>
+                </li>
+                <li>
+                  <a href="/skills" className="hover:text-white">
+                    Skills Training
                   </a>
                 </li>
               </ul>
@@ -72,63 +64,40 @@ export default function Footer() {
               <h3 className="font-medium text-sm mb-4 md:mb-6">Resources</h3>
               <ul className="space-y-3 md:space-y-4 text-sm text-white/70">
                 <li>
-                  <a href="#" className="hover:text-white">
-                    PrebuiltUI
+                  <a href="/verse" className="hover:text-white">
+                    Verse of the Day
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white">
-                    Templates
+                  <a href="/resources" className="hover:text-white">
+                    Resource Library
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white">
-                    Components
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white">
-                    Blogs
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white">
-                    Store
+                  <a href="/manual" className="hover:text-white">
+                    Manual
                   </a>
                 </li>
               </ul>
             </div>
 
-            {/* Company */}
+            {/* Connect */}
             <div className="col-span-2 md:col-span-1">
-              <h3 className="font-medium text-sm mb-4 md:mb-6">Company</h3>
+              <h3 className="font-medium text-sm mb-4 md:mb-6">Connect</h3>
               <ul className="space-y-3 md:space-y-4 text-sm text-white/70">
                 <li>
-                  <a href="#" className="hover:text-white">
-                    About
+                  <a href="/about" className="hover:text-white">
+                    About Us
+                  </a>
+                </li>
+                <li>
+                  <a href="/contact" className="hover:text-white">
+                    Contact
                   </a>
                 </li>
                 <li>
                   <a href="#" className="hover:text-white">
-                    Vision
-                  </a>
-                </li>
-                <li className="flex items-center gap-2">
-                  <a href="#" className="hover:text-white">
-                    Careers
-                  </a>
-                  <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-green-950 border border-green-300 text-green-300">
-                    HIRING
-                  </span>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white">
-                    Privacy policy
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white">
-                    Contact Us
+                    Privacy Policy
                   </a>
                 </li>
               </ul>
@@ -136,9 +105,9 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto mt-12 md:mt-16 pt-6 border-t border-neutral-700 flex flex-col md:flex-row justify-between items-center gap-6">
+        <div className="max-w-7xl mx-auto mt-12 md:mt-16 pt-6 border-t flex flex-col md:flex-row justify-between items-center gap-6" style={{ borderColor: "#13c5dd" }}>
           <p className="text-white/70 text-xs sm:text-sm order-2 md:order-1">
-            © 2025 prebuiltUI Design
+            © 2025 Relate
           </p>
           <div className="flex gap-5 md:gap-6 order-1 md:order-2">
             {/* X (Twitter) */}
