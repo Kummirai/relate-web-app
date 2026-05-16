@@ -21,7 +21,7 @@ export default function Skills() {
   ];
 
   return (
-    <section className="min-h-screen" style={{ backgroundColor: "#eff5f9" }}>
+    <section className="min-h-screen" style={{ background: "radial-gradient(ellipse at 50% 0%, #eff5f9 0%, white 70%)" }}>
       <div className="h-1 w-full" style={{ backgroundColor: "#13c5dd" }} />
 
       <div className="max-w-lg mx-auto px-6 pt-14 pb-24">

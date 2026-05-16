@@ -33,10 +33,10 @@ export default function Gallery() {
   ];
 
   return (
-    <section className="py-20 px-4" style={{ backgroundColor: "white" }}>
+    <section className="py-16 md:py-20 px-4" style={{ background: "linear-gradient(180deg, #f5f9fc 0%, white 100%)" }}>
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-14">
-          <h2 className="text-4xl font-semibold" style={{ color: "#1d2a4d" }}>
+          <h2 className="text-4xl font-medium" style={{ color: "#1d2a4d" }}>
             Moments That Matter
           </h2>
           <p className="text-sm md:text-base max-w-2xl mx-auto mt-4" style={{ color: "#1d2a4d" }}>
@@ -44,11 +44,11 @@ export default function Gallery() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
           {images.map((img, i) => (
             <div
               key={i}
-              className={`${img.span} overflow-hidden rounded-2xl transition-all duration-300 hover:-translate-y-1`}
+              className={`${img.span} overflow-hidden rounded-lg transition-all duration-300 hover:-translate-y-1`}
             >
               <img
                 src={img.src}

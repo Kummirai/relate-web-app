@@ -24,10 +24,10 @@ export default function Testimonials() {
   ];
 
   return (
-    <section className="py-20 px-4" style={{ backgroundColor: "#eff5f9" }}>
+    <section className="py-16 md:py-20 px-4" style={{ background: "radial-gradient(ellipse at center, white 0%, #eff5f9 70%)" }}>
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-14">
-          <h2 className="text-4xl font-semibold" style={{ color: "#1d2a4d" }}>
+          <h2 className="text-4xl font-medium" style={{ color: "#1d2a4d" }}>
             Stories of Hope
           </h2>
           <p className="text-sm md:text-base max-w-2xl mx-auto mt-4" style={{ color: "#1d2a4d" }}>
@@ -39,7 +39,7 @@ export default function Testimonials() {
           {testimonials.map((item, i) => (
             <div
               key={i}
-              className="rounded-2xl p-8 transition-all duration-300 hover:-translate-y-1"
+              className="rounded-lg p-6 md:p-8 transition-all duration-300 hover:-translate-y-1"
               style={{ backgroundColor: "white" }}
             >
               <BiSolidQuoteLeft className="text-3xl mb-4" style={{ color: "#13c5dd" }} />
@@ -52,7 +52,7 @@ export default function Testimonials() {
                 ))}
               </div>
               <div>
-                <p className="font-semibold text-sm" style={{ color: "#1d2a4d" }}>{item.name}</p>
+                <p className="text-sm" style={{ color: "#1d2a4d" }}>{item.name}</p>
                 <p className="text-xs mt-0.5" style={{ color: "#13c5dd" }}>{item.role}</p>
               </div>
             </div>

@@ -35,10 +35,10 @@ export default function FAQ() {
   ];
 
   return (
-    <section className="py-20 px-4" style={{ backgroundColor: "white" }}>
+    <section className="py-16 md:py-20 px-4" style={{ background: "linear-gradient(135deg, white 0%, #f8fafc 100%)" }}>
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-14">
-          <h2 className="text-4xl font-semibold" style={{ color: "#1d2a4d" }}>
+          <h2 className="text-4xl font-medium" style={{ color: "#1d2a4d" }}>
             Frequently Asked Questions
           </h2>
           <p className="text-sm md:text-base max-w-2xl mx-auto mt-4" style={{ color: "#1d2a4d" }}>
@@ -50,14 +50,14 @@ export default function FAQ() {
           {faqs.map((faq, i) => (
             <div
               key={i}
-              className="rounded-2xl overflow-hidden transition-all duration-300"
+              className="rounded-lg overflow-hidden transition-all duration-300"
               style={{ backgroundColor: "#eff5f9" }}
             >
               <button
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
                 className="w-full flex items-center justify-between gap-4 p-5 text-left"
               >
-                <span className="flex items-center gap-3 text-sm font-medium" style={{ color: "#1d2a4d" }}>
+                <span className="flex items-center gap-3 text-sm" style={{ color: "#1d2a4d" }}>
                   <HiOutlineQuestionMarkCircle className="text-lg shrink-0" style={{ color: "#13c5dd" }} />
                   {faq.q}
                 </span>

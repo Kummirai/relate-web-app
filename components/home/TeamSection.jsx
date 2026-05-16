@@ -23,10 +23,11 @@ export default function TeamSection() {
   ];
 
   return (
-    <section className="py-20 px-4" style={{ backgroundColor: "#1d2a4d" }}>
-      <div className="max-w-6xl mx-auto">
+    <section className="relative py-16 md:py-20 px-4 overflow-hidden" style={{ backgroundColor: "#1d2a4d" }}>
+      <div className="absolute inset-0 opacity-[0.05]" style={{ background: "radial-gradient(ellipse at 20% 50%, #13c5dd 0%, transparent 60%), radial-gradient(ellipse at 80% 50%, #eff5f9 0%, transparent 60%)" }} />
+      <div className="max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-14">
-          <h2 className="text-4xl font-semibold text-white">
+          <h2 className="text-4xl font-medium text-white">
             Making a Difference Together
           </h2>
           <p className="text-sm md:text-base max-w-2xl mx-auto mt-4" style={{ color: "#13c5dd" }}>
@@ -35,11 +36,11 @@ export default function TeamSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           {team.map((member, i) => (
             <div
               key={i}
-              className="group rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1"
+              className="group rounded-lg overflow-hidden transition-all duration-300 hover:-translate-y-1"
               style={{ backgroundColor: "#eff5f9" }}
             >
               <div className="overflow-hidden">
@@ -50,7 +51,7 @@ export default function TeamSection() {
                 />
               </div>
               <div className="p-5">
-                <h3 className="text-lg font-semibold" style={{ color: "#1d2a4d" }}>
+                <h3 className="text-lg font-medium" style={{ color: "#1d2a4d" }}>
                   {member.name}
                 </h3>
                 <p className="text-sm mt-1" style={{ color: "#1d2a4d" }}>

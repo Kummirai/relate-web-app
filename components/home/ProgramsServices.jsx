@@ -40,10 +40,10 @@ export default function ProgramsServices() {
   ];
 
   return (
-    <section className="py-20 px-4" style={{ backgroundColor: "#eff5f9" }}>
+    <section className="py-16 md:py-20 px-4" style={{ background: "linear-gradient(160deg, #eff5f9 0%, white 40%, #f0f6fa 80%, #eff5f9 100%)" }}>
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-14">
-          <h2 className="text-4xl font-semibold" style={{ color: "#1d2a4d" }}>
+          <h2 className="text-4xl font-medium" style={{ color: "#1d2a4d" }}>
             Our Programs & Services
           </h2>
           <p className="text-sm md:text-base max-w-2xl mx-auto mt-4" style={{ color: "#1d2a4d" }}>
@@ -51,20 +51,20 @@ export default function ProgramsServices() {
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {programs.map((program, i) => (
             <div
               key={i}
-              className="rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1"
+              className="rounded-lg p-6 transition-all duration-300 hover:-translate-y-1"
               style={{ backgroundColor: "white" }}
             >
               <div
-                className="size-12 rounded-xl flex items-center justify-center text-xl mb-4"
+                className="size-12 rounded-lg flex items-center justify-center text-xl mb-4"
                 style={{ backgroundColor: "#13c5dd", color: "white" }}
               >
                 {program.icon}
               </div>
-              <h3 className="text-lg font-semibold mb-2" style={{ color: "#1d2a4d" }}>
+              <h3 className="text-lg font-medium mb-2" style={{ color: "#1d2a4d" }}>
                 {program.title}
               </h3>
               <p className="text-sm leading-relaxed" style={{ color: "#1d2a4d" }}>

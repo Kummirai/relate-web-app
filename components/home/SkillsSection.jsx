@@ -16,10 +16,10 @@ export default function SkillsSection() {
   ];
 
   return (
-    <section className="py-20 px-4" style={{ backgroundColor: "#eff5f9" }}>
+    <section className="py-16 md:py-20 px-4" style={{ background: "radial-gradient(ellipse at 50% 0%, #eff5f9 0%, white 70%)" }}>
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-14">
-          <h2 className="text-4xl font-semibold" style={{ color: "#1d2a4d" }}>
+          <h2 className="text-4xl font-medium" style={{ color: "#1d2a4d" }}>
             Skills We Exchange
           </h2>
           <p className="text-sm md:text-base max-w-2xl mx-auto mt-4" style={{ color: "#1d2a4d" }}>
@@ -27,15 +27,15 @@ export default function SkillsSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-6">
           {skills.map((skill, i) => (
             <div
               key={i}
-              className="rounded-2xl p-6 text-center transition-all duration-300 hover:-translate-y-1"
+              className="rounded-lg p-6 text-center transition-all duration-300 hover:-translate-y-1"
               style={{ backgroundColor: "white" }}
             >
               <div
-                className="size-12 rounded-xl flex items-center justify-center mx-auto text-2xl"
+                className="size-12 rounded-lg flex items-center justify-center mx-auto text-2xl"
                 style={{ backgroundColor: "#eff5f9", color: "#13c5dd" }}
               >
                 {skill.icon}

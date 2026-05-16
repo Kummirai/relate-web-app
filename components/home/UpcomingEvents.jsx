@@ -28,10 +28,10 @@ export default function UpcomingEvents() {
   ];
 
   return (
-    <section className="py-20 px-4" style={{ backgroundColor: "white" }}>
+    <section className="py-16 md:py-20 px-4" style={{ background: "linear-gradient(180deg, white 0%, #f5f9fc 100%)" }}>
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-14">
-          <h2 className="text-4xl font-semibold" style={{ color: "#1d2a4d" }}>
+          <h2 className="text-4xl font-medium" style={{ color: "#1d2a4d" }}>
             Upcoming Events
           </h2>
           <p className="text-sm md:text-base max-w-2xl mx-auto mt-4" style={{ color: "#1d2a4d" }}>
@@ -39,19 +39,19 @@ export default function UpcomingEvents() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 gap-4 md:gap-6">
           {events.map((event, i) => (
             <div
               key={i}
-              className="rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1"
+              className="rounded-lg overflow-hidden transition-all duration-300 hover:-translate-y-1"
               style={{ backgroundColor: "#eff5f9" }}
             >
-              <div className="p-6">
-                <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-wider mb-4" style={{ color: "#13c5dd" }}>
+              <div className="p-5 md:p-6">
+                <div className="flex items-center gap-2 text-xs uppercase tracking-wider mb-4" style={{ color: "#13c5dd" }}>
                   <HiOutlineCalendarDays />
                   <span>{event.date}</span>
                 </div>
-                <h3 className="text-lg font-semibold mb-2" style={{ color: "#1d2a4d" }}>
+                <h3 className="text-lg font-medium mb-2" style={{ color: "#1d2a4d" }}>
                   {event.title}
                 </h3>
                 <p className="text-sm mb-4" style={{ color: "#1d2a4d" }}>
@@ -68,9 +68,9 @@ export default function UpcomingEvents() {
                   </div>
                 </div>
               </div>
-              <div className="px-6 pb-6">
+              <div className="px-5 pb-5 md:px-6 md:pb-6">
                 <button
-                  className="w-full py-2.5 rounded-xl text-sm font-medium text-white transition-all hover:opacity-90"
+                  className="w-full py-2.5 rounded-lg text-sm text-white transition-all hover:opacity-90"
                   style={{ backgroundColor: "#13c5dd" }}
                 >
                   Attend Event

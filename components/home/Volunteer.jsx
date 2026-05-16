@@ -28,16 +28,16 @@ export default function Volunteer() {
   ];
 
   return (
-    <section className="py-20 px-4" style={{ backgroundColor: "#eff5f9" }}>
+    <section className="py-16 md:py-20 px-4" style={{ background: "linear-gradient(200deg, #eff5f9 0%, white 45%, #f0f6fa 100%)" }}>
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-14">
-          <div
-            className="size-16 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-4"
+            <div
+              className="size-16 rounded-lg flex items-center justify-center text-3xl mx-auto mb-4"
             style={{ backgroundColor: "#13c5dd", color: "white" }}
           >
             <HiOutlineHandRaised />
           </div>
-          <h2 className="text-4xl font-semibold" style={{ color: "#1d2a4d" }}>
+          <h2 className="text-4xl font-medium" style={{ color: "#1d2a4d" }}>
             Get Involved
           </h2>
           <p className="text-sm md:text-base max-w-2xl mx-auto mt-4" style={{ color: "#1d2a4d" }}>
@@ -45,20 +45,20 @@ export default function Volunteer() {
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-10">
           {roles.map((role, i) => (
             <div
               key={i}
-              className="rounded-2xl p-6 text-center transition-all duration-300 hover:-translate-y-1"
+              className="rounded-lg p-6 text-center transition-all duration-300 hover:-translate-y-1"
               style={{ backgroundColor: "white" }}
             >
               <div
-                className="size-12 rounded-xl flex items-center justify-center text-xl mx-auto mb-4"
+                className="size-12 rounded-lg flex items-center justify-center text-xl mx-auto mb-4"
                 style={{ backgroundColor: "#eff5f9", color: "#13c5dd" }}
               >
                 {role.icon}
               </div>
-              <h3 className="text-base font-semibold mb-2" style={{ color: "#1d2a4d" }}>
+              <h3 className="text-base font-medium mb-2" style={{ color: "#1d2a4d" }}>
                 {role.title}
               </h3>
               <p className="text-sm leading-relaxed" style={{ color: "#1d2a4d" }}>
@@ -70,7 +70,7 @@ export default function Volunteer() {
 
         <div className="text-center">
           <button
-            className="px-8 py-3 rounded-xl text-sm font-medium text-white transition-all hover:opacity-90"
+            className="px-8 py-3 rounded-lg text-sm text-white transition-all hover:opacity-90"
             style={{ backgroundColor: "#13c5dd" }}
           >
             Sign Up to Volunteer

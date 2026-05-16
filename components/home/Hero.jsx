@@ -24,7 +24,16 @@ export default function Hero() {
 
   return (
     <>
-      <section className=" text-sm pb-44 pt-20 h-[calc(100vh-76px)]">
+      <section className="relative text-sm pb-20 pt-14 min-h-[calc(100vh-76px)] md:pb-44 md:pt-20 overflow-hidden">
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, #eff5f9 0%, white 35%, #f2f8fc 65%, #eff5f9 100%)" }} />
+          <div className="absolute -top-[25%] -right-[15%] w-[70%] h-[70%] rounded-full opacity-25 blur-[120px]" style={{ background: "radial-gradient(circle, #13c5dd, transparent 70%)" }} />
+          <div className="absolute -bottom-[20%] -left-[10%] w-[60%] h-[60%] rounded-full opacity-20 blur-[120px]" style={{ background: "radial-gradient(circle, #1d2a4d, transparent 70%)" }} />
+          <div className="absolute top-[20%] left-[55%] w-[35%] h-[45%] rounded-full opacity-15 blur-[100px]" style={{ background: "radial-gradient(circle, #13c5dd, transparent 60%)" }} />
+          <div className="absolute top-[55%] left-[8%] w-[30%] h-[35%] rounded-full opacity-10 blur-[100px]" style={{ background: "radial-gradient(circle, #1d2a4d, transparent 60%)" }} />
+          <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: "radial-gradient(#1d2a4d 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
+          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent" />
+        </div>
         <div className="flex items-center gap-2 border border-[#13c5dd] hover:border-[#13c5dd]/70 rounded-full w-max mx-auto px-4 py-2">
           <span>Verse of the Day</span>
           <Link
@@ -39,7 +48,7 @@ export default function Hero() {
             </span>
           </Link>
         </div>
-        <h5 className="text-4xl md:text-6xl font-medium max-w-212.5 text-center mx-auto mt-8" style={{ color: "#1d2a4d" }}>
+          <h5 className="text-3xl md:text-6xl font-medium max-w-212.5 text-center mx-auto mt-8 max-md:px-4" style={{ color: "#1d2a4d" }}>
           Growing Together Through Shared Skills
         </h5>
 
@@ -48,12 +57,12 @@ export default function Hero() {
             others, and help our community grow through knowledge and connection.
         </p>
 
-        <div className="mx-auto w-full flex items-center justify-center gap-3 mt-4">
-          <button className="bg-[#13c5dd] text-white px-7 py-3 rounded-full font-medium transition hover:opacity-90">
+        <div className="mx-auto w-full flex items-center justify-center gap-3 mt-4 max-md:flex-col max-md:px-4">
+          <button className="bg-[#13c5dd] text-white px-7 py-3 rounded-full font-medium transition hover:opacity-90 w-full md:w-auto">
             <Link href={"/skills"}>Explore Skills Exchange</Link>
           </button>
 
-          <button className="flex items-center gap-2 border border-[#13c5dd] hover:bg-[#13c5dd]/10 rounded-full px-6 py-3">
+          <button className="flex items-center justify-center gap-2 border border-[#13c5dd] hover:bg-[#13c5dd]/10 rounded-full px-6 py-3 w-full md:w-auto">
             <Link href={"#"}>
               <span style={{ color: "#1d2a4d" }}>Request A Bible Study</span>
             </Link>
