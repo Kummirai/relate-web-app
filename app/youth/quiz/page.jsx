@@ -1,19 +1,55 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import SlideUp from "@/components/SlideUp";
 import {
-  HiOutlineBookOpen, HiOutlineTrophy, HiOutlineCalendarDays, HiOutlineUsers,
-  HiOutlineLightBulb, HiOutlineArrowRight, HiOutlineClock, HiOutlineMapPin,
-  HiOutlineStar, HiOutlineQuestionMarkCircle, HiOutlineFlag, HiOutlineHeart,
-  HiOutlineCheckCircle, HiOutlineChevronLeft, HiOutlineChevronRight,
+  HiOutlineBookOpen,
+  HiOutlineTrophy,
+  HiOutlineCalendarDays,
+  HiOutlineUsers,
+  HiOutlineLightBulb,
+  HiOutlineArrowRight,
+  HiOutlineClock,
+  HiOutlineMapPin,
+  HiOutlineStar,
+  HiOutlineQuestionMarkCircle,
+  HiOutlineFlag,
+  HiOutlineHeart,
+  HiOutlineCheckCircle,
+  HiOutlineChevronLeft,
+  HiOutlineChevronRight,
+  HiOutlineArrowDownTray,
 } from "react-icons/hi2";
+import { toPng } from "html-to-image";
 
 const books = [
-  { book: "Jonah", chapters: "1–4", season: "1", focus: "God's mercy to all nations, repentance, and the heart of a reluctant prophet" },
-  { book: "Ephesians", chapters: "1–6", season: "1", focus: "Grace, salvation, unity in Christ, spiritual warfare, and walking in the Spirit" },
-  { book: "Esther", chapters: "1–10", season: "2", focus: "God's providence, courage, faithfulness, and deliverance of His people" },
-  { book: "Philemon", chapters: "1", season: "2", focus: "Forgiveness, reconciliation, and Christian brotherhood in action" },
+  {
+    book: "Jonah",
+    chapters: "1–4",
+    season: "1",
+    focus:
+      "God's mercy to all nations, repentance, and the heart of a reluctant prophet",
+  },
+  {
+    book: "Ephesians",
+    chapters: "1–6",
+    season: "1",
+    focus:
+      "Grace, salvation, unity in Christ, spiritual warfare, and walking in the Spirit",
+  },
+  {
+    book: "Esther",
+    chapters: "1–10",
+    season: "2",
+    focus:
+      "God's providence, courage, faithfulness, and deliverance of His people",
+  },
+  {
+    book: "Philemon",
+    chapters: "1",
+    season: "2",
+    focus: "Forgiveness, reconciliation, and Christian brotherhood in action",
+  },
 ];
 
 const sessions = [
@@ -22,13 +58,23 @@ const sessions = [
   { session: 3, date: "September 5, 2026", books: "Ephesians 1–2", season: 1 },
   { session: 4, date: "September 19, 2026", books: "Ephesians 3–4", season: 1 },
   { session: 5, date: "October 3, 2026", books: "Ephesians 5–6", season: 1 },
-  { session: 6, date: "October 17, 2026", books: "Review (Jonah & Ephesians)", season: 1 },
+  {
+    session: 6,
+    date: "October 17, 2026",
+    books: "Review (Jonah & Ephesians)",
+    season: 1,
+  },
   { session: 7, date: "March 6, 2027", books: "Esther 1–2", season: 2 },
   { session: 8, date: "March 20, 2027", books: "Esther 3–4", season: 2 },
   { session: 9, date: "April 3, 2027", books: "Esther 5–7", season: 2 },
   { session: 10, date: "April 17, 2027", books: "Esther 8–10", season: 2 },
   { session: 11, date: "May 1, 2027", books: "Philemon 1", season: 2 },
-  { session: 12, date: "May 15, 2027", books: "Review (Esther & Philemon)", season: 2 },
+  {
+    session: 12,
+    date: "May 15, 2027",
+    books: "Review (Esther & Philemon)",
+    season: 2,
+  },
 ];
 
 const teams = [
@@ -47,9 +93,21 @@ const teams = [
 ];
 
 const rankIcons = [
-  <HiOutlineTrophy key="gold" className="text-lg" style={{ color: "#FFD700" }} />,
-  <HiOutlineTrophy key="silver" className="text-lg" style={{ color: "#C0C0C0" }} />,
-  <HiOutlineTrophy key="bronze" className="text-lg" style={{ color: "#CD7F32" }} />,
+  <HiOutlineTrophy
+    key="gold"
+    className="text-lg"
+    style={{ color: "#FFD700" }}
+  />,
+  <HiOutlineTrophy
+    key="silver"
+    className="text-lg"
+    style={{ color: "#C0C0C0" }}
+  />,
+  <HiOutlineTrophy
+    key="bronze"
+    className="text-lg"
+    style={{ color: "#CD7F32" }}
+  />,
 ];
 
 const sampleQuestions = [
@@ -66,7 +124,7 @@ const sampleQuestions = [
     a: "3 days and 3 nights.",
   },
   {
-    q: "Fill in the blank: \"For it is by ____ you have been saved, through faith.\" (Ephesians 2:8)",
+    q: 'Fill in the blank: "For it is by ____ you have been saved, through faith." (Ephesians 2:8)',
     a: "Grace.",
   },
   {
@@ -104,12 +162,31 @@ function HeroSection() {
           alt=""
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(29,42,77,0.85) 0%, rgba(19,197,221,0.4) 100%)" }} />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(135deg, rgba(29,42,77,0.85) 0%, rgba(19,197,221,0.4) 100%)",
+          }}
+        />
       </div>
-      <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(circle at 20% 50%, #13c5dd 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
+      <div
+        className="absolute inset-0 opacity-10"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle at 20% 50%, #13c5dd 1px, transparent 1px)",
+          backgroundSize: "40px 40px",
+        }}
+      />
       <div className="relative z-10 max-w-3xl mx-auto">
         <div className="mb-4 flex justify-center">
-          <div className="size-16 rounded-xl flex items-center justify-center text-3xl" style={{ backgroundColor: "rgba(19,197,221,0.2)", color: "#13c5dd" }}>
+          <div
+            className="size-16 rounded-xl flex items-center justify-center text-3xl"
+            style={{
+              backgroundColor: "rgba(19,197,221,0.2)",
+              color: "#13c5dd",
+            }}
+          >
             <HiOutlineTrophy />
           </div>
         </div>
@@ -117,11 +194,28 @@ function HeroSection() {
           Bible Quiz League
         </h1>
         <p className="text-sm md:text-base text-white/80 max-w-xl mx-auto mb-6">
-          12 teams &middot; 3 players each &middot; 6 sessions per season &middot; Ages 10&ndash;15
+          12 teams &middot; 3 players each &middot; 6 sessions per season
+          &middot; Ages 10&ndash;15
         </p>
         <div className="flex flex-wrap items-center justify-center gap-3 text-xs">
-          <span className="rounded-full px-4 py-1.5" style={{ backgroundColor: "rgba(19,197,221,0.3)", color: "#13c5dd" }}>Season 1: Aug&ndash;Oct 2026</span>
-          <span className="rounded-full px-4 py-1.5" style={{ backgroundColor: "rgba(19,197,221,0.3)", color: "#13c5dd" }}>Season 2: Mar&ndash;May 2027</span>
+          <span
+            className="rounded-full px-4 py-1.5"
+            style={{
+              backgroundColor: "rgba(19,197,221,0.3)",
+              color: "#13c5dd",
+            }}
+          >
+            Season 1: Aug&ndash;Oct 2026
+          </span>
+          <span
+            className="rounded-full px-4 py-1.5"
+            style={{
+              backgroundColor: "rgba(19,197,221,0.3)",
+              color: "#13c5dd",
+            }}
+          >
+            Season 2: Mar&ndash;May 2027
+          </span>
         </div>
       </div>
     </section>
@@ -132,27 +226,51 @@ function OverviewSection() {
   const stats = [
     { icon: <HiOutlineFlag />, label: "Teams", value: "12" },
     { icon: <HiOutlineUsers />, label: "Per Team", value: "3 Players" },
-    { icon: <HiOutlineCalendarDays />, label: "Per Season", value: "6 Sessions" },
-    { icon: <HiOutlineArrowRight className="rotate-180" />, label: "Seasons", value: "2 per Year" },
+    {
+      icon: <HiOutlineCalendarDays />,
+      label: "Per Season",
+      value: "6 Sessions",
+    },
+    {
+      icon: <HiOutlineArrowRight className="rotate-180" />,
+      label: "Seasons",
+      value: "2 per Year",
+    },
   ];
 
   return (
-    <section className="py-16 md:py-20 px-4" style={{ backgroundColor: "#eff5f9" }}>
+    <section
+      className="py-16 md:py-20 px-4"
+      style={{ backgroundColor: "#eff5f9" }}
+    >
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-10">
           <div className="flex justify-center mb-2">
             <HiOutlineStar className="text-3xl" style={{ color: "#13c5dd" }} />
           </div>
-          <h2 className="text-3xl font-medium" style={{ color: "#1d2a4d" }}>League at a Glance</h2>
+          <h2 className="text-3xl font-medium" style={{ color: "#1d2a4d" }}>
+            League at a Glance
+          </h2>
         </div>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 text-center">
           {stats.map((stat, i) => (
-            <div key={i} className="rounded-lg p-5 transition-all duration-300 hover:-translate-y-1" style={{ backgroundColor: "white" }}>
-              <div className="flex justify-center mb-2 text-xl" style={{ color: "#13c5dd" }}>
+            <div
+              key={i}
+              className="rounded-lg p-5 transition-all duration-300 hover:-translate-y-1"
+              style={{ backgroundColor: "white" }}
+            >
+              <div
+                className="flex justify-center mb-2 text-xl"
+                style={{ color: "#13c5dd" }}
+              >
                 {stat.icon}
               </div>
-              <div className="text-2xl font-bold" style={{ color: "#13c5dd" }}>{stat.value}</div>
-              <div className="text-xs mt-1" style={{ color: "#1d2a4d" }}>{stat.label}</div>
+              <div className="text-2xl font-bold" style={{ color: "#13c5dd" }}>
+                {stat.value}
+              </div>
+              <div className="text-xs mt-1" style={{ color: "#1d2a4d" }}>
+                {stat.label}
+              </div>
             </div>
           ))}
         </div>
@@ -171,44 +289,103 @@ function BooksSection() {
       fetch("/api/quiz/books").then((r) => r.json()),
       fetch("/api/quiz/sessions").then((r) => r.json()),
     ])
-      .then(([b, s]) => { setBooks(b); setSessions(s); })
+      .then(([b, s]) => {
+        setBooks(b);
+        setSessions(s);
+      })
       .catch(() => {});
   }, []);
 
   return (
-    <section className="py-16 md:py-20 px-4" style={{ backgroundColor: "white" }}>
+    <section
+      className="py-16 md:py-20 px-4"
+      style={{ backgroundColor: "white" }}
+    >
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-10 md:mb-12">
           <div className="flex justify-center mb-2">
-            <HiOutlineBookOpen className="text-2xl md:text-3xl" style={{ color: "#13c5dd" }} />
+            <HiOutlineBookOpen
+              className="text-2xl md:text-3xl"
+              style={{ color: "#13c5dd" }}
+            />
           </div>
-          <h2 className="text-2xl md:text-3xl font-medium" style={{ color: "#1d2a4d" }}>What We&apos;re Studying</h2>
-          <p className="text-xs md:text-sm mt-2 max-w-xl mx-auto" style={{ color: "#1d2a4d" }}>
+          <h2
+            className="text-2xl md:text-3xl font-medium"
+            style={{ color: "#1d2a4d" }}
+          >
+            What We&apos;re Studying
+          </h2>
+          <p
+            className="text-xs md:text-sm mt-2 max-w-xl mx-auto"
+            style={{ color: "#1d2a4d" }}
+          >
             Study these books before each session to help your team win
           </p>
         </div>
         <div className="grid sm:grid-cols-2 gap-4 md:gap-5">
           {books.map((b, i) => (
             <SlideUp key={i} delay={i * 80}>
-              <div className="rounded-lg p-5 md:p-6 relative overflow-hidden" style={{ backgroundColor: b.season === "1" ? "#e9f7fa" : "#eef0f6" }}>
-                <div className="absolute top-0 right-0 w-24 h-24 rounded-full -translate-y-1/2 translate-x-1/2" style={{ backgroundColor: b.season === "1" ? "rgba(19,197,221,0.1)" : "rgba(29,42,77,0.06)" }} />
+              <div
+                className="rounded-lg p-5 md:p-6 relative overflow-hidden"
+                style={{
+                  backgroundColor: b.season === "1" ? "#e9f7fa" : "#eef0f6",
+                }}
+              >
+                <div
+                  className="absolute top-0 right-0 w-24 h-24 rounded-full -translate-y-1/2 translate-x-1/2"
+                  style={{
+                    backgroundColor:
+                      b.season === "1"
+                        ? "rgba(19,197,221,0.1)"
+                        : "rgba(29,42,77,0.06)",
+                  }}
+                />
                 <div className="flex items-center gap-2 mb-3">
-                  <span className="text-xs px-2.5 py-1 rounded-full text-white font-medium" style={{ backgroundColor: b.season === "1" ? "#13c5dd" : "#1d2a4d" }}>
+                  <span
+                    className="text-xs px-2.5 py-1 rounded-full text-white font-medium"
+                    style={{
+                      backgroundColor: b.season === "1" ? "#13c5dd" : "#1d2a4d",
+                    }}
+                  >
                     Season {b.season}
                   </span>
                 </div>
-                <h3 className="text-base md:text-lg font-bold mb-1" style={{ color: "#1d2a4d" }}>{b.book}</h3>
-                <p className="text-xs font-medium mb-2" style={{ color: "#13c5dd" }}>Chapters {b.chapters}</p>
-                <p className="text-xs leading-relaxed" style={{ color: "#1d2a4d" }}>{b.focus}</p>
-              </div></SlideUp>
+                <h3
+                  className="text-base md:text-lg font-bold mb-1"
+                  style={{ color: "#1d2a4d" }}
+                >
+                  {b.book}
+                </h3>
+                <p
+                  className="text-xs font-medium mb-2"
+                  style={{ color: "#13c5dd" }}
+                >
+                  Chapters {b.chapters}
+                </p>
+                <p
+                  className="text-xs leading-relaxed"
+                  style={{ color: "#1d2a4d" }}
+                >
+                  {b.focus}
+                </p>
+              </div>
+            </SlideUp>
           ))}
         </div>
 
         <div className="mt-12 md:mt-14">
           <div className="flex flex-col items-center gap-3 mb-6">
             <div className="flex items-center gap-2">
-              <HiOutlineCalendarDays className="text-lg md:text-xl" style={{ color: "#13c5dd" }} />
-              <h3 className="text-lg md:text-xl font-bold" style={{ color: "#1d2a4d" }}>Session Schedule</h3>
+              <HiOutlineCalendarDays
+                className="text-lg md:text-xl"
+                style={{ color: "#13c5dd" }}
+              />
+              <h3
+                className="text-lg md:text-xl font-bold"
+                style={{ color: "#1d2a4d" }}
+              >
+                Session Schedule
+              </h3>
             </div>
             <button
               onClick={() => setScheduleFull(!scheduleFull)}
@@ -218,24 +395,51 @@ function BooksSection() {
               {scheduleFull ? "Minimal View" : "Full View"}
             </button>
           </div>
-          <div className="overflow-x-auto rounded-lg" style={{ boxShadow: "0 2px 12px rgba(29,42,77,0.08)" }}>
+          <div
+            className="overflow-x-auto rounded-lg"
+            style={{ boxShadow: "0 2px 12px rgba(29,42,77,0.08)" }}
+          >
             <table className="w-full text-xs md:text-sm">
               <thead>
                 <tr style={{ backgroundColor: "#1d2a4d" }}>
-                  <th className={`p-2 md:p-3 text-white font-medium ${scheduleFull ? "" : "hidden"}`}>#</th>
+                  <th
+                    className={`p-2 md:p-3 text-white font-medium ${scheduleFull ? "" : "hidden"}`}
+                  >
+                    #
+                  </th>
                   <th className="p-2 md:p-3 text-white font-medium">Date</th>
                   <th className="p-2 md:p-3 text-white font-medium">Books</th>
-                  <th className={`p-2 md:p-3 text-white font-medium ${scheduleFull ? "" : "hidden"}`}>Season</th>
+                  <th
+                    className={`p-2 md:p-3 text-white font-medium ${scheduleFull ? "" : "hidden"}`}
+                  >
+                    Season
+                  </th>
                 </tr>
               </thead>
               <tbody>
                 {sessions.map((s) => (
-                  <tr key={s.session} className="border-t" style={{ borderColor: "#eff5f9", color: "#1d2a4d" }}>
-                    <td className={`p-2 md:p-3 font-bold ${scheduleFull ? "" : "hidden"}`}>{s.session}</td>
+                  <tr
+                    key={s.session}
+                    className="border-t"
+                    style={{ borderColor: "#eff5f9", color: "#1d2a4d" }}
+                  >
+                    <td
+                      className={`p-2 md:p-3 font-bold ${scheduleFull ? "" : "hidden"}`}
+                    >
+                      {s.session}
+                    </td>
                     <td className="p-2 md:p-3">{s.date}</td>
                     <td className="p-2 md:p-3">{s.books}</td>
-                    <td className={`p-2 md:p-3 ${scheduleFull ? "" : "hidden"}`}>
-                      <span className="text-xs px-2 py-0.5 rounded-full text-white" style={{ backgroundColor: s.season === 1 ? "#13c5dd" : "#1d2a4d" }}>
+                    <td
+                      className={`p-2 md:p-3 ${scheduleFull ? "" : "hidden"}`}
+                    >
+                      <span
+                        className="text-xs px-2 py-0.5 rounded-full text-white"
+                        style={{
+                          backgroundColor:
+                            s.season === 1 ? "#13c5dd" : "#1d2a4d",
+                        }}
+                      >
                         Season {s.season}
                       </span>
                     </td>
@@ -257,16 +461,24 @@ function LeagueTableSection({ refetchKey }) {
   const [selectedTeam, setSelectedTeam] = useState(null);
   const [teamDetail, setTeamDetail] = useState(null);
   const [detailLoading, setDetailLoading] = useState(false);
+  const [capturing, setCapturing] = useState(false);
+  const [sessions, setSessions] = useState([]);
+  const [books, setBooks] = useState([]);
+  const tableRef = useRef(null);
 
   const fetchLeaderboard = useCallback(() => {
     setLoading(true);
-    fetch("/api/quiz/leaderboard")
-      .then((r) => {
-        if (!r.ok) throw new Error("Leaderboard fetch failed");
-        return r.json();
+    Promise.all([
+      fetch("/api/quiz/leaderboard").then((r) => r.json()),
+      fetch("/api/quiz/sessions").then((r) => r.json()),
+      fetch("/api/quiz/books").then((r) => r.json()),
+    ])
+      .then(([leaderboard, sess, bks]) => {
+        setTeams(leaderboard);
+        setSessions(sess);
+        setBooks(bks);
       })
-      .then((data) => setTeams(data))
-      .catch((err) => console.error("Leaderboard error:", err))
+      .catch((err) => console.error("Fetch error:", err))
       .finally(() => setLoading(false));
   }, []);
 
@@ -288,94 +500,287 @@ function LeagueTableSection({ refetchKey }) {
       .finally(() => setDetailLoading(false));
   };
 
+  const downloadImage = async () => {
+    if (!tableRef.current) return;
+    setCapturing(true);
+    await new Promise((r) => setTimeout(r, 300));
+    try {
+      const dataUrl = await toPng(tableRef.current, {
+        backgroundColor: "#ffffff",
+        pixelRatio: 3,
+      });
+      const link = document.createElement("a");
+      link.download = "relate-quiz-leaderboard.png";
+      link.href = dataUrl;
+      link.click();
+    } catch (err) {
+      console.error("Failed to download leaderboard:", err);
+    } finally {
+      setCapturing(false);
+    }
+  };
+
   return (
-    <section className="py-16 md:py-20 px-4" style={{ background: "linear-gradient(180deg, #eff5f9 0%, white 50%, #eff5f9 100%)" }}>
+    <section
+      className="py-16 md:py-20 px-4"
+      style={{
+        background:
+          "linear-gradient(180deg, #eff5f9 0%, white 50%, #eff5f9 100%)",
+      }}
+    >
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-8 md:mb-12">
           <div className="flex justify-center mb-2">
-            <HiOutlineTrophy className="text-3xl" style={{ color: "#13c5dd" }} />
+            <HiOutlineTrophy
+              className="text-3xl"
+              style={{ color: "#13c5dd" }}
+            />
           </div>
-          <h2 className="text-2xl md:text-3xl font-medium" style={{ color: "#1d2a4d" }}>Leaderboard</h2>
+          <h2
+            className="text-2xl md:text-3xl font-medium"
+            style={{ color: "#1d2a4d" }}
+          >
+            Leaderboard
+          </h2>
           <p className="text-xs md:text-sm mt-2" style={{ color: "#1d2a4d" }}>
             Updated after each quiz session
           </p>
-          <button
-            onClick={() => setFullView(!fullView)}
-            className="mt-4 inline-flex items-center gap-1.5 text-xs px-4 py-1.5 rounded-full transition-all hover:opacity-80 cursor-pointer border-0"
-            style={{ backgroundColor: "#13c5dd", color: "white" }}
-          >
-            {fullView ? "Minimal View" : "Full View"}
-          </button>
+          <div className="flex flex-wrap items-center justify-center gap-2 mt-4">
+            <button
+              onClick={() => setFullView(!fullView)}
+              className="inline-flex items-center gap-1.5 text-xs px-4 py-1.5 rounded-full transition-all hover:opacity-80 cursor-pointer border-0"
+              style={{ backgroundColor: "#13c5dd", color: "white" }}
+            >
+              {fullView ? "Minimal View" : "Full View"}
+            </button>
+            <button
+              onClick={downloadImage}
+              className="inline-flex items-center gap-1.5 text-xs px-4 py-1.5 rounded-full transition-all hover:opacity-80 cursor-pointer border-0"
+              style={{ backgroundColor: "#1d2a4d", color: "white" }}
+            >
+              <HiOutlineArrowDownTray className="text-sm" />
+              Download Image
+            </button>
+          </div>
         </div>
         {loading ? (
-          <div className="text-center py-12">
-            <div className="w-8 h-8 border-2 rounded-full animate-spin mx-auto" style={{ borderColor: "#13c5dd", borderTopColor: "transparent" }} />
+          <div className="text-center py-16">
+            <div
+              className="w-8 h-8 border-2 rounded-full animate-spin mx-auto"
+              style={{ borderColor: "#13c5dd", borderTopColor: "transparent" }}
+            />
           </div>
         ) : (
-        <div className="overflow-x-auto rounded-xl" style={{ boxShadow: "0 4px 20px rgba(29,42,77,0.1)" }}>
-          <table className="w-full text-xs md:text-sm">
-            <thead>
-              <tr style={{ backgroundColor: "#1d2a4d" }}>
-                <th className="p-2 md:p-3 text-white font-medium">#</th>
-                <th className="p-2 md:p-3 text-white font-medium">Team</th>
-                <th className="p-2 md:p-3 text-white font-medium text-center">P</th>
-                <th className={`p-2 md:p-3 text-white font-medium text-center ${fullView ? "" : "hidden"}`}>S1</th>
-                <th className={`p-2 md:p-3 text-white font-medium text-center ${fullView ? "" : "hidden"}`}>S2</th>
-                <th className={`p-2 md:p-3 text-white font-medium text-center ${fullView ? "" : "hidden"}`}>S3</th>
-                <th className={`p-2 md:p-3 text-white font-medium text-center ${fullView ? "" : "hidden"}`}>S4</th>
-                <th className={`p-2 md:p-3 text-white font-medium text-center ${fullView ? "" : "hidden"}`}>S5</th>
-                <th className={`p-2 md:p-3 text-white font-medium text-center ${fullView ? "" : "hidden"}`}>S6</th>
-                <th className="p-2 md:p-3 text-white font-medium text-center">GPA</th>
-              </tr>
-            </thead>
-            <tbody>
-              {teams.map((team, i) => {
-                const rowColors = [
-                  "rgba(255,215,0,0.12)",
-                  "rgba(192,192,192,0.12)",
-                  "rgba(205,127,50,0.12)",
-                ];
-                return (
-                  <tr key={team.name} className="border-t transition-all" style={{
-                    borderColor: "#eff5f9",
-                    color: "#1d2a4d",
-                    backgroundColor: i < 3 ? rowColors[i] : "white",
-                  }}>
-                    <td className="p-2 md:p-3 text-center">
-                      <div className="flex justify-center">
-                        {i < 3 ? (
-                          <span style={{ color: [ "#FFD700", "#C0C0C0", "#CD7F32" ][i] }}>
-                            {rankIcons[i]}
-                          </span>
-                        ) : (
-                          <span className="text-xs md:text-sm font-bold" style={{ color: "#1d2a4d" }}>{i + 1}</span>
-                        )}
-                      </div>
-                    </td>
-                    <td className="p-2 md:p-3 font-bold text-xs md:text-sm">
-                      <button
-                        onClick={() => handleTeamClick(team.name)}
-                        className="text-left underline-offset-2 hover:underline cursor-pointer border-0 bg-transparent p-0 font-bold text-xs md:text-sm"
-                        style={{ color: "#1d2a4d" }}
+          <div
+            ref={tableRef}
+            className={`rounded-xl overflow-hidden ${capturing ? "capturing" : ""}`}
+            style={{
+              boxShadow: capturing ? "none" : "0 4px 20px rgba(29,42,77,0.1)",
+              backgroundColor: "white",
+            }}
+          >
+            <div className={`${capturing ? "block" : "hidden"}`}>
+              <div
+                className="relative overflow-hidden"
+                style={{
+                  background:
+                    "linear-gradient(135deg, #1d2a4d 0%, #2a3f6a 50%, #1d2a4d 100%)",
+                }}
+              >
+                <div
+                  className="absolute top-[-50%] right-[-15%] w-[280px] h-[280px] rounded-full"
+                  style={{ background: "rgba(19,197,221,0.08)" }}
+                />
+                <div
+                  className="absolute bottom-[-40%] left-[-15%] w-[240px] h-[240px] rounded-full"
+                  style={{ background: "rgba(19,197,221,0.05)" }}
+                />
+                <div className="relative z-10 p-10 text-center">
+                  <div className="flex items-center justify-center gap-3 mb-3">
+                    <div
+                      className="w-14 h-14 rounded-xl flex items-center justify-center text-2xl font-bold"
+                      style={{ backgroundColor: "#13c5dd", color: "white" }}
+                    >
+                      R
+                    </div>
+                  </div>
+                  <h1
+                    className="brand-title text-white font-bold mb-1"
+                    style={{ fontSize: "32px", letterSpacing: "-0.5px" }}
+                  >
+                    Bible Quiz League
+                  </h1>
+                  <p
+                    className="brand-subtitle"
+                    style={{ fontSize: "16px", color: "#13c5dd" }}
+                  >
+                    Relate Youth &mdash; relateweb.org.za
+                  </p>
+                </div>
+                <div
+                  className="h-[4px]"
+                  style={{
+                    background:
+                      "linear-gradient(90deg, #13c5dd, #1d2a4d, #13c5dd)",
+                  }}
+                />
+              </div>
+            </div>
+            <div className="overflow-x-auto">
+              <table className="w-full min-w-[360px]">
+                <thead>
+                  <tr style={{ backgroundColor: "#1d2a4d" }}>
+                    <th className="p-2.5 md:p-3 text-white text-[11px] md:text-xs font-semibold uppercase tracking-wider text-center w-[32px] md:w-[40px]">
+                      #
+                    </th>
+                    <th className="p-2.5 md:p-3 text-white text-[11px] md:text-xs font-semibold uppercase tracking-wider text-left">
+                      Team
+                    </th>
+                    <th className="p-2.5 md:p-3 text-white text-[11px] md:text-xs font-semibold uppercase tracking-wider text-center w-[28px] md:w-[36px]">
+                      P
+                    </th>
+                    {["S1", "S2", "S3", "S4", "S5", "S6"].map((s) => (
+                      <th
+                        key={s}
+                        className={`p-2.5 md:p-3 text-white text-[11px] md:text-xs font-semibold uppercase tracking-wider text-center w-[32px] md:w-[40px] ${fullView ? "" : "hidden"}`}
                       >
-                        {team.name}
-                      </button>
-                    </td>
-                    <td className="p-2 md:p-3 text-center">{team.played}</td>
-                    {team.scores.map((score, si) => (
-                      <td key={si} className={`p-2 md:p-3 text-center font-medium ${fullView ? "" : "hidden"}`} style={{ color: score === 2 ? "#13c5dd" : "#1d2a4d" }}>{score}</td>
+                        {s}
+                      </th>
                     ))}
-                    <td className="p-2 md:p-3 text-center font-bold text-xs md:text-sm" style={{ color: "#1d2a4d" }}>{team.gpa.toFixed(2)}</td>
+                    <th className="p-2.5 md:p-3 text-white text-[11px] md:text-xs font-semibold uppercase tracking-wider text-center w-[44px] md:w-[52px]">
+                      GPA
+                    </th>
                   </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
+                </thead>
+                <tbody>
+                  {teams.map((team, i) => {
+                    const isTop3 = i < 3;
+                    const medalColors = ["#FFD700", "#C0C0C0", "#CD7F32"];
+                    const rowBg = isTop3
+                      ? [
+                          `rgba(255,215,0,0.08)`,
+                          `rgba(192,192,192,0.08)`,
+                          `rgba(205,127,50,0.08)`,
+                        ][i]
+                      : i % 2 === 0
+                        ? "white"
+                        : "rgba(239,245,249,0.5)";
+                    return (
+                      <tr
+                        key={team.name}
+                        className="transition-all duration-200 hover:brightness-95"
+                        style={{ backgroundColor: rowBg }}
+                      >
+                        <td className="p-2.5 md:p-3 text-center">
+                          <div className="flex justify-center">
+                            {isTop3 ? (
+                              <span
+                                className="rank-medal text-sm md:text-base"
+                                style={{ color: medalColors[i] }}
+                              >
+                                {rankIcons[i]}
+                              </span>
+                            ) : (
+                              <span
+                                className="badge-rank inline-flex items-center justify-center w-6 h-6 md:w-7 md:h-7 rounded-full text-[11px] md:text-xs font-bold"
+                                style={{
+                                  backgroundColor: "#eff5f9",
+                                  color: "#1d2a4d",
+                                }}
+                              >
+                                {i + 1}
+                              </span>
+                            )}
+                          </div>
+                        </td>
+                        <td className="p-2.5 md:p-3">
+                          <button
+                            onClick={() => handleTeamClick(team.name)}
+                            className="team-name text-left cursor-pointer border-0 bg-transparent p-0 text-[11px] md:text-sm font-semibold truncate max-w-[120px] md:max-w-[200px] lg:max-w-none"
+                            style={{ color: "#1d2a4d" }}
+                          >
+                            {team.name}
+                          </button>
+                        </td>
+                        <td className="p-2.5 md:p-3 text-center">
+                          <span
+                            className="badge-pill inline-flex items-center justify-center min-w-[22px] md:min-w-[26px] h-5 md:h-6 rounded text-[11px] md:text-xs font-bold"
+                            style={{ backgroundColor: "#eff5f9" }}
+                          >
+                            {team.played}
+                          </span>
+                        </td>
+                        {team.scores.map((score, si) => (
+                          <td
+                            key={si}
+                            className={`p-2.5 md:p-3 text-center ${fullView ? "" : "hidden"}`}
+                          >
+                            <span
+                              className="badge-score inline-flex items-center justify-center w-6 h-6 md:w-7 md:h-7 rounded-full text-[11px] md:text-xs font-bold"
+                              style={{
+                                backgroundColor:
+                                  score === 2
+                                    ? "rgba(19,197,221,0.15)"
+                                    : "rgba(29,42,77,0.08)",
+                                color: score === 2 ? "#13c5dd" : "#1d2a4d",
+                              }}
+                            >
+                              {score}
+                            </span>
+                          </td>
+                        ))}
+                        <td className="p-2.5 md:p-3 text-center">
+                          <span
+                            className="gpa-badge inline-flex items-center justify-center min-w-[36px] md:min-w-[44px] h-6 md:h-7 rounded text-[11px] md:text-xs font-bold"
+                            style={{
+                              backgroundColor:
+                                team.gpa >= 1.5
+                                  ? "rgba(19,197,221,0.12)"
+                                  : "rgba(29,42,77,0.06)",
+                              color: team.gpa >= 1.5 ? "#13c5dd" : "#1d2a4d",
+                            }}
+                          >
+                            {team.gpa.toFixed(2)}
+                          </span>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+            <p
+              className="legend-text text-sm mt-4 pb-2 text-center"
+              style={{ color: "#1d2a4d" }}
+            >
+              <span className="opacity-60">
+                S1&ndash;S6 = score per session (2 = win, 0 = loss) &middot; GPA
+                = average per session
+              </span>
+            </p>
+            <div
+              className={`${capturing ? "block" : "hidden"}`}
+              style={{
+                backgroundColor: "#f8fafc",
+                borderTop: "1px solid #e2e8f0",
+                padding: "20px 40px",
+                textAlign: "center",
+              }}
+            >
+              <div
+                className="footer-text"
+                style={{ fontSize: "13px", color: "#94a3b8", lineHeight: 1.6 }}
+              >
+                <strong style={{ color: "#64748b" }}>
+                  Relate Youth &middot; Bible Quiz League
+                </strong>
+                <br />
+                Contact: info@relateweb.org.za &middot; relateweb.org.za
+                &middot; Thank you for your support
+              </div>
+            </div>
+          </div>
         )}
-        <p className="text-xs mt-3 text-center" style={{ color: "#1d2a4d" }}>
-          S1&ndash;S6 = score per session (2 = win, 0 = loss) &middot; GPA = average per session
-        </p>
       </div>
 
       {selectedTeam && (
@@ -386,7 +791,10 @@ function LeagueTableSection({ refetchKey }) {
         >
           <div
             className="rounded-xl w-full max-w-md overflow-hidden"
-            style={{ backgroundColor: "white", boxShadow: "0 8px 32px rgba(29,42,77,0.2)" }}
+            style={{
+              backgroundColor: "white",
+              boxShadow: "0 8px 32px rgba(29,42,77,0.2)",
+            }}
             onClick={(e) => e.stopPropagation()}
           >
             <div className="p-5 md:p-6" style={{ backgroundColor: "#1d2a4d" }}>
@@ -403,29 +811,58 @@ function LeagueTableSection({ refetchKey }) {
             <div className="p-5 md:p-6">
               {detailLoading ? (
                 <div className="flex justify-center py-6">
-                  <div className="w-6 h-6 border-2 rounded-full animate-spin" style={{ borderColor: "#13c5dd", borderTopColor: "transparent" }} />
+                  <div
+                    className="w-6 h-6 border-2 rounded-full animate-spin"
+                    style={{
+                      borderColor: "#13c5dd",
+                      borderTopColor: "transparent",
+                    }}
+                  />
                 </div>
               ) : teamDetail ? (
                 <div className="space-y-3 text-sm" style={{ color: "#1d2a4d" }}>
                   <div>
-                    <span className="text-xs font-medium" style={{ color: "#13c5dd" }}>Captain</span>
+                    <span
+                      className="text-xs font-medium"
+                      style={{ color: "#13c5dd" }}
+                    >
+                      Captain
+                    </span>
                     <p className="font-medium">{teamDetail.name}</p>
                   </div>
                   <div>
-                    <span className="text-xs font-medium" style={{ color: "#13c5dd" }}>Phone</span>
+                    <span
+                      className="text-xs font-medium"
+                      style={{ color: "#13c5dd" }}
+                    >
+                      Phone
+                    </span>
                     <p className="font-medium">{teamDetail.phone}</p>
                   </div>
                   <div>
-                    <span className="text-xs font-medium" style={{ color: "#13c5dd" }}>Member 2</span>
+                    <span
+                      className="text-xs font-medium"
+                      style={{ color: "#13c5dd" }}
+                    >
+                      Member 2
+                    </span>
                     <p className="font-medium">{teamDetail.member2}</p>
                   </div>
                   <div>
-                    <span className="text-xs font-medium" style={{ color: "#13c5dd" }}>Member 3</span>
+                    <span
+                      className="text-xs font-medium"
+                      style={{ color: "#13c5dd" }}
+                    >
+                      Member 3
+                    </span>
                     <p className="font-medium">{teamDetail.member3}</p>
                   </div>
                 </div>
               ) : (
-                <p className="text-sm text-center py-4" style={{ color: "#1d2a4d" }}>
+                <p
+                  className="text-sm text-center py-4"
+                  style={{ color: "#1d2a4d" }}
+                >
                   No registration details available.
                 </p>
               )}
@@ -444,14 +881,26 @@ function PrizesSection() {
       label: "Champion",
       accent: "#13c5dd",
       medalColor: "#FFD700",
-      items: ["Trophy", "Gold Medal", "Relate-branded notebook", "Relate pen", "Relate mug", "Relate plate"],
+      items: [
+        "Trophy",
+        "Gold Medal",
+        "Relate-branded notebook",
+        "Relate pen",
+        "Relate mug",
+        "Relate plate",
+      ],
     },
     {
       rank: "2nd",
       label: "Runner-up",
       accent: "#1d2a4d",
       medalColor: "#C0C0C0",
-      items: ["Silver Medal", "Relate-branded notebook", "Relate pen", "Relate mug"],
+      items: [
+        "Silver Medal",
+        "Relate-branded notebook",
+        "Relate pen",
+        "Relate mug",
+      ],
     },
     {
       rank: "3rd",
@@ -463,13 +912,18 @@ function PrizesSection() {
   ];
 
   return (
-    <section className="py-16 md:py-20 px-4" style={{ backgroundColor: "#eff5f9" }}>
+    <section
+      className="py-16 md:py-20 px-4"
+      style={{ backgroundColor: "#eff5f9" }}
+    >
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
           <div className="flex justify-center mb-2">
             <HiOutlineStar className="text-3xl" style={{ color: "#13c5dd" }} />
           </div>
-          <h2 className="text-3xl font-medium" style={{ color: "#1d2a4d" }}>Prizes</h2>
+          <h2 className="text-3xl font-medium" style={{ color: "#1d2a4d" }}>
+            Prizes
+          </h2>
           <p className="text-sm mt-2" style={{ color: "#1d2a4d" }}>
             Top 3 teams at the end of Season 2 take home Relate-branded goodies
           </p>
@@ -479,11 +933,20 @@ function PrizesSection() {
             <div
               key={p.rank}
               className="rounded-xl p-6 text-center transition-all duration-300 hover:-translate-y-1 flex flex-col items-center"
-              style={{ backgroundColor: "white", border: `1px solid rgba(19,197,221,0.2)` }}
+              style={{
+                backgroundColor: "white",
+                border: `1px solid rgba(19,197,221,0.2)`,
+              }}
             >
               <div className="flex items-center justify-center gap-1.5 mb-3">
-                <HiOutlineTrophy className="text-2xl" style={{ color: p.medalColor }} />
-                <HiOutlineStar className="text-lg" style={{ color: p.medalColor }} />
+                <HiOutlineTrophy
+                  className="text-2xl"
+                  style={{ color: p.medalColor }}
+                />
+                <HiOutlineStar
+                  className="text-lg"
+                  style={{ color: p.medalColor }}
+                />
               </div>
               <div
                 className="inline-flex items-center justify-center rounded-full text-xs font-bold text-white px-4 py-1 mb-2"
@@ -491,13 +954,22 @@ function PrizesSection() {
               >
                 {p.rank} Place
               </div>
-              <div className="text-sm font-medium mb-4" style={{ color: "#1d2a4d" }}>{p.label}</div>
+              <div
+                className="text-sm font-medium mb-4"
+                style={{ color: "#1d2a4d" }}
+              >
+                {p.label}
+              </div>
               <ul className="space-y-2 w-full text-left max-w-[200px] mx-auto">
                 {p.items.map((item, j) => {
                   const isMedal = item.includes("Medal");
                   const isTrophy = item === "Trophy";
                   return (
-                    <li key={j} className="flex items-center gap-2 text-sm" style={{ color: "#1d2a4d" }}>
+                    <li
+                      key={j}
+                      className="flex items-center gap-2 text-sm"
+                      style={{ color: "#1d2a4d" }}
+                    >
                       <span className="shrink-0 flex items-center justify-center size-4">
                         {isTrophy || isMedal ? (
                           <span style={{ color: p.medalColor }}>
@@ -545,25 +1017,54 @@ const champions = [
 ];
 
 const galleryImages = [
-  { src: "https://images.unsplash.com/photo-1529543544282-ea99307427d3?q=80&w=600&h=400&auto=format&fit=crop", caption: "Season 1 Opening Session" },
-  { src: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=600&h=400&auto=format&fit=crop", caption: "Teams in Action" },
-  { src: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=600&h=400&auto=format&fit=crop", caption: "Quiz Master at Work" },
-  { src: "https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=600&h=400&auto=format&fit=crop", caption: "Team Study Session" },
-  { src: "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?q=80&w=600&h=400&auto=format&fit=crop", caption: "Award Ceremony" },
-  { src: "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=600&h=400&auto=format&fit=crop", caption: "Champions Celebration" },
+  {
+    src: "https://images.unsplash.com/photo-1529543544282-ea99307427d3?q=80&w=600&h=400&auto=format&fit=crop",
+    caption: "Season 1 Opening Session",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=600&h=400&auto=format&fit=crop",
+    caption: "Teams in Action",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=600&h=400&auto=format&fit=crop",
+    caption: "Quiz Master at Work",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=600&h=400&auto=format&fit=crop",
+    caption: "Team Study Session",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?q=80&w=600&h=400&auto=format&fit=crop",
+    caption: "Award Ceremony",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=600&h=400&auto=format&fit=crop",
+    caption: "Champions Celebration",
+  },
 ];
 
 const galleryImages2 = [
-  { src: "https://images.unsplash.com/photo-1472162072942-cd5147eb3902?q=80&w=600&h=400&auto=format&fit=crop", caption: "Group Photo Day" },
-  { src: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=600&h=400&auto=format&fit=crop", caption: "Final Round" },
-  { src: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=600&h=400&auto=format&fit=crop", caption: "Season Wrap-Up" },
+  {
+    src: "https://images.unsplash.com/photo-1472162072942-cd5147eb3902?q=80&w=600&h=400&auto=format&fit=crop",
+    caption: "Group Photo Day",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=600&h=400&auto=format&fit=crop",
+    caption: "Final Round",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=600&h=400&auto=format&fit=crop",
+    caption: "Season Wrap-Up",
+  },
 ];
 
 function ChampionsSection() {
   const [current, setCurrent] = useState(0);
   const c = champions[current];
-  const prev = () => setCurrent((i) => (i === 0 ? champions.length - 1 : i - 1));
-  const next = () => setCurrent((i) => (i === champions.length - 1 ? 0 : i + 1));
+  const prev = () =>
+    setCurrent((i) => (i === 0 ? champions.length - 1 : i - 1));
+  const next = () =>
+    setCurrent((i) => (i === champions.length - 1 ? 0 : i + 1));
 
   return (
     <section className="py-16 md:py-20" style={{ backgroundColor: "white" }}>
@@ -571,18 +1072,41 @@ function ChampionsSection() {
         <div className="flex justify-center mb-2">
           <HiOutlineTrophy className="text-3xl" style={{ color: "#FFD700" }} />
         </div>
-        <h2 className="text-2xl md:text-3xl font-medium" style={{ color: "#1d2a4d" }}>Champions</h2>
+        <h2
+          className="text-2xl md:text-3xl font-medium"
+          style={{ color: "#1d2a4d" }}
+        >
+          Champions
+        </h2>
         <p className="text-xs md:text-sm mt-2" style={{ color: "#1d2a4d" }}>
           Past and current title holders
         </p>
       </div>
       <div className="max-w-5xl mx-auto px-4 relative">
-        <div className="rounded-sm overflow-hidden transition-all duration-500" style={{ backgroundColor: "white", border: "1px solid rgba(19,197,221,0.2)", boxShadow: "0 4px 20px rgba(255,215,0,0.15)" }}>
-          <img src={c.img} alt={c.team} className="w-full h-[80vh] object-cover" />
+        <div
+          className="rounded-sm overflow-hidden transition-all duration-500"
+          style={{
+            backgroundColor: "white",
+            border: "1px solid rgba(19,197,221,0.2)",
+            boxShadow: "0 4px 20px rgba(255,215,0,0.15)",
+          }}
+        >
+          <img
+            src={c.img}
+            alt={c.team}
+            className="w-full h-[80vh] object-cover"
+          />
           <div className="p-5 md:p-6 text-center">
-            <h3 className="text-lg font-bold" style={{ color: "#1d2a4d" }}>{c.team}</h3>
-            <p className="text-xs mt-1 mb-3" style={{ color: "#13c5dd" }}>{c.members.join(" · ")}</p>
-            <div className="inline-flex items-center gap-1 text-xs rounded-full px-3 py-1" style={{ backgroundColor: "#fff8e1", color: "#b8860b" }}>
+            <h3 className="text-lg font-bold" style={{ color: "#1d2a4d" }}>
+              {c.team}
+            </h3>
+            <p className="text-xs mt-1 mb-3" style={{ color: "#13c5dd" }}>
+              {c.members.join(" · ")}
+            </p>
+            <div
+              className="inline-flex items-center gap-1 text-xs rounded-full px-3 py-1"
+              style={{ backgroundColor: "#fff8e1", color: "#b8860b" }}
+            >
               <HiOutlineTrophy /> Season {c.season} Champions
             </div>
           </div>
@@ -593,15 +1117,15 @@ function ChampionsSection() {
           style={{ backgroundColor: "#13c5dd" }}
           aria-label="Previous champion"
         >
-            <HiOutlineChevronLeft className="text-sm" />
-          </button>
-          <button
-            onClick={next}
-            className="absolute right-2 md:right-4 top-[calc(50%-5rem)] md:top-[calc(50%-6rem)] -translate-y-1/2 w-9 h-9 rounded-full flex items-center justify-center text-white transition-all hover:opacity-90 cursor-pointer border-0"
-            style={{ backgroundColor: "#13c5dd" }}
-            aria-label="Next champion"
-          >
-            <HiOutlineChevronRight className="text-sm" />
+          <HiOutlineChevronLeft className="text-sm" />
+        </button>
+        <button
+          onClick={next}
+          className="absolute right-2 md:right-4 top-[calc(50%-5rem)] md:top-[calc(50%-6rem)] -translate-y-1/2 w-9 h-9 rounded-full flex items-center justify-center text-white transition-all hover:opacity-90 cursor-pointer border-0"
+          style={{ backgroundColor: "#13c5dd" }}
+          aria-label="Next champion"
+        >
+          <HiOutlineChevronRight className="text-sm" />
         </button>
         <div className="flex justify-center gap-2 mt-4">
           {champions.map((_, i) => (
@@ -609,7 +1133,10 @@ function ChampionsSection() {
               key={i}
               onClick={() => setCurrent(i)}
               className="w-2 h-2 rounded-full border-0 cursor-pointer transition-all"
-              style={{ backgroundColor: i === current ? "#13c5dd" : "rgba(19,197,221,0.3)" }}
+              style={{
+                backgroundColor:
+                  i === current ? "#13c5dd" : "rgba(19,197,221,0.3)",
+              }}
               aria-label={`Go to champion ${i + 1}`}
             />
           ))}
@@ -625,13 +1152,24 @@ function GallerySection() {
   const visible = showAll ? allImages : allImages.slice(0, 6);
 
   return (
-    <section className="py-16 md:py-20 px-4" style={{ backgroundColor: "white" }}>
+    <section
+      className="py-16 md:py-20 px-4"
+      style={{ backgroundColor: "white" }}
+    >
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-10 md:mb-12">
           <div className="flex justify-center mb-2">
-            <HiOutlineStar className="text-2xl md:text-3xl" style={{ color: "#13c5dd" }} />
+            <HiOutlineStar
+              className="text-2xl md:text-3xl"
+              style={{ color: "#13c5dd" }}
+            />
           </div>
-          <h2 className="text-2xl md:text-3xl font-medium" style={{ color: "#1d2a4d" }}>Session Gallery</h2>
+          <h2
+            className="text-2xl md:text-3xl font-medium"
+            style={{ color: "#1d2a4d" }}
+          >
+            Session Gallery
+          </h2>
           <p className="text-xs md:text-sm mt-2" style={{ color: "#1d2a4d" }}>
             Photos from past quiz sessions and events
           </p>
@@ -640,9 +1178,15 @@ function GallerySection() {
           {visible.map((img, i) => (
             <SlideUp key={i} delay={i * 60}>
               <div className="rounded-lg overflow-hidden group cursor-pointer">
-                <img src={img.src} alt={img.caption} className="w-full aspect-[3/2] object-cover transition-transform duration-500 group-hover:scale-110" />
+                <img
+                  src={img.src}
+                  alt={img.caption}
+                  className="w-full aspect-[3/2] object-cover transition-transform duration-500 group-hover:scale-110"
+                />
                 <div className="p-2 md:p-3">
-                  <p className="text-xs" style={{ color: "#1d2a4d" }}>{img.caption}</p>
+                  <p className="text-xs" style={{ color: "#1d2a4d" }}>
+                    {img.caption}
+                  </p>
                 </div>
               </div>
             </SlideUp>
@@ -668,13 +1212,21 @@ function SampleQuestionsSection() {
   const [openIndex, setOpenIndex] = useState(null);
 
   return (
-    <section className="py-16 md:py-20 px-4" style={{ backgroundColor: "white" }}>
+    <section
+      className="py-16 md:py-20 px-4"
+      style={{ backgroundColor: "white" }}
+    >
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
           <div className="flex justify-center mb-2">
-            <HiOutlineLightBulb className="text-3xl" style={{ color: "#13c5dd" }} />
+            <HiOutlineLightBulb
+              className="text-3xl"
+              style={{ color: "#13c5dd" }}
+            />
           </div>
-          <h2 className="text-3xl font-medium" style={{ color: "#1d2a4d" }}>Practice Questions</h2>
+          <h2 className="text-3xl font-medium" style={{ color: "#1d2a4d" }}>
+            Practice Questions
+          </h2>
           <p className="text-sm mt-2" style={{ color: "#1d2a4d" }}>
             Tap a question to reveal the answer
           </p>
@@ -695,22 +1247,42 @@ function SampleQuestionsSection() {
                 <div className="flex items-start gap-3 p-4">
                   <div className="shrink-0 mt-0.5 flex">
                     {isOpen ? (
-                      <HiOutlineLightBulb className="text-lg" style={{ color: "#13c5dd" }} />
+                      <HiOutlineLightBulb
+                        className="text-lg"
+                        style={{ color: "#13c5dd" }}
+                      />
                     ) : (
-                      <HiOutlineQuestionMarkCircle className="text-lg" style={{ color: "#1d2a4d" }} />
+                      <HiOutlineQuestionMarkCircle
+                        className="text-lg"
+                        style={{ color: "#1d2a4d" }}
+                      />
                     )}
                   </div>
                   <div className="min-w-0">
-                    <p className="text-sm leading-relaxed font-medium" style={{ color: "#1d2a4d" }}>{item.q}</p>
+                    <p
+                      className="text-sm leading-relaxed font-medium"
+                      style={{ color: "#1d2a4d" }}
+                    >
+                      {item.q}
+                    </p>
                     {isOpen && (
-                      <p className="text-sm leading-relaxed mt-3 pt-3 border-t font-medium flex items-center gap-1.5" style={{ color: "#13c5dd", borderColor: "rgba(19,197,221,0.25)" }}>
+                      <p
+                        className="text-sm leading-relaxed mt-3 pt-3 border-t font-medium flex items-center gap-1.5"
+                        style={{
+                          color: "#13c5dd",
+                          borderColor: "rgba(19,197,221,0.25)",
+                        }}
+                      >
                         <HiOutlineCheckCircle />
                         <span>{item.a}</span>
                       </p>
                     )}
                   </div>
                 </div>
-                <div className="px-4 pb-3 flex items-center gap-1 text-xs" style={{ color: isOpen ? "#1d2a4d" : "#13c5dd" }}>
+                <div
+                  className="px-4 pb-3 flex items-center gap-1 text-xs"
+                  style={{ color: isOpen ? "#1d2a4d" : "#13c5dd" }}
+                >
                   {isOpen ? "Tap to hide" : "Tap to reveal"}
                 </div>
               </div>
@@ -770,19 +1342,40 @@ function RegistrationCTA({ onRegister }) {
 
   if (submitted) {
     return (
-      <section className="py-16 md:py-20 px-4 relative overflow-hidden" style={{ backgroundColor: "#eff5f9" }}>
+      <section
+        className="py-16 md:py-20 px-4 relative overflow-hidden"
+        style={{ backgroundColor: "#eff5f9" }}
+      >
         <div className="max-w-4xl mx-auto relative z-10">
-          <div className="rounded-xl p-8 md:p-12 text-center" style={{ backgroundColor: "#1d2a4d" }}>
-            <HiOutlineCheckCircle className="text-4xl mx-auto mb-4" style={{ color: "#13c5dd" }} />
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">Registration Received!</h2>
+          <div
+            className="rounded-xl p-8 md:p-12 text-center"
+            style={{ backgroundColor: "#1d2a4d" }}
+          >
+            <HiOutlineCheckCircle
+              className="text-4xl mx-auto mb-4"
+              style={{ color: "#13c5dd" }}
+            />
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
+              Registration Received!
+            </h2>
             <p className="text-sm text-white/70 max-w-md mx-auto">
-              Your team <strong style={{ color: "#13c5dd" }}>{teamName}</strong> has been registered.
+              Your team <strong style={{ color: "#13c5dd" }}>{teamName}</strong>{" "}
+              has been registered.
             </p>
             <p className="text-xs text-white/60 mt-2 max-w-md mx-auto">
-              Find your team on the <strong style={{ color: "#13c5dd" }}>Leaderboard</strong> below. Your name will appear as soon as you play your first session.
+              Find your team on the{" "}
+              <strong style={{ color: "#13c5dd" }}>Leaderboard</strong> below.
+              Your name will appear as soon as you play your first session.
             </p>
             <button
-              onClick={() => { setSubmitted(false); setName(""); setPhone(""); setTeamName(""); setMember2(""); setMember3(""); }}
+              onClick={() => {
+                setSubmitted(false);
+                setName("");
+                setPhone("");
+                setTeamName("");
+                setMember2("");
+                setMember3("");
+              }}
               className="mt-6 px-6 py-2.5 rounded-xl text-sm font-medium text-white transition-all hover:opacity-90 cursor-pointer border-0"
               style={{ backgroundColor: "#13c5dd" }}
             >
@@ -795,107 +1388,181 @@ function RegistrationCTA({ onRegister }) {
   }
 
   return (
-    <section className="py-16 md:py-20 px-4 relative overflow-hidden" style={{ backgroundColor: "#eff5f9" }}>
-      <div className="absolute inset-0 opacity-[0.07]" style={{ backgroundImage: "radial-gradient(circle at 80% 20%, #13c5dd 2px, transparent 2px)", backgroundSize: "30px 30px" }} />
+    <section
+      className="py-16 md:py-20 px-4 relative overflow-hidden"
+      style={{ backgroundColor: "#eff5f9" }}
+    >
+      <div
+        className="absolute inset-0 opacity-[0.07]"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle at 80% 20%, #13c5dd 2px, transparent 2px)",
+          backgroundSize: "30px 30px",
+        }}
+      />
       <div className="max-w-4xl mx-auto relative z-10">
-        <div className="rounded-xl p-8 md:p-12 relative overflow-hidden" style={{ backgroundColor: "#1d2a4d" }}>
-          <div className="absolute top-0 right-0 w-64 h-64 rounded-full -translate-y-1/3 translate-x-1/3" style={{ backgroundColor: "rgba(19,197,221,0.1)" }} />
-          <div className="absolute bottom-0 left-0 w-48 h-48 rounded-full translate-y-1/3 -translate-x-1/3" style={{ backgroundColor: "rgba(19,197,221,0.06)" }} />
+        <div
+          className="rounded-xl p-8 md:p-12 relative overflow-hidden"
+          style={{ backgroundColor: "#1d2a4d" }}
+        >
+          <div
+            className="absolute top-0 right-0 w-64 h-64 rounded-full -translate-y-1/3 translate-x-1/3"
+            style={{ backgroundColor: "rgba(19,197,221,0.1)" }}
+          />
+          <div
+            className="absolute bottom-0 left-0 w-48 h-48 rounded-full translate-y-1/3 -translate-x-1/3"
+            style={{ backgroundColor: "rgba(19,197,221,0.06)" }}
+          />
           <div className="relative z-10">
             <div className="text-center mb-2">
               <div className="flex justify-center mb-2">
-                <HiOutlineTrophy className="text-3xl" style={{ color: "#13c5dd" }} />
+                <HiOutlineTrophy
+                  className="text-3xl"
+                  style={{ color: "#13c5dd" }}
+                />
               </div>
-              <h2 className="text-2xl md:text-3xl font-bold text-white">Register Your Squad</h2>
+              <h2 className="text-2xl md:text-3xl font-bold text-white">
+                Register Your Squad
+              </h2>
               <p className="text-sm text-white/70 mt-1 max-w-md mx-auto">
-                Grab 2 friends, pick a team name, and secure your spot. Only 12 teams get in!
+                Grab 2 friends, pick a team name, and secure your spot. Only 12
+                teams get in!
               </p>
             </div>
             {availableTeams.length === 0 ? (
               <div className="max-w-md mx-auto mt-8 text-center">
-                <div className="rounded-lg p-6" style={{ backgroundColor: "rgba(255,255,255,0.08)" }}>
+                <div
+                  className="rounded-lg p-6"
+                  style={{ backgroundColor: "rgba(255,255,255,0.08)" }}
+                >
                   <p className="text-white font-medium">Registration Full</p>
-                  <p className="text-xs text-white/60 mt-1">All 12 teams are in. Registration will open soon for the next season!</p>
+                  <p className="text-xs text-white/60 mt-1">
+                    All 12 teams are in. Registration will open soon for the
+                    next season!
+                  </p>
                 </div>
               </div>
             ) : (
-            <form onSubmit={handleSubmit} className="max-w-lg mx-auto mt-8 space-y-4">
-              <div>
-                <label className="block text-xs mb-1 text-white/80 font-medium">Team Name</label>
-                <select
-                  value={teamName}
-                  onChange={(e) => setTeamName(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-all focus:ring-2 appearance-none"
-                  style={{ backgroundColor: "rgba(255,255,255,0.1)", color: "white" }}
-                  required
-                >
-                  <option value="" disabled style={{ color: "#1d2a4d" }}>Select your team</option>
-                  {availableTeams.length > 0 ? availableTeams.map((t) => (
-                    <option key={t.name} value={t.name} style={{ color: "#1d2a4d" }}>{t.name}</option>
-                  )) : (
-                    <option value="" disabled style={{ color: "#1d2a4d" }}>All teams registered</option>
-                  )}
-                </select>
-              </div>
-              <div className="grid sm:grid-cols-2 gap-4">
+              <form
+                onSubmit={handleSubmit}
+                className="max-w-lg mx-auto mt-8 space-y-4"
+              >
                 <div>
-                  <label className="block text-xs mb-1 text-white/80 font-medium">Your Name</label>
+                  <label className="block text-xs mb-1 text-white/80 font-medium">
+                    Team Name
+                  </label>
+                  <select
+                    value={teamName}
+                    onChange={(e) => setTeamName(e.target.value)}
+                    className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-all focus:ring-2 appearance-none"
+                    style={{
+                      backgroundColor: "rgba(255,255,255,0.1)",
+                      color: "white",
+                    }}
+                    required
+                  >
+                    <option value="" disabled style={{ color: "#1d2a4d" }}>
+                      Select your team
+                    </option>
+                    {availableTeams.length > 0 ? (
+                      availableTeams.map((t) => (
+                        <option
+                          key={t.name}
+                          value={t.name}
+                          style={{ color: "#1d2a4d" }}
+                        >
+                          {t.name}
+                        </option>
+                      ))
+                    ) : (
+                      <option value="" disabled style={{ color: "#1d2a4d" }}>
+                        All teams registered
+                      </option>
+                    )}
+                  </select>
+                </div>
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs mb-1 text-white/80 font-medium">
+                      Your Name
+                    </label>
+                    <input
+                      type="text"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-all focus:ring-2"
+                      style={{
+                        backgroundColor: "rgba(255,255,255,0.1)",
+                        color: "white",
+                      }}
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs mb-1 text-white/80 font-medium">
+                      Your Phone
+                    </label>
+                    <input
+                      type="tel"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-all focus:ring-2"
+                      style={{
+                        backgroundColor: "rgba(255,255,255,0.1)",
+                        color: "white",
+                      }}
+                      placeholder="+27 XXX XXX XXX"
+                      required
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-xs mb-1 text-white/80 font-medium">
+                    Team Member 2
+                  </label>
                   <input
                     type="text"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
+                    value={member2}
+                    onChange={(e) => setMember2(e.target.value)}
                     className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-all focus:ring-2"
-                    style={{ backgroundColor: "rgba(255,255,255,0.1)", color: "white" }}
+                    style={{
+                      backgroundColor: "rgba(255,255,255,0.1)",
+                      color: "white",
+                    }}
                     required
                   />
                 </div>
                 <div>
-                  <label className="block text-xs mb-1 text-white/80 font-medium">Your Phone</label>
+                  <label className="block text-xs mb-1 text-white/80 font-medium">
+                    Team Member 3
+                  </label>
                   <input
-                    type="tel"
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
+                    type="text"
+                    value={member3}
+                    onChange={(e) => setMember3(e.target.value)}
                     className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-all focus:ring-2"
-                    style={{ backgroundColor: "rgba(255,255,255,0.1)", color: "white" }}
-                    placeholder="+27 XXX XXX XXX"
+                    style={{
+                      backgroundColor: "rgba(255,255,255,0.1)",
+                      color: "white",
+                    }}
                     required
                   />
                 </div>
-              </div>
-              <div>
-                <label className="block text-xs mb-1 text-white/80 font-medium">Team Member 2</label>
-                <input
-                  type="text"
-                  value={member2}
-                  onChange={(e) => setMember2(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-all focus:ring-2"
-                  style={{ backgroundColor: "rgba(255,255,255,0.1)", color: "white" }}
-                  required
-                />
-              </div>
-              <div>
-                <label className="block text-xs mb-1 text-white/80 font-medium">Team Member 3</label>
-                <input
-                  type="text"
-                  value={member3}
-                  onChange={(e) => setMember3(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-all focus:ring-2"
-                  style={{ backgroundColor: "rgba(255,255,255,0.1)", color: "white" }}
-                  required
-                />
-              </div>
-              {error && (
-                <p className="text-xs text-red-400 text-center">{error}</p>
-              )}
-              <button
-                type="submit"
-                disabled={loading}
-                className="w-full py-3.5 rounded-xl text-sm font-bold text-white transition-all hover:opacity-90 hover:-translate-y-0.5 cursor-pointer border-0 disabled:opacity-60 disabled:hover:translate-y-0"
-                style={{ backgroundColor: "#13c5dd", boxShadow: "0 4px 14px rgba(19,197,221,0.35)" }}
-              >
-                {loading ? "Registering..." : "Register"}
-              </button>
-            </form>
+                {error && (
+                  <p className="text-xs text-red-400 text-center">{error}</p>
+                )}
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="w-full py-3.5 rounded-xl text-sm font-bold text-white transition-all hover:opacity-90 hover:-translate-y-0.5 cursor-pointer border-0 disabled:opacity-60 disabled:hover:translate-y-0"
+                  style={{
+                    backgroundColor: "#13c5dd",
+                    boxShadow: "0 4px 14px rgba(19,197,221,0.35)",
+                  }}
+                >
+                  {loading ? "Registering..." : "Register"}
+                </button>
+              </form>
             )}
           </div>
         </div>

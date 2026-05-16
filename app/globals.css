@@ -150,3 +150,74 @@
     @apply font-sans;
   }
 }
+
+.capturing {
+}
+
+.capturing table * {
+  font-size: 18px !important;
+}
+
+.capturing table td,
+.capturing table th {
+  padding: 16px 18px !important;
+}
+
+.capturing th {
+  line-height: 1.4 !important;
+}
+
+.capturing .badge-score {
+  width: 44px !important;
+  height: 44px !important;
+  line-height: 44px !important;
+}
+
+.capturing .badge-pill {
+  min-width: 48px !important;
+  height: 36px !important;
+  line-height: 36px !important;
+}
+
+.capturing .badge-rank {
+  width: 44px !important;
+  height: 44px !important;
+  line-height: 44px !important;
+}
+
+.capturing .rank-medal {
+  font-size: 32px !important;
+}
+
+.capturing .team-name {
+  max-width: none !important;
+  white-space: nowrap !important;
+  font-size: 18px !important;
+}
+
+.capturing .gpa-badge {
+  font-size: 18px !important;
+  min-width: 64px !important;
+  height: 40px !important;
+  line-height: 40px !important;
+}
+
+.capturing .brand-title {
+  font-size: 36px !important;
+}
+
+.capturing .brand-subtitle {
+  font-size: 20px !important;
+}
+
+.capturing .brand-info-text {
+  font-size: 16px !important;
+}
+
+.capturing .legend-text {
+  font-size: 16px !important;
+}
+
+.capturing .footer-text {
+  font-size: 14px !important;
+}
