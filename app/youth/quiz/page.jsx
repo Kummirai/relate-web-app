@@ -424,7 +424,7 @@ function BooksSection() {
                     style={{ borderColor: "#eff5f9", color: "#1d2a4d" }}
                   >
                     <td
-                      className={`p-2 md:p-3 font-bold ${scheduleFull ? "" : "hidden"}`}
+                      className={`p-2 md:p-3 font-medium ${scheduleFull ? "" : "hidden"}`}
                     >
                       {s.session}
                     </td>
@@ -573,13 +573,13 @@ function LeagueTableSection({ refetchKey }) {
         ) : (
           <div
             ref={tableRef}
-            className={`rounded-xl overflow-hidden ${capturing ? "capturing" : ""}`}
+            className={`rounded-xl ${capturing ? "capturing" : ""} ${!fullView ? "w-fit mx-auto overflow-hidden" : "overflow-hidden"}`}
             style={{
               boxShadow: capturing ? "none" : "0 4px 20px rgba(29,42,77,0.1)",
               backgroundColor: "white",
             }}
           >
-            <div className={`${capturing ? "block" : "hidden"}`}>
+            <div className={`${capturing ? "block" : "hidden"} ${!fullView ? "mx-auto" : ""}`} style={!fullView ? { maxWidth: "520px" } : undefined}>
               <div
                 className="relative overflow-hidden"
                 style={{
@@ -605,15 +605,12 @@ function LeagueTableSection({ refetchKey }) {
                     </div>
                   </div>
                   <h1
-                    className="brand-title text-white font-bold mb-1"
+                    className="text-white font-bold mb-1"
                     style={{ fontSize: "32px", letterSpacing: "-0.5px" }}
                   >
                     Bible Quiz League
                   </h1>
-                  <p
-                    className="brand-subtitle"
-                    style={{ fontSize: "16px", color: "#13c5dd" }}
-                  >
+                  <p style={{ fontSize: "16px", color: "#13c5dd" }}>
                     Relate Youth &mdash; relateweb.org.za
                   </p>
                 </div>
@@ -626,120 +623,72 @@ function LeagueTableSection({ refetchKey }) {
                 />
               </div>
             </div>
-            <div className="overflow-x-auto">
-              <table className="w-full min-w-[360px]">
+            <div className={fullView ? "overflow-x-auto" : "flex justify-center"}>
+              <table className={`${fullView ? "w-full" : ""}`} style={{ borderCollapse: "separate", borderSpacing: 0, minWidth: fullView ? undefined : "520px" }}>
                 <thead>
                   <tr style={{ backgroundColor: "#1d2a4d" }}>
-                    <th className="p-2.5 md:p-3 text-white text-[11px] md:text-xs font-semibold uppercase tracking-wider text-center w-[32px] md:w-[40px]">
-                      #
-                    </th>
-                    <th className="p-2.5 md:p-3 text-white text-[11px] md:text-xs font-semibold uppercase tracking-wider text-left">
-                      Team
-                    </th>
-                    <th className="p-2.5 md:p-3 text-white text-[11px] md:text-xs font-semibold uppercase tracking-wider text-center w-[28px] md:w-[36px]">
-                      P
-                    </th>
-                    {["S1", "S2", "S3", "S4", "S5", "S6"].map((s) => (
-                      <th
-                        key={s}
-                        className={`p-2.5 md:p-3 text-white text-[11px] md:text-xs font-semibold uppercase tracking-wider text-center w-[32px] md:w-[40px] ${fullView ? "" : "hidden"}`}
-                      >
-                        {s}
-                      </th>
+                    <th className="p-3 md:p-4 text-white text-[11px] md:text-xs font-medium uppercase tracking-wider text-center" style={{ width: "44px" }}>#</th>
+                    <th className="p-3 md:p-4 text-white text-[11px] md:text-xs font-medium uppercase tracking-wider text-left">Team</th>
+                    <th className="p-3 md:p-4 text-white text-[11px] md:text-xs font-medium uppercase tracking-wider text-center" style={{ width: "36px" }}>P</th>
+                    {["S1","S2","S3","S4","S5","S6"].map((s) => (
+                      <th key={s} className={`p-3 md:p-4 text-white text-[11px] md:text-xs font-medium uppercase tracking-wider text-center ${fullView ? "" : "hidden"}`} style={{ width: "36px" }}>{s}</th>
                     ))}
-                    <th className="p-2.5 md:p-3 text-white text-[11px] md:text-xs font-semibold uppercase tracking-wider text-center w-[44px] md:w-[52px]">
-                      GPA
-                    </th>
+                    <th className="p-3 md:p-4 text-white text-[11px] md:text-xs font-medium uppercase tracking-wider text-center" style={{ width: "56px" }}>GPA</th>
                   </tr>
                 </thead>
                 <tbody>
                   {teams.map((team, i) => {
                     const isTop3 = i < 3;
                     const medalColors = ["#FFD700", "#C0C0C0", "#CD7F32"];
-                    const rowBg = isTop3
-                      ? [
-                          `rgba(255,215,0,0.08)`,
-                          `rgba(192,192,192,0.08)`,
-                          `rgba(205,127,50,0.08)`,
-                        ][i]
-                      : i % 2 === 0
-                        ? "white"
-                        : "rgba(239,245,249,0.5)";
                     return (
                       <tr
                         key={team.name}
-                        className="transition-all duration-200 hover:brightness-95"
-                        style={{ backgroundColor: rowBg }}
+                        className="transition-colors duration-150 hover:brightness-95"
+                        style={{
+                          backgroundColor: "white",
+                        }}
                       >
-                        <td className="p-2.5 md:p-3 text-center">
+                        <td className="py-3 md:py-3.5 text-center" style={{ borderBottom: "1px solid #eff5f9" }}>
                           <div className="flex justify-center">
                             {isTop3 ? (
-                              <span
-                                className="rank-medal text-sm md:text-base"
-                                style={{ color: medalColors[i] }}
-                              >
+                              <span className="text-base md:text-lg" style={{ color: medalColors[i] }}>
                                 {rankIcons[i]}
                               </span>
                             ) : (
-                              <span
-                                className="badge-rank inline-flex items-center justify-center w-6 h-6 md:w-7 md:h-7 rounded-full text-[11px] md:text-xs font-bold"
-                                style={{
-                                  backgroundColor: "#eff5f9",
-                                  color: "#1d2a4d",
-                                }}
-                              >
+                              <span className="inline-flex items-center justify-center w-7 h-7 text-xs" style={{ color: "#1d2a4d" }}>
                                 {i + 1}
                               </span>
                             )}
                           </div>
                         </td>
-                        <td className="p-2.5 md:p-3">
+                        <td className="py-3 md:py-3.5" style={{ borderBottom: "1px solid #eff5f9" }}>
                           <button
                             onClick={() => handleTeamClick(team.name)}
-                            className="team-name text-left cursor-pointer border-0 bg-transparent p-0 text-[11px] md:text-sm font-semibold truncate max-w-[120px] md:max-w-[200px] lg:max-w-none"
+                            className="text-left cursor-pointer border-0 bg-transparent p-0 text-xs md:text-sm hover:opacity-70 transition-opacity"
                             style={{ color: "#1d2a4d" }}
                           >
                             {team.name}
                           </button>
                         </td>
-                        <td className="p-2.5 md:p-3 text-center">
-                          <span
-                            className="badge-pill inline-flex items-center justify-center min-w-[22px] md:min-w-[26px] h-5 md:h-6 rounded text-[11px] md:text-xs font-bold"
-                            style={{ backgroundColor: "#eff5f9" }}
-                          >
+                        <td className="py-3 md:py-3.5 text-center" style={{ borderBottom: "1px solid #eff5f9" }}>
+                          <span className="text-xs md:text-sm" style={{ color: "#1d2a4d" }}>
                             {team.played}
                           </span>
                         </td>
                         {team.scores.map((score, si) => (
-                          <td
-                            key={si}
-                            className={`p-2.5 md:p-3 text-center ${fullView ? "" : "hidden"}`}
-                          >
-                            <span
-                              className="badge-score inline-flex items-center justify-center w-6 h-6 md:w-7 md:h-7 rounded-full text-[11px] md:text-xs font-bold"
-                              style={{
-                                backgroundColor:
-                                  score === 2
-                                    ? "rgba(19,197,221,0.15)"
-                                    : "rgba(29,42,77,0.08)",
-                                color: score === 2 ? "#13c5dd" : "#1d2a4d",
-                              }}
-                            >
+                          <td key={si} className={`py-3 md:py-3.5 text-center ${fullView ? "" : "hidden"}`} style={{ borderBottom: "1px solid #eff5f9" }}>
+                            <span className="inline-flex items-center justify-center w-7 h-7 rounded text-[11px] md:text-xs" style={{
+                              backgroundColor: score === 2 ? "rgba(19,197,221,0.12)" : "#eff5f9",
+                              color: score === 2 ? "#13c5dd" : "#1d2a4d",
+                            }}>
                               {score}
                             </span>
                           </td>
                         ))}
-                        <td className="p-2.5 md:p-3 text-center">
-                          <span
-                            className="gpa-badge inline-flex items-center justify-center min-w-[36px] md:min-w-[44px] h-6 md:h-7 rounded text-[11px] md:text-xs font-bold"
-                            style={{
-                              backgroundColor:
-                                team.gpa >= 1.5
-                                  ? "rgba(19,197,221,0.12)"
-                                  : "rgba(29,42,77,0.06)",
-                              color: team.gpa >= 1.5 ? "#13c5dd" : "#1d2a4d",
-                            }}
-                          >
+                        <td className="py-3 md:py-3.5 text-center" style={{ borderBottom: "1px solid #eff5f9" }}>
+                          <span className="inline-flex items-center justify-center text-xs md:text-sm" style={{
+                            color: team.gpa >= 1.5 ? "#13c5dd" : "#1d2a4d",
+                          }}>
                             {team.gpa.toFixed(2)}
                           </span>
                         </td>
@@ -749,34 +698,14 @@ function LeagueTableSection({ refetchKey }) {
                 </tbody>
               </table>
             </div>
-            <p
-              className="legend-text text-sm mt-4 pb-2 text-center"
-              style={{ color: "#1d2a4d" }}
-            >
-              <span className="opacity-60">
-                S1&ndash;S6 = score per session (2 = win, 0 = loss) &middot; GPA
-                = average per session
-              </span>
-            </p>
-            <div
-              className={`${capturing ? "block" : "hidden"}`}
-              style={{
-                backgroundColor: "#f8fafc",
-                borderTop: "1px solid #e2e8f0",
-                padding: "20px 40px",
-                textAlign: "center",
-              }}
-            >
-              <div
-                className="footer-text"
-                style={{ fontSize: "13px", color: "#94a3b8", lineHeight: 1.6 }}
-              >
-                <strong style={{ color: "#64748b" }}>
-                  Relate Youth &middot; Bible Quiz League
-                </strong>
-                <br />
-                Contact: info@relateweb.org.za &middot; relateweb.org.za
-                &middot; Thank you for your support
+            <div className={`px-4 md:px-6 py-3 ${!fullView ? " mx-auto" : "text-center"}`} style={!fullView ? { maxWidth: "520px", textAlign: "center" } : undefined}>
+              <p className="text-[11px] md:text-xs" style={{ color: "#1d2a4d" }}>
+                S1&ndash;S6 = score per session &middot; 2 = win &middot; 0 = loss &middot; GPA = average per session
+              </p>
+              <div className={`${capturing ? "block" : "hidden"} mt-3 pt-3`} style={{ borderTop: "1px solid #eff5f9" }}>
+                <p className="text-xs" style={{ color: "#1d2a4d" }}>
+                  Relate Youth &middot; Bible Quiz League &middot; info@relateweb.org.za &middot; relateweb.org.za
+                </p>
               </div>
             </div>
           </div>
