@@ -396,8 +396,12 @@ function BooksSection() {
             </button>
           </div>
           <div
-            className={`rounded-lg overflow-x-auto ${scheduleFull ? "" : "md:overflow-visible md:table md:mx-auto"}`}
-            style={{ boxShadow: "0 2px 12px rgba(29,42,77,0.08)" }}
+            className="rounded-lg"
+            style={{
+              overflowX: "auto",
+              boxShadow: "0 2px 12px rgba(29,42,77,0.08)",
+              ...(!scheduleFull ? { display: "table", margin: "0 auto" } : {}),
+            }}
           >
             <table className={`${scheduleFull ? "w-full" : ""} text-sm`} style={{ borderCollapse: "separate", borderSpacing: 0, minWidth: scheduleFull ? undefined : "520px" }}>
               <thead>

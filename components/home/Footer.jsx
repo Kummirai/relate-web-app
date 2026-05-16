@@ -32,23 +32,28 @@ export default function Footer() {
           </div>
 
           <div className="lg:col-span-3 grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-12 lg:gap-28 items-start">
-            {/* Products */}
+            {/* Ministries */}
             <div>
-              <h3 className="font-medium text-sm mb-4 md:mb-6">Products</h3>
+              <h3 className="font-medium text-sm mb-4 md:mb-6">Ministries</h3>
               <ul className="space-y-3 md:space-y-4 text-sm text-white/70">
                 <li>
-                  <a href="#" className="hover:text-white">
-                    Components
+                  <a href="/bible" className="hover:text-white">
+                    Bible Reading
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white">
-                    Templates
+                  <a href="/study" className="hover:text-white">
+                    Bible Study
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white">
-                    Icons
+                  <a href="/youth" className="hover:text-white">
+                    Youth Ministry
+                  </a>
+                </li>
+                <li>
+                  <a href="/skills" className="hover:text-white">
+                    Skills Training
                   </a>
                 </li>
               </ul>
@@ -59,63 +64,40 @@ export default function Footer() {
               <h3 className="font-medium text-sm mb-4 md:mb-6">Resources</h3>
               <ul className="space-y-3 md:space-y-4 text-sm text-white/70">
                 <li>
-                  <a href="#" className="hover:text-white">
-                    PrebuiltUI
+                  <a href="/verse" className="hover:text-white">
+                    Verse of the Day
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white">
-                    Templates
+                  <a href="/resources" className="hover:text-white">
+                    Resource Library
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white">
-                    Components
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white">
-                    Blogs
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white">
-                    Store
+                  <a href="/manual" className="hover:text-white">
+                    Manual
                   </a>
                 </li>
               </ul>
             </div>
 
-            {/* Company */}
+            {/* Connect */}
             <div className="col-span-2 md:col-span-1">
-              <h3 className="font-medium text-sm mb-4 md:mb-6">Company</h3>
+              <h3 className="font-medium text-sm mb-4 md:mb-6">Connect</h3>
               <ul className="space-y-3 md:space-y-4 text-sm text-white/70">
                 <li>
-                  <a href="#" className="hover:text-white">
-                    About
+                  <a href="/about" className="hover:text-white">
+                    About Us
+                  </a>
+                </li>
+                <li>
+                  <a href="/contact" className="hover:text-white">
+                    Contact
                   </a>
                 </li>
                 <li>
                   <a href="#" className="hover:text-white">
-                    Vision
-                  </a>
-                </li>
-                <li className="flex items-center gap-2">
-                  <a href="#" className="hover:text-white">
-                    Careers
-                  </a>
-                  <span className="text-[11px] font-bold px-2 py-0.5 rounded-full" style={{ backgroundColor: "#13c5dd", color: "white" }}>
-                    HIRING
-                  </span>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white">
-                    Privacy policy
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white">
-                    Contact Us
+                    Privacy Policy
                   </a>
                 </li>
               </ul>

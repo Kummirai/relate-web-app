@@ -2,12 +2,13 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { signOutAction } from "@/app/actions/auth";
 import { DropdownMenuAvatar } from "./DropdownMenuAvatar";
 
 export default function Navbar({ session }) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [tabTitle, setTabTitle] = useState("Home");
+  const pathname = usePathname();
   const navItems = [
     { id: 1, title: "Home", path: "/" },
     { id: 2, title: "Bible", path: "/bible" },
@@ -20,9 +21,7 @@ export default function Navbar({ session }) {
     { id: 9, title: "Contact", path: "/contact" },
   ];
 
-  const handleSelectTab = (title) => {
-    setTabTitle(title);
-  };
+  const isActive = (path) => pathname === path;
 
   const adminEmails = process.env.ADMIN_EMAILS;
 
@@ -52,15 +51,14 @@ export default function Navbar({ session }) {
                 <Link
                   key={item.id}
                   href={item.path}
-                  onClick={() => handleSelectTab(item.title)}
                   className={`px-4 py-1.5 rounded-full text-sm transition-colors ${
-                    item.title === tabTitle
+                    isActive(item.path)
                       ? "bg-white border font-medium" 
                       : "hover:opacity-70"
                   }`}
                   style={{
-                    color: item.title === tabTitle ? "#13c5dd" : "#1d2a4d",
-                    borderColor: item.title === tabTitle ? "#13c5dd" : "transparent",
+                    color: isActive(item.path) ? "#13c5dd" : "#1d2a4d",
+                    borderColor: isActive(item.path) ? "#13c5dd" : "transparent",
                   }}
                 >
                   {item.title}

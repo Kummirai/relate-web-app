@@ -106,7 +106,8 @@ export default function page() {
         <div className="flex items-center justify-center h-40">
           <button
             onClick={handleLoadMore}
-            className="px-8 py-3 border bg-white border-gray-300 rounded-md text-sm font-medium hover:bg-zinc-950 hover:text-white cursor-pointer transition-colors"
+            className="px-8 py-3 border bg-white rounded-md text-sm font-medium cursor-pointer transition-colors"
+            style={{ borderColor: "#1d2a4d1a", color: "#1d2a4d" }}
           >
             Load More {studyMaterial[selectedTab - 1].title} (
             {data.length - visibleCount} remaining)
