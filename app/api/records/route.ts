@@ -1,6 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getDb } from "@/lib/mongodb";
 import { ObjectId } from "mongodb";
+import { resolveUser } from "@/lib/community-auth";
+
+async function requireAdmin(request: NextRequest) {
+  const userId = await resolveUser(request);
+  if (!userId) return null;
+  const db = await getDb();
+  const user = await db.collection("user").findOne({ _id: new ObjectId(userId) });
+  if (!user || user.role !== "admin") return null;
+  return userId;
+}
 
 export async function GET(request: NextRequest) {
   try {
@@ -42,9 +52,47 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
+    const adminId = await requireAdmin(request);
+    if (!adminId) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
     const db = await getDb();
     const data = await request.json();
-    const doc = createFamilyRecord(data);
+
+    const doc = {
+      recordId: data.recordId || `REC-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+      dateOfIntake: data.dateOfIntake,
+      caseManager: data.caseManager,
+      headOfHousehold: data.headOfHousehold,
+      contactNumber: data.contactNumber,
+      alternateContactNumber: data.alternateContactNumber || null,
+      emailAddress: data.emailAddress || null,
+      physicalAddress: data.physicalAddress,
+      preferredContactMethod: data.preferredContactMethod || [],
+      householdMembers: (data.householdMembers || []).map((m: any) => ({
+        name: m.name || null,
+        age: m.age || null,
+        relationship: m.relationship || null,
+      })),
+      summary: data.summary,
+      urgencyLevel: data.urgencyLevel || "Medium",
+      immediateNeeds: data.immediateNeeds || [],
+      longTermNeeds: data.longTermNeeds || [],
+      actionLog: (data.actionLog || []).map((e: any) => ({
+        date: e.date || new Date().toISOString(),
+        actionTaken: e.actionTaken || null,
+        byWhom: e.byWhom || null,
+        nextStep: e.nextStep || null,
+        dueDate: e.dueDate || null,
+      })),
+      caseClosedDate: data.caseClosedDate || null,
+      reasonForClosure: data.reasonForClosure || null,
+      finalOutcome: data.finalOutcome || null,
+      status: data.caseClosedDate ? "Closed" : data.status || "Active",
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    };
 
     const result = await db.collection("familyrecords").insertOne(doc);
     return NextResponse.json(
@@ -52,7 +100,6 @@ export async function POST(request: NextRequest) {
       { status: 201 },
     );
   } catch (error) {
-    console.log(error);
     return NextResponse.json(
       { error: "Failed to create record" },
       { status: 500 },
@@ -62,6 +109,11 @@ export async function POST(request: NextRequest) {
 
 export async function DELETE(request: NextRequest) {
   try {
+    const adminId = await requireAdmin(request);
+    if (!adminId) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
     const db = await getDb();
     const { id } = await request.json();
 
@@ -77,14 +129,24 @@ export async function DELETE(request: NextRequest) {
 
 export async function PUT(request: NextRequest) {
   try {
+    const adminId = await requireAdmin(request);
+    if (!adminId) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
     const db = await getDb();
     const { id, ...data } = await request.json();
+
+    data.updatedAt = new Date();
+    if (data.caseClosedDate) {
+      data.status = "Closed";
+    }
 
     const result = await db
       .collection("familyrecords")
       .updateOne(
         { _id: new ObjectId(id) },
-        { $set: { ...data, updatedAt: new Date() } },
+        { $set: data },
       );
     return NextResponse.json({
       success: true,
@@ -96,11 +158,4 @@ export async function PUT(request: NextRequest) {
       { status: 500 },
     );
   }
-}
-
-function createFamilyRecord(data: any): Record<string, any> {
-  return {
-    ...data,
-    createdAt: new Date(),
-  };
 }
