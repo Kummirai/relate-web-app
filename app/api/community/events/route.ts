@@ -18,6 +18,8 @@ export async function GET(request: NextRequest) {
       time: e.time,
       location: e.location,
       description: e.description,
+      fee: e.fee || "Free",
+      author: e.author || "",
       attending: e.attending || 0,
       hasRsvpd: userId ? (e.rsvpUserIds || []).includes(userId) : false,
       createdAt: e.createdAt,
