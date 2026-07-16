@@ -42,7 +42,8 @@ export async function POST(request: NextRequest) {
     };
     const result = await db.collection("community_events").insertOne(doc);
     return NextResponse.json({ data: { _id: result.insertedId, ...doc, hasRsvpd: false } }, { status: 201 });
-  } catch {
-    return NextResponse.json({ error: "Failed to create event" }, { status: 500 });
+  } catch (err: any) {
+    console.error("Failed to create event:", err);
+    return NextResponse.json({ error: err?.message || "Failed to create event" }, { status: 500 });
   }
 }
