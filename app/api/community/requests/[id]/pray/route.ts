@@ -1,25 +1,39 @@
 import { NextResponse } from "next/server";
 import { getDb } from "@/lib/mongodb";
 import { ObjectId } from "mongodb";
+import { resolveUser } from "@/lib/community-auth";
+import { NextRequest } from "next/server";
 
 export async function POST(
-  _request: NextRequest,
+  request: NextRequest,
   { params }: { params: Promise<{ id: string }> },
 ) {
   try {
     const { id } = await params;
     const db = await getDb();
-    const result = await db
-      .collection("community_requests")
-      .updateOne(
-        { _id: new ObjectId(id) },
-        { $inc: { prayCount: 1 }, $set: { prayedByMe: true } },
-      );
-    if (result.modifiedCount === 0) {
+    const userId = await resolveUser(request);
+
+    if (!userId) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    const req = await db.collection("community_requests").findOne({ _id: new ObjectId(id) });
+    if (!req) {
       return NextResponse.json({ error: "Request not found" }, { status: 404 });
     }
-    const req = await db.collection("community_requests").findOne({ _id: new ObjectId(id) });
-    return NextResponse.json({ data: req });
+
+    const alreadyPrayed = (req.prayedUserIds || []).includes(userId);
+    if (alreadyPrayed) {
+      const updated = await db.collection("community_requests").findOne({ _id: new ObjectId(id) });
+      return NextResponse.json({ data: { ...updated, prayedByMe: true } });
+    }
+
+    await db.collection("community_requests").updateOne(
+      { _id: new ObjectId(id) },
+      { $addToSet: { prayedUserIds: userId }, $inc: { prayCount: 1 } },
+    );
+    const updated = await db.collection("community_requests").findOne({ _id: new ObjectId(id) });
+    return NextResponse.json({ data: { ...updated, prayedByMe: true } });
   } catch {
     return NextResponse.json({ error: "Failed to record prayer" }, { status: 500 });
   }
