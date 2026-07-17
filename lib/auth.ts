@@ -7,6 +7,7 @@ import { admin } from "better-auth/plugins";
 const dbName = process.env.MONGODB_DB || "test";
 
 export const auth = betterAuth({
+  baseURL: process.env.BETTER_AUTH_URL || "https://relateworld.netlify.app",
   database: mongodbAdapter(client.db(dbName)),
   emailAndPassword: {
     enabled: true,
