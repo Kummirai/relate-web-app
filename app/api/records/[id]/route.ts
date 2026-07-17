@@ -1,14 +1,23 @@
 import { NextRequest, NextResponse } from "next/server";
 import { ObjectId } from "mongodb";
 import { getDb } from "@/lib/mongodb";
+import { resolveUser } from "@/lib/community-auth";
 
 function isValidId(id: string) {
   return ObjectId.isValid(id);
 }
 
-// Get a single record by ID
+async function requireAdmin(request: NextRequest) {
+  const userId = await resolveUser(request);
+  if (!userId) return null;
+  const db = await getDb();
+  const user = await db.collection("user").findOne({ _id: new ObjectId(userId) });
+  if (!user || user.role !== "admin") return null;
+  return userId;
+}
+
 export async function GET(
-  request: NextRequest,
+  _request: NextRequest,
   { params }: { params: Promise<{ id: string }> },
 ) {
   try {
@@ -28,7 +37,6 @@ export async function GET(
 
     return NextResponse.json(record);
   } catch (error) {
-    console.error("GET /api/records/[id] error:", error);
     return NextResponse.json(
       { error: "Failed to fetch record" },
       { status: 500 },
@@ -36,12 +44,16 @@ export async function GET(
   }
 }
 
-// Update a record by ID
 export async function PUT(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> },
 ) {
   try {
+    const adminId = await requireAdmin(request);
+    if (!adminId) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
     const { id } = await params;
     if (!isValidId(id)) {
       return NextResponse.json({ error: "Invalid ID format" }, { status: 400 });
@@ -67,7 +79,6 @@ export async function PUT(
 
     return NextResponse.json(result);
   } catch (error) {
-    console.error("PUT /api/records/[id] error:", error);
     return NextResponse.json(
       { error: "Failed to update record" },
       { status: 500 },
@@ -75,12 +86,16 @@ export async function PUT(
   }
 }
 
-// Delete a record by ID
 export async function DELETE(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> },
 ) {
   try {
+    const adminId = await requireAdmin(request);
+    if (!adminId) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
     const { id } = await params;
     if (!isValidId(id)) {
       return NextResponse.json({ error: "Invalid ID format" }, { status: 400 });
@@ -97,7 +112,6 @@ export async function DELETE(
 
     return NextResponse.json({ message: "Record deleted successfully" });
   } catch (error) {
-    console.error("DELETE /api/records/[id] error:", error);
     return NextResponse.json(
       { error: "Failed to delete record" },
       { status: 500 },
