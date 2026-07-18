@@ -1,7 +1,6 @@
 import { NextRequest } from "next/server";
 import { auth } from "./auth";
 import { getDb } from "./mongodb";
-import { ObjectId } from "mongodb";
 
 export async function resolveUser(request: NextRequest): Promise<string | null> {
   try {
@@ -42,10 +41,10 @@ export async function requireAdminViaBearerToken(
     // Check if the session has expired
     if (new Date(session.expiresAt) < new Date()) return null;
 
-    // Look up the user by ID from the session
+    // Look up the user by their string `id` field (nanoid/UUID, NOT ObjectId)
     const user = await db
       .collection("user")
-      .findOne({ _id: new ObjectId(session.userId) });
+      .findOne({ id: session.userId });
     if (!user || user.role !== "admin") return null;
 
     return session.userId;
