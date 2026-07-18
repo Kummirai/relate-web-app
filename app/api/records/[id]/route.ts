@@ -1,14 +1,19 @@
 import { NextRequest, NextResponse } from "next/server";
 import { ObjectId } from "mongodb";
 import { getDb } from "@/lib/mongodb";
-import { requireAdminViaBearerToken } from "@/lib/community-auth";
+import { resolveUser } from "@/lib/community-auth";
 
 function isValidId(id: string) {
   return ObjectId.isValid(id);
 }
 
 async function requireAdmin(request: NextRequest) {
-  return requireAdminViaBearerToken(request);
+  const userId = await resolveUser(request);
+  if (!userId) return null;
+  const db = await getDb();
+  const user = await db.collection("user").findOne({ _id: new ObjectId(userId) });
+  if (!user || user.role !== "admin") return null;
+  return userId;
 }
 
 export async function GET(
