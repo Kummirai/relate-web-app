@@ -1,12 +1,17 @@
 import { NextRequest, NextResponse } from "next/server";
 import { ObjectId } from "mongodb";
 import { getDb } from "@/lib/mongodb";
+import { auth } from "@/lib/auth";
 import { resolveUser } from "@/lib/community-auth";
 
 export async function GET(request: NextRequest) {
   try {
     const db = await getDb();
-    const userId = await resolveUser(request);
+    const [userId, session] = await Promise.all([
+      resolveUser(request),
+      auth.api.getSession({ headers: request.headers }).catch(() => null),
+    ]);
+    const userName = session?.user?.name || null;
     const events = await db
       .collection("community_events")
       .find({})
@@ -25,7 +30,10 @@ export async function GET(request: NextRequest) {
       userId: e.userId || null,
       attending: e.attending || 0,
       hasRsvpd: userId ? (e.rsvpUserIds || []).includes(userId) : false,
-      isOwner: userId ? e.userId === userId : false,
+      // Direct userId match OR fallback to author name match (for events created before userId was stored)
+      isOwner: userId
+        ? e.userId === userId || (!e.userId && !!userName && e.author === userName)
+        : false,
       createdAt: e.createdAt,
     }));
     return NextResponse.json({ data });
@@ -67,10 +75,14 @@ export async function POST(request: NextRequest) {
 export async function PUT(request: NextRequest) {
   try {
     const db = await getDb();
-    const userId = await resolveUser(request);
+    const [userId, session] = await Promise.all([
+      resolveUser(request),
+      auth.api.getSession({ headers: request.headers }).catch(() => null),
+    ]);
     if (!userId) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
+    const userName = session?.user?.name || null;
 
     const { _id, ...updateData } = await request.json();
     if (!ObjectId.isValid(_id)) {
@@ -81,7 +93,8 @@ export async function PUT(request: NextRequest) {
     if (!existing) {
       return NextResponse.json({ error: "Event not found" }, { status: 404 });
     }
-    if (existing.userId && existing.userId !== userId) {
+    const canEdit = existing.userId === userId || (!existing.userId && !!userName && existing.author === userName);
+    if (!canEdit) {
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 
@@ -116,10 +129,14 @@ export async function PUT(request: NextRequest) {
 export async function DELETE(request: NextRequest) {
   try {
     const db = await getDb();
-    const userId = await resolveUser(request);
+    const [userId, session] = await Promise.all([
+      resolveUser(request),
+      auth.api.getSession({ headers: request.headers }).catch(() => null),
+    ]);
     if (!userId) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
+    const userName = session?.user?.name || null;
 
     const { _id } = await request.json();
     if (!ObjectId.isValid(_id)) {
@@ -130,7 +147,8 @@ export async function DELETE(request: NextRequest) {
     if (!existing) {
       return NextResponse.json({ error: "Event not found" }, { status: 404 });
     }
-    if (existing.userId && existing.userId !== userId) {
+    const canDelete = existing.userId === userId || (!existing.userId && !!userName && existing.author === userName);
+    if (!canDelete) {
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 
