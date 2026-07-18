@@ -23,17 +23,28 @@ export async function POST(
     }
 
     const alreadyRsvpd = (event.rsvpUserIds || []).includes(userId);
+
     if (alreadyRsvpd) {
-      const updated = await db.collection("community_events").findOne({ _id: new ObjectId(id) });
-      return NextResponse.json({ data: { ...updated, hasRsvpd: true } });
+      // Un-RSVP
+      await db.collection("community_events").updateOne(
+        { _id: new ObjectId(id) },
+        { $pull: { rsvpUserIds: userId }, $inc: { attending: -1 } },
+      );
+    } else {
+      await db.collection("community_events").updateOne(
+        { _id: new ObjectId(id) },
+        { $addToSet: { rsvpUserIds: userId }, $inc: { attending: 1 } },
+      );
     }
 
-    await db.collection("community_events").updateOne(
-      { _id: new ObjectId(id) },
-      { $addToSet: { rsvpUserIds: userId }, $inc: { attending: 1 } },
-    );
     const updated = await db.collection("community_events").findOne({ _id: new ObjectId(id) });
-    return NextResponse.json({ data: { ...updated, hasRsvpd: true } });
+    return NextResponse.json({
+      data: {
+        ...updated,
+        hasRsvpd: !alreadyRsvpd,
+        attending: (updated?.attending || 0),
+      },
+    });
   } catch {
     return NextResponse.json({ error: "Failed to RSVP" }, { status: 500 });
   }
