@@ -14,27 +14,12 @@ async function requireAdmin(request: NextRequest) {
 
 export async function GET(request: NextRequest) {
   try {
-    const token =
-      request.cookies.get("better-auth.session_token")?.value ||
-      request.cookies.get("__Secure-better-auth.session_token")?.value;
-
-    if (!token) {
+    const adminId = await requireAdmin(request);
+    if (!adminId) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const db = await getDb();
-    const session = await db.collection("session").findOne({ token });
-    if (!session) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-    }
-
-    const user = await db
-      .collection("user")
-      .findOne({ _id: new ObjectId(session.userId) });
-    if (!user || user.role !== "admin") {
-      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
-    }
-
     const records = await db
       .collection("familyrecords")
       .find({})
