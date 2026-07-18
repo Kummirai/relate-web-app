@@ -3,9 +3,16 @@ import { getDb } from "./mongodb";
 import { ObjectId } from "mongodb";
 
 export async function resolveUser(request: NextRequest): Promise<string | null> {
-  const token =
+  let token =
     request.cookies.get("better-auth.session_token")?.value ||
     request.cookies.get("__Secure-better-auth.session_token")?.value;
+
+  if (!token) {
+    const authHeader = request.headers.get("authorization");
+    if (authHeader?.startsWith("Bearer ")) {
+      token = authHeader.slice(7);
+    }
+  }
   if (!token) return null;
 
   const db = await getDb();
