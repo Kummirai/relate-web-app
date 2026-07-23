@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { ObjectId } from "mongodb";
 import { getDb } from "@/lib/mongodb";
 import { auth } from "@/lib/auth";
-import { resolveUser } from "@/lib/community-auth";
+import { resolveUser, fetchParticipants } from "@/lib/community-auth";
 
 export async function GET(request: NextRequest) {
   try {
@@ -17,25 +17,35 @@ export async function GET(request: NextRequest) {
       .find({})
       .sort({ createdAt: -1 })
       .toArray();
-    const data = events.map((e: any) => ({
-      _id: e._id,
-      title: e.title,
-      date: e.date,
-      time: e.time,
-      location: e.location,
-      description: e.description,
-      fee: e.fee || "Free",
-      imageUrl: e.imageUrl || null,
-      author: e.author || "",
-      userId: e.userId || null,
-      attending: e.attending || 0,
-      hasRsvpd: userId ? (e.rsvpUserIds || []).includes(userId) : false,
-      // Direct userId match OR fallback to author name match (for events created before userId was stored)
-      isOwner: userId
-        ? e.userId === userId || (!e.userId && !!userName && e.author === userName)
-        : false,
-      createdAt: e.createdAt,
-    }));
+
+    const allUserIds = events.flatMap((e: any) => e.rsvpUserIds || []);
+    const participants = await fetchParticipants(db, allUserIds);
+
+    const data = events.map((e: any) => {
+      const rsvpUsers = (e.rsvpUserIds || [])
+        .map((id: string) => participants.get(id))
+        .filter(Boolean);
+      return {
+        _id: e._id,
+        title: e.title,
+        date: e.date,
+        time: e.time,
+        location: e.location,
+        description: e.description,
+        fee: e.fee || "Free",
+        imageUrl: e.imageUrl || null,
+        author: e.author || "",
+        userId: e.userId || null,
+        attending: e.attending || 0,
+        hasRsvpd: userId ? (e.rsvpUserIds || []).includes(userId) : false,
+        rsvpUsers,
+        // Direct userId match OR fallback to author name match (for events created before userId was stored)
+        isOwner: userId
+          ? e.userId === userId || (!e.userId && !!userName && e.author === userName)
+          : false,
+        createdAt: e.createdAt,
+      };
+    });
     return NextResponse.json({ data });
   } catch {
     return NextResponse.json({ data: [] });

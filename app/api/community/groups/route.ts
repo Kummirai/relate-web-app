@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { ObjectId } from "mongodb";
 import { getDb } from "@/lib/mongodb";
-import { resolveUser } from "@/lib/community-auth";
+import { resolveUser, fetchParticipants } from "@/lib/community-auth";
 import { auth } from "@/lib/auth";
 
 export async function GET(request: NextRequest) {
@@ -19,21 +19,30 @@ export async function GET(request: NextRequest) {
       .sort({ createdAt: -1 })
       .toArray();
 
-    const data = groups.map((g: any) => ({
-      _id: g._id,
-      name: g.name,
-      description: g.description,
-      meetingTime: g.meetingTime || "",
-      schedule: g.schedule || "",
-      maxMembers: g.maxMembers || 0,
-      members: g.members || 0,
-      live: g.live || false,
-      hasJoined: userId ? (g.joinedUserIds || []).includes(userId) : false,
-      isOwner: userId
-        ? g.userId === userId || (!g.userId && !!userName && g.author === userName)
-        : false,
-      createdAt: g.createdAt,
-    }));
+    const allUserIds = groups.flatMap((g: any) => g.joinedUserIds || []);
+    const participants = await fetchParticipants(db, allUserIds);
+
+    const data = groups.map((g: any) => {
+      const joinedUsers = (g.joinedUserIds || [])
+        .map((id: string) => participants.get(id))
+        .filter(Boolean);
+      return {
+        _id: g._id,
+        name: g.name,
+        description: g.description,
+        meetingTime: g.meetingTime || "",
+        schedule: g.schedule || "",
+        maxMembers: g.maxMembers || 0,
+        members: g.members || 0,
+        live: g.live || false,
+        hasJoined: userId ? (g.joinedUserIds || []).includes(userId) : false,
+        joinedUsers,
+        isOwner: userId
+          ? g.userId === userId || (!g.userId && !!userName && g.author === userName)
+          : false,
+        createdAt: g.createdAt,
+      };
+    });
     return NextResponse.json({ data });
   } catch {
     return NextResponse.json({ data: [] });

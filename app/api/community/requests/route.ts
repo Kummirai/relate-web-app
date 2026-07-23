@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { ObjectId } from "mongodb";
 import { getDb } from "@/lib/mongodb";
-import { resolveUser } from "@/lib/community-auth";
+import { resolveUser, fetchParticipants } from "@/lib/community-auth";
 import { auth } from "@/lib/auth";
 
 export async function GET(request: NextRequest) {
@@ -19,20 +19,29 @@ export async function GET(request: NextRequest) {
       .sort({ createdAt: -1 })
       .toArray();
 
-    const data = requests.map((r: any) => ({
-      _id: r._id,
-      title: r.title || r.text,
-      text: r.text,
-      description: r.description || r.text,
-      author: r.author,
-      userId: r.userId || null,
-      prayCount: r.prayCount || 0,
-      prayedByMe: userId ? (r.prayedUserIds || []).includes(userId) : false,
-      isOwner: userId
-        ? r.userId === userId || (!r.userId && !!userName && r.author === userName)
-        : false,
-      createdAt: r.createdAt,
-    }));
+    const allUserIds = requests.flatMap((r: any) => r.prayedUserIds || []);
+    const participants = await fetchParticipants(db, allUserIds);
+
+    const data = requests.map((r: any) => {
+      const prayedUsers = (r.prayedUserIds || [])
+        .map((id: string) => participants.get(id))
+        .filter(Boolean);
+      return {
+        _id: r._id,
+        title: r.title || r.text,
+        text: r.text,
+        description: r.description || r.text,
+        author: r.author,
+        userId: r.userId || null,
+        prayCount: r.prayCount || 0,
+        prayedByMe: userId ? (r.prayedUserIds || []).includes(userId) : false,
+        prayedUsers,
+        isOwner: userId
+          ? r.userId === userId || (!r.userId && !!userName && r.author === userName)
+          : false,
+        createdAt: r.createdAt,
+      };
+    });
     return NextResponse.json({ data });
   } catch {
     return NextResponse.json({ data: [] });

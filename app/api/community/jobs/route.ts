@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { ObjectId } from "mongodb";
 import { getDb } from "@/lib/mongodb";
-import { resolveUser } from "@/lib/community-auth";
+import { resolveUser, fetchParticipants } from "@/lib/community-auth";
 import { auth } from "@/lib/auth";
 
 export async function GET(request: NextRequest) {
@@ -19,20 +19,29 @@ export async function GET(request: NextRequest) {
       .sort({ createdAt: -1 })
       .toArray();
 
-    let appliedIds: string[] = [];
-    if (userId) {
-      const applications = await db
-        .collection("community_job_applications")
-        .find({ userId })
-        .toArray();
-      appliedIds = applications.map((a: any) => a.jobId);
+    const jobIds = jobs.map((j: any) => j._id.toString());
+
+    const allApplications = await db
+      .collection("community_job_applications")
+      .find({ jobId: { $in: jobIds } })
+      .toArray();
+
+    const appliedIds = userId ? allApplications.filter((a: any) => a.userId === userId).map((a: any) => a.jobId) : [];
+
+    const allApplicantUserIds = allApplications.map((a: any) => a.userId);
+    const participants = await fetchParticipants(db, allApplicantUserIds);
+
+    const applicationsByJob = new Map<string, string[]>();
+    for (const a of allApplications) {
+      const list = applicationsByJob.get(a.jobId) || [];
+      list.push(a.userId);
+      applicationsByJob.set(a.jobId, list);
     }
 
-    const data = await Promise.all(jobs.map(async (j: any) => {
-      const applicationCount = await db
-        .collection("community_job_applications")
-        .countDocuments({ jobId: j._id.toString() });
-
+    const data = jobs.map((j: any) => {
+      const jid = j._id.toString();
+      const applicantIds = applicationsByJob.get(jid) || [];
+      const applicants = applicantIds.map((id) => participants.get(id)).filter(Boolean);
       return {
         _id: j._id,
         title: j.title,
@@ -44,14 +53,15 @@ export async function GET(request: NextRequest) {
         salary: j.salary || "",
         contactEmail: j.contactEmail || "",
         author: j.author,
-        applied: appliedIds.includes(j._id.toString()),
-        applicationCount,
+        applied: appliedIds.includes(jid),
+        applicationCount: applicantIds.length,
+        applicants,
         isOwner: userId
           ? j.userId === userId || (!j.userId && !!userName && j.author === userName)
           : false,
         createdAt: j.createdAt,
       };
-    }));
+    });
     return NextResponse.json({ data });
   } catch {
     return NextResponse.json({ data: [] });

@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { ObjectId } from "mongodb";
 import { getDb } from "@/lib/mongodb";
-import { resolveUser } from "@/lib/community-auth";
+import { resolveUser, fetchParticipants } from "@/lib/community-auth";
 import { auth } from "@/lib/auth";
 
 export async function GET(request: NextRequest) {
@@ -19,20 +19,29 @@ export async function GET(request: NextRequest) {
       .sort({ createdAt: -1 })
       .toArray();
 
-    let connectedIds: string[] = [];
-    if (userId) {
-      const connections = await db
-        .collection("community_skill_connections")
-        .find({ userId })
-        .toArray();
-      connectedIds = connections.map((c: any) => c.skillId);
+    const skillIds = skills.map((s: any) => s._id.toString());
+
+    const allConnections = await db
+      .collection("community_skill_connections")
+      .find({ skillId: { $in: skillIds } })
+      .toArray();
+
+    const connectedIds = userId ? allConnections.filter((c: any) => c.userId === userId).map((c: any) => c.skillId) : [];
+
+    const allConnectorUserIds = allConnections.map((c: any) => c.userId);
+    const participants = await fetchParticipants(db, allConnectorUserIds);
+
+    const connectionsBySkill = new Map<string, string[]>();
+    for (const c of allConnections) {
+      const list = connectionsBySkill.get(c.skillId) || [];
+      list.push(c.userId);
+      connectionsBySkill.set(c.skillId, list);
     }
 
-    const data = await Promise.all(skills.map(async (s: any) => {
-      const connectionCount = await db
-        .collection("community_skill_connections")
-        .countDocuments({ skillId: s._id.toString() });
-
+    const data = skills.map((s: any) => {
+      const sid = s._id.toString();
+      const connectorIds = connectionsBySkill.get(sid) || [];
+      const connectedUsers = connectorIds.map((id) => participants.get(id)).filter(Boolean);
       return {
         _id: s._id,
         title: s.title,
@@ -40,14 +49,15 @@ export async function GET(request: NextRequest) {
         description: s.description,
         author: s.author,
         offering: s.offering,
-        connected: connectedIds.includes(s._id.toString()),
-        connectionCount,
+        connected: connectedIds.includes(sid),
+        connectionCount: connectorIds.length,
+        connectedUsers,
         isOwner: userId
           ? s.userId === userId || (!s.userId && !!userName && s.author === userName)
           : false,
         createdAt: s.createdAt,
       };
-    }));
+    });
     return NextResponse.json({ data });
   } catch {
     return NextResponse.json({ data: [] });
