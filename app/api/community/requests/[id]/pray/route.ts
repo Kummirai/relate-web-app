@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { getDb } from "@/lib/mongodb";
 import { ObjectId } from "mongodb";
-import { resolveUser } from "@/lib/community-auth";
+import { resolveSession } from "@/lib/community-auth";
 import { NextRequest } from "next/server";
 
 export async function POST(
@@ -11,7 +11,8 @@ export async function POST(
   try {
     const { id } = await params;
     const db = await getDb();
-    const userId = await resolveUser(request);
+    const user = await resolveSession(request);
+    const userId = user?.id;
 
     if (!userId) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -38,6 +39,18 @@ export async function POST(
         { _id: new ObjectId(id) },
         { $addToSet: { prayedUserIds: userId }, $inc: { prayCount: 1 } },
       );
+
+      if (req.userId && req.userId !== userId) {
+        await db.collection("user_activity").insertOne({
+          userId: req.userId,
+          actorId: userId,
+          type: "pray",
+          section: "requests",
+          itemId: id,
+          itemTitle: req.title || req.name || "Prayer Request",
+          createdAt: new Date(),
+        });
+      }
     }
 
     const updated = await db.collection("community_requests").findOne({ _id: new ObjectId(id) });

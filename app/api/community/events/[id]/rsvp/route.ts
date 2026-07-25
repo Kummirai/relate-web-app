@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { getDb } from "@/lib/mongodb";
 import { ObjectId } from "mongodb";
-import { resolveUser } from "@/lib/community-auth";
+import { resolveUser, resolveSession } from "@/lib/community-auth";
 import { NextRequest } from "next/server";
 
 export async function POST(
@@ -11,7 +11,8 @@ export async function POST(
   try {
     const { id } = await params;
     const db = await getDb();
-    const userId = await resolveUser(request);
+    const user = await resolveSession(request);
+    const userId = user?.id;
 
     if (!userId) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -25,7 +26,6 @@ export async function POST(
     const alreadyRsvpd = (event.rsvpUserIds || []).includes(userId);
 
     if (alreadyRsvpd) {
-      // Un-RSVP
       await db.collection("community_events").updateOne(
         { _id: new ObjectId(id) },
         { $pull: { rsvpUserIds: userId }, $inc: { attending: -1 } },
@@ -35,6 +35,18 @@ export async function POST(
         { _id: new ObjectId(id) },
         { $addToSet: { rsvpUserIds: userId }, $inc: { attending: 1 } },
       );
+
+      if (event.userId && event.userId !== userId) {
+        await db.collection("user_activity").insertOne({
+          userId: event.userId,
+          actorId: userId,
+          type: "rsvp",
+          section: "events",
+          itemId: id,
+          itemTitle: event.title || "Event",
+          createdAt: new Date(),
+        });
+      }
     }
 
     const updated = await db.collection("community_events").findOne({ _id: new ObjectId(id) });

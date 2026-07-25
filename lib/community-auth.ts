@@ -46,6 +46,8 @@ export async function ensureIndexes(db: any) {
       db.collection("community_job_applications").createIndex({ jobId: 1 }),
       db.collection("community_job_applications").createIndex({ jobId: 1, userId: 1 }, { unique: true }),
       db.collection("user").createIndex({ id: 1 }),
+      db.collection("user_activity").createIndex({ userId: 1, createdAt: -1 }),
+      db.collection("user_bookmarks").createIndex({ userId: 1, section: 1, itemId: 1 }, { unique: true }),
     ]);
   } catch {}
 }
