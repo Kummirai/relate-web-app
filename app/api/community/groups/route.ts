@@ -33,6 +33,8 @@ export async function GET(request: NextRequest) {
         maxMembers: g.maxMembers || 0,
         members: g.members || 0,
         live: g.live || false,
+        liveSessionId: g.liveSessionId || null,
+        liveSessionStartedBy: g.liveSessionStartedBy || null,
         hasJoined: userId ? (g.joinedUserIds || []).includes(userId) : false,
         joinedUsers,
         isOwner: userId
@@ -68,7 +70,7 @@ export async function POST(request: NextRequest) {
     };
     const result = await db.collection("community_groups").insertOne(doc);
     return NextResponse.json(
-      { data: { _id: result.insertedId, ...doc, hasJoined: false, isOwner: !!userId } },
+      { data: { _id: result.insertedId, ...doc, liveSessionId: null, liveSessionStartedBy: null, hasJoined: false, isOwner: !!userId } },
       { status: 201 },
     );
   } catch {

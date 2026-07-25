@@ -47,6 +47,8 @@ export async function GET(request: NextRequest) {
         description: s.description,
         author: s.author,
         offering: s.offering,
+        liveSessionId: s.liveSessionId || null,
+        liveSessionStartedBy: s.liveSessionStartedBy || null,
         connected: connectedIds.includes(sid),
         connectionCount: connectorIds.length,
         connectedUsers,
