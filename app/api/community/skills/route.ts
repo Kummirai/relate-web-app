@@ -1,22 +1,20 @@
 import { NextRequest, NextResponse } from "next/server";
 import { ObjectId } from "mongodb";
 import { getDb } from "@/lib/mongodb";
-import { resolveUser, fetchParticipants } from "@/lib/community-auth";
-import { auth } from "@/lib/auth";
+import { resolveSession, ensureIndexes, fetchParticipants } from "@/lib/community-auth";
 
 export async function GET(request: NextRequest) {
   try {
     const db = await getDb();
-    const [userId, session] = await Promise.all([
-      resolveUser(request),
-      auth.api.getSession({ headers: request.headers }).catch(() => null),
-    ]);
-    const userName = session?.user?.name || null;
+    await ensureIndexes(db);
+    const user = await resolveSession(request);
+    const userId = user?.id || null;
 
     const skills = await db
       .collection("community_skills")
       .find({})
       .sort({ createdAt: -1 })
+      .limit(100)
       .toArray();
 
     const skillIds = skills.map((s: any) => s._id.toString());
@@ -53,7 +51,7 @@ export async function GET(request: NextRequest) {
         connectionCount: connectorIds.length,
         connectedUsers,
         isOwner: userId
-          ? s.userId === userId || (!s.userId && !!userName && s.author === userName)
+          ? s.userId === userId || (!s.userId && !!user.name && s.author === user.name)
           : false,
         createdAt: s.createdAt,
       };
@@ -67,7 +65,8 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const db = await getDb();
-    const userId = await resolveUser(request);
+    const user = await resolveSession(request);
+    const userId = user?.id || null;
     const data = await request.json();
     const doc = {
       title: data.title,
@@ -91,12 +90,8 @@ export async function POST(request: NextRequest) {
 export async function PUT(request: NextRequest) {
   try {
     const db = await getDb();
-    const [userId, session] = await Promise.all([
-      resolveUser(request),
-      auth.api.getSession({ headers: request.headers }).catch(() => null),
-    ]);
-    if (!userId) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-    const userName = session?.user?.name || null;
+    const user = await resolveSession(request);
+    if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
     const { _id, ...updateData } = await request.json();
     if (!ObjectId.isValid(_id)) return NextResponse.json({ error: "Invalid ID" }, { status: 400 });
@@ -104,7 +99,7 @@ export async function PUT(request: NextRequest) {
     const existing = await db.collection("community_skills").findOne({ _id: new ObjectId(_id) });
     if (!existing) return NextResponse.json({ error: "Skill not found" }, { status: 404 });
 
-    const canEdit = existing.userId === userId || (!existing.userId && !!userName && existing.author === userName);
+    const canEdit = existing.userId === user.id || (!existing.userId && !!user.name && existing.author === user.name);
     if (!canEdit) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 
     const setFields: Record<string, any> = { updatedAt: new Date() };
@@ -128,12 +123,8 @@ export async function PUT(request: NextRequest) {
 export async function DELETE(request: NextRequest) {
   try {
     const db = await getDb();
-    const [userId, session] = await Promise.all([
-      resolveUser(request),
-      auth.api.getSession({ headers: request.headers }).catch(() => null),
-    ]);
-    if (!userId) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-    const userName = session?.user?.name || null;
+    const user = await resolveSession(request);
+    if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
     const { _id } = await request.json();
     if (!ObjectId.isValid(_id)) return NextResponse.json({ error: "Invalid ID" }, { status: 400 });
@@ -141,7 +132,7 @@ export async function DELETE(request: NextRequest) {
     const existing = await db.collection("community_skills").findOne({ _id: new ObjectId(_id) });
     if (!existing) return NextResponse.json({ error: "Skill not found" }, { status: 404 });
 
-    const canDelete = existing.userId === userId || (!existing.userId && !!userName && existing.author === userName);
+    const canDelete = existing.userId === user.id || (!existing.userId && !!user.name && existing.author === user.name);
     if (!canDelete) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 
     await db.collection("community_skills").deleteOne({ _id: new ObjectId(_id) });

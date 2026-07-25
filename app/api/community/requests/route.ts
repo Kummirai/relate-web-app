@@ -1,22 +1,20 @@
 import { NextRequest, NextResponse } from "next/server";
 import { ObjectId } from "mongodb";
 import { getDb } from "@/lib/mongodb";
-import { resolveUser, fetchParticipants } from "@/lib/community-auth";
-import { auth } from "@/lib/auth";
+import { resolveSession, ensureIndexes, fetchParticipants } from "@/lib/community-auth";
 
 export async function GET(request: NextRequest) {
   try {
     const db = await getDb();
-    const [userId, session] = await Promise.all([
-      resolveUser(request),
-      auth.api.getSession({ headers: request.headers }).catch(() => null),
-    ]);
-    const userName = session?.user?.name || null;
+    await ensureIndexes(db);
+    const user = await resolveSession(request);
+    const userId = user?.id || null;
 
     const requests = await db
       .collection("community_requests")
       .find({})
       .sort({ createdAt: -1 })
+      .limit(100)
       .toArray();
 
     const allUserIds = requests.flatMap((r: any) => r.prayedUserIds || []);
@@ -37,7 +35,7 @@ export async function GET(request: NextRequest) {
         prayedByMe: userId ? (r.prayedUserIds || []).includes(userId) : false,
         prayedUsers,
         isOwner: userId
-          ? r.userId === userId || (!r.userId && !!userName && r.author === userName)
+          ? r.userId === userId || (!r.userId && !!user.name && r.author === user.name)
           : false,
         createdAt: r.createdAt,
       };
@@ -51,7 +49,8 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const db = await getDb();
-    const userId = await resolveUser(request);
+    const user = await resolveSession(request);
+    const userId = user?.id || null;
     const data = await request.json();
     const doc = {
       title: data.title || "",
@@ -76,12 +75,10 @@ export async function POST(request: NextRequest) {
 export async function PUT(request: NextRequest) {
   try {
     const db = await getDb();
-    const [userId, session] = await Promise.all([
-      resolveUser(request),
-      auth.api.getSession({ headers: request.headers }).catch(() => null),
-    ]);
-    if (!userId) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-    const userName = session?.user?.name || null;
+    const user = await resolveSession(request);
+    if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    const userId = user.id;
+    const userName = user.name;
 
     const { _id, ...updateData } = await request.json();
     if (!ObjectId.isValid(_id)) return NextResponse.json({ error: "Invalid ID" }, { status: 400 });
@@ -112,12 +109,10 @@ export async function PUT(request: NextRequest) {
 export async function DELETE(request: NextRequest) {
   try {
     const db = await getDb();
-    const [userId, session] = await Promise.all([
-      resolveUser(request),
-      auth.api.getSession({ headers: request.headers }).catch(() => null),
-    ]);
-    if (!userId) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-    const userName = session?.user?.name || null;
+    const user = await resolveSession(request);
+    if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    const userId = user.id;
+    const userName = user.name;
 
     const { _id } = await request.json();
     if (!ObjectId.isValid(_id)) return NextResponse.json({ error: "Invalid ID" }, { status: 400 });

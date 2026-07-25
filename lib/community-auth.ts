@@ -1,6 +1,8 @@
 import { NextRequest } from "next/server";
 import { auth } from "./auth";
 
+export type ResolvedUser = { id: string; name: string | null };
+
 export async function resolveUser(request: NextRequest): Promise<string | null> {
   try {
     const session = await auth.api.getSession({
@@ -13,7 +15,40 @@ export async function resolveUser(request: NextRequest): Promise<string | null> 
   }
 }
 
+export async function resolveSession(request: NextRequest): Promise<ResolvedUser | null> {
+  try {
+    const session = await auth.api.getSession({
+      headers: request.headers,
+    });
+    if (!session?.user) return null;
+    return { id: session.user.id, name: session.user.name || null };
+  } catch {
+    return null;
+  }
+}
+
 export type ParticipantUser = { id: string; name: string; email: string; image: string | null };
+
+let indexesEnsured = false;
+
+export async function ensureIndexes(db: any) {
+  if (indexesEnsured) return;
+  indexesEnsured = true;
+  try {
+    await Promise.all([
+      db.collection("community_skills").createIndex({ createdAt: -1 }),
+      db.collection("community_jobs").createIndex({ createdAt: -1 }),
+      db.collection("community_events").createIndex({ createdAt: -1 }),
+      db.collection("community_groups").createIndex({ createdAt: -1 }),
+      db.collection("community_requests").createIndex({ createdAt: -1 }),
+      db.collection("community_skill_connections").createIndex({ skillId: 1 }),
+      db.collection("community_skill_connections").createIndex({ skillId: 1, userId: 1 }, { unique: true }),
+      db.collection("community_job_applications").createIndex({ jobId: 1 }),
+      db.collection("community_job_applications").createIndex({ jobId: 1, userId: 1 }, { unique: true }),
+      db.collection("user").createIndex({ id: 1 }),
+    ]);
+  } catch {}
+}
 
 export async function fetchParticipants(db: any, userIds: string[]): Promise<Map<string, ParticipantUser>> {
   const map = new Map<string, ParticipantUser>();

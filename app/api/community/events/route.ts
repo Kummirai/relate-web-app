@@ -1,21 +1,20 @@
 import { NextRequest, NextResponse } from "next/server";
 import { ObjectId } from "mongodb";
 import { getDb } from "@/lib/mongodb";
-import { auth } from "@/lib/auth";
-import { resolveUser, fetchParticipants } from "@/lib/community-auth";
+import { resolveSession, ensureIndexes, fetchParticipants } from "@/lib/community-auth";
 
 export async function GET(request: NextRequest) {
   try {
     const db = await getDb();
-    const [userId, session] = await Promise.all([
-      resolveUser(request),
-      auth.api.getSession({ headers: request.headers }).catch(() => null),
-    ]);
-    const userName = session?.user?.name || null;
+    await ensureIndexes(db);
+    const user = await resolveSession(request);
+    const userId = user?.id || null;
+
     const events = await db
       .collection("community_events")
       .find({})
       .sort({ createdAt: -1 })
+      .limit(100)
       .toArray();
 
     const allUserIds = events.flatMap((e: any) => e.rsvpUserIds || []);
@@ -39,9 +38,8 @@ export async function GET(request: NextRequest) {
         attending: e.attending || 0,
         hasRsvpd: userId ? (e.rsvpUserIds || []).includes(userId) : false,
         rsvpUsers,
-        // Direct userId match OR fallback to author name match (for events created before userId was stored)
         isOwner: userId
-          ? e.userId === userId || (!e.userId && !!userName && e.author === userName)
+          ? e.userId === userId || (!e.userId && !!user.name && e.author === user.name)
           : false,
         createdAt: e.createdAt,
       };
@@ -55,7 +53,8 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const db = await getDb();
-    const userId = await resolveUser(request);
+    const user = await resolveSession(request);
+    const userId = user?.id || null;
     const data = await request.json();
     const doc = {
       title: data.title,
@@ -85,14 +84,12 @@ export async function POST(request: NextRequest) {
 export async function PUT(request: NextRequest) {
   try {
     const db = await getDb();
-    const [userId, session] = await Promise.all([
-      resolveUser(request),
-      auth.api.getSession({ headers: request.headers }).catch(() => null),
-    ]);
-    if (!userId) {
+    const user = await resolveSession(request);
+    if (!user) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
-    const userName = session?.user?.name || null;
+    const userId = user.id;
+    const userName = user.name;
 
     const { _id, ...updateData } = await request.json();
     if (!ObjectId.isValid(_id)) {
@@ -139,14 +136,12 @@ export async function PUT(request: NextRequest) {
 export async function DELETE(request: NextRequest) {
   try {
     const db = await getDb();
-    const [userId, session] = await Promise.all([
-      resolveUser(request),
-      auth.api.getSession({ headers: request.headers }).catch(() => null),
-    ]);
-    if (!userId) {
+    const user = await resolveSession(request);
+    if (!user) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
-    const userName = session?.user?.name || null;
+    const userId = user.id;
+    const userName = user.name;
 
     const { _id } = await request.json();
     if (!ObjectId.isValid(_id)) {
