@@ -14,6 +14,8 @@ const USFM_TO_BOOK: Record<string, number> = {
   "1JN": 62, "2JN": 63, "3JN": 64, JUD: 65, REV: 66,
 };
 
+const chapterCache = new Map<string, { bookName: string; chapter: number; verses: { verse: number; text: string }[] }>();
+
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
@@ -31,29 +33,37 @@ export async function GET(request: Request) {
       return NextResponse.json({ error: "invalid passageId" }, { status: 400 });
     }
 
+    const cacheKey = `${usfm}.${chapter}`;
+    const cached = chapterCache.get(cacheKey);
+    if (cached) {
+      return NextResponse.json(
+        { reference: `${cached.bookName} ${chapter}`, bookName: cached.bookName, chapter: cached.chapter, verses: cached.verses },
+        { headers: { "Cache-Control": "public, max-age=86400, stale-while-revalidate=604800" } },
+      );
+    }
+
     const db = await getDb();
     const doc = await db.collection("bible").findOne(
       { "verses.book": bookNum, "verses.chapter": chapter },
     );
 
     const allVerses = doc?.verses || [];
-    const filtered = allVerses.filter((v: any) => v.book === bookNum && v.chapter === chapter);
 
-    if (!filtered.length) {
+    if (!allVerses.length) {
       return NextResponse.json({ error: "chapter not found" }, { status: 404 });
     }
 
-    const bookName = filtered[0].book_name;
-    const verses = filtered
+    const bookName = allVerses[0].book_name;
+    const verses = allVerses
       .sort((a: any, b: any) => a.verse - b.verse)
       .map((v: any) => ({ verse: v.verse, text: v.text }));
 
-    return NextResponse.json({
-      reference: `${bookName} ${chapter}`,
-      bookName,
-      chapter,
-      verses,
-    });
+    chapterCache.set(cacheKey, { bookName, chapter, verses });
+
+    return NextResponse.json(
+      { reference: `${bookName} ${chapter}`, bookName, chapter, verses },
+      { headers: { "Cache-Control": "public, max-age=86400, stale-while-revalidate=604800" } },
+    );
   } catch (e: any) {
     return NextResponse.json({ error: e.message }, { status: 500 });
   }
