@@ -34,18 +34,20 @@ export async function GET(request: Request) {
     const db = await getDb();
     const doc = await db.collection("bible").findOne(
       { "verses.book": bookNum, "verses.chapter": chapter },
-      { projection: { verses: { $elemMatch: { book: bookNum, chapter: chapter } } } },
     );
 
-    if (!doc?.verses?.length) {
+    const allVerses = doc?.verses || [];
+    const filtered = allVerses.filter((v: any) => v.book === bookNum && v.chapter === chapter);
+
+    if (!filtered.length) {
       return NextResponse.json({ error: "chapter not found" }, { status: 404 });
     }
 
-    const verses = doc.verses
+    const bookName = filtered[0].book_name;
+    const verses = filtered
       .sort((a: any, b: any) => a.verse - b.verse)
       .map((v: any) => ({ verse: v.verse, text: v.text }));
 
-    const bookName = doc.verses[0].book_name;
     return NextResponse.json({
       reference: `${bookName} ${chapter}`,
       bookName,
