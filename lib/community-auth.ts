@@ -41,6 +41,7 @@ export async function ensureIndexes(db: any) {
       db.collection("community_events").createIndex({ createdAt: -1 }),
       db.collection("community_groups").createIndex({ createdAt: -1 }),
       db.collection("community_requests").createIndex({ createdAt: -1 }),
+      db.collection("help_requests").createIndex({ createdAt: -1 }),
       db.collection("community_devotionals").createIndex({ createdAt: -1 }),
       db.collection("community_devotionals").createIndex({ authorId: 1 }),
       db.collection("community_skill_connections").createIndex({ skillId: 1 }),
