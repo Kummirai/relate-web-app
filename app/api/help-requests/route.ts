@@ -45,6 +45,12 @@ export async function POST(request: NextRequest) {
     const name = typeof data.name === "string" ? data.name.trim() : "";
     const email = typeof data.email === "string" ? data.email.trim() : "";
     const phone = typeof data.phone === "string" ? data.phone.trim() : "";
+    const area = typeof data.area === "string" ? data.area.trim() : "";
+    const ageGroup = typeof data.ageGroup === "string" ? data.ageGroup.trim() : "";
+    const contactMethod =
+      typeof data.contactMethod === "string" ? data.contactMethod.trim() : "";
+    const urgency = typeof data.urgency === "string" ? data.urgency.trim() : "";
+    const whoFor = typeof data.whoFor === "string" ? data.whoFor.trim() : "";
     const helpType = typeof data.helpType === "string" ? data.helpType.trim() : "";
     const description = typeof data.description === "string" ? data.description.trim() : "";
     if (!name || !helpType || !description) {
@@ -59,7 +65,16 @@ export async function POST(request: NextRequest) {
         { status: 400 },
       );
     }
-    if (name.length > 200 || helpType.length > 100 || description.length > 5000) {
+    if (
+      name.length > 200 ||
+      helpType.length > 100 ||
+      description.length > 5000 ||
+      area.length > 200 ||
+      ageGroup.length > 50 ||
+      contactMethod.length > 50 ||
+      urgency.length > 50 ||
+      whoFor.length > 50
+    ) {
       return NextResponse.json(
         { error: "Some fields exceed the maximum allowed length" },
         { status: 400 },
@@ -69,6 +84,11 @@ export async function POST(request: NextRequest) {
       name,
       email,
       phone,
+      area,
+      ageGroup,
+      contactMethod,
+      urgency,
+      whoFor,
       helpType,
       description,
       userId: user.id || null,
