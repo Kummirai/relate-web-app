@@ -3,6 +3,24 @@ import { ObjectId } from "mongodb";
 import { getDb } from "@/lib/mongodb";
 import { resolveSession } from "@/lib/community-auth";
 
+/** Time of the newest message of the given sender, or null if there is none. */
+function lastMessageAt(sender: "user" | "admin") {
+  return {
+    $let: {
+      vars: {
+        msgs: {
+          $filter: {
+            input: { $ifNull: ["$messages", []] },
+            as: "m",
+            cond: { $eq: ["$$m.from", sender] },
+          },
+        },
+      },
+      in: { $arrayElemAt: ["$$msgs.createdAt", -1] },
+    },
+  };
+}
+
 export async function GET(request: NextRequest) {
   try {
     const user = await resolveSession(request);
@@ -20,35 +38,53 @@ export async function GET(request: NextRequest) {
     let adminUnread = 0;
 
     if (isAdmin) {
-      const requests = await db
+      // New replies from users, plus open/in-progress requests that were never opened.
+      // Note: in aggregation comparisons null sorts before dates, so
+      // $gt [msgAt, readAt] also matches requests with no lastAdminReadAt — same
+      // semantics as the old `new Date(lastAdminReadAt || 0)` check.
+      const [row] = await db
         .collection("help_requests")
-        .find({})
-        .project({ messages: 1, lastAdminReadAt: 1, status: 1 })
+        .aggregate([
+          {
+            $project: {
+              status: 1,
+              lastAdminReadAt: 1,
+              lastUserMsgAt: lastMessageAt("user"),
+            },
+          },
+          {
+            $match: {
+              $or: [
+                {
+                  $and: [
+                    { lastAdminReadAt: null },
+                    { status: { $in: ["open", "in_progress"] } },
+                  ],
+                },
+                { $expr: { $gt: ["$lastUserMsgAt", "$lastAdminReadAt"] } },
+              ],
+            },
+          },
+          { $count: "n" },
+        ])
         .toArray();
-      adminUnread = requests.filter((r: any) => {
-        const msgs = r.messages || [];
-        const hasNewUserMsg = msgs.some(
-          (m: any) =>
-            m.from === "user" &&
-            new Date(m.createdAt) > new Date(r.lastAdminReadAt || 0),
-        );
-        const neverOpened =
-          !r.lastAdminReadAt && (r.status === "open" || r.status === "in_progress");
-        return hasNewUserMsg || neverOpened;
-      }).length;
+      adminUnread = row?.n || 0;
     } else {
-      const requests = await db
+      const [row] = await db
         .collection("help_requests")
-        .find({ userId: user.id })
-        .project({ messages: 1, lastUserReadAt: 1 })
+        .aggregate([
+          { $match: { userId: user.id } },
+          {
+            $project: {
+              lastUserReadAt: 1,
+              lastAdminMsgAt: lastMessageAt("admin"),
+            },
+          },
+          { $match: { $expr: { $gt: ["$lastAdminMsgAt", "$lastUserReadAt"] } } },
+          { $count: "n" },
+        ])
         .toArray();
-      userUnread = requests.filter((r: any) =>
-        (r.messages || []).some(
-          (m: any) =>
-            m.from === "admin" &&
-            new Date(m.createdAt) > new Date(r.lastUserReadAt || 0),
-        ),
-      ).length;
+      userUnread = row?.n || 0;
     }
 
     return NextResponse.json({ data: { userUnread, adminUnread } });

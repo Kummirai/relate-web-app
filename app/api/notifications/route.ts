@@ -11,14 +11,16 @@ export async function GET(request: NextRequest) {
     }
 
     const db = await getDb();
-    const notifications = await db
-      .collection("notifications")
-      .find({ userId: user.id })
-      .sort({ createdAt: -1 })
-      .limit(100)
-      .toArray();
+    const [notifications, unread] = await Promise.all([
+      db
+        .collection("notifications")
+        .find({ userId: user.id })
+        .sort({ createdAt: -1 })
+        .limit(100)
+        .toArray(),
+      db.collection("notifications").countDocuments({ userId: user.id, read: false }),
+    ]);
 
-    const unread = notifications.filter((n: any) => !n.read).length;
     return NextResponse.json({ data: notifications, unread });
   } catch {
     return NextResponse.json({ error: "Failed to fetch notifications" }, { status: 500 });

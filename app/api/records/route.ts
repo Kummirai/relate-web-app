@@ -24,6 +24,7 @@ export async function GET(request: NextRequest) {
       .collection("familyrecords")
       .find({})
       .sort({ createdAt: -1 })
+      .limit(200)
       .toArray();
 
     return NextResponse.json(records);

@@ -28,11 +28,55 @@ export async function GET(request: NextRequest) {
     if (status && ["open", "in_progress", "resolved", "archived"].includes(status)) {
       filter.status = status;
     }
+    const rawLimit = Number(searchParams.get("limit")) || 200;
+    const limit = Math.min(Math.max(rawLimit, 1), 500);
+
+    // Sort by urgency first (Urgent > This week > Not urgent > unset), then newest first.
+    // List responses only carry the last chat message per request — the full thread is
+    // fetched from /api/help-requests/[id] when a detail is opened.
     const requests = await db
       .collection("help_requests")
-      .find(filter)
-      .sort({ createdAt: -1 })
-      .limit(200)
+      .aggregate([
+        { $match: filter },
+        {
+          $addFields: {
+            urgencyRank: {
+              $switch: {
+                branches: [
+                  { case: { $eq: ["$urgency", "Urgent"] }, then: 0 },
+                  { case: { $eq: ["$urgency", "This week"] }, then: 1 },
+                  { case: { $eq: ["$urgency", "Not urgent"] }, then: 2 },
+                ],
+                default: 3,
+              },
+            },
+          },
+        },
+        {
+          $project: {
+            name: 1,
+            email: 1,
+            phone: 1,
+            area: 1,
+            ageGroup: 1,
+            contactMethod: 1,
+            urgency: 1,
+            whoFor: 1,
+            helpType: 1,
+            description: 1,
+            userId: 1,
+            status: 1,
+            recordId: 1,
+            lastUserReadAt: 1,
+            lastAdminReadAt: 1,
+            createdAt: 1,
+            updatedAt: 1,
+            messages: { $slice: ["$messages", -1] },
+          },
+        },
+        { $sort: { urgencyRank: 1, createdAt: -1 } },
+        { $limit: limit },
+      ])
       .toArray();
 
     return NextResponse.json({ data: requests });

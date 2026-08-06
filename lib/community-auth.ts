@@ -53,6 +53,8 @@ export async function ensureIndexes(db: any) {
       db.collection("user").createIndex({ id: 1 }),
       db.collection("push_tokens").createIndex({ userId: 1 }),
       db.collection("notifications").createIndex({ userId: 1, createdAt: -1 }),
+      db.collection("notifications").createIndex({ userId: 1, read: 1 }),
+      db.collection("familyrecords").createIndex({ createdAt: -1 }),
       db.collection("user_activity").createIndex({ userId: 1, createdAt: -1 }),
       db.collection("user_bookmarks").createIndex({ userId: 1, section: 1, itemId: 1 }, { unique: true }),
       db.collection("bible").createIndex({ "verses.book": 1, "verses.chapter": 1 }),
