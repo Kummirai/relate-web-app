@@ -33,7 +33,7 @@ const STATUSES = ["open", "completed", "archived"] as const;
 
 async function getActor(request: NextRequest) {
   const user = await resolveSession(request);
-  if (!user) return null;
+  if (!user || !ObjectId.isValid(user.id)) return null;
   const db = await getDb();
   const record = await db.collection("user").findOne({ _id: new ObjectId(user.id) });
   return { id: user.id, name: user.name, role: record?.role === "admin" ? "admin" : "user" };
@@ -111,9 +111,6 @@ export async function PATCH(
 
     // Owner can edit their request fields while it is still open.
     if (data.field && typeof data.field === "object") {
-      if (!isAdmin && !isOwner) {
-        return NextResponse.json({ error: "Forbidden" }, { status: 403 });
-      }
       if (!isAdmin && doc.status && doc.status !== "open") {
         return NextResponse.json(
           { error: "This request can no longer be edited" },
@@ -127,6 +124,12 @@ export async function PATCH(
           if (val.length > cap) {
             return NextResponse.json(
               { error: "Some fields exceed the maximum allowed length" },
+              { status: 400 },
+            );
+          }
+          if (["name", "helpType", "description"].includes(key) && !val) {
+            return NextResponse.json(
+              { error: "Name, help type and description are required" },
               { status: 400 },
             );
           }

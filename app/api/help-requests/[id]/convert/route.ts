@@ -20,7 +20,7 @@ export async function POST(
     }
 
     const user = await resolveSession(request);
-    if (!user) {
+    if (!user || !ObjectId.isValid(user.id)) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
