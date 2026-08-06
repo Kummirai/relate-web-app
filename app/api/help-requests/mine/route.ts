@@ -31,6 +31,8 @@ export async function GET(request: NextRequest) {
             },
           },
         },
+        // Sort before projecting so the rank field still exists for the sort.
+        { $sort: { urgencyRank: 1, createdAt: -1 } },
         {
           $project: {
             name: 1,
@@ -53,7 +55,6 @@ export async function GET(request: NextRequest) {
             messages: { $slice: ["$messages", -1] },
           },
         },
-        { $sort: { urgencyRank: 1, createdAt: -1 } },
         { $limit: 100 },
       ])
       .toArray();
