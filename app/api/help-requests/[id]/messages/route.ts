@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { ObjectId } from "mongodb";
 import { getDb } from "@/lib/mongodb";
 import { resolveSession } from "@/lib/community-auth";
+import { getAdminPushTokens, getUserPushTokens, sendPushNotifications } from "@/lib/push";
+import { createNotification, notifyAdmins } from "@/lib/inapp-notify";
 
 export async function POST(
   request: NextRequest,
@@ -56,6 +58,42 @@ export async function POST(
         { $push: { messages: message }, $set: { updatedAt: new Date() } },
         { returnDocument: "after" },
       );
+
+    void (async () => {
+      try {
+        if (isAdmin) {
+          const tokens = await getUserPushTokens(db, doc.userId || "");
+          await sendPushNotifications(tokens, "Reply from Relate support", text, {
+            type: "help_reply",
+            requestId: id,
+          });
+          await createNotification(db, doc.userId, {
+            type: "help_reply",
+            title: "Reply from Relate support",
+            body: text,
+            data: { requestId: id },
+          });
+        } else {
+          const tokens = await getAdminPushTokens(db);
+          await sendPushNotifications(
+            tokens,
+            "New reply on a help request",
+            `${user.name || "Someone"}: ${text}`,
+            { type: "help_reply", requestId: id },
+          );
+          await notifyAdmins(
+            db,
+            {
+              type: "help_reply",
+              title: "New reply on a help request",
+              body: `${user.name || "Someone"}: ${text}`,
+              data: { requestId: id },
+            },
+            user.id,
+          );
+        }
+      } catch {}
+    })();
 
     return NextResponse.json({ data: { message, request: result } }, { status: 201 });
   } catch {

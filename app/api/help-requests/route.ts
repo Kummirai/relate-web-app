@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { ObjectId } from "mongodb";
 import { getDb } from "@/lib/mongodb";
 import { resolveSession, resolveUser } from "@/lib/community-auth";
+import { getAdminPushTokens, sendPushNotifications } from "@/lib/push";
+import { notifyAdmins } from "@/lib/inapp-notify";
 
 async function requireAdmin(request: NextRequest) {
   const userId = await resolveUser(request);
@@ -23,7 +25,7 @@ export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url);
     const status = searchParams.get("status");
     const filter: Record<string, unknown> = {};
-    if (status && ["open", "completed", "archived"].includes(status)) {
+    if (status && ["open", "in_progress", "resolved", "archived"].includes(status)) {
       filter.status = status;
     }
     const requests = await db
@@ -101,11 +103,35 @@ export async function POST(request: NextRequest) {
       status: "open",
       messages: [],
       recordId: null,
+      lastUserReadAt: null,
+      lastAdminReadAt: null,
       createdAt: new Date(),
       updatedAt: new Date(),
     };
 
     const result = await db.collection("help_requests").insertOne(doc);
+
+    void (async () => {
+      try {
+        const requestId = result.insertedId.toString();
+        const tokens = await getAdminPushTokens(db);
+        await sendPushNotifications(tokens, "New help request", `${name} · ${helpType}`, {
+          type: "new_help_request",
+          requestId,
+        });
+        await notifyAdmins(
+          db,
+          {
+            type: "new_help_request",
+            title: "New help request",
+            body: `${name} · ${helpType}`,
+            data: { requestId },
+          },
+          user.id,
+        );
+      } catch {}
+    })();
+
     return NextResponse.json(
       { data: { _id: result.insertedId, ...doc } },
       { status: 201 },

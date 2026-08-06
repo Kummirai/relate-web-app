@@ -29,7 +29,14 @@ const MAX_LENGTHS: Record<string, number> = {
   description: 5000,
 };
 
-const STATUSES = ["open", "completed", "archived"] as const;
+const STATUSES = ["open", "in_progress", "resolved", "archived"] as const;
+
+const STATUS_LABELS: Record<string, string> = {
+  open: "Open",
+  in_progress: "In Progress",
+  resolved: "Resolved",
+  archived: "Archived",
+};
 
 async function getActor(request: NextRequest) {
   const user = await resolveSession(request);
@@ -100,13 +107,17 @@ export async function PATCH(
     const data = await request.json();
     const update: Record<string, unknown> = { updatedAt: new Date() };
 
-    // Admin can change status (open / completed / archived).
+    // Admin can change status; every change is logged to the request thread.
+    let statusChanged = false;
     if (isAdmin && data.status) {
       const status = String(data.status);
       if (!STATUSES.includes(status as (typeof STATUSES)[number])) {
         return NextResponse.json({ error: "Invalid status" }, { status: 400 });
       }
-      update.status = status;
+      if (doc.status !== status) {
+        update.status = status;
+        statusChanged = true;
+      }
     }
 
     // Owner can edit their request fields while it is still open.
@@ -138,11 +149,27 @@ export async function PATCH(
       }
     }
 
+    const ops: Record<string, unknown> = { $set: update };
+    if (statusChanged) {
+      const fromLabel = STATUS_LABELS[doc.status] || "Unknown";
+      const toLabel = STATUS_LABELS[String(update.status)] || String(update.status);
+      ops.$push = {
+        messages: {
+          from: "system",
+          fromName: "",
+          text: doc.status
+            ? `Status changed from "${fromLabel}" to "${toLabel}" by ${actor.name || "an admin"}`
+            : `Status set to "${toLabel}" by ${actor.name || "an admin"}`,
+          createdAt: new Date(),
+        },
+      };
+    }
+
     const result = await db
       .collection("help_requests")
       .findOneAndUpdate(
         { _id: new ObjectId(id) },
-        { $set: update },
+        ops,
         { returnDocument: "after" },
       );
 
