@@ -1,0 +1,190 @@
+import { NextRequest, NextResponse } from "next/server";
+import { ObjectId } from "mongodb";
+import { getDb } from "@/lib/mongodb";
+import { resolveSession } from "@/lib/community-auth";
+
+const EDITABLE_FIELDS = [
+  "name",
+  "email",
+  "phone",
+  "area",
+  "ageGroup",
+  "contactMethod",
+  "urgency",
+  "whoFor",
+  "helpType",
+  "description",
+] as const;
+
+const MAX_LENGTHS: Record<string, number> = {
+  name: 200,
+  email: 200,
+  phone: 50,
+  area: 200,
+  ageGroup: 50,
+  contactMethod: 50,
+  urgency: 50,
+  whoFor: 50,
+  helpType: 100,
+  description: 5000,
+};
+
+const STATUSES = ["open", "completed", "archived"] as const;
+
+async function getActor(request: NextRequest) {
+  const user = await resolveSession(request);
+  if (!user) return null;
+  const db = await getDb();
+  const record = await db.collection("user").findOne({ _id: new ObjectId(user.id) });
+  return { id: user.id, name: user.name, role: record?.role === "admin" ? "admin" : "user" };
+}
+
+export async function GET(
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> },
+) {
+  try {
+    const { id } = await params;
+    if (!ObjectId.isValid(id)) {
+      return NextResponse.json({ error: "Invalid ID format" }, { status: 400 });
+    }
+    const actor = await getActor(request);
+    if (!actor) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    const db = await getDb();
+    const doc = await db.collection("help_requests").findOne({ _id: new ObjectId(id) });
+    if (!doc) {
+      return NextResponse.json({ error: "Request not found" }, { status: 404 });
+    }
+
+    const isAdmin = actor.role === "admin";
+    const isOwner = !!doc.userId && doc.userId === actor.id;
+    if (!isAdmin && !isOwner) {
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+    }
+
+    return NextResponse.json({ data: doc });
+  } catch {
+    return NextResponse.json({ error: "Failed to fetch request" }, { status: 500 });
+  }
+}
+
+export async function PATCH(
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> },
+) {
+  try {
+    const { id } = await params;
+    if (!ObjectId.isValid(id)) {
+      return NextResponse.json({ error: "Invalid ID format" }, { status: 400 });
+    }
+    const actor = await getActor(request);
+    if (!actor) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    const db = await getDb();
+    const doc = await db.collection("help_requests").findOne({ _id: new ObjectId(id) });
+    if (!doc) {
+      return NextResponse.json({ error: "Request not found" }, { status: 404 });
+    }
+
+    const isAdmin = actor.role === "admin";
+    const isOwner = !!doc.userId && doc.userId === actor.id;
+    if (!isAdmin && !isOwner) {
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+    }
+
+    const data = await request.json();
+    const update: Record<string, unknown> = { updatedAt: new Date() };
+
+    // Admin can change status (open / completed / archived).
+    if (isAdmin && data.status) {
+      const status = String(data.status);
+      if (!STATUSES.includes(status as (typeof STATUSES)[number])) {
+        return NextResponse.json({ error: "Invalid status" }, { status: 400 });
+      }
+      update.status = status;
+    }
+
+    // Owner can edit their request fields while it is still open.
+    if (data.field && typeof data.field === "object") {
+      if (!isAdmin && !isOwner) {
+        return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+      }
+      if (!isAdmin && doc.status && doc.status !== "open") {
+        return NextResponse.json(
+          { error: "This request can no longer be edited" },
+          { status: 400 },
+        );
+      }
+      for (const key of EDITABLE_FIELDS) {
+        if (typeof data.field[key] === "string") {
+          const val = data.field[key].trim();
+          const cap = MAX_LENGTHS[key];
+          if (val.length > cap) {
+            return NextResponse.json(
+              { error: "Some fields exceed the maximum allowed length" },
+              { status: 400 },
+            );
+          }
+          update[key] = val;
+        }
+      }
+    }
+
+    const result = await db
+      .collection("help_requests")
+      .findOneAndUpdate(
+        { _id: new ObjectId(id) },
+        { $set: update },
+        { returnDocument: "after" },
+      );
+
+    return NextResponse.json({ data: result });
+  } catch {
+    return NextResponse.json({ error: "Failed to update request" }, { status: 500 });
+  }
+}
+
+export async function DELETE(
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> },
+) {
+  try {
+    const { id } = await params;
+    if (!ObjectId.isValid(id)) {
+      return NextResponse.json({ error: "Invalid ID format" }, { status: 400 });
+    }
+    const actor = await getActor(request);
+    if (!actor) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    const db = await getDb();
+    const doc = await db.collection("help_requests").findOne({ _id: new ObjectId(id) });
+    if (!doc) {
+      return NextResponse.json({ error: "Request not found" }, { status: 404 });
+    }
+
+    const isAdmin = actor.role === "admin";
+    const isOwner = !!doc.userId && doc.userId === actor.id;
+    if (!isAdmin && !isOwner) {
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+    }
+
+    if (!isAdmin && doc.status && doc.status !== "open") {
+      return NextResponse.json(
+        { error: "Completed or archived requests cannot be deleted" },
+        { status: 400 },
+      );
+    }
+
+    await db.collection("help_requests").deleteOne({ _id: new ObjectId(id) });
+    return NextResponse.json({ success: true });
+  } catch {
+    return NextResponse.json({ error: "Failed to delete request" }, { status: 500 });
+  }
+}

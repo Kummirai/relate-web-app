@@ -20,9 +20,15 @@ export async function GET(request: NextRequest) {
     }
 
     const db = await getDb();
+    const { searchParams } = new URL(request.url);
+    const status = searchParams.get("status");
+    const filter: Record<string, unknown> = {};
+    if (status && ["open", "completed", "archived"].includes(status)) {
+      filter.status = status;
+    }
     const requests = await db
       .collection("help_requests")
-      .find({})
+      .find(filter)
       .sort({ createdAt: -1 })
       .limit(200)
       .toArray();
@@ -92,7 +98,11 @@ export async function POST(request: NextRequest) {
       helpType,
       description,
       userId: user.id || null,
+      status: "open",
+      messages: [],
+      recordId: null,
       createdAt: new Date(),
+      updatedAt: new Date(),
     };
 
     const result = await db.collection("help_requests").insertOne(doc);
