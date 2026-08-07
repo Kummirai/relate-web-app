@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { getDb } from "@/lib/mongodb";
 import { ObjectId } from "mongodb";
 import { resolveUser } from "@/lib/community-auth";
+import { ensureFamilyRecordIndexes } from "@/lib/models";
 
 async function requireAdmin(request: NextRequest) {
   const userId = await resolveUser(request);
@@ -20,6 +21,7 @@ export async function GET(request: NextRequest) {
     }
 
     const db = await getDb();
+    await ensureFamilyRecordIndexes();
     const records = await db
       .collection("familyrecords")
       .find({})
@@ -44,6 +46,7 @@ export async function POST(request: NextRequest) {
     }
 
     const db = await getDb();
+    await ensureFamilyRecordIndexes();
     const data = await request.json();
 
     const doc = {

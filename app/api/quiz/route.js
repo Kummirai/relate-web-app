@@ -1,9 +1,11 @@
 import { NextResponse } from "next/server";
 import { getDb } from "@/lib/mongodb";
+import { ensureIndexes } from "@/lib/community-auth";
 
 export async function GET() {
   try {
     const db = await getDb();
+    await ensureIndexes(db);
 
     const sessions = await db.collection("quiz_sessions").find({}).sort({ session: 1 }).toArray();
     const champions = await db.collection("quiz_champions").find({}).toArray();

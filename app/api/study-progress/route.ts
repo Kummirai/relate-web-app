@@ -29,35 +29,25 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "userId and slug are required" }, { status: 400 });
     }
 
-    const existing = await db
+    await db
       .collection("user_study_progress")
-      .findOne({ userId, slug });
-
-    if (existing) {
-      await db
-        .collection("user_study_progress")
-        .updateOne(
-          { userId, slug },
-          {
-            $set: {
-              completedLessons,
-              totalLessons,
-              updatedAt: new Date(),
-            },
+      .updateOne(
+        { userId, slug },
+        {
+          $set: {
+            completedLessons,
+            totalLessons,
+            updatedAt: new Date(),
           },
-        );
-    } else {
-      const doc = {
-        userId,
-        slug,
-        title,
-        completedLessons,
-        totalLessons,
-        startedAt: new Date(),
-        updatedAt: new Date(),
-      };
-      await db.collection("user_study_progress").insertOne(doc);
-    }
+          $setOnInsert: {
+            userId,
+            slug,
+            title,
+            startedAt: new Date(),
+          },
+        },
+        { upsert: true },
+      );
 
     return NextResponse.json({ success: true });
   } catch {

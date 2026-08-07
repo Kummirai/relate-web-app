@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { ObjectId } from "mongodb";
 import { getDb } from "@/lib/mongodb";
 import { resolveSession } from "@/lib/community-auth";
+import { ensureFamilyRecordIndexes } from "@/lib/models";
 
 const URGENCY_MAP: Record<string, string> = {
   Urgent: "High",
@@ -25,6 +26,7 @@ export async function POST(
     }
 
     const db = await getDb();
+    await ensureFamilyRecordIndexes();
     const adminRecord = await db
       .collection("user")
       .findOne({ _id: new ObjectId(user.id) });
