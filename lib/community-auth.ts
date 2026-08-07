@@ -60,6 +60,7 @@ export async function ensureIndexes(db: any) {
       db.collection("user_bookmarks").createIndex({ userId: 1, createdAt: -1 }),
       db.collection("user_study_progress").createIndex({ userId: 1, slug: 1 }),
       db.collection("user_streaks").createIndex({ userId: 1 }),
+      db.collection("reading_streaks").createIndex({ userId: 1 }),
       db.collection("user_prayer_preferences").createIndex({ userId: 1 }),
       db.collection("quiz_registrations").createIndex({ createdAt: -1 }),
       db.collection("quiz_leaderboard").createIndex({ name: 1 }),
