@@ -1,7 +1,9 @@
+import Link from "next/link";
 import {
   BadgeCheckIcon,
   BellIcon,
   CreditCardIcon,
+  FlameIcon,
   LogOutIcon,
 } from "lucide-react";
 
@@ -17,7 +19,9 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { signOutAction } from "@/app/actions/auth";
 
-export function DropdownMenuAvatar() {
+export function DropdownMenuAvatar({ session }) {
+  const isAdmin = session?.user?.role === "admin";
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -43,6 +47,19 @@ export function DropdownMenuAvatar() {
             Notifications
           </DropdownMenuItem>
         </DropdownMenuGroup>
+        {isAdmin && (
+          <>
+            <DropdownMenuSeparator />
+            <DropdownMenuGroup>
+              <DropdownMenuItem asChild>
+                <Link href="/records/streaks">
+                  <FlameIcon />
+                  Restore Streaks
+                </Link>
+              </DropdownMenuItem>
+            </DropdownMenuGroup>
+          </>
+        )}
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={signOutAction}>
           <LogOutIcon />

@@ -88,7 +88,7 @@ export default function Navbar({ session }) {
               </span>
             </button>
           ) : (
-            <DropdownMenuAvatar />
+            <DropdownMenuAvatar session={session} />
           )}
 
           <button
