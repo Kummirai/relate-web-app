@@ -1,8 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import { FaSearch, FaFire, FaBookOpen, FaUndo, FaUserCircle, FaSpinner } from "react-icons/fa";
+import {
+  FaSearch,
+  FaFire,
+  FaBookOpen,
+  FaUndo,
+  FaUserCircle,
+  FaSpinner,
+  FaHistory,
+} from "react-icons/fa";
 
 function formatDate(key) {
   if (!key) return "—";
@@ -27,6 +35,21 @@ export default function RestoreStreaksPage() {
   const [error, setError] = useState(null);
   const [prayerTarget, setPrayerTarget] = useState("");
   const [readingTarget, setReadingTarget] = useState("");
+  const [logs, setLogs] = useState([]);
+  const [loadingLogs, setLoadingLogs] = useState(true);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const res = await fetch("/api/admin/streaks?logs=1");
+        const json = await res.json();
+        if (res.ok) setLogs(json.data || []);
+      } catch {
+      } finally {
+        setLoadingLogs(false);
+      }
+    })();
+  }, []);
 
   const search = async (e) => {
     e.preventDefault();
@@ -89,6 +112,12 @@ export default function RestoreStreaksPage() {
           ? `Prayer streak restored to ${json.data.prayerStreak} days.`
           : `Reading streak restored to ${json.data.readingStreak} days.`,
       );
+      // Refresh the activity log so the new restore shows immediately.
+      try {
+        const res = await fetch("/api/admin/streaks?logs=1");
+        const logJson = await res.json();
+        if (res.ok) setLogs(logJson.data || []);
+      } catch {}
     } catch (err) {
       setError(err.message);
     } finally {
@@ -379,6 +408,51 @@ export default function RestoreStreaksPage() {
             Search for a user above to view and restore their streaks.
           </div>
         )}
+
+        {/* Recent restore activity */}
+        <div className="bg-white rounded-lg shadow overflow-hidden mt-6">
+          <div className="px-6 py-4 bg-zinc-950 flex items-center gap-2">
+            <FaHistory className="text-gray-300" />
+            <h2 className="text-sm font-medium text-white">Recent restore activity</h2>
+          </div>
+          {loadingLogs ? (
+            <div className="flex items-center justify-center gap-3 py-10 text-gray-500">
+              <FaSpinner className="animate-spin" />
+              <span className="text-sm">Loading activity…</span>
+            </div>
+          ) : logs.length === 0 ? (
+            <p className="px-6 py-8 text-center text-gray-500 text-sm">
+              No streak restores yet.
+            </p>
+          ) : (
+            <ul className="divide-y divide-gray-200">
+              {logs.map((log) => (
+                <li key={log._id} className="px-6 py-4 flex items-start justify-between gap-4">
+                  <div className="flex items-center gap-3 min-w-0">
+                    <span
+                      className={`size-9 rounded-full flex items-center justify-center shrink-0 ${
+                        log.section === "prayer"
+                          ? "bg-orange-100 text-orange-600"
+                          : "bg-blue-100 text-blue-600"
+                      }`}
+                    >
+                      {log.section === "prayer" ? <FaFire /> : <FaBookOpen />}
+                    </span>
+                    <div className="min-w-0">
+                      <p className="text-sm font-medium text-gray-900">{log.itemTitle}</p>
+                      <p className="text-sm text-gray-500">
+                        {log.actorName} → {log.userName}
+                      </p>
+                    </div>
+                  </div>
+                  <span className="text-xs text-gray-400 whitespace-nowrap pt-1">
+                    {new Date(log.createdAt).toLocaleString()}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
       </div>
     </section>
   );

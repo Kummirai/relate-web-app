@@ -4,6 +4,7 @@ import {
   BellIcon,
   CreditCardIcon,
   FlameIcon,
+  FolderOpenIcon,
   LogOutIcon,
 } from "lucide-react";
 
@@ -51,6 +52,12 @@ export function DropdownMenuAvatar({ session }) {
           <>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
+              <DropdownMenuItem asChild>
+                <Link href="/records">
+                  <FolderOpenIcon />
+                  Records
+                </Link>
+              </DropdownMenuItem>
               <DropdownMenuItem asChild>
                 <Link href="/records/streaks">
                   <FlameIcon />

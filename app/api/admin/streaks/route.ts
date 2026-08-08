@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { ObjectId } from "mongodb";
 import { getDb } from "@/lib/mongodb";
-import { resolveUser } from "@/lib/community-auth";
+import { resolveUser, fetchParticipants } from "@/lib/community-auth";
 
 // Matches the mobile app's streak calculations (prayer_app/src/utils/streaks.ts
 // and prayer_app/src/services/reading-streak.ts).
@@ -84,6 +84,32 @@ export async function GET(request: NextRequest) {
     const search = searchParams.get("search")?.trim() || "";
     const userId = searchParams.get("userId")?.trim() || "";
 
+    // Activity log view: recent admin streak restores.
+    if (searchParams.get("logs") === "1") {
+      const logs = await db
+        .collection("user_activity")
+        .find({ type: "streak_restore" })
+        .sort({ createdAt: -1 })
+        .limit(50)
+        .toArray();
+      const participants = await fetchParticipants(db, [
+        ...logs.map((l: any) => l.actorId),
+        ...logs.map((l: any) => l.userId),
+      ]);
+      const data = logs.map((l: any) => ({
+        _id: l._id?.toString(),
+        type: l.type,
+        section: l.section,
+        itemTitle: l.itemTitle,
+        details: l.details || null,
+        actorName: participants.get(l.actorId)?.name || "Admin",
+        actorEmail: participants.get(l.actorId)?.email || "",
+        userName: participants.get(l.userId)?.name || "User",
+        createdAt: l.createdAt,
+      }));
+      return NextResponse.json({ data });
+    }
+
     // Detail view for a single user.
     if (userId) {
       const user = await findUserDoc(db, userId);
@@ -136,9 +162,9 @@ export async function GET(request: NextRequest) {
         ? db.collection("reading_streaks").find({ userId: { $in: ids } }).toArray()
         : Promise.resolve([]),
     ]);
-    const prayerMap = new Map(prayerDocs.map((d) => [d.userId, d.streaks || {}]));
-    const readingMap = new Map(readingDocs.map((d) => [d.userId, d.days || []]));
-    const data = users.map((u) => {
+    const prayerMap = new Map<string, any>(prayerDocs.map((d: any) => [d.userId, d.streaks || {}]));
+    const readingMap = new Map<string, any>(readingDocs.map((d: any) => [d.userId, d.days || []]));
+    const data = users.map((u: any) => {
       const uid = uidOf(u);
       return {
         id: uid,
@@ -219,6 +245,19 @@ export async function POST(request: NextRequest) {
       );
       out.prayerStreak = calcPrayerStreak(streaks);
       out.prayerDayCount = Object.keys(streaks).length;
+      await db.collection("user_activity").insertOne({
+        userId: uid,
+        actorId: adminId,
+        type: "streak_restore",
+        section: "prayer",
+        itemId: uid,
+        itemTitle:
+          target > 0
+            ? `Prayer streak restored to ${target} days`
+            : "Prayer streak reset to 0 days",
+        details: { target, streak: out.prayerStreak, dayCount: out.prayerDayCount },
+        createdAt: new Date(),
+      });
     }
 
     // Restore reading streak: add the last N date keys.
@@ -249,6 +288,19 @@ export async function POST(request: NextRequest) {
       );
       out.readingStreak = calcReadingStreak(days);
       out.readingDayCount = days.length;
+      await db.collection("user_activity").insertOne({
+        userId: uid,
+        actorId: adminId,
+        type: "streak_restore",
+        section: "reading",
+        itemId: uid,
+        itemTitle:
+          target > 0
+            ? `Reading streak restored to ${target} days`
+            : "Reading streak reset to 0 days",
+        details: { target, streak: out.readingStreak, dayCount: out.readingDayCount },
+        createdAt: new Date(),
+      });
     }
 
     return NextResponse.json({ success: true, data: out });
