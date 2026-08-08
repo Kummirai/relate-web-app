@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { IoMdAddCircle } from "react-icons/io";
 import { FaBookReader } from "react-icons/fa";
+import { FaFire } from "react-icons/fa";
 
 export default function HomePage() {
   const features = [
@@ -18,6 +19,13 @@ export default function HomePage() {
       link: "/records/view-records",
       linkText: "View Records",
     },
+    {
+      title: "Restore Streaks",
+      description: "Restore prayer and reading streaks for app users",
+      icon: <FaFire className="text-4xl text-zinc-950" />,
+      link: "/records/streaks",
+      linkText: "Restore Streaks",
+    },
   ];
 
   return (
@@ -31,7 +39,7 @@ export default function HomePage() {
         </p>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-8 mb-12 max-w-3xl mx-auto">
+      <div className="grid md:grid-cols-3 gap-8 mb-12 max-w-4xl mx-auto">
         {features.map((feature, index) => (
           <div
             key={index}
