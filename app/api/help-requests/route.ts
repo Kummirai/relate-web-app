@@ -24,9 +24,14 @@ export async function GET(request: NextRequest) {
     const db = await getDb();
     const { searchParams } = new URL(request.url);
     const status = searchParams.get("status");
+    const assigned = searchParams.get("assigned");
     const filter: Record<string, unknown> = {};
     if (status && ["open", "in_progress", "resolved", "archived"].includes(status)) {
       filter.status = status;
+    }
+    // "assigned=me" limits the queue to requests assigned to the acting admin.
+    if (assigned === "me") {
+      filter.assignedTo = adminId;
     }
     const rawLimit = Number(searchParams.get("limit")) || 200;
     const limit = Math.min(Math.max(rawLimit, 1), 500);
@@ -69,6 +74,9 @@ export async function GET(request: NextRequest) {
             userId: 1,
             status: 1,
             recordId: 1,
+            assignedTo: 1,
+            assignedToName: 1,
+            assignedAt: 1,
             lastUserReadAt: 1,
             lastAdminReadAt: 1,
             createdAt: 1,
