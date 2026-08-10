@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { ObjectId } from "mongodb";
 import { getDb } from "@/lib/mongodb";
 import { resolveSession, ensureIndexes, fetchParticipants } from "@/lib/community-auth";
+import { notifyAllUsers } from "@/lib/inapp-notify";
+import { getAllPushTokens, sendPushNotifications } from "@/lib/push";
 
 export async function GET(request: NextRequest) {
   try {
@@ -73,6 +75,31 @@ export async function POST(request: NextRequest) {
       createdAt: new Date(),
     };
     const result = await db.collection("community_requests").insertOne(doc);
+
+    // A community-wide prayer request is broadcast to every other user so the
+    // whole community can stand with the person who asked.
+    if ((doc.visibility || "community") === "community") {
+      const body = `${doc.category || "Prayer request"}${doc.anonymous ? "" : ` · ${doc.author}`}`;
+      await Promise.all([
+        notifyAllUsers(
+          db,
+          {
+            type: "prayer_request",
+            title: "New prayer request",
+            body,
+            data: { section: "requests", requestId: result.insertedId?.toString() },
+          },
+          userId,
+        ),
+        sendPushNotifications(
+          await getAllPushTokens(db, userId),
+          "New prayer request",
+          body,
+          { section: "requests", requestId: result.insertedId?.toString() },
+        ),
+      ]);
+    }
+
     return NextResponse.json(
       { data: { _id: result.insertedId, ...doc, prayedByMe: false, isOwner: !!userId } },
       { status: 201 },

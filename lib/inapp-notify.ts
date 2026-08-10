@@ -27,6 +27,35 @@ export async function createNotification(
   } catch {}
 }
 
+/** Inserts a notification for every user (optionally excluding one user). */
+export async function notifyAllUsers(
+  db: any,
+  input: InAppNotificationInput,
+  exceptUserId?: string | null,
+) {
+  try {
+    const users = await db
+      .collection("user")
+      .find({})
+      .project({ id: 1, _id: 1 })
+      .toArray();
+    const ids = users
+      .map((u: any) => String(u.id || u._id?.toString() || ""))
+      .filter((id: string) => id && id !== exceptUserId);
+    if (!ids.length) return;
+    const docs = ids.map((userId: string) => ({
+      userId,
+      type: input.type,
+      title: input.title,
+      body: input.body,
+      data: input.data || {},
+      read: false,
+      createdAt: new Date(),
+    }));
+    await db.collection("notifications").insertMany(docs);
+  } catch {}
+}
+
 /** Inserts a notification for every admin user (optionally excluding one user). */
 export async function notifyAdmins(
   db: any,

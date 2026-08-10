@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { getDb } from "@/lib/mongodb";
 import { ObjectId } from "mongodb";
 import { resolveSession } from "@/lib/community-auth";
+import { createNotification } from "@/lib/inapp-notify";
+import { getUserPushTokens, sendPushNotifications } from "@/lib/push";
 import { NextRequest } from "next/server";
 
 export async function POST(
@@ -50,6 +52,24 @@ export async function POST(
           itemTitle: req.title || req.name || "Prayer Request",
           createdAt: new Date(),
         });
+
+        // Let the requester know someone prayed for them (in-app + push).
+        const actorName = user?.name || "Someone";
+        const body = `${actorName} is praying for your request`;
+        await Promise.all([
+          createNotification(db, req.userId, {
+            type: "prayer_prayed",
+            title: "Someone is praying for you",
+            body,
+            data: { section: "requests", requestId: id },
+          }),
+          sendPushNotifications(
+            await getUserPushTokens(db, req.userId),
+            "Someone is praying for you",
+            body,
+            { section: "requests", requestId: id },
+          ),
+        ]);
       }
     }
 
