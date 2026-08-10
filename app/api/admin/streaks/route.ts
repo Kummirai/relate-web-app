@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { ObjectId } from "mongodb";
 import { getDb } from "@/lib/mongodb";
-import { resolveUser, fetchParticipants } from "@/lib/community-auth";
+import { requireAdmin, fetchParticipants } from "@/lib/community-auth";
 
 // Matches the mobile app's streak calculations (prayer_app/src/utils/streaks.ts
 // and prayer_app/src/services/reading-streak.ts).
@@ -51,15 +51,6 @@ function calcReadingStreak(days: string[]): number {
   return streak;
 }
 
-async function requireAdmin(request: NextRequest) {
-  const userId = await resolveUser(request);
-  if (!userId || !ObjectId.isValid(userId)) return null;
-  const db = await getDb();
-  const user = await db.collection("user").findOne({ _id: new ObjectId(userId) });
-  if (!user || user.role !== "admin") return null;
-  return userId;
-}
-
 async function findUserDoc(db: any, id: string) {
   const byId = await db.collection("user").findOne({ id });
   if (byId) return byId;
@@ -75,10 +66,11 @@ function uidOf(doc: any): string {
 
 export async function GET(request: NextRequest) {
   try {
-    const adminId = await requireAdmin(request);
-    if (!adminId) {
+    const admin = await requireAdmin(request);
+    if (!admin) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
+    const adminId = admin.id;
     const db = await getDb();
     const { searchParams } = new URL(request.url);
     const search = searchParams.get("search")?.trim() || "";
@@ -183,10 +175,11 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
-    const adminId = await requireAdmin(request);
-    if (!adminId) {
+    const admin = await requireAdmin(request);
+    if (!admin) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
+    const adminId = admin.id;
     const body = await request.json();
     const userId = typeof body.userId === "string" ? body.userId.trim() : "";
     if (!userId) {

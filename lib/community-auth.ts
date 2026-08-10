@@ -1,5 +1,7 @@
 import { NextRequest } from "next/server";
+import { ObjectId } from "mongodb";
 import { auth } from "./auth";
+import { getDb } from "./mongodb";
 
 export type ResolvedUser = { id: string; name: string | null };
 
@@ -13,6 +15,53 @@ export async function resolveUser(request: NextRequest): Promise<string | null> 
   } catch {
     return null;
   }
+}
+
+/** Finds a user doc by better-auth `id` field (falling back to `_id`). */
+export async function findUserById(db: any, id: string): Promise<any | null> {
+  if (!id) return null;
+  const byId = await db.collection("user").findOne({ id });
+  if (byId) return byId;
+  if (ObjectId.isValid(id)) {
+    return db.collection("user").findOne({ _id: new ObjectId(id) });
+  }
+  return null;
+}
+
+/** Resolves the session and returns the user only when their role is "admin". */
+export async function requireAdmin(request: NextRequest): Promise<ResolvedUser | null> {
+  try {
+    const session = await auth.api.getSession({
+      headers: request.headers,
+    });
+    if (!session?.user) return null;
+    const db = await getDb();
+    const user = await findUserById(db, session.user.id);
+    if (!user || user.role !== "admin") return null;
+    return { id: session.user.id, name: session.user.name || null };
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Returns "admin" when the requester is an admin, "owner" when they own the
+ * item (matched by userId, or by author name for legacy items), else null.
+ */
+export async function resolveAdminOrOwner(
+  request: NextRequest,
+  item: { userId?: string | null; author?: string | null } | null,
+): Promise<"admin" | "owner" | null> {
+  const session = await resolveSession(request);
+  if (!session) return null;
+  if (await requireAdmin(request)) return "admin";
+  if (item) {
+    const isOwner =
+      item.userId === session.id ||
+      (!item.userId && !!session.name && item.author === session.name);
+    if (isOwner) return "owner";
+  }
+  return null;
 }
 
 export async function resolveSession(request: NextRequest): Promise<ResolvedUser | null> {

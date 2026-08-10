@@ -1,7 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { ObjectId } from "mongodb";
 import { getDb } from "@/lib/mongodb";
-import { resolveSession, ensureIndexes, fetchParticipants } from "@/lib/community-auth";
+import {
+  resolveSession,
+  ensureIndexes,
+  fetchParticipants,
+  requireAdmin,
+} from "@/lib/community-auth";
 
 export async function GET(request: NextRequest) {
   try {
@@ -64,6 +69,13 @@ export async function POST(request: NextRequest) {
   try {
     const db = await getDb();
     const user = await resolveSession(request);
+    const admin = await requireAdmin(request);
+    if (!admin) {
+      return NextResponse.json(
+        { error: user ? "Only admins can create events" : "Unauthorized" },
+        { status: user ? 403 : 401 },
+      );
+    }
     const userId = user?.id || null;
     const data = await request.json();
     const doc = {
@@ -101,6 +113,8 @@ export async function PUT(request: NextRequest) {
     const userId = user.id;
     const userName = user.name;
 
+    const isAdmin = !!(await requireAdmin(request));
+
     const { _id, ...updateData } = await request.json();
     if (!ObjectId.isValid(_id)) {
       return NextResponse.json({ error: "Invalid ID" }, { status: 400 });
@@ -110,7 +124,10 @@ export async function PUT(request: NextRequest) {
     if (!existing) {
       return NextResponse.json({ error: "Event not found" }, { status: 404 });
     }
-    const canEdit = existing.userId === userId || (!existing.userId && !!userName && existing.author === userName);
+    const canEdit =
+      isAdmin ||
+      existing.userId === userId ||
+      (!existing.userId && !!userName && existing.author === userName);
     if (!canEdit) {
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
@@ -153,6 +170,8 @@ export async function DELETE(request: NextRequest) {
     const userId = user.id;
     const userName = user.name;
 
+    const isAdmin = !!(await requireAdmin(request));
+
     const { _id } = await request.json();
     if (!ObjectId.isValid(_id)) {
       return NextResponse.json({ error: "Invalid ID" }, { status: 400 });
@@ -162,7 +181,10 @@ export async function DELETE(request: NextRequest) {
     if (!existing) {
       return NextResponse.json({ error: "Event not found" }, { status: 404 });
     }
-    const canDelete = existing.userId === userId || (!existing.userId && !!userName && existing.author === userName);
+    const canDelete =
+      isAdmin ||
+      existing.userId === userId ||
+      (!existing.userId && !!userName && existing.author === userName);
     if (!canDelete) {
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
