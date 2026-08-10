@@ -23,18 +23,95 @@ export async function POST(
       return NextResponse.json({ error: "Event not found" }, { status: 404 });
     }
 
+    // Optional registration details submitted alongside the RSVP (event
+    // booking form). Older clients simply toggle without a body.
+    let registration: any = null;
+    try {
+      const body = await request.json();
+      if (body && typeof body === "object") {
+        const hasDetails = ["fullName", "email", "phone", "emergencyContact"].some(
+          (k) => typeof body[k] === "string" && body[k].trim() !== "",
+        );
+        if (hasDetails) {
+          registration = {
+            fullName: String(body.fullName || "").trim(),
+            email: String(body.email || "").trim(),
+            phone: String(body.phone || "").trim(),
+            dob: String(body.dob || "").trim(),
+            emergencyContact: String(body.emergencyContact || "").trim(),
+            notes: String(body.notes || "").trim(),
+            bringingPartner: !!body.bringingPartner,
+            partner: body.partner
+              ? {
+                  fullName: String(body.partner.fullName || "").trim(),
+                  phone: String(body.partner.phone || "").trim(),
+                  dob: String(body.partner.dob || "").trim(),
+                  email: String(body.partner.email || "").trim(),
+                }
+              : null,
+          };
+        }
+      }
+    } catch {
+      // No JSON body — plain RSVP toggle.
+    }
+
     const alreadyRsvpd = (event.rsvpUserIds || []).includes(userId);
 
-    if (alreadyRsvpd) {
+    if (alreadyRsvpd && registration) {
+      // Re-registration with details (e.g. a retry after a lost response):
+      // keep the seat and refresh the stored details instead of toggling off.
+      await db.collection("event_registrations").updateOne(
+        { eventId: new ObjectId(id), userId },
+        { $set: { ...registration, updatedAt: new Date() } },
+        { upsert: true },
+      );
       await db.collection("community_events").updateOne(
         { _id: new ObjectId(id) },
-        { $pull: { rsvpUserIds: userId }, $inc: { attending: -1 } },
+        { $addToSet: { rsvpUserIds: userId } },
+      );
+    } else if (alreadyRsvpd) {
+      // Cancel: remove this user's registration(s) and free their seats.
+      const regs = await db
+        .collection("event_registrations")
+        .find({ eventId: new ObjectId(id), userId })
+        .toArray();
+      const decrement = regs.length
+        ? regs.some((r: any) => r.bringingPartner)
+          ? 2
+          : 1
+        : 1;
+
+      await db.collection("event_registrations").deleteMany({
+        eventId: new ObjectId(id),
+        userId,
+      });
+      await db.collection("community_events").updateOne(
+        { _id: new ObjectId(id) },
+        {
+          $pull: { rsvpUserIds: userId },
+          $set: { attending: Math.max(0, (event.attending || 0) - decrement) },
+        },
       );
     } else {
+      const increment = registration?.bringingPartner ? 2 : 1;
+      // $inc keeps concurrent RSVPs atomic.
       await db.collection("community_events").updateOne(
         { _id: new ObjectId(id) },
-        { $addToSet: { rsvpUserIds: userId }, $inc: { attending: 1 } },
+        {
+          $addToSet: { rsvpUserIds: userId },
+          $inc: { attending: increment },
+        },
       );
+
+      if (registration) {
+        await db.collection("event_registrations").insertOne({
+          eventId: new ObjectId(id),
+          userId,
+          ...registration,
+          createdAt: new Date(),
+        });
+      }
 
       if (event.userId && event.userId !== userId) {
         await db.collection("user_activity").insertOne({
@@ -49,12 +126,13 @@ export async function POST(
       }
     }
 
+    const willBeRsvpd = alreadyRsvpd ? !!registration : true;
     const updated = await db.collection("community_events").findOne({ _id: new ObjectId(id) });
     return NextResponse.json({
       data: {
         ...updated,
-        hasRsvpd: !alreadyRsvpd,
-        attending: (updated?.attending || 0),
+        hasRsvpd: willBeRsvpd,
+        attending: updated?.attending || 0,
       },
     });
   } catch {

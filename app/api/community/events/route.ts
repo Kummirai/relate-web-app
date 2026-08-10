@@ -20,6 +20,15 @@ export async function GET(request: NextRequest) {
     const allUserIds = events.flatMap((e: any) => e.rsvpUserIds || []);
     const participants = await fetchParticipants(db, allUserIds);
 
+    let bookmarkedIds = new Set<string>();
+    if (userId) {
+      const bookmarks = await db
+        .collection("user_bookmarks")
+        .find({ userId, section: "events" })
+        .toArray();
+      bookmarkedIds = new Set(bookmarks.map((b: any) => b.itemId));
+    }
+
     const data = events.map((e: any) => {
       const rsvpUsers = (e.rsvpUserIds || [])
         .map((id: string) => participants.get(id))
@@ -37,6 +46,7 @@ export async function GET(request: NextRequest) {
         userId: e.userId || null,
         attending: e.attending || 0,
         hasRsvpd: userId ? (e.rsvpUserIds || []).includes(userId) : false,
+        isBookmarked: userId ? bookmarkedIds.has(e._id.toString()) : false,
         rsvpUsers,
         isOwner: userId
           ? e.userId === userId || (!e.userId && !!user.name && e.author === user.name)
