@@ -3,6 +3,8 @@ import { ObjectId } from "mongodb";
 import { getDb } from "@/lib/mongodb";
 import { resolveSession } from "@/lib/community-auth";
 import { ensureFamilyRecordIndexes } from "@/lib/models";
+import { getUserPushTokens, sendPushNotifications } from "@/lib/push";
+import { createNotification } from "@/lib/inapp-notify";
 
 const URGENCY_MAP: Record<string, string> = {
   Urgent: "High",
@@ -94,6 +96,28 @@ export async function POST(
         { _id: new ObjectId(id) },
         { $set: { recordId, updatedAt: new Date() } },
       );
+
+    // Let the requester know their request became a family record.
+    if (doc.userId) {
+      void (async () => {
+        try {
+          const title = "Your help request has been recorded";
+          const body = "A family record was created from your help request.";
+          const tokens = await getUserPushTokens(db, doc.userId);
+          await sendPushNotifications(tokens, title, body, {
+            type: "help_converted",
+            requestId: id,
+            recordId,
+          });
+          await createNotification(db, doc.userId, {
+            type: "help_converted",
+            title,
+            body,
+            data: { requestId: id, recordId },
+          });
+        } catch {}
+      })();
+    }
 
     return NextResponse.json(
       { data: { recordId, alreadyCreated: false } },

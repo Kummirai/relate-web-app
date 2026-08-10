@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { ObjectId } from "mongodb";
 import { getDb } from "@/lib/mongodb";
 import { resolveSession } from "@/lib/community-auth";
+import { getUserPushTokens, sendPushNotifications } from "@/lib/push";
+import { createNotification } from "@/lib/inapp-notify";
 
 const EDITABLE_FIELDS = [
   "name",
@@ -172,6 +174,29 @@ export async function PATCH(
         ops,
         { returnDocument: "after" },
       );
+
+    // Notify the requester in real time when an admin changes the status.
+    if (statusChanged && doc.userId && doc.userId !== actor.id) {
+      const fromLabel = STATUS_LABELS[doc.status] || "Unknown";
+      const toLabel = STATUS_LABELS[String(update.status)] || String(update.status);
+      void (async () => {
+        try {
+          const title = "Update on your help request";
+          const body = `Your request status changed from "${fromLabel}" to "${toLabel}".`;
+          const tokens = await getUserPushTokens(db, doc.userId);
+          await sendPushNotifications(tokens, title, body, {
+            type: "help_status",
+            requestId: id,
+          });
+          await createNotification(db, doc.userId, {
+            type: "help_status",
+            title,
+            body,
+            data: { requestId: id },
+          });
+        } catch {}
+      })();
+    }
 
     return NextResponse.json({ data: result });
   } catch {
