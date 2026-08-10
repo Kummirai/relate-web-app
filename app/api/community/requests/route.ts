@@ -24,6 +24,9 @@ export async function GET(request: NextRequest) {
       const prayedUsers = (r.prayedUserIds || [])
         .map((id: string) => participants.get(id))
         .filter(Boolean);
+      const isOwner = userId
+        ? r.userId === userId || (!r.userId && !!user.name && r.author === user.name)
+        : false;
       return {
         _id: r._id,
         title: r.title || r.text,
@@ -31,12 +34,15 @@ export async function GET(request: NextRequest) {
         description: r.description || r.text,
         author: r.author,
         userId: r.userId || null,
+        category: r.category || "",
+        anonymous: !!r.anonymous,
+        visibility: r.visibility || "community",
+        // Email is private — only the owner can read it back.
+        email: isOwner ? r.email || "" : undefined,
         prayCount: r.prayCount || 0,
         prayedByMe: userId ? (r.prayedUserIds || []).includes(userId) : false,
         prayedUsers,
-        isOwner: userId
-          ? r.userId === userId || (!r.userId && !!user.name && r.author === user.name)
-          : false,
+        isOwner,
         createdAt: r.createdAt,
       };
     });
@@ -53,10 +59,14 @@ export async function POST(request: NextRequest) {
     const userId = user?.id || null;
     const data = await request.json();
     const doc = {
-      title: data.title || "",
+      title: data.title || data.category || "",
       text: data.text || "",
       description: data.description || "",
-      author: data.author || "Anonymous",
+      author: data.anonymous ? "Anonymous" : data.author || "Anonymous",
+      category: data.category || "",
+      anonymous: !!data.anonymous,
+      visibility: data.visibility || "community",
+      email: data.email || "",
       userId: userId || null,
       prayCount: 0,
       prayedUserIds: [],
@@ -93,6 +103,11 @@ export async function PUT(request: NextRequest) {
     if (updateData.title !== undefined) setFields.title = updateData.title;
     if (updateData.text !== undefined) setFields.text = updateData.text;
     if (updateData.description !== undefined) setFields.description = updateData.description;
+    if (updateData.category !== undefined) setFields.category = updateData.category;
+    if (updateData.anonymous !== undefined) setFields.anonymous = !!updateData.anonymous;
+    if (updateData.visibility !== undefined) setFields.visibility = updateData.visibility;
+    if (updateData.email !== undefined) setFields.email = updateData.email;
+    if (updateData.author !== undefined) setFields.author = updateData.anonymous ? "Anonymous" : updateData.author;
 
     await db.collection("community_requests").updateOne(
       { _id: new ObjectId(_id) },
