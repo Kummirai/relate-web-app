@@ -68,15 +68,15 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const db = await getDb();
-    const user = await resolveSession(request);
     const admin = await requireAdmin(request);
     if (!admin) {
+      const user = await resolveSession(request);
       return NextResponse.json(
         { error: user ? "Only admins can create events" : "Unauthorized" },
         { status: user ? 403 : 401 },
       );
     }
-    const userId = user?.id || null;
+    const userId = admin.id;
     const data = await request.json();
     const doc = {
       title: data.title,
