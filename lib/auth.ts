@@ -1,5 +1,6 @@
 import { betterAuth } from "better-auth";
 import { mongodbAdapter } from "better-auth/adapters/mongodb";
+import { expo } from "@better-auth/expo";
 import { client } from "@/lib/mongodb";
 import { nextCookies } from "better-auth/next-js";
 import { admin } from "better-auth/plugins";
@@ -12,6 +13,15 @@ export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
   },
+  // Trust the mobile app's deep link scheme (relate://) so the Expo OAuth
+  // flow can redirect the session back into the app, plus exp:// origins
+  // when running in development.
+  trustedOrigins: [
+    "relate://",
+    ...(process.env.NODE_ENV === "development"
+      ? ["exp://", "exp://**", "exp://192.168.*.*:*/**", "http://localhost:8081"]
+      : []),
+  ],
   socialProviders: {
     google: {
       clientId: process.env.GOOGLE_CLIENT_ID!,
@@ -39,6 +49,7 @@ export const auth = betterAuth({
   },
   plugins: [
     nextCookies(),
+    expo(),
     admin({
       defaultRole: "user",
       adminRole: "admin",
