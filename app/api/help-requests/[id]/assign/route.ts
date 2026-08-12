@@ -107,22 +107,21 @@ export async function POST(
       );
 
     // Notify the requester so they see the update in real time.
+    // Awaited so Vercel doesn't freeze the function before Expo delivery.
     if (doc.userId && notify) {
-      void (async () => {
-        try {
-          const tokens = await getUserPushTokens(db, doc.userId);
-          await sendPushNotifications(tokens, notify.title, notify.body, {
-            type: notify.type,
-            requestId: id,
-          });
-          await createNotification(db, doc.userId, {
-            type: notify.type,
-            title: notify.title,
-            body: notify.body,
-            data: { requestId: id },
-          });
-        } catch {}
-      })();
+      try {
+        const tokens = await getUserPushTokens(db, doc.userId);
+        await sendPushNotifications(tokens, notify.title, notify.body, {
+          type: notify.type,
+          requestId: id,
+        });
+        await createNotification(db, doc.userId, {
+          type: notify.type,
+          title: notify.title,
+          body: notify.body,
+          data: { requestId: id },
+        });
+      } catch {}
     }
 
     return NextResponse.json({ data: result });

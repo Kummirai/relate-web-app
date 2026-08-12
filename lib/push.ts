@@ -41,27 +41,50 @@ export async function getAllPushTokens(
 }
 
 /**
- * Fire-and-forget delivery via the Expo push API. The API accepts at most
- * 100 messages per request, so large broadcasts (e.g. "notify all users")
- * are sent in chunks.
+ * Android: every remote notification must land on a channel that exists on
+ * the device. The app creates a HIGH-importance "requests" channel at
+ * startup (banners + sound); sending channelId here routes these pushes to it
+ * instead of the silent fallback channel. Ignored by iOS (APNs uses `sound`).
+ */
+export const DEFAULT_PUSH_CHANNEL_ID = "requests";
+
+/**
+ * Delivery via the Expo push API. The API accepts at most 100 messages per
+ * request, so large broadcasts (e.g. "notify all users") are sent in chunks.
+ * Must be awaited by the caller — on serverless runtimes (Vercel) un-awaited
+ * promises are frozen once the response is flushed.
  */
 export async function sendPushNotifications(
   tokens: string[],
   title: string,
   body: string,
   data: Record<string, unknown> = {},
+  channelId: string = DEFAULT_PUSH_CHANNEL_ID,
 ) {
   const unique = [...new Set(tokens.filter(Boolean))];
   if (!unique.length) return;
   const CHUNK = 100;
-  const messages = unique.map((to) => ({ to, title, body, sound: "default", data }));
+  const messages = unique.map((to) => ({
+    to,
+    title,
+    body,
+    sound: "default",
+    channelId,
+    data,
+  }));
   try {
     for (let i = 0; i < messages.length; i += CHUNK) {
-      await fetch("https://exp.host/--/api/v2/push/send", {
+      const res = await fetch("https://exp.host/--/api/v2/push/send", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(messages.slice(i, i + CHUNK)),
       });
+      if (!res.ok) {
+        const text = await res.text().catch(() => "");
+        console.error(`[push] Expo API ${res.status}: ${text.slice(0, 500)}`);
+      }
     }
-  } catch {}
+  } catch (e) {
+    console.error("[push] Expo send failed", e);
+  }
 }

@@ -164,26 +164,25 @@ export async function POST(request: NextRequest) {
 
     const result = await db.collection("help_requests").insertOne(doc);
 
-    void (async () => {
-      try {
-        const requestId = result.insertedId.toString();
-        const tokens = await getAdminPushTokens(db);
-        await sendPushNotifications(tokens, "New help request", `${name} · ${helpType}`, {
+    // Awaited so Vercel doesn't freeze the function before Expo delivery.
+    try {
+      const requestId = result.insertedId.toString();
+      const tokens = await getAdminPushTokens(db);
+      await sendPushNotifications(tokens, "New help request", `${name} · ${helpType}`, {
+        type: "new_help_request",
+        requestId,
+      });
+      await notifyAdmins(
+        db,
+        {
           type: "new_help_request",
-          requestId,
-        });
-        await notifyAdmins(
-          db,
-          {
-            type: "new_help_request",
-            title: "New help request",
-            body: `${name} · ${helpType}`,
-            data: { requestId },
-          },
-          user.id,
-        );
-      } catch {}
-    })();
+          title: "New help request",
+          body: `${name} · ${helpType}`,
+          data: { requestId },
+        },
+        user.id,
+      );
+    } catch {}
 
     return NextResponse.json(
       { data: { _id: result.insertedId, ...doc } },

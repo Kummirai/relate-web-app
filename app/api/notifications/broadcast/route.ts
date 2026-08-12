@@ -22,24 +22,20 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Fire-and-forget so the admin's response isn't blocked by slow fan-out.
-    void (async () => {
-      try {
-        await Promise.all([
-          notifyAllUsers(
-            db,
-            { type: "announcement", title, body },
-            admin.id,
-          ),
-          sendPushNotifications(
-            await getAllPushTokens(db, admin.id),
-            title,
-            body,
-            { type: "announcement" },
-          ),
-        ]);
-      } catch {}
-    })();
+    // Awaited so Vercel doesn't freeze the function before Expo delivery.
+    await Promise.all([
+      notifyAllUsers(
+        db,
+        { type: "announcement", title, body },
+        admin.id,
+      ),
+      sendPushNotifications(
+        await getAllPushTokens(db, admin.id),
+        title,
+        body,
+        { type: "announcement" },
+      ),
+    ]);
 
     return NextResponse.json({ success: true });
   } catch {

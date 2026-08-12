@@ -98,25 +98,24 @@ export async function POST(
       );
 
     // Let the requester know their request became a family record.
+    // Awaited so Vercel doesn't freeze the function before Expo delivery.
     if (doc.userId) {
-      void (async () => {
-        try {
-          const title = "Your help request has been recorded";
-          const body = "A family record was created from your help request.";
-          const tokens = await getUserPushTokens(db, doc.userId);
-          await sendPushNotifications(tokens, title, body, {
-            type: "help_converted",
-            requestId: id,
-            recordId,
-          });
-          await createNotification(db, doc.userId, {
-            type: "help_converted",
-            title,
-            body,
-            data: { requestId: id, recordId },
-          });
-        } catch {}
-      })();
+      try {
+        const title = "Your help request has been recorded";
+        const body = "A family record was created from your help request.";
+        const tokens = await getUserPushTokens(db, doc.userId);
+        await sendPushNotifications(tokens, title, body, {
+          type: "help_converted",
+          requestId: id,
+          recordId,
+        });
+        await createNotification(db, doc.userId, {
+          type: "help_converted",
+          title,
+          body,
+          data: { requestId: id, recordId },
+        });
+      } catch {}
     }
 
     return NextResponse.json(

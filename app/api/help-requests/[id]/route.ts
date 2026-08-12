@@ -176,26 +176,25 @@ export async function PATCH(
       );
 
     // Notify the requester in real time when an admin changes the status.
+    // Awaited so Vercel doesn't freeze the function before Expo delivery.
     if (statusChanged && doc.userId && doc.userId !== actor.id) {
       const fromLabel = STATUS_LABELS[doc.status] || "Unknown";
       const toLabel = STATUS_LABELS[String(update.status)] || String(update.status);
-      void (async () => {
-        try {
-          const title = "Update on your help request";
-          const body = `Your request status changed from "${fromLabel}" to "${toLabel}".`;
-          const tokens = await getUserPushTokens(db, doc.userId);
-          await sendPushNotifications(tokens, title, body, {
-            type: "help_status",
-            requestId: id,
-          });
-          await createNotification(db, doc.userId, {
-            type: "help_status",
-            title,
-            body,
-            data: { requestId: id },
-          });
-        } catch {}
-      })();
+      try {
+        const title = "Update on your help request";
+        const body = `Your request status changed from "${fromLabel}" to "${toLabel}".`;
+        const tokens = await getUserPushTokens(db, doc.userId);
+        await sendPushNotifications(tokens, title, body, {
+          type: "help_status",
+          requestId: id,
+        });
+        await createNotification(db, doc.userId, {
+          type: "help_status",
+          title,
+          body,
+          data: { requestId: id },
+        });
+      } catch {}
     }
 
     return NextResponse.json({ data: result });
