@@ -9,6 +9,41 @@ import {
   sendPushNotifications,
 } from "@/lib/push";
 
+/** Builds the notification body shown next to a prayer request. */
+function requestBody(category?: string, anonymous?: boolean, author?: string) {
+  return `${category || "Prayer request"}${anonymous ? "" : ` · ${author || "Anonymous"}`}`;
+}
+
+/**
+ * Notifies the audience matching a request's visibility: community requests
+ * reach every other user, team-only requests reach the prayer team (admins).
+ * In-app + push, awaited so Vercel doesn't freeze delivery.
+ */
+async function notifyPrayerRequest(
+  db: any,
+  opts: {
+    title: string;
+    body: string;
+    requestId: string;
+    visibility: string;
+    exceptUserId?: string | null;
+  },
+) {
+  const { title, body, visibility, exceptUserId } = opts;
+  const data = { section: "requests", requestId: opts.requestId };
+  if ((visibility || "community") === "community") {
+    await Promise.all([
+      notifyAllUsers(db, { type: "prayer_request", title, body, data }, exceptUserId ?? null),
+      sendPushNotifications(await getAllPushTokens(db, exceptUserId), title, body, data),
+    ]);
+  } else {
+    await Promise.all([
+      notifyAdmins(db, { type: "prayer_request", title, body, data }, exceptUserId ?? null),
+      sendPushNotifications(await getAdminPushTokens(db, exceptUserId), title, body, data),
+    ]);
+  }
+}
+
 export async function GET(request: NextRequest) {
   try {
     const db = await getDb();
@@ -84,19 +119,13 @@ export async function POST(request: NextRequest) {
     // request is broadcast to every other user so the whole community can
     // stand with the person who asked, while a team-only request goes to the
     // prayer team (admins) instead.
-    const body = `${doc.category || "Prayer request"}${doc.anonymous ? "" : ` · ${doc.author}`}`;
-    const notifData = { section: "requests", requestId: result.insertedId?.toString() };
-    if ((doc.visibility || "community") === "community") {
-      await Promise.all([
-        notifyAllUsers(db, { type: "prayer_request", title: "New prayer request", body, data: notifData }, userId),
-        sendPushNotifications(await getAllPushTokens(db, userId), "New prayer request", body, notifData),
-      ]);
-    } else {
-      await Promise.all([
-        notifyAdmins(db, { type: "prayer_request", title: "New prayer request", body, data: notifData }, userId),
-        sendPushNotifications(await getAdminPushTokens(db, userId), "New prayer request", body, notifData),
-      ]);
-    }
+    await notifyPrayerRequest(db, {
+      title: "New prayer request",
+      body: requestBody(doc.category, doc.anonymous, doc.author),
+      requestId: result.insertedId?.toString() || "",
+      visibility: doc.visibility || "community",
+      exceptUserId: userId,
+    });
 
     return NextResponse.json(
       { data: { _id: result.insertedId, ...doc, prayedByMe: false, isOwner: !!userId } },
@@ -140,6 +169,33 @@ export async function PUT(request: NextRequest) {
     );
 
     const updated = await db.collection("community_requests").findOne({ _id: new ObjectId(_id) });
+
+    // Keep the community / prayer team in the loop when a shared request is
+    // edited — but only if something publicly visible actually changed.
+    // Email is private (only the owner can read it back), so edits that touch
+    // just the email (or are no-ops) stay quiet.
+    const publicFields = [
+      "title",
+      "text",
+      "description",
+      "category",
+      "anonymous",
+      "visibility",
+      "author",
+    ] as const;
+    const changedPublicly = publicFields.some(
+      (f) => setFields[f] !== undefined && setFields[f] !== existing[f],
+    );
+    if (changedPublicly) {
+      await notifyPrayerRequest(db, {
+        title: "Prayer request updated",
+        body: requestBody(updated?.category, updated?.anonymous, updated?.author),
+        requestId: _id,
+        visibility: updated?.visibility || "community",
+        exceptUserId: userId,
+      });
+    }
+
     return NextResponse.json({ data: { ...updated, isOwner: true } });
   } catch {
     return NextResponse.json({ error: "Failed to update request" }, { status: 500 });
