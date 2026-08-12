@@ -61,6 +61,19 @@ export async function GET(request: NextRequest) {
     const allUserIds = requests.flatMap((r: any) => r.prayedUserIds || []);
     const participants = await fetchParticipants(db, allUserIds);
 
+    // Comment counts for every listed request (one query instead of N+1).
+    const requestIds = requests.map((r: any) => r._id.toString());
+    const commentAgg = await db
+      .collection("community_request_comments")
+      .aggregate([
+        { $match: { requestId: { $in: requestIds } } },
+        { $group: { _id: "$requestId", count: { $sum: 1 } } },
+      ])
+      .toArray();
+    const commentCounts = new Map(
+      commentAgg.map((c: any) => [c._id, c.count]),
+    );
+
     const data = requests.map((r: any) => {
       const prayedUsers = (r.prayedUserIds || [])
         .map((id: string) => participants.get(id))
@@ -81,6 +94,7 @@ export async function GET(request: NextRequest) {
         // Email is private — only the owner can read it back.
         email: isOwner ? r.email || "" : undefined,
         prayCount: r.prayCount || 0,
+        commentCount: commentCounts.get(r._id.toString()) || 0,
         prayedByMe: userId ? (r.prayedUserIds || []).includes(userId) : false,
         prayedUsers,
         isOwner,
@@ -220,6 +234,8 @@ export async function DELETE(request: NextRequest) {
     if (!canDelete) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 
     await db.collection("community_requests").deleteOne({ _id: new ObjectId(_id) });
+    // Clean up the request's encouragement thread so no orphaned comments linger.
+    await db.collection("community_request_comments").deleteMany({ requestId: _id });
     return NextResponse.json({ success: true });
   } catch {
     return NextResponse.json({ error: "Failed to delete request" }, { status: 500 });
