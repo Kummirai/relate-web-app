@@ -36,7 +36,9 @@ export async function POST(
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const doc = await db.collection("help_requests").findOne({ _id: new ObjectId(id) });
+    const doc = await db
+      .collection("help_requests")
+      .findOne({ _id: new ObjectId(id) });
     if (!doc) {
       return NextResponse.json({ error: "Request not found" }, { status: 404 });
     }
@@ -102,7 +104,7 @@ export async function POST(
     if (doc.userId) {
       try {
         const title = "Your help request has been recorded";
-        const body = "A family record was created from your help request.";
+        const body = "An assistance record was created from your help request.";
         const tokens = await getUserPushTokens(db, doc.userId);
         await sendPushNotifications(tokens, title, body, {
           type: "help_converted",
@@ -123,6 +125,9 @@ export async function POST(
       { status: 201 },
     );
   } catch {
-    return NextResponse.json({ error: "Failed to create record" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Failed to create record" },
+      { status: 500 },
+    );
   }
 }

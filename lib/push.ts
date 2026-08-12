@@ -7,8 +7,11 @@ export async function getUserPushTokens(db: any, userId: string): Promise<string
   return tokens.map((t: any) => t.token).filter(Boolean);
 }
 
-/** Push tokens of every admin user. */
-export async function getAdminPushTokens(db: any): Promise<string[]> {
+/** Push tokens of every admin user (optionally excluding one user). */
+export async function getAdminPushTokens(
+  db: any,
+  exceptUserId?: string | null,
+): Promise<string[]> {
   const admins = await db
     .collection("user")
     .find({ role: "admin" })
@@ -16,7 +19,7 @@ export async function getAdminPushTokens(db: any): Promise<string[]> {
     .toArray();
   const ids = admins
     .map((a: any) => String(a.id || a._id?.toString() || ""))
-    .filter(Boolean);
+    .filter((id: string) => id && id !== exceptUserId);
   if (!ids.length) return [];
   const tokens = await db.collection("push_tokens").find({ userId: { $in: ids } }).toArray();
   return tokens.map((t: any) => t.token).filter(Boolean);

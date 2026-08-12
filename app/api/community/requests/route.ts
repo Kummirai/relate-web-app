@@ -2,8 +2,12 @@ import { NextRequest, NextResponse } from "next/server";
 import { ObjectId } from "mongodb";
 import { getDb } from "@/lib/mongodb";
 import { resolveSession, ensureIndexes, fetchParticipants } from "@/lib/community-auth";
-import { notifyAllUsers } from "@/lib/inapp-notify";
-import { getAllPushTokens, sendPushNotifications } from "@/lib/push";
+import { notifyAllUsers, notifyAdmins } from "@/lib/inapp-notify";
+import {
+  getAllPushTokens,
+  getAdminPushTokens,
+  sendPushNotifications,
+} from "@/lib/push";
 
 export async function GET(request: NextRequest) {
   try {
@@ -76,27 +80,21 @@ export async function POST(request: NextRequest) {
     };
     const result = await db.collection("community_requests").insertOne(doc);
 
-    // A community-wide prayer request is broadcast to every other user so the
-    // whole community can stand with the person who asked.
+    // Notifications follow the visibility the requester chose: a community
+    // request is broadcast to every other user so the whole community can
+    // stand with the person who asked, while a team-only request goes to the
+    // prayer team (admins) instead.
+    const body = `${doc.category || "Prayer request"}${doc.anonymous ? "" : ` · ${doc.author}`}`;
+    const notifData = { section: "requests", requestId: result.insertedId?.toString() };
     if ((doc.visibility || "community") === "community") {
-      const body = `${doc.category || "Prayer request"}${doc.anonymous ? "" : ` · ${doc.author}`}`;
       await Promise.all([
-        notifyAllUsers(
-          db,
-          {
-            type: "prayer_request",
-            title: "New prayer request",
-            body,
-            data: { section: "requests", requestId: result.insertedId?.toString() },
-          },
-          userId,
-        ),
-        sendPushNotifications(
-          await getAllPushTokens(db, userId),
-          "New prayer request",
-          body,
-          { section: "requests", requestId: result.insertedId?.toString() },
-        ),
+        notifyAllUsers(db, { type: "prayer_request", title: "New prayer request", body, data: notifData }, userId),
+        sendPushNotifications(await getAllPushTokens(db, userId), "New prayer request", body, notifData),
+      ]);
+    } else {
+      await Promise.all([
+        notifyAdmins(db, { type: "prayer_request", title: "New prayer request", body, data: notifData }, userId),
+        sendPushNotifications(await getAdminPushTokens(db, userId), "New prayer request", body, notifData),
       ]);
     }
 
