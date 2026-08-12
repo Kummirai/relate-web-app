@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { getDb } from "@/lib/mongodb";
 import { ObjectId } from "mongodb";
 import { resolveUser, resolveSession } from "@/lib/community-auth";
+import { createNotification } from "@/lib/inapp-notify";
+import { getUserPushTokens, sendPushNotifications } from "@/lib/push";
 import { NextRequest } from "next/server";
 
 export async function POST(
@@ -123,6 +125,29 @@ export async function POST(
           itemTitle: event.title || "Event",
           createdAt: new Date(),
         });
+
+        // Let the event owner know someone is coming (in-app + device banner).
+        // Awaited so Vercel doesn't freeze the function before delivery.
+        try {
+          const actorName = user?.name || "Someone";
+          const title = "New RSVP";
+          const body = `${actorName} is coming to ${event.title || "your event"}`;
+          const data = { tab: "social", itemId: id };
+          await Promise.all([
+            createNotification(db, event.userId, {
+              type: "event_rsvp",
+              title,
+              body,
+              data,
+            }),
+            sendPushNotifications(
+              await getUserPushTokens(db, event.userId),
+              title,
+              body,
+              data,
+            ),
+          ]);
+        } catch {}
       }
     }
 

@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { getDb } from "@/lib/mongodb";
 import { ObjectId } from "mongodb";
 import { resolveSession } from "@/lib/community-auth";
+import { createNotification } from "@/lib/inapp-notify";
+import { getUserPushTokens, sendPushNotifications } from "@/lib/push";
 import { NextRequest } from "next/server";
 
 export async function POST(
@@ -50,6 +52,29 @@ export async function POST(
           itemTitle: group.title || "Group",
           createdAt: new Date(),
         });
+
+        // Let the group owner know someone joined (in-app + device banner).
+        // Awaited so Vercel doesn't freeze the function before delivery.
+        try {
+          const actorName = user?.name || "Someone";
+          const title = "New member in your group";
+          const body = `${actorName} joined ${group.title || "your prayer group"}`;
+          const data = { tab: "spiritual", section: "groups", itemId: id };
+          await Promise.all([
+            createNotification(db, group.userId, {
+              type: "group_join",
+              title,
+              body,
+              data,
+            }),
+            sendPushNotifications(
+              await getUserPushTokens(db, group.userId),
+              title,
+              body,
+              data,
+            ),
+          ]);
+        } catch {}
       }
     }
 

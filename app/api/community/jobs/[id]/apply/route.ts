@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { getDb } from "@/lib/mongodb";
 import { ObjectId } from "mongodb";
 import { resolveSession } from "@/lib/community-auth";
+import { createNotification } from "@/lib/inapp-notify";
+import { getUserPushTokens, sendPushNotifications } from "@/lib/push";
 import { NextRequest } from "next/server";
 
 export async function POST(
@@ -49,6 +51,29 @@ export async function POST(
         itemTitle: job.title || "Job",
         createdAt: new Date(),
       });
+
+      // Let the job owner know someone applied (in-app + device banner).
+      // Awaited so Vercel doesn't freeze the function before delivery.
+      try {
+        const actorName = user?.name || "Someone";
+        const title = "New job application";
+        const body = `${actorName} applied for ${job.title || "your job"}`;
+        const data = { tab: "skills", filter: "jobs", itemId: id };
+        await Promise.all([
+          createNotification(db, job.userId, {
+            type: "job_apply",
+            title,
+            body,
+            data,
+          }),
+          sendPushNotifications(
+            await getUserPushTokens(db, job.userId),
+            title,
+            body,
+            data,
+          ),
+        ]);
+      } catch {}
     }
 
     return NextResponse.json({ data: { applied: true } });
