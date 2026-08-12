@@ -20,6 +20,19 @@ export async function GET(request: NextRequest) {
     const allUserIds = groups.flatMap((g: any) => g.joinedUserIds || []);
     const participants = await fetchParticipants(db, allUserIds);
 
+    // Comment counts for every listed group (one query instead of N+1).
+    const groupIds = groups.map((g: any) => g._id.toString());
+    const commentAgg = await db
+      .collection("community_group_comments")
+      .aggregate([
+        { $match: { groupId: { $in: groupIds } } },
+        { $group: { _id: "$groupId", count: { $sum: 1 } } },
+      ])
+      .toArray();
+    const commentCounts = new Map(
+      commentAgg.map((c: any) => [c._id, c.count]),
+    );
+
     const data = groups.map((g: any) => {
       const joinedUsers = (g.joinedUserIds || [])
         .map((id: string) => participants.get(id))
@@ -32,6 +45,7 @@ export async function GET(request: NextRequest) {
         schedule: g.schedule || "",
         maxMembers: g.maxMembers || 0,
         members: g.members || 0,
+        commentCount: commentCounts.get(g._id.toString()) || 0,
         live: g.live || false,
         hasJoined: userId ? (g.joinedUserIds || []).includes(userId) : false,
         joinedUsers,
@@ -130,6 +144,8 @@ export async function DELETE(request: NextRequest) {
     if (!canDelete) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 
     await db.collection("community_groups").deleteOne({ _id: new ObjectId(_id) });
+    // Clean up the group's encouragement thread so no orphaned comments linger.
+    await db.collection("community_group_comments").deleteMany({ groupId: _id });
     return NextResponse.json({ success: true });
   } catch {
     return NextResponse.json({ error: "Failed to delete group" }, { status: 500 });
