@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { ObjectId } from "mongodb";
 import { getDb } from "@/lib/mongodb";
 import { resolveSession, ensureIndexes, fetchParticipants } from "@/lib/community-auth";
+import { makeInviteCode } from "@/lib/daily";
 
 export async function GET(request: NextRequest) {
   try {
@@ -41,12 +42,21 @@ export async function GET(request: NextRequest) {
         _id: g._id,
         name: g.name,
         description: g.description,
+        category: g.category || "prayer",
+        imageUrl: g.imageUrl || null,
+        facilitator: g.facilitator || "",
+        location: g.location || "",
+        audience: g.audience || "",
+        notes: g.notes || "",
+        contactInfo: g.contactInfo || "",
+        inviteCode: g.inviteCode || "",
         meetingTime: g.meetingTime || "",
         schedule: g.schedule || "",
         maxMembers: g.maxMembers || 0,
         members: g.members || 0,
         commentCount: commentCounts.get(g._id.toString()) || 0,
         live: g.live || false,
+        activeSession: g.activeSession || null,
         hasJoined: userId ? (g.joinedUserIds || []).includes(userId) : false,
         joinedUsers,
         isOwner: userId
@@ -70,14 +80,23 @@ export async function POST(request: NextRequest) {
     const doc = {
       name: data.name || "",
       description: data.description || "",
+      category: data.category || "prayer",
+      imageUrl: data.imageUrl || null,
+      facilitator: data.facilitator || "",
+      location: data.location || "",
+      audience: data.audience || "",
+      notes: data.notes || "",
+      contactInfo: data.contactInfo || "",
       meetingTime: data.meetingTime || "",
       schedule: data.schedule || "",
       maxMembers: data.maxMembers || 0,
       author: data.author || "Anonymous",
       userId: userId || null,
+      inviteCode: await makeInviteCode(db),
       members: 0,
       joinedUserIds: [],
       live: false,
+      activeSession: null,
       createdAt: new Date(),
     };
     const result = await db.collection("community_groups").insertOne(doc);
@@ -110,6 +129,13 @@ export async function PUT(request: NextRequest) {
     const setFields: Record<string, any> = { updatedAt: new Date() };
     if (updateData.name !== undefined) setFields.name = updateData.name;
     if (updateData.description !== undefined) setFields.description = updateData.description;
+    if (updateData.category !== undefined) setFields.category = updateData.category;
+    if (updateData.imageUrl !== undefined) setFields.imageUrl = updateData.imageUrl;
+    if (updateData.facilitator !== undefined) setFields.facilitator = updateData.facilitator;
+    if (updateData.location !== undefined) setFields.location = updateData.location;
+    if (updateData.audience !== undefined) setFields.audience = updateData.audience;
+    if (updateData.notes !== undefined) setFields.notes = updateData.notes;
+    if (updateData.contactInfo !== undefined) setFields.contactInfo = updateData.contactInfo;
     if (updateData.meetingTime !== undefined) setFields.meetingTime = updateData.meetingTime;
     if (updateData.schedule !== undefined) setFields.schedule = updateData.schedule;
     if (updateData.maxMembers !== undefined) setFields.maxMembers = updateData.maxMembers;

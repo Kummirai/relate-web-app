@@ -39,7 +39,7 @@ export async function POST(
     } else {
       await db.collection("community_groups").updateOne(
         { _id: new ObjectId(id) },
-        { $addToSet: { joinedUserIds: userId }, $inc: { members: 1 }, $set: { live: true } },
+        { $addToSet: { joinedUserIds: userId }, $inc: { members: 1 } },
       );
 
       if (group.userId && group.userId !== userId) {
@@ -49,7 +49,7 @@ export async function POST(
           type: "join",
           section: "groups",
           itemId: id,
-          itemTitle: group.title || "Group",
+          itemTitle: group.name || group.title || "Group",
           createdAt: new Date(),
         });
 
@@ -58,7 +58,7 @@ export async function POST(
         try {
           const actorName = user?.name || "Someone";
           const title = "New member in your group";
-          const body = `${actorName} joined ${group.title || "your prayer group"}`;
+          const body = `${actorName} joined ${group.name || "your group"}`;
           const data = { tab: "spiritual", section: "groups", itemId: id };
           await Promise.all([
             createNotification(db, group.userId, {
