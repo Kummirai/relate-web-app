@@ -16,6 +16,9 @@ const AGENDA_KEYS = [
   "dateTo",
   "timeFrom",
   "timeTo",
+  "location",
+  "category",
+  "host",
 ] as const;
 
 function sanitizeAgenda(value: any) {
