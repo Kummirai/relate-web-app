@@ -8,6 +8,30 @@ import {
   requireAdmin,
 } from "@/lib/community-auth";
 
+const AGENDA_KEYS = [
+  "time",
+  "title",
+  "description",
+  "dateFrom",
+  "dateTo",
+  "timeFrom",
+  "timeTo",
+] as const;
+
+function sanitizeAgenda(value: any) {
+  if (!Array.isArray(value)) return [];
+  return value
+    .map((a: any) => {
+      const item: Record<string, string | undefined> = {};
+      for (const key of AGENDA_KEYS) {
+        const v = a?.[key];
+        item[key] = typeof v === "string" ? v.trim() || undefined : undefined;
+      }
+      return item;
+    })
+    .filter((a: any) => a.title || a.time);
+}
+
 export async function GET(request: NextRequest) {
   try {
     const db = await getDb();
@@ -43,6 +67,10 @@ export async function GET(request: NextRequest) {
         title: e.title,
         date: e.date,
         time: e.time,
+        dateTo: e.dateTo || undefined,
+        timeTo: e.timeTo || undefined,
+        agenda: Array.isArray(e.agenda) ? e.agenda : [],
+        notes: e.notes || "",
         location: e.location,
         description: e.description,
         fee: e.fee || "Free",
@@ -83,6 +111,10 @@ export async function POST(request: NextRequest) {
       description: data.description || "",
       date: data.date || "",
       time: data.time || "",
+      dateTo: data.dateTo || undefined,
+      timeTo: data.timeTo || undefined,
+      agenda: sanitizeAgenda(data.agenda),
+      notes: data.notes || "",
       location: data.location || "",
       fee: data.fee || "Free",
       imageUrl: data.imageUrl || null,
@@ -137,6 +169,10 @@ export async function PUT(request: NextRequest) {
     if (updateData.description !== undefined) setFields.description = updateData.description;
     if (updateData.date !== undefined) setFields.date = updateData.date;
     if (updateData.time !== undefined) setFields.time = updateData.time;
+    if (updateData.dateTo !== undefined) setFields.dateTo = updateData.dateTo;
+    if (updateData.timeTo !== undefined) setFields.timeTo = updateData.timeTo;
+    if (updateData.agenda !== undefined) setFields.agenda = sanitizeAgenda(updateData.agenda);
+    if (updateData.notes !== undefined) setFields.notes = updateData.notes;
     if (updateData.location !== undefined) setFields.location = updateData.location;
     if (updateData.fee !== undefined) setFields.fee = updateData.fee;
     if (updateData.imageUrl !== undefined) setFields.imageUrl = updateData.imageUrl;
