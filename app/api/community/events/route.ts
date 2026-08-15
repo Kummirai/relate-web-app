@@ -35,6 +35,27 @@ function sanitizeAgenda(value: any) {
     .filter((a: any) => a.title || a.time);
 }
 
+function sanitizeDetails(value: any) {
+  if (!Array.isArray(value)) return [];
+  return value
+    .map((d: any) => ({
+      label: typeof d?.label === "string" ? d.label.trim().toUpperCase().slice(0, 20) : "",
+      value: typeof d?.value === "string" ? d.value.trim().slice(0, 60) : "",
+    }))
+    .filter((d: any) => d.label && d.value);
+}
+
+function sanitizeTags(value: any) {
+  if (!Array.isArray(value)) return [];
+  return Array.from(
+    new Set(
+      value
+        .map((t: any) => (typeof t === "string" ? t.trim().toUpperCase().slice(0, 16) : ""))
+        .filter(Boolean),
+    ),
+  );
+}
+
 export async function GET(request: NextRequest) {
   try {
     const db = await getDb();
@@ -79,6 +100,13 @@ export async function GET(request: NextRequest) {
         fee: e.fee || "Free",
         imageUrl: e.imageUrl || null,
         author: e.author || "",
+        category: e.category || undefined,
+        eyebrow: e.eyebrow || undefined,
+        titleAccent: e.titleAccent || undefined,
+        host: e.host || undefined,
+        capacity: e.capacity || undefined,
+        tags: Array.isArray(e.tags) ? e.tags : [],
+        details: Array.isArray(e.details) ? e.details : [],
         userId: e.userId || null,
         attending: e.attending || 0,
         hasRsvpd: userId ? (e.rsvpUserIds || []).includes(userId) : false,
@@ -122,6 +150,13 @@ export async function POST(request: NextRequest) {
       fee: data.fee || "Free",
       imageUrl: data.imageUrl || null,
       author: data.author || "Anonymous",
+      category: data.category || undefined,
+      eyebrow: data.eyebrow || undefined,
+      titleAccent: data.titleAccent || undefined,
+      host: data.host || undefined,
+      capacity: typeof data.capacity === "number" ? data.capacity : undefined,
+      tags: sanitizeTags(data.tags),
+      details: sanitizeDetails(data.details),
       userId: userId || null,
       attending: 0,
       rsvpUserIds: [],
@@ -179,6 +214,14 @@ export async function PUT(request: NextRequest) {
     if (updateData.location !== undefined) setFields.location = updateData.location;
     if (updateData.fee !== undefined) setFields.fee = updateData.fee;
     if (updateData.imageUrl !== undefined) setFields.imageUrl = updateData.imageUrl;
+    if (updateData.category !== undefined) setFields.category = updateData.category;
+    if (updateData.eyebrow !== undefined) setFields.eyebrow = updateData.eyebrow;
+    if (updateData.titleAccent !== undefined) setFields.titleAccent = updateData.titleAccent;
+    if (updateData.host !== undefined) setFields.host = updateData.host;
+    if (updateData.capacity !== undefined)
+      setFields.capacity = typeof updateData.capacity === "number" ? updateData.capacity : undefined;
+    if (updateData.tags !== undefined) setFields.tags = sanitizeTags(updateData.tags);
+    if (updateData.details !== undefined) setFields.details = sanitizeDetails(updateData.details);
 
     await db.collection("community_events").updateOne(
       { _id: new ObjectId(_id) },
