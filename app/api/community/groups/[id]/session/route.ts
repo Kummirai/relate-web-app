@@ -121,9 +121,7 @@ export async function POST(
         (uid: string) => uid && uid !== user.id,
       );
       const title = `${group.name || "A group"} is live`;
-      const notifBody =
-        `${sessionType === "video" ? "Video" : "Audio"} session started — ` +
-        `join with code ${accessCode}`;
+      const notifBody = `Audio session started — join with code ${accessCode}`;
       const data = {
         tab: "spiritual",
         section: "groups",
