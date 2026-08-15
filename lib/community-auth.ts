@@ -128,14 +128,30 @@ export async function fetchParticipants(db: any, userIds: string[]): Promise<Map
   const map = new Map<string, ParticipantUser>();
   const unique = [...new Set(userIds.filter(Boolean))];
   if (unique.length === 0) return map;
+  // Some user docs are keyed by better-auth's `id`, others only by `_id`.
+  // Match either so group/event member avatars resolve regardless of which
+  // id form is stored in joinedUserIds / rsvpUserIds.
+  const objIds = unique
+    .filter((id) => ObjectId.isValid(id))
+    .map((id) => new ObjectId(id));
+  const query: any = { $or: [{ id: { $in: unique } }] };
+  if (objIds.length) query.$or.push({ _id: { $in: objIds } });
   const users = await db
     .collection("user")
-    .find({ id: { $in: unique } })
+    .find(query)
     .project({ id: 1, name: 1, email: 1, image: 1 })
     .toArray();
   for (const u of users) {
-    const uid = u.id || u._id?.toString() || "";
-    if (uid) map.set(uid, { id: uid, name: u.name || "Anonymous", email: u.email || "", image: u.image || null });
+    const entry: ParticipantUser = {
+      id: u.id || u._id?.toString() || "",
+      name: u.name || "Anonymous",
+      email: u.email || "",
+      image: u.image || null,
+    };
+    if (!entry.id) continue;
+    map.set(entry.id, entry);
+    // Key by both forms so lookups by either id format hit.
+    if (u._id) map.set(u._id.toString(), entry);
   }
   return map;
 }
