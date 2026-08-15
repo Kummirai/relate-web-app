@@ -15,7 +15,7 @@ import { sendPushNotifications } from "@/lib/push";
 /**
  * Live sessions for a group (Daily.co audio/video calls).
  *
- * - POST { action: "start", type: "audio" | "video" } — owner/admin only.
+ * - POST { action: "start", type: "audio" } — owner/admin only.
  *   Creates a private Daily room, stores it as the group's `activeSession`,
  *   flips `live: true`, and notifies every joined member (in-app + push)
  *   with the session's access code.
@@ -25,7 +25,9 @@ import { sendPushNotifications } from "@/lib/push";
  * - DELETE — owner/admin only. Ends the session and deletes the Daily room.
  */
 
-const SESSION_DURATION_MS = 3 * 60 * 60 * 1000;
+// Group calls are audio-only and capped at 45 minutes. The Daily room expires
+// server-side at this limit, and the client ends the meeting with a countdown.
+const SESSION_DURATION_MS = 45 * 60 * 1000;
 
 export async function POST(
   request: NextRequest,
@@ -70,7 +72,8 @@ export async function POST(
         );
       }
 
-      const sessionType = body.type === "audio" ? "audio" : "video";
+      // Group calls are audio-only.
+      const sessionType = "audio";
       const startedAt = new Date();
 
       // Reuse an already-running session so the moderator doesn't spawn
@@ -104,6 +107,7 @@ export async function POST(
         startedBy: user.id,
         startedByName: user.name || "Group moderator",
         startedAt,
+        durationMs: SESSION_DURATION_MS,
       };
 
       await db.collection("community_groups").updateOne(
