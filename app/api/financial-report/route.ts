@@ -155,3 +155,81 @@ export async function GET(request: NextRequest) {
     );
   }
 }
+
+function toNonNegNumber(value: unknown): number {
+  const n = Number(value);
+  if (!Number.isFinite(n)) return 0;
+  return Math.max(0, Math.min(n, 1_000_000_000));
+}
+
+function cleanText(value: unknown, max: number): string {
+  return typeof value === "string" ? value.trim().slice(0, max) : "";
+}
+
+/**
+ * Admin only: save a manually compiled financial report so there is an
+ * audit trail of the figures entered for a given period.
+ */
+export async function POST(request: NextRequest) {
+  try {
+    const admin = await requireAdmin(request);
+    if (!admin) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    const body = await request.json().catch(() => ({}));
+
+    const period = cleanText(body.period, 60);
+    if (!period) {
+      return NextResponse.json(
+        { error: "Report period is required" },
+        { status: 400 },
+      );
+    }
+
+    const report = {
+      period,
+      preparedBy: cleanText(body.preparedBy, 120) || admin.name || "Relate Admin",
+      income: {
+        sponsorships: toNonNegNumber(body.income?.sponsorships),
+        events: toNonNegNumber(body.income?.events),
+        donations: toNonNegNumber(body.income?.donations),
+        books: toNonNegNumber(body.income?.books),
+        other: toNonNegNumber(body.income?.other),
+        otherDescription: cleanText(body.income?.otherDescription, 200),
+      },
+      expenses: {
+        meals: toNonNegNumber(body.expenses?.meals),
+        groceries: toNonNegNumber(body.expenses?.groceries),
+        tuition: toNonNegNumber(body.expenses?.tuition),
+        transport: toNonNegNumber(body.expenses?.transport),
+        employment: toNonNegNumber(body.expenses?.employment),
+        materials: toNonNegNumber(body.expenses?.materials),
+        other: toNonNegNumber(body.expenses?.other),
+        otherDescription: cleanText(body.expenses?.otherDescription, 200),
+      },
+      impact: {
+        families: toNonNegNumber(body.impact?.families),
+        mealsServed: toNonNegNumber(body.impact?.mealsServed),
+        children: toNonNegNumber(body.impact?.children),
+        placements: toNonNegNumber(body.impact?.placements),
+        events: toNonNegNumber(body.impact?.events),
+      },
+      notes: cleanText(body.notes, 2000),
+      createdBy: admin.id,
+      createdAt: new Date(),
+    };
+
+    const db = await getDb();
+    const result = await db.collection("financial_reports").insertOne(report);
+
+    return NextResponse.json({
+      data: { _id: result.insertedId.toString(), period: report.period },
+    });
+  } catch (error) {
+    return NextResponse.json(
+      { error: "Failed to save financial report" },
+      { status: 500 },
+    );
+  }
+}
