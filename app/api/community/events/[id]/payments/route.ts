@@ -2,7 +2,9 @@ import { NextRequest, NextResponse } from "next/server";
 import { getDb } from "@/lib/mongodb";
 import { ObjectId } from "mongodb";
 import { resolveSession, requireAdmin } from "@/lib/community-auth";
-import { parseFee } from "@/lib/fees";
+import { parseFee, formatFee } from "@/lib/fees";
+import { createNotification } from "@/lib/inapp-notify";
+import { getUserPushTokens, sendPushNotifications } from "@/lib/push";
 
 /**
  * Event payment recording + approval.
@@ -36,6 +38,30 @@ type RegDoc = {
   markedPaidBy?: string | null;
   bringingPartner?: boolean;
 };
+
+/** In-app notification + device push to a single recipient (skips the actor). */
+async function notifyPayment(
+  db: any,
+  recipientId: string | null | undefined,
+  actorId: string | null | undefined,
+  type: string,
+  title: string,
+  body: string,
+  data: Record<string, unknown>,
+) {
+  if (!recipientId || recipientId === actorId) return;
+  try {
+    await Promise.all([
+      createNotification(db, recipientId, { type, title, body, data }),
+      sendPushNotifications(
+        await getUserPushTokens(db, recipientId),
+        title,
+        body,
+        data,
+      ),
+    ]);
+  } catch {}
+}
 
 async function recomputePaymentState(
   db: any,
@@ -183,6 +209,33 @@ export async function POST(
       targetUserId,
       totalDue,
     );
+
+    const amountText = formatFee(fee.symbol, entry.amount);
+    const eventTitle = event.title || "your event";
+    if (manager) {
+      // Owner/admin recorded a payment for an attendee.
+      await notifyPayment(
+        db,
+        targetUserId,
+        user.id,
+        "payment_recorded",
+        "Payment recorded",
+        `${user.name || "The host"} recorded a payment of ${amountText} for ${eventTitle}.`,
+        { tab: "social", itemId: id },
+      );
+    } else {
+      // Attendee submitted a self-payment → the owner reviews + approves.
+      await notifyPayment(
+        db,
+        event.userId,
+        user.id,
+        "payment_submitted",
+        "Payment submitted",
+        `${user.name || "Someone"} submitted a payment of ${amountText} for ${eventTitle} — awaiting your approval.`,
+        { tab: "social", itemId: id },
+      );
+    }
+
     return NextResponse.json({
       data: {
         userId: targetUserId,
@@ -292,6 +345,21 @@ export async function PUT(
       targetUserId,
       totalDue,
     );
+
+    const amountText = formatFee(fee.symbol, entry.amount);
+    const eventTitle = event.title || "the event";
+    await notifyPayment(
+      db,
+      targetUserId,
+      user.id,
+      approve ? "payment_approved" : "payment_rejected",
+      approve ? "Payment approved" : "Payment rejected",
+      approve
+        ? `Your payment of ${amountText} for ${eventTitle} was approved.`
+        : `Your payment of ${amountText} for ${eventTitle} was rejected. Please reach out to the host.`,
+      { tab: "social", itemId: id },
+    );
+
     return NextResponse.json({
       data: { userId: targetUserId, paymentId, approve, ...state },
     });
