@@ -82,6 +82,16 @@ export async function GET(request: NextRequest) {
       bookmarkedIds = new Set(bookmarks.map((b: any) => b.itemId));
     }
 
+    // Payment status of the signed-in user across all listed events.
+    const paidByEvent = new Map<string, boolean>();
+    if (userId && events.length) {
+      const regs = await db
+        .collection("event_registrations")
+        .find({ eventId: { $in: events.map((e: any) => e._id) }, userId })
+        .toArray();
+      for (const r of regs) paidByEvent.set(r.eventId?.toString(), !!r.paid);
+    }
+
     const data = events.map((e: any) => {
       const rsvpUsers = (e.rsvpUserIds || [])
         .map((id: string) => participants.get(id))
@@ -110,6 +120,7 @@ export async function GET(request: NextRequest) {
         userId: e.userId || null,
         attending: e.attending || 0,
         hasRsvpd: userId ? (e.rsvpUserIds || []).includes(userId) : false,
+        hasPaid: userId ? !!paidByEvent.get(e._id.toString()) : false,
         isBookmarked: userId ? bookmarkedIds.has(e._id.toString()) : false,
         rsvpUsers,
         isOwner: userId

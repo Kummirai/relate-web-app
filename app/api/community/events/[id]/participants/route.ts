@@ -68,6 +68,10 @@ export async function GET(
         notes: reg?.notes || "",
         bringingPartner: !!reg?.bringingPartner,
         partner: reg?.partner || null,
+        // Payment tracking (admin/owner view only)
+        paid: !!reg?.paid,
+        popUrl: reg?.popUrl || null,
+        paidAt: reg?.paidAt || null,
       };
     });
 

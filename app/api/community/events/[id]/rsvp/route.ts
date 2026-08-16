@@ -111,6 +111,11 @@ export async function POST(
           eventId: new ObjectId(id),
           userId,
           ...registration,
+          // Payment starts unpaid until the admin verifies a POP upload.
+          paid: false,
+          popUrl: null,
+          paidAt: null,
+          markedPaidBy: null,
           createdAt: new Date(),
         });
       }
