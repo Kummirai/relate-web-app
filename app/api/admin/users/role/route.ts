@@ -24,8 +24,11 @@ export async function POST(request: NextRequest) {
     if (!userId) {
       return NextResponse.json({ error: "userId is required" }, { status: 400 });
     }
-    if (role !== "admin" && role !== "user") {
-      return NextResponse.json({ error: 'role must be "admin" or "user"' }, { status: 400 });
+    if (role !== "admin" && role !== "user" && role !== "facilitator") {
+      return NextResponse.json(
+        { error: 'role must be "admin", "facilitator" or "user"' },
+        { status: 400 },
+      );
     }
     // Never allow an admin to demote themselves — they would lock themselves out.
     if (userId === admin.id && role !== "admin") {

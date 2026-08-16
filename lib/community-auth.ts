@@ -64,6 +64,30 @@ export async function resolveAdminOrOwner(
   return null;
 }
 
+/**
+ * Resolves the session and returns the full user doc only when they are
+ * allowed to create community groups: admins, and facilitators who have
+ * completed their training.
+ */
+export async function requireGroupCreator(request: NextRequest): Promise<any | null> {
+  try {
+    const session = await auth.api.getSession({
+      headers: request.headers,
+    });
+    if (!session?.user) return null;
+    const db = await getDb();
+    const user = await findUserById(db, session.user.id);
+    if (!user) return null;
+    if (user.role === "admin") return user;
+    if (user.role === "facilitator" && user.facilitatorTrainingCompleted === true) {
+      return user;
+    }
+    return null;
+  } catch {
+    return null;
+  }
+}
+
 export async function resolveSession(request: NextRequest): Promise<ResolvedUser | null> {
   try {
     const session = await auth.api.getSession({
@@ -94,6 +118,8 @@ export async function ensureIndexes(db: any) {
       db.collection("event_registrations").createIndex({ eventId: 1, userId: 1 }),
       db.collection("community_groups").createIndex({ createdAt: -1 }),
       db.collection("community_groups").createIndex({ inviteCode: 1 }, { unique: true, sparse: true }),
+      db.collection("facilitator_applications").createIndex({ userId: 1, createdAt: -1 }),
+      db.collection("facilitator_applications").createIndex({ status: 1, createdAt: -1 }),
       db.collection("community_requests").createIndex({ createdAt: -1 }),
       db.collection("help_requests").createIndex({ createdAt: -1 }),
       db.collection("help_requests").createIndex({ userId: 1, createdAt: -1 }),

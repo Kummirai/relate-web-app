@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { ObjectId } from "mongodb";
 import { getDb } from "@/lib/mongodb";
-import { resolveSession, ensureIndexes, fetchParticipants } from "@/lib/community-auth";
+import { resolveSession, requireGroupCreator, ensureIndexes, fetchParticipants } from "@/lib/community-auth";
 import { makeInviteCode } from "@/lib/daily";
 
 export async function GET(request: NextRequest) {
@@ -74,8 +74,14 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const db = await getDb();
-    const user = await resolveSession(request);
-    const userId = user?.id || null;
+    const user = await requireGroupCreator(request);
+    if (!user) {
+      return NextResponse.json(
+        { error: "Only admins and trained facilitators can create groups." },
+        { status: 403 },
+      );
+    }
+    const userId = user.id || user._id?.toString() || null;
     const data = await request.json();
     const doc = {
       name: data.name || "",
@@ -90,7 +96,7 @@ export async function POST(request: NextRequest) {
       meetingTime: data.meetingTime || "",
       schedule: data.schedule || "",
       maxMembers: data.maxMembers || 0,
-      author: data.author || "Anonymous",
+      author: data.author || user.name || "Anonymous",
       userId: userId || null,
       inviteCode: await makeInviteCode(db),
       members: 0,
