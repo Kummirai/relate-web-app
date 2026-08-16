@@ -5,6 +5,7 @@ import {
   fetchParticipants,
   resolveAdminOrOwner,
 } from "@/lib/community-auth";
+import { parseFee } from "@/lib/fees";
 
 export async function GET(
   request: NextRequest,
@@ -53,6 +54,10 @@ export async function GET(
     const data = userIds.map((uid: string) => {
       const base = participants.get(uid);
       const reg = regByUser.get(uid);
+      const fee = parseFee(event.fee);
+      const amountPaid = reg?.amountPaid || 0;
+      const remaining = Math.max(0, fee.amount - amountPaid);
+      const paid = fee.amount === 0 || remaining <= 0;
       return {
         id: uid,
         name: base?.name || "Anonymous",
@@ -69,9 +74,20 @@ export async function GET(
         bringingPartner: !!reg?.bringingPartner,
         partner: reg?.partner || null,
         // Payment tracking (admin/owner view only)
-        paid: !!reg?.paid,
+        feeAmount: fee.amount,
+        feeSymbol: fee.symbol,
+        amountPaid,
+        remaining,
+        paid,
         popUrl: reg?.popUrl || null,
         paidAt: reg?.paidAt || null,
+        payments: (reg?.payments || []).map((p: any) => ({
+          amount: p?.amount || 0,
+          popUrl: p?.popUrl || null,
+          note: p?.note || null,
+          paidAt: p?.paidAt || null,
+          recordedBy: p?.recordedBy || null,
+        })),
       };
     });
 

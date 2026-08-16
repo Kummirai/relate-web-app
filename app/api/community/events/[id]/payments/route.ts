@@ -2,35 +2,25 @@ import { NextRequest, NextResponse } from "next/server";
 import { getDb } from "@/lib/mongodb";
 import { ObjectId } from "mongodb";
 import { resolveSession, requireAdmin } from "@/lib/community-auth";
+import { parseFee } from "@/lib/fees";
 
 /**
- * Event payment management (event owner / admin only).
+ * Event payment recording.
  *
- * POST — mark an attendee as paid / unpaid:   { userId, paid }
- * PUT  — attach a proof-of-payment image URL: { userId, popUrl }
+ * Access: the attendee themselves, the event owner, or an admin.
  *
- * The POP image bytes are uploaded by the client to storage (Supabase) and
- * only the resulting public URL is persisted here, mirroring the event image
- * flow. New RSVPs always start as unpaid (see /rsvp).
+ * POST — record a payment toward the fee:
+ *   { userId, amount, popUrl?, note? }   amount > 0 in the event's currency.
+ *   { userId, paid: true }               convenience shortcut: pay the full
+ *                                        remaining balance in one entry.
+ *
+ * Each recorded payment is appended to the registration's `payments` ledger
+ * (amount + optional proof-of-payment image URL + who recorded it). The POP
+ * image bytes are uploaded client-side to storage; only the URL is persisted.
  */
 export async function POST(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> },
-) {
-  return handle(request, params, "paid");
-}
-
-export async function PUT(
-  request: NextRequest,
-  { params }: { params: Promise<{ id: string }> },
-) {
-  return handle(request, params, "pop");
-}
-
-async function handle(
-  request: NextRequest,
-  params: Promise<{ id: string }>,
-  action: "paid" | "pop",
 ) {
   try {
     const { id } = await params;
@@ -54,9 +44,6 @@ async function handle(
     const isOwner =
       event.userId === user.id ||
       (!event.userId && !!user.name && event.author === user.name);
-    if (!isAdmin && !isOwner) {
-      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
-    }
 
     const body = await request.json().catch(() => ({}));
     const targetUserId = String(body.userId || "");
@@ -67,39 +54,73 @@ async function handle(
       );
     }
 
-    if (action === "paid") {
-      const paid = !!body.paid;
-      await db.collection("event_registrations").updateOne(
-        { eventId: new ObjectId(id), userId: targetUserId },
-        {
-          $set: {
-            paid,
-            paidAt: paid ? new Date().toISOString() : null,
-            markedPaidBy: paid ? user.id : null,
-            updatedAt: new Date(),
-          },
-        },
-        { upsert: true },
-      );
-      return NextResponse.json({ data: { userId: targetUserId, paid } });
+    // Attendees may only record payments on their own registration.
+    const isSelf = targetUserId === user.id;
+    if (!isAdmin && !isOwner && !isSelf) {
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 
-    const popUrl = String(body.popUrl || "").trim();
-    if (!popUrl) {
+    const fee = parseFee(event.fee);
+    const reg = await db.collection("event_registrations").findOne({
+      eventId: new ObjectId(id),
+      userId: targetUserId,
+    });
+    const amountPaid = reg?.amountPaid || 0;
+    const remaining = Math.max(0, fee.amount - amountPaid);
+
+    // { userId, paid: true } → settle the full remaining balance.
+    let amount = parseFloat(String(body.amount ?? ""));
+    if (body.paid === true && !Number.isFinite(amount)) {
+      amount = remaining;
+    }
+    if (!Number.isFinite(amount) || amount <= 0) {
       return NextResponse.json(
-        { error: "popUrl is required" },
+        { error: "A payment amount greater than zero is required" },
         { status: 400 },
       );
     }
+
+    const entry = {
+      amount: Math.round(amount * 100) / 100,
+      popUrl: body.popUrl ? String(body.popUrl).trim() : null,
+      note: body.note ? String(body.note).trim() : null,
+      paidAt: new Date().toISOString(),
+      recordedBy: user.id,
+    };
+    const newAmountPaid = Math.round((amountPaid + amount) * 100) / 100;
+    const fullyPaid = newAmountPaid >= fee.amount;
+
     await db.collection("event_registrations").updateOne(
       { eventId: new ObjectId(id), userId: targetUserId },
-      { $set: { popUrl, updatedAt: new Date() } },
+      {
+        $inc: { amountPaid: entry.amount },
+        $push: { payments: entry },
+        $set: {
+          paid: fullyPaid,
+          popUrl: entry.popUrl ?? reg?.popUrl ?? null,
+          paidAt: fullyPaid ? entry.paidAt : reg?.paidAt ?? null,
+          markedPaidBy: fullyPaid ? user.id : reg?.markedPaidBy ?? null,
+          updatedAt: new Date(),
+        },
+      },
       { upsert: true },
     );
-    return NextResponse.json({ data: { userId: targetUserId, popUrl } });
+
+    const newRemaining = Math.max(0, fee.amount - newAmountPaid);
+    return NextResponse.json({
+      data: {
+        userId: targetUserId,
+        amount: entry.amount,
+        amountPaid: newAmountPaid,
+        remaining: newRemaining,
+        feeAmount: fee.amount,
+        feeSymbol: fee.symbol,
+        paid: newRemaining <= 0,
+      },
+    });
   } catch {
     return NextResponse.json(
-      { error: "Failed to update payment" },
+      { error: "Failed to record payment" },
       { status: 500 },
     );
   }

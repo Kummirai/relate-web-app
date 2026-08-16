@@ -4,6 +4,7 @@ import { ObjectId } from "mongodb";
 import { resolveUser, resolveSession } from "@/lib/community-auth";
 import { createNotification } from "@/lib/inapp-notify";
 import { getUserPushTokens, sendPushNotifications } from "@/lib/push";
+import { parseFee } from "@/lib/fees";
 import { NextRequest } from "next/server";
 
 export async function POST(
@@ -59,13 +60,28 @@ export async function POST(
     }
 
     const alreadyRsvpd = (event.rsvpUserIds || []).includes(userId);
+    // Snapshot of the event fee at registration time; drives amountPaid math.
+    const fee = parseFee(event.fee);
 
     if (alreadyRsvpd && registration) {
       // Re-registration with details (e.g. a retry after a lost response):
       // keep the seat and refresh the stored details instead of toggling off.
       await db.collection("event_registrations").updateOne(
         { eventId: new ObjectId(id), userId },
-        { $set: { ...registration, updatedAt: new Date() } },
+        {
+          $set: { ...registration, updatedAt: new Date() },
+          $setOnInsert: {
+            feeAmount: fee.amount,
+            feeSymbol: fee.symbol,
+            amountPaid: 0,
+            payments: [],
+            paid: false,
+            popUrl: null,
+            paidAt: null,
+            markedPaidBy: null,
+            createdAt: new Date(),
+          },
+        },
         { upsert: true },
       );
       await db.collection("community_events").updateOne(
@@ -111,7 +127,12 @@ export async function POST(
           eventId: new ObjectId(id),
           userId,
           ...registration,
-          // Payment starts unpaid until the admin verifies a POP upload.
+          // Fee snapshot + payment ledger. New RSVPs always start unpaid;
+          // payments are recorded (amount + optional POP) via the payments route.
+          feeAmount: fee.amount,
+          feeSymbol: fee.symbol,
+          amountPaid: 0,
+          payments: [],
           paid: false,
           popUrl: null,
           paidAt: null,

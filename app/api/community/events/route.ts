@@ -7,6 +7,7 @@ import {
   fetchParticipants,
   requireAdmin,
 } from "@/lib/community-auth";
+import { parseFee } from "@/lib/fees";
 
 const AGENDA_KEYS = [
   "time",
@@ -83,19 +84,25 @@ export async function GET(request: NextRequest) {
     }
 
     // Payment status of the signed-in user across all listed events.
-    const paidByEvent = new Map<string, boolean>();
+    const myRegs = new Map<string, any>();
     if (userId && events.length) {
       const regs = await db
         .collection("event_registrations")
         .find({ eventId: { $in: events.map((e: any) => e._id) }, userId })
         .toArray();
-      for (const r of regs) paidByEvent.set(r.eventId?.toString(), !!r.paid);
+      for (const r of regs) myRegs.set(r.eventId?.toString(), r);
     }
 
     const data = events.map((e: any) => {
       const rsvpUsers = (e.rsvpUserIds || [])
         .map((id: string) => participants.get(id))
         .filter(Boolean);
+      const fee = parseFee(e.fee);
+      const myReg = userId ? myRegs.get(e._id.toString()) : undefined;
+      const amountPaid = myReg?.amountPaid || 0;
+      const remaining = Math.max(0, fee.amount - amountPaid);
+      const hasPaid = fee.amount === 0 || remaining <= 0;
+      const hasRsvpd = userId ? (e.rsvpUserIds || []).includes(userId) : false;
       return {
         _id: e._id,
         title: e.title,
@@ -108,6 +115,8 @@ export async function GET(request: NextRequest) {
         location: e.location,
         description: e.description,
         fee: e.fee || "Free",
+        feeAmount: fee.amount,
+        feeSymbol: fee.symbol,
         imageUrl: e.imageUrl || null,
         author: e.author || "",
         category: e.category || undefined,
@@ -119,8 +128,10 @@ export async function GET(request: NextRequest) {
         details: Array.isArray(e.details) ? e.details : [],
         userId: e.userId || null,
         attending: e.attending || 0,
-        hasRsvpd: userId ? (e.rsvpUserIds || []).includes(userId) : false,
-        hasPaid: userId ? !!paidByEvent.get(e._id.toString()) : false,
+        hasRsvpd,
+        hasPaid,
+        amountPaid: userId && hasRsvpd ? amountPaid : 0,
+        remaining: userId && hasRsvpd ? remaining : fee.amount,
         isBookmarked: userId ? bookmarkedIds.has(e._id.toString()) : false,
         rsvpUsers,
         isOwner: userId
