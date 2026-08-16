@@ -15,14 +15,14 @@ export async function GET(request: NextRequest) {
       db
         .collection("sponsorships")
         .aggregate([
+          // Only admin-approved pledges count towards reported income.
+          { $match: { status: "approved" } },
           {
             $group: {
               _id: null,
               count: { $sum: 1 },
               total: { $sum: "$amount" },
-              paid: {
-                $sum: { $cond: [{ $eq: ["$status", "paid"] }, "$amount", 0] },
-              },
+              paid: { $sum: "$amount" },
             },
           },
         ])
@@ -49,8 +49,7 @@ export async function GET(request: NextRequest) {
       sponsorshipPaid: sponsorship[0]?.paid ?? 0,
       eventIncome,
       fundsRaised: sponsorshipTotal + eventIncome,
-    });
-  } catch (error) {
+    });  } catch (error) {
     return NextResponse.json(
       { error: "Failed to fetch stats" },
       { status: 500 },

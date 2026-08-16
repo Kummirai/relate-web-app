@@ -50,10 +50,17 @@ export async function GET(request: NextRequest) {
           {
             $group: {
               _id: null,
-              count: { $sum: 1 },
-              total: { $sum: "$amount" },
+              count: {
+                $sum: { $cond: [{ $eq: ["$status", "approved"] }, 1, 0] },
+              },
+              total: {
+                $sum: { $cond: [{ $eq: ["$status", "approved"] }, "$amount", 0] },
+              },
               paid: {
-                $sum: { $cond: [{ $eq: ["$status", "paid"] }, "$amount", 0] },
+                $sum: { $cond: [{ $eq: ["$status", "approved"] }, "$amount", 0] },
+              },
+              pending: {
+                $sum: { $cond: [{ $eq: ["$status", "pending"] }, "$amount", 0] },
               },
             },
           },
@@ -61,7 +68,7 @@ export async function GET(request: NextRequest) {
         .toArray(),
       db
         .collection("sponsorships")
-        .find({ createdAt: { $gte: sixMonthsAgo } })
+        .find({ status: "approved", createdAt: { $gte: sixMonthsAgo } })
         .project({ amount: 1, status: 1, createdAt: 1 })
         .toArray(),
       db
@@ -124,7 +131,7 @@ export async function GET(request: NextRequest) {
         sponsorships: sponsorshipTotals[0]?.count ?? 0,
         sponsorshipAmount: sponsorshipTotal,
         sponsorshipPaid: sponsorshipTotals[0]?.paid ?? 0,
-        sponsorshipPledged: sponsorshipTotal - (sponsorshipTotals[0]?.paid ?? 0),
+        sponsorshipPledged: sponsorshipTotals[0]?.pending ?? 0,
         eventIncome: eventIncomeTotal,
         fundsRaised: sponsorshipTotal + eventIncomeTotal,
       },

@@ -2,7 +2,9 @@ import { NextRequest, NextResponse } from "next/server";
 import { randomInt } from "crypto";
 import { getDb } from "@/lib/mongodb";
 import { createSponsorship, ensureSponsorshipIndexes } from "@/lib/models";
-import { requireAdmin } from "@/lib/community-auth";
+import { requireAdmin, resolveSession } from "@/lib/community-auth";
+import { getAdminPushTokens, sendPushNotifications } from "@/lib/push";
+import { notifyAdmins } from "@/lib/inapp-notify";
 
 const SPONSOR_ID_ALPHABET = "ABCDEFGHJKMNPQRSTUVWXYZ23456789";
 
@@ -26,9 +28,28 @@ async function uniqueSponsorId(db: any): Promise<string> {
     const existing = await db
       .collection("sponsorships")
       .findOne({ sponsorId: candidate }, { projection: { _id: 1 } });
-    if (!existing) return candidate;
+    const onUser = await db
+      .collection("user")
+      .findOne({ sponsorId: candidate }, { projection: { _id: 1 } });
+    if (!existing && !onUser) return candidate;
   }
   return generateSponsorId(Date.now() % 1000 + 1000);
+}
+
+/**
+ * A user's stable sponsor ID — created on their first pledge, reused for every
+ * transaction after that. Stored on the user doc (indexed, unique).
+ */
+async function resolveSponsorIdForUser(db: any, userId: string): Promise<string> {
+  const user = await db
+    .collection("user")
+    .findOne({ id: userId }, { projection: { sponsorId: 1 } });
+  if (user?.sponsorId) return user.sponsorId;
+  const sponsorId = await uniqueSponsorId(db);
+  await db
+    .collection("user")
+    .updateOne({ id: userId }, { $set: { sponsorId } }, { upsert: false });
+  return sponsorId;
 }
 
 function cleanContact(value: unknown): string {
@@ -38,8 +59,9 @@ function cleanContact(value: unknown): string {
 /**
  * Sponsorships — sponsorId: "REL" + year + 4 random uppercase chars.
  *
- *  - POST (public): record a sponsorship pledge with optional POP. No login
- *    required; the server always generates the sponsorId.
+ *  - POST (login required): record a sponsorship pledge with optional POP.
+ *    Requires an authenticated user; the server assigns their stable sponsor
+ *    ID (created on the first pledge) and notifies all admins.
  *  - GET (admin only): list sponsorships, newest first.
  */
 export async function POST(request: NextRequest) {
@@ -47,9 +69,17 @@ export async function POST(request: NextRequest) {
     const db = await getDb();
     await ensureSponsorshipIndexes();
 
+    const user = await resolveSession(request);
+    if (!user) {
+      return NextResponse.json(
+        { error: "Sign in to sponsor Relate" },
+        { status: 401 },
+      );
+    }
+
     const body = await request.json().catch(() => ({}));
-    const name = cleanContact(body.name);
-    const email = cleanContact(body.email);
+    const name = cleanContact(body.name) || user.name || "";
+    const email = cleanContact(body.email) || "";
     const phone = cleanContact(body.phone);
     const amount = Math.round(parseFloat(String(body.amount ?? "")) * 100) / 100;
     const popUrl =
@@ -73,7 +103,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const sponsorId = await uniqueSponsorId(db);
+    const sponsorId = await resolveSponsorIdForUser(db, user.id);
     const doc = createSponsorship({
       sponsorId,
       name,
@@ -81,10 +111,32 @@ export async function POST(request: NextRequest) {
       phone: phone || null,
       amount,
       popUrl,
-      status: popUrl ? "paid" : "pledged",
+      userId: user.id,
+      status: "pending",
     });
 
     const result = await db.collection("sponsorships").insertOne(doc);
+
+    // Awaited so Vercel doesn't freeze the function before Expo delivery.
+    try {
+      await sendPushNotifications(
+        await getAdminPushTokens(db),
+        "New sponsor pledge",
+        `${name} · R ${amount.toLocaleString("en-US")}`,
+        { type: "new_sponsorship", sponsorId },
+      );
+      await notifyAdmins(
+        db,
+        {
+          type: "new_sponsorship",
+          title: "New sponsor pledge",
+          body: `${name} · R ${amount.toLocaleString("en-US")} (${sponsorId})`,
+          data: { sponsorId },
+        },
+        user.id,
+      );
+    } catch {}
+
     return NextResponse.json({
       data: { _id: result.insertedId.toString(), ...doc },
     });
@@ -105,9 +157,14 @@ export async function GET(request: NextRequest) {
 
     const db = await getDb();
     await ensureSponsorshipIndexes();
+    const url = new URL(request.url);
+    const status = url.searchParams.get("status");
+    const query = status === "approved" || status === "pending" || status === "rejected"
+      ? { status }
+      : {};
     const items = await db
       .collection("sponsorships")
-      .find({})
+      .find(query)
       .sort({ createdAt: -1 })
       .limit(200)
       .toArray();
