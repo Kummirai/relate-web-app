@@ -146,6 +146,8 @@ export async function ensureIndexes(db: any) {
       db.collection("quiz_registrations").createIndex({ createdAt: -1 }),
       db.collection("quiz_leaderboard").createIndex({ name: 1 }),
       db.collection("bible").createIndex({ "verses.book": 1, "verses.chapter": 1 }),
+      db.collection("financial_reports").createIndex({ createdAt: -1 }),
+      db.collection("financial_reports").createIndex({ status: 1, createdAt: -1 }),
     ]);
   } catch {}
 }

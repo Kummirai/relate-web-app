@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getDb } from "@/lib/mongodb";
 import { requireAdmin } from "@/lib/community-auth";
+import { notifyAllUsers } from "@/lib/inapp-notify";
+import { getAllPushTokens, sendPushNotifications } from "@/lib/push";
 
 const MONTHS = [
   "Jan", "Feb", "Mar", "Apr", "May", "Jun",
@@ -190,6 +192,7 @@ export async function POST(request: NextRequest) {
     const report = {
       period,
       preparedBy: cleanText(body.preparedBy, 120) || admin.name || "Relate Admin",
+      status: "published",
       income: {
         sponsorships: toNonNegNumber(body.income?.sponsorships),
         events: toNonNegNumber(body.income?.events),
@@ -222,9 +225,28 @@ export async function POST(request: NextRequest) {
 
     const db = await getDb();
     const result = await db.collection("financial_reports").insertOne(report);
+    const reportId = result.insertedId.toString();
+
+    // Publishing the report notifies every user (in-app + push) so they can
+    // open it from the bell. Awaited so the sends complete on Vercel.
+    const title = "Financial report available";
+    const message = `Relate's ${report.period} financial report has been published.`;
+    await Promise.all([
+      notifyAllUsers(
+        db,
+        { type: "financial_report", title, body: message, data: { reportId, period: report.period } },
+        admin.id,
+      ),
+      sendPushNotifications(
+        await getAllPushTokens(db, admin.id),
+        title,
+        message,
+        { type: "financial_report", reportId },
+      ),
+    ]);
 
     return NextResponse.json({
-      data: { _id: result.insertedId.toString(), period: report.period },
+      data: { _id: reportId, period: report.period },
     });
   } catch (error) {
     return NextResponse.json(
