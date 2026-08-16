@@ -55,9 +55,11 @@ export async function GET(
       const base = participants.get(uid);
       const reg = regByUser.get(uid);
       const fee = parseFee(event.fee);
+      const totalDue = fee.amount * (reg?.bringingPartner ? 2 : 1);
       const amountPaid = reg?.amountPaid || 0;
-      const remaining = Math.max(0, fee.amount - amountPaid);
-      const paid = fee.amount === 0 || remaining <= 0;
+      const pendingAmount = reg?.pendingAmount || 0;
+      const remaining = Math.max(0, totalDue - amountPaid);
+      const paid = totalDue === 0 || remaining <= 0;
       return {
         id: uid,
         name: base?.name || "Anonymous",
@@ -76,17 +78,21 @@ export async function GET(
         // Payment tracking (admin/owner view only)
         feeAmount: fee.amount,
         feeSymbol: fee.symbol,
+        totalDue,
         amountPaid,
+        pendingAmount,
         remaining,
         paid,
         popUrl: reg?.popUrl || null,
         paidAt: reg?.paidAt || null,
         payments: (reg?.payments || []).map((p: any) => ({
+          _id: p?._id?.toString ? p._id.toString() : p?._id || null,
           amount: p?.amount || 0,
           popUrl: p?.popUrl || null,
           note: p?.note || null,
           paidAt: p?.paidAt || null,
           recordedBy: p?.recordedBy || null,
+          status: p?.status === "pending" ? "pending" : "approved",
         })),
       };
     });

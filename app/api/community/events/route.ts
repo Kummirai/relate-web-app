@@ -99,9 +99,11 @@ export async function GET(request: NextRequest) {
         .filter(Boolean);
       const fee = parseFee(e.fee);
       const myReg = userId ? myRegs.get(e._id.toString()) : undefined;
+      const totalDue = fee.amount * (myReg?.bringingPartner ? 2 : 1);
       const amountPaid = myReg?.amountPaid || 0;
-      const remaining = Math.max(0, fee.amount - amountPaid);
-      const hasPaid = fee.amount === 0 || remaining <= 0;
+      const pendingAmount = myReg?.pendingAmount || 0;
+      const remaining = Math.max(0, totalDue - amountPaid);
+      const hasPaid = totalDue === 0 || remaining <= 0;
       const hasRsvpd = userId ? (e.rsvpUserIds || []).includes(userId) : false;
       return {
         _id: e._id,
@@ -131,7 +133,10 @@ export async function GET(request: NextRequest) {
         hasRsvpd,
         hasPaid,
         amountPaid: userId && hasRsvpd ? amountPaid : 0,
-        remaining: userId && hasRsvpd ? remaining : fee.amount,
+        pendingAmount: userId && hasRsvpd ? pendingAmount : 0,
+        remaining: userId && hasRsvpd ? remaining : totalDue,
+        totalDue,
+        myPartner: userId && hasRsvpd ? !!myReg?.bringingPartner : false,
         isBookmarked: userId ? bookmarkedIds.has(e._id.toString()) : false,
         rsvpUsers,
         isOwner: userId
