@@ -49,6 +49,7 @@ export async function GET(request: NextRequest) {
           "employment",
           "materials",
           "other",
+          "amountsFromRecords",
         ]);
         return {
           _id: r._id.toString(),
