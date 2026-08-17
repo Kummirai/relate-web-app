@@ -19,6 +19,7 @@ export function buildFinancialReport(body: any, fallbackName: string) {
     preparedBy: cleanText(body?.preparedBy, 120) || fallbackName,
     status: "published",
     income: {
+      balanceBroughtDown: toNonNegNumber(body?.income?.balanceBroughtDown),
       sponsorships: toNonNegNumber(body?.income?.sponsorships),
       events: toNonNegNumber(body?.income?.events),
       donations: toNonNegNumber(body?.income?.donations),
@@ -43,6 +44,16 @@ export function buildFinancialReport(body: any, fallbackName: string) {
       placements: toNonNegNumber(body?.impact?.placements),
       events: toNonNegNumber(body?.impact?.events),
     },
+    otherActivities: cleanText(body?.otherActivities, 4000),
     notes: cleanText(body?.notes, 2000),
+    customFields: Array.isArray(body?.customFields)
+      ? body.customFields
+          .filter((f: any) => f && (typeof f.title === "string" || typeof f.content === "string"))
+          .slice(0, 20)
+          .map((f: any) => ({
+            title: cleanText(f.title, 200),
+            content: cleanText(f.content, 2000),
+          }))
+      : [],
   };
 }

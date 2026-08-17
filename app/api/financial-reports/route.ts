@@ -34,6 +34,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({
       data: docs.map((r: any) => {
         const income = sumFields(r.income, [
+          "balanceBroughtDown",
           "sponsorships",
           "events",
           "donations",
