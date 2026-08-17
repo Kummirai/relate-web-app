@@ -36,6 +36,7 @@ export function buildFinancialReport(body: any, fallbackName: string) {
       materials: toNonNegNumber(body?.expenses?.materials),
       other: toNonNegNumber(body?.expenses?.other),
       otherDescription: cleanText(body?.expenses?.otherDescription, 200),
+      amountsFromRecords: toNonNegNumber(body?.expenses?.amountsFromRecords),
     },
     impact: {
       families: toNonNegNumber(body?.impact?.families),

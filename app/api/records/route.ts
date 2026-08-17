@@ -72,6 +72,7 @@ export async function POST(request: NextRequest) {
         date: e.date || new Date().toISOString(),
         actionTaken: e.actionTaken || null,
         byWhom: e.byWhom || null,
+        amountsUsed: e.amountsUsed || null,
         nextStep: e.nextStep || null,
         dueDate: e.dueDate || null,
       })),
