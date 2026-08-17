@@ -60,7 +60,11 @@ export async function GET(request: NextRequest) {
 
     const db = await getDb();
 
-    const [sponsorshipAgg, records] = await Promise.all([
+    // Compute the previous month range for balance-brought-down lookup.
+    const prevStart = new Date(range.start.getFullYear(), range.start.getMonth() - 1, 1);
+    const prevEnd = range.start; // exclusive upper bound = current month start
+
+    const [sponsorshipAgg, records, prevReport] = await Promise.all([
       // Total approved sponsorship income for the month.
       db
         .collection("sponsorships")
@@ -83,6 +87,18 @@ export async function GET(request: NextRequest) {
         })
         .project({ actionLog: 1 })
         .toArray(),
+
+      // Most recent published report whose createdAt falls in the previous
+      // month. Its net is the balance brought forward into the current period.
+      db
+        .collection("financial_reports")
+        .find({
+          $or: [{ status: "published" }, { status: { $exists: false } }],
+          createdAt: { $gte: prevStart, $lt: prevEnd },
+        })
+        .sort({ createdAt: -1 })
+        .limit(1)
+        .toArray(),
     ]);
 
     const sponsorships = sponsorshipAgg[0]?.total ?? 0;
@@ -100,10 +116,34 @@ export async function GET(request: NextRequest) {
       }
     }
 
+    // Balance brought down = net from the previous month's report.
+    let balanceBroughtDown = 0;
+    if (prevReport.length > 0) {
+      const pr = prevReport[0];
+      const pi =
+        (Number(pr.income?.balanceBroughtDown) || 0) +
+        (Number(pr.income?.sponsorships) || 0) +
+        (Number(pr.income?.events) || 0) +
+        (Number(pr.income?.donations) || 0) +
+        (Number(pr.income?.books) || 0) +
+        (Number(pr.income?.other) || 0);
+      const pe =
+        (Number(pr.expenses?.meals) || 0) +
+        (Number(pr.expenses?.groceries) || 0) +
+        (Number(pr.expenses?.tuition) || 0) +
+        (Number(pr.expenses?.transport) || 0) +
+        (Number(pr.expenses?.employment) || 0) +
+        (Number(pr.expenses?.materials) || 0) +
+        (Number(pr.expenses?.other) || 0) +
+        (Number(pr.expenses?.amountsFromRecords) || 0);
+      balanceBroughtDown = Math.round((pi - pe) * 100) / 100;
+    }
+
     return NextResponse.json({
       data: {
         sponsorships: Math.round(sponsorships * 100) / 100,
         amountsUsed: Math.round(amountsUsed * 100) / 100,
+        balanceBroughtDown,
         period,
       },
     });
