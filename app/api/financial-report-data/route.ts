@@ -7,6 +7,11 @@ const MONTHS = [
   "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
 ];
 
+const FULL_MONTHS = [
+  "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December",
+];
+
 /**
  * Parse a period string like "July 2026" or "Jul 2026" into a start/end
  * date range. Returns null when the string doesn't match.
@@ -26,6 +31,22 @@ function parsePeriod(period: string): { start: Date; end: Date } | null {
   const start = new Date(year, monthIndex, 1);
   const end = new Date(year, monthIndex + 1, 1); // exclusive upper bound
   return { start, end };
+}
+
+/** Return the period string for the month before the given period. */
+function previousPeriod(period: string): string | null {
+  const trimmed = period.trim();
+  const m = trimmed.match(/^(Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s+(\d{4})$/i);
+  if (!m) return null;
+
+  const monthIndex = MONTHS.findIndex(
+    (abbr) => abbr.toLowerCase() === m[1].slice(0, 3).toLowerCase(),
+  );
+  if (monthIndex < 0) return null;
+
+  const year = parseInt(m[2], 10);
+  if (monthIndex === 0) return `December ${year - 1}`;
+  return `${FULL_MONTHS[monthIndex - 1]} ${year}`;
 }
 
 /**
@@ -60,9 +81,7 @@ export async function GET(request: NextRequest) {
 
     const db = await getDb();
 
-    // Compute the previous month range for balance-brought-down lookup.
-    const prevStart = new Date(range.start.getFullYear(), range.start.getMonth() - 1, 1);
-    const prevEnd = range.start; // exclusive upper bound = current month start
+    const prevPeriod = previousPeriod(period);
 
     const [sponsorshipAgg, records, prevReport] = await Promise.all([
       // Total approved sponsorship income for the month.
@@ -88,17 +107,20 @@ export async function GET(request: NextRequest) {
         .project({ actionLog: 1 })
         .toArray(),
 
-      // Most recent published report whose createdAt falls in the previous
-      // month. Its net is the balance brought forward into the current period.
-      db
-        .collection("financial_reports")
-        .find({
-          $or: [{ status: "published" }, { status: { $exists: false } }],
-          createdAt: { $gte: prevStart, $lt: prevEnd },
-        })
-        .sort({ createdAt: -1 })
-        .limit(1)
-        .toArray(),
+      // Most recent published report whose period matches the previous month.
+      // Using period (not createdAt) because reports are often saved after
+      // the month they cover.
+      prevPeriod
+        ? db
+            .collection("financial_reports")
+            .find({
+              $or: [{ status: "published" }, { status: { $exists: false } }],
+              period: prevPeriod,
+            })
+            .sort({ createdAt: -1 })
+            .limit(1)
+            .toArray()
+        : Promise.resolve([]),
     ]);
 
     const sponsorships = sponsorshipAgg[0]?.total ?? 0;
