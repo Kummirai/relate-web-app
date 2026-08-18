@@ -148,6 +148,8 @@ export async function ensureIndexes(db: any) {
       db.collection("bible").createIndex({ "verses.book": 1, "verses.chapter": 1 }),
       db.collection("financial_reports").createIndex({ createdAt: -1 }),
       db.collection("financial_reports").createIndex({ status: 1, createdAt: -1 }),
+      db.collection("community_social_joins").createIndex({ userId: 1, status: 1 }),
+      db.collection("community_social_joins").createIndex({ status: 1, createdAt: -1 }),
     ]);
   } catch {}
 }
