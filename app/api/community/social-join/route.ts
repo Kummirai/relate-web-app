@@ -14,18 +14,13 @@ import { getAdminPushTokens, sendPushNotifications } from "@/lib/push";
  */
 export async function POST(request: NextRequest) {
   try {
-    const db = await getDb();
-    await ensureIndexes(db);
-    const user = await resolveSession(request);
-    if (!user) {
-      return NextResponse.json({ error: "Sign in to join" }, { status: 401 });
-    }
-
-    const body = await request.json();
-    const relationship = typeof body.relationship === "string" ? body.relationship.trim() : "";
-    const skill = typeof body.skill === "string" ? body.skill.trim() : "";
-    const source = typeof body.source === "string" ? body.source.trim() : "";
-    const ageRange = typeof body.ageRange === "string" ? body.ageRange.trim() : "";
+    // Parse body FIRST — resolveSession / auth.api.getSession may consume the
+    // request stream on some Next.js App Router versions.
+    const rawBody = await request.json();
+    const relationship = typeof rawBody.relationship === "string" ? rawBody.relationship.trim() : "";
+    const skill = typeof rawBody.skill === "string" ? rawBody.skill.trim() : "";
+    const source = typeof rawBody.source === "string" ? rawBody.source.trim() : "";
+    const ageRange = typeof rawBody.ageRange === "string" ? rawBody.ageRange.trim() : "";
 
     if (!relationship || !skill || !source || !ageRange) {
       return NextResponse.json(
@@ -40,6 +35,14 @@ export async function POST(request: NextRequest) {
         { error: "Invalid relationship status" },
         { status: 400 },
       );
+    }
+
+    const db = await getDb();
+    await ensureIndexes(db);
+
+    const user = await resolveSession(request);
+    if (!user) {
+      return NextResponse.json({ error: "Sign in to join" }, { status: 401 });
     }
 
     const uid = user.id;
@@ -72,26 +75,24 @@ export async function POST(request: NextRequest) {
 
     const result = await db.collection("community_social_joins").insertOne(doc);
 
-    // Fire-and-forget: notify admins (don't block the response)
+    // Await notifications — Vercel freezes un-awaited promises after the
+    // response is flushed, so fire-and-forget never executes on serverless.
     const title = "New community join request";
     const bodyText = `${doc.name} wants to join the WhatsApp community (${relationship}).`;
-    notifyAdmins(
-      db,
-      {
-        type: "social_join",
-        title,
-        body: bodyText,
-        data: { joinId: result.insertedId.toString() },
-      },
-      uid,
-    ).catch((e) => console.error("[social-join] notifyAdmins failed:", e));
-
-    getAdminPushTokens(db, uid)
-      .then((tokens) => sendPushNotifications(tokens, title, bodyText))
-      .catch((e) => console.error("[social-join] push to admins failed:", e));
+    const joinId = result.insertedId.toString();
+    await Promise.all([
+      notifyAdmins(
+        db,
+        { type: "social_join", title, body: bodyText, data: { joinId } },
+        uid,
+      ).catch((e) => console.error("[social-join] notifyAdmins failed:", e)),
+      getAdminPushTokens(db, uid)
+        .then((tokens) => sendPushNotifications(tokens, title, bodyText))
+        .catch((e) => console.error("[social-join] push to admins failed:", e)),
+    ]);
 
     return NextResponse.json(
-      { data: { ...doc, _id: result.insertedId.toString() } },
+      { data: { ...doc, _id: joinId } },
       { status: 201 },
     );
   } catch (e) {
