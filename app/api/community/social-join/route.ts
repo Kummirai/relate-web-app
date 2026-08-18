@@ -8,7 +8,7 @@ import { getAdminPushTokens, sendPushNotifications } from "@/lib/push";
  * Social join — WhatsApp community questionnaire.
  *
  *  - POST: signed-in user submits answers (creates pending request).
- *    Notifies all admins (push + in-app).
+ *    Notifies all admins (push + in-app) as fire-and-forget.
  *  - GET: if admin with ?status=... returns filtered list; otherwise
  *    returns the caller's own submission (or null).
  */
@@ -72,10 +72,10 @@ export async function POST(request: NextRequest) {
 
     const result = await db.collection("community_social_joins").insertOne(doc);
 
-    // Notify admins
+    // Fire-and-forget: notify admins (don't block the response)
     const title = "New community join request";
     const bodyText = `${doc.name} wants to join the WhatsApp community (${relationship}).`;
-    await notifyAdmins(
+    notifyAdmins(
       db,
       {
         type: "social_join",
@@ -84,15 +84,18 @@ export async function POST(request: NextRequest) {
         data: { joinId: result.insertedId.toString() },
       },
       uid,
-    );
-    const tokens = await getAdminPushTokens(db, uid);
-    await sendPushNotifications(tokens, title, bodyText);
+    ).catch((e) => console.error("[social-join] notifyAdmins failed:", e));
+
+    getAdminPushTokens(db, uid)
+      .then((tokens) => sendPushNotifications(tokens, title, bodyText))
+      .catch((e) => console.error("[social-join] push to admins failed:", e));
 
     return NextResponse.json(
       { data: { ...doc, _id: result.insertedId.toString() } },
       { status: 201 },
     );
-  } catch {
+  } catch (e) {
+    console.error("[social-join] POST error:", e);
     return NextResponse.json(
       { error: "Failed to submit request" },
       { status: 500 },
@@ -135,7 +138,8 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({
       data: { ...mine, _id: mine._id.toString() },
     });
-  } catch {
+  } catch (e) {
+    console.error("[social-join] GET error:", e);
     return NextResponse.json({ data: null });
   }
 }

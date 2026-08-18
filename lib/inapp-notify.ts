@@ -53,7 +53,9 @@ export async function notifyAllUsers(
       createdAt: new Date(),
     }));
     await db.collection("notifications").insertMany(docs);
-  } catch {}
+  } catch (e) {
+    console.error("[notifyAllUsers] Failed:", e);
+  }
 }
 
 /** Inserts a notification for every admin user (optionally excluding one user). */
@@ -71,7 +73,10 @@ export async function notifyAdmins(
     const ids = admins
       .map((a: any) => String(a.id || a._id?.toString() || ""))
       .filter((id: string) => id && id !== exceptUserId);
-    if (!ids.length) return;
+    if (!ids.length) {
+      console.warn("[notifyAdmins] No admin users found");
+      return;
+    }
     const docs = ids.map((userId: string) => ({
       userId,
       type: input.type,
@@ -82,5 +87,7 @@ export async function notifyAdmins(
       createdAt: new Date(),
     }));
     await db.collection("notifications").insertMany(docs);
-  } catch {}
+  } catch (e) {
+    console.error("[notifyAdmins] Failed:", e);
+  }
 }
