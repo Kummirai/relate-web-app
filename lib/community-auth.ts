@@ -150,6 +150,21 @@ export async function ensureIndexes(db: any) {
       db.collection("financial_reports").createIndex({ status: 1, createdAt: -1 }),
       db.collection("community_social_joins").createIndex({ userId: 1, status: 1 }),
       db.collection("community_social_joins").createIndex({ status: 1, createdAt: -1 }),
+      // User admin search + listing
+      db.collection("user").createIndex({ createdAt: -1 }),
+      db.collection("user").createIndex({ name: 1, email: 1 }),
+      // Financial report action log queries
+      db.collection("familyrecords").createIndex({ "actionLog.date": 1 }),
+      // Admin help request triage by assignee
+      db.collection("help_requests").createIndex({ assignedTo: 1, createdAt: -1 }),
+      // Study progress sorted listing
+      db.collection("user_study_progress").createIndex({ userId: 1, startedAt: -1 }),
+      // Financial report period lookups
+      db.collection("financial_reports").createIndex({ period: 1, status: 1, createdAt: -1 }),
+      // Quiz sessions sorted listing
+      db.collection("quiz_sessions").createIndex({ session: 1 }, { unique: true }),
+      // Verse-of-the-day lookup
+      db.collection("votd_verses").createIndex({ dayIndex: 1 }, { unique: true }),
     ]);
   } catch {}
 }
