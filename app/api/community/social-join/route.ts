@@ -21,8 +21,11 @@ export async function POST(request: NextRequest) {
     const skill = typeof rawBody.skill === "string" ? rawBody.skill.trim() : "";
     const source = typeof rawBody.source === "string" ? rawBody.source.trim() : "";
     const ageRange = typeof rawBody.ageRange === "string" ? rawBody.ageRange.trim() : "";
+    const phone = typeof rawBody.phone === "string" ? rawBody.phone.trim() : "";
+    const countryCode = typeof rawBody.countryCode === "string" ? rawBody.countryCode.trim() : "";
+    const gender = typeof rawBody.gender === "string" ? rawBody.gender.trim() : "";
 
-    if (!relationship || !skill || !source || !ageRange) {
+    if (!relationship || !skill || !source || !ageRange || !phone || !gender) {
       return NextResponse.json(
         { error: "All fields are required" },
         { status: 400 },
@@ -66,6 +69,9 @@ export async function POST(request: NextRequest) {
       skill,
       source,
       ageRange,
+      phone: phone || null,
+      countryCode: countryCode || "+27",
+      gender: gender || null,
       status: "pending",
       createdAt: new Date(),
       updatedAt: new Date(),

@@ -10,6 +10,9 @@ type JoinRequest = {
   skill: string;
   source: string;
   ageRange: string;
+  phone: string | null;
+  countryCode: string;
+  gender: string | null;
   status: string;
   createdAt: string;
 };
@@ -63,6 +66,22 @@ export default function SocialJoinsAdmin() {
   };
 
   const pendingCount = requests.filter((r) => r.status === "pending").length;
+
+  const handleCopy = (req: JoinRequest) => {
+    const group = req.relationship === "single" ? "Singles" : "Couples";
+    const phone = req.phone ? `${req.countryCode} ${req.phone}` : "No phone";
+    const text = [
+      `Name: ${req.name}`,
+      `Phone: ${phone}`,
+      `Gender: ${req.gender || "Not specified"}`,
+      `Relationship: ${RELATIONSHIP_LABELS[req.relationship] || req.relationship}`,
+      `Group: ${group}`,
+      `Skill: ${req.skill}`,
+      `Age: ${req.ageRange}`,
+      `Source: ${req.source}`,
+    ].join("\n");
+    navigator.clipboard.writeText(text);
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -141,6 +160,14 @@ export default function SocialJoinsAdmin() {
                     </div>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm text-gray-600">
                       <div>
+                        <span className="text-gray-400">Phone:</span>{" "}
+                        {req.phone ? `${req.countryCode} ${req.phone}` : "—"}
+                      </div>
+                      <div>
+                        <span className="text-gray-400">Gender:</span>{" "}
+                        {req.gender || "—"}
+                      </div>
+                      <div>
                         <span className="text-gray-400">Status:</span>{" "}
                         {RELATIONSHIP_LABELS[req.relationship] || req.relationship}
                       </div>
@@ -171,6 +198,13 @@ export default function SocialJoinsAdmin() {
 
                   {req.status === "pending" && (
                     <div className="flex gap-2 ml-4">
+                      <button
+                        onClick={() => handleCopy(req)}
+                        title="Copy details for WhatsApp"
+                        className="px-3 py-2 bg-blue-500 text-white rounded-lg text-sm font-medium hover:bg-blue-600 transition"
+                      >
+                        Copy
+                      </button>
                       <button
                         onClick={() => handleAction(req._id, "approve")}
                         disabled={processing === req._id}
