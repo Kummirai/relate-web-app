@@ -8,7 +8,7 @@ import { admin } from "better-auth/plugins";
 const dbName = process.env.MONGODB_DB || "test";
 
 export const auth = betterAuth({
-  baseURL: process.env.BETTER_AUTH_URL || "https://relateworld.netlify.app",
+  baseURL: process.env.BETTER_AUTH_URL || "https://relate-iota.vercel.app",
   database: mongodbAdapter(client.db(dbName)),
   emailAndPassword: {
     enabled: true,
@@ -19,7 +19,12 @@ export const auth = betterAuth({
   trustedOrigins: [
     "relate://",
     ...(process.env.NODE_ENV === "development"
-      ? ["exp://", "exp://**", "exp://192.168.*.*:*/**", "http://localhost:8081"]
+      ? [
+          "exp://",
+          "exp://**",
+          "exp://192.168.*.*:*/**",
+          "http://localhost:8081",
+        ]
       : []),
   ],
   socialProviders: {
@@ -27,9 +32,9 @@ export const auth = betterAuth({
       clientId: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     },
-    facebook: {
-      clientId: process.env.FACEBOOK_CLIENT_ID!,
-      clientSecret: process.env.FACEBOOK_CLIENT_SECRET!,
+    github: {
+      clientId: process.env.GITHUB_CLIENT_ID!,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET!,
     },
   },
   databaseHooks: {
