@@ -16,12 +16,18 @@ const BOOK_TO_USFM: Record<number, string> = {
   62: "1JN", 63: "2JN", 64: "3JN", 65: "JUD", 66: "REV",
 };
 
-export async function GET() {
+export async function GET(request: Request) {
   try {
+    const { searchParams } = new URL(request.url);
+    const version = (searchParams.get("translation") || "KJV").toUpperCase();
+
     const db = await getDb();
-    const doc = await db.collection("bible_versions").findOne({ version: "KJV" });
+    const doc = await db.collection("bible_versions").findOne({ version });
     if (!doc?.verses) {
-      return NextResponse.json({ error: "no bible data" }, { status: 404 });
+      return NextResponse.json(
+        { error: `bible_versions doc not found for ${version}` },
+        { status: 404 },
+      );
     }
 
     const grouped: Record<string, { v: number; t: string }[]> = {};

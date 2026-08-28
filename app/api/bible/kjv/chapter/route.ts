@@ -43,8 +43,8 @@ export async function GET(request: Request) {
     }
 
     const db = await getDb();
-    const doc = await db.collection("bible").findOne(
-      { "verses.book": bookNum, "verses.chapter": chapter },
+    const doc = await db.collection("bible_versions").findOne(
+      { version: "KJV", "verses.book": bookNum, "verses.chapter": chapter },
     );
 
     const allVerses = doc?.verses || [];

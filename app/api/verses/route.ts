@@ -1,26 +1,54 @@
+import { NextResponse } from "next/server";
+import { getDb } from "@/lib/mongodb";
+
 export async function GET(request: Request) {
-  const { searchParams } = new URL(request.url);
+  try {
+    const { searchParams } = new URL(request.url);
+    const book = searchParams.get("book");
+    const chapter = searchParams.get("chapter");
+    const translation = searchParams.get("translation");
 
-  const book = searchParams.get("book");
-  const chapter = searchParams.get("chapter");
-  const translation = searchParams.get("translation");
+    if (!book || !chapter || !translation) {
+      return NextResponse.json(
+        { error: "book, chapter and translation are required" },
+        { status: 400 },
+      );
+    }
 
-  console.log(book, chapter, translation);
+    const db = await getDb();
+    const doc = await db.collection("bible_versions").findOne({
+      version: translation.toUpperCase(),
+    });
 
-  const response = await fetch(
-    `https://bible.helloao.org/api/${translation}/${book}/${chapter}.json`,
-  );
+    if (!doc?.verses) {
+      return NextResponse.json(
+        { error: `translation "${translation}" not found` },
+        { status: 404 },
+      );
+    }
 
-  if (!response.ok) {
-    return Response.json(
-      { error: "Failed to fetch data" },
-      { status: response.status },
+    const chapterNum = parseInt(chapter, 10);
+    const matches = doc.verses.filter(
+      (v: any) => v.book_name === book && v.chapter === chapterNum,
     );
+
+    if (!matches.length) {
+      return NextResponse.json({ error: "chapter not found" }, { status: 404 });
+    }
+
+    const verses = matches
+      .sort((a: any, b: any) => a.verse - b.verse)
+      .map((v: any) => ({ number: v.verse, content: v.text }));
+
+    return NextResponse.json(
+      { chapters: [{ verses }] },
+      {
+        headers: {
+          "Cache-Control": "public, max-age=86400, stale-while-revalidate=604800",
+        },
+      },
+    );
+  } catch (e: any) {
+    return NextResponse.json({ error: e.message }, { status: 500 });
   }
-
-  const data = await response.json();
-
-  console.log(`my data:`, data);
-
-  return Response.json(data);
 }

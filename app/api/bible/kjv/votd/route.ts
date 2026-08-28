@@ -5,6 +5,7 @@ export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
     const dayParam = searchParams.get("day");
+    const versionParam = (searchParams.get("version") || "KJV").toUpperCase();
     const now = new Date();
     const start = new Date(now.getFullYear(), 0, 0);
     const diff = now.getTime() - start.getTime();
@@ -23,20 +24,29 @@ export async function GET(request: Request) {
       return NextResponse.json({ error: "verse not found" }, { status: 404 });
     }
 
-    const bibleDoc = await db.collection("bible").findOne(
-      { "verses.book": entry.book, "verses.chapter": entry.chapter, "verses.verse": entry.verse },
+    let version = versionParam;
+    let bibleDoc = await db.collection("bible_versions").findOne(
+      { version, "verses.book": entry.book, "verses.chapter": entry.chapter, "verses.verse": entry.verse },
       { projection: { verses: { $elemMatch: { book: entry.book, chapter: entry.chapter, verse: entry.verse } } } },
     );
+    if (!bibleDoc?.verses?.[0] && version !== "KJV") {
+      version = "KJV";
+      bibleDoc = await db.collection("bible_versions").findOne(
+        { version, "verses.book": entry.book, "verses.chapter": entry.chapter, "verses.verse": entry.verse },
+        { projection: { verses: { $elemMatch: { book: entry.book, chapter: entry.chapter, verse: entry.verse } } } },
+      );
+    }
 
     const v = bibleDoc?.verses?.[0];
     if (!v) {
-      return NextResponse.json({ error: "verse text not found in bible collection" }, { status: 404 });
+      return NextResponse.json({ error: "verse text not found in bible_versions collection" }, { status: 404 });
     }
 
     return NextResponse.json({
       reference: `${v.book_name} ${v.chapter}:${v.verse}`,
       text: v.text,
       theme: entry.theme,
+      version,
       book_name: v.book_name,
       book: entry.book,
       chapter: entry.chapter,
