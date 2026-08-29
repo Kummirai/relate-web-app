@@ -158,6 +158,11 @@ export async function ensureIndexes(db: any) {
       db.collection("familyrecords").createIndex({ "actionLog.date": 1 }),
       // Admin help request triage by assignee
       db.collection("help_requests").createIndex({ assignedTo: 1, createdAt: -1 }),
+      // School grant applications
+      db.collection("school_grants").createIndex({ createdAt: -1 }),
+      db.collection("school_grants").createIndex({ status: 1, createdAt: -1 }),
+      db.collection("school_grants").createIndex({ userId: 1, createdAt: -1 }),
+      db.collection("school_grants").createIndex({ assignedTo: 1, createdAt: -1 }),
       // Study progress sorted listing
       db.collection("user_study_progress").createIndex({ userId: 1, startedAt: -1 }),
       // Financial report period lookups
