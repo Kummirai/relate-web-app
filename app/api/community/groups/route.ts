@@ -23,7 +23,9 @@ export async function GET(request: NextRequest) {
       // Re-derive user-specific fields from cached data.
       const data = groupsCache.data.map((g: any) => ({
         ...g,
-        hasJoined: userId ? (g._joinedUserIds || []).includes(userId) : false,
+        hasJoined: userId
+          ? (g._joinedUserIds || []).includes(userId) || g._ownerUserId === userId
+          : false,
         isOwner: userId ? g._ownerUserId === userId : false,
       }));
       return NextResponse.json({ data });
@@ -89,7 +91,9 @@ export async function GET(request: NextRequest) {
     // Re-derive user-specific fields for the response.
     const response = data.map((g: any) => ({
       ...g,
-      hasJoined: userId ? g._joinedUserIds.includes(userId) : false,
+      hasJoined: userId
+        ? g._joinedUserIds.includes(userId) || g._ownerUserId === userId
+        : false,
       isOwner: userId ? g._ownerUserId === userId : false,
     }));
     return NextResponse.json({ data: response });
@@ -126,8 +130,9 @@ export async function POST(request: NextRequest) {
       author: data.author || user.name || "Anonymous",
       userId: userId || null,
       inviteCode: await makeInviteCode(db),
-      members: 0,
-      joinedUserIds: [],
+      // The creator is automatically a member (host) of their own group.
+      members: userId ? 1 : 0,
+      joinedUserIds: userId ? [userId] : [],
       live: false,
       activeSession: null,
       createdAt: new Date(),
@@ -135,7 +140,14 @@ export async function POST(request: NextRequest) {
     const result = await db.collection("community_groups").insertOne(doc);
     groupsCache = null; // Invalidate cache
     return NextResponse.json(
-      { data: { _id: result.insertedId, ...doc, hasJoined: false, isOwner: !!userId } },
+      {
+        data: {
+          _id: result.insertedId,
+          ...doc,
+          hasJoined: !!userId,
+          isOwner: !!userId,
+        },
+      },
       { status: 201 },
     );
   } catch {
