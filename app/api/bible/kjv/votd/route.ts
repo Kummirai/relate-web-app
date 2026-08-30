@@ -1,6 +1,11 @@
 import { NextResponse } from "next/server";
 import { getDb } from "@/lib/mongodb";
 
+// VOTD only changes once per day, so cache aggressively (24 hours).
+// Keyed by `${dayOfYear}:${version}` to handle version switches.
+const votdCache = new Map<string, { data: any; ts: number }>();
+const VOTD_TTL = 24 * 60 * 60 * 1000; // 24 hours
+
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
@@ -10,6 +15,14 @@ export async function GET(request: Request) {
     const start = new Date(now.getFullYear(), 0, 0);
     const diff = now.getTime() - start.getTime();
     const dayOfYear = dayParam ? parseInt(dayParam, 10) : Math.floor(diff / 86400000);
+
+    const cacheKey = `${dayOfYear}:${versionParam}`;
+    const cached = votdCache.get(cacheKey);
+    if (cached && Date.now() - cached.ts < VOTD_TTL) {
+      return NextResponse.json(cached.data, {
+        headers: { "Cache-Control": "public, max-age=86400, stale-while-revalidate=604800" },
+      });
+    }
 
     const db = await getDb();
     const col = db.collection("votd_verses");
@@ -42,7 +55,7 @@ export async function GET(request: Request) {
       return NextResponse.json({ error: "verse text not found in bible_versions collection" }, { status: 404 });
     }
 
-    return NextResponse.json({
+    const data = {
       reference: `${v.book_name} ${v.chapter}:${v.verse}`,
       text: v.text,
       theme: entry.theme,
@@ -51,6 +64,12 @@ export async function GET(request: Request) {
       book: entry.book,
       chapter: entry.chapter,
       verse: entry.verse,
+    };
+
+    votdCache.set(cacheKey, { data, ts: Date.now() });
+
+    return NextResponse.json(data, {
+      headers: { "Cache-Control": "public, max-age=86400, stale-while-revalidate=604800" },
     });
   } catch (e: any) {
     return NextResponse.json({ error: e.message }, { status: 500 });

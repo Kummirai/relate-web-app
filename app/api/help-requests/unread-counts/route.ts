@@ -3,6 +3,11 @@ import { ObjectId } from "mongodb";
 import { getDb } from "@/lib/mongodb";
 import { resolveSession } from "@/lib/community-auth";
 
+// Per-user cache for unread counts (30s TTL). Avoids running the
+// aggregation pipeline on every push receipt / app resume.
+const unreadCache = new Map<string, { data: { userUnread: number; adminUnread: number }; ts: number }>();
+const UNREAD_TTL = 30_000; // 30 seconds
+
 /** Time of the newest message of the given sender, or null if there is none. */
 function lastMessageAt(sender: "user" | "admin") {
   return {
@@ -26,6 +31,12 @@ export async function GET(request: NextRequest) {
     const user = await resolveSession(request);
     if (!user || !ObjectId.isValid(user.id)) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    // Serve from cache if fresh enough.
+    const cached = unreadCache.get(user.id);
+    if (cached && Date.now() - cached.ts < UNREAD_TTL) {
+      return NextResponse.json({ data: cached.data });
     }
 
     const db = await getDb();
@@ -87,7 +98,10 @@ export async function GET(request: NextRequest) {
       userUnread = row?.n || 0;
     }
 
-    return NextResponse.json({ data: { userUnread, adminUnread } });
+    const data = { userUnread, adminUnread };
+    unreadCache.set(user.id, { data, ts: Date.now() });
+
+    return NextResponse.json({ data });
   } catch {
     return NextResponse.json({ error: "Failed to fetch unread counts" }, { status: 500 });
   }

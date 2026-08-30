@@ -1,6 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getDb } from "@/lib/mongodb";
 
+// Cache for 5 minutes — this runs 5 aggregation pipelines and the data
+// rarely changes within a single user session.
+let summaryCache: { data: any; ts: number } | null = null;
+const SUMMARY_TTL = 5 * 60 * 1000; // 5 minutes
+
 /**
  * Public aggregate for the "Sponsor a Relate" modal and home stats: families
  * helped, app downloads, sponsorship pledges, event fee income, and any
@@ -9,6 +14,12 @@ import { getDb } from "@/lib/mongodb";
  */
 export async function GET(request: NextRequest) {
   try {
+    if (summaryCache && Date.now() - summaryCache.ts < SUMMARY_TTL) {
+      return NextResponse.json(summaryCache.data, {
+        headers: { "Cache-Control": "public, max-age=300, stale-while-revalidate=600" },
+      });
+    }
+
     const db = await getDb();
 
     const [users, families, sponsorship, payments, reports] = await Promise.all([
@@ -62,7 +73,7 @@ export async function GET(request: NextRequest) {
       (reports[0]?.books ?? 0) +
       (reports[0]?.other ?? 0);
 
-    return NextResponse.json({
+    const data = {
       est: "Jan 2026",
       downloads: users,
       families,
@@ -71,7 +82,14 @@ export async function GET(request: NextRequest) {
       sponsorshipPaid: sponsorship[0]?.paid ?? 0,
       eventIncome,
       fundsRaised: sponsorshipTotal + eventIncome + reportIncome,
-    });  } catch (error) {
+    };
+
+    summaryCache = { data, ts: Date.now() };
+
+    return NextResponse.json(data, {
+      headers: { "Cache-Control": "public, max-age=300, stale-while-revalidate=600" },
+    });
+  } catch (error) {
     return NextResponse.json(
       { error: "Failed to fetch stats" },
       { status: 500 },
