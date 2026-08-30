@@ -9,6 +9,10 @@ import {
 } from "@/lib/community-auth";
 import { parseFee } from "@/lib/fees";
 
+// Cache for the events list (30s TTL).
+let eventsCache: { data: any; ts: number } | null = null;
+const EVENTS_TTL = 30_000; // 30 seconds
+
 const AGENDA_KEYS = [
   "time",
   "title",
@@ -63,6 +67,17 @@ export async function GET(request: NextRequest) {
     await ensureIndexes(db);
     const user = await resolveSession(request);
     const userId = user?.id || null;
+
+    // Serve from cache if fresh enough.
+    if (eventsCache && Date.now() - eventsCache.ts < EVENTS_TTL) {
+      // Re-derive user-specific fields.
+      const data = eventsCache.data.map((e: any) => ({
+        ...e,
+        hasRsvpd: userId ? e._rsvpUserIds.includes(userId) : false,
+        isOwner: userId ? e._ownerUserId === userId : false,
+      }));
+      return NextResponse.json({ data });
+    }
 
     const events = await db
       .collection("community_events")
@@ -139,13 +154,23 @@ export async function GET(request: NextRequest) {
         myPartner: userId && hasRsvpd ? !!myReg?.bringingPartner : false,
         isBookmarked: userId ? bookmarkedIds.has(e._id.toString()) : false,
         rsvpUsers,
-        isOwner: userId
-          ? e.userId === userId || (!e.userId && !!user.name && e.author === user.name)
-          : false,
         createdAt: e.createdAt,
+        // Store raw IDs for cache re-derivation.
+        _rsvpUserIds: e.rsvpUserIds || [],
+        _ownerUserId: e.userId || null,
+        _ownerAuthor: e.author || null,
       };
     });
-    return NextResponse.json({ data });
+
+    eventsCache = { data, ts: Date.now() };
+
+    // Re-derive user-specific fields.
+    const response = data.map((e: any) => ({
+      ...e,
+      hasRsvpd: userId ? e._rsvpUserIds.includes(userId) : false,
+      isOwner: userId ? e._ownerUserId === userId : false,
+    }));
+    return NextResponse.json({ data: response });
   } catch {
     return NextResponse.json({ data: [] });
   }
@@ -190,6 +215,7 @@ export async function POST(request: NextRequest) {
       createdAt: new Date(),
     };
     const result = await db.collection("community_events").insertOne(doc);
+    eventsCache = null; // Invalidate cache
     return NextResponse.json(
       { data: { _id: result.insertedId, ...doc, hasRsvpd: false, isOwner: !!userId } },
       { status: 201 },
@@ -254,6 +280,7 @@ export async function PUT(request: NextRequest) {
       { _id: new ObjectId(_id) },
       { $set: setFields },
     );
+    eventsCache = null; // Invalidate cache
 
     const updated = await db.collection("community_events").findOne({ _id: new ObjectId(_id) });
     return NextResponse.json({
@@ -299,6 +326,7 @@ export async function DELETE(request: NextRequest) {
     }
 
     await db.collection("community_events").deleteOne({ _id: new ObjectId(_id) });
+    eventsCache = null; // Invalidate cache
     return NextResponse.json({ success: true });
   } catch {
     return NextResponse.json({ error: "Failed to delete event" }, { status: 500 });

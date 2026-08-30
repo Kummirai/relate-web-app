@@ -3,12 +3,26 @@ import { ObjectId } from "mongodb";
 import { getDb } from "@/lib/mongodb";
 import { resolveSession, ensureIndexes, fetchParticipants } from "@/lib/community-auth";
 
+// Cache for the skills list (30s TTL).
+let skillsCache: { data: any; ts: number } | null = null;
+const SKILLS_TTL = 30_000; // 30 seconds
+
 export async function GET(request: NextRequest) {
   try {
     const db = await getDb();
     await ensureIndexes(db);
     const user = await resolveSession(request);
     const userId = user?.id || null;
+
+    // Serve from cache if fresh enough.
+    if (skillsCache && Date.now() - skillsCache.ts < SKILLS_TTL) {
+      const data = skillsCache.data.map((s: any) => ({
+        ...s,
+        connected: userId ? s._connectedUserIds.includes(userId) : false,
+        isOwner: userId ? s._ownerUserId === userId : false,
+      }));
+      return NextResponse.json({ data });
+    }
 
     const skills = await db
       .collection("community_skills")
@@ -47,16 +61,25 @@ export async function GET(request: NextRequest) {
         description: s.description,
         author: s.author,
         offering: s.offering,
-        connected: connectedIds.includes(sid),
         connectionCount: connectorIds.length,
         connectedUsers,
-        isOwner: userId
-          ? s.userId === userId || (!s.userId && !!user.name && s.author === user.name)
-          : false,
         createdAt: s.createdAt,
+        // Store raw IDs for cache re-derivation.
+        _connectedUserIds: connectorIds,
+        _ownerUserId: s.userId || null,
+        _ownerAuthor: s.author || null,
       };
     });
-    return NextResponse.json({ data });
+
+    skillsCache = { data, ts: Date.now() };
+
+    // Re-derive user-specific fields.
+    const response = data.map((s: any) => ({
+      ...s,
+      connected: userId ? s._connectedUserIds.includes(userId) : false,
+      isOwner: userId ? s._ownerUserId === userId : false,
+    }));
+    return NextResponse.json({ data: response });
   } catch {
     return NextResponse.json({ data: [] });
   }
@@ -78,6 +101,7 @@ export async function POST(request: NextRequest) {
       createdAt: new Date(),
     };
     const result = await db.collection("community_skills").insertOne(doc);
+    skillsCache = null; // Invalidate cache
     return NextResponse.json(
       { data: { _id: result.insertedId, ...doc, connected: false, connectionCount: 0, isOwner: !!userId } },
       { status: 201 },
@@ -112,6 +136,7 @@ export async function PUT(request: NextRequest) {
       { _id: new ObjectId(_id) },
       { $set: setFields },
     );
+    skillsCache = null; // Invalidate cache
 
     const updated = await db.collection("community_skills").findOne({ _id: new ObjectId(_id) });
     return NextResponse.json({ data: { ...updated, isOwner: true } });
@@ -137,6 +162,7 @@ export async function DELETE(request: NextRequest) {
 
     await db.collection("community_skills").deleteOne({ _id: new ObjectId(_id) });
     await db.collection("community_skill_connections").deleteMany({ skillId: _id });
+    skillsCache = null; // Invalidate cache
     return NextResponse.json({ success: true });
   } catch {
     return NextResponse.json({ error: "Failed to delete skill" }, { status: 500 });

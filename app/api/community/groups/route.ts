@@ -4,12 +4,30 @@ import { getDb } from "@/lib/mongodb";
 import { resolveSession, requireGroupCreator, ensureIndexes, fetchParticipants } from "@/lib/community-auth";
 import { makeInviteCode } from "@/lib/daily";
 
+// Cache for the groups list (30s TTL). Avoids running the full pipeline
+// (find + fetchParticipants + comment aggregation) on every request.
+let groupsCache: { data: any; ts: number } | null = null;
+const GROUPS_TTL = 30_000; // 30 seconds
+
 export async function GET(request: NextRequest) {
   try {
     const db = await getDb();
     await ensureIndexes(db);
     const user = await resolveSession(request);
     const userId = user?.id || null;
+
+    // Serve from cache if fresh enough (user-specific fields are computed
+    // client-side from hasJoined/isOwner which we can't cache generically,
+    // but the heavy DB work is the same for everyone).
+    if (groupsCache && Date.now() - groupsCache.ts < GROUPS_TTL) {
+      // Re-derive user-specific fields from cached data.
+      const data = groupsCache.data.map((g: any) => ({
+        ...g,
+        hasJoined: userId ? (g._joinedUserIds || []).includes(userId) : false,
+        isOwner: userId ? g._ownerUserId === userId : false,
+      }));
+      return NextResponse.json({ data });
+    }
 
     const groups = await db
       .collection("community_groups")
@@ -57,15 +75,24 @@ export async function GET(request: NextRequest) {
         commentCount: commentCounts.get(g._id.toString()) || 0,
         live: g.live || false,
         activeSession: g.activeSession || null,
-        hasJoined: userId ? (g.joinedUserIds || []).includes(userId) : false,
         joinedUsers,
-        isOwner: userId
-          ? g.userId === userId || (!g.userId && !!user.name && g.author === user.name)
-          : false,
         createdAt: g.createdAt,
+        // Store raw IDs for cache re-derivation of user-specific fields.
+        _joinedUserIds: g.joinedUserIds || [],
+        _ownerUserId: g.userId || null,
+        _ownerAuthor: g.author || null,
       };
     });
-    return NextResponse.json({ data });
+
+    groupsCache = { data, ts: Date.now() };
+
+    // Re-derive user-specific fields for the response.
+    const response = data.map((g: any) => ({
+      ...g,
+      hasJoined: userId ? g._joinedUserIds.includes(userId) : false,
+      isOwner: userId ? g._ownerUserId === userId : false,
+    }));
+    return NextResponse.json({ data: response });
   } catch {
     return NextResponse.json({ data: [] });
   }
@@ -106,6 +133,7 @@ export async function POST(request: NextRequest) {
       createdAt: new Date(),
     };
     const result = await db.collection("community_groups").insertOne(doc);
+    groupsCache = null; // Invalidate cache
     return NextResponse.json(
       { data: { _id: result.insertedId, ...doc, hasJoined: false, isOwner: !!userId } },
       { status: 201 },
@@ -150,6 +178,7 @@ export async function PUT(request: NextRequest) {
       { _id: new ObjectId(_id) },
       { $set: setFields },
     );
+    groupsCache = null; // Invalidate cache
 
     const updated = await db.collection("community_groups").findOne({ _id: new ObjectId(_id) });
     return NextResponse.json({ data: { ...updated, isOwner: true } });
@@ -178,6 +207,7 @@ export async function DELETE(request: NextRequest) {
     await db.collection("community_groups").deleteOne({ _id: new ObjectId(_id) });
     // Clean up the group's encouragement thread so no orphaned comments linger.
     await db.collection("community_group_comments").deleteMany({ groupId: _id });
+    groupsCache = null; // Invalidate cache
     return NextResponse.json({ success: true });
   } catch {
     return NextResponse.json({ error: "Failed to delete group" }, { status: 500 });
