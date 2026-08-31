@@ -39,7 +39,15 @@ export async function GET(request: NextRequest) {
       }
     }
 
-    return NextResponse.json({ data: results });
+    return NextResponse.json(
+      { data: results },
+      {
+        headers: {
+          // Bookmarks are per-user, so cache on the browser only (no shared CDN).
+          "Cache-Control": "private, max-age=30, stale-while-revalidate=30",
+        },
+      },
+    );
   } catch {
     return NextResponse.json({ data: [] });
   }

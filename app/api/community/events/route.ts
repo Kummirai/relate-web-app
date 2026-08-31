@@ -13,6 +13,11 @@ import { parseFee } from "@/lib/fees";
 let eventsCache: { data: any; ts: number } | null = null;
 const EVENTS_TTL = 30_000; // 30 seconds
 
+// Shared CDN cache: keeps the heavy list build from repeating on cold starts.
+const CACHE_HEADERS = {
+  "Cache-Control": "public, s-maxage=30, stale-while-revalidate=30",
+};
+
 const AGENDA_KEYS = [
   "time",
   "title",
@@ -76,7 +81,7 @@ export async function GET(request: NextRequest) {
         hasRsvpd: userId ? e._rsvpUserIds.includes(userId) : false,
         isOwner: userId ? e._ownerUserId === userId : false,
       }));
-      return NextResponse.json({ data });
+      return NextResponse.json({ data }, { headers: CACHE_HEADERS });
     }
 
     const events = await db
@@ -170,7 +175,7 @@ export async function GET(request: NextRequest) {
       hasRsvpd: userId ? e._rsvpUserIds.includes(userId) : false,
       isOwner: userId ? e._ownerUserId === userId : false,
     }));
-    return NextResponse.json({ data: response });
+    return NextResponse.json({ data: response }, { headers: CACHE_HEADERS });
   } catch {
     return NextResponse.json({ data: [] });
   }

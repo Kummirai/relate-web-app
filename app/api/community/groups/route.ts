@@ -9,6 +9,11 @@ import { makeInviteCode } from "@/lib/daily";
 let groupsCache: { data: any; ts: number } | null = null;
 const GROUPS_TTL = 30_000; // 30 seconds
 
+// Shared CDN cache: keeps the heavy list build from repeating on cold starts.
+const CACHE_HEADERS = {
+  "Cache-Control": "public, s-maxage=30, stale-while-revalidate=30",
+};
+
 export async function GET(request: NextRequest) {
   try {
     const db = await getDb();
@@ -28,7 +33,7 @@ export async function GET(request: NextRequest) {
           : false,
         isOwner: userId ? g._ownerUserId === userId : false,
       }));
-      return NextResponse.json({ data });
+      return NextResponse.json({ data }, { headers: CACHE_HEADERS });
     }
 
     const groups = await db
@@ -96,7 +101,7 @@ export async function GET(request: NextRequest) {
         : false,
       isOwner: userId ? g._ownerUserId === userId : false,
     }));
-    return NextResponse.json({ data: response });
+    return NextResponse.json({ data: response }, { headers: CACHE_HEADERS });
   } catch {
     return NextResponse.json({ data: [] });
   }
