@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getDb } from "@/lib/mongodb";
+import VOTD_VERSES from "@/lib/votd-verses";
 
 // VOTD only changes once per day, so cache aggressively (24 hours).
 // Keyed by `${dayOfYear}:${version}` to handle version switches.
@@ -26,7 +27,24 @@ export async function GET(request: Request) {
 
     const db = await getDb();
     const col = db.collection("votd_verses");
-    const count = await col.countDocuments();
+    let count = await col.countDocuments();
+    // Self-heal: if the collection ever drifts from the canonical verse list
+    // (e.g. the list grew but the seed wasn't re-run), re-seed it and drop the
+    // stale in-memory entries so the day-index maps to the intended verse.
+    if (count !== VOTD_VERSES.length) {
+      await col.deleteMany({});
+      await col.insertMany(
+        VOTD_VERSES.map((v, i) => ({
+          dayIndex: i,
+          book: v.book,
+          chapter: v.chapter,
+          verse: v.verse,
+          theme: v.theme,
+        })),
+      );
+      count = VOTD_VERSES.length;
+      votdCache.clear();
+    }
     if (count === 0) {
       return NextResponse.json({ error: "votd_verses collection is empty. Run POST /api/bible/kjv/votd/seed first." }, { status: 404 });
     }
