@@ -169,8 +169,6 @@ export async function ensureIndexes(db: any) {
       db.collection("financial_reports").createIndex({ period: 1, status: 1, createdAt: -1 }),
       // Quiz sessions sorted listing
       db.collection("quiz_sessions").createIndex({ session: 1 }, { unique: true }),
-      // Verse-of-the-day lookup
-      db.collection("votd_verses").createIndex({ dayIndex: 1 }, { unique: true }),
     ]);
   } catch {}
 }
