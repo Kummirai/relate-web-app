@@ -27,15 +27,35 @@ export default async function RootLayout({ children }) {
             <Link href="/" className="font-bold text-xl" style={{ color: "#1d2a4d" }}>
               Relate
             </Link>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3">
               {session ? (
-                <Link
-                  href="/admin/social-joins"
-                  className="text-sm font-medium px-4 py-2 rounded-full transition hover:opacity-80"
-                  style={{ color: "#13c5dd", background: "rgba(19,197,221,0.1)" }}
-                >
-                  Admin
-                </Link>
+                <>
+                  {session.user.role === "admin" && (
+                    <>
+                      <Link
+                        href="/records"
+                        className="text-sm font-medium px-4 py-2 rounded-full transition hover:opacity-80"
+                        style={{ color: "#13c5dd", background: "rgba(19,197,221,0.1)" }}
+                      >
+                        Records
+                      </Link>
+                      <Link
+                        href="/records/streaks"
+                        className="text-sm font-medium px-4 py-2 rounded-full transition hover:opacity-80"
+                        style={{ color: "#13c5dd", background: "rgba(19,197,221,0.1)" }}
+                      >
+                        Restore Streaks
+                      </Link>
+                    </>
+                  )}
+                  <Link
+                    href="/admin/social-joins"
+                    className="text-sm font-medium px-4 py-2 rounded-full transition hover:opacity-80"
+                    style={{ color: "#13c5dd", background: "rgba(19,197,221,0.1)" }}
+                  >
+                    Admin
+                  </Link>
+                </>
               ) : (
                 <>
                   <Link href="/signin" className="text-sm font-medium" style={{ color: "#1d2a4d" }}>
