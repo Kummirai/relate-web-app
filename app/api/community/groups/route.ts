@@ -3,6 +3,7 @@ import { ObjectId } from "mongodb";
 import { getDb } from "@/lib/mongodb";
 import { resolveSession, requireGroupCreator, ensureIndexes, fetchParticipants } from "@/lib/community-auth";
 import { makeInviteCode } from "@/lib/daily";
+import { bumpDiscoverVersion } from "@/lib/discover-version";
 
 // Cache for the groups list (30s TTL). Avoids running the full pipeline
 // (find + fetchParticipants + comment aggregation) on every request.
@@ -144,6 +145,7 @@ export async function POST(request: NextRequest) {
     };
     const result = await db.collection("community_groups").insertOne(doc);
     groupsCache = null; // Invalidate cache
+    await bumpDiscoverVersion();
     return NextResponse.json(
       {
         data: {
@@ -196,6 +198,7 @@ export async function PUT(request: NextRequest) {
       { $set: setFields },
     );
     groupsCache = null; // Invalidate cache
+    await bumpDiscoverVersion();
 
     const updated = await db.collection("community_groups").findOne({ _id: new ObjectId(_id) });
     return NextResponse.json({ data: { ...updated, isOwner: true } });
@@ -225,6 +228,7 @@ export async function DELETE(request: NextRequest) {
     // Clean up the group's encouragement thread so no orphaned comments linger.
     await db.collection("community_group_comments").deleteMany({ groupId: _id });
     groupsCache = null; // Invalidate cache
+    await bumpDiscoverVersion();
     return NextResponse.json({ success: true });
   } catch {
     return NextResponse.json({ error: "Failed to delete group" }, { status: 500 });

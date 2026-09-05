@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { ObjectId } from "mongodb";
 import { getDb } from "@/lib/mongodb";
 import { resolveSession, ensureIndexes, fetchParticipants } from "@/lib/community-auth";
+import { bumpDiscoverVersion } from "@/lib/discover-version";
 
 // Cache for the skills list (30s TTL).
 let skillsCache: { data: any; ts: number } | null = null;
@@ -110,6 +111,7 @@ export async function POST(request: NextRequest) {
     };
     const result = await db.collection("community_skills").insertOne(doc);
     skillsCache = null; // Invalidate cache
+    await bumpDiscoverVersion();
     return NextResponse.json(
       { data: { _id: result.insertedId, ...doc, connected: false, connectionCount: 0, isOwner: !!userId } },
       { status: 201 },
@@ -145,6 +147,7 @@ export async function PUT(request: NextRequest) {
       { $set: setFields },
     );
     skillsCache = null; // Invalidate cache
+    await bumpDiscoverVersion();
 
     const updated = await db.collection("community_skills").findOne({ _id: new ObjectId(_id) });
     return NextResponse.json({ data: { ...updated, isOwner: true } });
@@ -171,6 +174,7 @@ export async function DELETE(request: NextRequest) {
     await db.collection("community_skills").deleteOne({ _id: new ObjectId(_id) });
     await db.collection("community_skill_connections").deleteMany({ skillId: _id });
     skillsCache = null; // Invalidate cache
+    await bumpDiscoverVersion();
     return NextResponse.json({ success: true });
   } catch {
     return NextResponse.json({ error: "Failed to delete skill" }, { status: 500 });

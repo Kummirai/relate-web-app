@@ -8,6 +8,7 @@ import {
   requireAdmin,
 } from "@/lib/community-auth";
 import { parseFee } from "@/lib/fees";
+import { bumpDiscoverVersion } from "@/lib/discover-version";
 
 // Cache for the events list (30s TTL).
 let eventsCache: { data: any; ts: number } | null = null;
@@ -221,6 +222,7 @@ export async function POST(request: NextRequest) {
     };
     const result = await db.collection("community_events").insertOne(doc);
     eventsCache = null; // Invalidate cache
+    await bumpDiscoverVersion();
     return NextResponse.json(
       { data: { _id: result.insertedId, ...doc, hasRsvpd: false, isOwner: !!userId } },
       { status: 201 },
@@ -286,6 +288,7 @@ export async function PUT(request: NextRequest) {
       { $set: setFields },
     );
     eventsCache = null; // Invalidate cache
+    await bumpDiscoverVersion();
 
     const updated = await db.collection("community_events").findOne({ _id: new ObjectId(_id) });
     return NextResponse.json({
@@ -332,6 +335,7 @@ export async function DELETE(request: NextRequest) {
 
     await db.collection("community_events").deleteOne({ _id: new ObjectId(_id) });
     eventsCache = null; // Invalidate cache
+    await bumpDiscoverVersion();
     return NextResponse.json({ success: true });
   } catch {
     return NextResponse.json({ error: "Failed to delete event" }, { status: 500 });
