@@ -74,14 +74,21 @@ export async function GET(request: NextRequest) {
     const user = await resolveSession(request);
     const userId = user?.id || null;
 
+    // Optional club filter: ?club=<slug> returns only events created in
+    // that club (used by the club pages and the home discover rail).
+    const clubFilter =
+      request.nextUrl.searchParams.get("club")?.trim().toLowerCase() || "";
+
     // Serve from cache if fresh enough.
     if (eventsCache && Date.now() - eventsCache.ts < EVENTS_TTL) {
       // Re-derive user-specific fields.
-      const data = eventsCache.data.map((e: any) => ({
-        ...e,
-        hasRsvpd: userId ? e._rsvpUserIds.includes(userId) : false,
-        isOwner: userId ? e._ownerUserId === userId : false,
-      }));
+      const data = eventsCache.data
+        .filter((e: any) => !clubFilter || e.clubSlug === clubFilter)
+        .map((e: any) => ({
+          ...e,
+          hasRsvpd: userId ? e._rsvpUserIds.includes(userId) : false,
+          isOwner: userId ? e._ownerUserId === userId : false,
+        }));
       return NextResponse.json({ data }, { headers: CACHE_HEADERS });
     }
 
@@ -140,6 +147,7 @@ export async function GET(request: NextRequest) {
         fee: e.fee || "Free",
         feeAmount: fee.amount,
         feeSymbol: fee.symbol,
+        clubSlug: e.clubSlug || undefined,
         imageUrl: e.imageUrl || null,
         author: e.author || "",
         category: e.category || undefined,
@@ -206,6 +214,10 @@ export async function POST(request: NextRequest) {
       notes: data.notes || "",
       location: data.location || "",
       fee: data.fee || "Free",
+      clubSlug:
+        typeof data.clubSlug === "string" && data.clubSlug.trim()
+          ? data.clubSlug.trim().toLowerCase()
+          : undefined,
       imageUrl: data.imageUrl || null,
       author: data.author || "Anonymous",
       category: data.category || undefined,
@@ -273,6 +285,11 @@ export async function PUT(request: NextRequest) {
     if (updateData.notes !== undefined) setFields.notes = updateData.notes;
     if (updateData.location !== undefined) setFields.location = updateData.location;
     if (updateData.fee !== undefined) setFields.fee = updateData.fee;
+    if (updateData.clubSlug !== undefined)
+      setFields.clubSlug =
+        typeof updateData.clubSlug === "string" && updateData.clubSlug.trim()
+          ? updateData.clubSlug.trim().toLowerCase()
+          : undefined;
     if (updateData.imageUrl !== undefined) setFields.imageUrl = updateData.imageUrl;
     if (updateData.category !== undefined) setFields.category = updateData.category;
     if (updateData.eyebrow !== undefined) setFields.eyebrow = updateData.eyebrow;

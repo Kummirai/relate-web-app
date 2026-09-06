@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { ObjectId } from "mongodb";
 import { getDb } from "@/lib/mongodb";
-import { resolveSession, requireGroupCreator, ensureIndexes, fetchParticipants } from "@/lib/community-auth";
+import { resolveSession, requireAdmin, requireGroupCreator, ensureIndexes, fetchParticipants } from "@/lib/community-auth";
 import { makeInviteCode } from "@/lib/daily";
 import { bumpDiscoverVersion } from "@/lib/discover-version";
 
@@ -22,18 +22,25 @@ export async function GET(request: NextRequest) {
     const user = await resolveSession(request);
     const userId = user?.id || null;
 
+    // Optional club filter: ?club=<slug> returns only groups created in
+    // that club (used by the club pages).
+    const clubFilter =
+      request.nextUrl.searchParams.get("club")?.trim().toLowerCase() || "";
+
     // Serve from cache if fresh enough (user-specific fields are computed
     // client-side from hasJoined/isOwner which we can't cache generically,
     // but the heavy DB work is the same for everyone).
     if (groupsCache && Date.now() - groupsCache.ts < GROUPS_TTL) {
       // Re-derive user-specific fields from cached data.
-      const data = groupsCache.data.map((g: any) => ({
-        ...g,
-        hasJoined: userId
-          ? (g._joinedUserIds || []).includes(userId) || g._ownerUserId === userId
-          : false,
-        isOwner: userId ? g._ownerUserId === userId : false,
-      }));
+      const data = groupsCache.data
+        .filter((g: any) => !clubFilter || g.clubSlug === clubFilter)
+        .map((g: any) => ({
+          ...g,
+          hasJoined: userId
+            ? (g._joinedUserIds || []).includes(userId) || g._ownerUserId === userId
+            : false,
+          isOwner: userId ? g._ownerUserId === userId : false,
+        }));
       return NextResponse.json({ data }, { headers: CACHE_HEADERS });
     }
 
@@ -69,6 +76,7 @@ export async function GET(request: NextRequest) {
         name: g.name,
         description: g.description,
         category: g.category || "prayer",
+        clubSlug: g.clubSlug || undefined,
         imageUrl: g.imageUrl || null,
         facilitator: g.facilitator || "",
         location: g.location || "",
@@ -124,6 +132,10 @@ export async function POST(request: NextRequest) {
       name: data.name || "",
       description: data.description || "",
       category: data.category || "prayer",
+      clubSlug:
+        typeof data.clubSlug === "string" && data.clubSlug.trim()
+          ? data.clubSlug.trim().toLowerCase()
+          : undefined,
       imageUrl: data.imageUrl || null,
       facilitator: data.facilitator || "",
       location: data.location || "",
@@ -176,13 +188,22 @@ export async function PUT(request: NextRequest) {
     const existing = await db.collection("community_groups").findOne({ _id: new ObjectId(_id) });
     if (!existing) return NextResponse.json({ error: "Group not found" }, { status: 404 });
 
-    const canEdit = existing.userId === userId || (!existing.userId && !!userName && existing.author === userName);
+    const isAdmin = !!(await requireAdmin(request));
+    const canEdit =
+      isAdmin ||
+      existing.userId === userId ||
+      (!existing.userId && !!userName && existing.author === userName);
     if (!canEdit) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 
     const setFields: Record<string, any> = { updatedAt: new Date() };
     if (updateData.name !== undefined) setFields.name = updateData.name;
     if (updateData.description !== undefined) setFields.description = updateData.description;
     if (updateData.category !== undefined) setFields.category = updateData.category;
+    if (updateData.clubSlug !== undefined)
+      setFields.clubSlug =
+        typeof updateData.clubSlug === "string" && updateData.clubSlug.trim()
+          ? updateData.clubSlug.trim().toLowerCase()
+          : undefined;
     if (updateData.imageUrl !== undefined) setFields.imageUrl = updateData.imageUrl;
     if (updateData.facilitator !== undefined) setFields.facilitator = updateData.facilitator;
     if (updateData.location !== undefined) setFields.location = updateData.location;
