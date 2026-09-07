@@ -128,14 +128,21 @@ export async function POST(request: NextRequest) {
     }
     const userId = user.id || user._id?.toString() || null;
     const data = await request.json();
+    const clubSlug =
+      typeof data.clubSlug === "string" && data.clubSlug.trim()
+        ? data.clubSlug.trim().toLowerCase()
+        : "";
+    if (!clubSlug) {
+      return NextResponse.json(
+        { error: "Groups must belong to a club." },
+        { status: 400 },
+      );
+    }
     const doc = {
       name: data.name || "",
       description: data.description || "",
       category: data.category || "prayer",
-      clubSlug:
-        typeof data.clubSlug === "string" && data.clubSlug.trim()
-          ? data.clubSlug.trim().toLowerCase()
-          : undefined,
+      clubSlug,
       imageUrl: data.imageUrl || null,
       facilitator: data.facilitator || "",
       location: data.location || "",
