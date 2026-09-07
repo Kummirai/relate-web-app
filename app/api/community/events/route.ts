@@ -203,6 +203,16 @@ export async function POST(request: NextRequest) {
     }
     const userId = admin.id;
     const data = await request.json();
+    const clubSlug =
+      typeof data.clubSlug === "string" && data.clubSlug.trim()
+        ? data.clubSlug.trim().toLowerCase()
+        : "";
+    if (!clubSlug) {
+      return NextResponse.json(
+        { error: "Events must belong to a club" },
+        { status: 400 },
+      );
+    }
     const doc = {
       title: data.title,
       description: data.description || "",
@@ -214,10 +224,7 @@ export async function POST(request: NextRequest) {
       notes: data.notes || "",
       location: data.location || "",
       fee: data.fee || "Free",
-      clubSlug:
-        typeof data.clubSlug === "string" && data.clubSlug.trim()
-          ? data.clubSlug.trim().toLowerCase()
-          : undefined,
+      clubSlug,
       imageUrl: data.imageUrl || null,
       author: data.author || "Anonymous",
       category: data.category || undefined,
