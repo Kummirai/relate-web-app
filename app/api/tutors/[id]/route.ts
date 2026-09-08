@@ -34,6 +34,24 @@ export async function GET(
       return NextResponse.json({ error: "Tutor not found" }, { status: 404 });
     }
 
+    // Union the seeded booked slots with live, confirmed bookings so already
+    // taken session slots stay greyed out in the calendar. The sessions
+    // collection is the single source of truth for newly booked slots.
+    const active = await db
+      .collection("sessions")
+      .find({ tutorId: tutor.id || id, status: "confirmed" }, { projection: { date: 1, time: 1 } })
+      .toArray();
+    const taken = new Map();
+    for (const slot of tutor.bookedSlots || []) {
+      if (slot?.date && slot?.time) taken.set(`${slot.date}|${slot.time}`, slot);
+    }
+    for (const slot of active || []) {
+      if (slot?.date && slot?.time) {
+        taken.set(`${slot.date}|${slot.time}`, { date: slot.date, time: slot.time });
+      }
+    }
+    tutor.bookedSlots = Array.from(taken.values());
+
     return NextResponse.json({ data: tutor });
   } catch {
     return NextResponse.json({ error: "Failed to fetch tutor" }, { status: 500 });
