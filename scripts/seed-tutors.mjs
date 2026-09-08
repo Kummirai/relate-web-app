@@ -306,14 +306,10 @@ async function main() {
       bookedSlots: raw.bookedSlots.map((s) => ({ ...s })),
       clubs: tutorClubs(raw.gradeRanges),
     });
+    const { createdAt: _created, updatedAt: _updatedAt, ...setDoc } = doc;
     const result = await col.updateOne(
       { id: doc.id },
-      {
-        $set: Object.fromEntries(
-          Object.entries(doc).filter(([k]) => k !== "createdAt" && k !== "updatedAt"),
-        ),
-        $setOnInsert: { createdAt: doc.createdAt },
-      },
+      { $set: setDoc, $setOnInsert: { createdAt: doc.createdAt } },
       { upsert: true },
     );
     if (result.upsertedCount > 0) upserted += 1;

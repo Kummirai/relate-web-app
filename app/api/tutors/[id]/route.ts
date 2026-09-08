@@ -19,14 +19,11 @@ export async function GET(
     const db = await getDb();
     await ensureTutorIndexes();
 
-    const query: Record<string, unknown>[] = [
-      { id },
-      { _id: new ObjectId(id) },
-    ];
-    // An id that is a valid ObjectId is matched as a Mongo `_id`; otherwise
-    // only the string `id` (e.g. "t1") is consulted.
-    if (!ObjectId.isValid(id)) {
-      query.length = 1;
+    // Match the stable string `id` (e.g. "t1"); also accept a Mongo `_id`
+    // when the param happens to be a 24-char ObjectId hex.
+    const query: Record<string, unknown>[] = [{ id }];
+    if (ObjectId.isValid(id)) {
+      query.push({ _id: new ObjectId(id) });
     }
 
     const tutor = await db
