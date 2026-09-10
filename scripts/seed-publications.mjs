@@ -78,7 +78,21 @@ async function main() {
   }
 
   const count = await collection.countDocuments({ status: "published" });
-  console.log(`Seeded ${files.length} publication(s) → ${count} published in Mongo.`);
+
+  // Prune publications that no longer exist as authored files. The JSON files
+  // under frontend/src/data/publications are the source of truth for the
+  // catalog, so a retired file (e.g. a replaced seasonal study guide) is
+  // removed from Mongo too.
+  const fileIds = new Set(files.map((p) => p.id));
+  const prune = await collection.deleteMany({
+    id: { $nin: [...fileIds] },
+  });
+
+  const finalCount = await collection.countDocuments({ status: "published" });
+  console.log(`Seeded ${files.length} publication(s) → ${finalCount} published in Mongo.`);
+  if (prune.deletedCount > 0) {
+    console.log(`Pruned ${prune.deletedCount} retired publication(s).`);
+  }
   await client.close();
 }
 

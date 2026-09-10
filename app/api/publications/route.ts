@@ -29,6 +29,7 @@ export async function GET(request: NextRequest) {
       .collection("publications")
       .find(query)
       .sort({ publishedAt: -1 })
+      .project({ blocks: 0, weeks: 0 })
       .toArray();
 
     return NextResponse.json(items);
