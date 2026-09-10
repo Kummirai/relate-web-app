@@ -17,9 +17,9 @@ export default async function MagazinesPage({
   return (
     <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 md:px-8">
       <div className="mb-8">
-        <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-[#0fa3c4]">Library</p>
-        <h1 className="font-display text-4xl font-bold text-[#1d2a4d]">Magazines</h1>
-        <p className="mt-2 max-w-xl text-sm leading-relaxed text-[#6b7a8d]">
+        <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-[#15803d]">Library</p>
+        <h1 className="font-display text-4xl font-bold text-[#14532d]">Magazines</h1>
+        <p className="mt-2 max-w-xl text-sm leading-relaxed text-[#6b7280]">
           Seasonal study guides and bulletins for every club. Pick your stage of life and start reading.
         </p>
       </div>
@@ -34,8 +34,8 @@ export default async function MagazinesPage({
               href={isActive ? "/magazines" : `/magazines?club=${c.slug}`}
               className={`rounded-full px-4 py-1.5 text-sm font-semibold transition ${
                 isActive
-                  ? "bg-[#1d2a4d] text-white shadow-sm"
-                  : "border border-slate-200 bg-white text-[#6b7a8d] hover:border-[#13c5dd]/50 hover:text-[#1d2a4d]"
+                  ? "bg-[#14532d] text-white shadow-sm"
+                  : "border border-slate-200 bg-white text-[#6b7280] hover:border-[#16a34a]/50 hover:text-[#14532d]"
               }`}
             >
               {c.name}
@@ -46,7 +46,7 @@ export default async function MagazinesPage({
 
       {pubs.length === 0 ? (
         <div className="rounded-2xl border border-dashed border-slate-300 bg-white/60 py-16 text-center">
-          <p className="text-sm text-[#6b7a8d]">
+          <p className="text-sm text-[#6b7280]">
             {active === "all" ? "No magazines released yet — check back soon." : "No magazines for this club yet."}
           </p>
         </div>

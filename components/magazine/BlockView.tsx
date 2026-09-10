@@ -10,18 +10,18 @@ export default function BlockView({ block }: { block: PubBlock }) {
   switch (block.type) {
     case "heading":
       return (
-        <h3 className="pt-2 font-display text-2xl font-bold text-[#1d2a4d]">
+        <h3 className="pt-2 font-display text-2xl font-bold text-[#14532d]">
           {block.text}
         </h3>
       );
     case "quote":
       return (
-        <figure className="my-4 rounded-2xl border-l-4 border-[#13c5dd] bg-white px-5 py-4 shadow-sm">
-          <blockquote className="text-lg italic leading-relaxed text-[#1d2a4d]">
+        <figure className="my-4 rounded-2xl border-l-4 border-[#16a34a] bg-white px-5 py-4 shadow-sm">
+          <blockquote className="text-lg italic leading-relaxed text-[#14532d]">
             &ldquo;{block.text}&rdquo;
           </blockquote>
           {block.by ? (
-            <figcaption className="mt-2 text-sm font-semibold text-[#0fa3c4]">— {block.by}</figcaption>
+            <figcaption className="mt-2 text-sm font-semibold text-[#15803d]">— {block.by}</figcaption>
           ) : null}
         </figure>
       );
@@ -31,7 +31,7 @@ export default function BlockView({ block }: { block: PubBlock }) {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={block.uri} alt={block.caption || ""} className="w-full" />
           {block.caption ? (
-            <figcaption className="border-t border-slate-100 bg-white px-4 py-2 text-sm text-[#6b7a8d]">
+            <figcaption className="border-t border-slate-100 bg-white px-4 py-2 text-sm text-[#6b7280]">
               {block.caption}
             </figcaption>
           ) : null}
@@ -42,7 +42,7 @@ export default function BlockView({ block }: { block: PubBlock }) {
         <ul className="my-3 space-y-2">
           {(block.items || []).map((item, i) => (
             <li key={i} className="flex gap-3">
-              <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#13c5dd]" />
+              <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#16a34a]" />
               <span className="text-[15px] leading-relaxed text-slate-700">{item}</span>
             </li>
           ))}
@@ -51,12 +51,12 @@ export default function BlockView({ block }: { block: PubBlock }) {
     case "checklist":
       return (
         <div className="my-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-          <p className="mb-3 text-xs font-bold uppercase tracking-widest text-[#0fa3c4]">Try this</p>
-          {block.title ? <h4 className="mb-2 font-display text-lg font-bold text-[#1d2a4d]">{block.title}</h4> : null}
+          <p className="mb-3 text-xs font-bold uppercase tracking-widest text-[#15803d]">Try this</p>
+          {block.title ? <h4 className="mb-2 font-display text-lg font-bold text-[#14532d]">{block.title}</h4> : null}
           <ul className="space-y-2">
             {(block.items || []).map((item, i) => (
               <li key={i} className="flex items-start gap-3 text-[15px] text-slate-700">
-                <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md border-2 border-[#13c5dd]/40" />
+                <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md border-2 border-[#16a34a]/40" />
                 {item}
               </li>
             ))}
@@ -66,12 +66,12 @@ export default function BlockView({ block }: { block: PubBlock }) {
     case "quiz":
       return (
         <div className="my-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-          <p className="mb-3 text-xs font-bold uppercase tracking-widest text-[#0fa3c4]">Remembers</p>
-          <p className="text-[16px] font-semibold text-[#1d2a4d]">{block.question}</p>
+          <p className="mb-3 text-xs font-bold uppercase tracking-widest text-[#15803d]">Remembers</p>
+          <p className="text-[16px] font-semibold text-[#14532d]">{block.question}</p>
           <div className="mt-3 space-y-2">
             {(block.options || []).map((opt, i) => (
-              <div key={i} className="flex items-center gap-3 rounded-xl bg-[#eff5f9] px-4 py-2.5 text-sm text-slate-700">
-                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white text-xs font-bold text-[#0fa3c4] ring-1 ring-slate-200">
+              <div key={i} className="flex items-center gap-3 rounded-xl bg-[#f0fdf4] px-4 py-2.5 text-sm text-slate-700">
+                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white text-xs font-bold text-[#15803d] ring-1 ring-slate-200">
                   {String.fromCharCode(65 + i)}
                 </span>
                 {opt}
@@ -83,9 +83,9 @@ export default function BlockView({ block }: { block: PubBlock }) {
     case "reflection":
       return (
         <div className="my-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-          <p className="mb-3 text-xs font-bold uppercase tracking-widest text-[#0fa3c4]">Reflect</p>
+          <p className="mb-3 text-xs font-bold uppercase tracking-widest text-[#15803d]">Reflect</p>
           <p className="text-[16px] text-slate-700">{block.prompt}</p>
-          <div className="mt-4 rounded-xl border border-dashed border-slate-300 bg-[#eff5f9] px-4 py-3 text-sm text-slate-400">
+          <div className="mt-4 rounded-xl border border-dashed border-slate-300 bg-[#f0fdf4] px-4 py-3 text-sm text-slate-400">
             {block.placeholder || "Write your thoughts here…"}
           </div>
         </div>
@@ -94,7 +94,7 @@ export default function BlockView({ block }: { block: PubBlock }) {
       return (
         <div className="my-4 rounded-2xl border-l-4 border-[#ffc42e] bg-white p-5 shadow-sm">
           <p className="mb-2 text-xs font-bold uppercase tracking-widest text-[#e6a800]">Pray</p>
-          {block.title ? <h4 className="font-display text-lg font-bold text-[#1d2a4d]">{block.title}</h4> : null}
+          {block.title ? <h4 className="font-display text-lg font-bold text-[#14532d]">{block.title}</h4> : null}
           <ul className="mt-2 space-y-2">
             {(block.items || []).map((item, i) => (
               <li key={i} className="flex gap-3 text-[15px] leading-relaxed text-slate-700">

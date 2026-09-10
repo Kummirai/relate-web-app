@@ -1,9 +1,9 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Badge, Button } from "./ui";
+import { Badge } from "./ui";
 import { clubName } from "@/lib/catalog";
 
 type Row = {
@@ -26,22 +26,38 @@ export default function MagazinesList() {
   const [filter, setFilter] = useState("");
   const [busy, setBusy] = useState<string | null>(null);
 
-  const fetchRows = useCallback(async () => {
-    setLoading(true);
+  const reload = async (showSpinner = true) => {
+    if (showSpinner) setLoading(true);
+    const params = filter ? `?status=${filter}` : "";
     try {
-      const params = filter ? `?status=${filter}` : "";
       const res = await fetch(`/api/admin/publications${params}`);
       const json = await res.json();
       setRows(json.data || []);
     } catch {
       setRows([]);
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
-  }, [filter]);
+  };
 
   useEffect(() => {
-    fetchRows();
-  }, [fetchRows]);
+    let cancelled = false;
+    (async () => {
+      const params = filter ? `?status=${filter}` : "";
+      try {
+        const res = await fetch(`/api/admin/publications${params}`);
+        const json = await res.json();
+        if (!cancelled) setRows(json.data || []);
+      } catch {
+        if (!cancelled) setRows([]);
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [filter]);
 
   const toggleStatus = async (row: Row) => {
     setBusy(row.id);
@@ -52,7 +68,7 @@ export default function MagazinesList() {
       body: JSON.stringify({ status: next }),
     }).catch(() => {});
     setBusy(null);
-    fetchRows();
+    reload();
   };
 
   const remove = async (row: Row) => {
@@ -60,7 +76,7 @@ export default function MagazinesList() {
     setBusy(row.id);
     await fetch(`/api/admin/publications/${row.id}`, { method: "DELETE" }).catch(() => {});
     setBusy(null);
-    fetchRows();
+    reload();
   };
 
   const clone = (row: Row) => {

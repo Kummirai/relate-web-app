@@ -1,21 +1,18 @@
-import { Inter, Eczar } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Footer from "@/components/home/Footer";
 import { headers } from "next/headers";
 import { auth } from "@/lib/auth";
-import Link from "next/link";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
-const inter = Inter({ subsets: ["latin"] });
-const eczar = Eczar({
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  variable: "--font-eczar",
-});
+const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
+const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
 export const metadata = {
-  title: "Relate",
+  title: "Relate — Grow Together as a Family",
   description:
-    "Prayer times, Bible reading, community groups, skills training, and more. Download the Relate app.",
+    "Prayer times, daily Bible reading, seasonal study guides, family clubs and community — together in one app.",
 };
 
 export default async function RootLayout({ children }) {
@@ -24,80 +21,12 @@ export default async function RootLayout({ children }) {
   });
 
   return (
-    <html lang="en">
-      <body className={`${inter.className} ${eczar.variable} min-h-screen flex flex-col`} style={{ background: "#eff5f9" }}>
-        {/* Header */}
-        <header className="sticky top-0 z-50 px-4 sm:px-6 md:px-8 lg:px-20 py-4" style={{ background: "#eff5f9" }}>
-          <nav className="max-w-6xl mx-auto flex items-center justify-between">
-            <div className="flex items-center gap-6">
-              <Link href="/" className="font-bold text-xl" style={{ color: "#1d2a4d" }}>
-                Relate
-              </Link>
-              <div className="hidden md:flex items-center gap-1 text-sm font-medium">
-                <Link href="/magazines" className="px-3 py-1.5 rounded-full transition hover:opacity-80" style={{ color: "#1d2a4d" }}>
-                  Magazines
-                </Link>
-              </div>
-            </div>
-            <div className="flex items-center gap-3">
-              {session ? (
-                <>
-                  {session.user.role === "admin" && (
-                    <>
-                      <Link
-                        href="/admin"
-                        className="text-sm font-medium px-4 py-2 rounded-full transition hover:opacity-80"
-                        style={{ color: "#13c5dd", background: "rgba(19,197,221,0.1)" }}
-                      >
-                        Admin
-                      </Link>
-                      <Link
-                        href="/records"
-                        className="hidden sm:inline text-sm font-medium px-4 py-2 rounded-full transition hover:opacity-80"
-                        style={{ color: "#13c5dd", background: "rgba(19,197,221,0.1)" }}
-                      >
-                        Records
-                      </Link>
-                      <Link
-                        href="/records/streaks"
-                        className="hidden lg:inline text-sm font-medium px-4 py-2 rounded-full transition hover:opacity-80"
-                        style={{ color: "#13c5dd", background: "rgba(19,197,221,0.1)" }}
-                      >
-                        Restore Streaks
-                      </Link>
-                    </>
-                  )}
-                  <Link
-                    href="/admin/social-joins"
-                    className="hidden lg:inline text-sm font-medium px-4 py-2 rounded-full transition hover:opacity-80"
-                    style={{ color: "#13c5dd", background: "rgba(19,197,221,0.1)" }}
-                  >
-                    Social Joins
-                  </Link>
-                </>
-              ) : (
-                <>
-                  <Link href="/signin" className="text-sm font-medium" style={{ color: "#1d2a4d" }}>
-                    Sign In
-                  </Link>
-                  <Link
-                    href="/signup"
-                    className="text-sm font-semibold px-5 py-2 rounded-full text-white transition hover:opacity-90"
-                    style={{ background: "#13c5dd" }}
-                  >
-                    Sign Up
-                  </Link>
-                </>
-              )}
-            </div>
-          </nav>
-        </header>
-
-        {/* Page content */}
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
+      <body className="min-h-full flex flex-col">
+        <Navbar session={session} />
         <main className="flex-1">{children}</main>
-
-        {/* Footer */}
         <Footer />
+        <WhatsAppButton />
       </body>
     </html>
   );

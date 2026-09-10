@@ -144,7 +144,7 @@ export default function MagazineEditor({
       draft.season && draft.season.start && draft.season.end
         ? buildWeeks(draft.season.start, draft.season.end)
         : [],
-    [draft.season?.start, draft.season?.end],
+    [draft.season],
   );
 
   // Keep the weeks buffer aligned with the canonical calendar.
@@ -160,7 +160,7 @@ export default function MagazineEditor({
       }
       return { ...prev, weeks: weeks.slice(0, seasonWeeks.length) };
     });
-  }, [seasonWeeks.length]);
+  }, [seasonWeeks]);
 
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -290,7 +290,7 @@ export default function MagazineEditor({
           </Field>
           <div className="flex items-end gap-3">
             <Field label="Theme">
-              <Input value={draft.theme} onChange={(e) => set({ theme: e.target.value })} placeholder="The season's theme" />
+              <Input value={draft.theme} onChange={(e) => set({ theme: e.target.value })} placeholder="Season theme" />
             </Field>
             {draft.cover ? (
               <img src={draft.cover} alt="cover preview" className="h-[72px] w-[52px] shrink-0 rounded-lg object-cover ring-1 ring-slate-200" />
@@ -354,7 +354,7 @@ export default function MagazineEditor({
         <div className="mb-3 flex items-center justify-between">
           <div>
             <h3 className="font-display text-lg font-semibold text-[#1d2a4d]">Sections</h3>
-            <p className="mt-0.5 text-sm text-slate-500">The magazine's front matter — paragraphs, headings, quotes, images, lists…</p>
+            <p className="mt-0.5 text-sm text-slate-500">The magazine front matter — paragraphs, headings, quotes, images, lists…</p>
           </div>
           <AddBlockButton onAdd={(t) => set({ blocks: [...draft.blocks, blankBlock(t)] })} />
         </div>

@@ -29,7 +29,7 @@ export function CoverImage({ pub, className = "" }: { pub: CoverPub; className?:
       ) : (
         <div className="relative z-10 flex h-full flex-col justify-between p-4">
           <div className="flex items-center justify-between">
-            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#67e3f5]">
+            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#bbf7d0]">
               {(pub.series || "Relate") + (pub.year ? ` · ${pub.year}` : "")}
             </span>
             <span className="rounded-full bg-white/10 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-white ring-1 ring-white/20">
@@ -67,18 +67,18 @@ export default function MagazineCard({ pub }: { pub: CoverPub }) {
       <CoverImage pub={pub} />
       <div className="p-4">
         {(pub.season?.label || pub.issue) ? (
-          <p className="text-[11px] font-semibold uppercase tracking-wider text-[#0fa3c4]">
+          <p className="text-[11px] font-semibold uppercase tracking-wider text-[#15803d]">
             {pub.season?.label || pub.issue}
           </p>
         ) : null}
-        <h3 className="mt-1 font-display text-xl font-bold text-[#1d2a4d] group-hover:text-[#13c5dd]">
+        <h3 className="mt-1 font-display text-xl font-bold text-[#14532d] group-hover:text-[#16a34a]">
           {pub.title || pub.id}
         </h3>
         {pub.summary ? (
-          <p className="mt-1 line-clamp-2 text-sm text-[#6b7a8d]">{pub.summary}</p>
+          <p className="mt-1 line-clamp-2 text-sm text-[#6b7280]">{pub.summary}</p>
         ) : null}
         {pub.season?.start && pub.season?.end ? (
-          <p className="mt-2 text-xs font-semibold text-[#6b7a8d]">
+          <p className="mt-2 text-xs font-semibold text-[#6b7280]">
             {formatWeekRange(pub.season.start, pub.season.end)}
           </p>
         ) : null}

@@ -51,9 +51,9 @@ export function fullDateLabel(iso: string | undefined): string {
 
 export function coverGradient(theme?: string): string {
   const gradients = [
-    "linear-gradient(150deg, #151f3a 0%, #1d2a4d 55%, #2a4070 100%)",
-    "linear-gradient(150deg, #0fa3c4 0%, #1d2a4d 60%, #151f3a 100%)",
-    "linear-gradient(150deg, #2a4070 0%, #1d2a4d 45%, #0fa3c4 120%)",
+    "linear-gradient(150deg, #14532d 0%, #166534 55%, #15803d 100%)",
+    "linear-gradient(150deg, #15803d 0%, #14532d 60%, #151f3a 100%)",
+    "linear-gradient(150deg, #166534 0%, #14532d 45%, #15803d 120%)",
   ];
   let idx = 0;
   if (theme) {

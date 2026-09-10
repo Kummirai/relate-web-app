@@ -23,8 +23,8 @@ export default async function MagazineReader({ params }: { params: Promise<{ id:
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6 md:px-8">
-      <nav className="mb-6 text-sm text-[#6b7a8d]">
-        <Link href="/magazines" className="font-semibold text-[#0fa3c4] hover:underline">
+      <nav className="mb-6 text-sm text-[#6b7280]">
+        <Link href="/magazines" className="font-semibold text-[#15803d] hover:underline">
           Magazines
         </Link>
         <span className="mx-2">/</span>
@@ -35,11 +35,11 @@ export default async function MagazineReader({ params }: { params: Promise<{ id:
         <CoverImage pub={pub} className="h-64 sm:h-80" />
         <div className="p-6 sm:p-8">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="rounded-full bg-[#1d2a4d]/5 px-3 py-1 text-xs font-bold uppercase tracking-wider text-[#1d2a4d] ring-1 ring-[#1d2a4d]/10">
+            <span className="rounded-full bg-[#14532d]/5 px-3 py-1 text-xs font-bold uppercase tracking-wider text-[#14532d] ring-1 ring-[#14532d]/10">
               {clubName(pub.clubSlug)}
             </span>
             {pub.season?.label ? (
-              <span className="rounded-full bg-[#13c5dd]/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-[#0fa3c4]">
+              <span className="rounded-full bg-[#16a34a]/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-[#15803d]">
                 {pub.season.label}
               </span>
             ) : null}
@@ -58,8 +58,8 @@ export default async function MagazineReader({ params }: { params: Promise<{ id:
 
       {weeks.length > 0 ? (
         <section className="mt-10">
-          <h2 className="font-display text-2xl font-bold text-[#1d2a4d]">The study guide</h2>
-          <p className="mt-1 text-sm text-[#6b7a8d]">
+          <h2 className="font-display text-2xl font-bold text-[#14532d]">The study guide</h2>
+          <p className="mt-1 text-sm text-[#6b7280]">
             {weeks.length} weeks · one short read a day. Tap a day to open it.
           </p>
           <div className="mt-5 space-y-4">
@@ -69,11 +69,11 @@ export default async function MagazineReader({ params }: { params: Promise<{ id:
               return (
                 <div key={week.index} className="rounded-2xl border border-white/70 bg-white p-5 shadow-sm">
                   <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
-                    <h3 className="font-display text-lg font-bold text-[#1d2a4d]">
+                    <h3 className="font-display text-lg font-bold text-[#14532d]">
                       {week.title || `Week ${week.index}`}
                     </h3>
                     {first && last ? (
-                      <span className="text-xs font-semibold text-[#6b7a8d]">{formatWeekRange(first, last)}</span>
+                      <span className="text-xs font-semibold text-[#6b7280]">{formatWeekRange(first, last)}</span>
                     ) : null}
                   </div>
                   <div className="grid grid-cols-7 gap-1.5">
@@ -81,12 +81,12 @@ export default async function MagazineReader({ params }: { params: Promise<{ id:
                       <Link
                         key={day.date}
                         href={`/magazines/${pub.id}/${week.index}/${day.date}`}
-                        className="group flex flex-col items-center gap-0.5 rounded-xl bg-[#eff5f9] px-0.5 py-2 transition hover:bg-[#1d2a4d]"
+                        className="group flex flex-col items-center gap-0.5 rounded-xl bg-[#f0fdf4] px-0.5 py-2 transition hover:bg-[#14532d]"
                       >
-                        <span className="text-[10px] font-bold uppercase text-[#0fa3c4] group-hover:text-[#67e3f5]">
+                        <span className="text-[10px] font-bold uppercase text-[#15803d] group-hover:text-[#bbf7d0]">
                           {shortWeekday(day.date)}
                         </span>
-                        <span className="text-sm font-bold text-[#1d2a4d] group-hover:text-white">{day.day}</span>
+                        <span className="text-sm font-bold text-[#14532d] group-hover:text-white">{day.day}</span>
                       </Link>
                     ))}
                   </div>
