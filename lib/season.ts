@@ -11,6 +11,12 @@ import { clubName } from "./catalog";
 
 export type InteractiveBlockTypes = "checklist" | "quiz" | "reflection" | "pray";
 
+export type ReadingStructure = {
+  intro: { hook: string; thesis: string };
+  body: { topic: string; support: string[] }[];
+  conclusion: { restate: string; whyItMatters: string; closing: string };
+};
+
 export type PubBlock = {
   type:
     | "paragraph"
@@ -18,6 +24,7 @@ export type PubBlock = {
     | "quote"
     | "image"
     | "list"
+    | "reading"
     | InteractiveBlockTypes;
   id?: string;
   text?: string;
@@ -32,6 +39,7 @@ export type PubBlock = {
   explain?: string;
   prompt?: string;
   placeholder?: string;
+  structure?: ReadingStructure;
 };
 
 export type PubDay = {
@@ -172,11 +180,46 @@ const ALLOWED_BLOCK_TYPES = new Set([
   "quote",
   "image",
   "list",
+  "reading",
   "checklist",
   "quiz",
   "reflection",
   "pray",
 ]);
+
+export function emptyReading(): ReadingStructure {
+  return {
+    intro: { hook: "", thesis: "" },
+    body: [{ topic: "", support: [] }],
+    conclusion: { restate: "", whyItMatters: "", closing: "" },
+  };
+}
+
+function sanitizeReadingStructure(raw: unknown): ReadingStructure | null {
+  if (!raw || typeof raw !== "object") return null;
+  const r = raw as Record<string, unknown>;
+  const intro = r.intro as Record<string, unknown> | undefined;
+  const conclusion = r.conclusion as Record<string, unknown> | undefined;
+  const bodyRaw = Array.isArray(r.body) ? r.body : [];
+  const body = bodyRaw
+    .filter((b): b is Record<string, unknown> => !!b && typeof b === "object")
+    .map((b) => ({
+      topic: str(b.topic),
+      support: Array.isArray(b.support)
+        ? b.support.filter((s): s is string => typeof s === "string").map((s) => s.trim()).filter(Boolean)
+        : [],
+    }))
+    .filter((b) => b.topic || b.support.length);
+  return {
+    intro: { hook: str(intro?.hook), thesis: str(intro?.thesis) },
+    body,
+    conclusion: {
+      restate: str(conclusion?.restate),
+      whyItMatters: str(conclusion?.whyItMatters),
+      closing: str(conclusion?.closing),
+    },
+  };
+}
 
 /** Drops unknown fields/types so a bad editor payload can't corrupt the doc. */
 export function sanitizeBlock(raw: unknown): PubBlock | null {
@@ -194,6 +237,10 @@ export function sanitizeBlock(raw: unknown): PubBlock | null {
   if (typeof b.prompt === "string") block.prompt = b.prompt;
   if (typeof b.placeholder === "string") block.placeholder = b.placeholder;
   if (typeof b.explain === "string") block.explain = b.explain;
+  if (b.type === "reading") {
+    const structure = sanitizeReadingStructure(b.structure);
+    if (structure) block.structure = structure;
+  }
   if (Array.isArray(b.items)) {
     block.items = b.items.filter((i): i is string => typeof i === "string");
   }

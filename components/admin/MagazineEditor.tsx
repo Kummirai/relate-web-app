@@ -4,9 +4,11 @@ import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Badge, Button, Card, Field, Input, Select, TextArea } from "./ui";
 import BlockEditor from "./BlockEditor";
-import { buildWeeks } from "@/lib/season";
+import ReadEditor from "./ReadEditor";
+import { ReadPreview, DayPreviewModal } from "./ReadPreview";
+import { buildWeeks, emptyReading } from "@/lib/season";
 import { CLUBS, SERIES, SEASON_NAMES, PUBLICATION_KINDS, BLOCK_TYPES } from "@/lib/catalog";
-import type { PubBlock } from "@/lib/season";
+import type { PubBlock, ReadingStructure } from "@/lib/season";
 
 type WeekDraft = {
   topic: string;
@@ -16,7 +18,16 @@ type WeekDraft = {
     verseText: string;
     verseBy: string;
     blocks: PubBlock[];
+    reading?: ReadingStructure;
   }[];
+};
+
+type DayPreviewData = {
+  title: string;
+  weekday: string;
+  date: string;
+  verse?: { text: string; by?: string } | null;
+  blocks: PubBlock[];
 };
 
 type Draft = {
@@ -69,11 +80,28 @@ function blankDraft(): Draft {
 }
 
 function emptyDay() {
-  return { title: "", verseText: "", verseBy: "", blocks: [] as PubBlock[] };
+  return { title: "", verseText: "", verseBy: "", blocks: [] as PubBlock[], reading: undefined as ReadingStructure | undefined };
 }
 
 function emptyWeek(): WeekDraft {
   return { topic: "", intro: [], days: Array.from({ length: 7 }, emptyDay) };
+}
+
+function blocksForPayload(day: WeekDraft["days"][number]): PubBlock[] {
+  const blocks = [...day.blocks];
+  const r = day.reading;
+  if (
+    r &&
+    (r.intro?.hook ||
+      r.intro?.thesis ||
+      (r.body?.length ?? 0) > 0 ||
+      r.conclusion?.restate ||
+      r.conclusion?.whyItMatters ||
+      r.conclusion?.closing)
+  ) {
+    blocks.unshift({ type: "reading", structure: r });
+  }
+  return blocks;
 }
 
 function blankBlock(type: string): PubBlock {
@@ -128,12 +156,17 @@ export default function MagazineEditor({
       d.weeks = (initial.weeks || []).map((w: any) => ({
         topic: w.theme || w.title?.split("—")[1]?.trim() || "",
         intro: Array.isArray(w.intro) ? w.intro.map((b: any) => ({ ...b })) : [],
-        days: (w.days || []).map((day: any) => ({
-          title: day.title || "",
-          verseText: day.verse?.text || "",
-          verseBy: day.verse?.by || "",
-          blocks: Array.isArray(day.blocks) ? day.blocks.map((b: any) => ({ ...b })) : [],
-        })),
+        days: (w.days || []).map((day: any) => {
+          const copies = Array.isArray(day.blocks) ? day.blocks.map((b: any) => ({ ...b })) : [];
+          const readingBlock = copies.find((b: any) => b?.type === "reading");
+          return {
+            title: day.title || "",
+            verseText: day.verse?.text || "",
+            verseBy: day.verse?.by || "",
+            blocks: copies.filter((b: any) => b?.type !== "reading"),
+            reading: readingBlock?.structure || undefined,
+          };
+        }),
       }));
     }
     return d;
@@ -165,6 +198,9 @@ export default function MagazineEditor({
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [saved, setSaved] = useState(false);
+  const [previewDay, setPreviewDay] = useState<DayPreviewData | null>(null);
+
+  const previewAccent = CLUBS.find((c) => c.slug === draft.clubSlug)?.color || "#151f3a";
 
   const set = (patch: Partial<Draft>) => setDraft((prev) => ({ ...prev, ...patch }));
 
@@ -198,7 +234,16 @@ export default function MagazineEditor({
       ...draft,
       tags: draft.tags.map((t) => t.trim()).filter(Boolean),
       coverLines: draft.coverLines.map((l) => l.trim()).filter(Boolean),
-      weeks: draft.season && Array.isArray(draft.weeks) ? draft.weeks : null,
+      weeks: draft.season && Array.isArray(draft.weeks) ? draft.weeks.map((w) => ({
+        topic: w.topic,
+        intro: w.intro,
+        days: w.days.map((day) => ({
+          title: day.title,
+          verseText: day.verseText,
+          verseBy: day.verseBy,
+          blocks: blocksForPayload(day),
+        })),
+      })) : null,
       season: draft.season || null,
       blocks: draft.blocks,
     };
@@ -439,8 +484,39 @@ export default function MagazineEditor({
                               <Field label="Verse text"><Input value={day.verseText} onChange={(e) => updateDay(wIdx, dIdx, { verseText: e.target.value })} placeholder="For God so loved the world…" /></Field>
                               <Field label="Verse reference"><Input value={day.verseBy} onChange={(e) => updateDay(wIdx, dIdx, { verseBy: e.target.value })} placeholder="John 3:16" /></Field>
                             </div>
+                            <div className="mt-4 rounded-xl border border-slate-200 bg-slate-50/60 p-3">
+                              <div className="mb-2 flex items-center justify-between">
+                                <span className="text-xs font-bold uppercase tracking-wide text-[#0fa3c4]">Read content</span>
+                                <Button
+                                  variant="ghost"
+                                  onClick={() =>
+                                    setPreviewDay({
+                                      title: day.title,
+                                      weekday: cd.weekday,
+                                      date: cd.date,
+                                      verse:
+                                        day.verseText || day.verseBy
+                                          ? { text: day.verseText, by: day.verseBy || undefined }
+                                          : null,
+                                      blocks: blocksForPayload(day),
+                                    })
+                                  }
+                                >
+                                  Preview day
+                                </Button>
+                              </div>
+                              <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+                                <ReadEditor
+                                  value={day.reading ?? emptyReading()}
+                                  onChange={(reading) => updateDay(wIdx, dIdx, { reading })}
+                                />
+                                <ReadPreview structure={day.reading ?? emptyReading()} accent={previewAccent} />
+                              </div>
+                            </div>
                             <div className="mt-3 flex items-center justify-between">
-                              <span className="text-xs font-semibold uppercase tracking-wide text-slate-400">Read blocks</span>
+                              <span className="text-xs font-semibold uppercase tracking-wide text-slate-400">
+                                Extra blocks (images, quotes, lists…)
+                              </span>
                               <AddBlockButton
                                 label="+ Block"
                                 onAdd={(t) => updateDay(wIdx, dIdx, { blocks: [...(day.blocks || []), blankBlock(t)] })}
@@ -481,6 +557,8 @@ export default function MagazineEditor({
           <Button variant="ghost" onClick={() => router.push("/admin/magazines")}>Cancel</Button>
         </div>
       </div>
+
+      <DayPreviewModal open={!!previewDay} onClose={() => setPreviewDay(null)} day={previewDay} accent={previewAccent} />
     </div>
   );
 
