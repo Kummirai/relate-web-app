@@ -49,22 +49,22 @@ function ReadingText({ structure }: { structure: ReadingStructure }) {
   const conclusion = s.conclusion ?? emptyText().conclusion;
   return (
     <div>
-      {intro.hook ? <p className="mb-1.5 text-[13px] leading-5 text-slate-700">{intro.hook}</p> : null}
-      {intro.thesis ? <p className="mb-1.5 text-[13px] leading-5 text-slate-700">{intro.thesis}</p> : null}
+      {intro.hook ? <p className="mb-1.5 text-[14px] leading-6 text-slate-700">{intro.hook}</p> : null}
+      {intro.thesis ? <p className="mb-1.5 text-[14px] leading-6 text-slate-700">{intro.thesis}</p> : null}
       {body.map((item, j) => (
         <div key={j} className="mb-1.5">
-          {item.topic ? <p className="text-[13px] leading-5 text-slate-700">{item.topic}</p> : null}
+          {item.topic ? <p className="text-[14px] leading-6 text-slate-700">{item.topic}</p> : null}
           {item.support.length ? (
-            <p className="mt-1 text-[13px] leading-5 italic text-slate-500">{item.support.join(" ")}</p>
+            <p className="mt-1 text-[14px] leading-6 italic text-slate-500">{item.support.join(" ")}</p>
           ) : null}
           {item.closing ? (
-            <p className="mt-1 text-[13px] leading-5 text-slate-700">{item.closing}</p>
+            <p className="mt-1 text-[14px] leading-6 text-slate-700">{item.closing}</p>
           ) : null}
         </div>
       ))}
-      {conclusion.restate ? <p className="mb-1.5 text-[13px] leading-5 text-slate-700">{conclusion.restate}</p> : null}
+      {conclusion.restate ? <p className="mb-1.5 text-[14px] leading-6 text-slate-700">{conclusion.restate}</p> : null}
       {conclusion.whyItMatters ? (
-        <p className="mb-1.5 text-[13px] leading-5 text-slate-700">{conclusion.whyItMatters}</p>
+        <p className="mb-1.5 text-[14px] leading-6 text-slate-700">{conclusion.whyItMatters}</p>
       ) : null}
       {conclusion.closing ? (
         <p className="mb-1.5 text-[13px] italic leading-5 text-slate-700">{conclusion.closing}</p>
@@ -76,7 +76,7 @@ function ReadingText({ structure }: { structure: ReadingStructure }) {
 function Block({ b }: { b: PubBlock }) {
   switch (b.type) {
     case "paragraph":
-      return <p className="mb-1.5 text-[13px] leading-5 text-slate-700">{b.text}</p>;
+      return <p className="mb-1.5 text-[14px] leading-6 text-slate-700">{b.text}</p>;
     case "heading":
       return <h4 className="mb-1 mt-2 text-[11px] font-bold uppercase tracking-wide text-slate-700">{b.text}</h4>;
     case "quote":
@@ -90,7 +90,7 @@ function Block({ b }: { b: PubBlock }) {
       return (
         <ul className="mb-1.5 space-y-1">
           {(b.items || []).map((item, i) => (
-            <li key={i} className="flex gap-2 text-[13px] leading-5 text-slate-700">
+            <li key={i} className="flex gap-2 text-[14px] leading-6 text-slate-700">
               <span className="mt-[7px] h-[7px] w-[7px] shrink-0 rounded-full" style={{ backgroundColor: EYEBROW }} />
               <span>{item}</span>
             </li>
