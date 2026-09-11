@@ -49,11 +49,12 @@ export default function ReadEditor({
 
   return (
     <div className="space-y-4">
-      {/* Introduction */}
-      <div className="rounded-xl border border-slate-200 bg-slate-50/60 p-3">
-        <p className="mb-2 text-xs font-bold uppercase tracking-wide text-[#0fa3c4]">
-          Introduction paragraph
-        </p>
+      {/* 1 · Introduction */}
+      <div className="rounded-xl border border-l-[3px] border-slate-200 border-l-[#13c5dd] bg-white p-4">
+        <div className="mb-3 flex items-center gap-2">
+          <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#13c5dd] text-[10px] font-bold text-white">1</span>
+          <p className="text-xs font-bold uppercase tracking-wide text-[#1d2a4d]">Introduction paragraph</p>
+        </div>
         <div className="grid grid-cols-1 gap-2.5">
           <Field label="Hook" hint="The opening line that grabs attention">
             <TextArea value={intro.hook} onChange={(e) => setIntro({ hook: e.target.value })} placeholder="Start with a question, a story or a vivid image…" />
@@ -64,10 +65,13 @@ export default function ReadEditor({
         </div>
       </div>
 
-      {/* Body paragraphs */}
-      <div className="rounded-xl border border-slate-200 bg-slate-50/60 p-3">
-        <div className="mb-2 flex items-center justify-between">
-          <p className="text-xs font-bold uppercase tracking-wide text-[#0fa3c4]">Body paragraphs</p>
+      {/* 2 · Body paragraphs */}
+      <div className="rounded-xl border border-l-[3px] border-slate-200 border-l-[#13c5dd] bg-white p-4">
+        <div className="mb-3 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#13c5dd] text-[10px] font-bold text-white">2</span>
+            <p className="text-xs font-bold uppercase tracking-wide text-[#1d2a4d]">Body paragraphs</p>
+          </div>
           <button
             onClick={addBodyItem}
             className="rounded-lg border border-slate-200 bg-white px-2 py-1 text-xs font-semibold text-slate-700 hover:bg-slate-50"
@@ -80,9 +84,9 @@ export default function ReadEditor({
         ) : (
           <div className="space-y-3">
             {body.map((item, i) => (
-              <div key={i} className="rounded-lg border border-slate-200 bg-white p-3">
+              <div key={i} className="rounded-lg border border-slate-200 bg-slate-50/60 p-3">
                 <div className="mb-2 flex items-center justify-between">
-                  <span className="text-xs font-semibold text-slate-500">Paragraph {i + 1}</span>
+                  <span className="text-xs font-bold text-slate-600">Paragraph {i + 1}</span>
                   <div className="flex gap-1">
                     <button
                       onClick={() => moveBodyItem(i, -1)}
@@ -120,9 +124,12 @@ export default function ReadEditor({
         )}
       </div>
 
-      {/* Conclusion */}
-      <div className="rounded-xl border border-slate-200 bg-slate-50/60 p-3">
-        <p className="mb-2 text-xs font-bold uppercase tracking-wide text-[#0fa3c4]">Conclusion paragraph</p>
+      {/* 3 · Conclusion */}
+      <div className="rounded-xl border border-l-[3px] border-slate-200 border-l-[#13c5dd] bg-white p-4">
+        <div className="mb-3 flex items-center gap-2">
+          <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#13c5dd] text-[10px] font-bold text-white">3</span>
+          <p className="text-xs font-bold uppercase tracking-wide text-[#1d2a4d]">Conclusion paragraph</p>
+        </div>
         <div className="grid grid-cols-1 gap-2.5">
           <Field label="Restate the point">
             <TextArea value={conclusion.restate} onChange={(e) => setConclusion({ restate: e.target.value })} placeholder="Bring the reading back to its main point…" />

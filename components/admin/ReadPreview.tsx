@@ -166,6 +166,62 @@ export function ReadPreview({ structure, accent }: { structure: ReadingStructure
   );
 }
 
+/** Read-only collection of data needed to render a day in the preview. */
+export type DayPreviewData = {
+  title: string;
+  weekday: string;
+  date: string;
+  verse?: { text: string; by?: string } | null;
+  blocks: PubBlock[];
+};
+
+/** Full-day preview: VERSE → READ → REFLECT → RESPOND, read-only. */
+export function DayPreview({ day, accent }: { day: DayPreviewData; accent: string }) {
+  const readBlocks = day.blocks.filter((b) => !isInteractive(b));
+  const reflectBlocks = day.blocks.filter((b) => b.type === "checklist" || b.type === "quiz" || b.type === "reflection");
+  const prayBlocks = day.blocks.filter((b) => b.type === "pray");
+
+  return (
+    <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+      <div className="flex items-center gap-2 border-b border-slate-100 px-4 py-3">
+        <p className="text-[10px] uppercase tracking-wide text-slate-400">
+          {day.weekday || "—"} · {day.date ? formatDate(day.date) : "no date"}
+        </p>
+        <h3 className="flex-1 truncate text-sm font-bold text-slate-800">{day.title || "Untitled day"}</h3>
+      </div>
+
+      <div className="px-4 py-4">
+        <SectionHead eyebrow="VERSE" title="Today's verse" accent={accent} />
+        <div className="mb-6 rounded-xl border-l-4 bg-white p-3.5 ring-1 ring-slate-100" style={{ borderLeftColor: accent }}>
+          <p className="text-[14px] leading-6">“{day.verse?.text || "No verse set"}”</p>
+          {day.verse?.by ? <p className="mt-1.5 text-[11px] text-slate-400">— {day.verse.by}</p> : null}
+        </div>
+
+        <SectionHead eyebrow="READ" title="The reading" accent={accent} />
+        {readBlocks.length === 0 ? (
+          <p className="text-[13px] text-slate-400">No reading content yet.</p>
+        ) : (
+          readBlocks.map((b, i) => <Block key={i} b={b} />)
+        )}
+
+        {reflectBlocks.length ? (
+          <div className="mt-6">
+            <SectionHead eyebrow="REFLECT" title="Think it over" accent={accent} />
+            {reflectBlocks.map((b, i) => <Block key={i} b={b} />)}
+          </div>
+        ) : null}
+
+        {prayBlocks.length ? (
+          <div className="mt-6">
+            <SectionHead eyebrow="RESPOND" title="Respond & share" accent={accent} />
+            {prayBlocks.map((b, i) => <Block key={i} b={b} />)}
+          </div>
+        ) : null}
+      </div>
+    </div>
+  );
+}
+
 /** Full-day preview modal: VERSE → READ → REFLECT → RESPOND, read-only. */
 export function DayPreviewModal({
   open,
@@ -175,13 +231,7 @@ export function DayPreviewModal({
 }: {
   open: boolean;
   onClose: () => void;
-  day: {
-    title: string;
-    weekday: string;
-    date: string;
-    verse?: { text: string; by?: string } | null;
-    blocks: PubBlock[];
-  } | null;
+  day: DayPreviewData | null;
   accent: string;
 }) {
   useEffect(() => {
@@ -195,52 +245,13 @@ export function DayPreviewModal({
 
   if (!open || !day) return null;
 
-  const readBlocks = day.blocks.filter((b) => !isInteractive(b));
-  const reflectBlocks = day.blocks.filter((b) => b.type === "checklist" || b.type === "quiz" || b.type === "reflection");
-  const prayBlocks = day.blocks.filter((b) => b.type === "pray");
-
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 p-4" onClick={onClose}>
       <div
         className="mx-auto my-8 w-full max-w-sm overflow-hidden rounded-3xl bg-white shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-center gap-2 border-b border-slate-100 px-4 py-3">
-          <p className="text-[10px] uppercase tracking-wide text-slate-400">
-            {day.weekday} · {formatDate(day.date)}
-          </p>
-          <h3 className="flex-1 truncate text-sm font-bold text-slate-800">{day.title || "Untitled day"}</h3>
-        </div>
-
-        <div className="px-4 py-4">
-          <SectionHead eyebrow="VERSE" title="Today's verse" accent={accent} />
-          <div className="mb-6 rounded-xl border-l-4 bg-white p-3.5 ring-1 ring-slate-100" style={{ borderLeftColor: accent }}>
-            <p className="text-[14px] leading-6">“{day.verse?.text || "No verse set"}”</p>
-            {day.verse?.by ? <p className="mt-1.5 text-[11px] text-slate-400">— {day.verse.by}</p> : null}
-          </div>
-
-          <SectionHead eyebrow="READ" title="The reading" accent={accent} />
-          {readBlocks.length === 0 ? (
-            <p className="text-[13px] text-slate-400">No reading content yet.</p>
-          ) : (
-            readBlocks.map((b, i) => <Block key={i} b={b} />)
-          )}
-
-          {reflectBlocks.length ? (
-            <div className="mt-6">
-              <SectionHead eyebrow="REFLECT" title="Think it over" accent={accent} />
-              {reflectBlocks.map((b, i) => <Block key={i} b={b} />)}
-            </div>
-          ) : null}
-
-          {prayBlocks.length ? (
-            <div className="mt-6">
-              <SectionHead eyebrow="RESPOND" title="Respond & share" accent={accent} />
-              {prayBlocks.map((b, i) => <Block key={i} b={b} />)}
-            </div>
-          ) : null}
-        </div>
-
+        <DayPreview day={day} accent={accent} />
         <button
           onClick={onClose}
           className="w-full border-t border-slate-100 py-3 text-sm font-semibold text-slate-600 hover:bg-slate-50"

@@ -5,7 +5,8 @@ import { useRouter } from "next/navigation";
 import { Badge, Button, Card, Field, Input, Select, TextArea } from "./ui";
 import BlockEditor from "./BlockEditor";
 import ReadEditor from "./ReadEditor";
-import { ReadPreview, DayPreviewModal } from "./ReadPreview";
+import { DayPreview, DayPreviewModal } from "./ReadPreview";
+import type { DayPreviewData } from "./ReadPreview";
 import { buildWeeks, emptyReading } from "@/lib/season";
 import { CLUBS, SERIES, SEASON_NAMES, PUBLICATION_KINDS, BLOCK_TYPES } from "@/lib/catalog";
 import type { PubBlock, ReadingStructure } from "@/lib/season";
@@ -20,14 +21,6 @@ type WeekDraft = {
     blocks: PubBlock[];
     reading?: ReadingStructure;
   }[];
-};
-
-type DayPreviewData = {
-  title: string;
-  weekday: string;
-  date: string;
-  verse?: { text: string; by?: string } | null;
-  blocks: PubBlock[];
 };
 
 type Draft = {
@@ -198,9 +191,24 @@ export default function MagazineEditor({
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [saved, setSaved] = useState(false);
-  const [previewDay, setPreviewDay] = useState<DayPreviewData | null>(null);
+  const [activeSeat, setActiveSeat] = useState<{ wIdx: number; dIdx: number } | null>(null);
+  const [activePreviewOpen, setActivePreviewOpen] = useState(false);
 
   const previewAccent = CLUBS.find((c) => c.slug === draft.clubSlug)?.color || "#151f3a";
+
+  const activePreview = useMemo<DayPreviewData | null>(() => {
+    if (!activeSeat || !draft.season || !Array.isArray(draft.weeks)) return null;
+    const cd = seasonWeeks[activeSeat.wIdx]?.days?.[activeSeat.dIdx];
+    const day = draft.weeks[activeSeat.wIdx]?.days?.[activeSeat.dIdx];
+    if (!cd || !day) return null;
+    return {
+      title: day.title,
+      weekday: cd.weekday,
+      date: cd.date,
+      verse: day.verseText || day.verseBy ? { text: day.verseText, by: day.verseBy || undefined } : null,
+      blocks: blocksForPayload(day),
+    };
+  }, [activeSeat, seasonWeeks, draft.weeks, draft.season]);
 
   const set = (patch: Partial<Draft>) => setDraft((prev) => ({ ...prev, ...patch }));
 
@@ -267,7 +275,9 @@ export default function MagazineEditor({
   };
 
   return (
-    <div className="space-y-5">
+    <div className="flex items-start gap-6">
+      {/* Editor column (≈65%) */}
+      <div className="min-w-0 w-[65%] space-y-5">
       {/* Metadata */}
       <Card>
         <h3 className="mb-4 font-display text-lg font-semibold text-[#1d2a4d]">Identity & cover</h3>
@@ -471,7 +481,10 @@ export default function MagazineEditor({
                       const day = wk?.days?.[dIdx] || emptyDay();
                       return (
                         <details key={dIdx} className="rounded-xl border border-slate-200 bg-white">
-                          <summary className="flex cursor-pointer items-center justify-between gap-2 px-4 py-2.5 text-sm font-semibold text-slate-700">
+                          <summary
+                            onClick={() => setActiveSeat({ wIdx, dIdx })}
+                            className="flex cursor-pointer items-center justify-between gap-2 px-4 py-2.5 text-sm font-semibold text-slate-700 hover:bg-slate-50"
+                          >
                             <span>
                               <span className="mr-2 inline-block w-10 text-xs font-bold text-[#13c5dd]">{cd.weekday.slice(0, 3)}</span>
                               {cd.date}
@@ -479,61 +492,54 @@ export default function MagazineEditor({
                             <span className="truncate text-xs font-normal text-slate-400">{day.title || "Untitled"}</span>
                           </summary>
                           <div className="border-t border-slate-100 p-3">
-                            <div className="grid grid-cols-1 gap-3">
-                              <Field label="Day title"><Input value={day.title} onChange={(e) => updateDay(wIdx, dIdx, { title: e.target.value })} /></Field>
-                              <Field label="Verse text"><Input value={day.verseText} onChange={(e) => updateDay(wIdx, dIdx, { verseText: e.target.value })} placeholder="For God so loved the world…" /></Field>
-                              <Field label="Verse reference"><Input value={day.verseBy} onChange={(e) => updateDay(wIdx, dIdx, { verseBy: e.target.value })} placeholder="John 3:16" /></Field>
-                            </div>
-                            <div className="mt-4 rounded-xl border border-slate-200 bg-slate-50/60 p-3">
-                              <div className="mb-2 flex items-center justify-between">
-                                <span className="text-xs font-bold uppercase tracking-wide text-[#0fa3c4]">Read content</span>
-                                <Button
-                                  variant="ghost"
-                                  onClick={() =>
-                                    setPreviewDay({
-                                      title: day.title,
-                                      weekday: cd.weekday,
-                                      date: cd.date,
-                                      verse:
-                                        day.verseText || day.verseBy
-                                          ? { text: day.verseText, by: day.verseBy || undefined }
-                                          : null,
-                                      blocks: blocksForPayload(day),
-                                    })
-                                  }
-                                >
-                                  Preview day
-                                </Button>
+                            {/* Day details */}
+                            <div className="rounded-xl border border-l-[3px] border-slate-200 border-l-slate-400 bg-white p-4">
+                              <div className="mb-3 flex items-center gap-2">
+                                <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-slate-400 text-[10px] font-bold text-white">1</span>
+                                <span className="text-xs font-bold uppercase tracking-wide text-[#1d2a4d]">Day details</span>
                               </div>
                               <div className="grid grid-cols-1 gap-3">
-                                <ReadEditor
-                                  value={day.reading ?? emptyReading()}
-                                  onChange={(reading) => updateDay(wIdx, dIdx, { reading })}
-                                />
-                                <ReadPreview structure={day.reading ?? emptyReading()} accent={previewAccent} />
+                                <Field label="Day title"><Input value={day.title} onChange={(e) => updateDay(wIdx, dIdx, { title: e.target.value })} /></Field>
+                                <Field label="Verse text"><Input value={day.verseText} onChange={(e) => updateDay(wIdx, dIdx, { verseText: e.target.value })} placeholder="For God so loved the world…" /></Field>
+                                <Field label="Verse reference"><Input value={day.verseBy} onChange={(e) => updateDay(wIdx, dIdx, { verseBy: e.target.value })} placeholder="John 3:16" /></Field>
                               </div>
                             </div>
-                            <div className="mt-3 flex items-center justify-between">
-                              <span className="text-xs font-semibold uppercase tracking-wide text-slate-400">
-                                Extra blocks (images, quotes, lists…)
-                              </span>
-                              <AddBlockButton
-                                label="+ Block"
-                                onAdd={(t) => updateDay(wIdx, dIdx, { blocks: [...(day.blocks || []), blankBlock(t)] })}
+                            {/* Structured READ content */}
+                            <div className="mt-3 rounded-xl border border-l-[3px] border-slate-200 border-l-[#13c5dd] bg-white p-4">
+                              <div className="mb-3 flex items-center gap-2">
+                                <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#13c5dd] text-[10px] font-bold text-white">2</span>
+                                <span className="text-xs font-bold uppercase tracking-wide text-[#1d2a4d]">Reading content</span>
+                              </div>
+                              <ReadEditor
+                                value={day.reading ?? emptyReading()}
+                                onChange={(reading) => updateDay(wIdx, dIdx, { reading })}
                               />
                             </div>
-                            {day.blocks?.length ? (
-                              <div className="mt-2 space-y-2">
-                                {day.blocks.map((b, bi) => (
-                                  <BlockEditor
-                                    key={bi}
-                                    block={b}
-                                    onChange={(nb) => updateDay(wIdx, dIdx, { blocks: day.blocks.map((x, j) => (j === bi ? nb : x)) })}
-                                    onRemove={() => updateDay(wIdx, dIdx, { blocks: day.blocks.filter((_, j) => j !== bi) })}
-                                  />
-                                ))}
+                            {/* Extra blocks */}
+                            <div className="mt-3 rounded-xl border border-l-[3px] border-slate-200 border-l-slate-300 bg-white p-4">
+                              <div className="mb-3 flex items-center justify-between">
+                                <div className="flex items-center gap-2">
+                                  <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-slate-500 text-[10px] font-bold text-white">3</span>
+                                  <span className="text-xs font-bold uppercase tracking-wide text-[#1d2a4d]">Extra blocks (images, quotes, lists…)</span>
+                                </div>
+                                <AddBlockButton
+                                  label="+ Block"
+                                  onAdd={(t) => updateDay(wIdx, dIdx, { blocks: [...(day.blocks || []), blankBlock(t)] })}
+                                />
                               </div>
-                            ) : null}
+                              {day.blocks?.length ? (
+                                <div className="mt-2 space-y-2">
+                                  {day.blocks.map((b, bi) => (
+                                    <BlockEditor
+                                      key={bi}
+                                      block={b}
+                                      onChange={(nb) => updateDay(wIdx, dIdx, { blocks: day.blocks.map((x, j) => (j === bi ? nb : x)) })}
+                                      onRemove={() => updateDay(wIdx, dIdx, { blocks: day.blocks.filter((_, j) => j !== bi) })}
+                                    />
+                                  ))}
+                                </div>
+                              ) : null}
+                            </div>
                           </div>
                         </details>
                       );
@@ -557,8 +563,46 @@ export default function MagazineEditor({
           <Button variant="ghost" onClick={() => router.push("/admin/magazines")}>Cancel</Button>
         </div>
       </div>
+      </div>
 
-      <DayPreviewModal open={!!previewDay} onClose={() => setPreviewDay(null)} day={previewDay} accent={previewAccent} />
+      {/* Preview column (≈35%, fixed) */}
+      <aside className="sticky top-6 w-[35%] shrink-0 self-start">
+        <div className="space-y-3">
+          <div className="flex items-center justify-between">
+            <p className="text-xs font-bold uppercase tracking-widest text-[#0fa3c4]">Live preview</p>
+            {activePreview ? <Badge tone="sky">updates as you type</Badge> : null}
+          </div>
+          {activePreview ? (
+            <>
+              <DayPreview day={activePreview} accent={previewAccent} />
+              <button
+                onClick={() => setActivePreviewOpen(true)}
+                className="w-full rounded-xl border border-slate-200 bg-white py-2.5 text-sm font-semibold text-slate-600 hover:bg-slate-50"
+              >
+                Open full screen
+              </button>
+            </>
+          ) : (
+            <div className="rounded-2xl border-2 border-dashed border-slate-200 bg-white p-6 text-center">
+              <p className="text-sm font-semibold text-slate-500">
+                {draft.season ? "No day selected" : "No study guide yet"}
+              </p>
+              <p className="mt-1.5 text-xs leading-5 text-slate-400">
+                {draft.season
+                  ? "Click any day (week summary) in the season to preview its full reading here — Verse, Read, Reflect and Respond, updating live as you type."
+                  : "Add a season, then click any day to preview its reading here."}
+              </p>
+            </div>
+          )}
+        </div>
+      </aside>
+
+      <DayPreviewModal
+        open={activePreviewOpen}
+        onClose={() => setActivePreviewOpen(false)}
+        day={activePreview}
+        accent={previewAccent}
+      />
     </div>
   );
 
