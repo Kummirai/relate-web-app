@@ -54,7 +54,7 @@ export default function ReadEditor({
         <p className="mb-2 text-xs font-bold uppercase tracking-wide text-[#0fa3c4]">
           Introduction paragraph
         </p>
-        <div className="grid grid-cols-1 gap-2.5 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-2.5">
           <Field label="Hook" hint="The opening line that grabs attention">
             <TextArea value={intro.hook} onChange={(e) => setIntro({ hook: e.target.value })} placeholder="Start with a question, a story or a vivid image…" />
           </Field>
@@ -106,7 +106,7 @@ export default function ReadEditor({
                     </button>
                   </div>
                 </div>
-                <div className="grid grid-cols-1 gap-2.5 md:grid-cols-2">
+                <div className="grid grid-cols-1 gap-2.5">
                   <Field label="Topic sentence">
                     <Input value={item.topic} onChange={(e) => setBodyItem(i, { topic: e.target.value })} placeholder="The point this paragraph makes…" />
                   </Field>
@@ -123,7 +123,7 @@ export default function ReadEditor({
       {/* Conclusion */}
       <div className="rounded-xl border border-slate-200 bg-slate-50/60 p-3">
         <p className="mb-2 text-xs font-bold uppercase tracking-wide text-[#0fa3c4]">Conclusion paragraph</p>
-        <div className="grid grid-cols-1 gap-2.5 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-2.5">
           <Field label="Restate the point">
             <TextArea value={conclusion.restate} onChange={(e) => setConclusion({ restate: e.target.value })} placeholder="Bring the reading back to its main point…" />
           </Field>

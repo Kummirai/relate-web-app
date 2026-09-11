@@ -271,7 +271,7 @@ export default function MagazineEditor({
       {/* Metadata */}
       <Card>
         <h3 className="mb-4 font-display text-lg font-semibold text-[#1d2a4d]">Identity & cover</h3>
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4">
           <Field label="Publication id" hint="URL slug, e.g. rooted-kids-spring-2026">
             <Input value={draft.id} onChange={(e) => set({ id: e.target.value })} placeholder="series-club-season-year" disabled={!!initial} />
           </Field>
@@ -329,11 +329,11 @@ export default function MagazineEditor({
           </Field>
         </div>
 
-        <div className="mt-5 grid grid-cols-1 gap-4 md:grid-cols-2">
+        <div className="mt-5 grid grid-cols-1 gap-4">
           <Field label="Cover image URL" hint="Paste a direct image URL (Unsplash, etc.)">
             <Input value={draft.cover} onChange={(e) => set({ cover: e.target.value })} placeholder="https://images.unsplash.com/…" />
           </Field>
-          <div className="flex items-end gap-3">
+          <div className="flex flex-col items-start gap-2">
             <Field label="Theme">
               <Input value={draft.theme} onChange={(e) => set({ theme: e.target.value })} placeholder="Season theme" />
             </Field>
@@ -372,7 +372,7 @@ export default function MagazineEditor({
         </div>
 
         {draft.season ? (
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
+          <div className="grid grid-cols-1 gap-4">
             <Field label="Season name">
               <Select value={draft.season.name} onChange={(e) => set({ season: { ...draft.season!, name: e.target.value } })}>
                 {SEASON_NAMES.map((n) => <option key={n} value={n}>{n}</option>)}
@@ -387,7 +387,7 @@ export default function MagazineEditor({
             <Field label="End date">
               <Input type="date" value={draft.season.end} onChange={(e) => set({ season: { ...draft.season!, end: e.target.value } })} />
             </Field>
-            <div className="md:col-span-4">
+            <div>
               <Badge tone="sky">{seasonWeeks.length} weeks · {seasonWeeks.reduce((n, w) => n + w.days.length, 0)} days</Badge>
             </div>
           </div>
@@ -442,7 +442,7 @@ export default function MagazineEditor({
                       {sw.days[0]?.date} → {sw.days[sw.days.length - 1]?.date}
                     </span>
                   </div>
-                  <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+                  <div className="grid grid-cols-1 gap-3">
                     <Field label="Week topic">
                       <Input value={wk?.topic || ""} onChange={(e) => updateWeek(wIdx, { topic: e.target.value })} placeholder="e.g. The hidden root" />
                     </Field>
@@ -479,7 +479,7 @@ export default function MagazineEditor({
                             <span className="truncate text-xs font-normal text-slate-400">{day.title || "Untitled"}</span>
                           </summary>
                           <div className="border-t border-slate-100 p-3">
-                            <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
+                            <div className="grid grid-cols-1 gap-3">
                               <Field label="Day title"><Input value={day.title} onChange={(e) => updateDay(wIdx, dIdx, { title: e.target.value })} /></Field>
                               <Field label="Verse text"><Input value={day.verseText} onChange={(e) => updateDay(wIdx, dIdx, { verseText: e.target.value })} placeholder="For God so loved the world…" /></Field>
                               <Field label="Verse reference"><Input value={day.verseBy} onChange={(e) => updateDay(wIdx, dIdx, { verseBy: e.target.value })} placeholder="John 3:16" /></Field>
@@ -505,7 +505,7 @@ export default function MagazineEditor({
                                   Preview day
                                 </Button>
                               </div>
-                              <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+                              <div className="grid grid-cols-1 gap-3">
                                 <ReadEditor
                                   value={day.reading ?? emptyReading()}
                                   onChange={(reading) => updateDay(wIdx, dIdx, { reading })}
