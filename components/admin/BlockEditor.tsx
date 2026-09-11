@@ -76,9 +76,39 @@ export default function BlockEditor({
             {block.type === "checklist" ? (
               <Field label="Checklist title"><Input value={block.title || ""} onChange={(e) => set({ title: e.target.value })} /></Field>
             ) : null}
-            <Field label={block.type === "list" ? "Items (one per line)" : "Checklist items (one per line)"}>
-              <TextArea value={arrayToLines(block.items)} onChange={(e) => set({ items: linesToArray(e.target.value) })} />
-            </Field>
+            <div>
+              <span className="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-slate-500">
+                {block.type === "list" ? "Items" : "Checklist items"}
+              </span>
+              <div className="space-y-2">
+                {(block.items || []).map((item, i) => (
+                  <div key={i} className="flex items-center gap-2">
+                    <Input
+                      value={item}
+                      onChange={(e) =>
+                        set({ items: (block.items || []).map((x, j) => (j === i ? e.target.value : x)) })
+                      }
+                      placeholder={`Item ${i + 1}`}
+                    />
+                    <button
+                      onClick={() => set({ items: (block.items || []).filter((_, j) => j !== i) })}
+                      className="shrink-0 rounded-lg px-2 py-1.5 text-xs font-semibold text-red-600 hover:bg-red-50"
+                    >
+                      Remove
+                    </button>
+                  </div>
+                ))}
+                {!(block.items?.length) ? (
+                  <p className="text-sm text-slate-400">No items yet — add the first one below.</p>
+                ) : null}
+                <button
+                  onClick={() => set({ items: [...(block.items || []), ""] })}
+                  className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 hover:bg-slate-50"
+                >
+                  {block.type === "list" ? "+ Add item" : "+ Add checklist item"}
+                </button>
+              </div>
+            </div>
           </>
         )}
         {block.type === "quiz" && (
