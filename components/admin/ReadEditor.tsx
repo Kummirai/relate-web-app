@@ -34,7 +34,7 @@ export default function ReadEditor({
     onChange({ ...value, intro, conclusion, body: body.map((b, j) => (j === i ? { ...b, ...patch } : b)) });
 
   const addBodyItem = () =>
-    onChange({ ...value, intro, conclusion, body: [...body, { topic: "", support: [] }] });
+    onChange({ ...value, intro, conclusion, body: [...body, { topic: "", support: [], closing: "" }] });
 
   const removeBodyItem = (i: number) =>
     onChange({ ...value, intro, conclusion, body: body.filter((_, j) => j !== i) });
@@ -116,6 +116,9 @@ export default function ReadEditor({
                   </Field>
                   <Field label="Supporting details" hint="One per line">
                     <TextArea value={arrayToLines(item.support)} onChange={(e) => setBodyItem(i, { support: linesToArray(e.target.value) })} placeholder={"Evidence, example or explanation…\nA second supporting detail…"} />
+                  </Field>
+                  <Field label="Concluding sentence" hint="A sentence that wraps up this paragraph">
+                    <TextArea value={item.closing || ""} onChange={(e) => setBodyItem(i, { closing: e.target.value })} placeholder="Tie the paragraph back to today's point…" />
                   </Field>
                 </div>
               </div>

@@ -55,7 +55,10 @@ function ReadingText({ structure }: { structure: ReadingStructure }) {
         <div key={j} className="mb-1.5">
           {item.topic ? <p className="text-[13px] leading-5 text-slate-700">{item.topic}</p> : null}
           {item.support.length ? (
-            <p className="mt-1 text-[13px] leading-5 text-slate-500">{item.support.join(" ")}</p>
+            <p className="mt-1 text-[13px] leading-5 italic text-slate-500">{item.support.join(" ")}</p>
+          ) : null}
+          {item.closing ? (
+            <p className="mt-1 text-[13px] leading-5 text-slate-700">{item.closing}</p>
           ) : null}
         </div>
       ))}

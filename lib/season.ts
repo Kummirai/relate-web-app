@@ -13,7 +13,7 @@ export type InteractiveBlockTypes = "checklist" | "quiz" | "reflection" | "pray"
 
 export type ReadingStructure = {
   intro: { hook: string; thesis: string };
-  body: { topic: string; support: string[] }[];
+  body: { topic: string; support: string[]; closing?: string }[];
   conclusion: { restate: string; whyItMatters: string; closing: string };
 };
 
@@ -190,7 +190,7 @@ const ALLOWED_BLOCK_TYPES = new Set([
 export function emptyReading(): ReadingStructure {
   return {
     intro: { hook: "", thesis: "" },
-    body: [{ topic: "", support: [] }],
+    body: [{ topic: "", support: [], closing: "" }],
     conclusion: { restate: "", whyItMatters: "", closing: "" },
   };
 }
@@ -208,8 +208,9 @@ function sanitizeReadingStructure(raw: unknown): ReadingStructure | null {
       support: Array.isArray(b.support)
         ? b.support.filter((s): s is string => typeof s === "string").map((s) => s.trim()).filter(Boolean)
         : [],
+      closing: str(b.closing),
     }))
-    .filter((b) => b.topic || b.support.length);
+    .filter((b) => b.topic || b.support.length || b.closing);
   return {
     intro: { hook: str(intro?.hook), thesis: str(intro?.thesis) },
     body,
