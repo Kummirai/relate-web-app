@@ -566,7 +566,7 @@ export default function MagazineEditor({
       </div>
 
       {/* Preview column (≈35%, fixed) */}
-      <aside className="sticky top-6 w-[35%] shrink-0 self-start">
+      <aside className="sticky top-6 w-[35%] shrink-0 self-start max-h-[calc(100vh-8rem)] overflow-y-auto overscroll-contain pr-1">
         <div className="space-y-3">
           <div className="flex items-center justify-between">
             <p className="text-xs font-bold uppercase tracking-widest text-[#0fa3c4]">Live preview</p>

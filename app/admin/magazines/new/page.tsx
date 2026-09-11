@@ -28,7 +28,7 @@ export default async function NewMagazinePage({
   }
 
   return (
-    <div className="mx-auto max-w-5xl px-4 py-10">
+    <div className="mx-auto max-w-7xl px-4 py-10">
       <div className="mb-6">
         <p className="mb-2 text-xs font-bold uppercase tracking-widest text-[#0fa3c4]">Library</p>
         <h1 className="font-display text-3xl font-bold text-[#1d2a4d]">
