@@ -20,7 +20,13 @@ export async function GET(request: NextRequest) {
     }
     const db = await getDb();
     const q = params.get("q") || undefined;
-    const rows = await findParticipants(db, clubSlug, q);
+    let rows = await findParticipants(db, clubSlug, q);
+    // ?mine=1 — only players linked to the signed-in account. Lets the quiz
+    // screen recognize a returning member even on a fresh device.
+    if (params.get("mine")) {
+      const user = await resolveSession(request);
+      rows = user ? rows.filter((p) => p.userId === user.id) : [];
+    }
     return NextResponse.json({
       participants: rows.map((p) => ({
         participantId: p.participantId,

@@ -84,6 +84,33 @@ export function maxAllowedLevel(clubSlug: string): 1 | 2 | 3 {
 const SPROUT_CLUBS = ["sprout-kids", "sprout-tweens", "sprout-teens"];
 
 /**
+ * Bridge: when someone registers with a Sprout class for the Bible Quiz
+ * (the registration carries activity="bible_quiz"), auto-create their quiz
+ * player so they appear in the "Who's playing?" picker and on the boards
+ * without anyone typing the name a second time. Best-effort — registration
+ * must succeed even if this fails.
+ */
+export async function ensureQuizParticipantForRegistration(
+  db: any,
+  reg: { userId: string; name?: string; clubSlug: string; answers?: Record<string, string> },
+): Promise<void> {
+  try {
+    if (!SPROUT_CLUBS.includes(reg.clubSlug)) return;
+    const activity = String(reg.answers?.activity || "").toLowerCase();
+    if (activity && activity !== "bible_quiz" && activity !== "quiz") return;
+    const childName = String(reg.answers?.childName || "").trim().slice(0, 60);
+    if (!childName) return;
+    await createParticipant({
+      name: childName,
+      clubSlug: reg.clubSlug,
+      userId: reg.userId,
+    });
+  } catch {
+    // Never block the registration on quiz-player creation.
+  }
+}
+
+/**
  * Only Sprout club members may join/play the quiz. A signed-in user counts as
  * a member when they have any club registration for a Sprout class (pending or
  * approved — parents register their children under their own account).

@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { getDb } from "@/lib/mongodb";
 import { resolveSession, ensureIndexes } from "@/lib/community-auth";
 import { notifyAdmins } from "@/lib/inapp-notify";
+import { ensureQuizParticipantForRegistration } from "@/lib/quiz-season";
 
 /**
  * Club registration — the unique per-club sign-up form shown before a user
@@ -72,6 +73,10 @@ export async function POST(
     };
 
     const result = await db.collection("club_registrations").insertOne(doc);
+
+    // Bible Quiz registrations double as quiz-player sign-ups: seed the
+    // player now so they show up in the picker and on the boards.
+    await ensureQuizParticipantForRegistration(db, doc);
 
     const title = "New club registration";
     const bodyText = `${doc.name} registered for the ${clubSlug} club.`;
