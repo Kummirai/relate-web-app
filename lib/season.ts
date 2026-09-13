@@ -299,6 +299,19 @@ export function normalizePublication(
 
   const year = Number(payload.year) > 0 ? Number(payload.year) : new Date().getUTCFullYear();
 
+  // The Library matches magazines to a club by their club tag ("PRIME",
+  // "SPROUT-KIDS"…), and /api/reading-today looks guides up the same way.
+  // Guarantee the club tag exists — written uppercase so the editor can type
+  // it in any case — instead of relying on the admin remembering to add it
+  // by hand. Publications without a club are umbrella "Relate" content.
+  const normalizedTags = tags
+    .map((t) => t.toUpperCase())
+    .filter((t, i, all) => all.indexOf(t) === i);
+  const clubTag = (clubSlug || "RELATE").toUpperCase();
+  if (!normalizedTags.includes(clubTag)) {
+    normalizedTags.unshift(clubTag);
+  }
+
   const seasonRaw = payload.season as Record<string, unknown> | null | undefined;
   const hasSeason =
     seasonRaw &&
@@ -343,7 +356,7 @@ export function normalizePublication(
     year,
     cover,
     summary,
-    tags,
+    tags: normalizedTags,
     blocks,
     ...(season ? { season } : {}),
     ...(theme ? { theme } : {}),
