@@ -1,7 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getDb } from "@/lib/mongodb";
 import { resolveSession } from "@/lib/community-auth";
-import { createParticipant, findParticipants } from "@/lib/quiz-season";
+import { createParticipant, findParticipants, isSproutMember } from "@/lib/quiz-season";
+
+const SPROUT_CLUBS = new Set(["sprout-kids", "sprout-tweens", "sprout-teens"]);
 
 /**
  * GET /api/quiz/participants?clubSlug=...&q=... — search players of a club.
@@ -44,11 +46,30 @@ export async function POST(request: NextRequest) {
     if (!clubSlug) {
       return NextResponse.json({ error: "clubSlug is required" }, { status: 400 });
     }
+    if (!SPROUT_CLUBS.has(clubSlug)) {
+      return NextResponse.json(
+        { error: "Only Sprout Kids, Tweens and Teens classes play the Bible Quiz." },
+        { status: 403 },
+      );
+    }
     const user = await resolveSession(request);
+    if (!user) {
+      return NextResponse.json(
+        { error: "Sign in to join the quiz — only Sprout club members can play." },
+        { status: 401 },
+      );
+    }
+    const db = await getDb();
+    if (!(await isSproutMember(db, user.id))) {
+      return NextResponse.json(
+        { error: "Only Sprout club members can join the Bible Quiz. Register with a Sprout class first." },
+        { status: 403 },
+      );
+    }
     const participant = await createParticipant({
       name: body.name || "",
       clubSlug,
-      userId: user?.id ?? null,
+      userId: user.id,
     });
     return NextResponse.json({
       participant: {

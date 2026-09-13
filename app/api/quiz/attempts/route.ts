@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import { startAttempt, submitAttempt } from "@/lib/quiz-season";
+import { getDb } from "@/lib/mongodb";
+import { resolveSession } from "@/lib/community-auth";
+import { startAttempt, submitAttempt, isSproutMember } from "@/lib/quiz-season";
 
 /**
  * POST /api/quiz/attempts
@@ -12,6 +14,31 @@ export async function POST(request: NextRequest) {
   try {
     const body = (await request.json().catch(() => ({}))) as any;
     if (body.action === "start") {
+      // Only Sprout club members can play. The player must also belong to the
+      // signed-in member's account so one child can't play as another.
+      const user = await resolveSession(request);
+      if (!user) {
+        return NextResponse.json(
+          { error: "Sign in to play the quiz — only Sprout club members can play." },
+          { status: 401 },
+        );
+      }
+      const db = await getDb();
+      if (!(await isSproutMember(db, user.id))) {
+        return NextResponse.json(
+          { error: "Only Sprout club members can play the Bible Quiz." },
+          { status: 403 },
+        );
+      }
+      const participant = await db.collection("quiz_participants").findOne({
+        participantId: String(body.participantId || ""),
+      });
+      if (participant && participant.userId && participant.userId !== user.id) {
+        return NextResponse.json(
+          { error: "This player belongs to a different account." },
+          { status: 403 },
+        );
+      }
       const result = await startAttempt({
         participantId: String(body.participantId || ""),
         clubSlug: String(body.clubSlug || "").trim().toLowerCase(),

@@ -80,6 +80,23 @@ export function maxAllowedLevel(clubSlug: string): 1 | 2 | 3 {
   return CLUB_KEYS[clubSlug] ?? 3;
 }
 
+/** Sprout age-class clubs — the only clubs whose members play the quiz. */
+const SPROUT_CLUBS = ["sprout-kids", "sprout-tweens", "sprout-teens"];
+
+/**
+ * Only Sprout club members may join/play the quiz. A signed-in user counts as
+ * a member when they have any club registration for a Sprout class (pending or
+ * approved — parents register their children under their own account).
+ */
+export async function isSproutMember(db: any, userId: string): Promise<boolean> {
+  if (!userId) return false;
+  const reg = await db.collection("club_registrations").findOne(
+    { userId, clubSlug: { $in: SPROUT_CLUBS } },
+    { projection: { _id: 1 } },
+  );
+  return !!reg;
+}
+
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr];
   for (let i = a.length - 1; i > 0; i--) {
