@@ -84,6 +84,68 @@ export function maxAllowedLevel(clubSlug: string): 1 | 2 | 3 {
 const SPROUT_CLUBS = ["sprout-kids", "sprout-tweens", "sprout-teens"];
 
 /**
+ * Backfill: turn existing Bible Quiz club registrations into quiz players so
+ * members who joined before the registration→player bridge get recognized.
+ * Idempotent — players are deduped per club+name (createParticipant reuses
+ * existing rows) and only missing account links are written.
+ */
+export async function backfillQuizParticipants(db: any): Promise<{
+  scanned: number;
+  created: number;
+  linked: number;
+  skipped: number;
+}> {
+  const regs = await db
+    .collection("club_registrations")
+    .find({ clubSlug: { $in: SPROUT_CLUBS } })
+    .toArray();
+
+  let created = 0;
+  let linked = 0;
+  let skipped = 0;
+
+  for (const reg of regs) {
+    const activity = String(reg.answers?.activity || "")
+      .toLowerCase()
+      .replace(/[\s-]+/g, "_");
+    if (activity !== "bible_quiz" && activity !== "quiz") {
+      skipped += 1;
+      continue;
+    }
+    const childName = String(reg.answers?.childName || "").trim().slice(0, 60);
+    if (!childName) {
+      skipped += 1;
+      continue;
+    }
+
+    const existing = await db.collection(PARTICIPANTS_COL).findOne({
+      clubSlug: reg.clubSlug,
+      name: { $regex: `^${escapeRegExp(childName)}$`, $options: "i" },
+    });
+    if (existing) {
+      // Already a player — just link the account when the registration has
+      // one and the player doesn't yet (fixes "recognized on any device").
+      if (reg.userId && !existing.userId) {
+        await db
+          .collection(PARTICIPANTS_COL)
+          .updateOne({ _id: existing._id }, { $set: { userId: reg.userId } });
+        linked += 1;
+      }
+      continue;
+    }
+
+    await createParticipant({
+      name: childName,
+      clubSlug: reg.clubSlug,
+      userId: reg.userId ?? null,
+    });
+    created += 1;
+  }
+
+  return { scanned: regs.length, created, linked, skipped };
+}
+
+/**
  * Bridge: when someone registers with a Sprout class for the Bible Quiz
  * (the registration carries activity="bible_quiz"), auto-create their quiz
  * player so they appear in the "Who's playing?" picker and on the boards
