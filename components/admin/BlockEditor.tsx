@@ -59,7 +59,10 @@ export default function BlockEditor({
         {block.type === "quote" && (
           <>
             <Field label="Quote text"><TextArea value={block.text || ""} onChange={(e) => set({ text: e.target.value })} /></Field>
-            <Field label="Attribution"><Input value={block.by || ""} onChange={(e) => set({ by: e.target.value })} /></Field>
+            <Field label="Author"><Input value={block.by || ""} onChange={(e) => set({ by: e.target.value })} /></Field>
+            <Field label="Source" hint="Where the quote comes from — book, chapter or verse reference">
+              <Input value={block.source || ""} onChange={(e) => set({ source: e.target.value })} placeholder="e.g. Psalm 23:1" />
+            </Field>
           </>
         )}
         {block.type === "image" && (

@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { emptyReading } from "@/lib/season";
-import type { PubBlock, ReadingStructure } from "@/lib/season";
+import type { PubBlock, ReadingMedia, ReadingStructure } from "@/lib/season";
 
 /**
  * App-styled previews of a study day's READ content.
@@ -42,33 +42,73 @@ function SectionHead({ eyebrow, title, accent }: { eyebrow: string; title: strin
   );
 }
 
+function MediaView({ media }: { media: ReadingMedia }) {
+  if (media.type === "image") {
+    return (
+      <figure className="mb-1.5 overflow-hidden rounded-xl ring-1 ring-slate-100">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={media.uri} alt={media.caption || ""} className="w-full" />
+        {media.caption ? (
+          <figcaption className="border-t border-slate-100 bg-slate-50 px-3 py-1.5 text-[11px] text-slate-400">
+            {media.caption}
+          </figcaption>
+        ) : null}
+      </figure>
+    );
+  }
+  return (
+    <blockquote className="mb-1.5 rounded-r-xl border-l-4 bg-slate-50/70 px-3 py-2 text-[13px] italic leading-5 text-slate-700" style={{ borderLeftColor: EYEBROW }}>
+      “{media.text}”
+      {media.by || media.source ? (
+        <footer className="mt-1 text-[11px] not-italic text-slate-400">
+          {media.by ? `— ${media.by}` : ""}
+          {media.source ? ` · ${media.source}` : ""}
+        </footer>
+      ) : null}
+    </blockquote>
+  );
+}
+
 function ReadingText({ structure }: { structure: ReadingStructure }) {
   const s = structure ?? emptyText();
   const intro = s.intro ?? emptyText().intro;
   const body = s.body ?? [];
   const conclusion = s.conclusion ?? emptyText().conclusion;
+  const media = (m?: ReadingMedia[]) =>
+    (m || []).map((x, j) => <MediaView key={j} media={x} />);
   return (
     <div>
+      {media(intro.beforeHook)}
       {intro.hook ? <p className="mb-1.5 text-[14px] leading-6 text-slate-700">{intro.hook}</p> : null}
+      {media(intro.afterHook)}
       {intro.thesis ? <p className="mb-1.5 text-[14px] leading-6 text-slate-700">{intro.thesis}</p> : null}
+      {media(intro.afterThesis)}
       {body.map((item, j) => (
         <div key={j} className="mb-1.5">
+          {media(item.beforeTopic)}
           {item.topic ? <p className="text-[14px] leading-6 text-slate-700">{item.topic}</p> : null}
+          {media(item.afterTopic)}
           {item.support.length ? (
             <p className="mt-1 text-[14px] leading-6 italic text-slate-500">{item.support.join(" ")}</p>
           ) : null}
+          {media(item.afterSupport)}
           {item.closing ? (
             <p className="mt-1 text-[14px] leading-6 text-slate-700">{item.closing}</p>
           ) : null}
+          {media(item.afterClosing)}
         </div>
       ))}
+      {media(conclusion.beforeRestate)}
       {conclusion.restate ? <p className="mb-1.5 text-[14px] leading-6 text-slate-700">{conclusion.restate}</p> : null}
+      {media(conclusion.afterRestate)}
       {conclusion.whyItMatters ? (
         <p className="mb-1.5 text-[14px] leading-6 text-slate-700">{conclusion.whyItMatters}</p>
       ) : null}
+      {media(conclusion.afterWhyItMatters)}
       {conclusion.closing ? (
         <p className="mb-1.5 text-[13px] italic leading-5 text-slate-700">{conclusion.closing}</p>
       ) : null}
+      {media(conclusion.afterClosing)}
     </div>
   );
 }
@@ -83,7 +123,12 @@ function Block({ b }: { b: PubBlock }) {
       return (
         <blockquote className="mb-1.5 border-l-4 pl-3 text-[13px] italic leading-5 text-slate-700" style={{ borderLeftColor: EYEBROW }}>
           {b.text}
-          {b.by ? <footer className="mt-1 text-[11px] not-italic text-slate-400">— {b.by}</footer> : null}
+          {b.by || b.source ? (
+            <footer className="mt-1 text-[11px] not-italic text-slate-400">
+              {b.by ? `— ${b.by}` : ""}
+              {b.source ? ` · ${b.source}` : ""}
+            </footer>
+          ) : null}
         </blockquote>
       );
     case "list":

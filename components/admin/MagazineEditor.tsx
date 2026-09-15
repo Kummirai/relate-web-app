@@ -7,7 +7,7 @@ import BlockEditor from "./BlockEditor";
 import ReadEditor from "./ReadEditor";
 import { DayPreview, DayPreviewModal } from "./ReadPreview";
 import type { DayPreviewData } from "./ReadPreview";
-import { buildWeeks, emptyReading } from "@/lib/season";
+import { buildWeeks, emptyReading, readingHasContent } from "@/lib/season";
 import { CLUBS, SERIES, SEASON_NAMES, PUBLICATION_KINDS, BLOCK_TYPES } from "@/lib/catalog";
 import type { PubBlock, ReadingStructure } from "@/lib/season";
 
@@ -83,15 +83,7 @@ function emptyWeek(): WeekDraft {
 function blocksForPayload(day: WeekDraft["days"][number]): PubBlock[] {
   const blocks = [...day.blocks];
   const r = day.reading;
-  if (
-    r &&
-    (r.intro?.hook ||
-      r.intro?.thesis ||
-      (r.body?.length ?? 0) > 0 ||
-      r.conclusion?.restate ||
-      r.conclusion?.whyItMatters ||
-      r.conclusion?.closing)
-  ) {
+  if (r && readingHasContent(r)) {
     blocks.unshift({ type: "reading", structure: r });
   }
   return blocks;

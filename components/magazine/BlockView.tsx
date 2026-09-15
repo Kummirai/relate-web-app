@@ -1,5 +1,5 @@
-import { formatShortRange } from "@/lib/season";
-import type { PubBlock } from "@/lib/season";
+import { emptyReading, formatShortRange } from "@/lib/season";
+import type { PubBlock, ReadingMedia, ReadingStructure } from "@/lib/season";
 
 /**
  * Renders a stored block for the public site (read-only). Interactive block
@@ -20,8 +20,11 @@ export default function BlockView({ block }: { block: PubBlock }) {
           <blockquote className="text-lg italic leading-relaxed text-[#14532d]">
             &ldquo;{block.text}&rdquo;
           </blockquote>
-          {block.by ? (
-            <figcaption className="mt-2 text-sm font-semibold text-[#15803d]">— {block.by}</figcaption>
+          {block.by || block.source ? (
+            <figcaption className="mt-2 text-sm font-semibold text-[#15803d]">
+              {block.by ? `— ${block.by}` : ""}
+              {block.source ? ` · ${block.source}` : ""}
+            </figcaption>
           ) : null}
         </figure>
       );
@@ -105,12 +108,86 @@ export default function BlockView({ block }: { block: PubBlock }) {
           </ul>
         </div>
       );
+case "reading":
+      return <ReadingBlockView structure={block.structure} />;
     case "paragraph":
     default:
       return (
         <p className="my-3 text-[16px] leading-[1.85] text-slate-700">{block.text}</p>
       );
   }
+}
+
+function ReadingMediaView({ media }: { media: ReadingMedia }) {
+  if (media.type === "image") {
+    return (
+      <figure className="my-4 overflow-hidden rounded-2xl shadow-sm">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={media.uri} alt={media.caption || ""} className="w-full" />
+        {media.caption ? (
+          <figcaption className="border-t border-slate-100 bg-white px-4 py-2 text-sm text-[#6b7280]">
+            {media.caption}
+          </figcaption>
+        ) : null}
+      </figure>
+    );
+  }
+  return (
+    <figure className="my-4 rounded-2xl border-l-4 border-[#16a34a] bg-white px-5 py-4 shadow-sm">
+      <blockquote className="text-lg italic leading-relaxed text-[#14532d]">
+        &ldquo;{media.text}&rdquo;
+      </blockquote>
+      {media.by || media.source ? (
+        <figcaption className="mt-2 text-sm font-semibold text-[#15803d]">
+          {media.by ? `— ${media.by}` : ""}
+          {media.source ? ` · ${media.source}` : ""}
+        </figcaption>
+      ) : null}
+    </figure>
+  );
+}
+
+/** Renders a stored reading block: intro → body → conclusion, with inline media. */
+function ReadingBlockView({ structure }: { structure?: ReadingStructure }) {
+  const s = structure ?? emptyReading();
+  const intro = s.intro ?? emptyReading().intro;
+  const body = Array.isArray(s.body) ? s.body : [];
+  const conclusion = s.conclusion ?? emptyReading().conclusion;
+  const media = (m?: ReadingMedia[]) =>
+    (m || []).map((x, j) => <ReadingMediaView key={j} media={x} />);
+  return (
+    <div>
+      {media(intro.beforeHook)}
+      {intro.hook ? <p className="my-3 text-[16px] leading-[1.85] text-slate-700">{intro.hook}</p> : null}
+      {media(intro.afterHook)}
+      {intro.thesis ? <p className="my-3 text-[16px] leading-[1.85] text-slate-700">{intro.thesis}</p> : null}
+      {media(intro.afterThesis)}
+      {body.map((item, j) => (
+        <div key={j}>
+          {media(item.beforeTopic)}
+          {item.topic ? <p className="my-3 text-[16px] leading-[1.85] text-slate-700">{item.topic}</p> : null}
+          {media(item.afterTopic)}
+          {item.support?.length ? (
+            <p className="my-3 text-[15px] italic leading-relaxed text-slate-500">{item.support.join(" ")}</p>
+          ) : null}
+          {media(item.afterSupport)}
+          {item.closing ? <p className="my-3 text-[16px] leading-[1.85] text-slate-700">{item.closing}</p> : null}
+          {media(item.afterClosing)}
+        </div>
+      ))}
+      {media(conclusion.beforeRestate)}
+      {conclusion.restate ? <p className="my-3 text-[16px] leading-[1.85] text-slate-700">{conclusion.restate}</p> : null}
+      {media(conclusion.afterRestate)}
+      {conclusion.whyItMatters ? (
+        <p className="my-3 text-[16px] leading-[1.85] text-slate-700">{conclusion.whyItMatters}</p>
+      ) : null}
+      {media(conclusion.afterWhyItMatters)}
+      {conclusion.closing ? (
+        <p className="my-3 text-[15px] italic leading-relaxed text-slate-700">{conclusion.closing}</p>
+      ) : null}
+      {media(conclusion.afterClosing)}
+    </div>
+  );
 }
 
 export function formatVerse(verseBy?: string): string {

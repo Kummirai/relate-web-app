@@ -11,10 +11,37 @@ import { clubName } from "./catalog";
 
 export type InteractiveBlockTypes = "checklist" | "quiz" | "reflection" | "pray";
 
+/** An image or quote placed inline within a reading structure slot. */
+export type ReadingMedia =
+  | { type: "image"; uri: string; caption?: string }
+  | { type: "quote"; text: string; by?: string; source?: string };
+
 export type ReadingStructure = {
-  intro: { hook: string; thesis: string };
-  body: { topic: string; support: string[]; closing?: string }[];
-  conclusion: { restate: string; whyItMatters: string; closing: string };
+  intro: {
+    hook: string;
+    thesis: string;
+    beforeHook?: ReadingMedia[];
+    afterHook?: ReadingMedia[];
+    afterThesis?: ReadingMedia[];
+  };
+  body: {
+    topic: string;
+    support: string[];
+    closing?: string;
+    beforeTopic?: ReadingMedia[];
+    afterTopic?: ReadingMedia[];
+    afterSupport?: ReadingMedia[];
+    afterClosing?: ReadingMedia[];
+  }[];
+  conclusion: {
+    restate: string;
+    whyItMatters: string;
+    closing: string;
+    beforeRestate?: ReadingMedia[];
+    afterRestate?: ReadingMedia[];
+    afterWhyItMatters?: ReadingMedia[];
+    afterClosing?: ReadingMedia[];
+  };
 };
 
 export type PubBlock = {
@@ -29,6 +56,7 @@ export type PubBlock = {
   id?: string;
   text?: string;
   by?: string;
+  source?: string;
   uri?: string;
   caption?: string;
   items?: string[];
@@ -189,10 +217,86 @@ const ALLOWED_BLOCK_TYPES = new Set([
 
 export function emptyReading(): ReadingStructure {
   return {
-    intro: { hook: "", thesis: "" },
-    body: [{ topic: "", support: [], closing: "" }],
-    conclusion: { restate: "", whyItMatters: "", closing: "" },
+    intro: {
+      hook: "",
+      thesis: "",
+      beforeHook: [],
+      afterHook: [],
+      afterThesis: [],
+    },
+    body: [{ topic: "", support: [], closing: "", beforeTopic: [], afterTopic: [], afterSupport: [], afterClosing: [] }],
+    conclusion: {
+      restate: "",
+      whyItMatters: "",
+      closing: "",
+      beforeRestate: [],
+      afterRestate: [],
+      afterWhyItMatters: [],
+      afterClosing: [],
+    },
   };
+}
+
+/** True when the reading carries any text or inline media worth persisting. */
+export function readingHasContent(r?: ReadingStructure | null): boolean {
+  if (!r) return false;
+  const has = (m?: ReadingMedia[]) => (m?.length ?? 0) > 0;
+  const intro = r.intro ?? emptyReading().intro;
+  const conclusion = r.conclusion ?? emptyReading().conclusion;
+  const body = Array.isArray(r.body) ? r.body : [];
+  return !!(
+    intro.hook ||
+    intro.thesis ||
+    has(intro.beforeHook) ||
+    has(intro.afterHook) ||
+    has(intro.afterThesis) ||
+    body.some(
+      (b) =>
+        b.topic ||
+        (b.support?.length ?? 0) > 0 ||
+        b.closing ||
+        has(b.beforeTopic) ||
+        has(b.afterTopic) ||
+        has(b.afterSupport) ||
+        has(b.afterClosing),
+    ) ||
+    conclusion.restate ||
+    conclusion.whyItMatters ||
+    conclusion.closing ||
+    has(conclusion.beforeRestate) ||
+    has(conclusion.afterRestate) ||
+    has(conclusion.afterWhyItMatters) ||
+    has(conclusion.afterClosing)
+  );
+}
+
+function sanitizeReadingMedia(raw: unknown): ReadingMedia | null {
+  if (!raw || typeof raw !== "object") return null;
+  const m = raw as Record<string, unknown>;
+  if (m.type === "image") {
+    const uri = str(m.uri);
+    if (!uri) return null;
+    const media: ReadingMedia = { type: "image", uri };
+    const caption = str(m.caption);
+    if (caption) media.caption = caption;
+    return media;
+  }
+  if (m.type === "quote") {
+    const text = str(m.text);
+    if (!text) return null;
+    const media: ReadingMedia = { type: "quote", text };
+    const by = str(m.by);
+    if (by) media.by = by;
+    const source = str(m.source);
+    if (source) media.source = source;
+    return media;
+  }
+  return null;
+}
+
+function sanitizeMediaList(raw: unknown): ReadingMedia[] {
+  if (!Array.isArray(raw)) return [];
+  return raw.map(sanitizeReadingMedia).filter((m): m is ReadingMedia => m !== null);
 }
 
 function sanitizeReadingStructure(raw: unknown): ReadingStructure | null {
@@ -209,15 +313,38 @@ function sanitizeReadingStructure(raw: unknown): ReadingStructure | null {
         ? b.support.filter((s): s is string => typeof s === "string").map((s) => s.trim()).filter(Boolean)
         : [],
       closing: str(b.closing),
+      beforeTopic: sanitizeMediaList(b.beforeTopic),
+      afterTopic: sanitizeMediaList(b.afterTopic),
+      afterSupport: sanitizeMediaList(b.afterSupport),
+      afterClosing: sanitizeMediaList(b.afterClosing),
     }))
-    .filter((b) => b.topic || b.support.length || b.closing);
+    .filter(
+      (b) =>
+        b.topic ||
+        b.support.length ||
+        b.closing ||
+        b.beforeTopic.length ||
+        b.afterTopic.length ||
+        b.afterSupport.length ||
+        b.afterClosing.length,
+    );
   return {
-    intro: { hook: str(intro?.hook), thesis: str(intro?.thesis) },
+    intro: {
+      hook: str(intro?.hook),
+      thesis: str(intro?.thesis),
+      beforeHook: sanitizeMediaList(intro?.beforeHook),
+      afterHook: sanitizeMediaList(intro?.afterHook),
+      afterThesis: sanitizeMediaList(intro?.afterThesis),
+    },
     body,
     conclusion: {
       restate: str(conclusion?.restate),
       whyItMatters: str(conclusion?.whyItMatters),
       closing: str(conclusion?.closing),
+      beforeRestate: sanitizeMediaList(conclusion?.beforeRestate),
+      afterRestate: sanitizeMediaList(conclusion?.afterRestate),
+      afterWhyItMatters: sanitizeMediaList(conclusion?.afterWhyItMatters),
+      afterClosing: sanitizeMediaList(conclusion?.afterClosing),
     },
   };
 }
@@ -231,6 +358,7 @@ export function sanitizeBlock(raw: unknown): PubBlock | null {
   if (typeof b.id === "string") block.id = b.id;
   if (typeof b.text === "string") block.text = b.text;
   if (typeof b.by === "string") block.by = b.by;
+  if (typeof b.source === "string") block.source = b.source;
   if (typeof b.uri === "string") block.uri = b.uri;
   if (typeof b.caption === "string") block.caption = b.caption;
   if (typeof b.title === "string") block.title = b.title;

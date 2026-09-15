@@ -1,6 +1,7 @@
 "use client";
 
 import { Field, Input, TextArea } from "./ui";
+import { ReadingMediaSlot } from "./ReadingMediaEditor";
 import { emptyReading } from "@/lib/season";
 import type { ReadingStructure } from "@/lib/season";
 
@@ -56,12 +57,27 @@ export default function ReadEditor({
           <p className="text-xs font-bold uppercase tracking-wide text-[#1d2a4d]">Introduction paragraph</p>
         </div>
         <div className="grid grid-cols-1 gap-2.5">
+          <ReadingMediaSlot
+            label="Intro · before hook"
+            value={intro.beforeHook}
+            onChange={(v) => setIntro({ beforeHook: v })}
+          />
           <Field label="Hook" hint="The opening line that grabs attention">
             <TextArea value={intro.hook} onChange={(e) => setIntro({ hook: e.target.value })} placeholder="Start with a question, a story or a vivid image…" />
           </Field>
+          <ReadingMediaSlot
+            label="Intro · after hook"
+            value={intro.afterHook}
+            onChange={(v) => setIntro({ afterHook: v })}
+          />
           <Field label="Thesis" hint="The main point of today's reading">
             <TextArea value={intro.thesis} onChange={(e) => setIntro({ thesis: e.target.value })} placeholder="What today's reading is really about…" />
           </Field>
+          <ReadingMediaSlot
+            label="Intro · after thesis"
+            value={intro.afterThesis}
+            onChange={(v) => setIntro({ afterThesis: v })}
+          />
         </div>
       </div>
 
@@ -111,15 +127,35 @@ export default function ReadEditor({
                   </div>
                 </div>
                 <div className="grid grid-cols-1 gap-2.5">
+                  <ReadingMediaSlot
+                    label="Before topic sentence"
+                    value={item.beforeTopic}
+                    onChange={(v) => setBodyItem(i, { beforeTopic: v })}
+                  />
                   <Field label="Topic sentence">
                     <Input value={item.topic} onChange={(e) => setBodyItem(i, { topic: e.target.value })} placeholder="The point this paragraph makes…" />
                   </Field>
+                  <ReadingMediaSlot
+                    label="After topic sentence"
+                    value={item.afterTopic}
+                    onChange={(v) => setBodyItem(i, { afterTopic: v })}
+                  />
                   <Field label="Supporting details" hint="One per line">
                     <TextArea value={arrayToLines(item.support)} onChange={(e) => setBodyItem(i, { support: linesToArray(e.target.value) })} placeholder={"Evidence, example or explanation…\nA second supporting detail…"} />
                   </Field>
+                  <ReadingMediaSlot
+                    label="After support details"
+                    value={item.afterSupport}
+                    onChange={(v) => setBodyItem(i, { afterSupport: v })}
+                  />
                   <Field label="Concluding sentence" hint="A sentence that wraps up this paragraph">
                     <TextArea value={item.closing || ""} onChange={(e) => setBodyItem(i, { closing: e.target.value })} placeholder="Tie the paragraph back to today's point…" />
                   </Field>
+                  <ReadingMediaSlot
+                    label="After concluding sentence"
+                    value={item.afterClosing}
+                    onChange={(v) => setBodyItem(i, { afterClosing: v })}
+                  />
                 </div>
               </div>
             ))}
@@ -134,15 +170,35 @@ export default function ReadEditor({
           <p className="text-xs font-bold uppercase tracking-wide text-[#1d2a4d]">Conclusion paragraph</p>
         </div>
         <div className="grid grid-cols-1 gap-2.5">
+          <ReadingMediaSlot
+            label="Conclusion · before restate"
+            value={conclusion.beforeRestate}
+            onChange={(v) => setConclusion({ beforeRestate: v })}
+          />
           <Field label="Restate the point">
             <TextArea value={conclusion.restate} onChange={(e) => setConclusion({ restate: e.target.value })} placeholder="Bring the reading back to its main point…" />
           </Field>
+          <ReadingMediaSlot
+            label="Conclusion · after restate"
+            value={conclusion.afterRestate}
+            onChange={(v) => setConclusion({ afterRestate: v })}
+          />
           <Field label="Why it matters">
             <TextArea value={conclusion.whyItMatters} onChange={(e) => setConclusion({ whyItMatters: e.target.value })} placeholder="So what? Why does this matter today…" />
           </Field>
+          <ReadingMediaSlot
+            label="Conclusion · after why it matters"
+            value={conclusion.afterWhyItMatters}
+            onChange={(v) => setConclusion({ afterWhyItMatters: v })}
+          />
           <Field label="Closing thought">
             <TextArea value={conclusion.closing} onChange={(e) => setConclusion({ closing: e.target.value })} placeholder="A line to carry through the day…" />
           </Field>
+          <ReadingMediaSlot
+            label="Conclusion · after closing"
+            value={conclusion.afterClosing}
+            onChange={(v) => setConclusion({ afterClosing: v })}
+          />
         </div>
       </div>
     </div>
