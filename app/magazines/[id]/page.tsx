@@ -1,15 +1,27 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import { getPublication } from "@/lib/publications";
 import { clubName } from "@/lib/catalog";
 import { CoverImage } from "@/components/magazine/MagazineCard";
 import BlockView from "@/components/magazine/BlockView";
 import { formatWeekRange, shortWeekday } from "@/components/magazine/helpers";
 
-export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
+const PUBLIC_BASE_URL = process.env.BETTER_AUTH_URL || "https://relate-iota.vercel.app";
+
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
   const { id } = await params;
   const pub = await getPublication(id);
-  return { title: pub?.title ? `${pub.title} — Relate` : "Magazine — Relate" };
+  if (!pub) return { title: "Magazine — Relate" };
+  const title = pub.title ? `${pub.title} — Relate` : "Magazine — Relate";
+  const url = `${PUBLIC_BASE_URL}/magazines/${id}`;
+  const og = pub.cover ? [{ url: pub.cover, alt: pub.title || "Relate magazine" }] : undefined;
+  return {
+    title,
+    description: pub.summary || undefined,
+    openGraph: { title, description: pub.summary || undefined, type: "article", url, images: og },
+    twitter: { card: og ? "summary_large_image" : "summary", title, description: pub.summary || undefined },
+  };
 }
 
 export default async function MagazineReader({ params }: { params: Promise<{ id: string }> }) {

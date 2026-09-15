@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import { getPublication } from "@/lib/publications";
 import BlockView from "@/components/magazine/BlockView";
 import {
@@ -8,6 +9,35 @@ import {
   formatWeekRange,
   shortWeekday,
 } from "@/components/magazine/helpers";
+
+const PUBLIC_BASE_URL = process.env.BETTER_AUTH_URL || "https://relate-iota.vercel.app";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string; week: string; day: string }>;
+}): Promise<Metadata> {
+  const { id, week: weekParam, day: dayParam } = await params;
+  const pub = await getPublication(id);
+  if (!pub) return { title: "Magazine — Relate" };
+  const week = (Array.isArray(pub.weeks) ? pub.weeks : []).find((w) => w.index === Number(weekParam));
+  const day = week?.days.find((d) => d.date === dayParam);
+  const verse = day?.verse;
+  const title = day
+    ? `${pub.series || "Relate"} · ${day.title} — Relate`
+    : `${pub.series || "Relate"} — Relate`;
+  const description = verse?.text
+    ? `“${verse.text}”${verse.by ? ` — ${verse.by}` : ""}`
+    : pub.summary || undefined;
+  const url = `${PUBLIC_BASE_URL}/magazines/${id}/${weekParam}/${dayParam}`;
+  const og = pub.cover ? [{ url: pub.cover, alt: pub.title || "Relate magazine" }] : undefined;
+  return {
+    title,
+    description,
+    openGraph: { title, description, type: "article", url, images: og },
+    twitter: { card: og ? "summary_large_image" : "summary", title, description },
+  };
+}
 
 export default async function DayReader({
   params,

@@ -30,9 +30,9 @@ export default function BlockView({ block }: { block: PubBlock }) {
       );
     case "image":
       return (
-        <figure className="my-4 overflow-hidden rounded-2xl shadow-sm">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={block.uri} alt={block.caption || ""} className="w-full" />
+<figure className="my-4 overflow-hidden shadow-sm">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={block.uri} alt={block.caption || ""} className="w-full" />
           {block.caption ? (
             <figcaption className="border-t border-slate-100 bg-white px-4 py-2 text-sm text-[#6b7280]">
               {block.caption}
@@ -121,7 +121,7 @@ case "reading":
 function ReadingMediaView({ media }: { media: ReadingMedia }) {
   if (media.type === "image") {
     return (
-      <figure className="my-4 overflow-hidden rounded-2xl shadow-sm">
+      <figure className="my-4 overflow-hidden shadow-sm">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={media.uri} alt={media.caption || ""} className="w-full" />
         {media.caption ? (

@@ -45,7 +45,7 @@ function SectionHead({ eyebrow, title, accent }: { eyebrow: string; title: strin
 function MediaView({ media }: { media: ReadingMedia }) {
   if (media.type === "image") {
     return (
-      <figure className="mb-1.5 overflow-hidden rounded-xl ring-1 ring-slate-100">
+      <figure className="mb-1.5 overflow-hidden ring-1 ring-slate-100">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={media.uri} alt={media.caption || ""} className="w-full" />
         {media.caption ? (
