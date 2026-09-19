@@ -7,7 +7,10 @@ const SPROUT_CLUBS = ["sprout-kids", "sprout-tweens", "sprout-teens"];
 /**
  * GET /api/quiz/logs
  * The seasonal quiz rail: for each Sprout club, the top-5 board of its latest
- * opened quiz week, newest first, up to 3 entries (matches the home rail).
+ * opened quiz week, newest first, up to 3 entries (matches the home rail). When
+ * the season hasn't opened any quiz yet, fall back to the next upcoming week's
+ * board so the rail still shows enticement cards (empty boards with
+ * placeholder players) instead of going missing entirely.
  */
 export async function GET(_request: NextRequest) {
   try {
@@ -16,11 +19,16 @@ export async function GET(_request: NextRequest) {
     for (const clubSlug of SPROUT_CLUBS) {
       const season = await getSeasonForClub(db, clubSlug);
       if (!season) continue;
-      const liveWeek = season.quizWeeks
+      const opened = season.quizWeeks
         .filter((w: any) => weekState(w) !== "upcoming")
         .sort((a: any, b: any) => b.ordinal - a.ordinal)[0];
-      if (!liveWeek) continue;
-      logs.push(await buildLogForWeek(db, season, liveWeek));
+      const nextUpcoming = opened
+        ? undefined
+        : season.quizWeeks
+            .filter((w: any) => weekState(w) === "upcoming")
+            .sort((a: any, b: any) => (a.openFrom < b.openFrom ? -1 : 1))[0];
+      if (!opened && !nextUpcoming) continue;
+      logs.push(await buildLogForWeek(db, season, opened ?? nextUpcoming));
     }
     logs.sort((a, b) => (a.openFrom < b.openFrom ? -1 : 1));
     return NextResponse.json({ logs: logs.slice(0, 3) });
