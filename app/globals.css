@@ -71,6 +71,18 @@
   --color-relate-accent: #13c5dd;
   --color-relate-dark: #1d2a4d;
   --color-relate-light: #eff5f9;
+  /* New website design tokens (site parity) */
+  --color-navy: #1d2a4d;
+  --color-navy-dark: #151f3a;
+  --color-navy-soft: #2a4070;
+  --color-cyan: #13c5dd;
+  --color-cyan-light: #67e3f5;
+  --color-cyan-dark: #0fa3c4;
+  --color-alice-blue: #eff5f9;
+  --color-ghost-white: #f5f8fb;
+  --color-ice-blue: #d4eef5;
+  --color-ink: #1d2a4d;
+  --color-slate-gray: #6b7a8d;
   --color-forest-darkest: #0d1428;
   --color-forest-dark: #151f3a;
   --color-forest: #1d2a4d;

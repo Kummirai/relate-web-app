@@ -1,68 +1,64 @@
 import { signInAction } from "../actions/auth";
 import Link from "next/link";
+import { LuMail, LuLock } from "react-icons/lu";
 
 export default function page() {
   return (
-    <section className="flex items-center justify-center px-4 py-12 md:py-20">
-      <form
-        className="w-full max-w-sm flex flex-col items-center bg-white p-8 sm:p-10 rounded-2xl shadow-sm"
-        action={signInAction}
-      >
-        <h2 className="text-2xl sm:text-3xl font-bold" style={{ color: "#1d2a4d" }}>
-          Sign in
-        </h2>
-        <p className="mt-2 text-sm text-center" style={{ color: "#6b7a8d" }}>
-          Welcome back! Please sign in to continue.
+    <section
+      className="flex-1 px-4 py-12 md:py-16"
+      style={{ background: "linear-gradient(115deg, #f5f8fb 0%, #eff5f9 60%, #f5f8fb 100%)" }}
+    >
+      <div className="w-full max-w-md mx-auto bg-white rounded-2xl shadow-xl border border-gray-100 p-6 md:p-8">
+        <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-cyan mb-2">Welcome back</p>
+        <h2 className="text-2xl md:text-3xl font-black tracking-tight text-navy">Sign in</h2>
+        <p className="mt-1.5 text-sm text-slate-gray">
+          Sign in to keep your clubs, reading guides and prayer rhythm close.
         </p>
 
-        {/* Email */}
-        <div className="mt-8 flex h-12 w-full items-center gap-2 overflow-hidden rounded-full pl-5" style={{ border: "1px solid #13c5dd" }}>
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#13c5dd" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
-            <rect x="2" y="4" width="20" height="16" rx="2" />
-          </svg>
-          <input
-            placeholder="Email"
-            className="h-full w-full bg-transparent text-sm outline-none"
-            style={{ color: "#1d2a4d" }}
-            required
-            type="email"
-            name="email"
-          />
-        </div>
+        <form className="mt-7 grid gap-4" action={signInAction}>
+          <label className="block">
+            <span className="mb-1.5 block text-[11px] font-semibold uppercase tracking-widest text-slate-gray">Email</span>
+            <div className="relative">
+              <LuMail className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" />
+              <input
+                placeholder="you@example.com"
+                className="w-full rounded-lg border border-gray-200 bg-white pl-10 pr-4 py-3 text-sm text-navy outline-none transition focus:border-cyan focus:ring-2 focus:ring-cyan/20"
+                required
+                type="email"
+                name="email"
+              />
+            </div>
+          </label>
 
-        {/* Password */}
-        <div className="mt-4 flex h-12 w-full items-center gap-2 overflow-hidden rounded-full pl-5" style={{ border: "1px solid #13c5dd" }}>
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#13c5dd" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
-            <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-          </svg>
-          <input
-            placeholder="Password"
-            className="h-full w-full bg-transparent text-sm outline-none"
-            style={{ color: "#1d2a4d" }}
-            required
-            type="password"
-            name="password"
-          />
-        </div>
+          <label className="block">
+            <span className="mb-1.5 block text-[11px] font-semibold uppercase tracking-widest text-slate-gray">Password</span>
+            <div className="relative">
+              <LuLock className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" />
+              <input
+                placeholder="••••••••"
+                className="w-full rounded-lg border border-gray-200 bg-white pl-10 pr-4 py-3 text-sm text-navy outline-none transition focus:border-cyan focus:ring-2 focus:ring-cyan/20"
+                required
+                type="password"
+                name="password"
+              />
+            </div>
+          </label>
 
-        {/* Submit */}
-        <button
-          type="submit"
-          className="mt-8 h-11 w-full cursor-pointer rounded-full text-white font-semibold text-sm transition hover:opacity-90"
-          style={{ background: "#13c5dd" }}
-        >
-          Sign In
-        </button>
+          <button
+            type="submit"
+            className="mt-2 w-full rounded-lg py-3 font-bold text-sm bg-cyan text-navy transition hover:bg-cyan-dark"
+          >
+            Sign in
+          </button>
+        </form>
 
-        <p className="mt-5 text-sm" style={{ color: "#6b7a8d" }}>
-          Don&apos;t have an account?{" "}
-          <Link href="/signup" className="font-semibold" style={{ color: "#13c5dd" }}>
-            Sign up
+        <p className="mt-5 text-sm text-slate-gray text-center">
+          New to Relate?{" "}
+          <Link href="/signup" className="font-semibold text-cyan-dark hover:text-navy transition-colors">
+            Create an account
           </Link>
         </p>
-      </form>
+      </div>
     </section>
   );
 }

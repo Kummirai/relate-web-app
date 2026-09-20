@@ -2,10 +2,10 @@ import {LuCalendar, LuChevronRight} from "react-icons/lu"
 import Link from "next/link"
 
 const events = [
-    {date: "05:30", title: "Dawn", desc: "Begin the day with gratitude", color: "bg-blue-100 text-blue-700"},
-    {date: "08:00", title: "Sunrise", desc: "A short opening prayer", color: "bg-purple-100 text-purple-700"},
-    {date: "12:00", title: "Noon", desc: "Press pause and pray together", color: "bg-pink-100 text-pink-700"},
-    {date: "19:30", title: "Dusk", desc: "Family reading before rest", color: "bg-cyan-100 text-cyan-700"},
+    {date: "Sat", title: "Sprout Club Morning", desc: "Games, crafts and stories for ages 6–15", color: "bg-blue-100 text-blue-700"},
+    {date: "Fri", title: "Surge Fire Worship Night", desc: "Monthly worship, testimony and prayer", color: "bg-purple-100 text-purple-700"},
+    {date: "Thu", title: "Pulse Network Meetup", desc: "Grow your network — bring a friend", color: "bg-pink-100 text-pink-700"},
+    {date: "Sun", title: "Nexus Family Table", desc: "Potluck dinner — nobody eats alone", color: "bg-cyan-100 text-cyan-700"},
 ]
 
 export default function Events() {
@@ -14,19 +14,19 @@ export default function Events() {
             <div className={"max-w-6xl mx-auto"}>
                 <div className={"flex items-center justify-between mb-8"}>
                     <div>
-                        <h4 className={"text-green-600 font-medium mb-1"}>DAILY RHYTHM</h4>
-                        <h2 className={"text-2xl md:text-3xl font-semibold text-gray-800"}>Prayer Times</h2>
+                        <h4 className={"text-cyan font-medium mb-1"}>WEEKLY RHYTHM</h4>
+                        <h2 className={"text-2xl md:text-3xl font-semibold text-gray-800"}>What&rsquo;s Happening</h2>
                     </div>
-                    <Link href={"/magazines"}
-                          className={"text-sm text-green-600 font-medium flex items-center gap-1 hover:gap-2 transition-all"}>
-                        Start Reading <LuChevronRight/>
+                    <Link href={"/calendar"}
+                          className={"text-sm text-cyan font-medium flex items-center gap-1 hover:gap-2 transition-all"}>
+                        View All <LuChevronRight/>
                     </Link>
                 </div>
                 <div className={"grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"}>
                     {events.map((e, i) => (
                         <div key={i}
                              className={"flex gap-4 p-4 rounded-lg border border-gray-200 hover:shadow-md transition-shadow"}>
-                            <div className={"shrink-0 text-center bg-green-600 text-white rounded-lg px-3 py-2 min-w-16"}>
+                            <div className={"shrink-0 text-center bg-navy text-white rounded-lg px-3 py-2 w-16"}>
                                 <p className={"text-xs leading-tight"}>{e.date.split(" ")[0]}</p>
                                 <p className={"text-sm font-bold"}>{e.date.split(" ")[1]}</p>
                             </div>

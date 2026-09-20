@@ -31,8 +31,9 @@ export default function HomePage() {
   return (
     <div className="max-w-6xl mx-auto pt-10 pb-20">
       <div className="text-center mb-12">
-        <h1 className="text-5xl font-medium text-zinc-950 mb-4">Records</h1>
-        <p className="text-sm md:text-base mx-auto max-w-2xl text-center mt-6 max-md:px-2">
+        <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-cyan mb-2">Relate Team</p>
+        <h1 className="text-4xl md:text-5xl font-black tracking-tight text-navy mb-4">Records</h1>
+        <p className="text-sm md:text-base mx-auto max-w-2xl text-center text-slate-gray max-md:px-2">
           Every record represents a life being transformed. Track and manage the
           journeys of those we walk with — with care, confidentiality, and a
           heart for lasting change.
@@ -43,19 +44,19 @@ export default function HomePage() {
         {features.map((feature, index) => (
           <div
             key={index}
-            className="bg-white p-6 rounded-lg shadow-lg max-w-90.5"
+            className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow"
           >
             <div className="flex flex-col items-center text-center">
-              <div className="mb-4">{feature.icon}</div>
-              <h3 className="text-xl font-medium text-zinc-950 mb-2">
+              <div className="mb-4 size-12 rounded-full bg-alice-blue flex items-center justify-center text-navy">{feature.icon}</div>
+              <h3 className="text-xl font-bold text-navy mb-2">
                 {feature.title}
               </h3>
-              <p className="text-neutral-600 mb-5 text-[14px]">
+              <p className="text-slate-gray mb-5 text-sm leading-relaxed">
                 {feature.description}
               </p>
               <Link
                 href={feature.link}
-                className="bg-zinc-950 to-zinc-500 text-neutral-50  px-6 py-2.5 rounded-full transition text-[14px]"
+                className="bg-navy text-white px-6 py-2.5 rounded-lg font-semibold transition hover:bg-navy-soft text-sm"
               >
                 {feature.linkText}
               </Link>
@@ -64,8 +65,8 @@ export default function HomePage() {
         ))}
       </div>
 
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h2 className="text-2xl text-zinc-950 font-medium mb-4">
+      <div className="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm">
+        <h2 className="text-2xl font-black tracking-tight text-navy mb-4">
           About This System
         </h2>
         <div className="prose max-w-none">
