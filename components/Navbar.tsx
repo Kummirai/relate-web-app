@@ -87,7 +87,7 @@ export default function Navbar({ session, overlay = false }: { session?: { user?
                   <div className="bg-white rounded-lg shadow-xl border border-gray-100 py-2 min-w-44">
                     {group.items.map((item) => (
                       <Link
-                        key={item.path}
+                        key={item.link}
                         href={item.path}
                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-alice-blue hover:text-cyan-dark transition-colors"
                       >
@@ -188,7 +188,7 @@ export default function Navbar({ session, overlay = false }: { session?: { user?
                   <div className="flex flex-col items-center gap-3 mt-3">
                     {group.items.map((item) => (
                       <Link
-                        key={item.path}
+                        key={item.link}
                         href={item.path}
                         onClick={() => setMenuOpen(false)}
                         className="text-slate-gray text-lg hover:text-cyan-dark transition-colors"

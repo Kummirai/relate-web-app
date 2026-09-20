@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { FaGraduationCap, FaFacebook, FaInstagramSquare } from "react-icons/fa6";
+import { FaGraduationCap, FaFacebook, FaInstagram } from "react-icons/fa6";
 import { LuMapPin, LuPhone, LuMail } from "react-icons/lu";
 
 export default function Footer() {
@@ -24,7 +24,7 @@ export default function Footer() {
                         </p>
                         <div className="flex items-center gap-3 mt-5 text-white/80">
                             <FaFacebook className="text-xl hover:text-cyan transition-colors cursor-pointer" />
-                            <FaInstagramSquare className="text-xl hover:text-cyan transition-colors cursor-pointer" />
+                            <FaInstagram className="text-xl hover:text-cyan transition-colors cursor-pointer" />
                         </div>
                     </div>
 
