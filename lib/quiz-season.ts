@@ -2,6 +2,7 @@ import { ObjectId } from "mongodb";
 import { getDb } from "./mongodb";
 import {
   SEASONS_SEED,
+  QUIZ_CLUB_SLUGS,
   GENESIS_BEGINNINGS_QUESTIONS,
   GENESIS_ABRAHAM_QUESTIONS,
   GENESIS_ISAAC_JACOB_QUESTIONS,

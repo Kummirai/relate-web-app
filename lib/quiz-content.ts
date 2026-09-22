@@ -105,95 +105,74 @@ export const GENESIS_JOSEPH_QUESTIONS: QuizQuestionContent[] = [
   { book: "Genesis: Joseph", level: 3, text: "Joseph asked that his bones be carried up when God led the people to…", options: ["the promised land", "Egypt again", "the temple", "a new city"], correctIndex: 0 },
 ];
 
-export const SEASONS_SEED: SeasonSeed[] = [
-  {
-    key: "SUMMER-2026",
-    label: "Summer 2026/27",
-    clubSlug: "sprout-kids",
-    readStart: "2026-12-01",
-    readEnd: "2027-01-03",
-    quizStart: "2027-01-04",
-    endDate: "2027-02-28",
-    books: [
-      { book: "Genesis: Beginnings", chapters: "Ch. 1–11", focus: "Creation, the flood, and God's plan for a new start.", readPlan: "Week 1: Genesis 1–11 — read a chapter a day" },
-      { book: "Genesis: Abraham", chapters: "Ch. 12–25", focus: "God's promise to Abraham — a family to bless the world.", readPlan: "Week 2: Genesis 12–25 — read a chapter a day" },
-      { book: "Genesis: Isaac & Jacob", chapters: "Ch. 25–36", focus: "Twin brothers, a ladder of dreams, and the new name Israel.", readPlan: "Week 3: Genesis 25–36 — read a chapter a day" },
-      { book: "Genesis: Joseph", chapters: "Ch. 37–50", focus: "From the pit to the palace — God's plan to save His family.", readPlan: "Weeks 4–5: Genesis 37–50 — read a chapter a day" },
-    ],
-    quizWeeks: [
-      { ordinal: 6, name: "Beginnings Quiz", book: "Genesis: Beginnings", kind: "book", openFrom: "2027-01-04", openUntil: "2027-02-28" },
-      { ordinal: 7, name: "Abraham Quiz", book: "Genesis: Abraham", kind: "book", openFrom: "2027-01-11", openUntil: "2027-02-28" },
-      { ordinal: 8, name: "Isaac & Jacob Quiz", book: "Genesis: Isaac & Jacob", kind: "book", openFrom: "2027-01-18", openUntil: "2027-02-28" },
-      { ordinal: 9, name: "Joseph Finale", book: "Genesis: Joseph", kind: "finale", openFrom: "2027-01-25", openUntil: "2027-02-28" },
-      { ordinal: 10, name: "Beat the Clock", book: "All of Genesis", kind: "bonus", openFrom: "2027-02-01", openUntil: "2027-02-21" },
-      { ordinal: 11, name: "Beat the Clock", book: "All of Genesis", kind: "bonus", openFrom: "2027-02-08", openUntil: "2027-02-21" },
-      { ordinal: 12, name: "Beat the Clock", book: "All of Genesis", kind: "bonus", openFrom: "2027-02-15", openUntil: "2027-02-21" },
-    ],
-    perQuestionSeconds: { kids: 40, tweens: 30, teens: 25, finale: 20, bonus: 15 },
-    awards: [
-      { rank: 1, prize: "School bag + stationery hamper" },
-      { rank: 2, prize: "Stationery hamper" },
-      { rank: 3, prize: "Book bundle + Relate tote + badge set" },
-    ],
-  },
-  {
-    key: "SUMMER-2026",
-    label: "Summer 2026/27",
-    clubSlug: "sprout-tweens",
-    readStart: "2026-12-01",
-    readEnd: "2027-01-03",
-    quizStart: "2027-01-04",
-    endDate: "2027-02-28",
-    books: [
-      { book: "Genesis: Beginnings", chapters: "Ch. 1–11", focus: "Creation, the flood, and God's plan for a new start.", readPlan: "Week 1: Genesis 1–11 — read a chapter a day" },
-      { book: "Genesis: Abraham", chapters: "Ch. 12–25", focus: "God's promise to Abraham — a family to bless the world.", readPlan: "Week 2: Genesis 12–25 — read a chapter a day" },
-      { book: "Genesis: Isaac & Jacob", chapters: "Ch. 25–36", focus: "Twin brothers, a ladder of dreams, and the new name Israel.", readPlan: "Week 3: Genesis 25–36 — read a chapter a day" },
-      { book: "Genesis: Joseph", chapters: "Ch. 37–50", focus: "From the pit to the palace — God's plan to save His family.", readPlan: "Weeks 4–5: Genesis 37–50 — read a chapter a day" },
-    ],
-    quizWeeks: [
-      { ordinal: 6, name: "Beginnings Quiz", book: "Genesis: Beginnings", kind: "book", openFrom: "2027-01-04", openUntil: "2027-02-28" },
-      { ordinal: 7, name: "Abraham Quiz", book: "Genesis: Abraham", kind: "book", openFrom: "2027-01-11", openUntil: "2027-02-28" },
-      { ordinal: 8, name: "Isaac & Jacob Quiz", book: "Genesis: Isaac & Jacob", kind: "book", openFrom: "2027-01-18", openUntil: "2027-02-28" },
-      { ordinal: 9, name: "Joseph Finale", book: "Genesis: Joseph", kind: "finale", openFrom: "2027-01-25", openUntil: "2027-02-28" },
-      { ordinal: 10, name: "Beat the Clock", book: "All of Genesis", kind: "bonus", openFrom: "2027-02-01", openUntil: "2027-02-21" },
-      { ordinal: 11, name: "Beat the Clock", book: "All of Genesis", kind: "bonus", openFrom: "2027-02-08", openUntil: "2027-02-21" },
-      { ordinal: 12, name: "Beat the Clock", book: "All of Genesis", kind: "bonus", openFrom: "2027-02-15", openUntil: "2027-02-21" },
-    ],
-    perQuestionSeconds: { kids: 40, tweens: 30, teens: 25, finale: 20, bonus: 15 },
-    awards: [
-      { rank: 1, prize: "School bag + stationery hamper" },
-      { rank: 2, prize: "Stationery hamper" },
-      { rank: 3, prize: "Book bundle + Relate tote + badge set" },
-    ],
-  },
-  {
-    key: "SUMMER-2026",
-    label: "Summer 2026/27",
-    clubSlug: "sprout-teens",
-    readStart: "2026-12-01",
-    readEnd: "2027-01-03",
-    quizStart: "2027-01-04",
-    endDate: "2027-02-28",
-    books: [
-      { book: "Genesis: Beginnings", chapters: "Ch. 1–11", focus: "Creation, the flood, and God's plan for a new start.", readPlan: "Week 1: Genesis 1–11 — read a chapter a day" },
-      { book: "Genesis: Abraham", chapters: "Ch. 12–25", focus: "God's promise to Abraham — a family to bless the world.", readPlan: "Week 2: Genesis 12–25 — read a chapter a day" },
-      { book: "Genesis: Isaac & Jacob", chapters: "Ch. 25–36", focus: "Twin brothers, a ladder of dreams, and the new name Israel.", readPlan: "Week 3: Genesis 25–36 — read a chapter a day" },
-      { book: "Genesis: Joseph", chapters: "Ch. 37–50", focus: "From the pit to the palace — God's plan to save His family.", readPlan: "Weeks 4–5: Genesis 37–50 — read a chapter a day" },
-    ],
-    quizWeeks: [
-      { ordinal: 6, name: "Beginnings Quiz", book: "Genesis: Beginnings", kind: "book", openFrom: "2027-01-04", openUntil: "2027-02-28" },
-      { ordinal: 7, name: "Abraham Quiz", book: "Genesis: Abraham", kind: "book", openFrom: "2027-01-11", openUntil: "2027-02-28" },
-      { ordinal: 8, name: "Isaac & Jacob Quiz", book: "Genesis: Isaac & Jacob", kind: "book", openFrom: "2027-01-18", openUntil: "2027-02-28" },
-      { ordinal: 9, name: "Joseph Finale", book: "Genesis: Joseph", kind: "finale", openFrom: "2027-01-25", openUntil: "2027-02-28" },
-      { ordinal: 10, name: "Beat the Clock", book: "All of Genesis", kind: "bonus", openFrom: "2027-02-01", openUntil: "2027-02-21" },
-      { ordinal: 11, name: "Beat the Clock", book: "All of Genesis", kind: "bonus", openFrom: "2027-02-08", openUntil: "2027-02-21" },
-      { ordinal: 12, name: "Beat the Clock", book: "All of Genesis", kind: "bonus", openFrom: "2027-02-15", openUntil: "2027-02-21" },
-    ],
-    perQuestionSeconds: { kids: 40, tweens: 30, teens: 25, finale: 20, bonus: 15 },
-    awards: [
-      { rank: 1, prize: "School bag + stationery hamper" },
-      { rank: 2, prize: "Stationery hamper" },
-      { rank: 3, prize: "Book bundle + Relate tote + badge set" },
-    ],
-  },
+/**
+ * Every club that runs the Bible Quiz. Each content club gets its own season
+ * and leaderboard — Sprout classes plus Surge, Pulse, Prime, Anchor, Base and
+ * Nexus now all play.
+ */
+export const QUIZ_CLUB_SLUGS = [
+  "sprout-kids",
+  "sprout-tweens",
+  "sprout-teens",
+  "surge",
+  "pulse",
+  "prime",
+  "anchor",
+  "base",
+  "nexus",
+] as const;
+
+/** Sprout classes get faster timers for younger players; the rest share one pace. */
+const SPROUT_TIMERS = { kids: 40, tweens: 30, teens: 25, finale: 20, bonus: 15 };
+const GENERAL_TIMERS = { kids: 30, tweens: 30, teens: 30, finale: 20, bonus: 15 };
+
+const SPROUT_AWARDS = [
+  { rank: 1, prize: "School bag + stationery hamper" },
+  { rank: 2, prize: "Stationery hamper" },
+  { rank: 3, prize: "Book bundle + Relate tote + badge set" },
 ];
+
+const GENERAL_AWARDS = [
+  { rank: 1, prize: "Relate study bundle + tote" },
+  { rank: 2, prize: "Book bundle + Relate tote" },
+  { rank: 3, prize: "Badge set + stickers" },
+];
+
+/**
+ * Shared Summer 2026/27 season shape. The same Genesis reading plan runs for
+ * every club this season (content is shared for now); each club plays its own
+ * leaderboard with its own timers and prizes.
+ */
+function buildSeason(clubSlug: string): SeasonSeed {
+  const sprout = clubSlug.startsWith("sprout-");
+  return {
+    key: "SUMMER-2026",
+    label: "Summer 2026/27",
+    clubSlug,
+    readStart: "2026-12-01",
+    readEnd: "2027-01-03",
+    quizStart: "2027-01-04",
+    endDate: "2027-02-28",
+    books: [
+      { book: "Genesis: Beginnings", chapters: "Ch. 1–11", focus: "Creation, the flood, and God's plan for a new start.", readPlan: "Week 1: Genesis 1–11 — read a chapter a day" },
+      { book: "Genesis: Abraham", chapters: "Ch. 12–25", focus: "God's promise to Abraham — a family to bless the world.", readPlan: "Week 2: Genesis 12–25 — read a chapter a day" },
+      { book: "Genesis: Isaac & Jacob", chapters: "Ch. 25–36", focus: "Twin brothers, a ladder of dreams, and the new name Israel.", readPlan: "Week 3: Genesis 25–36 — read a chapter a day" },
+      { book: "Genesis: Joseph", chapters: "Ch. 37–50", focus: "From the pit to the palace — God's plan to save His family.", readPlan: "Weeks 4–5: Genesis 37–50 — read a chapter a day" },
+    ],
+    quizWeeks: [
+      { ordinal: 6, name: "Beginnings Quiz", book: "Genesis: Beginnings", kind: "book", openFrom: "2027-01-04", openUntil: "2027-02-28" },
+      { ordinal: 7, name: "Abraham Quiz", book: "Genesis: Abraham", kind: "book", openFrom: "2027-01-11", openUntil: "2027-02-28" },
+      { ordinal: 8, name: "Isaac & Jacob Quiz", book: "Genesis: Isaac & Jacob", kind: "book", openFrom: "2027-01-18", openUntil: "2027-02-28" },
+      { ordinal: 9, name: "Joseph Finale", book: "Genesis: Joseph", kind: "finale", openFrom: "2027-01-25", openUntil: "2027-02-28" },
+      { ordinal: 10, name: "Beat the Clock", book: "All of Genesis", kind: "bonus", openFrom: "2027-02-01", openUntil: "2027-02-21" },
+      { ordinal: 11, name: "Beat the Clock", book: "All of Genesis", kind: "bonus", openFrom: "2027-02-08", openUntil: "2027-02-21" },
+      { ordinal: 12, name: "Beat the Clock", book: "All of Genesis", kind: "bonus", openFrom: "2027-02-15", openUntil: "2027-02-21" },
+    ],
+    perQuestionSeconds: sprout ? SPROUT_TIMERS : GENERAL_TIMERS,
+    awards: sprout ? SPROUT_AWARDS : GENERAL_AWARDS,
+  };
+}
+
+export const SEASONS_SEED: SeasonSeed[] = QUIZ_CLUB_SLUGS.map((clubSlug) =>
+  buildSeason(clubSlug),
+);
