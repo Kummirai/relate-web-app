@@ -1,0 +1,388 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Relate World Developer API",
+    "description": "Free, key-less, read-only access to Relate World's magazines, bulletins, daily reading targets and Bible reading plans. No auth is required. Responses are cached (`Cache-Control: public`) and served with open CORS. Errors use a consistent `{ \"error\": \"...\" }` shape. Interactive docs: https://relate-iota.vercel.app/api-docs",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://relate-iota.vercel.app"
+    }
+  ],
+  "security": [],
+  "paths": {
+    "/api/publications": {
+      "get": {
+        "summary": "List publications",
+        "description": "Published magazines & bulletins, newest first. Content bodies (weeks/blocks) are stripped — use /api/publications/{id} for full content.",
+        "operationId": "listPublications",
+        "tags": ["Magazines & Bulletins"],
+        "parameters": [
+          {
+            "name": "club",
+            "in": "query",
+            "required": false,
+            "description": "Club slug (e.g. sprout-kids, anchors). Use 'relate' for umbrella issues only.",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "kind",
+            "in": "query",
+            "required": false,
+            "description": "Publication kind.",
+            "schema": { "type": "string", "enum": ["magazine", "bulletin"] }
+          },
+          {
+            "name": "series",
+            "in": "query",
+            "required": false,
+            "description": "Series name (Relate, Rooted, Footsteps, Hearth).",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Results per page, 1–100 (default 100).",
+            "schema": { "type": "integer", "minimum": 1, "maximum": 100, "default": 100 }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "description": "Skip N results for pagination (default 0).",
+            "schema": { "type": "integer", "minimum": 0, "default": 0 }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of publication summaries.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/PublicationSummary" }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid query parameters.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit exceeded.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "headers": {
+              "X-RateLimit-Reset": {
+                "description": "Unix seconds until the limit resets.",
+                "schema": { "type": "integer" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/publications/{id}": {
+      "get": {
+        "summary": "Single publication",
+        "description": "One published magazine or bulletin by its stable id (e.g. rooted-kids-oct-2026), including full weeks, days and interactive blocks.",
+        "operationId": "getPublication",
+        "tags": ["Magazines & Bulletins"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Stable publication id (not a Mongo ObjectId).",
+            "schema": { "type": "string", "pattern": "^[a-z0-9-]{1,80}$" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Full publication document.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Publication" }
+              }
+            }
+          },
+          "404": {
+            "description": "Publication not found or not published.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit exceeded.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "headers": {
+              "X-RateLimit-Reset": {
+                "schema": { "type": "integer" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/reading-today": {
+      "get": {
+        "summary": "Today's reading target",
+        "description": "Finds the day to open for a club's guided reading: exact date, then next upcoming, then the first day — returns a compact deep-link target.",
+        "operationId": "getReadingToday",
+        "tags": ["Magazines & Bulletins"],
+        "parameters": [
+          {
+            "name": "tag",
+            "in": "query",
+            "required": false,
+            "description": "Club tag (defaults to RELATE, e.g. ANCHOR, SPROUT-KIDS).",
+            "schema": { "type": "string", "default": "RELATE" }
+          },
+          {
+            "name": "date",
+            "in": "query",
+            "required": false,
+            "description": "YYYY-MM-DD — the day to resolve (defaults to today).",
+            "schema": { "type": "string", "format": "date" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Resolved target — or found:false when no guide matches.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ReadingTarget" }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit exceeded.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "headers": {
+              "X-RateLimit-Reset": {
+                "schema": { "type": "integer" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/reading-plans": {
+      "get": {
+        "summary": "List reading plans",
+        "description": "All reading plans with metadata — title, tagline, description, category, section, day count, gradient and cover image.",
+        "operationId": "listReadingPlans",
+        "tags": ["Reading Plans & Bible Study"],
+        "responses": {
+          "200": {
+            "description": "Array of reading plan summaries.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/ReadingPlan" }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit exceeded.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "headers": {
+              "X-RateLimit-Reset": {
+                "schema": { "type": "integer" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/reading-plans/{slug}": {
+      "get": {
+        "summary": "Plan with sections",
+        "description": "One reading plan plus its sections (book + chapter range), optional authored blocks, and a per-section quiz without answer keys.",
+        "operationId": "getReadingPlan",
+        "tags": ["Reading Plans & Bible Study"],
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "description": "Reading plan slug (e.g. pentateuch-in-60-days).",
+            "schema": { "type": "string", "pattern": "^[a-z0-9-]{1,80}$" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Plan metadata plus its sections.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/PlanDetail" }
+              }
+            }
+          },
+          "404": {
+            "description": "Reading plan not found.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit exceeded.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "headers": {
+              "X-RateLimit-Reset": {
+                "schema": { "type": "integer" }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Error": {
+        "type": "object",
+        "required": ["error"],
+        "properties": {
+          "error": { "type": "string" }
+        }
+      },
+      "Season": {
+        "type": "object",
+        "properties": {
+          "label": { "type": "string" },
+          "start": { "type": "string", "format": "date" },
+          "end": { "type": "string", "format": "date" }
+        }
+      },
+      "PublicationSummary": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "kind": { "type": "string", "enum": ["magazine", "bulletin"] },
+          "series": { "type": "string" },
+          "clubSlug": { "type": "string" },
+          "title": { "type": "string" },
+          "issue": { "type": "string" },
+          "month": { "type": "string" },
+          "year": { "type": "integer" },
+          "cover": { "type": "string" },
+          "summary": { "type": "string" },
+          "tags": { "type": "array", "items": { "type": "string" } },
+          "season": { "$ref": "#/components/schemas/Season" },
+          "publishedAt": { "type": "string", "format": "date-time" }
+        }
+      },
+      "Publication": {
+        "type": "object",
+        "description": "Full publication document — includes weeks/days and interactive blocks.",
+        "allOf": [
+          { "$ref": "#/components/schemas/PublicationSummary" }
+        ],
+        "properties": {
+          "weeks": {
+            "type": "array",
+            "description": "Guided reading weeks.",
+            "items": { "type": "object" }
+          },
+          "blocks": {
+            "type": "array",
+            "description": "Optional interactive content blocks.",
+            "items": { "type": "object" }
+          }
+        }
+      },
+      "ReadingTarget": {
+        "type": "object",
+        "required": ["found"],
+        "properties": {
+          "found": { "type": "boolean" },
+          "slug": { "type": "string" },
+          "week": { "type": "integer" },
+          "day": { "type": "integer" },
+          "date": { "type": "string", "format": "date" }
+        }
+      },
+      "ReadingPlan": {
+        "type": "object",
+        "properties": {
+          "slug": { "type": "string" },
+          "title": { "type": "string" },
+          "tagline": { "type": "string" },
+          "description": { "type": "string" },
+          "category": { "type": "string" },
+          "section": { "type": "string" },
+          "days": { "type": "integer" },
+          "gradient": { "type": "array", "items": { "type": "string" } },
+          "image": { "type": "string" }
+        }
+      },
+      "QuizQuestion": {
+        "type": "object",
+        "description": "Quiz question without the answer key.",
+        "properties": {
+          "id": { "type": "string" },
+          "book": { "type": "string" },
+          "chapter": { "type": "integer" },
+          "question": { "type": "string" },
+          "options": { "type": "array", "items": { "type": "string" } }
+        }
+      },
+      "PlanSection": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "planSlug": { "type": "string" },
+          "title": { "type": "string" },
+          "book": { "type": "string", "nullable": true },
+          "startCh": { "type": "integer", "nullable": true },
+          "endCh": { "type": "integer", "nullable": true },
+          "verseText": { "type": "string" },
+          "verseBy": { "type": "string" },
+          "blocks": { "type": "array", "items": { "type": "object" } },
+          "sort": { "type": "integer" },
+          "quiz": { "type": "array", "items": { "$ref": "#/components/schemas/QuizQuestion" } }
+        }
+      },
+      "PlanDetail": {
+        "type": "object",
+        "properties": {
+          "plan": { "$ref": "#/components/schemas/ReadingPlan" },
+          "sections": { "type": "array", "items": { "$ref": "#/components/schemas/PlanSection" } }
+        }
+      }
+    }
+  }
+}
