@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Relate World Developer API",
-    "description": "Free, key-less, read-only access to Relate World's magazines, bulletins, daily reading targets and Bible reading plans. No auth is required. Responses are cached (`Cache-Control: public`) and served with open CORS. Errors use a consistent `{ \"error\": \"...\" }` shape. Interactive docs: https://relate-iota.vercel.app/api-docs",
+    "description": "Free, key-less access to Relate World's magazines, bulletins, daily reading targets and Bible reading plans (read-only) plus the public Bible Quiz (playable, rate-limited). No auth is required. GET responses are cached (`Cache-Control: public`) and served with open CORS; quiz POSTs are rate-limited per IP. Errors use a consistent `{ \"error\": \"...\" }` shape. Interactive docs: https://relate-iota.vercel.app/api-docs",
     "version": "1.0.0"
   },
   "servers": [
@@ -268,6 +268,69 @@
           }
         }
       }
+    },
+    "/api/public-quiz/questions": {
+      "get": {
+        "summary": "Quiz question draw",
+        "description": "A fresh shuffled question draw for a club — the hub season (Genesis 1–25). Answer keys are never sent; scoring happens on submit.",
+        "operationId": "getQuizQuestions",
+        "tags": ["Bible Quiz"],
+        "parameters": [
+          { "name": "club", "in": "query", "required": true, "description": "Club slug (sprout, surge, pulse, prime, anchor).", "schema": { "type": "string", "enum": ["sprout", "surge", "pulse", "prime", "anchor"] } },
+          { "name": "count", "in": "query", "required": false, "description": "Question count, 5–15 (default 10).", "schema": { "type": "integer", "minimum": 5, "maximum": 15, "default": 10 } }
+        ],
+        "responses": {
+          "200": { "description": "Club plus a question set without answers.", "content": { "application/json": { "schema": { "type": "object", "properties": { "club": { "type": "string" }, "count": { "type": "integer" }, "questions": { "type": "array", "items": { "$ref": "#/components/schemas/HubQuestion" } } } } } } },
+          "400": { "description": "Invalid club.", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } },
+          "429": { "description": "Rate limit exceeded.", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+        }
+      }
+    },
+    "/api/public-quiz/attempts": {
+      "post": {
+        "summary": "Start or submit a quiz attempt",
+        "description": "action=start persists a shuffled draw and returns it (no answers); action=submit scores server-side and returns the result. Rate limited per IP.",
+        "operationId": "postQuizAttempt",
+        "tags": ["Bible Quiz"],
+        "requestBody": {
+          "required": true,
+          "content": { "application/json": { "schema": { "$ref": "#/components/schemas/QuizAttemptRequest" } } }
+        },
+        "responses": {
+          "200": { "description": "Started draw (action=start) or scored result (action=submit).", "content": { "application/json": { "schema": { "type": "object" } } } },
+          "400": { "description": "Missing/unknown action or invalid inputs.", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } },
+          "404": { "description": "Attempt not found.", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } },
+          "429": { "description": "Rate limit exceeded.", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+        }
+      }
+    },
+    "/api/public-quiz/logs": {
+      "get": {
+        "summary": "Club board for the current round",
+        "description": "One club's top-5 board and recent attempts for the current weekly round.",
+        "operationId": "getQuizLogs",
+        "tags": ["Bible Quiz"],
+        "parameters": [
+          { "name": "club", "in": "query", "required": true, "description": "Club slug.", "schema": { "type": "string", "enum": ["sprout", "surge", "pulse", "prime", "anchor"] } }
+        ],
+        "responses": {
+          "200": { "description": "Club plus its board (top-5 rows + recent attempts).", "content": { "application/json": { "schema": { "type": "object" } } } },
+          "400": { "description": "Invalid club.", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } },
+          "429": { "description": "Rate limit exceeded.", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+        }
+      }
+    },
+    "/api/public-quiz/overview": {
+      "get": {
+        "summary": "Season-wide top 5",
+        "description": "The best scores across all five clubs this season.",
+        "operationId": "getQuizOverview",
+        "tags": ["Bible Quiz"],
+        "responses": {
+          "200": { "description": "Season overview with ranked rows.", "content": { "application/json": { "schema": { "type": "object" } } } },
+          "429": { "description": "Rate limit exceeded.", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+        }
+      }
     }
   },
   "components": {
@@ -358,6 +421,39 @@
           "chapter": { "type": "integer" },
           "question": { "type": "string" },
           "options": { "type": "array", "items": { "type": "string" } }
+        }
+      },
+      "HubQuestion": {
+        "type": "object",
+        "description": "A public hub quiz question — no answer key.",
+        "properties": {
+          "id": { "type": "string" },
+          "book": { "type": "string" },
+          "bookLabel": { "type": "string" },
+          "text": { "type": "string" },
+          "options": { "type": "array", "items": { "type": "string" } }
+        }
+      },
+      "QuizAttemptRequest": {
+        "type": "object",
+        "description": "Start or submit a public quiz attempt.",
+        "properties": {
+          "action": { "type": "string", "enum": ["start", "submit"] },
+          "club": { "type": "string" },
+          "name": { "type": "string" },
+          "count": { "type": "integer" },
+          "attemptId": { "type": "string" },
+          "answers": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "questionId": { "type": "string" },
+                "selected": { "type": "integer" }
+              }
+            }
+          },
+          "durationMs": { "type": "integer" }
         }
       },
       "PlanSection": {

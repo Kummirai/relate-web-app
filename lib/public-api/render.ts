@@ -30,8 +30,9 @@ export function publicJson(
     "Cache-Control",
     `public, max-age=${maxAge}, stale-while-revalidate=${DEFAULT_STALE}`,
   );
+  h.set("Cache-Control", "no-store");
   h.set("Access-Control-Allow-Origin", "*");
-  h.set("Access-Control-Allow-Methods", "GET, OPTIONS");
+  h.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
   h.set("Access-Control-Allow-Headers", "Content-Type");
   h.set("Access-Control-Expose-Headers", "X-RateLimit-Remaining, X-RateLimit-Reset");
   for (const [key, value] of Object.entries(headers)) h.set(key, value);
@@ -66,7 +67,7 @@ export function publicOptions(): Response {
     status: 204,
     headers: {
       "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET, OPTIONS",
+      "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
       "Access-Control-Allow-Headers": "Content-Type",
       "Access-Control-Max-Age": "86400",
     },

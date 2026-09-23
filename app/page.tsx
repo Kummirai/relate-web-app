@@ -29,7 +29,7 @@ const sections = [
 ] as const;
 
 type Endpoint = {
-  method: "GET";
+  method: "GET" | "POST";
   path: string;
   title: string;
   description: string;
@@ -81,6 +81,39 @@ const endpointGroups: { name: string; endpoints: Endpoint[] }[] = [
       },
     ],
   },
+  {
+    name: "Bible Quiz",
+    endpoints: [
+      {
+        method: "GET",
+        path: "/api/public-quiz/questions",
+        title: "Question draw",
+        description:
+          "A fresh shuffled question set for a club — the hub season, Genesis 1–25. Answer keys are never sent; scoring happens on submit.",
+      },
+      {
+        method: "POST",
+        path: "/api/public-quiz/attempts",
+        title: "Start or submit an attempt",
+        description:
+          "action=start persists a shuffled draw and returns it (no answers); action=submit scores it server-side and returns the result. Rate limited per IP.",
+      },
+      {
+        method: "GET",
+        path: "/api/public-quiz/logs",
+        title: "Club board",
+        description:
+          "One club's top-5 board and recent attempts for the current weekly round.",
+      },
+      {
+        method: "GET",
+        path: "/api/public-quiz/overview",
+        title: "Season overview",
+        description:
+          "The best scores across all five clubs this season.",
+      },
+    ],
+  },
 ];
 
 const queryParams: { endpoint: string; params: { name: string; type: string; description: string }[] }[] = [
@@ -100,6 +133,17 @@ const queryParams: { endpoint: string; params: { name: string; type: string; des
       { name: "tag", type: "string", description: "Club tag (defaults to RELATE, e.g. ANCHOR, SPROUT-KIDS)." },
       { name: "date", type: "string", description: "YYYY-MM-DD — the day to resolve (defaults to today)." },
     ],
+  },
+  {
+    endpoint: "GET /api/public-quiz/questions",
+    params: [
+      { name: "club", type: "string", description: "Club slug: sprout, surge, pulse, prime or anchor." },
+      { name: "count", type: "number", description: "Question count, 5–15 (default 10)." },
+    ],
+  },
+  {
+    endpoint: "GET /api/public-quiz/logs",
+    params: [{ name: "club", type: "string", description: "Club slug: sprout, surge, pulse, prime or anchor." }],
   },
 ];
 
@@ -212,8 +256,9 @@ export default function DeveloperApiPage() {
           </h1>
           <p className="mx-auto max-w-xl text-gray-500">
             Free, key-less access to Relate World&apos;s magazines, bulletins
-            and Bible reading plans — every endpoint is read-only and safe for
-            any app, site or community tool.
+            and Bible reading plans — plus the public Bible Quiz. Reads are
+            cached and safe for any app, site or community tool; quiz attempts
+            are rate-limited per IP.
           </p>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
             <Link
@@ -345,7 +390,8 @@ export default function DeveloperApiPage() {
                   Endpoints
                 </h2>
                 <p className="text-sm text-gray-500">
-                  Five read-only endpoints across two feature groups.
+                  Nine endpoints across three feature groups — reads are
+                  cached, quiz attempts are rate-limited per IP.
                 </p>
               </header>
 
