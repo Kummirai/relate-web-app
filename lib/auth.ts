@@ -3,7 +3,7 @@ import { mongodbAdapter } from "better-auth/adapters/mongodb";
 import { expo } from "@better-auth/expo";
 import { client, getDb } from "@/lib/mongodb";
 import { nextCookies } from "better-auth/next-js";
-import { admin } from "better-auth/plugins";
+import { admin, oAuthProxy } from "better-auth/plugins";
 import { createAuthMiddleware } from "@better-auth/core/api";
 import { randomBytes } from "node:crypto";
 
@@ -151,6 +151,19 @@ export const auth = betterAuth({
       defaultRole: "user",
       adminRole: "admin",
       adminEmails: ["ajaxmilton@hotmail.com"],
+    }),
+    // Cross-origin OAuth for the web app. relateworld.org proxies /api/* to
+    // this server, so the oauth `state` cookie is only ever issued on the web
+    // origin while Google/GitHub redirect_uri stays here. Without this plugin
+    // the browser lands back on this origin for the callback, where the state
+    // cookie (host-only on the web origin) is missing => state_mismatch.
+    // Expo never hits this path: the expo client sends `x-skip-oauth-proxy`.
+    oAuthProxy({
+      currentURL:
+        process.env.WEB_APP_URL ||
+        (process.env.NODE_ENV === "development"
+          ? "http://localhost:3000"
+          : "https://relateworld.org"),
     }),
     webSessionBridge as any,
   ],
