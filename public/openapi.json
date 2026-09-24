@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Relate World Developer API",
-    "description": "Free, key-less access to Relate World's magazines, bulletins, daily reading targets and Bible reading plans (read-only) plus the public Bible Quiz (playable, rate-limited). No auth is required. GET responses are cached (`Cache-Control: public`) and served with open CORS; quiz POSTs are rate-limited per IP. Errors use a consistent `{ \"error\": \"...\" }` shape. Interactive docs: https://relate-iota.vercel.app/api-docs",
+    "description": "Free, key-less access to Relate World's magazines, bulletins, daily reading targets and Bible reading plans (read-only) plus the public Bible Quiz (playable, rate-limited) and the sports club-join registration (POST only). No auth is required. GET responses are cached (`Cache-Control: public`) and served with open CORS; quiz and club-join POSTs are rate-limited per IP. Errors use a consistent `{ \"error\": \"...\" }` shape. Interactive docs: https://relate-iota.vercel.app/api-docs",
     "version": "1.0.0"
   },
   "servers": [
@@ -331,6 +331,23 @@
           "429": { "description": "Rate limit exceeded.", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
         }
       }
+    },
+    "/api/club-join": {
+      "post": {
+        "summary": "Submit a club-join application",
+        "description": "Registers a person for a Relate sports club/team with their lifestyle and conduct declaration. Stores the application as pending_interview for the chaplaincy team. Rate limited per IP.",
+        "operationId": "postClubJoin",
+        "tags": ["Club Joining"],
+        "requestBody": {
+          "required": true,
+          "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ClubJoinRequest" } } }
+        },
+        "responses": {
+          "201": { "description": "Application stored.", "content": { "application/json": { "schema": { "type": "object", "properties": { "id": { "type": "string", "description": "Application reference." }, "status": { "type": "string", "const": "pending_interview" }, "nextSteps": { "type": "string" } } } } } },
+          "400": { "description": "Invalid or missing fields.", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } },
+          "429": { "description": "Rate limit exceeded.", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+        }
+      }
     }
   },
   "components": {
@@ -340,6 +357,41 @@
         "required": ["error"],
         "properties": {
           "error": { "type": "string" }
+        }
+      },
+      "ClubJoinRequest": {
+        "type": "object",
+        "required": ["clubSlug", "name", "age", "phone", "conduct", "commitmentAccepted"],
+        "properties": {
+          "clubSlug": { "type": "string", "enum": ["sprout-kids", "sprout-tweens", "sprout-teens", "surge", "pulse"] },
+          "clubName": { "type": "string" },
+          "teamId": { "type": "string" },
+          "teamName": { "type": "string" },
+          "sport": { "type": "string", "enum": ["Football", "Netball", "Volleyball"] },
+          "name": { "type": "string" },
+          "age": { "type": "integer", "minimum": 6, "maximum": 99 },
+          "gender": { "type": "string" },
+          "phone": { "type": "string", "description": "Phone or WhatsApp number." },
+          "area": { "type": "string" },
+          "guardian": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "phone": { "type": "string" }
+            },
+            "description": "Required when age < 18."
+          },
+          "conduct": {
+            "type": "object",
+            "required": ["alcohol", "smoking", "drugs"],
+            "properties": {
+              "alcohol": { "type": "string", "enum": ["yes", "no"] },
+              "smoking": { "type": "string", "enum": ["yes", "no"] },
+              "drugs": { "type": "string", "enum": ["yes", "no"] },
+              "sexualActivity": { "type": "string", "enum": ["yes", "no"], "description": "Required for surge and pulse clubs." }
+            }
+          },
+          "commitmentAccepted": { "type": "boolean" }
         }
       },
       "Season": {
