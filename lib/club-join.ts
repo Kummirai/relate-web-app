@@ -77,6 +77,7 @@ export type ClubJoinInput = {
     sexualActivity?: "yes" | "no";
   };
   commitmentAccepted: boolean;
+  clubGatheringAccepted?: boolean;
 };
 
 export function cleanText(value: unknown, max = 120): string {
@@ -194,6 +195,9 @@ export async function createClubJoinApplication(
       ...(requiresSexualConduct ? { sexualActivity } : {}),
     },
     commitmentAccepted,
+    ...(input.clubGatheringAccepted === true
+      ? { clubGatheringAccepted: true }
+      : {}),
     status: "pending_interview",
     createdAt: new Date(),
     updatedAt: new Date(),
