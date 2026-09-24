@@ -9,6 +9,8 @@ import {
   publicTooMany,
 } from "@/lib/public-api/render";
 import { createClubJoinApplication, type ClubJoinInput } from "@/lib/club-join";
+import { getDb } from "@/lib/mongodb";
+import { notifyAdmins } from "@/lib/inapp-notify";
 
 function errorStatus(e: any): number {
   return typeof e?.status === "number" ? e.status : 500;
@@ -29,6 +31,20 @@ export async function POST(request: NextRequest) {
     const body = (await request.json().catch(() => ({}))) as ClubJoinInput;
 
     const created = await createClubJoinApplication(body);
+
+    // Let the chaplaincy team know a new application landed. Best-effort:
+    // never block the applicant on notification delivery.
+    getDb()
+      .then((db) =>
+        notifyAdmins(db, {
+          type: "club_join",
+          title: "New club-join application",
+          body: `${body.name} applied for a Relate sports team.`,
+          data: { applicationId: created.id },
+        }),
+      )
+      .catch((e) => console.error("[club-join] notifyAdmins failed:", e));
+
     return publicJson(
       created,
       { maxAge: 0, headers: rateLimitHeaders(rl) },
