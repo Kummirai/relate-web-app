@@ -58,8 +58,19 @@ export async function POST(request: NextRequest) {
   if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   if (!SUPABASE_URL || !SERVICE_ROLE_KEY) {
+    // Name the missing variable (never its value) so this is diagnosable from
+    // the browser instead of guesswork. On Vercel a newly added env var only
+    // reaches the app after a redeploy — check that before assuming a typo.
+    const missing = [
+      !SUPABASE_URL ? "NEXT_PUBLIC_SUPABASE_URL" : null,
+      !SERVICE_ROLE_KEY ? "SUPABASE_SERVICE_ROLE_KEY" : null,
+    ].filter(Boolean);
+    console.error("[uploads] storage not configured; missing:", missing.join(", "));
     return NextResponse.json(
-      { error: "Supabase storage is not configured on the server." },
+      {
+        error: `Supabase storage is not configured on the server (missing ${missing.join(", ")}).`,
+        missing,
+      },
       { status: 503 },
     );
   }
