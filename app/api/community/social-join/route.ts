@@ -122,6 +122,16 @@ export async function GET(request: NextRequest) {
       // Admin: list all (optionally filtered by status)
       const query: Record<string, string> = {};
       if (status) query.status = status;
+
+      // The dashboard sidebar polls for a pending-queue badge; countOnly skips
+      // the find and returns just the total.
+      if (request.nextUrl.searchParams.get("countOnly") === "1") {
+        const count = await db
+          .collection("community_social_joins")
+          .countDocuments(query);
+        return NextResponse.json({ count });
+      }
+
       const joins = await db
         .collection("community_social_joins")
         .find(query)

@@ -32,9 +32,18 @@ export async function GET(request: NextRequest) {
     }
 
     const db = await getDb();
+    const filter = status === "all" ? {} : { status };
+
+    // The dashboard sidebar polls for a pending-queue badge; countOnly skips
+    // the find and returns just the total.
+    if (request.nextUrl.searchParams.get("countOnly") === "1") {
+      const count = await db.collection("club_join_applications").countDocuments(filter);
+      return NextResponse.json({ count });
+    }
+
     const documents = await db
       .collection("club_join_applications")
-      .find(status === "all" ? {} : { status })
+      .find(filter)
       .sort({ createdAt: -1 })
       .limit(200)
       .toArray();

@@ -1,12 +1,31 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getDb } from "@/lib/mongodb";
+import { requireAdmin, resolveSession } from "@/lib/community-auth";
+
+/**
+ * Study progress.
+ *
+ * Progress is personal, so the caller must be signed in and may only touch their
+ * own rows. Admins may read another member's progress via ?userId=.
+ */
 
 export async function GET(request: NextRequest) {
   try {
-    const userId = request.nextUrl.searchParams.get("userId");
-    if (!userId) {
-      return NextResponse.json({ data: [] });
+    const session = await resolveSession(request);
+    if (!session) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
+
+    const requested = request.nextUrl.searchParams.get("userId");
+    let userId = session.id;
+    if (requested && requested !== session.id) {
+      const admin = await requireAdmin(request);
+      if (!admin) {
+        return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
+      }
+      userId = requested;
+    }
+
     const db = await getDb();
     const progress = await db
       .collection("user_study_progress")
@@ -21,13 +40,21 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
+    const session = await resolveSession(request);
+    if (!session) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
     const db = await getDb();
     const data = await request.json();
-    const { userId, slug, title, completedLessons, totalLessons } = data;
+    const { slug, title, completedLessons, totalLessons } = data;
 
-    if (!userId || !slug) {
-      return NextResponse.json({ error: "userId and slug are required" }, { status: 400 });
+    if (!slug) {
+      return NextResponse.json({ error: "slug is required" }, { status: 400 });
     }
+
+    // Writes always land on the caller's own row, whatever userId was sent.
+    const userId = session.id;
 
     await db
       .collection("user_study_progress")

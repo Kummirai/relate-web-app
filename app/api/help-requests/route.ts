@@ -36,6 +36,13 @@ export async function GET(request: NextRequest) {
     const rawLimit = Number(searchParams.get("limit")) || 200;
     const limit = Math.min(Math.max(rawLimit, 1), 500);
 
+    // The dashboard sidebar polls for a pending-queue badge; countOnly skips
+    // the aggregation and returns just the total.
+    if (searchParams.get("countOnly") === "1") {
+      const count = await db.collection("help_requests").countDocuments(filter);
+      return NextResponse.json({ count });
+    }
+
     // Sort by urgency first (Urgent > This week > Not urgent > unset), then newest first.
     // List responses only carry the last chat message per request — the full thread is
     // fetched from /api/help-requests/[id] when a detail is opened.

@@ -31,8 +31,14 @@ export async function GET(request: NextRequest) {
 
     const db = await getDb();
     await ensurePublicationIndexes();
-    const items = await db
-      .collection("publications")
+    const col = db.collection("publications");
+
+    if (searchParams.get("countOnly") === "1") {
+      const count = await col.countDocuments(query);
+      return NextResponse.json({ count });
+    }
+
+    const items = await col
       .find(query)
       .sort({ updatedAt: -1 })
       .project({ weeks: 0, intro: 0 })

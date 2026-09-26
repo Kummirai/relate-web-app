@@ -1,17 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getDb } from "@/lib/mongodb";
 import { ObjectId } from "mongodb";
-import { resolveUser } from "@/lib/community-auth";
+import { getDb } from "@/lib/mongodb";
 import { ensureFamilyRecordIndexes } from "@/lib/models";
-
-async function requireAdmin(request: NextRequest) {
-  const userId = await resolveUser(request);
-  if (!userId) return null;
-  const db = await getDb();
-  const user = await db.collection("user").findOne({ _id: new ObjectId(userId) });
-  if (!user || user.role !== "admin") return null;
-  return userId;
-}
+import { requireAdmin } from "@/lib/community-auth";
 
 export async function GET(request: NextRequest) {
   try {
@@ -104,10 +95,13 @@ export async function DELETE(request: NextRequest) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const db = await getDb();
     const { id } = await request.json();
+    if (!id || !ObjectId.isValid(String(id))) {
+      return NextResponse.json({ error: "Invalid ID format" }, { status: 400 });
+    }
 
-    await db.collection("familyrecords").deleteOne({ _id: new ObjectId(id) });
+    const db = await getDb();
+    await db.collection("familyrecords").deleteOne({ _id: new ObjectId(String(id)) });
     return NextResponse.json({ success: true });
   } catch (error) {
     return NextResponse.json(
@@ -124,9 +118,12 @@ export async function PUT(request: NextRequest) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const db = await getDb();
     const { id, ...data } = await request.json();
+    if (!id || !ObjectId.isValid(String(id))) {
+      return NextResponse.json({ error: "Invalid ID format" }, { status: 400 });
+    }
 
+    const db = await getDb();
     data.updatedAt = new Date();
     if (data.caseClosedDate) {
       data.status = "Closed";
@@ -135,7 +132,7 @@ export async function PUT(request: NextRequest) {
     const result = await db
       .collection("familyrecords")
       .updateOne(
-        { _id: new ObjectId(id) },
+        { _id: new ObjectId(String(id)) },
         { $set: data },
       );
     return NextResponse.json({
