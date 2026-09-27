@@ -1,3 +1,4 @@
+import { randomBytes } from "crypto";
 import { getDb } from "./mongodb";
 
 /**
@@ -90,6 +91,46 @@ export type ClubJoinInput = {
   clubGatheringAccepted?: boolean;
 };
 
+/** Unambiguous alphabet — no 0/O/1/I, so references read cleanly. */
+const REF_ALPHABET = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+
+let referenceIndex: Promise<unknown> | null = null;
+
+/** One-time unique index on membership references (legacy rows have none). */
+function ensureReferenceIndex(db: Awaited<ReturnType<typeof getDb>>) {
+  if (!referenceIndex) {
+    referenceIndex = db
+      .collection(CLUB_JOIN_COL)
+      .createIndex(
+        { reference: 1 },
+        { unique: true, partialFilterExpression: { reference: { $exists: true } } },
+      )
+      .catch((e) => {
+        console.error("[club-join] reference index failed:", e?.message);
+      });
+  }
+  return referenceIndex;
+}
+
+/** Club letters + 6 random chars, checked for uniqueness before use. */
+async function makeReference(
+  db: Awaited<ReturnType<typeof getDb>>,
+  clubSlug: string,
+): Promise<string> {
+  const prefix = clubSlug.slice(0, 3).toUpperCase();
+  for (let attempt = 0; attempt < 6; attempt++) {
+    const bytes = randomBytes(6);
+    let suffix = "";
+    for (const b of bytes) suffix += REF_ALPHABET[b % REF_ALPHABET.length];
+    const reference = prefix + suffix;
+    const taken = await db
+      .collection(CLUB_JOIN_COL)
+      .findOne({ reference }, { projection: { _id: 1 } });
+    if (!taken) return reference;
+  }
+  throw httpError(500, "Could not allocate a unique reference — try again.");
+}
+
 export function cleanText(value: unknown, max = 120): string {
   return String(value ?? "").trim().replace(/\s+/g, " ").slice(0, max);
 }
@@ -112,7 +153,7 @@ function httpError(status: number, message: string) {
 /** Validate + persist a club-join application. Throws 400 with a clear message on bad input. */
 export async function createClubJoinApplication(
   input: ClubJoinInput,
-): Promise<{ id: string; status: string; nextSteps: string }> {
+): Promise<{ id: string; reference: string; status: string; nextSteps: string }> {
   const clubSlug = cleanText(input.clubSlug, 40).toLowerCase();
   if (!VALID_CLUBS.includes(clubSlug))
     throw httpError(400, "Pick a valid club to join.");
@@ -184,7 +225,12 @@ export async function createClubJoinApplication(
       "Please accept the commitment to Relate's community standards.",
     );
 
+  const db = await getDb();
+  await ensureReferenceIndex(db);
+  const reference = await makeReference(db, clubSlug);
+
   const doc = {
+    reference,
     clubSlug,
     clubName: cleanText(input.clubName, 80) || clubSlug,
     ...(teamId ? { teamId, teamName: cleanText(input.teamName, 80) || undefined, sport } : {}),
@@ -215,11 +261,11 @@ export async function createClubJoinApplication(
     updatedAt: new Date(),
   };
 
-  const db = await getDb();
   const inserted = await db.collection(CLUB_JOIN_COL).insertOne(doc);
 
   return {
     id: inserted.insertedId.toString(),
+    reference,
     status: "active",
     nextSteps:
       "You're a member — your membership is active right away. Keep your reference; your leader can look you up by it.",
