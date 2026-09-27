@@ -93,12 +93,15 @@ export type ClubJoinInput = {
   clubGatheringAccepted?: boolean;
 };
 
-/** Unambiguous alphabet — no 0/O/1/I, so references read cleanly. */
+/** Unambiguous alphabet — no 0/O/1/I, so IDs read cleanly. All caps. */
 const REF_ALPHABET = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+
+/** Every membership ID is exactly this many characters long. */
+const REF_LENGTH = 8;
 
 let referenceIndex: Promise<unknown> | null = null;
 
-/** One-time unique index on membership references (legacy rows have none). */
+/** One-time unique index on membership IDs (legacy rows have none). */
 function ensureReferenceIndex(db: Awaited<ReturnType<typeof getDb>>) {
   if (!referenceIndex) {
     referenceIndex = db
@@ -114,14 +117,18 @@ function ensureReferenceIndex(db: Awaited<ReturnType<typeof getDb>>) {
   return referenceIndex;
 }
 
-/** Club letters + 6 random chars, checked for uniqueness before use. */
+/**
+ * Club letters + random characters — 8 in total, all caps, checked for
+ * uniqueness before use (e.g. SUR5K2MQ).
+ */
 async function makeReference(
   db: Awaited<ReturnType<typeof getDb>>,
   clubSlug: string,
 ): Promise<string> {
   const prefix = clubSlug.slice(0, 3).toUpperCase();
+  const suffixLength = Math.max(1, REF_LENGTH - prefix.length);
   for (let attempt = 0; attempt < 6; attempt++) {
-    const bytes = randomBytes(6);
+    const bytes = randomBytes(suffixLength);
     let suffix = "";
     for (const b of bytes) suffix += REF_ALPHABET[b % REF_ALPHABET.length];
     const reference = prefix + suffix;
@@ -130,7 +137,7 @@ async function makeReference(
       .findOne({ reference }, { projection: { _id: 1 } });
     if (!taken) return reference;
   }
-  throw httpError(500, "Could not allocate a unique reference — try again.");
+  throw httpError(500, "Could not allocate a unique membership ID — try again.");
 }
 
 export function cleanText(value: unknown, max = 120): string {
@@ -271,6 +278,6 @@ export async function createClubJoinApplication(
     reference,
     status: "active",
     nextSteps:
-      "You're a member — your membership is active right away. Keep your reference; your leader can look you up by it.",
+      "You're a member — your membership is active right away. Keep your membership ID; your leader can look you up by it.",
   };
 }
