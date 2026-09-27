@@ -88,6 +88,8 @@ export type ClubJoinInput = {
     sexualActivity?: "yes" | "no";
   };
   commitmentAccepted: boolean;
+  /** Authenticated account that submitted the join — stamped by the route. */
+  userId?: string;
   clubGatheringAccepted?: boolean;
 };
 
@@ -231,6 +233,7 @@ export async function createClubJoinApplication(
 
   const doc = {
     reference,
+    ...(input.userId ? { userId: input.userId } : {}),
     clubSlug,
     clubName: cleanText(input.clubName, 80) || clubSlug,
     ...(teamId ? { teamId, teamName: cleanText(input.teamName, 80) || undefined, sport } : {}),

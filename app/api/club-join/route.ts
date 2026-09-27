@@ -9,6 +9,7 @@ import {
   publicTooMany,
 } from "@/lib/public-api/render";
 import { createClubJoinApplication, type ClubJoinInput } from "@/lib/club-join";
+import { resolveUser } from "@/lib/community-auth";
 import { getDb } from "@/lib/mongodb";
 import { notifyAdmins } from "@/lib/inapp-notify";
 
@@ -20,6 +21,7 @@ function errorStatus(e: any): number {
  * POST /api/club-join
  *   { clubSlug, name, age, phone, conduct: { alcohol, smoking, drugs, sexualActivity? }, commitmentAccepted, ... }
  *   → stores an active membership record (no approval step).
+ *   Requires a signed-in account; the session user is stamped on the record.
  */
 export async function POST(request: NextRequest) {
   try {
@@ -28,9 +30,17 @@ export async function POST(request: NextRequest) {
       return publicTooMany();
     }
 
+    const userId = await resolveUser(request);
+    if (!userId) {
+      return publicJson(
+        { error: "Sign in to join a club or team." },
+        { status: 401, maxAge: 0 },
+      );
+    }
+
     const body = (await request.json().catch(() => ({}))) as ClubJoinInput;
 
-    const created = await createClubJoinApplication(body);
+    const created = await createClubJoinApplication({ ...body, userId });
 
     // Let the chaplaincy team know a new application landed. Best-effort:
     // never block the applicant on notification delivery.
