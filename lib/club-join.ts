@@ -40,7 +40,7 @@ const CLUB_AGE_RANGES: Record<string, { min: number; max: number }> = {
 // Valid team ids per club (mirrors the site's SPORTS_TEAMS). Optional — a
 // member registers for the club first and picks a team when joining a squad.
 // Volleyball runs at Surge and Pulse only.
-const CLUB_TEAMS: Record<string, Record<string, string>> = {
+export const CLUB_TEAMS: Record<string, Record<string, string>> = {
   "sprout-kids": {
     "sk-fc": "Football",
     "sk-netball": "Netball",
