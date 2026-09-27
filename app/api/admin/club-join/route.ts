@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { getDb } from "@/lib/mongodb";
 import { requireAdmin } from "@/lib/community-auth";
 
-const STATUSES = ["pending_interview", "accepted", "rejected"] as const;
+const STATUSES = ["active", "pending_interview", "accepted", "rejected"] as const;
 const VALID_STATUS_FILTERS = [...STATUSES, "all"] as const;
 
 function formatDoc(doc: any) {
@@ -10,10 +10,12 @@ function formatDoc(doc: any) {
 }
 
 /**
- * Admin club-join review — view registrations and decide accept/reject.
+ * Admin member list — registrations for every club and squad. Joins are
+ * active on submission (no approval); the older statuses remain filterable
+ * for records made before approval was removed.
  *
- *  GET /api/admin/club-join?status=pending_interview
- *     Lists applications (newest first), optionally filtered by status.
+ *  GET /api/admin/club-join?status=active
+ *     Lists registrations (newest first), optionally filtered by status.
  *     Admin only.
  */
 export async function GET(request: NextRequest) {
@@ -26,7 +28,7 @@ export async function GET(request: NextRequest) {
     const status = request.nextUrl.searchParams.get("status") ?? "all";
     if (!(VALID_STATUS_FILTERS as readonly string[]).includes(status)) {
       return NextResponse.json(
-        { error: 'status must be "all", "pending_interview", "accepted" or "rejected"' },
+        { error: 'status must be "all", "active", "pending_interview", "accepted" or "rejected"' },
         { status: 400 },
       );
     }

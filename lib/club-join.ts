@@ -1,10 +1,10 @@
 import { getDb } from "./mongodb";
 
 /**
- * Club-join applications — a public registration form for young people and
- * families joining a Relate sports club/team. Applications are stored for the
- * chaplaincy team to review; every new member is interviewed by a chaplain and
- * then accepted or guided on next steps (no one is auto-accepted).
+ * Club-join registrations — the public form for young people and families
+ * joining a Relate club (and optionally a squad). A valid submission is a
+ * membership: the record is created active straight away, with no approval
+ * step, and the member can see it on their membership page right away.
  */
 
 const CLUB_JOIN_COL = "club_join_applications";
@@ -210,7 +210,7 @@ export async function createClubJoinApplication(
     ...(input.clubGatheringAccepted === true
       ? { clubGatheringAccepted: true }
       : {}),
-    status: "pending_interview",
+    status: "active",
     createdAt: new Date(),
     updatedAt: new Date(),
   };
@@ -220,8 +220,8 @@ export async function createClubJoinApplication(
 
   return {
     id: inserted.insertedId.toString(),
-    status: "pending_interview",
+    status: "active",
     nextSteps:
-      "A chaplain will contact you for a short interview before your place is confirmed. Your application reference is above.",
+      "You're a member — your membership is active right away. Keep your reference; your leader can look you up by it.",
   };
 }

@@ -19,7 +19,7 @@ function errorStatus(e: any): number {
 /**
  * POST /api/club-join
  *   { clubSlug, name, age, phone, conduct: { alcohol, smoking, drugs, sexualActivity? }, commitmentAccepted, ... }
- *   → stores the application as pending_interview for the chaplaincy team.
+ *   → stores an active membership record (no approval step).
  */
 export async function POST(request: NextRequest) {
   try {
@@ -38,8 +38,8 @@ export async function POST(request: NextRequest) {
       .then((db) =>
         notifyAdmins(db, {
           type: "club_join",
-          title: "New club-join application",
-          body: `${body.name} registered for ${body.clubName || body.clubSlug}.`,
+          title: "New member joined",
+          body: `${body.name} joined ${body.clubName || body.clubSlug}${body.teamName ? ` — ${body.teamName}` : ""}.`,
           data: { applicationId: created.id },
         }),
       )
