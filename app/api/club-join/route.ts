@@ -39,7 +39,7 @@ export async function POST(request: NextRequest) {
         notifyAdmins(db, {
           type: "club_join",
           title: "New club-join application",
-          body: `${body.name} applied for a Relate sports team.`,
+          body: `${body.name} registered for ${body.clubName || body.clubSlug}.`,
           data: { applicationId: created.id },
         }),
       )

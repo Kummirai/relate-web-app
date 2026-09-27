@@ -9,19 +9,26 @@ import { getDb } from "./mongodb";
 
 const CLUB_JOIN_COL = "club_join_applications";
 
-// Clubs that have sports teams on the site — the registration form is scoped here.
+// Every club on the site can be registered for; sports teams are optional.
 const VALID_CLUBS = [
+  "sprout",
+  "surge",
+  "pulse",
+  "prime",
+  "anchor",
+  "base",
+  "nexus",
   "sprout-kids",
   "sprout-tweens",
   "sprout-teens",
-  "surge",
-  "pulse",
 ];
 
 const VALID_SPORTS = ["Football", "Netball", "Volleyball"];
 
 // Age band per club — applicants must sit inside their chosen club's band.
 const CLUB_AGE_RANGES: Record<string, { min: number; max: number }> = {
+  sprout: { min: 6, max: 15 },
+  prime: { min: 33, max: 99 },
   "sprout-kids": { min: 6, max: 8 },
   "sprout-tweens": { min: 9, max: 11 },
   "sprout-teens": { min: 12, max: 15 },
@@ -29,7 +36,8 @@ const CLUB_AGE_RANGES: Record<string, { min: number; max: number }> = {
   pulse: { min: 21, max: 33 },
 };
 
-// Valid team ids per club (mirrors the site's SPORTS_TEAMS). A team is required.
+// Valid team ids per club (mirrors the site's SPORTS_TEAMS). Optional — a
+// member registers for the club first and picks a team when joining a squad.
 const CLUB_TEAMS: Record<string, Record<string, string>> = {
   "sprout-kids": {
     "sk-fc": "Football",
@@ -68,6 +76,8 @@ export type ClubJoinInput = {
   gender: string;
   phone: string;
   area?: string;
+  /** What the member wants to take part in — saved on the membership record. */
+  interests?: string[];
   guardian?: { name: string; phone: string };
   parentConsent?: boolean;
   conduct: {
@@ -108,9 +118,9 @@ export async function createClubJoinApplication(
     throw httpError(400, "Pick a valid club to join.");
 
   const teamId = cleanText(input.teamId, 40);
-  const sport = CLUB_TEAMS[clubSlug]?.[teamId];
-  if (!sport)
-    throw httpError(400, "Choose a valid team for your club — a team is required.");
+  const sport = teamId ? CLUB_TEAMS[clubSlug]?.[teamId] : undefined;
+  if (teamId && !sport)
+    throw httpError(400, "Choose a valid team for your club.");
 
   const name = cleanText(input.name, 80);
   if (!name) throw httpError(400, "Enter your full name.");
@@ -177,14 +187,16 @@ export async function createClubJoinApplication(
   const doc = {
     clubSlug,
     clubName: cleanText(input.clubName, 80) || clubSlug,
-    teamId,
-    teamName: cleanText(input.teamName, 80) || undefined,
-    sport,
+    ...(teamId ? { teamId, teamName: cleanText(input.teamName, 80) || undefined, sport } : {}),
     name,
     age,
     gender,
     phone,
     area: cleanText(input.area, 80) || undefined,
+    interests: (Array.isArray(input.interests) ? input.interests : [])
+      .map((i) => cleanText(i, 40))
+      .filter(Boolean)
+      .slice(0, 12),
     guardian:
       isMinor ? { name: guardianName, phone: guardianPhone } : undefined,
     parentConsent: isMinor ? true : undefined,
