@@ -175,6 +175,12 @@ export async function ensureIndexes(db: any) {
       // Club chat messages — newest-first per channel, ordered pagination
       db.collection("club_chat_messages").createIndex({ clubSlug: 1, createdAt: -1 }),
       db.collection("club_chat_messages").createIndex({ userId: 1, createdAt: -1 }),
+      // Camp registrations — one open sign-up per account × edition, newest first
+      db.collection("camp_registrations").createIndex({ userId: 1, campSlug: 1, edition: 1 }),
+      db.collection("camp_registrations").createIndex({ createdAt: -1 }),
+      // Sprout honor progress — one record per account × honor
+      db.collection("honor_progress").createIndex({ userId: 1, badgeId: 1 }, { unique: true }),
+      db.collection("honor_progress").createIndex({ userId: 1, status: 1, updatedAt: -1 }),
     ]);
   } catch {}
 }
