@@ -86,19 +86,20 @@ export async function GET(request: NextRequest) {
     const userIds = Array.from(
       new Set(docs.map((d: any) => String(d.userId ?? ""))).values(),
     ).filter(Boolean);
-    const users = userIds.length
+    const users: any[] = userIds.length
       ? await db
           .collection("user")
           .find({ id: { $in: userIds } })
           .project({ id: 1, name: 1, email: 1 })
           .toArray()
       : [];
-    const byId = new Map(
-      users.map((u: any) => [String(u.id), u as any]),
-    );
+    const byId: Record<string, { name?: string; email?: string }> = {};
+    for (const u of users) {
+      byId[String(u.id)] = { name: u.name, email: u.email };
+    }
 
     const data: Row[] = docs.map((doc: any) => {
-      const user = byId.get(String(doc.userId)) ?? {};
+      const user = byId[String(doc.userId)] ?? {};
       const savings = doc.savings ?? {};
       return {
         userId: String(doc.userId ?? ""),
