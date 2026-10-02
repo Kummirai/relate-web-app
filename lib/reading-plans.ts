@@ -3,12 +3,12 @@
  *
  * Canonical fallback is the static catalog (mirrors web_app/constants/
  * readingPlans.ts) plus derived 5-chapter sections, so the endpoint works with
- * zero configuration. When Supabase is configured (reading_plans +
- * plan_sections tables), authored plans/sections are layered on top as the
+ * zero configuration. Authored plans live in MongoDB (`reading_plans`
+ * collection, written by the admin CRUD API) and are layered on top as the
  * live source of truth — the same merge the website performs client-side.
  */
 
-import { fetchRows, isPublicSupabaseConfigured } from "@/lib/supabase-public";
+import { getDb } from "@/lib/mongodb";
 import { sanitizePublicBlocks } from "@/lib/public-api/render";
 
 export type RelateReadingPlan = {
@@ -21,6 +21,8 @@ export type RelateReadingPlan = {
   days: number;
   gradient: [string, string];
   image: string;
+  /** True when the plan was authored in the admin editor (MongoDB). */
+  authored?: boolean;
 };
 
 export type PublicQuizQuestion = {
@@ -421,7 +423,7 @@ function quizForSection(section: PublicReadingSection): PublicQuizQuestion[] | u
   }));
 }
 
-// ─── Supabase-authored overlay ───────────────────────────────────────────
+// ─── MongoDB-authored overlay ───────────────────────────────────────────
 type AuthoredPlanRow = {
   slug: string;
   title?: string;
@@ -434,24 +436,21 @@ type AuthoredPlanRow = {
   cover?: string;
   gradient?: string[];
   status?: string;
+  sort?: number;
+  sections?: AuthoredSectionDoc[] | null;
 };
 
-type AuthoredSectionRow = {
+type AuthoredSectionDoc = {
   id?: string;
   title?: string;
   book?: string | null;
-  start_ch?: number | null;
-  end_ch?: number | null;
-  verse_text?: string | null;
-  verse_by?: string | null;
+  startCh?: number | null;
+  endCh?: number | null;
+  verseText?: string | null;
+  verseBy?: string | null;
   blocks?: unknown[] | null;
   sort?: number;
 };
-
-const PLAN_SELECT =
-  "slug,title,tagline,description,category,section,days,image,cover,gradient,status";
-const SECTION_SELECT =
-  "id,title,book,start_ch,end_ch,verse_text,verse_by,blocks,sort";
 
 function planFromRow(row: AuthoredPlanRow): RelateReadingPlan {
   const base = getReadingPlan(row.slug);
@@ -468,6 +467,7 @@ function planFromRow(row: AuthoredPlanRow): RelateReadingPlan {
         ? (row.gradient as [string, string])
         : (base?.gradient ?? (["#111827", "#1f2937"] as [string, string])),
     image: row.image ?? row.cover ?? base?.image ?? "",
+    authored: true,
   };
 }
 
@@ -476,16 +476,17 @@ function isPublicPlan(row: AuthoredPlanRow): boolean {
 }
 
 async function listAuthoredPlans(): Promise<RelateReadingPlan[]> {
-  if (!isPublicSupabaseConfigured) return [];
-  const rows = await fetchRows<AuthoredPlanRow>("reading_plans", {
-    select: PLAN_SELECT,
-    order: "days.asc",
-  });
+  const db = await getDb();
+  const rows = await db
+    .collection("reading_plans")
+    .find({})
+    .sort({ sort: 1, days: 1 })
+    .toArray();
   return rows.filter(isPublicPlan).map(planFromRow);
 }
 
-function sectionFromRow(
-  row: AuthoredSectionRow,
+function sectionFromDoc(
+  row: AuthoredSectionDoc,
   planSlug: string,
   fallbackSort: number,
 ): PublicReadingSection {
@@ -495,39 +496,29 @@ function sectionFromRow(
     planSlug,
     title: row.title ?? `Section ${fallbackSort + 1}`,
     book: row.book ?? null,
-    startCh: typeof row.start_ch === "number" ? row.start_ch : null,
-    endCh: typeof row.end_ch === "number" ? row.end_ch : null,
-    verseText: row.verse_text ?? undefined,
-    verseBy: row.verse_by ?? undefined,
+    startCh: typeof row.startCh === "number" ? row.startCh : null,
+    endCh: typeof row.endCh === "number" ? row.endCh : null,
+    verseText: row.verseText ?? undefined,
+    verseBy: row.verseBy ?? undefined,
     blocks: row.blocks ? (sanitizePublicBlocks(row.blocks) as unknown as unknown[]) : undefined,
     sort,
   };
   return section;
 }
 
-async function getAuthoredPlan(
+export async function getAuthoredPlan(
   slug: string,
 ): Promise<{ plan: RelateReadingPlan; sections: PublicReadingSection[] } | null> {
-  if (!isPublicSupabaseConfigured) return null;
-  const [rows, sectionRows] = await Promise.all([
-    fetchRows<AuthoredPlanRow>("reading_plans", {
-      select: PLAN_SELECT,
-      filters: { slug: `eq.${slug}` },
-    }).then((rs) => (rs.length ? rs : null)),
-    fetchRows<AuthoredSectionRow>("plan_sections", {
-      select: SECTION_SELECT,
-      filters: { plan_slug: `eq.${slug}` },
-      order: "sort.asc",
-    }),
-  ]);
-  if (!rows || !isPublicPlan(rows[0])) return null;
+  const db = await getDb();
+  const row = await db.collection("reading_plans").findOne({ slug });
+  if (!row || !isPublicPlan(row)) return null;
 
-  const plan = planFromRow(rows[0]);
-  const derived = sectionRows.length === 0;
-  const sections = derived
+  const plan = planFromRow(row);
+  const docSections = Array.isArray(row.sections) ? row.sections : [];
+  const sections = docSections.length === 0
     ? getPlanSections(plan)
-    : sectionRows.map((r, i) => {
-        const s = sectionFromRow(r, slug, i);
+    : docSections.map((r, i) => {
+        const s = sectionFromDoc(r, slug, i);
         return { ...s, quiz: quizForSection(s) };
       });
   return { plan, sections };
