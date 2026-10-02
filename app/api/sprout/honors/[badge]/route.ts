@@ -17,9 +17,10 @@ import { notifyAdmins } from "@/lib/inapp-notify";
  * Sprout honor progress — /api/sprout/honors/[badge]
  *
  *   GET  → the caller's own record for that honor (or null)
- *   POST → { criteria: boolean[][] } tick off the measurable criteria of each
- *          requirement as they are proven, and/or { deposit: number } to bank
- *          an amount in the honor's piggy bank.
+ *   POST → { enroll: true } open the record so progress can be filled in,
+ *          and/or { criteria: boolean[][] } tick off the measurable criteria
+ *          of each requirement as they are proven, and/or { deposit: number }
+ *          to bank an amount in the honor's piggy bank.
  *
  * One record per account per honor. Every requirement's criteria are ticked →
  * that requirement is proven; all requirements proven → the record flips to
@@ -129,7 +130,8 @@ export async function POST(
     const wantsCriteria =
       body.criteria !== undefined || body.checks !== undefined;
     const wantsDeposit = body.deposit !== undefined;
-    if (!wantsCriteria && !wantsDeposit)
+    const wantsEnroll = body.enroll === true;
+    if (!wantsCriteria && !wantsDeposit && !wantsEnroll)
       return publicBadRequest("Nothing to save.");
 
     const criteria = wantsCriteria ? readTicks(body) : null;
@@ -156,6 +158,8 @@ export async function POST(
       .findOne({ userId: session.id, badgeId });
 
     const now = new Date();
+    /** First touch of the record (enroll or first write) opens it. */
+    const enrolledAt = existing?.enrolledAt ?? now;
 
     const prevSavings = existing?.savings;
     const prevTotal =
@@ -197,6 +201,7 @@ export async function POST(
       status,
       savings,
       completedAt,
+      enrolledAt,
       updatedAt: now,
       ...(existing?._id ? {} : { createdAt: now }),
     };
@@ -210,6 +215,7 @@ export async function POST(
             ...(criteria ? { criteria, checks, status } : {}),
             savings,
             completedAt,
+            enrolledAt,
             updatedAt: now,
           },
           $setOnInsert: { createdAt: now },
