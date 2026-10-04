@@ -25,11 +25,9 @@ export function middleware(request: NextRequest) {
   }
 
   const origin = request.headers.get("origin");
-  const response = origin
-    ? NextResponse.next()
-    : new NextResponse(null, { status: 200 });
 
   if (request.method === "OPTIONS") {
+    const response = new NextResponse(null, { status: 204 });
     if (isAllowedOrigin(origin)) {
       response.headers.set("Access-Control-Allow-Origin", origin === "null" ? "*" : origin);
       response.headers.set("Access-Control-Allow-Methods", "GET, POST, PUT, PATCH, DELETE, OPTIONS");
@@ -39,6 +37,8 @@ export function middleware(request: NextRequest) {
     }
     return response;
   }
+
+  const response = NextResponse.next();
 
   if (isAllowedOrigin(origin)) {
     response.headers.set("Access-Control-Allow-Origin", origin === "null" ? "*" : origin);
