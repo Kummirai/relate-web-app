@@ -37,7 +37,7 @@
             "name": "series",
             "in": "query",
             "required": false,
-            "description": "Series name (Relate, Rooted, Footsteps, Hearth).",
+            "description": "Series name (Relate, Rooted, Footsteps).",
             "schema": { "type": "string" }
           },
           {

@@ -549,7 +549,7 @@ export function formatShortRange(startISO: string, endISO: string): string {
   return `${s} – ${e}`;
 }
 
-/** Human label for a magazine card, e.g. "Rooted 2026" / "Hearth Bulletin". */
+/** Human label for a magazine card, e.g. "Rooted 2026" / "Anchor Bulletin". */
 export function magazineHeading(pub: PublicationDoc): string {
   if (pub.kind === "bulletin") return pub.title;
   return pub.series ? `${pub.series} ${pub.year}` : pub.title;

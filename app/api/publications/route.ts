@@ -19,7 +19,7 @@ import { clientIp } from "@/lib/public-api/request";
  *   ?club=sprout-kids  filter by club (bulletins matching clubSlug + magazines
  *                      carrying the club tag); "relate" = umbrella issues only
  *   ?kind=magazine|bulletin  filter by publication kind
- *   ?series=Relate|Rooted|Footsteps|Hearth  filter by series name
+ *   ?series=Relate|Rooted|Footsteps  filter by series name
  *   ?limit=N (1–100, default 100)   ?offset=N (default 0)
  */
 export async function GET(request: NextRequest) {

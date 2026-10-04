@@ -20,8 +20,8 @@ export const CLUBS: ClubEntry[] = [
   { slug: "pulse", name: "Pulse", color: "#00B4D8", tagline: "Young adults building life and faith" },
   { slug: "prime", name: "Prime", color: "#6C2BD9", tagline: "Adults in their prime" },
   { slug: "anchor", name: "Anchor", color: "#2E7D32", tagline: "Holding families steady" },
-  { slug: "base", name: "Base", color: "#E8A2B6", tagline: "Single adults, standing firm" },
-  { slug: "nexus", name: "Nexus", color: "#8A9A5B", tagline: "Families around one table" },
+  { slug: "spark", name: "Spark", color: "#E8A2B6", tagline: "Newly married couples building the foundation" },
+  { slug: "synergy", name: "Synergy", color: "#8A9A5B", tagline: "Seasoned couples building legacy" },
 ];
 
 export const clubBySlug = (slug?: string | null): ClubEntry | undefined =>
@@ -31,7 +31,7 @@ export const clubName = (slug?: string | null): string =>
   slug ? clubBySlug(slug)?.name || slug : "Relate";
 
 /** Magazine series offered today. "Relate" is the no-club umbrella series. */
-export const SERIES = ["Relate", "Rooted", "Footsteps", "Hearth"];
+export const SERIES = ["Relate", "Rooted", "Footsteps"];
 
 export const PUBLICATION_KINDS = ["magazine", "bulletin"] as const;
 export const PUBLICATION_STATUSES = ["published", "draft"] as const;

@@ -122,7 +122,7 @@ const queryParams: { endpoint: string; params: { name: string; type: string; des
     params: [
       { name: "club", type: "string", description: "Club slug (e.g. sprout-kids, anchors). Use relate for umbrella issues only." },
       { name: "kind", type: "string", description: "magazine or bulletin." },
-      { name: "series", type: "string", description: "Series name (Relate, Rooted, Footsteps, Hearth)." },
+      { name: "series", type: "string", description: "Series name (Relate, Rooted, Footsteps)." },
       { name: "limit", type: "number", description: "Results per page, 1–100 (default 100)." },
       { name: "offset", type: "number", description: "Skip N results for pagination (default 0)." },
     ],

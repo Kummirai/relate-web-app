@@ -107,8 +107,8 @@ export const GENESIS_JOSEPH_QUESTIONS: QuizQuestionContent[] = [
 
 /**
  * Every club that runs the Bible Quiz. Each content club gets its own season
- * and leaderboard — Sprout classes plus Surge, Pulse, Prime, Anchor, Base and
- * Nexus now all play.
+ * and leaderboard — Sprout classes plus Surge, Pulse, Prime, Anchor, Spark and
+ * Synergy now all play.
  */
 export const QUIZ_CLUB_SLUGS = [
   "sprout-kids",
@@ -118,8 +118,8 @@ export const QUIZ_CLUB_SLUGS = [
   "pulse",
   "prime",
   "anchor",
-  "base",
-  "nexus",
+  "spark",
+  "synergy",
 ] as const;
 
 /** Sprout classes get faster timers for younger players; the rest share one pace. */
