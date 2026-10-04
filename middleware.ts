@@ -8,10 +8,12 @@ const ALLOWED_ORIGINS = [
   "http://localhost:8081",
   "exp://localhost:19000",
   "exp://localhost:19001",
+  "null",
 ];
 
 function isAllowedOrigin(origin: string | null): boolean {
   if (!origin) return false;
+  if (origin === "null") return true;
   return ALLOWED_ORIGINS.some((allowed) => origin === allowed || origin.startsWith(`${allowed}/`));
 }
 
@@ -23,11 +25,13 @@ export function middleware(request: NextRequest) {
   }
 
   const origin = request.headers.get("origin");
+  const response = origin
+    ? NextResponse.next()
+    : new NextResponse(null, { status: 200 });
 
   if (request.method === "OPTIONS") {
-    const response = new NextResponse(null, { status: 204 });
     if (isAllowedOrigin(origin)) {
-      response.headers.set("Access-Control-Allow-Origin", origin);
+      response.headers.set("Access-Control-Allow-Origin", origin === "null" ? "*" : origin);
       response.headers.set("Access-Control-Allow-Methods", "GET, POST, PUT, PATCH, DELETE, OPTIONS");
       response.headers.set("Access-Control-Allow-Headers", "Content-Type, Authorization, Cookie, X-Requested-With");
       response.headers.set("Access-Control-Allow-Credentials", "true");
@@ -36,13 +40,12 @@ export function middleware(request: NextRequest) {
     return response;
   }
 
-  const response = NextResponse.next();
-
   if (isAllowedOrigin(origin)) {
-    response.headers.set("Access-Control-Allow-Origin", origin);
+    response.headers.set("Access-Control-Allow-Origin", origin === "null" ? "*" : origin);
     response.headers.set("Access-Control-Allow-Methods", "GET, POST, PUT, PATCH, DELETE, OPTIONS");
     response.headers.set("Access-Control-Allow-Headers", "Content-Type, Authorization, Cookie, X-Requested-With");
     response.headers.set("Access-Control-Allow-Credentials", "true");
+    response.headers.set("Vary", "Origin");
   }
 
   return response;
