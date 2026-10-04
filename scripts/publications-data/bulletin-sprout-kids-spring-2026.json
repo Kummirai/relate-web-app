@@ -1,0 +1,32 @@
+{
+  "id": "bulletin-sprout-kids-spring-2026",
+  "kind": "bulletin",
+  "clubSlug": "sprout-kids",
+  "title": "Sprout Kids Bulletin — Spring",
+  "issue": "Vol. 1",
+  "month": "September",
+  "year": 2026,
+  "season": {
+    "name": "Spring",
+    "year": 2026,
+    "label": "Spring 2026 · Sep 1 – Nov 30",
+    "start": "2026-09-01",
+    "end": "2026-11-30"
+  },
+  "cover": "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=800&q=80",
+  "summary": "Kickoff, the Rooted Kids guide and the harvest party — one issue for the whole season.",
+  "tags": ["SPROUT-KIDS", "SPRING", "DATES"],
+  "blocks": [
+    { "type": "heading", "text": "Dates that matter" },
+    { "type": "list", "items": [
+      "6 Sep — Sprout Kids Kickoff, 10am in the kids hall",
+      "Term theme — Habits: the Rooted Kids guide has a daily verse with its own little 'growing step'",
+      "8 Nov — Kids' Harvest Party, 2pm",
+      "Verse hunt — every week the guide hides a verse to find"
+    ] },
+    { "type": "heading", "text": "A seed is not in a hurry" },
+    { "type": "paragraph", "text": "Kids' study habits grow like seeds: a little water every day beats a flood once a month. This Spring the Rooted Kids guide gives your child one tiny growing step a day — a verse, a thought, a 'do this today'. Read it with them, same time, same chair. By the harvest party, the roots will be deeper than you think." },
+    { "type": "quote", "text": "Trust in the Lord with all your heart.", "by": "Proverbs 3:5" },
+    { "type": "quote", "text": "Grow where you're planted.", "by": "Sprout Kids" }
+  ]
+}

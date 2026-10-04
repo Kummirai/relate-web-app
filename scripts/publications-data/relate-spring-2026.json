@@ -1,0 +1,3316 @@
+{
+  "id": "relate-spring-2026",
+  "kind": "magazine",
+  "series": "Relate",
+  "title": "Relate — Spring 2026",
+  "issue": "Season of Spring 2026",
+  "month": "September",
+  "year": 2026,
+  "season": {
+    "name": "Spring",
+    "year": 2026,
+    "label": "Spring 2026 · Sep 1 – Nov 30",
+    "start": "2026-09-01",
+    "end": "2026-11-30"
+  },
+  "theme": "New Every Morning",
+  "coverLines": [
+    "New mercies every morning",
+    "Thirteen weeks to a faithful family",
+    "Gather, read, pray, share"
+  ],
+  "cover": "https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=1600&q=85",
+  "summary": "Spring 2026 family study guide from Relate: thirteen weeks of daily grace around one household — a verse and a daily read for every day of the season. Because the mercies are new every morning.",
+  "tags": [
+    "RELATE",
+    "SPRING",
+    "FAMILIES"
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "How to use this study guide"
+    },
+    {
+      "type": "paragraph",
+      "text": "This is a Relate study guide for the whole household. Spring has thirteen weeks, and each week we practise one home-habit — first light, the welcome table, grace for messes, good words, enough, brave hearts — until the mornings themselves do the reminding. Each day has a verse to read aloud, two or three lines to think about, a small Try it step, and a prayer to say together."
+    },
+    {
+      "type": "heading",
+      "text": "New every morning"
+    },
+    {
+      "type": "paragraph",
+      "text": "A family does not get faithful in one sitting. It gets faithful one morning at a time — coffee, breakfast, one verse, one honest conversation, one small kindness. God's mercy is new every morning, which means there is always enough grace for today. We don't need to be strong for the whole season; we only need to be faithful for today."
+    },
+    {
+      "type": "paragraph",
+      "text": "Follow the steps on each day: read the verse, read the lines, do the Try it, then say the prayer together. On day 5 of each week there is a short quiz to remember what you practised. On days 6 and 7 you get to rest and reflect — talk it over, or write it down on your own. At the end of spring you will have built a home where the mercies come like the morning."
+    }
+  ],
+  "weeks": [
+    {
+      "index": 1,
+      "title": "Week 1 — First light",
+      "theme": "First light",
+      "intro": [
+        {
+          "type": "paragraph",
+          "text": "Before breakfast, before the lists, before the noise — there is first light. The season opens with the simplest of all habits: letting God's new mercies meet you at the top of the day."
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-01",
+          "day": 1,
+          "weekday": "Tuesday",
+          "title": "Let there be light",
+          "verse": {
+            "text": "And God said, \"Let there be light,\" and there was light.",
+            "by": "Genesis 1:3"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The very first thing God does in the Bible is speak light into the dark. Light is what makes a beginning possible — you can't see where you're going, what's in the room, or who's beside you without it. Every day of this season is a small beginning, and God is already speaking light into it before you wake."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Wake the first light habit: nobody looks at a screen before the verse is read",
+                "Open the curtains and read today's verse aloud together",
+                "Name one thing you're starting fresh today"
+              ],
+              "id": "reflect-1-1"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank God for a new day and new light",
+                "Ask Him to speak light into your home this spring"
+              ],
+              "id": "pray-1-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-02",
+          "day": 2,
+          "weekday": "Wednesday",
+          "title": "Mercy before coffee",
+          "verse": {
+            "text": "They are new every morning; great is your faithfulness.",
+            "by": "Lamentations 3:23"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Jeremiah wrote this in the ruins of a broken city, in the worst season of his life. And still he saw it: God's mercy is not saved up for grand moments — it arrives fresh every single morning, like bread from the oven. Whatever yesterday's failures were, today has its own full supply of grace."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Start the day by saying the one-word prayer: 'Mercies.'",
+                "Let yesterday's mistakes stay in yesterday's jar — don't bring them to the breakfast table",
+                "Ask each person: what is one mercy you've seen today?"
+              ],
+              "id": "reflect-1-2"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank God that His mercy is new today",
+                "Confess yesterday's failure and leave it with Him"
+              ],
+              "id": "pray-1-2"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-03",
+          "day": 3,
+          "weekday": "Thursday",
+          "title": "Joy returns by morning",
+          "verse": {
+            "text": "Weeping may stay for the night, but rejoicing comes in the morning.",
+            "by": "Psalm 30:5"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Some nights in a home are heavy — a hard conversation, a bad report, a worried heart that keeps everyone awake. The psalmist does not pretend sadness isn't real. He just knows the truth about the next 24 hours: God's mercy turns the corner, and joy genuinely does come back in the morning."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "If last night was heavy, let this morning be the correction: a fresh start and a clean hug",
+                "Tell a child the promise: 'sadness has a bedtime, but joy comes in the morning'",
+                "Choose one small joy to put first — music, a walk, a favourite breakfast"
+              ],
+              "id": "reflect-1-3"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God for joy to return to a tired heart today",
+                "Thank Him that sadness is not the end of the story"
+              ],
+              "id": "pray-1-3"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-04",
+          "day": 4,
+          "weekday": "Friday",
+          "title": "A new heart for the season",
+          "verse": {
+            "text": "Therefore, if anyone is in Christ, the new creation has come: The old has gone, the new is here!",
+            "by": "2 Corinthians 5:17"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "A new season is a gift because it reminds us that God is in the business of fresh starts. New creation was never a one-time event — every day in Christ you get to be the newest version of yourself. The 'new' God does in you also shapes what your home can become this spring."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Write the word 'new' somewhere you'll see it every morning this week",
+                "Choose one old habit the family is leaving in the old season",
+                "Pick one new habit to grow in its place"
+              ],
+              "id": "reflect-1-4"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God to make each of you new in Christ today",
+                "Thank Him that the old is gone"
+              ],
+              "id": "pray-1-4"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-05",
+          "day": 5,
+          "weekday": "Saturday",
+          "title": "Something new on the move",
+          "verse": {
+            "text": "See, I am doing a new thing! Now it springs up; do you not perceive it?",
+            "by": "Isaiah 43:19"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "God doesn't just give you a new day — He is actively doing a new thing in it. The problem is we often don't perceive it because we're staring at what used to be. Today's quiz is about seeing what God is up to that you might have missed."
+            },
+            {
+              "type": "quiz",
+              "question": "In Isaiah 43:19, where is God doing His new thing?",
+              "options": [
+                "In the desert — in the unlikely, dry places",
+                "Only in the comfortable, easy seasons"
+              ],
+              "correctIndex": 0,
+              "explain": "Right — the new thing springs up 'in the desert'. God often starts with the driest ground in your home and quietly waters it.",
+              "id": "reflect-1-5"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God to open your eyes to His new thing this spring",
+                "Thank Him for the work He is already doing"
+              ],
+              "id": "pray-1-5"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-06",
+          "day": 6,
+          "weekday": "Sunday",
+          "title": "The day the Lord has made",
+          "verse": {
+            "text": "The LORD has done it this very day; let us rejoice and be glad in it.",
+            "by": "Psalm 118:24"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Sunday is God's gift of rest — a whole day that needs no production. Psalm 118 doesn't say 'he rejoiced in it'; it hands you the day and tells you to be glad in it too. Rest that rejoices is part of faithful family life, not a break from it."
+            },
+            {
+              "type": "reflection",
+              "prompt": "What is one way you can rest today that actually restores you? Write it down, or tell the family what you'd choose.",
+              "placeholder": "A way to rest today...",
+              "id": "reflect-1-6"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Receive today as a gift from God",
+                "Thank Him for rest in the middle of a busy season"
+              ],
+              "id": "pray-1-6"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-07",
+          "day": 7,
+          "weekday": "Monday",
+          "title": "It was very good",
+          "verse": {
+            "text": "God saw all that he had made, and it was very good.",
+            "by": "Genesis 1:31"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The first week of the Bible ends with God looking at everything and calling it 'very good'. He is not a distant critic of your home; He is a creator who loves what He is still making of you. To begin a season well, begin with this: Monday, receive your home as God's good gift."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Look around your household today. What is one 'very good' thing God has made in this family? Write it down or say it out loud.",
+              "placeholder": "One very good thing...",
+              "id": "reflect-1-7"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank God for the good He has made in your family",
+                "Ask Him to keep making you 'very good' this spring"
+              ],
+              "id": "pray-1-7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "title": "Week 2 — Under one roof",
+      "theme": "Under one roof",
+      "intro": [
+        {
+          "type": "paragraph",
+          "text": "A faithful family is not a family with no arguments — it is a family that has practised dwelling together when it's easy and when it isn't. This week we build the habits that hold a household together."
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-08",
+          "day": 8,
+          "weekday": "Tuesday",
+          "title": "How good and pleasant",
+          "verse": {
+            "text": "How good and pleasant it is when God's people live together in unity!",
+            "by": "Psalm 133:1"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "David puts unity at the top of God's 'good and pleasant' list. Not impressive, not busy, not perfect — good and pleasant. Food tastes better, evenings go quieter, and the home runs lighter when the people under one roof are pulling together instead of across each other."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Say 'we' when you talk about a problem — we're in this together",
+                "Do one chore you normally wouldn't, for someone else",
+                "End the day with one sentence of thank-you to someone in the house"
+              ],
+              "id": "reflect-2-1"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God for unity that is good and pleasant in your home",
+                "Thank Him for the people under your roof"
+              ],
+              "id": "pray-2-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-09",
+          "day": 9,
+          "weekday": "Wednesday",
+          "title": "Two or three gathered",
+          "verse": {
+            "text": "For where two or three gather in my name, there am I with them.",
+            "by": "Matthew 18:20"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Jesus doesn't wait for a full house. He promises His presence to two or three. That means your smallest, messiest gathering — a verse with cereal bowls, a prayer in the car — is a real meeting with Jesus. You do not need more people; you need to gather in His name."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Gather two or three anywhere: a verse at breakfast, a prayer in the car",
+                "Begin the gathering with Jesus' name out loud",
+                "Don't cancel it because it's small — that's exactly the size He loves"
+              ],
+              "id": "reflect-2-2"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank Jesus that He meets you even in a gathered two or three",
+                "Ask Him to feel near in your small moments today"
+              ],
+              "id": "pray-2-2"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-10",
+          "day": 10,
+          "weekday": "Thursday",
+          "title": "Bearing with one another",
+          "verse": {
+            "text": "Bear with each other and forgive one another if any of you has a grievance against someone.",
+            "by": "Colossians 3:13"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "'Bear with' is a picture of holding a load together — like two people carrying a heavy piece of furniture through a doorway. Family life is a lot of load-bearing. The call isn't to never annoy each other; it's to keep carrying for each other even when the weight shifts."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Notice one strength in someone who often irritates you — say it out loud",
+                "When you feel the load shift, take a deep breath before you speak",
+                "Forgive a small grievance today before it becomes a big one"
+              ],
+              "id": "reflect-2-3"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God for patience to bear with one another",
+                "Forgive your family as God in Christ forgave you"
+              ],
+              "id": "pray-2-3"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-11",
+          "day": 11,
+          "weekday": "Friday",
+          "title": "As for me and my house",
+          "verse": {
+            "text": "As for me and my household, we will serve the LORD.",
+            "by": "Joshua 24:15"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Joshua makes the bravest statement a parent can make: not 'everyone might serve God someday' but 'as for me and my house, we will serve the LORD.' A household needs an honest direction, and this is the one worth setting — out loud, where everyone can be steadied by it."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Declare Joshua's words out loud at a meal — and mean them",
+                "Decide together: what does serving the LORD look like in your house this week?",
+                "Make the decision visible: a small sign or a saved spot for the verse"
+              ],
+              "id": "reflect-2-4"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Make the family decision: we will serve the LORD",
+                "Ask Him to help you keep that promise"
+              ],
+              "id": "pray-2-4"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-12",
+          "day": 12,
+          "weekday": "Saturday",
+          "title": "A home that answers the call",
+          "verse": {
+            "text": "Be completely humble and gentle; be patient, bearing with one another in love.",
+            "by": "Ephesians 4:2"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Paul stacks the operating manual of a household: humility, gentleness, patience, bearing, love. Today's quiz is a quick check on which fuel runs your evening."
+            },
+            {
+              "type": "quiz",
+              "question": "Which fuel keeps a family hummable all week: pride, or humility?",
+              "options": [
+                "Pride — 'I'm right, and I'll prove it'",
+                "Humility — 'we're learning to be gentle together'"
+              ],
+              "correctIndex": 1,
+              "explain": "Right — pride slams doors; humility opens them. Humble and gentle is the only engine that runs quietly enough for a family to sleep.",
+              "id": "reflect-2-5"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God for a humble heart in your own home",
+                "Thank Him that patience with you never runs out"
+              ],
+              "id": "pray-2-5"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-13",
+          "day": 13,
+          "weekday": "Sunday",
+          "title": "Where you go, I go",
+          "verse": {
+            "text": "Where you go I will go, and where you stay I will stay.",
+            "by": "Ruth 1:16"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Ruth says these words to her mother-in-law — a family bond that holds even after the easy reasons are gone. Loyalty is not a feeling; it is a decision you keep repeating. On a rest day, let the family rest in knowing they are kept, and keeping."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Who in your household do you promise to stay with, no matter what? Write it, draw it, or just say it out loud today.",
+              "placeholder": "The persons I stay with...",
+              "id": "reflect-2-6"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank God for the loyal people in your life",
+                "Ask Him to make you a faithful keeper of family"
+              ],
+              "id": "pray-2-6"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-14",
+          "day": 14,
+          "weekday": "Monday",
+          "title": "Train up a child",
+          "verse": {
+            "text": "Start children off on the way they should go, and even when they are old they will not turn from it.",
+            "by": "Proverbs 22:6"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "This is a promise about direction, not perfection. When you point a child toward God's way — honestly, patiently, over years — you are doing something God protects. Monday is the day to think long: the small habits of this season are the shape of someone's whole road."
+            },
+            {
+              "type": "reflection",
+              "prompt": "What is one 'way' you are pointing someone in your household toward Jesus? How will you keep pointing that way this season?",
+              "placeholder": "The way we are pointing...",
+              "id": "reflect-2-7"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Lift up the children of your household to God",
+                "Ask Him to keep them on His way for life"
+              ],
+              "id": "pray-2-7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "title": "Week 3 — The welcome table",
+      "theme": "The welcome table",
+      "intro": [
+        {
+          "type": "paragraph",
+          "text": "Some of the most important things God does happen at tables. This week we practise the habit of welcome — making room at the table for one more, especially for the person nobody else thinks to invite."
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-15",
+          "day": 15,
+          "weekday": "Tuesday",
+          "title": "Share with those in need",
+          "verse": {
+            "text": "Share with the Lord's people who are in need. Practice hospitality.",
+            "by": "Romans 12:13"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Paul links two habits that belong together: sharing and hospitality. Hospitality is not catering; it is the courage to say 'there is room for you here.' And the first people on the list are the ones in need — the lonely, the new, the struggling. Practice it: the word means it gets better the more you do it."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Look at your table and ask: who could fit one more?",
+                "Invite one person — a neighbour, a new family — for something simple this week",
+                "Remember: welcome is practice, not perfection"
+              ],
+              "id": "reflect-3-1"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God to show you someone to welcome",
+                "Thank Him for the table of His grace"
+              ],
+              "id": "pray-3-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-16",
+          "day": 16,
+          "weekday": "Wednesday",
+          "title": "Entertaining angels",
+          "verse": {
+            "text": "Do not forget to show hospitality to strangers, for by so doing some people have shown hospitality to angels without knowing it.",
+            "by": "Hebrews 13:2"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The writer's point is not that every stranger is an angel — it's that hospitality is bigger than we can see. When you welcome a person, you are really welcoming God's work into your home. You often won't know until later what the visit meant, or who was actually sent to whom."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Welcome the stranger: a delivery person, a new colleague, a shy visitor",
+                "Offer something small and warm — water, a seat, a few minutes",
+                "Expect nothing back; that's the whole point"
+              ],
+              "id": "reflect-3-2"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God to send you the people He wants at your table",
+                "Thank Him for hosting you, a stranger welcomed home"
+              ],
+              "id": "pray-3-2"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-17",
+          "day": 17,
+          "weekday": "Thursday",
+          "title": "The great reversal",
+          "verse": {
+            "text": "When you give a banquet, invite the poor, the crippled, the lame, the blind.",
+            "by": "Luke 14:13"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Jesus draws the guest list of His kingdom, and it is a reversal. Not the people who can repay you — the people who can't. This isn't about becoming gloomy; it's about becoming free. When you stop inviting for return, you start hosting for joy, and the table becomes a truly wide place."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Make one meal this week for someone who cannot repay you",
+                "Enjoy it — great generosity is supposed to be great fun",
+                "Ask: who in our town is 'the poor, the lame, the blind'?"
+              ],
+              "id": "reflect-3-3"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank God for the upside-down kingdom where the last are first",
+                "Ask Him to give you the joy of giving without return"
+              ],
+              "id": "pray-3-3"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-18",
+          "day": 18,
+          "weekday": "Friday",
+          "title": "The outsider at home",
+          "verse": {
+            "text": "When a foreigner resides among you in your land, do not mistreat them.",
+            "by": "Leviticus 19:33"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Long before Jesus, Israel was told: the foreigner living among you is not a threat to manage but a person to protect. The heart of welcome is standing against the mean instinct — the instinct to make outsiders feel that they don't belong. Your home can be a place where people breathe out."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Notice who is 'the outsider' in your neighbourhood or school",
+                "Choose kindness toward them deliberately today",
+                "Watch your words — the ones that make people feel left out"
+              ],
+              "id": "reflect-3-4"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God to search your heart for who you leave out",
+                "Thank Him for welcoming you when you were far off"
+              ],
+              "id": "pray-3-4"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-19",
+          "day": 19,
+          "weekday": "Saturday",
+          "title": "My house, a house of prayer",
+          "verse": {
+            "text": "My house will be called a house of prayer for all nations.",
+            "by": "Isaiah 56:7"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Jesus quoted this in the temple courtyard. Your home can carry the same calling: a house where prayer is at home, and where that welcome reaches 'all nations'. Today's quiz is about the easiest test of a welcoming home."
+            },
+            {
+              "type": "quiz",
+              "question": "Which surprise guest felt welcome in Jesus' story of the banquet (Luke 14)?",
+              "options": [
+                "The friend who could repay the favour",
+                "The poor, crippled, lame and blind"
+              ],
+              "correctIndex": 1,
+              "explain": "Right — Jesus openly names the guest list of His kingdom: the people nobody else invited.",
+              "id": "reflect-3-5"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God to make your home a house of prayer for all nations",
+                "Thank Him for a welcoming God"
+              ],
+              "id": "pray-3-5"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-20",
+          "day": 20,
+          "weekday": "Sunday",
+          "title": "Whatever you did for one of these",
+          "verse": {
+            "text": "Whatever you did for one of the least of these brothers and sisters of mine, you did for me.",
+            "by": "Matthew 25:40"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "On a rest day, sit with the quiet weight of this: Jesus is present in the people who can't pay you back. The cup of water for the thirsty, the time for the lonely — He receives it all as done to Him. Welcome is never wasted, because it is never just for the guest."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Think of one 'least of these' you know. What is a small welcome you can offer them this week? Write it down.",
+              "placeholder": "A welcome I can offer...",
+              "id": "reflect-3-6"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask Jesus to help you see Him in the people who need welcome",
+                "Thank Him for welcoming you when you were least"
+              ],
+              "id": "pray-3-6"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-21",
+          "day": 21,
+          "weekday": "Monday",
+          "title": "Sitting at the table",
+          "verse": {
+            "text": "Now you are no longer a stranger but a fellow citizen with the saints and members of the household of God.",
+            "by": "Ephesians 2:19"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The best welcome story is your own. Before you were a family member, you were a stranger, and God made you a fellow citizen at His table. Monday is a good day to welcome others the way you were welcomed — because you remember what it felt like to be let in."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Remember when God welcomed you in. How did it feel? Write it down, then choose one person to welcome this week in the same way.",
+              "placeholder": "When God welcomed me...",
+              "id": "reflect-3-7"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank God that you are no longer a stranger",
+                "Ask Him to make your home a welcoming household"
+              ],
+              "id": "pray-3-7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "title": "Week 4 — Grace for messes",
+      "theme": "Grace for messes",
+      "intro": [
+        {
+          "type": "paragraph",
+          "text": "Every household makes messes — spilled words, spilled milk, broken trust. The question is not whether the mess will come; it is whether grace will be ready for it. This week we practise the family habit of forgiveness."
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-22",
+          "day": 22,
+          "weekday": "Tuesday",
+          "title": "Seventy times seven",
+          "verse": {
+            "text": "Then Peter came to Jesus and asked, \"Lord, how many times shall I forgive my brother or sister who sins against me? Up to seven times?\" Jesus answered, \"I tell you, not seven times, but seventy-seven times.\"",
+            "by": "Matthew 18:21-22"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Peter thought he was being generous; Jesus was being glorious. Not seven but seventy-seven — in other words, stop counting. Grace doesn't keep a tally. In a family, forgiveness is not a policy; it is the air you breathe so no one suffocates."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Drop the tally: erase one grudge you were keeping score on",
+                "Say the words yourself: 'I forgive you' and 'I need your forgiveness'",
+                "Give someone a win today even though they wronged you"
+              ],
+              "id": "reflect-4-1"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God for the strength to forgive without counting",
+                "Thank Him that His forgiveness of you is uncountable"
+              ],
+              "id": "pray-4-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-23",
+          "day": 23,
+          "weekday": "Wednesday",
+          "title": "As the Lord forgave you",
+          "verse": {
+            "text": "Forgive as the Lord forgave you.",
+            "by": "Colossians 3:13"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The standard is not 'forgive them if they apologise nicely' or 'forgive them when they prove they've changed'. It is: forgive as the Lord forgave you — first, fully, undeserved. That is a giant forgiveness, and it's the only one big enough for a whole household."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Forgive someone before they finish apologising — be first",
+                "Reflect on the size of your own forgiveness, then release theirs",
+                "Ask the Holy Spirit to loosen any knot of unforgiveness in you"
+              ],
+              "id": "reflect-4-2"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank Christ for the way He forgave you",
+                "Ask for His grace to forgive the same way"
+              ],
+              "id": "pray-4-2"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-24",
+          "day": 24,
+          "weekday": "Thursday",
+          "title": "The prodigal's road",
+          "verse": {
+            "text": "But while he was still a long way off, his father saw him and was filled with compassion for him; he ran to his son, threw his arms around him and kissed him.",
+            "by": "Luke 15:20"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The father doesn't wait for his son to come all the way home. He runs the impossible distance and meets him — with compassion, arms, a kiss. That's the pattern for grace in your home: you don't wait for the mess to be fully cleaned before you love. You run toward the person."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Run toward someone who is far off today — the distance is shorter than you think",
+                "Greet them with compassion, not a lecture",
+                "Remember: they are not their mess"
+              ],
+              "id": "reflect-4-3"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank God that He runs to you when you're far off",
+                "Ask Him for a father-heart toward the wanderers in your life"
+              ],
+              "id": "pray-4-3"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-25",
+          "day": 25,
+          "weekday": "Friday",
+          "title": "A soft answer",
+          "verse": {
+            "text": "A gentle answer turns away wrath, but a harsh word stirs up anger.",
+            "by": "Proverbs 15:1"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Messes are often made worse by the first spoken response. A gentle answer is not weakness — it is the skill of turning a fire down instead of feeding it. In the heat of the moment, your first job is not to be right. It is to be gentle."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Practice your slow-down: one breath before any hot reply",
+                "Turn a harsh word down to a gentle one — feel the difference",
+                "If you already said the harsh word, go back and say the sweet one"
+              ],
+              "id": "reflect-4-4"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God to guard your tongue around your family",
+                "Thank Him for the peace a soft answer brings"
+              ],
+              "id": "pray-4-4"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-26",
+          "day": 26,
+          "weekday": "Saturday",
+          "title": "Cleaning up together",
+          "verse": {
+            "text": "So watch yourselves. \"If your brother or sister sins against you, rebuke them; and if they repent, forgive them.\"",
+            "by": "Luke 17:3"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Jesus doesn't ignore the mess — He gives a way to clean it: a gentle rebuke, then forgiveness when they turn. Today's quiz tests which habit actually rebuilds a mess-damaged home."
+            },
+            {
+              "type": "quiz",
+              "question": "What makes forgiveness real in a family, according to Luke 17:3?",
+              "options": [
+                "Forgetting it ever happened",
+                "A gentle rebuke, then real forgiveness when they repent"
+              ],
+              "correctIndex": 1,
+              "explain": "Right — Jesus teaches both honesty and release. Hiding the mess and smothering the forgiveness don't rebuild trust; truth followed by grace does.",
+              "id": "reflect-4-5"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God for the courage to speak truth gently",
+                "Thank Him for forgiving you every time you repent"
+              ],
+              "id": "pray-4-5"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-27",
+          "day": 27,
+          "weekday": "Sunday",
+          "title": "Love covers",
+          "verse": {
+            "text": "Above all, love each other deeply, because love covers over a multitude of sins.",
+            "by": "1 Peter 4:8"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Love covers — it does not expose, parade or weaponise. In a home, the deep love that forgives quietly is what keeps the walls standing. On a rest day, let this sink in: the family that knows it is covered is the family that is free to be honest."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Is there an old mess you keep re-exposing? Write it down as a release — then let love cover it.",
+              "placeholder": "A mess to release...",
+              "id": "reflect-4-6"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God to cover the sins in your home with love",
+                "Thank Him for covering yours in Christ"
+              ],
+              "id": "pray-4-6"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-28",
+          "day": 28,
+          "weekday": "Monday",
+          "title": "Keep on forgiving",
+          "verse": {
+            "text": "Be kind and compassionate to one another, forgiving each other, just as in Christ God forgave you.",
+            "by": "Ephesians 4:32"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Paul pairs forgiveness with its two travelling companions: kindness and compassion. You don't forgive generically; you forgive as a kind, compassionate person who remembers exactly how it feels to need grace. That is the shape of a family that survives its messes."
+            },
+            {
+              "type": "reflection",
+              "prompt": "This week had messes, and grace for them. Write one sentence of thanks to God for a specific forgiveness — given or received.",
+              "placeholder": "I give thanks for...",
+              "id": "reflect-4-7"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Receive God's kindness and compassion toward you",
+                "Ask Him to make you kind and compassionate when others fail"
+              ],
+              "id": "pray-4-7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "title": "Week 5 — Good words",
+      "theme": "Good words",
+      "intro": [
+        {
+          "type": "paragraph",
+          "text": "Words build homes or hollow them out. This week we practise the habit of good words — words that bless, build and tell the truth in love, spoken slowly enough to mean."
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-29",
+          "day": 29,
+          "weekday": "Tuesday",
+          "title": "Seasoned with salt",
+          "verse": {
+            "text": "Let your conversation be always full of grace, seasoned with salt.",
+            "by": "Colossians 4:6"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Salt preserves and sharpens taste. Grace-seasoned words are words that keep the household healthy and give it flavour — not bland, not bitter, never stale. Before you speak to someone under your own roof, ask the one question: full of grace?"
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Run your words through the gate: is this full of grace?",
+                "Add some salt — make one conversation honest and alive, not just nice",
+                "Bless someone with your voice on purpose today"
+              ],
+              "id": "reflect-5-1"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God to season your words with grace today",
+                "Thank Him for the way His Word gives flavour to life"
+              ],
+              "id": "pray-5-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-30",
+          "day": 30,
+          "weekday": "Wednesday",
+          "title": "The tongue's frailty",
+          "verse": {
+            "text": "The tongue has the power of life and death.",
+            "by": "Proverbs 18:21"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "One small muscle, running one huge errand. Words have actually ended and begun lives — marriages held up, children wrecked or raised, hope handed across a room. Every day you speak life or death into the people under your roof. There is no neutral option."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Speak one sentence of pure life to each person in your home",
+                "Before a critical word, decide: will this heal or hurt?",
+                "Interrupt a negative phrase mid-sentence and turn it toward life"
+              ],
+              "id": "reflect-5-2"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God to make your mouth a life-giving place",
+                "Confess the words that brought death and ask for repair"
+              ],
+              "id": "pray-5-2"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-01",
+          "day": 31,
+          "weekday": "Thursday",
+          "title": "Building up",
+          "verse": {
+            "text": "Do not let any unwholesome talk come out of your mouths, but only what is helpful for building others up according to their needs.",
+            "by": "Ephesians 4:29"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Paul sets the bar not at 'nothing bad' but at 'something good for building up.' The mission of family words is constructive. Speak according to their needs — the exact encouragement, the precise thanks, the word someone was starving for."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Study your family: what does each person need to hear right now?",
+                "Say it — specifically, out loud, today",
+                "Starve one unwholesome habit of conversation"
+              ],
+              "id": "reflect-5-3"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God for words tailored to each person's need",
+                "Thank Him for every word that builds you up"
+              ],
+              "id": "pray-5-3"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-02",
+          "day": 32,
+          "weekday": "Friday",
+          "title": "Let the wise listen",
+          "verse": {
+            "text": "Listen to advice and accept discipline, and in the end you will be counted among the wise.",
+            "by": "Proverbs 19:20"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Good words include good listening. Wisdom begins not when you give advice but when you take it — from a parent, a spouse, a child, a friend. A household that listens to correction grows in every generation."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Ask one person in your home for advice — and actually take it",
+                "Receive a correction today without defending yourself",
+                "Let a child teach you something"
+              ],
+              "id": "reflect-5-4"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God for a listening heart that accepts discipline",
+                "Thank Him for the wise people He has placed around you"
+              ],
+              "id": "pray-5-4"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-03",
+          "day": 33,
+          "weekday": "Saturday",
+          "title": "Words that match the way",
+          "verse": {
+            "text": "But the wisdom that comes from heaven is first of all pure; then peace-loving, considerate, submissive, full of mercy.",
+            "by": "James 3:17"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "James says wisdom is distinguishable by its flavour: pure, then peace-loving, considerate, full of mercy. Today's quiz checks which word actually tastes like the kingdom."
+            },
+            {
+              "type": "quiz",
+              "question": "Which of these words is 'full of mercy' from heaven's perspective?",
+              "options": [
+                "The surgical put-down that leaves a bruise",
+                "The considerate word that leaves a door open"
+              ],
+              "correctIndex": 1,
+              "explain": "Right — heavenly wisdom is considerate and mercy-full, not cutting. The right word leaves hope in the room.",
+              "id": "reflect-5-5"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God for wisdom from above in your words",
+                "Thank Him for every gentle, truthful word spoken to you"
+              ],
+              "id": "pray-5-5"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-04",
+          "day": 34,
+          "weekday": "Sunday",
+          "title": "A word for the weary",
+          "verse": {
+            "text": "The Sovereign LORD has given me a well-instructed tongue, to know the word that sustains the weary.",
+            "by": "Isaiah 50:4"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Isaiah's vision for a tongue: not impressive, but well-instructed — taught to know the exact word that sustains a weary person. Every family has a weary one. On a rest day, ask God which word theirs is today."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Who in your home is most weary right now? Learn the word that sustains them, and speak it today. Write the word down.",
+              "placeholder": "The sustaining word...",
+              "id": "reflect-5-6"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God for a well-instructed tongue",
+                "Bring the weary person in your home before Him"
+              ],
+              "id": "pray-5-6"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-05",
+          "day": 35,
+          "weekday": "Monday",
+          "title": "A life-time of words",
+          "verse": {
+            "text": "A person finds joy in giving an apt reply — and how good is a timely word!",
+            "by": "Proverbs 15:23"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "A timely word is a gift you give at exactly the right moment. Timing is part of grace: encouragement when someone is about to give up, thanks before it's too late, a sorry spoken quickly. Monday is for timely words — say them today, while they still land."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Is there a word you've been meaning to say but haven't? Say it today — and write down how it went.",
+              "placeholder": "The word I finally said...",
+              "id": "reflect-5-7"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank God for the joy of apt replies",
+                "Ask Him to help you speak every timely word this week"
+              ],
+              "id": "pray-5-7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "title": "Week 6 — Enough",
+      "theme": "Enough",
+      "intro": [
+        {
+          "type": "paragraph",
+          "text": "Spring teaching on 'enough': a household that knows God provides learns the calm of contentment — not more, not less, but enough. This week we practise trusting the Provider."
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-10-06",
+          "day": 36,
+          "weekday": "Tuesday",
+          "title": "The LORD is my shepherd",
+          "verse": {
+            "text": "The LORD is my shepherd, I lack nothing.",
+            "by": "Psalm 23:1"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Psalm 23 opens with the quietest of claims: with the LORD as shepherd, I lack nothing. Not 'I lack only the expensive things.' Nothing. That is not a promise of riches; it is a promise of enough — and it is the foundation of every calm household."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Say it out loud with meaning: 'The LORD is my shepherd, I lack nothing.'",
+                "List three things you have that are exactly enough today",
+                "Notice one thing you were about to wish away — and thank God for it"
+              ],
+              "id": "reflect-6-1"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank God that He is your Shepherd and you lack nothing",
+                "Ask Him to quiet your wanting heart"
+              ],
+              "id": "pray-6-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-07",
+          "day": 37,
+          "weekday": "Wednesday",
+          "title": "Manna for today",
+          "verse": {
+            "text": "The people eat their fill, and each gathered as much as they needed.",
+            "by": "Exodus 16:18"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "In the desert God gave Israel one day's bread at a time. Gathering more than needed produced nothing but rot — greed literally spoiled. God was teaching a whole nation the rhythm of enough: trust Me for today; there will be enough tomorrow."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Live on 'manna rules': trust God for today's needs",
+                "When anxiety about tomorrow knocks, counter with a fact of today's provision",
+                "Give something away — the surest sign you believe in enough"
+              ],
+              "id": "reflect-6-2"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God for today's bread and today's peace",
+                "Thank Him that He knows your needs before you ask"
+              ],
+              "id": "pray-6-2"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-08",
+          "day": 38,
+          "weekday": "Thursday",
+          "title": "Do not worry",
+          "verse": {
+            "text": "Therefore do not worry about tomorrow, for tomorrow will worry about itself.",
+            "by": "Matthew 6:34"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Jesus is blunt: worry does not add a single hour to life; it subtracts a day of it. He points to the birds and the flowers — fed and clothed without a shred of anxiety — and calls worry what it is: a small faith problem, cured by a big God."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Give tomorrow's problems a later appointment — today is off limits",
+                "Feed a bird, look at a flower, and receive the lesson",
+                "When worry comes, trade it for a specific prayer"
+              ],
+              "id": "reflect-6-3"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Hand today's worries to God one by one",
+                "Thank Him for His care for the birds — and you"
+              ],
+              "id": "pray-6-3"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-09",
+          "day": 39,
+          "weekday": "Friday",
+          "title": "Seek first",
+          "verse": {
+            "text": "But seek first his kingdom and his righteousness, and all these things will be given to you as well.",
+            "by": "Matthew 6:33"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The order is everything. Put God's kingdom first, and the 'these things' — food, clothes, the small daily provisions — follow like ducklings. When a household puts the kingdom first, its possessions stop owning it, and enough stops feeling like not enough."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Start the day asking: what does the kingdom need from me today?",
+                "Put a need down and watch God provide it in His order",
+                "Practise the reverse: before the bills, the Kingdom."
+              ],
+              "id": "reflect-6-4"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God to reorder your first things today",
+                "Thank Him that the kingdom comes with provision"
+              ],
+              "id": "pray-6-4"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-10",
+          "day": 40,
+          "weekday": "Saturday",
+          "title": "Contentment learned",
+          "verse": {
+            "text": "I have learned the secret of being content in any and every situation, whether well fed or hungry.",
+            "by": "Philippians 4:12"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Paul says contentment is a secret he learned — a skill, practised like any other. Today's quiz is about where that secret is found."
+            },
+            {
+              "type": "quiz",
+              "question": "Where did Paul discover the secret of contentment?",
+              "options": [
+                "In having everything he ever wanted",
+                "In Christ, who strengthens him in every situation"
+              ],
+              "correctIndex": 1,
+              "explain": "Right — Paul goes on to say 'I can do all this through him who gives me strength.' Contentment is not circumstances; it is Christ.",
+              "id": "reflect-6-5"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask Christ for the secret, learned secret of contentment",
+                "Thank Him for strength in every situation"
+              ],
+              "id": "pray-6-5"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-11",
+          "day": 41,
+          "weekday": "Sunday",
+          "title": "Raiment and care",
+          "verse": {
+            "text": "If that is how God clothes the grass of the field... will he not much more clothe you?",
+            "by": "Matthew 6:30"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Jesus argues upward from small to great: the grass is dressed in glory one morning and gone the next — and you are worth more than all of it. On a rest day, let the argument land: the God who dresses the fields is the God who has not forgotten you."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Think of one provision God has given you that felt impossible. Write it down and give thanks for the Provider, not just the provision.",
+              "placeholder": "A provision I almost missed...",
+              "id": "reflect-6-6"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank God for clothing the fields and caring for you",
+                "Ask Him to still your anxious heart"
+              ],
+              "id": "pray-6-6"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-12",
+          "day": 42,
+          "weekday": "Monday",
+          "title": "The secret's finish",
+          "verse": {
+            "text": "And my God will meet all your needs according to the riches of his glory in Christ Jesus.",
+            "by": "Philippians 4:19"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Paul ends the 'enough' chapter with a cheque drawn on heaven's bank: all your needs, according to His riches, in Christ Jesus. Our needs have a known source and a full supply. Monday is the day to lower the anchor of the whole house into that promise."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Paul filled your week with 'enough'. Write one way God met a need this week that you didn't see coming.",
+              "placeholder": "A need God met...",
+              "id": "reflect-6-7"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Receive the promise: God will meet all your needs",
+                "Thank Him in advance for the supply of this day"
+              ],
+              "id": "pray-6-7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "title": "Week 7 — Brave hearts",
+      "theme": "Brave hearts",
+      "intro": [
+        {
+          "type": "paragraph",
+          "text": "Fear is the oldest enemy of family calm. This week we arm the household with courage — the Bible's word for it is 'be strong and courageous', and it is always built on the same two rails: God is with you, and He has already gone ahead."
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-10-13",
+          "day": 43,
+          "weekday": "Tuesday",
+          "title": "Be strong and courageous",
+          "verse": {
+            "text": "Be strong and courageous. Do not be afraid; do not be discouraged, for the LORD your God will be with you wherever you go.",
+            "by": "Joshua 1:9"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Joshua is standing at the edge of a whole new life, and God gives him the family anthem of every generation: be strong and courageous — not because the way ahead is easy, but because God will be with you wherever you go. Courage is not the absence of fear; it is fear that has heard the promise."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Say Joshua 1:9 aloud to one person in your home",
+                "Name the fear, then name the promise beside it",
+                "Do one brave small thing you've been delaying"
+              ],
+              "id": "reflect-7-1"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God for courage for the family's road ahead",
+                "Thank Him that He goes with you wherever you go"
+              ],
+              "id": "pray-7-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-14",
+          "day": 44,
+          "weekday": "Wednesday",
+          "title": "The LORD your God, the warrior",
+          "verse": {
+            "text": "The LORD your God is with you... he will quiet you with his love.",
+            "by": "Zephaniah 3:17"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Zephaniah gives fear the best answer: the mighty LORD saves you, rejoices over you, and quiets you with His love. The same God who is mighty is also tender — He doesn't shout fear away; He calms it with love. That is a brave heart's fuel."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Visualise God quieting your heart with His love instead of loud noise",
+                "Let that calm be the tone of one conversation today",
+                "Repeat the phrase when fear spikes: 'He quieted me with His love'"
+              ],
+              "id": "reflect-7-2"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God to quiet your heart with His love",
+                "Thank Him that He rejoices over you"
+              ],
+              "id": "pray-7-2"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-15",
+          "day": 45,
+          "weekday": "Thursday",
+          "title": "Do not fear, I will help",
+          "verse": {
+            "text": "So do not fear, for I am with you; do not be dismayed, for I am your God.",
+            "by": "Isaiah 41:10"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The verse continues: 'I will strengthen you and help you; I will uphold you with my righteous right hand.' Fear falls in pieces when it meets three facts: He is with you, He is your God, and His right hand is underneath you."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "List what you fear — then hold each one up to the three facts",
+                "Accept a helping hand from someone today and let them help",
+                "Be the upholding hand for one weary person"
+              ],
+              "id": "reflect-7-3"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Lay your fears before the God who upholds you",
+                "Thank Him for His righteous right hand"
+              ],
+              "id": "pray-7-3"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-16",
+          "day": 46,
+          "weekday": "Friday",
+          "title": "Rise up and walk",
+          "verse": {
+            "text": "But now, LORD, what do I look for? My hope is in you.",
+            "by": "Psalm 39:7"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "David's question 'what do I look for?' is the real question of courage. Fear looks for failure, betrayal, collapse. Hope looks to God — the one fixed point that cannot shake. A brave household aims its looking: my hope is in You."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Ask the question honestly: what am I actually looking for today?",
+                "Deliberately aim your hope at God, not at outcomes",
+                "Say with David: 'My hope is in you.'"
+              ],
+              "id": "reflect-7-4"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God to be the fixed point of your hoping",
+                "Thank Him for the hope that does not disappoint"
+              ],
+              "id": "pray-7-4"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-17",
+          "day": 47,
+          "weekday": "Saturday",
+          "title": "Look at the storm",
+          "verse": {
+            "text": "He said, \"You of little faith, why did you doubt?\"",
+            "by": "Matthew 14:31"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Peter walks on water as long as he watches Jesus; the moment he studies the wind, he sinks. Jesus doesn't say the storm wasn't real — He says doubt was louder than the promise. Today's quiz is about where brave people keep their eyes."
+            },
+            {
+              "type": "quiz",
+              "question": "What did Peter stop doing right before he sank?",
+              "options": [
+                "He stopped looking at Jesus and looked at the wind",
+                "He stopped praying aloud in a loud voice"
+              ],
+              "correctIndex": 0,
+              "explain": "Right — focused on the storm, not the Saviour, Peter sank. Courage is all about where your eyes live.",
+              "id": "reflect-7-5"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask Jesus to order your eyes to stay on Him",
+                "Thank Him that His hand is there to catch you"
+              ],
+              "id": "pray-7-5"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-18",
+          "day": 48,
+          "weekday": "Sunday",
+          "title": "Rest in the faith",
+          "verse": {
+            "text": "Truly my soul finds rest in God; my salvation comes from him.",
+            "by": "Psalm 62:1"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Courage eventually needs rest, or it becomes exhaustion. David's rest is not escapism — it is a deliberate placement of his soul: into God. On a rest day, the brave thing to do is lie your worried heart down and let the Strong One stand watch."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Where is your soul currently resting — in fear, or in God? Write one fear and hand it to Him in writing.",
+              "placeholder": "My soul rests...",
+              "id": "reflect-7-6"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Lay your soul down in God's safekeeping",
+                "Thank Him for salvation and rest in one package"
+              ],
+              "id": "pray-7-6"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-19",
+          "day": 49,
+          "weekday": "Monday",
+          "title": "Courage for the week",
+          "verse": {
+            "text": "Wait for the LORD; be strong and take heart and wait for the LORD.",
+            "by": "Psalm 27:14"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Psalm 27 ends with an instruction for the long road: wait for the LORD, and while you wait, be strong and take heart. Courage is not just sprinting through fears — it is the long patience of trusting God on His timetable. Monday sets your pace for the rest of the season."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Write the one thing your family is waiting on God for. Thank Him before the answer comes — that's the courage of faith.",
+              "placeholder": "We are waiting for...",
+              "id": "reflect-7-7"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God for the strength to wait on His timing",
+                "Thank Him that the wait is held by His hand"
+              ],
+              "id": "pray-7-7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "title": "Week 8 — Patience in the waiting",
+      "theme": "Patience in the waiting",
+      "intro": [
+        {
+          "type": "paragraph",
+          "text": "Growth is slow by design. This week the household practised being patient — with each other, with answers that haven't come, and with the slow, steady work God is doing in lives you can't see change yet."
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-10-20",
+          "day": 50,
+          "weekday": "Tuesday",
+          "title": "Rejoice in hope",
+          "verse": {
+            "text": "Be joyful in hope, patient in affliction, faithful in prayer.",
+            "by": "Romans 12:12"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Paul hands out three habits as a set: joy in hope, patience in affliction, faithfulness in prayer. Notice patience isn't passive. It is the active courage of staying put when staying put is hard, kept warm by joy and held up by prayer."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Pick the one thing you're waiting on and declare it 'a joy-full hope'",
+                "Practise patience in affliction: don't grumble through one small irritation",
+                "Let prayer be the muscle that does the holding"
+              ],
+              "id": "reflect-8-1"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God for joy in the hope you're waiting on",
+                "Thank Him for His patience with your own growing"
+              ],
+              "id": "pray-8-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-21",
+          "day": 51,
+          "weekday": "Wednesday",
+          "title": "Fruit in its season",
+          "verse": {
+            "text": "There is a time for everything, and a season for every activity under the heavens.",
+            "by": "Ecclesiastes 3:1"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The Preacher knew what every gardener knows: apples are not rushed, children are not scheduled, and answers have a season. Patience is not just surviving the wait — it is the wisdom to know which season you are in and to live it well instead of fighting it."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Name the season your family is in right now",
+                "Do one thing that season actually calls for — not the one you wish it did",
+                "Trust that this season ends: there is a time for everything"
+              ],
+              "id": "reflect-8-2"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God to help you live your current season well",
+                "Thank Him that He is the Lord of every season"
+              ],
+              "id": "pray-8-2"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-22",
+          "day": 52,
+          "weekday": "Thursday",
+          "title": "The farmer waits",
+          "verse": {
+            "text": "See how the farmer waits for the land to yield its valuable crop, patiently waiting for the autumn and spring rains.",
+            "by": "James 5:7"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "James points to a farmer as the masterclass in patience: sowing, then waiting, season after season, for what he cannot hurry. The crop doesn't appear on the farmer's schedule — it appears on the land's. Faithful family life works the same way."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Do your seeding work today — then release the result to God",
+                "Water something you planted long ago, even if you can't see it",
+                "Imagine the harvest, and let hope speed the waiting"
+              ],
+              "id": "reflect-8-3"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank God for the farmer's patience He is practising on you",
+                "Ask for patience to wait for the harvest"
+              ],
+              "id": "pray-8-3"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-23",
+          "day": 53,
+          "weekday": "Friday",
+          "title": "Slow to speak",
+          "verse": {
+            "text": "Everyone should be quick to listen, slow to speak and slow to become angry.",
+            "by": "James 1:19"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Patience with people shows up first in the mouth and the ears. Quick to listen, slow to speak, slow to anger. Around a family table this is the difference between a conversation and a collision."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Be the quickest listener at your next family conversation",
+                "Delay your reply by one full breath — be slow to speak",
+                "Give anger a longer fuse today"
+              ],
+              "id": "reflect-8-4"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God for quick ears and a slow tongue",
+                "Thank Him for the patience He shows every listener"
+              ],
+              "id": "pray-8-4"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-24",
+          "day": 54,
+          "weekday": "Saturday",
+          "title": "A harvest for patient ones",
+          "verse": {
+            "text": "Let us not become weary in doing good, for at the proper time we will reap a harvest if we do not give up.",
+            "by": "Galatians 6:9"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Paul names the exact danger of a waiting season: weariness, giving up just before the harvest. The promise is a timetable — 'at the proper time'. Today's quiz tests the antidote to quitting."
+            },
+            {
+              "type": "quiz",
+              "question": "What keeps a family from giving up while they wait?",
+              "options": [
+                "Doing good steadily, and trusting the proper time",
+                "Checking results every single day"
+              ],
+              "correctIndex": 0,
+              "explain": "Right — 'we will reap a harvest if we do not give up.' Check the field less; keep the good work steady.",
+              "id": "reflect-8-5"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God for strength not to grow weary in doing good",
+                "Thank Him that the proper time is on His calendar"
+              ],
+              "id": "pray-8-5"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-25",
+          "day": 55,
+          "weekday": "Sunday",
+          "title": "Sabbath, the patient's gift",
+          "verse": {
+            "text": "Be still before the LORD and wait patiently for him.",
+            "by": "Psalm 37:7"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Waiting can be done two ways: standing in a queue anxiously, or sitting before the LORD attentively. 'Be still before the LORD' turns rest day into the school where patience is learned. The stillness is not empty — He is there."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Be still for five quiet minutes — no task, no screen. What surfaces when waiting becomes meeting God? Write what you notice.",
+              "placeholder": "In the stillness...",
+              "id": "reflect-8-6"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Be still before the LORD and wait patiently",
+                "Thank Him that waiting on Him never embarrasses"
+              ],
+              "id": "pray-8-6"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-26",
+          "day": 56,
+          "weekday": "Monday",
+          "title": "The patient end",
+          "verse": {
+            "text": "Be patient, then, brothers and sisters, until the Lord's coming.",
+            "by": "James 5:7"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "James ground all patience in the biggest promise: the Lord is coming, and He is close. Every hard wait in this life is a short wait on that scale. Monday lets you look past the horizon — your waiting has an end, and it is glorious."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Write one sentence of honest hope: 'I can wait, because...' Read it aloud tonight.",
+              "placeholder": "I can wait, because...",
+              "id": "reflect-8-7"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Set your patience on the coming of the Lord",
+                "Thank Him that He is close, especially in the waiting"
+              ],
+              "id": "pray-8-7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "title": "Week 9 — Giving it away",
+      "theme": "Giving it away",
+      "intro": [
+        {
+          "type": "paragraph",
+          "text": "There is one habit that unclenches a whole household: generosity. This week we practise giving — time, money, house room, help — and discover that a family that gives is a family that breathes."
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-10-27",
+          "day": 57,
+          "weekday": "Tuesday",
+          "title": "God loves a cheerful giver",
+          "verse": {
+            "text": "God loves a cheerful giver.",
+            "by": "2 Corinthians 9:7"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Paul strips giving down to its engine: the heart. Not the size of the gift, not the arithmetic — the cheerfulness. A household that gives grudgingly learns to give smaller; a household that gives joyfully finds its gift is always growing."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Give something (time, money, help) with a smile on your face",
+                "Check the motive: giving from joy, or from pressure?",
+                "Let the kids choose something small to give — and celebrate the cheer"
+              ],
+              "id": "reflect-9-1"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God to make you a cheerful giver",
+                "Thank Him for every gift He has poured into your family"
+              ],
+              "id": "pray-9-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-28",
+          "day": 58,
+          "weekday": "Wednesday",
+          "title": "It is more blessed",
+          "verse": {
+            "text": "It is more blessed to give than to receive.",
+            "by": "Acts 20:35"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "These are Jesus' own words, preserved by Paul. The blessing of giving is not a points system — it is simply the way human hearts are wired. Givers get the joy; hoarders get the guard duty. Your family can test this one at any time."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Run the experiment: give something away, then notice how you feel",
+                "Give where nothing comes back — that's the blessed corner",
+                "Tell a child Jesus' words: 'more blessed to give than to receive'"
+              ],
+              "id": "reflect-9-2"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask Jesus to teach you His blessed way of giving",
+                "Thank Him for the joy that comes from open hands"
+              ],
+              "id": "pray-9-2"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-29",
+          "day": 59,
+          "weekday": "Thursday",
+          "title": "Sowing generously",
+          "verse": {
+            "text": "Remember this: whoever sows sparingly will also reap sparingly, and whoever sows generously will also reap generously.",
+            "by": "2 Corinthians 9:6"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Sowing is the farmer's picture of giving: the amount you scatter determines the harvest the field can return. A home that sows sparingly — a little help, a tight budget, a closed door — grows a thin garden. Generosity today plants next season's green."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Decide the family sowing rate: generous, not sparing",
+                "Plant something small today that pays in kindness later",
+                "Keep the ledger simple: sow, wait, reap — God keeps the books"
+              ],
+              "id": "reflect-9-3"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God to make your family sowers of generosity",
+                "Thank Him for the harvest He grows from giving"
+              ],
+              "id": "pray-9-3"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-30",
+          "day": 60,
+          "weekday": "Friday",
+          "title": "Sharing with the struggling",
+          "verse": {
+            "text": "At the present time your plenty will supply what they need.",
+            "by": "2 Corinthians 8:14"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Paul's great sentence: 'your plenty will supply what they need.' The staggering part is the second half — 'so that in turn their plenty will supply what you need.' Generosity is a relay: nobody stays rich permanently, nobody stays in want permanently, and the baton keeps moving."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Look at your plenty and spot one person whose need it fits",
+                "Fill it today — food, time, skills, money",
+                "Remember you're running a relay, not a race to be first"
+              ],
+              "id": "reflect-9-4"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God to show you whose need your plenty meets",
+                "Thank Him for the fellow runners in the relay of grace"
+              ],
+              "id": "pray-9-4"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-31",
+          "day": 61,
+          "weekday": "Saturday",
+          "title": "The widow's two coins",
+          "verse": {
+            "text": "They all gave out of their wealth; but she, out of her poverty, put in everything... she had to live on.",
+            "by": "Mark 12:44"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Jesus watches the offering — the important visitors with the big gifts and the widow with two coins — and declares her the largest giver of the day. Today's quiz is about what Jesus was weighing."
+            },
+            {
+              "type": "quiz",
+              "question": "Why did Jesus rate the widow above everyone else?",
+              "options": [
+                "Her two coins were worth more in gold",
+                "She gave everything she had to live on — all of it"
+              ],
+              "correctIndex": 1,
+              "explain": "Right — the measuring is by self-gift, not by amount. The widow gave her whole living, which is the biggest thing that can be given.",
+              "id": "reflect-9-5"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God for a heart that gives all it has to live on",
+                "Thank Him for the widow's lesson and her Lord"
+              ],
+              "id": "pray-9-5"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-01",
+          "day": 62,
+          "weekday": "Sunday",
+          "title": "Give without counting",
+          "verse": {
+            "text": "Give, and it will be given to you. A good measure, pressed down, shaken together and running over.",
+            "by": "Luke 6:38"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Jesus promises giving has a return, and He paints it in farmer's language: pressed down, shaken together, running over — a measure that cannot hold everything. On a rest day, rest in the arithmetic of heaven: generosity does not deplete you."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Think of a gift your family gave that came back running over. Write it down and give thanks.",
+              "placeholder": "Giving that returned...",
+              "id": "reflect-9-6"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank God for the running-over measure of His giving",
+                "Ask Him to make your recent kind and generous family"
+              ],
+              "id": "pray-9-6"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-02",
+          "day": 63,
+          "weekday": "Monday",
+          "title": "Giving the week away",
+          "verse": {
+            "text": "In everything set them an example by doing what is good.",
+            "by": "Titus 2:7"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "A household's generosity is mostly caught, not taught. Children become givers by watching givers. Monday is the day to make yourself an example by doing good — the family is filming every gesture, and the record shows."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Write the one act of generosity you want the family to remember you by this week — then go do it today.",
+              "placeholder": "The example I will set...",
+              "id": "reflect-9-7"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God to make your home an example of good",
+                "Thank Him for modelling generosity in His own life"
+              ],
+              "id": "pray-9-7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "title": "Week 10 — Listening well",
+      "theme": "Listening well",
+      "intro": [
+        {
+          "type": "paragraph",
+          "text": "The most needed skill in a household is not speaking but listening — to each other, and first to God. This week we practise the habit of the open ear."
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-11-03",
+          "day": 64,
+          "weekday": "Tuesday",
+          "title": "Speak, LORD",
+          "verse": {
+            "text": "Speak, LORD, for your servant is listening.",
+            "by": "1 Samuel 3:9"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Young Samuel didn't know God's voice yet — but with Eli's help he offered a listening heart. The prayer is the whole of listening to God: 'Speak, LORD, for your servant is listening.' It is the first prayer of every faithful morning."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Begin your day with Samuel's prayer: Speak, LORD, I'm listening",
+                "Keep the Bible open — it is where He usually speaks",
+                "Ask someone you trust: what do you hear God saying?"
+              ],
+              "id": "reflect-10-1"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask the LORD to speak and give you ears",
+                "Thank Him that He is willing to be heard"
+              ],
+              "id": "pray-10-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-04",
+          "day": 65,
+          "weekday": "Wednesday",
+          "title": "Faith comes by hearing",
+          "verse": {
+            "text": "Faith comes from hearing the message, and the message is heard through the word about Christ.",
+            "by": "Romans 10:17"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Faith is a listening habit. It is not born from arguments or spectacles but from hearing the message about Christ — again and again and again. A family that faithfully hears the Word is quietly building a household of faith, one hearing at a time."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Hear the Word today — a sentence, a page, a parable",
+                "Talk about what you heard at a meal, not just what happened",
+                "Trust the slow build: hearing produces faith"
+              ],
+              "id": "reflect-10-2"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God to grow your faith through the Word you hear",
+                "Thank Him for speaking through Christ"
+              ],
+              "id": "pray-10-2"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-05",
+          "day": 66,
+          "weekday": "Thursday",
+          "title": "Quick to listen",
+          "verse": {
+            "text": "My dear brothers and sisters, take note of this: Everyone should be quick to listen, slow to speak and slow to become angry.",
+            "by": "James 1:19"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "James orders a household's three speeds: quick to listen, slow to speak, slow to anger. Most family fights are actually listening failures — two people broadcasting over a closed line. Today, try the reversal: be the one who is quick to listen all day long."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Let someone finish — completely — before you reply",
+                "Ask one real follow-up question to show you were listening",
+                "Notice how often you were 'quick to speak' and correct it"
+              ],
+              "id": "reflect-10-3"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God for quick ears in your home today",
+                "Thank Him for listening to every word you pray"
+              ],
+              "id": "pray-10-3"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-06",
+          "day": 67,
+          "weekday": "Friday",
+          "title": "A word in season",
+          "verse": {
+            "text": "The purposes of a person's heart are deep waters, but one who has insight draws them out.",
+            "by": "Proverbs 20:5"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "People's hearts are deep water — you can't read what's underneath from the surface. Insight draws it out: gentle questions, unhurried time, patient silence. The people you live with are carrying deep things; listening draws them up where they can be known and loved."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Give one person your full unhurried attention today",
+                "Ask a gentle question to draw their heart out",
+                "Leave space for silence — the deep water needs it"
+              ],
+              "id": "reflect-10-4"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God for insight to draw out the hearts in your home",
+                "Thank Him for drawing out your own heart and knowing it"
+              ],
+              "id": "pray-10-4"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-07",
+          "day": 68,
+          "weekday": "Saturday",
+          "title": "Ears that hear",
+          "verse": {
+            "text": "Whoever has ears to hear, let them hear.",
+            "by": "Mark 4:9"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Jesus ends His parables with an invitation, not a demand: whoever has ears, hear. Hearing is a choice we make to let a word go down deep. Today's quiz is about the soil of the listening heart."
+            },
+            {
+              "type": "quiz",
+              "question": "In the parable, which soil actually produces a crop?",
+              "options": [
+                "The hard path where the word lands on top",
+                "The good soil that hears, accepts and produces"
+              ],
+              "correctIndex": 1,
+              "explain": "Right — deep, receptive hearing produces fruit. Ears are the doorway of the harvest.",
+              "id": "reflect-10-5"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask Jesus to open your ears to His word",
+                "Thank Him for the seed He keeps sowing in your home"
+              ],
+              "id": "pray-10-5"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-08",
+          "day": 69,
+          "weekday": "Sunday",
+          "title": "Resting in the voice",
+          "verse": {
+            "text": "My sheep listen to my voice; I know them, and they follow me.",
+            "by": "John 10:27"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Listening to God is not an act of genius but of relationship — like a sheep that knows its shepherd's voice in a field of noise. On a rest day, quiet things down long enough to recognise the one voice that knows you by name."
+            },
+            {
+              "type": "reflection",
+              "prompt": "When has you heard the Shepherd's voice most clearly? Write the memory down — the place, the season, the word.",
+              "placeholder": "When I heard the Shepherd...",
+              "id": "reflect-10-6"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask the Shepherd to make His voice familiar to you",
+                "Thank Him that He knows you by name"
+              ],
+              "id": "pray-10-6"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-09",
+          "day": 70,
+          "weekday": "Monday",
+          "title": "The gathered listening",
+          "verse": {
+            "text": "Assemble the people — men, women and children... so they can listen and learn.",
+            "by": "Deuteronomy 31:12"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Moses' instruction for family worship: gather everyone, so they can listen and learn. Listening was never meant to be solo work. When a household gathers to hear God together, the word lands in ears that will grow it all week."
+            },
+            {
+              "type": "reflection",
+              "prompt": "What did your household hear this week that you both want to keep? Choose one verse to repeat until it's everyone's.",
+              "placeholder": "The verse to keep...",
+              "id": "reflect-10-7"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank God for the blessing of gathered listening",
+                "Ask Him to keep your family's ears open all season"
+              ],
+              "id": "pray-10-7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "title": "Week 11 — Peace in the storm",
+      "theme": "Peace in the storm",
+      "intro": [
+        {
+          "type": "paragraph",
+          "text": "No household escapes storms — health, money, tension, loss. This week we practise finding peace not in calm skies but in the God who commands both wind and wave."
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-11-10",
+          "day": 71,
+          "weekday": "Tuesday",
+          "title": "Peace, be still",
+          "verse": {
+            "text": "He said to the wind and the waves, \"Peace! Be still!\"",
+            "by": "Mark 4:39"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The disciples are terrified in a storm, and Jesus — asleep in the boat — wakes, speaks, and the wind and waves obey Him. The point of the story is not that storms won't come; it's that the Person with the power is in your boat."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Say to your storm today: 'Peace, be still' — in Jesus' name",
+                "Name the storm honestly, then name the One who is in the boat",
+                "Remind each other: He is not afraid of your weather"
+              ],
+              "id": "reflect-11-1"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask Jesus to speak peace over your household's storm",
+                "Thank Him that He calms wind and wave with a word"
+              ],
+              "id": "pray-11-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-11",
+          "day": 72,
+          "weekday": "Wednesday",
+          "title": "Neither what you fear",
+          "verse": {
+            "text": "Peace I leave with you; my peace I give you. I do not give to you as the world gives. Do not let your hearts be troubled.",
+            "by": "John 14:27"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The world's peace comes from circumstances being fixed; Jesus' peace comes from Jesus being present. That is why He can give it in a room where everything is about to go wrong. His peace is not hostage to your weather."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Receive His peace as a gift, not a result of fixing everything",
+                "When a trouble knocks, remind yourself: not as the world gives",
+                "Let His peace guard one conversation today"
+              ],
+              "id": "reflect-11-2"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask Jesus for the peace only He can give",
+                "Thank Him that His peace is not hostage to your news"
+              ],
+              "id": "pray-11-2"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-12",
+          "day": 73,
+          "weekday": "Thursday",
+          "title": "The God who hides us",
+          "verse": {
+            "text": "He will cover you with his feathers, and under his wings you will find refuge.",
+            "by": "Psalm 91:4"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The storm shelter of the Bible is the Presence itself. Frightened children (and grown ones) hide under a parent's wings; the psalmist says that's exactly who God is. In the middle of any weather, there is a place: under His wings."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Picture yourself under His wings — let the body relax into it",
+                "Be a shelter under the wing for one frightened person today",
+                "Say it: 'He will cover you with his feathers'"
+              ],
+              "id": "reflect-11-3"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Take refuge under His wings today",
+                "Thank Him for the shelter of His presence"
+              ],
+              "id": "pray-11-3"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-13",
+          "day": 74,
+          "weekday": "Friday",
+          "title": "The still place",
+          "verse": {
+            "text": "He stilled the storm to a whisper; the waves of the sea were hushed.",
+            "by": "Psalm 107:29"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The psalmist watches God reduce a storm to a whisper. Peace is not only for the storm — it is also the tone of a household. God can hush the waves outside; you can help hush the noise inside."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Turn something in your home down today — a volume, a pace, a screen",
+                "Hush one wave of words instead of riding it",
+                "Notice the whisper of God in the quiet you made"
+              ],
+              "id": "reflect-11-4"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God to still the storms in and around your home",
+                "Thank Him for the whisper that comes after"
+              ],
+              "id": "pray-11-4"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-14",
+          "day": 75,
+          "weekday": "Saturday",
+          "title": "The peacemaker's way",
+          "verse": {
+            "text": "Blessed are the peacemakers, for they will be called children of God.",
+            "by": "Matthew 5:9"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Peacemaking is not avoiding conflict; it is walking into it with tools of peace. Today's quiz is about which move actually makes peace in a stormy conversation."
+            },
+            {
+              "type": "quiz",
+              "question": "Which move turns a family argument toward peace?",
+              "options": [
+                "Walking away and ignoring the conflict",
+                "Calmly saying what's true and listening for what's true in reply"
+              ],
+              "correctIndex": 1,
+              "explain": "Right — peacemakers face the storm with truth and calm; ignoring it just postpones the bad weather.",
+              "id": "reflect-11-5"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God to call your house peacemakers",
+                "Thank Him that peacemakers are called children of God"
+              ],
+              "id": "pray-11-5"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-15",
+          "day": 76,
+          "weekday": "Sunday",
+          "title": "Rest for the storm-tired",
+          "verse": {
+            "text": "Come to me, all you who are weary and burdened, and I will give you rest.",
+            "by": "Matthew 11:28"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Storms wear people out — the worried parents, the anxious children, the ones pretending not to be tired. Jesus invites the weary and burdened to come for rest. On a rest day, the peace is not earned; it is received by coming."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Name the burden you've been carrying through this storm. Write it down and, in prayer, put it down at Jesus' feet.",
+              "placeholder": "The burden I'm putting down...",
+              "id": "reflect-11-6"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Come to Jesus with your weariness",
+                "Thank Him for rest that is a gift, not a reward"
+              ],
+              "id": "pray-11-6"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-16",
+          "day": 77,
+          "weekday": "Monday",
+          "title": "The keeper of peace",
+          "verse": {
+            "text": "May the Lord of peace himself give you peace at all times and in every way.",
+            "by": "2 Thessalonians 3:16"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Paul calls God 'the Lord of peace himself' — not the giver of a commodity, but the very person of peace. His peace comes 'at all times and in every way', which covers even the Mondays after the storm. Monday is for resting in the Person."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Write one line of prayer for your household: 'Lord of peace, give us...' and finish it honestly today.",
+              "placeholder": "Lord of peace, give us...",
+              "id": "reflect-11-7"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Receive peace from the Lord of peace himself",
+                "Ask Him for peace at all times and in every way"
+              ],
+              "id": "pray-11-7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 12,
+      "title": "Week 12 — A grateful home",
+      "theme": "A grateful home",
+      "intro": [
+        {
+          "type": "paragraph",
+          "text": "Gratitude is the family thermostat: a grateful home runs warm; an ungrateful one runs cold. This week we practise thankfulness until it becomes the default language of the house."
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-11-17",
+          "day": 78,
+          "weekday": "Tuesday",
+          "title": "Give thanks in everything",
+          "verse": {
+            "text": "Give thanks in all circumstances; for this is God's will for you in Christ Jesus.",
+            "by": "1 Thessalonians 5:18"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Note the small word: IN all circumstances, not FOR all circumstances. God does not ask you to thank Him for the hard thing — but to find thanks even in hard places, because He is present there too. That single shift changes a household's weather."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Name one thank-you you could give even in today's hardest part",
+                "Let the kids catch you being grateful out loud",
+                "Give thanks in a circumstance you'd rather grumble about"
+              ],
+              "id": "reflect-12-1"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Give thanks in all your today",
+                "Ask God to make thankfulness your family's first language"
+              ],
+              "id": "pray-12-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-18",
+          "day": 79,
+          "weekday": "Wednesday",
+          "title": "Every good gift",
+          "verse": {
+            "text": "Every good and perfect gift is from above, coming down from the Father of the heavenly lights.",
+            "by": "James 1:17"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "James traces every good gift back to one Giver: the Father of lights. Nothing good in your life fell out of a machine — it came down from Him. Gratitude is simply the family habit of acknowledging where the good came from."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Trace the good gifts of today back to their Giver",
+                "Say thank you to God out loud, in front of the family",
+                "Keep a running gift-list on the fridge — and read it when ungrateful"
+              ],
+              "id": "reflect-12-2"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank the Father of lights for every good gift",
+                "Ask Him to keep your eyes on the Giver, not just the gifts"
+              ],
+              "id": "pray-12-2"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-19",
+          "day": 80,
+          "weekday": "Thursday",
+          "title": "The leper who returned",
+          "verse": {
+            "text": "Jesus asked, \"Were not all ten cleansed? Where are the other nine?\"",
+            "by": "Luke 17:17"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Ten lepers are healed; one returns to say thank you. Jesus' question hangs in the air: Where are the nine? Gratitude is the one who comes back. It is the difference between receiving gifts and knowing the Giver."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Be the one who returns: thank someone specifically today",
+                "Find the Giver behind one of today's healings",
+                "Ask: am I a nine or a one?"
+              ],
+              "id": "reflect-12-3"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Return to Jesus with your thanks today",
+                "Thank Him for healing you may have forgot to mention"
+              ],
+              "id": "pray-12-3"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-20",
+          "day": 81,
+          "weekday": "Friday",
+          "title": "Enter his gates",
+          "verse": {
+            "text": "Enter his gates with thanksgiving and his courts with praise; give thanks to him and praise his name.",
+            "by": "Psalm 100:4"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Psalm 100 makes thanksgiving the entrance: you come into God's presence through gratitude. A household that prays with thanksgiving is a household that keeps finding the door open."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Open prayer with thanks before you ask for anything",
+                "Walk through today's 'gate of thanksgiving' to God's presence",
+                "Sing a praise — the courts don't mind your voice"
+              ],
+              "id": "reflect-12-4"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Enter His gates with thanksgiving today",
+                "Thank Him for the open door of praise"
+              ],
+              "id": "pray-12-4"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-21",
+          "day": 82,
+          "weekday": "Saturday",
+          "title": "Thanks in the ordinary",
+          "verse": {
+            "text": "Then Jesus took the loaves, gave thanks, and distributed to those who were seated.",
+            "by": "John 6:11"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Jesus thanks God over bread and fish — the most ordinary food of the day. Today's quiz is about what Jesus models in that small moment."
+            },
+            {
+              "type": "quiz",
+              "question": "Why did Jesus give thanks over the ordinary loaves?",
+              "options": [
+                "To bless the everyday bread, not just the miracles",
+                "Only because the crowd was watching"
+              ],
+              "correctIndex": 0,
+              "explain": "Right — Jesus habitually blessed the ordinary. Daily bread, lifted with thanks, is holy enough for the whole home.",
+              "id": "reflect-12-5"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank God over your ordinary bread today",
+                "Ask Him to make every meal a small thanksgiving"
+              ],
+              "id": "pray-12-5"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-22",
+          "day": 83,
+          "weekday": "Sunday",
+          "title": "The thankful heart's rest",
+          "verse": {
+            "text": "Let the peace of Christ rule in your hearts... and be thankful.",
+            "by": "Colossians 3:15"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Paul ties peace and gratitude to the same heart — the peace of Christ rules where thankfulness keeps house. On a rest day, let the machinery slow and the thanks rise: the two go together like a warm fire and a quiet evening."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Write a short list — five small thanks for this week. Read it out loud tonight.",
+              "placeholder": "Five thanks...",
+              "id": "reflect-12-6"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Let the peace of Christ rule in your heart",
+                "Ask Him to keep your whole family thankful"
+              ],
+              "id": "pray-12-6"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-23",
+          "day": 84,
+          "weekday": "Monday",
+          "title": "A language of thanks",
+          "verse": {
+            "text": "Be thankful.",
+            "by": "Colossians 3:15"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Two words. Paul closes the peace passage with a command so short it might look like punctuation — but it's the mother tongue in a Christian household. Monday is the day to use it early and often: be thankful. It catches."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Say 'thank you' to God and to someone at home before breakfast. Write what happened when you started your day that way.",
+              "placeholder": "A day started with thanks...",
+              "id": "reflect-12-7"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Speak the language of thanks all day",
+                "Thank God for teaching your family its home tongue"
+              ],
+              "id": "pray-12-7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "title": "Week 13 — Carry the light",
+      "theme": "Carry the light",
+      "intro": [
+        {
+          "type": "paragraph",
+          "text": "The final week of spring: everything your household has practised this season is meant to be carried out of the house. Your home was lit for a reason — the light was always going somewhere."
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-11-24",
+          "day": 85,
+          "weekday": "Tuesday",
+          "title": "A lamp on a stand",
+          "verse": {
+            "text": "Neither do people light a lamp and put it under a bowl. Instead they put it on its stand, and it gives light to everyone in the house.",
+            "by": "Matthew 5:15"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "A lamp that isn't lifted is pointless. Jesus says a family of faith is a lighted lamp — not to stay hidden, but to give light to everyone in the house and beyond it. This week, lift the lamp. Let it be seen."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Sit in the visible place today — don't hide your faith at home or work",
+                "Let one good deed of your household be obvious",
+                "Ask: who is in the light's reach?"
+              ],
+              "id": "reflect-13-1"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask Jesus to put your family's lamp where it helps most",
+                "Thank Him for the light He lit in you"
+              ],
+              "id": "pray-13-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-25",
+          "day": 86,
+          "weekday": "Wednesday",
+          "title": "You are the salt",
+          "verse": {
+            "text": "You are the salt of the earth.",
+            "by": "Matthew 5:13"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Salt preserves, seasons and makes thirsty. Jesus calls His people salt — meaning a family that tastes of something more, that keeps its corner of the world from going flat and flavourless. You don't have to be loud to be salty; you have to be present and consistent."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Add seasoning: be the reason one gathering felt more alive",
+                "Preserve something good today — a friendship, a mood, a memory",
+                "Make someone thirsty for the source of your hope"
+              ],
+              "id": "reflect-13-2"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God to make your family salt in your neighbourhood",
+                "Thank Him for the flavour He gives you"
+              ],
+              "id": "pray-13-2"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-26",
+          "day": 87,
+          "weekday": "Thursday",
+          "title": "Light for the street",
+          "verse": {
+            "text": "Let your light shine before others, that they may see your good deeds and glorify your Father in heaven.",
+            "by": "Matthew 5:16"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The purpose of visible good deeds is not applause for the family but glory for the Father. When neighbours see kindness without a punchline, they start wondering about heaven. This week, let them wonder — and see."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Do one good deed with no need to be thanked",
+                "Do it 'before others' — in the open where it can point to God",
+                "Brace for the strange joy of not getting the credit"
+              ],
+              "id": "reflect-13-3"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God to be glorified through your family's good deeds",
+                "Thank Him for the light you get to carry"
+              ],
+              "id": "pray-13-3"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-27",
+          "day": 88,
+          "weekday": "Friday",
+          "title": "The city on a hill",
+          "verse": {
+            "text": "A town built on a hill cannot be hidden.",
+            "by": "Matthew 5:14"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "You cannot hide a city on a hill any more than you can hide a lit lamp. Jesus is redefining what a household is for: not a private fortress but a visible landmark — a place that can be found when people are lost."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Be easy to find today — keep doors (behavioural, not just physical) open",
+                "Answer honestly when someone asks what your family is all about",
+                "Look out over the 'town below' and notice who could use your hill"
+              ],
+              "id": "reflect-13-4"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God to make your home a landmark of His grace",
+                "Thank Him that the City is not just a dream"
+              ],
+              "id": "pray-13-4"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-28",
+          "day": 89,
+          "weekday": "Saturday",
+          "title": "Keeping the light steady",
+          "verse": {
+            "text": "Do not grow weary in doing good, for you will reap a harvest at the proper time.",
+            "by": "Galatians 6:9"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Light carried long is light that keeps burning. The danger for a family at the end of a season is tiredness — the sudden urge to put the lamp back under a bowl. Today's quiz tests the final week's antidote."
+            },
+            {
+              "type": "quiz",
+              "question": "What is the fix for a light that's feeling weary?",
+              "options": [
+                "Don't give up — the harvest comes at the proper time",
+                "Because keeping it is costly, hide it for a while"
+              ],
+              "correctIndex": 0,
+              "explain": "Right — weary light is carried by a promise: reaping comes at God's proper time. Keep burning.",
+              "id": "reflect-13-5"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God to keep your family's light steady",
+                "Thank Him for the harvest that waits at the proper time"
+              ],
+              "id": "pray-13-5"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-29",
+          "day": 90,
+          "weekday": "Sunday",
+          "title": "Rest before the road",
+          "verse": {
+            "text": "In repentance and rest is your salvation, in quietness and trust is your strength.",
+            "by": "Isaiah 30:15"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Before the light goes down the road, it needs quiet and trust — the resting days of a faithful household. On a rest day, refuel: repentance, rest, quietness, trust. That is the strength tank for carrying the light."
+            },
+            {
+              "type": "reflection",
+              "prompt": "What has this season given your household? Write three things you're carrying out of spring into the road ahead.",
+              "placeholder": "What we carry forward...",
+              "id": "reflect-13-6"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Receive quietness and trust as your strength",
+                "Thank God for the season He just walked you through"
+              ],
+              "id": "pray-13-6"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-30",
+          "day": 91,
+          "weekday": "Monday",
+          "title": "Carry it well",
+          "verse": {
+            "text": "Let everything you do be done in love.",
+            "by": "1 Corinthians 16:14"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The last command of a light-carrying household is the simplest: do everything in love. Not 'do everything perfectly' — in love. That is what makes the light worth carrying, and what keeps it burning after this season is long over."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Write your family's one-sentence mission for carrying love into the next season — then pray it out loud tonight.",
+              "placeholder": "We will love by...",
+              "id": "reflect-13-7"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God to make love the finish-line of this season",
+                "Thank Him for the light of His own love in you"
+              ],
+              "id": "pray-13-7"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

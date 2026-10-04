@@ -1,0 +1,32 @@
+{
+  "id": "bulletin-anchor-spring-2026",
+  "kind": "bulletin",
+  "clubSlug": "anchor",
+  "title": "Anchor Bulletin — Spring",
+  "issue": "Vol. 1",
+  "month": "September",
+  "year": 2026,
+  "season": {
+    "name": "Spring",
+    "year": 2026,
+    "label": "Spring 2026 · Sep 1 – Nov 30",
+    "start": "2026-09-01",
+    "end": "2026-11-30"
+  },
+  "cover": "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=800&q=80",
+  "summary": "The childcare co-op, Holding Steady's rest days, and the Anchor Family Feast.",
+  "tags": ["ANCHOR", "SPRING", "DATES"],
+  "blocks": [
+    { "type": "heading", "text": "Dates that matter" },
+    { "type": "list", "items": [
+      "Now to wrap — childcare co-op sign-ups at the Welcome Desk",
+      "Study habit — Holding Steady's rest days (day 6 of every week) are the keeper weeks",
+      "Wednesdays after service — Anchor Catch-up",
+      "29 Nov — Anchor Family Feast"
+    ] },
+    { "type": "heading", "text": "Steady, not striving" },
+    { "type": "paragraph", "text": "Holding Steady, the Anchor Spring guide, has a deliberate rhythm: five days of verses, one day of rest, one day of reflection — every week. The study habit for a single parent is the daily verse that fits one hand: cast the anxiety, take the breath, hold the steady. You are not the sea. And you are not holding it alone — the co-op, the Catch-up and the Feast are the village this season." },
+    { "type": "quote", "text": "We have this hope as an anchor for the soul, firm and secure.", "by": "Hebrews 6:19" },
+    { "type": "quote", "text": "You are not holding it alone.", "by": "Anchor" }
+  ]
+}

@@ -1,0 +1,3317 @@
+{
+  "id": "footsteps-spring-2026",
+  "kind": "magazine",
+  "series": "Footsteps",
+  "clubSlug": "surge",
+  "title": "Footsteps — Spring 2026",
+  "issue": "Season of Spring 2026",
+  "month": "September",
+  "year": 2026,
+  "season": {
+    "name": "Spring",
+    "year": 2026,
+    "label": "Spring 2026 · Sep 1 – Nov 30",
+    "start": "2026-09-01",
+    "end": "2026-11-30"
+  },
+  "theme": "The Jesus Way",
+  "coverLines": [
+    "Walk with Jesus for thirteen weeks",
+    "The way, the truth, the life",
+    "Follow the footsteps"
+  ],
+  "cover": "https://images.unsplash.com/photo-1489824904134-891ab64532f1?w=1600&q=85",
+  "summary": "Spring 2026 study guide for Surge: thirteen weeks of walking the Jesus way — the call, the beatitudes, the lower love, the cross, the sending. One verse and one daily read for every day of the season.",
+  "tags": [
+    "SURGE",
+    "SPRING",
+    "WALK"
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "How to use this study guide"
+    },
+    {
+      "type": "paragraph",
+      "text": "This is a Footsteps study guide for Surge. Spring has thirteen weeks, and each week we walk one stretch of the Jesus way: the call, blessed foundations, love that goes lower, truth that sets free, cross-shaped living, sending. Each day has a verse to read, two or three lines to think on, one honest Try it step, and a prayer. Bring your real life to the road — the way of Jesus is walked in shoes like yours."
+    },
+    {
+      "type": "heading",
+      "text": "The way"
+    },
+    {
+      "type": "paragraph",
+      "text": "Jesus didn't come chiefly to give information; he came to open a way. A way of being human, of loving, of handling money and enemies and failure and ambition. Most of us didn't inherit that way we had to decide to walk it. This spring, thirteen weeks, one footprint a day — that's how a way becomes your way."
+    },
+    {
+      "type": "paragraph",
+      "text": "Follow the steps on each day: read the verse, read the lines, do the Try it, then pray. Day 5 of each week has a short quiz to check your bearings. Days 6 and 7 are for rest and reflection — walk slow, let it land. The Jesus way is not a sprint; it is a life."
+    }
+  ],
+  "weeks": [
+    {
+      "index": 1,
+      "title": "Week 1 — The call",
+      "theme": "The call",
+      "intro": [
+        {
+          "type": "paragraph",
+          "text": "Every road begins with a call. Before the Jesus way is a set of teachings, it is a person saying 'come and see'. This week we start where the disciples started — at the invitation, not the syllabus."
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-01",
+          "day": 1,
+          "weekday": "Tuesday",
+          "title": "Come and see",
+          "verse": {
+            "text": "Come, and you will see.",
+            "by": "John 1:39"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Jesus' first recorded invitation is not a doctrine test but an open door: come and see. Andrew and the other disciple go, they stay, and their whole lives reroute. Following Jesus begins the same way for everyone — not with having it all figured out, but with showing up to look."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Act on 'come and see': actually show up to look at Jesus today",
+                "Spend ten minutes in one gospel, not as study — as seeing",
+                "Ask one honest question you've been afraid to bring to him"
+              ],
+              "id": "reflect-1-1"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Answer the call: Lord, I'm coming to see",
+                "Ask him to show you what you're walking toward"
+              ],
+              "id": "pray-1-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-02",
+          "day": 2,
+          "weekday": "Wednesday",
+          "title": "Follow me",
+          "verse": {
+            "text": "\"Come, follow me,\" Jesus said, \"and I will send you out to fish for people.\"",
+            "by": "Matthew 4:19"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Jesus calls fishermen into a new trade: fishing for people. The striking thing is that he calls them forward into a mission they don't understand yet — and they leave the nets on the shore. The call promises direction more than detail."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Name one net on your shore — something safe you're holding back from",
+                "Ask: what is Jesus actually inviting me into right now?",
+                "Take one step of yes today, even without the full map"
+              ],
+              "id": "reflect-1-2"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Say yes to his direction before you see his detail",
+                "Ask for the same courage the fishermen had"
+              ],
+              "id": "pray-1-2"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-03",
+          "day": 3,
+          "weekday": "Thursday",
+          "title": "Leave it all",
+          "verse": {
+            "text": "So they left everything and followed him.",
+            "by": "Luke 5:11"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Luke adds the fuller cost: they left everything. Not a little. Everything. The call of Jesus is not to upgrade your life but to re-own it — from a thing you manage to a thing he sends. Leaving everything usually looks less dramatic and is no less real."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Make a short list of what 'everything' looks like for you this season",
+                "Choose one thing to place in his hands that you've been gripping",
+                "Don't romanticise it — just do the actual handover"
+              ],
+              "id": "reflect-1-3"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Hand Jesus the thing you've been managing",
+                "Thank him that what you leave is never loss"
+              ],
+              "id": "pray-1-3"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-04",
+          "day": 4,
+          "weekday": "Friday",
+          "title": "He looked at him",
+          "verse": {
+            "text": "Jesus looked at him and loved him.",
+            "by": "Mark 10:21"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Before the rich man gets the hardest invitation in the gospels — go, sell, give, come — he is looked at and loved. The call of Jesus is never a rejection notice. It can be costly; it is never cold."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Receive that look today: Jesus looks at you and loves you",
+                "Separate the cost of the call from the love behind it",
+                "Let his love give you the courage to hear the costly part honestly"
+              ],
+              "id": "reflect-1-4"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Let Jesus look at you and love you first",
+                "Ask for courage to hear the full invitation"
+              ],
+              "id": "pray-1-4"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-05",
+          "day": 5,
+          "weekday": "Saturday",
+          "title": "The one thing",
+          "verse": {
+            "text": "You still lack one thing.",
+            "by": "Mark 10:21"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The rich young man has kept the rules, and Jesus names the gap: one thing — his money owns him, and he walks away sad. Today's quiz tests what we're really attached to when the call gets specific."
+            },
+            {
+              "type": "quiz",
+              "question": "Why did Jesus tell the rich young man to sell what he had?",
+              "options": [
+                "Because money is bad and must be destroyed",
+                "Because that one possession stood between him and following"
+              ],
+              "correctIndex": 1,
+              "explain": "Right — the command was precision medicine. The 'one thing' was the one thing in the way.",
+              "id": "reflect-1-5"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask Jesus to name your 'one thing' honestly",
+                "Pray for the courage to loosen your hold on it"
+              ],
+              "id": "pray-1-5"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-06",
+          "day": 6,
+          "weekday": "Sunday",
+          "title": "Abide on the road",
+          "verse": {
+            "text": "If you hold to my teaching, you are really my disciples.",
+            "by": "John 8:31"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The road is not walked in a day; it is walked by holding to his teaching — a verb that means staying, remaining, abiding. On a rest day, let the pace slow. The call was never 'arrive'; it was 'abide'."
+            },
+            {
+              "type": "reflection",
+              "prompt": "What has the week's call surfaced that you need to sit with — not solve yet? Write it in one honest paragraph.",
+              "placeholder": "What the call surfaced...",
+              "id": "reflect-1-6"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask to abide in his teaching today",
+                "Thank him that discipleship is a staying, not a sprinting"
+              ],
+              "id": "pray-1-6"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-07",
+          "day": 7,
+          "weekday": "Monday",
+          "title": "Written in the book of life",
+          "verse": {
+            "text": "Instead, rejoice that your names are written in heaven.",
+            "by": "Luke 10:20"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The seventy return from mission amazed at their power, and Jesus redirects their joy: the real wonder is not what you can do but whose you are — your name written in heaven. On Monday, set your anchor on identity before activity."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Before the week's doing starts: what does it mean to you that your name is written in heaven? Write it down.",
+              "placeholder": "My name is written...",
+              "id": "reflect-1-7"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Rejoice that your name is written in heaven",
+                "Ask him to order your doing after your belonging"
+              ],
+              "id": "pray-1-7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "title": "Week 2 — Blessed foundations",
+      "theme": "Blessed foundations",
+      "intro": [
+        {
+          "type": "paragraph",
+          "text": "The Beatitudes are the blueprint of the Jesus way — blessings, not conditions. This week we lay the foundations that the rest of the road is built on."
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-08",
+          "day": 8,
+          "weekday": "Tuesday",
+          "title": "Poor in spirit",
+          "verse": {
+            "text": "Blessed are the poor in spirit, for theirs is the kingdom of heaven.",
+            "by": "Matthew 5:3"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The beatitudes begin at the bottom, not the top: blessed are the poor in spirit — those who admit they don't have enough strength, wisdom or holiness to save themselves. It's the opposite of spiritual hustling. The kingdom is for the people who know they need it."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Admit one small poverty out loud: somewhere you simply don't have it",
+                "Stop performing spiritual competence with God today",
+                "Notice the relief in being poor in spirit before him"
+              ],
+              "id": "reflect-2-1"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Come to God in your poverty, not your impressive",
+                "Thank him that the kingdom goes to the empty-handed"
+              ],
+              "id": "pray-2-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-09",
+          "day": 9,
+          "weekday": "Wednesday",
+          "title": "Those who mourn",
+          "verse": {
+            "text": "Blessed are those who mourn, for they will be comforted.",
+            "by": "Matthew 5:4"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Jesus blesses mourners at the front of his manifesto — a culture-changing act. Grief over what's broken, what's lost, what's wrong in the world is not a failure of faith; it is the precondition for comfort. You can't be comforted for something you refuse to feel."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Let yourself actually grieve one thing — there are no points for stoic",
+                "Refuse the cynicism that turns grief into jokes",
+                "Ours is the God who promises comfort, not just lectures"
+              ],
+              "id": "reflect-2-2"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Bring your mourning to the God who comforts",
+                "Ask for comfort — real comfort — not just distraction"
+              ],
+              "id": "pray-2-2"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-10",
+          "day": 10,
+          "weekday": "Thursday",
+          "title": "The meek",
+          "verse": {
+            "text": "Blessed are the meek, for they will inherit the earth.",
+            "by": "Matthew 5:5"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Meekness has been misread as weakness, but it is strength under control — a stallion when it could be a bulldozer. The meek inherit the earth because they don't have to conquer it; they know the earth already belongs to God and are content to receive it."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Hold your strength in check in one situation where you could crush",
+                "Give up being the smartest person in the room",
+                "Be content to inherit rather than to conquer"
+              ],
+              "id": "reflect-2-3"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask for the meekness of strength under control",
+                "Thank God that the earth is his to give"
+              ],
+              "id": "pray-2-3"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-11",
+          "day": 11,
+          "weekday": "Friday",
+          "title": "Hunger and thirst",
+          "verse": {
+            "text": "Blessed are those who hunger and thirst for righteousness, for they will be filled.",
+            "by": "Matthew 5:6"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Righteousness is not a distant cool concept here — it is the one thing you want as badly as food and water. Jesus blesses raw appetite. A craving for what's right — in you, in your city, in your workplace — is the sign of a healthy soul, and Jesus promises it gets satisfied."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Let yourself actually want what is right — don't apologise for the appetite",
+                "Do one righteous (not just legal) thing today",
+                "Ask for more hunger, not less"
+              ],
+              "id": "reflect-2-4"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Bring your hunger for rightness to Jesus",
+                "Trust his promise: you will be filled"
+              ],
+              "id": "pray-2-4"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-12",
+          "day": 12,
+          "weekday": "Saturday",
+          "title": "Mercy",
+          "verse": {
+            "text": "Blessed are the merciful, for they will be shown mercy.",
+            "by": "Matthew 5:7"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The beatitudes keep going lower: mercy. The merciful are those who have been hurt and choose not to scoreboard it. Today's quiz checks which road actually leads to the heart of the beatitudes."
+            },
+            {
+              "type": "quiz",
+              "question": "Why does the 'way of Jesus' start with blessings on the meek and poor in spirit?",
+              "options": [
+                "Because the way is built on receiving, not achieving",
+                "Because God admires self-made strength"
+              ],
+              "correctIndex": 0,
+              "explain": "Right — the whole way of Jesus is grounded in grace: blessed are the people who come empty, not the ones who compete their way up.",
+              "id": "reflect-2-5"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God to grow mercy in you the way it grew in him",
+                "Thank him that mercy is received before it is given"
+              ],
+              "id": "pray-2-5"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-13",
+          "day": 13,
+          "weekday": "Sunday",
+          "title": "Pure in heart",
+          "verse": {
+            "text": "Blessed are the pure in heart, for they will see God.",
+            "by": "Matthew 5:8"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Purity of heart is not perfection of record; it is singleness of intention — one thing you want above the clutter. On a rest day, let the filters settle. What is the one thing you actually want? The pure in heart are on the way to seeing God."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Confession moment: what is competing with God for your heart's singularity? Write it down and give it a name.",
+              "placeholder": "The competing desire...",
+              "id": "reflect-2-6"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask for a clean, single-hearted desire",
+                "Anticipate the blessing: you will see God"
+              ],
+              "id": "pray-2-6"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-14",
+          "day": 14,
+          "weekday": "Monday",
+          "title": "Peacemakers' children",
+          "verse": {
+            "text": "Blessed are the peacemakers, for they will be called children of God.",
+            "by": "Matthew 5:9"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The foundation week closes with the family resemblance: peacemakers are called children of God because they act like their Father, who makes peace. On Monday, go make peace in one place — not by winning, by building."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Where is there a broken peace you can begin building today — an apology, a bridge, an honest conversation? Write your next step.",
+              "placeholder": "A peace to build...",
+              "id": "reflect-2-7"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask to bear your Father's family likeness today",
+                "Thank him that peacemakers are his own"
+              ],
+              "id": "pray-2-7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "title": "Week 3 — Love that goes lower",
+      "theme": "Love that goes lower",
+      "intro": [
+        {
+          "type": "paragraph",
+          "text": "The world climbs; the Jesus way descends. This week we walk the radical centre of Jesus' teaching: love that goes lower — to servants, to strangers, to enemies."
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-15",
+          "day": 15,
+          "weekday": "Tuesday",
+          "title": "The towel and the basin",
+          "verse": {
+            "text": "He got up from the meal, took off his outer clothing, and wrapped a towel around his waist.",
+            "by": "John 13:4"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The night before he is crucified, Jesus kneels and washes feet — the job reserved for the lowest servant. The King of the universe does the job nobody would do. Everything you will follow in the Jesus way is hidden in that towel: love expressed as descent."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Do the literal equivalent: pick up the job no one should have to",
+                "Let yourself be served — the other half of washing feet",
+                "Check your heart's altitude: are you descending today?"
+              ],
+              "id": "reflect-3-1"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank Jesus for the towel, the basin and the descent",
+                "Ask him to make your love walk downward"
+              ],
+              "id": "pray-3-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-16",
+          "day": 16,
+          "weekday": "Wednesday",
+          "title": "I have set you an example",
+          "verse": {
+            "text": "I have set you an example that you should do as I have done for you.",
+            "by": "John 13:15"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Jesus doesn't just warm our hearts with the gesture; he hands us the basin. Do as I have done. Love that goes lower is not a feeling to admire; it's an assignment. Put on the towel."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Serve someone who can never pay you back",
+                "Let your leadership be towel-led, not title-led",
+                "Ask: what does 'as I have done' mean in my actual day?"
+              ],
+              "id": "reflect-3-2"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Receive his example as your assignment",
+                "Ask for joy in the descent — not just duty"
+              ],
+              "id": "pray-3-2"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-17",
+          "day": 17,
+          "weekday": "Thursday",
+          "title": "Love your neighbour",
+          "verse": {
+            "text": "Love your neighbour as yourself.",
+            "by": "Mark 12:31"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The command is ordinary-sounding until you define neighbour. Jesus demolishes every border the word 'neighbour' usually draws. It is not whoever is easy or like you — it's whoever is in front of you, in need. Even the ones you'd rather cross the street to avoid."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Let the definition of neighbour expand by one category today",
+                "Love one stranger with the energy you usually save for friends",
+                "Include yourself in 'as yourself' — that's the baseline, not the prize"
+              ],
+              "id": "reflect-3-3"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask Jesus to redefine your neighbours",
+                "Thank him that he treated himself as ordinary love demands you be treated"
+              ],
+              "id": "pray-3-3"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-18",
+          "day": 18,
+          "weekday": "Friday",
+          "title": "Wash one another's feet",
+          "verse": {
+            "text": "Just as I have loved you, you also should love one another.",
+            "by": "John 13:34"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Jesus upgrades the old command: love one another 'as I have loved you' — with the towel, the basin, the willingness to go low when it costs. A group of believers that loves like that is the most dangerous sign on earth."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Wash someone's feet — literally or figuratively — today",
+                "Choose the low seat at the gathering, not the important one",
+                "Protect the dignity of someone who's been brought low"
+              ],
+              "id": "reflect-3-4"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask for the grace to love as Jesus loved",
+                "Thank him for the new commandment that is not new at all"
+              ],
+              "id": "pray-3-4"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-19",
+          "day": 19,
+          "weekday": "Saturday",
+          "title": "Love your enemies",
+          "verse": {
+            "text": "But I tell you, love your enemies.",
+            "by": "Matthew 5:44"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "This is the hardest line in the sermon, and Jesus doesn't soften it. Love your enemies — the ones who've hurt you, opposed you, wronged your people. Today's quiz is about what loving an enemy does not mean."
+            },
+            {
+              "type": "quiz",
+              "question": "What does 'love your enemies' NOT mean?",
+              "options": [
+                "Pretending the hurt never happened",
+                "Praying for their good and refusing to repay evil with evil"
+              ],
+              "correctIndex": 0,
+              "explain": "Right — loving enemies is not denial; it is a disciplined refusal to let them write your heart's programming.",
+              "id": "reflect-3-5"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Name an enemy to Jesus and pray for their good",
+                "Ask for power to break the cycle of repayment"
+              ],
+              "id": "pray-3-5"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-20",
+          "day": 20,
+          "weekday": "Sunday",
+          "title": "The good Samaritan day",
+          "verse": {
+            "text": "Go and do likewise.",
+            "by": "Luke 10:37"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The lawyer gets the story's final order: go and do likewise — be the neighbour, even to the person your society trains you to walk past. On a rest day, rest includes readiness: the story is always waiting to be re-enacted in your week."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Who is your 'roadside' person — the one your world steps around? Write how a towel-shaped love might meet them this month.",
+              "placeholder": "The one beside the road...",
+              "id": "reflect-3-6"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask to be the neighbour without borders",
+                "Thank Jesus for being the neighbour you didn't deserve"
+              ],
+              "id": "pray-3-6"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-21",
+          "day": 21,
+          "weekday": "Monday",
+          "title": "Love made complete",
+          "verse": {
+            "text": "This is how we know what love is: Jesus Christ laid down his life for us. And we ought to lay down our lives for our brothers and sisters.",
+            "by": "1 John 3:16"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Here is the definition and the reach of the lower love: he laid down his life; we lay down ours — daily, for real people, in real doses. Monday is the day to rehearse your own small death: a pride, a plan, a preference, laid down for someone."
+            },
+            {
+              "type": "reflection",
+              "prompt": "What would 'laying down your life' concretely mean this month? Write one specific act and put it in your calendar.",
+              "placeholder": "One laying-down...",
+              "id": "reflect-3-7"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Contemplate the love that laid down his life",
+                "Ask for strength to lay yours down in real doses"
+              ],
+              "id": "pray-3-7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "title": "Week 4 — Truth that sets free",
+      "theme": "Truth that sets free",
+      "intro": [
+        {
+          "type": "paragraph",
+          "text": "The Jesus way is allergic to masks. This week we walk in the truth that sets free: honesty with God, honesty with ourselves, honesty with one another."
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-22",
+          "day": 22,
+          "weekday": "Tuesday",
+          "title": "You will know the truth",
+          "verse": {
+            "text": "Then you will know the truth, and the truth will set you free.",
+            "by": "John 8:32"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Truth is not a burden to survive here; it is the key. You will know the truth, and it will set you free. The most common bondage in the modern soul is not lack of information but lack of honesty — we lie to ourselves and wonder why we're stuck."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Tell one true thing to God today — the unedited version",
+                "Name the lie you've been privately rehearsing",
+                "Choose truth over the smoother story in one conversation"
+              ],
+              "id": "reflect-4-1"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask the Spirit of truth to search your corners",
+                "Thank God that knowing the truth actually sets you free"
+              ],
+              "id": "pray-4-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-23",
+          "day": 23,
+          "weekday": "Wednesday",
+          "title": "The truth in love",
+          "verse": {
+            "text": "Instead, speaking the truth in love, we will grow to become in every respect the mature body of him who is the head, that is, Christ.",
+            "by": "Ephesians 4:15"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Truth without love is cruelty; love without truth is haze. Paul unites the two into one verb: speaking the truth in love — the way you grow up and the way the church grows up. One without the other just doesn't mature anything."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Say one hard true thing — in love, not in frustration",
+                "Receive a hard true thing without building walls",
+                "Check your mix: is your kindness costing the truth?"
+              ],
+              "id": "reflect-4-2"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask for truth that travels in love",
+                "Thank God that he wants both, not either"
+              ],
+              "id": "pray-4-2"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-24",
+          "day": 24,
+          "weekday": "Thursday",
+          "title": "I am the truth",
+          "verse": {
+            "text": "I am the way and the truth and the life.",
+            "by": "John 14:6"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Jesus doesn't just teach truth; he claims to be it. The way you walk this spring is a person, the truth you know is a person, the life you're given is a person. That changes everything about how you hold 'truth' — it is met, not just mastered."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Meet the truth today more than you measure it",
+                "Stop using truth as a weapon and start letting it set you free",
+                "Take one step on the way that is a person"
+              ],
+              "id": "reflect-4-3"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Worship Jesus as the way, the truth, the life",
+                "Ask him to be known, not just studied"
+              ],
+              "id": "pray-4-3"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-25",
+          "day": 25,
+          "weekday": "Friday",
+          "title": "Walk in the light",
+          "verse": {
+            "text": "If we walk in the light, as he is in the light, we have fellowship with one another.",
+            "by": "1 John 1:7"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "John's picture of honesty: walking in the light — things visible, nothing curated for the dark. The surprise is that this is where fellowship lives. Hidden things separate; shared things connect."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Bring one hidden thing into the light today",
+                "Offer someone your honest story, not your highlight reel",
+                "Enjoy the strange lightness of nothing to manage"
+              ],
+              "id": "reflect-4-4"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask for courage to walk in the light",
+                "Thank God that his light covers, not exposes, those who come to him"
+              ],
+              "id": "pray-4-4"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-26",
+          "day": 26,
+          "weekday": "Saturday",
+          "title": "Confess your sins",
+          "verse": {
+            "text": "Therefore confess your sins to each other and pray for each other so that you may be healed.",
+            "by": "James 5:16"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "James turns confession into a healing practice between people, not just a private transaction with God. Today's quiz is about the strange medicine of honest confession."
+            },
+            {
+              "type": "quiz",
+              "question": "Why does James connect confession with healing?",
+              "options": [
+                "Hidden sin keeps you sick; brought to light, it can be prayed over and healed",
+                "Confession is only for the faint-hearted"
+              ],
+              "correctIndex": 0,
+              "explain": "Right — secrecy breeds infection; confession opens the wound to prayer and the balm of community.",
+              "id": "reflect-4-5"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Pray for the courage of honest confession",
+                "Ask for healing where secrets have made you sick"
+              ],
+              "id": "pray-4-5"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-27",
+          "day": 27,
+          "weekday": "Sunday",
+          "title": "The truth's rest",
+          "verse": {
+            "text": "Create in me a pure heart, O God.",
+            "by": "Psalm 51:10"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "David's post-failure prayer is the prayer of the honest soul: create in me a pure heart. He doesn't defend; he asks for reconstruction. On a rest day, let the truth do its work — the psalmists call it a clean heart, and it is the rest of the honest."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Write the prayer of a pure heart in your own words. What are you asking God to create in you?",
+              "placeholder": "Create in me...",
+              "id": "reflect-4-6"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Pray David's prayer for a pure heart",
+                "Trust that honesty with God is never the wrong door"
+              ],
+              "id": "pray-4-6"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-28",
+          "day": 28,
+          "weekday": "Monday",
+          "title": "Keep being true",
+          "verse": {
+            "text": "The LORD detests lying lips, but he delights in people who are trustworthy.",
+            "by": "Proverbs 12:22"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The way of truth ends where it began: a choice between two identities — the lying lips and the trustworthy heart. God delights in trustworthy people. On Monday, resolve to be one: true in the little things, and therefore true in the big ones."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Where are you tempted to trim the truth in small ways? Write the places — and your resolve for each.",
+              "placeholder": "Where I'm tempted to trim...",
+              "id": "reflect-4-7"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask to be someone God delights in — trustworthy",
+                "Thank him for truth, the surgery that sets free"
+              ],
+              "id": "pray-4-7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "title": "Week 5 — Money and the kingdom",
+      "theme": "Money and the kingdom",
+      "intro": [
+        {
+          "type": "paragraph",
+          "text": "Jesus talked about money more than almost anything because money is where the heart sets its real coordinates. This week we walk the way of the kingdom through the myth that you can't be spiritual and financial."
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-29",
+          "day": 29,
+          "weekday": "Tuesday",
+          "title": "Where your treasure is",
+          "verse": {
+            "text": "For where your treasure is, there your heart will be also.",
+            "by": "Matthew 6:21"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Jesus doesn't say your heart directs your treasure; he says your treasure directs your heart. Your bank statement is a spiritual autobiography whether you intend it or not. The Jesus way starts with honesty about where the treasure is going."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Do the uncomfortable audit: what do your spending patterns confess?",
+                "Move one unit of treasure toward Jesus' priorities today",
+                "Ask where your heart has actually been living"
+              ],
+              "id": "reflect-5-1"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Hand Jesus the ledger of your heart",
+                "Ask for hearts anchored where your treasure should be"
+              ],
+              "id": "pray-5-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-30",
+          "day": 30,
+          "weekday": "Wednesday",
+          "title": "You cannot serve both",
+          "verse": {
+            "text": "You cannot serve both God and money.",
+            "by": "Matthew 6:24"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Jesus frames money as a rival god, not a tool. Money is not neutral; it is a loyalty that wants worship — security, status, control. The Jesus way dethrones it, not by pretending it doesn't exist but by refusing it the throne."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Worship-check: where did you look for safety today — God or money?",
+                "Practice a small act of financial risk-trust (give, lend, bless)",
+                "Refuse one fear-based decision led by money"
+              ],
+              "id": "reflect-5-2"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Reaffirm: serve God, not money",
+                "Ask for freedom from money's grip on your decisions"
+              ],
+              "id": "pray-5-2"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-01",
+          "day": 31,
+          "weekday": "Thursday",
+          "title": "Riches sprout wings",
+          "verse": {
+            "text": "Do not wear yourself out to get rich; do not trust your cleverness.",
+            "by": "Proverbs 23:4"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The proverb sounds cynical but is simply honest: money is a restless bird — it sprouts wings and flies off. Investing your life in the chasing of it is a treadmill with no exit. Wisdom refuses to be hypnotised by the flight of riches."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Refuse one 'get rich quick' thought today as a matter of principle",
+                "Invest in one thing that doesn't sprout wings: a person, a skill, the kingdom",
+                "Talk honestly with a friend about money — grieve the taboo"
+              ],
+              "id": "reflect-5-3"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask for wisdom where money is concerned",
+                "Thank God that he is wealth that cannot flee"
+              ],
+              "id": "pray-5-3"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-02",
+          "day": 32,
+          "weekday": "Friday",
+          "title": "The faithful steward",
+          "verse": {
+            "text": "Whoever can be trusted with very little can also be trusted with much.",
+            "by": "Luke 16:10"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Jesus teaches that money management is trust management. The way you handle the little (however little) is exactly how God tests what he can entrust to you. Faithfulness precedes favour."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Manage some 'little' with utter faithfulness today — time, a small sum, a duty",
+                "Ask: what would faithful stewardship look like if nothing was 'mine'?",
+                "Let integrity in money speak louder than your talk about it"
+              ],
+              "id": "reflect-5-4"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask to be trusted with little so you can be trusted with much",
+                "Thank God that he is the owner; you are the steward"
+              ],
+              "id": "pray-5-4"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-03",
+          "day": 33,
+          "weekday": "Saturday",
+          "title": "Laying up treasure in heaven",
+          "verse": {
+            "text": "But store up for yourselves treasures in heaven, where moths and vermin do not destroy.",
+            "by": "Matthew 6:20"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "There is a bank that inflation, moths and market crashes can't touch: heaven. Today's quiz is about the wisdom of the two treasuries."
+            },
+            {
+              "type": "quiz",
+              "question": "What is the practical test of where you're storing treasure?",
+              "options": [
+                "How much you give away — treasure you can't keep anyway",
+                "How little you spend on yourself"
+              ],
+              "correctIndex": 0,
+              "explain": "Right — heavenly treasure is a giving kind. The test is not austerity; it is direction.",
+              "id": "reflect-5-5"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask where your treasure is truly piling up",
+                "Thank God for a treasure that vermin cannot touch"
+              ],
+              "id": "pray-5-5"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-04",
+          "day": 34,
+          "weekday": "Sunday",
+          "title": "Rest from the rat race",
+          "verse": {
+            "text": "Come with me by yourselves to a quiet place and get some rest.",
+            "by": "Mark 6:31"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Even Jesus pulled his disciples out of the pace for a quiet rest. The kingdom is not fuelled by burnout. On a rest day, let the chassis cool — away from the metrics, the comparisons, the to-do list. Rest is not a reward; it's a royal entitlement."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Write down what rest actually looks like for you now — not a luxury plan, a real one. What would Jesus tell you to lay down today?",
+              "placeholder": "Real rest for me...",
+              "id": "reflect-5-6"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Come to the quiet place with Jesus",
+                "Thank him that rest is built into the kingdom's economy"
+              ],
+              "id": "pray-5-6"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-05",
+          "day": 35,
+          "weekday": "Monday",
+          "title": "Give, and it's still giving",
+          "verse": {
+            "text": "Remember the LORD your God, for it is he who gives you the ability to produce wealth.",
+            "by": "Deuteronomy 8:18"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Moses warns Israel, as they enter wealth: don't forget the Giver of the producing power. Every salary, salary-increase, opportunity and skill is downstream from God's giving. On Monday, steward the wealth — and remember where the ability came from."
+            },
+            {
+              "type": "reflection",
+              "prompt": "What ability to produce have you been given? Treasure it this week — and give thanks for the Giver behind your game.",
+              "placeholder": "The ability God gave me...",
+              "id": "reflect-5-7"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank God for the ability to produce",
+                "Ask him to guard your heart from forgetting the Giver"
+              ],
+              "id": "pray-5-7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "title": "Week 6 — Prayer that persists",
+      "theme": "Prayer that persists",
+      "intro": [
+        {
+          "type": "paragraph",
+          "text": "Prayer is not a slot in your schedule; it is the way you breathe on the Jesus way. This week we practise the kind of prayer Jesus taught — honest, persistent, trusting."
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-10-06",
+          "day": 36,
+          "weekday": "Tuesday",
+          "title": "Our Father",
+          "verse": {
+            "text": "This, then, is how you should pray: \"Our Father in heaven, hallowed be your name.\"",
+            "by": "Matthew 6:9"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The model prayer begins with address, not agenda: our Father. Not 'my' — ours, a family prayer. Hevenly, hallowed. Before a single request, Jesus re-establishes who you are talking to: your Father, whose name you love."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Start prayer with address today: 'Our Father' — and mean it",
+                "Pray with someone else's need on your mind, not just yours",
+                "Slow down the opening: hallow his name before you ask anything"
+              ],
+              "id": "reflect-6-1"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Come to your Father as a family member",
+                "Ask that his name be revered in your life"
+              ],
+              "id": "pray-6-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-07",
+          "day": 37,
+          "weekday": "Wednesday",
+          "title": "Ask, seek, knock",
+          "verse": {
+            "text": "Ask and it will be given to you; seek and you will find; knock and the door will be opened to you.",
+            "by": "Matthew 7:7"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Three verbs, one promise, and all of them are active. God is not inviting passive wishing; he is inviting persistent engagement — ask, seek, knock. The repetition is the point: the door opens to those who keep on coming."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Ask — out loud, specifically, for a real thing",
+                "Seek — take one actual search step toward your answer",
+                "Knock — don't give up after the first silence"
+              ],
+              "id": "reflect-6-2"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Bring your specific ask to your Father",
+                "Trust the promise: keep, seek, knock today"
+              ],
+              "id": "pray-6-2"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-08",
+          "day": 38,
+          "weekday": "Thursday",
+          "title": "The persistent widow",
+          "verse": {
+            "text": "Because this widow keeps bothering me, I will see that she gets justice.",
+            "by": "Luke 18:5"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Jesus tells a story of a widow who wears down a crooked judge — and then contrasts: if an unjust judge finally answers, how much more will a righteous Father? The point is not that God needs nagging; it's that persistence is the shape of faith."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Refuse to stop praying for one long-running thing",
+                "Let the widow's stubbornness be your model, not your embarrassment",
+                "Ask yourself: have I really persisted, or given up quietly?"
+              ],
+              "id": "reflect-6-3"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Lay your one persistent request before the righteous judge",
+                "Thank him that he is not a grudging judge but a Father"
+              ],
+              "id": "pray-6-3"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-09",
+          "day": 39,
+          "weekday": "Friday",
+          "title": "Pray in the Spirit",
+          "verse": {
+            "text": "In the same way, the Spirit helps us in our weakness. We do not know what we ought to pray for, but the Spirit himself intercedes for us.",
+            "by": "Romans 8:26"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "There is enormous relief in this verse: you don't always know what to pray. When words fail, the Spirit prays in you with groans deeper than language. Prayer is not a performance art; it is a partnership."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Give voice to a prayer you can't articulate — let the Spirit interpret",
+                "Admit your weakness in prayer out loud — it's the Spirit's cue",
+                "Pray through silence sometimes; groans count"
+              ],
+              "id": "reflect-6-4"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Let the Spirit pray in your weakness today",
+                "Thank him that he intercedes when you can't find words"
+              ],
+              "id": "pray-6-4"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-10",
+          "day": 40,
+          "weekday": "Saturday",
+          "title": "Pray like Jesus prayed",
+          "verse": {
+            "text": "He withdrew... and prayed.",
+            "by": "Luke 5:16"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The busiest man in the gospels kept withdrawing to pray. Jesus' rhythm of life was built on it — not prayer squeezed around a full schedule but the schedule built on prayer. Today's quiz is about Jesus' prayer practice."
+            },
+            {
+              "type": "quiz",
+              "question": "What pattern did Jesus model in his busiest seasons?",
+              "options": [
+                "Cutting prayer because the demands were urgent",
+                "Withdrawing to pray before and during the demands"
+              ],
+              "correctIndex": 1,
+              "explain": "Right — Jesus made withdrawal to pray, not the workload, the foundation of his priorities.",
+              "id": "reflect-6-5"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Withdraw deliberately to pray",
+                "Follow Jesus into the quiet before the demands"
+              ],
+              "id": "pray-6-5"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-11",
+          "day": 41,
+          "weekday": "Sunday",
+          "title": "Prayer that rests",
+          "verse": {
+            "text": "My soul finds rest in God alone.",
+            "by": "Psalm 62:1"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Prayer is not only petition; it is resting your soul in God like a patient on a table. On a rest day, let prayer be less about raising hands with requests and more about letting go of everything you were gripping."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Sit in stillness for five minutes. What does your soul say when it isn't performing? Write two sentences.",
+              "placeholder": "In the quiet, my soul...",
+              "id": "reflect-6-6"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Rest your soul in God alone",
+                "Thank him that prayer's deepest posture is trust"
+              ],
+              "id": "pray-6-6"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-12",
+          "day": 42,
+          "weekday": "Monday",
+          "title": "Pray in everything",
+          "verse": {
+            "text": "Be joyful in hope, patient in affliction, faithful in prayer.",
+            "by": "Romans 12:12"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Paul's triple rhythm runs on the third rail: faithful in prayer. It is the current that keeps joy from curdling and patience from snapping. Monday is the day to wire prayer into your week like a power cable, not an ornament."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Write your practical prayer plan for the week: when, where, and the one thing you will persist on.",
+              "placeholder": "My prayer plan...",
+              "id": "reflect-6-7"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Commit to faithfulness in prayer this week",
+                "Thank God that the Spirit is in it with you"
+              ],
+              "id": "pray-6-7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "title": "Week 7 — The cross-shaped life",
+      "theme": "The cross-shaped life",
+      "intro": [
+        {
+          "type": "paragraph",
+          "text": "Halfway through spring we walk to the centre: the cross. The Jesus way runs through it — not as decoration but as the shape of a surrendered life."
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-10-13",
+          "day": 43,
+          "weekday": "Tuesday",
+          "title": "Take up your cross",
+          "verse": {
+            "text": "Whoever wants to be my disciple must deny themselves and take up their cross and follow me.",
+            "by": "Mark 8:34"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "In Jesus' world a cross was one thing — an instrument of execution, carried by a condemned man to his own death. He invites followers to the same posture: deny yourself, take it up, follow. The way of Jesus is a death-sentence life and the only one worth living."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Name one self-centred default you can deny today",
+                "Pick up the daily cross: the obedience you'd rather avoid",
+                "Follow — not negotiate — today"
+              ],
+              "id": "reflect-7-1"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Receive the invitation to the cross-shaped life",
+                "Ask for the grace to deny yourself and follow"
+              ],
+              "id": "pray-7-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-14",
+          "day": 44,
+          "weekday": "Wednesday",
+          "title": "Not my will",
+          "verse": {
+            "text": "Yet not as I will, but as you will.",
+            "by": "Matthew 26:39"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "In Gethsemane Jesus prays the most honest prayer ever prayed: Father, if it's possible, take this cup — and then, not as I will but as you will. The cross-shaped life is not the absence of preference; it is preference surrendered."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Say honestly to God what you'd prefer — then surrender it",
+                "Practise the two-clause prayer: my will, then yours",
+                "Let surrender be a daily rhythm, not a one-time event"
+              ],
+              "id": "reflect-7-2"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Bring your honest preference to the Father",
+                "End every prayer where Jesus ended his: not my will, but yours"
+              ],
+              "id": "pray-7-2"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-15",
+          "day": 45,
+          "weekday": "Thursday",
+          "title": "He humbled himself",
+          "verse": {
+            "text": "He humbled himself by becoming obedient to death — even death on a cross!",
+            "by": "Philippians 2:8"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Paul gives the descent its full depth: Jesus did not merely serve or teach or wash feet — he humbled himself to death, even death on a cross. The cross is the bottom of the descent, and it is where the way of Jesus is measured. How low will love go?"
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Trade a right you're entitled to for the sake of another today",
+                "Study the cross and let it reset your ambitions",
+                "Serve someone as if humility were still trending"
+              ],
+              "id": "reflect-7-3"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Contemplate the humility that went to the cross",
+                "Ask for the same mind that was in Christ Jesus"
+              ],
+              "id": "pray-7-3"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-16",
+          "day": 46,
+          "weekday": "Friday",
+          "title": "It is finished",
+          "verse": {
+            "text": "When he had received the drink, Jesus said, \"It is finished.\"",
+            "by": "John 19:30"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The cross is where striving ends. It is finished — the debt paid, the work completed, the verdict rendered. The cross-shaped life is not 'try harder to be saved'; it is 'already saved, now live it'. Your performance on the way is love's response, not the wage."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Stop earning what is already finished",
+                "Live today as someone already forgiven — light, not striving",
+                "Let the finished work end one of your self-condemnation loops"
+              ],
+              "id": "reflect-7-4"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Receive the finished work of the cross",
+                "Thank Jesus that the debt is paid in full"
+              ],
+              "id": "pray-7-4"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-17",
+          "day": 47,
+          "weekday": "Saturday",
+          "title": "Crucified with Christ",
+          "verse": {
+            "text": "I have been crucified with Christ and I no longer live, but Christ lives in me.",
+            "by": "Galatians 2:20"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Paul's audacious claim: the old life is dead, executed with Jesus; what lives now is Christ in him. Today's quiz tests which 'I' died at the cross."
+            },
+            {
+              "type": "quiz",
+              "question": "According to Galatians 2:20, what died with Christ?",
+              "options": [
+                "The old self that lived for itself",
+                "The desire to ever experience difficulty"
+              ],
+              "correctIndex": 0,
+              "explain": "Right — 'I have been crucified with Christ': the old ruler, the self-life, was executed. The life that remains is Christ's in you.",
+              "id": "reflect-7-5"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Rehearse the exchange: dead to self, alive to Christ",
+                "Ask Christ to live so evidently in you"
+              ],
+              "id": "pray-7-5"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-18",
+          "day": 48,
+          "weekday": "Sunday",
+          "title": "Rest in the finished work",
+          "verse": {
+            "text": "Later, knowing that everything had now been finished, and so that Scripture would be fulfilled, Jesus said, \"I am thirsty.\"",
+            "by": "John 19:28"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Even his thirst was completion. On a rest day, let the cross do its quiet work: every burden you carry about your worth, your standing, your failures — finished. Rest is not earned at the foot of this cross; it is received."
+            },
+            {
+              "type": "reflection",
+              "prompt": "What are you still trying to 'finish' that Jesus already declared finished? Write it down — then receive it as finished.",
+              "placeholder": "What is already finished...",
+              "id": "reflect-7-6"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Rest at the foot of the finished cross",
+                "Thank Jesus that every 'it is finished' is for you"
+              ],
+              "id": "pray-7-6"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-19",
+          "day": 49,
+          "weekday": "Monday",
+          "title": "Boasting only in the cross",
+          "verse": {
+            "text": "May I never boast except in the cross of our Lord Jesus Christ.",
+            "by": "Galatians 6:14"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The cross-shaped life has one boast: the cross. Not your resume, your church attendance, your moral record — but the executed Son and his finished grace. On Monday, choose your boast and let it reorder the week."
+            },
+            {
+              "type": "reflection",
+              "prompt": "What have you been quietly boasting in? Swap it today for the only boast that holds — write the swap down.",
+              "placeholder": "I will boast in...",
+              "id": "reflect-7-7"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Boast in the cross of Christ alone today",
+                "Thank him for the humility that funds your salvation"
+              ],
+              "id": "pray-7-7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "title": "Week 8 — Faith for the long road",
+      "theme": "Faith for the long road",
+      "intro": [
+        {
+          "type": "paragraph",
+          "text": "Spring faith is easy; the long road of a lifetime is where it's tested. This week we walk the endurance of faith — waiting, hoping, not giving up, keeping first things first."
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-10-20",
+          "day": 50,
+          "weekday": "Tuesday",
+          "title": "Faith is confidence",
+          "verse": {
+            "text": "Now faith is confidence in what we hope for and assurance about what we do not see.",
+            "by": "Hebrews 11:1"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The long road runs on two rails: confidence in what is hoped for, assurance about what is not yet seen. Faith is not certainty about details; it is settled trust in the Character behind the promises. That trust is the road beneath your feet."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Name what you hope for — confidently, not wishfully",
+                "Hold assurance for what you cannot yet see",
+                "Choose trust in the Character, not certainty on the details"
+              ],
+              "id": "reflect-8-1"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask for the confidence of faith today",
+                "Thank God for being trustworthy on the unseen road"
+              ],
+              "id": "pray-8-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-21",
+          "day": 51,
+          "weekday": "Wednesday",
+          "title": "Faith like a mustard seed",
+          "verse": {
+            "text": "If you have faith as small as a mustard seed... Nothing will be impossible for you.",
+            "by": "Matthew 17:20"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The disciples ask why they couldn't drive out the demon, and Jesus points to the tiny seed: faith the size of a mustard seed. Faith is not about magnitude; it's about placement — a small amount resting fully on a large God."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Bring your small, honest faith — not a pretend big one",
+                "Stop measuring faith by feelings and start by obedience",
+                "Act on the seed you have; it's enough"
+              ],
+              "id": "reflect-8-2"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Present your mustard seed to the God of the impossible",
+                "Thank him that he works with small and honest faith"
+              ],
+              "id": "pray-8-2"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-22",
+          "day": 52,
+          "weekday": "Thursday",
+          "title": "Run with perseverance",
+          "verse": {
+            "text": "Let us run with perseverance the race marked out for us.",
+            "by": "Hebrews 12:1"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The long road is a race 'marked out for us' — not a race we choose, but the one appointed. And it is run with perseverance: the unglamorous stamina of showing up again. The witnesses in the stands (the previous chapter's hall of faith) know how it ends."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Receive your marked-out race without resentful comparisons",
+                "Define success as persistence, not position",
+                "Run today's lap — you don't have to run tomorrow's"
+              ],
+              "id": "reflect-8-3"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask for perseverance, the gift of the long haul",
+                "Thank God for the cloud of witnesses rooting you on"
+              ],
+              "id": "pray-8-3"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-23",
+          "day": 53,
+          "weekday": "Friday",
+          "title": "Fixing our eyes on Jesus",
+          "verse": {
+            "text": "Fixing our eyes on Jesus, the pioneer and perfecter of faith.",
+            "by": "Hebrews 12:2"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The antidote to giving up: fixed eyes. Not on the difficulty, not even on your faith, but on Jesus — the pioneer who went first and the perfecter who completes what he started. The road holds because the eyes hold."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "When the road feels endless, return your eyes to Jesus",
+                "Follow the pioneer: he has walked every stretch before you",
+                "Trust the perfecter: he finishes what he starts"
+              ],
+              "id": "reflect-8-4"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Fix your eyes on the pioneer and perfecter",
+                "Thank Jesus for going first and finishing last"
+              ],
+              "id": "pray-8-4"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-24",
+          "day": 54,
+          "weekday": "Saturday",
+          "title": "The cloud of witnesses",
+          "verse": {
+            "text": "Therefore, since we are surrounded by such a great cloud of witnesses, let us throw off everything that hinders.",
+            "by": "Hebrews 12:1"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "You are not the first, or the last. Hebrews 11 lists the long-distance runners of faith — Abraham, Moses, Rahab — and says they surround you like a stadium. Today's quiz is on where a long-distance runner gets their assurance."
+            },
+            {
+              "type": "quiz",
+              "question": "What let the heroes of faith endure the unseen road?",
+              "options": [
+                "Seeing their reward in the crowd's approval",
+                "Seeing him who is invisible, and trusting the promise"
+              ],
+              "correctIndex": 1,
+              "explain": "Right — Hebrews says Moses 'persevered because he saw him who is invisible'. Assurance is about the unseen God, not the visible crowd.",
+              "id": "reflect-8-5"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Honour the witnesses who have run before you",
+                "Ask for strength to follow their footsteps home"
+              ],
+              "id": "pray-8-5"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-25",
+          "day": 55,
+          "weekday": "Sunday",
+          "title": "Sabbath for the long haul",
+          "verse": {
+            "text": "In repentance and rest is your salvation, in quietness and trust is your strength.",
+            "by": "Isaiah 30:15"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The long road has a built-in pace: rest. Isaiah calls it quietness and trust — not the exhaustion of speed but the staying-power of rest in God. On a rest day, receive the gift that rescues you from burnout's slow sabotage."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Where have you been running on fumes? Write where rest — real rest — needs to re-enter your weekly rhythm.",
+              "placeholder": "Where I need rest...",
+              "id": "reflect-8-6"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Receive quietness and trust as your strength",
+                "Thank God that rest is the pace of the long road"
+              ],
+              "id": "pray-8-6"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-26",
+          "day": 56,
+          "weekday": "Monday",
+          "title": "Finished the race",
+          "verse": {
+            "text": "I have fought the good fight, I have finished the race, I have kept the faith.",
+            "by": "2 Timothy 4:7"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Paul ends his life with the threefold finish-line report: fought the good fight, finished the race, kept the faith. Not 'won every round' but 'kept the faith'. Monday is for making peace with the race being long and the finish being faithful, not flawless."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Write what 'kept the faith' would look like at the end of your life. What does that change about this week?",
+              "placeholder": "Keeping the faith means...",
+              "id": "reflect-8-7"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask for the grace to finish faithful",
+                "Thank God for the crown that waits for those who love his appearing"
+              ],
+              "id": "pray-8-7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "title": "Week 9 — Forgiveness without limit",
+      "theme": "Forgiveness without limit",
+      "intro": [
+        {
+          "type": "paragraph",
+          "text": "Unforgiveness is a weight that grows in the dark. This week we walk the hardest freedom in the kingdom: forgiveness without limit — for the family, the church, and the people who have hurt you most."
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-10-27",
+          "day": 57,
+          "weekday": "Tuesday",
+          "title": "Seventy-seven times",
+          "verse": {
+            "text": "I tell you, not seven times, but seventy-seven times.",
+            "by": "Matthew 18:22"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Peter offers his ceiling — seven times, generous by any standard — and Jesus explodes the counting: seventy-seven. The point is not arithmetic but disposition: stop keeping the books. Unforgiveness always starts bookkeeping; forgiveness starts ledger-burning."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Find a tally you've been keeping and burn it",
+                "Forgive a person again for the same offence — that's the seventy-seven way",
+                "Ask: who am I still 'not' forgiving?"
+              ],
+              "id": "reflect-9-1"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask for the grace to stop counting",
+                "Thank God whose forgiveness already tore up your ledger"
+              ],
+              "id": "pray-9-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-28",
+          "day": 58,
+          "weekday": "Wednesday",
+          "title": "Forgive us our debts",
+          "verse": {
+            "text": "Forgive us our debts, as we also have forgiven our debtors.",
+            "by": "Matthew 6:12"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The model prayer installs a terrifying link: we are forgiven as we forgive. Not before, not after — as. It's not a wage for your goodness but a mirror of your reception. A forgiven person is, by nature, a forgiving one."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Before you ask forgiveness, examine your own forgiving",
+                "Pray the prayer and mean the clause: 'as we forgive'",
+                "Release a debtor today — financial, relational, emotional"
+              ],
+              "id": "reflect-9-2"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask for forgiveness with open, forgiving hands",
+                "Thank God for the 'as' — the mirror of grace"
+              ],
+              "id": "pray-9-2"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-29",
+          "day": 59,
+          "weekday": "Thursday",
+          "title": "Forgive as the Lord forgave you",
+          "verse": {
+            "text": "Bear with each other and forgive one another... as the Lord forgave you.",
+            "by": "Colossians 3:13"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The standard is scandalous: forgive as the Lord forgave you. He forgave before you asked, fully and without keeping a receipt. That's the model. Anything smaller is not the Jesus way; anything approximating it is supernatural."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Forgive before the apology arrives",
+                "Forgive without presenting the receipt",
+                "Receive it yourself: how did Christ forgive you?"
+              ],
+              "id": "reflect-9-3"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask for forgiveness that mirrors his",
+                "Thank him for the size of grace you are modelling"
+              ],
+              "id": "pray-9-3"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-30",
+          "day": 60,
+          "weekday": "Friday",
+          "title": "The unforgiving servant",
+          "verse": {
+            "text": "Shouldn't you have had mercy on your fellow servant just as I had on you?",
+            "by": "Matthew 18:33"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The parable's bookkeeping: a servant forgiven a fortune refuses his colleague a handful of coins. The master's question is the sharpest in the gospels. Unforgiveness is not just a cold heart; it is amnesia about grace."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Measure the size of grace you've received — then release the small debt",
+                "Recall a specific forgiveness God gave you; let it disarm your grudge",
+                "Practise mercy toward the one you find hardest"
+              ],
+              "id": "reflect-9-4"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Re-memorise your own massive forgiveness",
+                "Ask to refuse the trap of the unforgiving servant"
+              ],
+              "id": "pray-9-4"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-31",
+          "day": 61,
+          "weekday": "Saturday",
+          "title": "Go and reconcile",
+          "verse": {
+            "text": "First go and be reconciled.",
+            "by": "Matthew 5:24"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Jesus says the priority of the gift-bearer: before you even offer your gift at the altar, go and be reconciled. Worship and reconciliation belong together. Today's quiz tests the radical order Jesus sets."
+            },
+            {
+              "type": "quiz",
+              "question": "According to Matthew 5:23-24, what comes first?",
+              "options": [
+                "The offering, then reconciliation later, if practical",
+                "Go and reconcile — before the gift"
+              ],
+              "correctIndex": 1,
+              "explain": "Right — Jesus orders reconciliation ahead of ritual. A broken relationship is a blocked offering.",
+              "id": "reflect-9-5"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Identify the reconciliation that awaits your next step",
+                "Ask for courage to go first"
+              ],
+              "id": "pray-9-5"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-01",
+          "day": 62,
+          "weekday": "Sunday",
+          "title": "The forgiven rest",
+          "verse": {
+            "text": "As far as the east is from the west, so far has he removed our transgressions from us.",
+            "by": "Psalm 103:12"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "God's forgiveness has distance and direction: east from west — infinite, non-intersecting. On a rest day, let your own heaviness be removed that far. If God no longer sees it, why are you still carrying it?"
+            },
+            {
+              "type": "reflection",
+              "prompt": "What old guilt are you hauling that God has already removed? Write the phrase, tear it up, and let the distance stand.",
+              "placeholder": "The transgression I release...",
+              "id": "reflect-9-6"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Receive the east-west removal of your sin",
+                "Thank God your forgiven record is beyond retrieval"
+              ],
+              "id": "pray-9-6"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-02",
+          "day": 63,
+          "weekday": "Monday",
+          "title": "Forgive to be free",
+          "verse": {
+            "text": "Freely you have received; freely give.",
+            "by": "Matthew 10:8"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The kingdom economy in four words: freely received, freely given. Forgiveness is how you pass along the only wealth that has no end. On Monday, give somebody a gift that cost you your pride — and feel the freedom of the debtor set loose."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Write the name of the person you will forgiveness-forward to this week, and the step you'll take. This is the ledger's last page.",
+              "placeholder": "I will forgive...",
+              "id": "reflect-9-7"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Give freely because you received freely",
+                "Thank God for the forgiveness that funds yours"
+              ],
+              "id": "pray-9-7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "title": "Week 10 — The kingdom in you",
+      "theme": "The kingdom in you",
+      "intro": [
+        {
+          "type": "paragraph",
+          "text": "Jesus announced a kingdom that has drawn near and lives inside. This week we walk that inward kingdom — the Spirit at work, the fruit it grows, the new heart it makes."
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-11-03",
+          "day": 64,
+          "weekday": "Tuesday",
+          "title": "The kingdom within",
+          "verse": {
+            "text": "The kingdom of God is in your midst.",
+            "by": "Luke 17:21"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The kingdom is not a distant flag to await; it has drawn near. It works like leaven, lives like seed, and takes up residence where Jesus reigns — in you. Politics and powers come and go; the kingdom in the heart is the one that changes everything."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Let the King reign in one decision today",
+                "Act as if the kingdom, not the newsfeed, is the real government",
+                "Ask: where is the kingdom already growing in me?"
+              ],
+              "id": "reflect-10-1"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask the King to reign within you today",
+                "Thank God for a kingdom that has drawn near"
+              ],
+              "id": "pray-10-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-04",
+          "day": 65,
+          "weekday": "Wednesday",
+          "title": "Leaven and seed",
+          "verse": {
+            "text": "The kingdom of heaven is like leaven that a woman took and hid in three measures of flour, till it was all leavened.",
+            "by": "Matthew 13:33"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The kingdom grows like bread rising — hidden, slow, irreversible, and working its way through everything. You don't need to see the leaven to see the bread. The fruit of a life taken over by the kingdom is eventually unmistakable."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Hold on to a hidden work you can't yet see rising",
+                "Let kingdom influence permeate one area you've barricaded",
+                "Trust time: leaven doesn't rise in a day"
+              ],
+              "id": "reflect-10-2"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank God for the hidden, sure growth of his kingdom",
+                "Ask for patience with what is rising slowly"
+              ],
+              "id": "pray-10-2"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-05",
+          "day": 66,
+          "weekday": "Thursday",
+          "title": "Born again",
+          "verse": {
+            "text": "Very truly I tell you, no one can see the kingdom of God unless they are born again.",
+            "by": "John 3:3"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Nicodemus, a learned man, stands in the dark trying to understand, and Jesus says the kingdom starts with a birth, not a course. The new birth is not a self-improvement; it is a new origin. Everything about the kingdom in you is downstream from it."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Stop trying to earn entry to the kingdom — receive your birth",
+                "Look at your life differently: born of the Spirit, not of effort",
+                "Ask honestly: have I been born again, or only informed?"
+              ],
+              "id": "reflect-10-3"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank God for the new birth in the Spirit",
+                "Ask for eyes to see the kingdom you've been born into"
+              ],
+              "id": "pray-10-3"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-06",
+          "day": 67,
+          "weekday": "Friday",
+          "title": "The fruit of the Spirit",
+          "verse": {
+            "text": "The fruit of the Spirit is love, joy, peace, patience, kindness, goodness, faithfulness, gentleness and self-control.",
+            "by": "Galatians 5:22"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The kingdom in you produces nine fruits — and notice it's singular 'fruit', one crop. These are not nine resolutions; they are the natural yield of a tree indwelt by the Spirit. You don't manufacture fruit; you remain in the tree."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Pick one fruit to examine today — how does it grow in you?",
+                "Stop producing, start remaining in the Vine",
+                "Thank the Spirit for what He is growing despite your drought"
+              ],
+              "id": "reflect-10-4"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask the Spirit to grow his fruit in you",
+                "Thank him for a crop you cannot force"
+              ],
+              "id": "pray-10-4"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-07",
+          "day": 68,
+          "weekday": "Saturday",
+          "title": "New creation",
+          "verse": {
+            "text": "Therefore, if anyone is in Christ, the new creation has come: The old has gone, the new is here!",
+            "by": "2 Corinthians 5:17"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The kingdom in you is not renovated; it is recreated. Today's quiz tests what the new creation actually changed."
+            },
+            {
+              "type": "quiz",
+              "question": "What does it mean that you are a 'new creation' in Christ?",
+              "options": [
+                "Your old self is gone and a new life has begun",
+                "You're the same person with better behaviour"
+              ],
+              "correctIndex": 0,
+              "explain": "Right — 'the old has gone, the new is here' is a change of identity, not a behaviour patch.",
+              "id": "reflect-10-5"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Receive the new creation identity",
+                "Thank God the old is gone and the new is here"
+              ],
+              "id": "pray-10-5"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-08",
+          "day": 69,
+          "weekday": "Sunday",
+          "title": "Rest in the King's reign",
+          "verse": {
+            "text": "Seek first his kingdom and his righteousness, and all these things will be given to you as well.",
+            "by": "Matthew 6:33"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The kingdom's priorities free you from the scramble. Seeking first changes the order of a whole life, and the promise covers the rest like a blanket. On a rest day, lay still under the blanket: what is first is settled, so you can rest."
+            },
+            {
+              "type": "reflection",
+              "prompt": "What have you been putting first that belongs lower down? Write one reversal to practise this week.",
+              "placeholder": "The reversal I need...",
+              "id": "reflect-10-6"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Seek first his kingdom, and rest in the rest",
+                "Thank God for provision that follows priority"
+              ],
+              "id": "pray-10-6"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-09",
+          "day": 70,
+          "weekday": "Monday",
+          "title": "Kingdom on earth",
+          "verse": {
+            "text": "Your kingdom come, your will be done, on earth as it is in heaven.",
+            "by": "Matthew 6:10"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The kingdom in you is not escapism; it is a prayer with consequences — your will be done on earth as in heaven. The kingdom has arrived inside you so it can leak out into your home, your work, your city. On Monday, be the place where heaven leaks."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Where in your world is 'as it is in heaven' most clearly missing — and what is one kingdom act you can bring there this week?",
+              "placeholder": "Where heaven needs to leak...",
+              "id": "reflect-10-7"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Pray the kingdom down and live it out",
+                "Thank God the kingdom is in you and for the world"
+              ],
+              "id": "pray-10-7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "title": "Week 11 — Communion and joining",
+      "theme": "Communion and joining",
+      "intro": [
+        {
+          "type": "paragraph",
+          "text": "The Jesus way is not walked alone. This week we walk to the table Jesus set — communion with him and with each other — and to the joining that becomes a people."
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-11-10",
+          "day": 71,
+          "weekday": "Tuesday",
+          "title": "This is my body",
+          "verse": {
+            "text": "Take and eat; this is my body.",
+            "by": "Matthew 26:26"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "At the last supper Jesus takes bread and gives it away: this is my body. He gives himself as food for a journey. Communion is not a religious snack; it is the unforgettable rendezvous where the way of Jesus is nourished at its source."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Receive communion this week as nourishment, not obligation",
+                "Remember that what is given is a body — his, for you",
+                "Let the table re-centre one of your distractions"
+              ],
+              "id": "reflect-11-1"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank Jesus for the bread that is his body",
+                "Ask to be fed by him for the road ahead"
+              ],
+              "id": "pray-11-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-11",
+          "day": 72,
+          "weekday": "Wednesday",
+          "title": "This cup is the new covenant",
+          "verse": {
+            "text": "This is my blood of the covenant, which is poured out for many.",
+            "by": "Mark 14:24"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The cup inaugurates a new covenant — not a contract you keep but a bond he established in blood. It 'is poured out for many'. The table is the great equaliser: every head bowed at it is a recipient, no one a founder."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Drink the cup as covenant, not ceremony",
+                "Include 'the many' in your sitting at the table",
+                "Refuse the pride of the self-made religious"
+              ],
+              "id": "reflect-11-2"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank Jesus for the blood of the new covenant",
+                "Ask to live from the covenant, not toward it"
+              ],
+              "id": "pray-11-2"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-12",
+          "day": 73,
+          "weekday": "Thursday",
+          "title": "Do this in remembrance",
+          "verse": {
+            "text": "Do this in remembrance of me.",
+            "by": "Luke 22:19"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Jesus commissions a habit: do this in remembrance. The table is the church's rehearsal — remembering the death until he comes. Lent, Easter, ordinary Tuesdays — the remembering has to be practised or it fades into a doctrine about him instead of a meeting with him."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Let one practical act today be 'in remembrance'",
+                "Let the memory of his death precede your self-pity",
+                "Practise the remembering that keeps him present"
+              ],
+              "id": "reflect-11-3"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask to remember him until he comes",
+                "Thank him for making remembering a gift, not a guilt"
+              ],
+              "id": "pray-11-3"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-13",
+          "day": 74,
+          "weekday": "Friday",
+          "title": "One body, many parts",
+          "verse": {
+            "text": "Now you are the body of Christ, and each one of you is a part of it.",
+            "by": "1 Corinthians 12:27"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Joined to Christ and therefore joined to each other: your invitation to the table is an invitation into a body. You are not an audience member of the Jesus way; you are a functioning part of his people — with a job only you can do."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Find and use your part in the body today",
+                "Honour a part of the body that isn't you",
+                "Stop attending church; start being the body"
+              ],
+              "id": "reflect-11-4"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank God for making you a member of Christ's body",
+                "Ask for the grace to belong and to serve"
+              ],
+              "id": "pray-11-4"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-14",
+          "day": 75,
+          "weekday": "Saturday",
+          "title": "Gathered in my name",
+          "verse": {
+            "text": "For where two or three gather in my name, there am I with them.",
+            "by": "Matthew 18:20"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The table people are a gathering people. Jesus promises his presence where two or three gather — not to a full stadium, not to a minimum headcount, just to two or three in his name. Today's quiz is about the size of the joining."
+            },
+            {
+              "type": "quiz",
+              "question": "What does Jesus promise where two or three gather in his name?",
+              "options": [
+                "That his presence is there among them",
+                "That their gathering will grow impressive"
+              ],
+              "correctIndex": 0,
+              "explain": "Right — the promise is presence, not multiplication. The joining is about him being with them.",
+              "id": "reflect-11-5"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Gather with two or three in his name",
+                "Thank him that his presence is the whole gathering"
+              ],
+              "id": "pray-11-5"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-15",
+          "day": 76,
+          "weekday": "Sunday",
+          "title": "Rest around the table",
+          "verse": {
+            "text": "In my Father's house are many rooms.",
+            "by": "John 14:2"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Communion on earth points to a longer table: my Father's house has many rooms. The way home is not a scramble for a bed — rooms are already prepared. On a rest day, let the table's future hope settle your present anxiety."
+            },
+            {
+              "type": "reflection",
+              "prompt": "What does the promise of 'many rooms' do to your current fear about belonging? Write the shift.",
+              "placeholder": "The room prepared for me...",
+              "id": "reflect-11-6"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Rest in the Father's prepared rooms",
+                "Thank Jesus he went ahead to prepare your place"
+              ],
+              "id": "pray-11-6"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-16",
+          "day": 77,
+          "weekday": "Monday",
+          "title": "Loved into love",
+          "verse": {
+            "text": "A new command I give you: love one another. As I have loved you, so you must love one another.",
+            "by": "John 13:34"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The table sends you to one another on a new command: love one another as I have loved you. The joining is not a club; it's an order of lovers. On Monday, love the ones at your table with the exact love you've received there."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Who sits at your table, worktable, phone table — who needs the love you received at his table? Write one act of it for this week.",
+              "placeholder": "Loved at his table, I will love...",
+              "id": "reflect-11-7"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Receive the love that gives itself as food",
+                "Ask to love as you have been loved"
+              ],
+              "id": "pray-11-7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 12,
+      "title": "Week 12 — Sent ones",
+      "theme": "Sent ones",
+      "intro": [
+        {
+          "type": "paragraph",
+          "text": "The Jesus way ends in sending. In the last week of walking, Jesus turns his followers from students into sent ones — carrying grace to the whole world from where they live."
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-11-17",
+          "day": 78,
+          "weekday": "Tuesday",
+          "title": "Go and make disciples",
+          "verse": {
+            "text": "Go and make disciples of all nations.",
+            "by": "Matthew 28:19"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The final command is a sending: go and make disciples. Not 'come and sit' but 'go and make'. The way of Jesus was always going to have to travel — through you, from your town, to all nations. Discipleship is the multiplier."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Receive your sending — you are sent, not just saved",
+                "Name your 'nations': the specific people only you can reach",
+                "Take one small step of going today"
+              ],
+              "id": "reflect-12-1"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Accept the send-off you have been given",
+                "Ask for nations — near and far — on your heart"
+              ],
+              "id": "pray-12-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-18",
+          "day": 79,
+          "weekday": "Wednesday",
+          "title": "You will be my witnesses",
+          "verse": {
+            "text": "And you will be my witnesses... to the ends of the earth.",
+            "by": "Acts 1:8"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Jesus sequences the sending with geography: Jerusalem, Judea, Samaria, the ends of the earth. The witness always starts where you are — your street, your family, your workplace — and radiates outward. You don't skip your Jerusalem."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Start with your Jerusalem: one witness at home or in your street",
+                "Then Judea: your town's edges, your workplace",
+                "Keep praying wider — Samaria, the ends of the earth"
+              ],
+              "id": "reflect-12-2"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask to be a bold witness in your Jerusalem first",
+                "Thank God your sending begins close to home"
+              ],
+              "id": "pray-12-2"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-19",
+          "day": 80,
+          "weekday": "Thursday",
+          "title": "Grace to all nations",
+          "verse": {
+            "text": "My house will be called a house of prayer for all nations.",
+            "by": "Isaiah 56:7"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The vision goes back further than you think: God's plan was always all nations. Your sending is not an appendix to the gospel; it is the gospel's native language. The house of God is a house built with the doors open."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Pray for one believer suffering for the faith overseas",
+                "Widen your welcome to include people 'of all nations' in your town",
+                "Let your church be a house of prayer, not a house of the familiar"
+              ],
+              "id": "reflect-12-3"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Pray for all nations today",
+                "Thank God for the global family your welcome should reach"
+              ],
+              "id": "pray-12-3"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-20",
+          "day": 81,
+          "weekday": "Friday",
+          "title": "Sent into the harvest",
+          "verse": {
+            "text": "The harvest is plentiful but the workers are few.",
+            "by": "Matthew 9:37"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Jesus looks at the crowds with compassion — harassed and helpless — and says the harvest is ready and the workers few. The sending has urgency: the field is not future tense. It is now, and it is full."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "See the harvest with compassion, not statistics",
+                "Volunteer as a worker — churches are full of spectators",
+                "Pray to the Lord of the harvest for more workers"
+              ],
+              "id": "reflect-12-4"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask the Lord of the harvest to raise up workers",
+                "Offer yourself as one"
+              ],
+              "id": "pray-12-4"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-21",
+          "day": 82,
+          "weekday": "Saturday",
+          "title": "The eleven on the hill",
+          "verse": {
+            "text": "And surely I am with you always, to the very end of the age.",
+            "by": "Matthew 28:20"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The Great Commission ends not with a challenge but a presence: surely I am with you always. Today's quiz is on the grammar of the sending."
+            },
+            {
+              "type": "quiz",
+              "question": "What makes the 'go' possible, according to Matthew 28:20?",
+              "options": [
+                "Superior skills and strategy",
+                "His presence with you to the very end of the age"
+              ],
+              "correctIndex": 1,
+              "explain": "Right — the sending is backed by the presence: 'I am with you always'. The mission runs on Emmanuel, not on competence.",
+              "id": "reflect-12-5"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Receive the promise: I am with you always",
+                "Let the Presence outpace your fear of going"
+              ],
+              "id": "pray-12-5"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-22",
+          "day": 83,
+          "weekday": "Sunday",
+          "title": "Rest in the sending",
+          "verse": {
+            "text": "He makes me lie down in green pastures.",
+            "by": "Psalm 23:2"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Sent ones need green pastures. The Shepherd doesn't only send; he makes his sheep lie down. On a rest day, let the sending pause so the sent one can be filled. You can't carry the message on an empty tank."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Where are you running to the neglected pasture? Write the rest you'll take this week so the sending can be sustained.",
+              "placeholder": "My green pasture...",
+              "id": "reflect-12-6"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Let the Shepherd make you lie down",
+                "Thank him for pastures on the way to the ends of the earth"
+              ],
+              "id": "pray-12-6"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-23",
+          "day": 84,
+          "weekday": "Monday",
+          "title": "Sent to stay the course",
+          "verse": {
+            "text": "Therefore, my dear brothers and sisters, stand firm. Let nothing move you. Always give yourselves fully to the work of the Lord.",
+            "by": "1 Corinthians 15:58"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Paul closes his great resurrection chapter with the sent one's posture: stand firm, let nothing move you, give yourselves fully. The work of the Lord is not wasted. On Monday, stand — sent, firm, and fully available."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Write the one 'sent' commitment you will carry out of this spring. Make it specific, dated, and yours.",
+              "placeholder": "My sent commitment...",
+              "id": "reflect-12-7"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask to stand firm in the sending",
+                "Thank God your work in the Lord is never wasted"
+              ],
+              "id": "pray-12-7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "title": "Week 13 — Hope that holds",
+      "theme": "Hope that holds",
+      "intro": [
+        {
+          "type": "paragraph",
+          "text": "The way of Jesus is a resurrection-way. This final week we walk in the hope that holds everything together — beyond crosses, beyond graves, beyond even the season ending."
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-11-24",
+          "day": 85,
+          "weekday": "Tuesday",
+          "title": "He is not here",
+          "verse": {
+            "text": "Why do you look for the living among the dead? He is not here; he has risen!",
+            "by": "Luke 24:5-6"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The resurrection is the hinge of the entire way. The tomb is empty not because of a trick but because death itself was outflanked. You do not worship a dead teacher; you follow a risen Lord. Everything you've walked this spring rests on that morning."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Re-announce the resurrection to yourself: he is not here, he is risen",
+                "Let the empty tomb rewrite one fear you're carrying",
+                "Stop looking for the living among the dead — including your own regrets"
+              ],
+              "id": "reflect-13-1"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Rejoice in the risen Jesus",
+                "Ask to live as resurrection people, not grave visitors"
+              ],
+              "id": "pray-13-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-25",
+          "day": 86,
+          "weekday": "Wednesday",
+          "title": "Because he lives",
+          "verse": {
+            "text": "Because I live, you also will live.",
+            "by": "John 14:19"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "His life is the source of yours — not 'he lived once' but 'he lives, and because he lives, you will live'. The hope that holds is not a memory but a presence. Your future is not a question mark; it is hitched to a risen Saviour."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Let 'he lives' step on your anxiety today",
+                "Let the resurrection rewrite your view of your own ending",
+                "Live as someone with a future — because his is secured"
+              ],
+              "id": "reflect-13-2"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Hold to the risen Life who lives in you",
+                "Thank him that because he lives, you live"
+              ],
+              "id": "pray-13-2"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-26",
+          "day": 87,
+          "weekday": "Thursday",
+          "title": "A living hope",
+          "verse": {
+            "text": "Praise be to the God... who has given us new birth into a living hope through the resurrection of Jesus Christ.",
+            "by": "1 Peter 1:3"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Peter calls the hope 'living' — alive, growing, unkillable. Not the dead optimism of circumstance but a hope born through the resurrection and still pulsing. It is the hope that can't be talked out of you."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Let the living hope survive one discouraging moment today",
+                "Name what you are hopeful for, grounded in the resurrection",
+                "Trace today's hope back to its birthday: he rose"
+              ],
+              "id": "reflect-13-3"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Receive the new birth into living hope",
+                "Thank God for hope that refuses to die"
+              ],
+              "id": "pray-13-3"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-27",
+          "day": 88,
+          "weekday": "Friday",
+          "title": "The Spirit sent",
+          "verse": {
+            "text": "You will receive power when the Holy Spirit comes on you.",
+            "by": "Acts 1:8"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The risen Jesus did not leave his people as orphans; he sent the Spirit — power for the witness, the joining, the long road. The hope that holds is not a bare idea; it is a Person empowering you daily."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Walk one step by the Spirit, not by sheer effort",
+                "Ask for power where you feel powerless",
+                "Co-operate with the Comforter — let him take the weight"
+              ],
+              "id": "reflect-13-4"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Welcome the Spirit of power into your day",
+                "Thank Jesus for not leaving you as an orphan"
+              ],
+              "id": "pray-13-4"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-28",
+          "day": 89,
+          "weekday": "Saturday",
+          "title": "The hope of glory",
+          "verse": {
+            "text": "Christ in you, the hope of glory.",
+            "by": "Colossians 1:27"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Paul's mystery phrase: Christ in you, the hope of glory. Today's quiz is about where the hope that holds actually lives."
+            },
+            {
+              "type": "quiz",
+              "question": "Where, literally, is the hope of glory to be found?",
+              "options": [
+                "In Christ living in you",
+                "In a distant future you can only imagine"
+              ],
+              "correctIndex": 0,
+              "explain": "Right — 'Christ in you is the hope of glory'. The hope isn't only ahead; it's already lodged in you.",
+              "id": "reflect-13-5"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Receive Christ in you as your hope of glory",
+                "Thank God for hiding glory in an earthen jar"
+              ],
+              "id": "pray-13-5"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-29",
+          "day": 90,
+          "weekday": "Sunday",
+          "title": "Rest in the risen rest",
+          "verse": {
+            "text": "There remains, then, a Sabbath-rest for the people of God.",
+            "by": "Hebrews 4:9"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The resurrection secured a final rest, and the weekly rest foreshadows it. On a rest day, let the hope of the finished kingdom settle you — the God who rose guarantees the rest that remains. Even this season's labour will end in a Sabbath."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Write what Sabbath-rest in God's finished future does to your current striving. Spend a few quiet minutes receiving it now.",
+              "placeholder": "The rest that remains...",
+              "id": "reflect-13-6"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Enter the rest that remains",
+                "Thank God for a resurrection that settled the ending"
+              ],
+              "id": "pray-13-6"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-30",
+          "day": 91,
+          "weekday": "Monday",
+          "title": "The season opens to forever",
+          "verse": {
+            "text": "He will wipe every tear from their eyes. There will be no more death.",
+            "by": "Revelation 21:4"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Thirteen weeks ends, but the way opens into forever. The last word of the Bible's hope: no more death, mourning, crying or pain — the first things have passed away, and the risen Lord's victory is complete. Carry that into the summer and beyond."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Write your closing prayer of the season — thanks for the walk, and hope for what the risen Jesus will do next in you.",
+              "placeholder": "The prayer of my season...",
+              "id": "reflect-13-7"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Pray the hope that holds — no more tears, no more death",
+                "Thank the risen Jesus for this season, and for all that is still to come"
+              ],
+              "id": "pray-13-7"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "id": "bulletin-pulse-spring-2026",
+  "kind": "bulletin",
+  "clubSlug": "pulse",
+  "title": "Pulse Bulletin — Spring",
+  "issue": "Vol. 1",
+  "month": "September",
+  "year": 2026,
+  "season": {
+    "name": "Spring",
+    "year": 2026,
+    "label": "Spring 2026 · Sep 1 – Nov 30",
+    "start": "2026-09-01",
+    "end": "2026-11-30"
+  },
+  "cover": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&q=80",
+  "summary": "Pulse Kickoff, the daily cadence of the Jesus Way, and Pulse Night.",
+  "tags": ["PULSE", "SPRING", "DATES"],
+  "blocks": [
+    { "type": "heading", "text": "Dates that matter" },
+    { "type": "list", "items": [
+      "6 Sep — Pulse Kickoff, 9am",
+      "Your pace-setter — the daily verse in Library keeps the rhythm on track",
+      "26 Oct — Pulse Night, 7pm",
+      "Habit of the season — same time, same seat, one verse a day"
+    ] },
+    { "type": "heading", "text": "Keep the cadence" },
+    { "type": "paragraph", "text": "Pulse walks the same Jesus Way as Surge this season — thirteen weeks, one footstep a day — because a heartbeat is only as steady as the rhythm it keeps. The study habit is the cadence: the guide's daily verse at the same time, like clock. A pulse that marches daily becomes a pulse that leads. March steady, live loud." },
+    { "type": "quote", "text": "Walk by the Spirit, and you will not gratify the desires of the flesh.", "by": "Galatians 5:16" },
+    { "type": "quote", "text": "March steady, live loud.", "by": "Pulse" }
+  ]
+}

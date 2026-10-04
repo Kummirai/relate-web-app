@@ -1,33 +1,31 @@
 /**
- * Seeds the in-app publication catalog into the Mongo `publications` collection.
- * The source of truth for content is the JSON files under
- * frontend/src/data/publications — the same payload the app bundles.
+ * Seeds the publication catalog into the Mongo `publications` collection.
+ * The source of truth for the bundled catalog is the JSON files under
+ * scripts/publications-data.
  *
  * Existing publications are upserted by `id`; only `status`, `version`,
- * `publishedAt` and the timestamps are owned by this script, so a later
- * admin edit in Mongo won't be clobbered by re-running the seed.
+ * `publishedAt`, `source` and the timestamps are owned by this script, so a
+ * later admin edit in Mongo won't be clobbered by re-running the seed.
+ *
+ * Admin-authored publications (anything this seed did not create, marked
+ * `source: "seed"`) are never touched or pruned unless you pass `--prune`,
+ * which removes seeded docs whose file no longer exists.
  *
  * Run from the backend directory:
  *
- *   node --env-file=.env.local scripts/seed-publications.mjs
+ *   node --env-file=.env.local scripts/seed-publications.mjs [--prune]
  */
 import { readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { MongoClient, ServerApiVersion } from "mongodb";
-
-const uri = process.env.MONGODB_URI;
-const dbName = process.env.MONGODB_DB || "test";
-
-if (!uri) {
-  console.error("MONGODB_URI is not set. Aborting.");
-  process.exit(1);
-}
+import { connect } from "./lib/mongo.mjs";
 
 const PUBLICATIONS_DIR = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
-  "../../frontend/src/data/publications",
+  "publications-data",
 );
+
+const PRUNE = process.argv.includes("--prune");
 
 const MONTH_INDEX = {
   January: 0, February: 1, March: 2, April: 3, May: 4, June: 5,
@@ -41,59 +39,57 @@ function publishedAt(pub) {
   return new Date(Date.UTC(pub.year, month, 1));
 }
 
-const client = new MongoClient(uri, {
-  serverApi: { version: ServerApiVersion.v1, strict: true, deprecationErrors: true },
-});
-
 async function main() {
   const files = readdirSync(PUBLICATIONS_DIR)
     .filter((f) => f.endsWith(".json"))
     .map((f) => JSON.parse(readFileSync(path.join(PUBLICATIONS_DIR, f), "utf8")))
     .filter((pub) => pub && typeof pub.id === "string" && pub.id);
 
-  await client.connect();
-  const db = client.db(dbName);
-  const collection = db.collection("publications");
+  const { db, close } = await connect();
+  try {
+    const collection = db.collection("publications");
 
-  await collection.createIndex({ id: 1 }, { unique: true });
-  await collection.createIndex({ publishedAt: -1 });
+    await collection.createIndex({ id: 1 }, { unique: true });
+    await collection.createIndex({ publishedAt: -1 });
 
-  for (const pub of files) {
-    const now = new Date();
-    await collection.updateOne(
-      { id: pub.id },
-      {
-        $set: {
-          ...pub,
-          // Publishing metadata is owned by this script / the admin flow.
-          status: "published",
-          version: 1,
-          publishedAt: publishedAt(pub),
-          updatedAt: now,
+    for (const pub of files) {
+      const now = new Date();
+      await collection.updateOne(
+        { id: pub.id },
+        {
+          $set: {
+            ...pub,
+            // Publishing metadata is owned by this script / the admin flow.
+            status: "published",
+            version: 1,
+            publishedAt: publishedAt(pub),
+            source: "seed",
+            updatedAt: now,
+          },
+          $setOnInsert: { createdAt: now },
         },
-        $setOnInsert: { createdAt: now },
-      },
-      { upsert: true },
-    );
+        { upsert: true },
+      );
+    }
+
+    const finalCount = await collection.countDocuments({ status: "published" });
+    console.log(`Seeded ${files.length} publication(s) → ${finalCount} published in Mongo.`);
+
+    if (PRUNE) {
+      // Only ever prunes docs this seed created (`source: "seed"`), so
+      // admin-authored issues survive even with --prune.
+      const fileIds = new Set(files.map((p) => p.id));
+      const prune = await collection.deleteMany({
+        source: "seed",
+        id: { $nin: [...fileIds] },
+      });
+      if (prune.deletedCount > 0) {
+        console.log(`Pruned ${prune.deletedCount} retired publication(s).`);
+      }
+    }
+  } finally {
+    await close();
   }
-
-  const count = await collection.countDocuments({ status: "published" });
-
-  // Prune publications that no longer exist as authored files. The JSON files
-  // under frontend/src/data/publications are the source of truth for the
-  // catalog, so a retired file (e.g. a replaced seasonal study guide) is
-  // removed from Mongo too.
-  const fileIds = new Set(files.map((p) => p.id));
-  const prune = await collection.deleteMany({
-    id: { $nin: [...fileIds] },
-  });
-
-  const finalCount = await collection.countDocuments({ status: "published" });
-  console.log(`Seeded ${files.length} publication(s) → ${finalCount} published in Mongo.`);
-  if (prune.deletedCount > 0) {
-    console.log(`Pruned ${prune.deletedCount} retired publication(s).`);
-  }
-  await client.close();
 }
 
 main().catch((err) => {

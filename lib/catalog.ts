@@ -1,5 +1,5 @@
 /**
- * Shared web-side catalog constants (mirrors frontend/src/constants/clubs.ts).
+ * Shared web-side catalog constants (mirrors web_app/constants/relate.ts).
  * Used by the public site and the admin editor to pick which club a magazine
  * belongs to.
  */

@@ -1,0 +1,1100 @@
+[
+  {
+    "slug": "sprout",
+    "name": "Sprout",
+    "group": "Children",
+    "ageRange": "6–15 yrs",
+    "tagline": "Growing strong, reaching high.",
+    "description": "Children in their formative years — needing nurturing, guidance, education support and a safe environment to grow.",
+    "color": "#4CAF50",
+    "colorDark": "#2E7D32",
+    "icon": "leaf-outline",
+    "heroImage": "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=1200&q=80",
+    "whatsappGroupLink": "https://chat.whatsapp.com/DdZ3vBcZtfLCuoS9BqEL6n",
+    "registrationFields": [
+      {
+        "key": "parentName",
+        "label": "Parent / guardian full name",
+        "placeholder": "Who is signing up?"
+      },
+      {
+        "key": "childName",
+        "label": "Child's name",
+        "placeholder": "e.g. Thabo M."
+      },
+      {
+        "key": "childAge",
+        "label": "Child's age",
+        "placeholder": "6–15"
+      },
+      {
+        "key": "phone",
+        "label": "WhatsApp number",
+        "placeholder": "e.g. +27 82 000 0000"
+      },
+      {
+        "key": "emergencyContact",
+        "label": "Emergency contact",
+        "placeholder": "Name and number"
+      },
+      {
+        "key": "allergies",
+        "label": "Allergies or medical notes",
+        "placeholder": "Anything our team should know",
+        "multiline": true
+      },
+      {
+        "key": "howHelp",
+        "label": "How can Sprout serve your family?",
+        "placeholder": "Homework help, meals, activities…",
+        "multiline": true
+      }
+    ],
+    "programs": [
+      {
+        "name": "Sprout Club",
+        "blurb": "Weekly children's activities: games, crafts and stories.",
+        "detail": "Every Saturday morning children gather for games, crafts, music and stories that build character and confidence. Volunteers lead small groups by age so every child is known and celebrated."
+      },
+      {
+        "name": "Reading Circle",
+        "blurb": "Literacy development and reading encouragement.",
+        "detail": "Children read aloud in small circles, earn reading badges and take home books each week to build a lifelong love of reading."
+      },
+      {
+        "name": "Sprout Sports",
+        "blurb": "Weekend sports and recreation.",
+        "detail": "Fun weekend sport sessions — soccer, netball and movement games — where children learn teamwork and stay active."
+      },
+      {
+        "name": "Creative Arts",
+        "blurb": "Art, music and drama workshops.",
+        "detail": "Rotating workshops in drawing, singing and drama, ending each term with a showcase for parents."
+      },
+      {
+        "name": "School Support",
+        "blurb": "Uniforms, stationery and school fees.",
+        "detail": "We help with uniforms, stationery and school fees so no child misses school. Requests are reviewed by the club facilitator and matched with sponsors.",
+        "helpFields": [
+          {
+            "key": "school",
+            "label": "School name",
+            "placeholder": "Current school"
+          },
+          {
+            "key": "grade",
+            "label": "Child's grade",
+            "placeholder": "e.g. Grade 4"
+          },
+          {
+            "key": "need",
+            "label": "What is needed?",
+            "placeholder": "Uniform, stationery, fees…",
+            "multiline": true
+          }
+        ]
+      },
+      {
+        "name": "Nutrition Program",
+        "blurb": "Healthy meals and snacks during programs.",
+        "detail": "Every program serves a healthy meal or snack, and families can join the monthly food parcel list."
+      },
+      {
+        "name": "Holiday Club",
+        "blurb": "School holiday activities and outings.",
+        "detail": "Full-day holiday programs with themed activities, outings and guest speakers — safe, fun and free."
+      },
+      {
+        "name": "Sprout Camp",
+        "blurb": "Weekend or holiday camps — low-cost.",
+        "detail": "An overnight camp experience with hikes, campfires and team challenges, subsidised so every child can attend."
+      },
+      {
+        "name": "Character Building",
+        "blurb": "Life skills, values and confidence workshops.",
+        "detail": "Short workshops on honesty, courage, kindness and confidence — the soft skills school doesn't teach."
+      }
+    ]
+  },
+  {
+    "slug": "sprout-kids",
+    "name": "Sprout Kids",
+    "group": "Children",
+    "ageRange": "6 – 8 yrs",
+    "tagline": "Little roots, first shoots.",
+    "description": "Our youngest Sprout members — eager, curious and ready to grow. Activities are playful and safe, with gentle guidance from volunteer leaders.",
+    "parentSlug": "sprout",
+    "color": "#66BB6A",
+    "colorDark": "#388E3C",
+    "icon": "leaf-outline",
+    "heroImage": "https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=1200&q=80",
+    "whatsappGroupLink": "https://chat.whatsapp.com/DdZ3vBcZtfLCuoS9BqEL6n",
+    "registrationFields": [
+      {
+        "key": "parentName",
+        "label": "Parent / guardian full name",
+        "placeholder": "Who is signing up?"
+      },
+      {
+        "key": "childName",
+        "label": "Child's name",
+        "placeholder": "e.g. Thabo M."
+      },
+      {
+        "key": "childAge",
+        "label": "Child's age",
+        "placeholder": "6–8"
+      },
+      {
+        "key": "phone",
+        "label": "WhatsApp number",
+        "placeholder": "e.g. +27 82 000 0000"
+      },
+      {
+        "key": "emergencyContact",
+        "label": "Emergency contact",
+        "placeholder": "Name and number"
+      },
+      {
+        "key": "allergies",
+        "label": "Allergies or medical notes",
+        "placeholder": "Anything our team should know",
+        "multiline": true
+      },
+      {
+        "key": "howHelp",
+        "label": "How can Sprout serve your family?",
+        "placeholder": "Homework help, meals, activities…",
+        "multiline": true
+      }
+    ],
+    "programs": [
+      {
+        "name": "Reading Circle",
+        "blurb": "Literacy development and reading encouragement.",
+        "detail": "Children read aloud in small circles, earn reading badges and take home books each week to build a lifelong love of reading.",
+        "image": "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=600&q=80"
+      },
+      {
+        "name": "Memory Verse Club",
+        "blurb": "Learn a verse each month, recite it, and grow.",
+        "detail": "Each month we learn one Bible verse together. Practice it during the week and share it at club — earn a sticker for every verse you recite.",
+        "image": "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600&q=80"
+      },
+      {
+        "name": "Character Building",
+        "blurb": "Life skills, values and confidence workshops.",
+        "detail": "Short workshops on honesty, courage, kindness and confidence — the soft skills school doesn't teach.",
+        "image": "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=600&q=80"
+      },
+      {
+        "name": "Creative Arts",
+        "blurb": "Art, music and drama workshops.",
+        "detail": "Rotating workshops in drawing, singing and drama, ending each term with a showcase for parents.",
+        "image": "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=600&q=80"
+      },
+      {
+        "name": "Bible Adventurers",
+        "blurb": "Story-themed games that bring the Bible alive.",
+        "detail": "An adventure through Bible stories with games, crafts and role-play — a fun way to learn the big stories of Scripture.",
+        "image": "https://images.unsplash.com/photo-1506966953602-c20cc11f75e3?w=600&q=80"
+      },
+      {
+        "name": "Football Club",
+        "blurb": "Weekly training and friendly matches.",
+        "detail": "Learn the basics, train with friends and play friendly matches. Bring trainers, a water bottle and lots of energy — everyone gets a game.",
+        "image": "https://images.unsplash.com/photo-1553778263-73a83bab9b0c?w=600&q=80"
+      },
+      {
+        "name": "Netball Club",
+        "blurb": "Weekly training and friendly matches.",
+        "detail": "Learn passing, shooting and teamwork on the netball court. Bring gym shoes and a water bottle — beginners are very welcome.",
+        "image": "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&q=80"
+      }
+    ]
+  },
+  {
+    "slug": "sprout-tweens",
+    "name": "Sprout Tweens",
+    "group": "Children",
+    "ageRange": "9 – 11 yrs",
+    "tagline": "Growing strong, finding their voice.",
+    "description": "Tweens exploring who they are becoming — independence with a safety net. Bigger challenges, real leadership and widening friendships.",
+    "parentSlug": "sprout",
+    "color": "#4CAF50",
+    "colorDark": "#2E7D32",
+    "icon": "flower-outline",
+    "heroImage": "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1200&q=80",
+    "whatsappGroupLink": "https://chat.whatsapp.com/DdZ3vBcZtfLCuoS9BqEL6n",
+    "registrationFields": [
+      {
+        "key": "parentName",
+        "label": "Parent / guardian full name",
+        "placeholder": "Who is signing up?"
+      },
+      {
+        "key": "childName",
+        "label": "Child's name",
+        "placeholder": "e.g. Themba M."
+      },
+      {
+        "key": "childAge",
+        "label": "Child's age",
+        "placeholder": "9–11"
+      },
+      {
+        "key": "phone",
+        "label": "WhatsApp number",
+        "placeholder": "e.g. +27 82 000 0000"
+      },
+      {
+        "key": "emergencyContact",
+        "label": "Emergency contact",
+        "placeholder": "Name and number"
+      },
+      {
+        "key": "allergies",
+        "label": "Allergies or medical notes",
+        "placeholder": "Anything our team should know",
+        "multiline": true
+      },
+      {
+        "key": "howHelp",
+        "label": "How can Sprout serve your family?",
+        "placeholder": "Homework help, meals, activities…",
+        "multiline": true
+      }
+    ],
+    "programs": [
+      {
+        "name": "Reading Circle",
+        "blurb": "Literacy development and reading encouragement.",
+        "detail": "Children read aloud in small circles, earn reading badges and take home books each week to build a lifelong love of reading.",
+        "image": "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=600&q=80"
+      },
+      {
+        "name": "Memory Verse Club",
+        "blurb": "Learn a verse each month, recite it, and grow.",
+        "detail": "Each month we learn one Bible verse together. Practice it during the week and share it at club — earn a sticker for every verse you recite.",
+        "image": "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600&q=80"
+      },
+      {
+        "name": "Character Building",
+        "blurb": "Life skills, values and confidence workshops.",
+        "detail": "Short workshops on honesty, courage, kindness and confidence — the soft skills school doesn't teach.",
+        "image": "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=600&q=80"
+      },
+      {
+        "name": "Creative Arts",
+        "blurb": "Art, music and drama workshops.",
+        "detail": "Rotating workshops in drawing, singing and drama, ending each term with a showcase for parents.",
+        "image": "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=600&q=80"
+      },
+      {
+        "name": "Bible Adventurers",
+        "blurb": "Story-themed games that bring the Bible alive.",
+        "detail": "An adventure through Bible stories with games, crafts and role-play — a fun way to learn the big stories of Scripture.",
+        "image": "https://images.unsplash.com/photo-1506966953602-c20cc11f75e3?w=600&q=80"
+      },
+      {
+        "name": "Football Club",
+        "blurb": "Weekly training and friendly matches.",
+        "detail": "Learn the basics, train with friends and play friendly matches. Bring trainers, a water bottle and lots of energy — everyone gets a game.",
+        "image": "https://images.unsplash.com/photo-1553778263-73a83bab9b0c?w=600&q=80"
+      },
+      {
+        "name": "Netball Club",
+        "blurb": "Weekly training and friendly matches.",
+        "detail": "Learn passing, shooting and teamwork on the netball court. Bring gym shoes and a water bottle — beginners are very welcome.",
+        "image": "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&q=80"
+      }
+    ]
+  },
+  {
+    "slug": "sprout-teens",
+    "name": "Sprout Teens",
+    "group": "Children",
+    "ageRange": "12 – 15 yrs",
+    "tagline": "Reaching high, ready for more.",
+    "description": "Teens stepping toward adulthood — leadership, mentorship and bigger challenges in a community that knows them by name.",
+    "parentSlug": "sprout",
+    "color": "#43A047",
+    "colorDark": "#1B5E20",
+    "icon": "trending-up-outline",
+    "heroImage": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=1200&q=80",
+    "whatsappGroupLink": "https://chat.whatsapp.com/DdZ3vBcZtfLCuoS9BqEL6n",
+    "registrationFields": [
+      {
+        "key": "parentName",
+        "label": "Parent / guardian full name",
+        "placeholder": "Who is signing up?"
+      },
+      {
+        "key": "childName",
+        "label": "Child's name",
+        "placeholder": "e.g. Naledi M."
+      },
+      {
+        "key": "childAge",
+        "label": "Child's age",
+        "placeholder": "12–15"
+      },
+      {
+        "key": "phone",
+        "label": "WhatsApp number",
+        "placeholder": "e.g. +27 82 000 0000"
+      },
+      {
+        "key": "emergencyContact",
+        "label": "Emergency contact",
+        "placeholder": "Name and number"
+      },
+      {
+        "key": "allergies",
+        "label": "Allergies or medical notes",
+        "placeholder": "Anything our team should know",
+        "multiline": true
+      },
+      {
+        "key": "howHelp",
+        "label": "How can Sprout serve your family?",
+        "placeholder": "Homework help, meals, activities…",
+        "multiline": true
+      }
+    ],
+    "programs": [
+      {
+        "name": "Reading Circle",
+        "blurb": "Literacy development and reading encouragement.",
+        "detail": "Children read aloud in small circles, earn reading badges and take home books each week to build a lifelong love of reading.",
+        "image": "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=600&q=80"
+      },
+      {
+        "name": "Memory Verse Club",
+        "blurb": "Learn a verse each month, recite it, and grow.",
+        "detail": "Each month we learn one Bible verse together. Practice it during the week and share it at club — earn a sticker for every verse you recite.",
+        "image": "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600&q=80"
+      },
+      {
+        "name": "Character Building",
+        "blurb": "Life skills, values and confidence workshops.",
+        "detail": "Short workshops on honesty, courage, kindness and confidence — the soft skills school doesn't teach.",
+        "image": "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=600&q=80"
+      },
+      {
+        "name": "Creative Arts",
+        "blurb": "Art, music and drama workshops.",
+        "detail": "Rotating workshops in drawing, singing and drama, ending each term with a showcase for parents.",
+        "image": "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=600&q=80"
+      },
+      {
+        "name": "Bible Adventurers",
+        "blurb": "Story-themed games that bring the Bible alive.",
+        "detail": "An adventure through Bible stories with games, crafts and role-play — a fun way to learn the big stories of Scripture.",
+        "image": "https://images.unsplash.com/photo-1506966953602-c20cc11f75e3?w=600&q=80"
+      },
+      {
+        "name": "Football Club",
+        "blurb": "Weekly training and friendly matches.",
+        "detail": "Learn the basics, train with friends and play friendly matches. Bring trainers, a water bottle and lots of energy — everyone gets a game.",
+        "image": "https://images.unsplash.com/photo-1553778263-73a83bab9b0c?w=600&q=80"
+      },
+      {
+        "name": "Netball Club",
+        "blurb": "Weekly training and friendly matches.",
+        "detail": "Learn passing, shooting and teamwork on the netball court. Bring gym shoes and a water bottle — beginners are very welcome.",
+        "image": "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&q=80"
+      }
+    ]
+  },
+  {
+    "slug": "surge",
+    "name": "Surge",
+    "group": "Young Youth",
+    "ageRange": "16–21 yrs",
+    "tagline": "Rise. Build. Become.",
+    "description": "Young people stepping into adulthood — needing guidance, skills and purpose.",
+    "mission": "To empower teenagers and young adults with foundational identity, essential life skills, and academic support to successfully transition into independent adulthood.",
+    "vision": "A generation of confident, purpose-driven young leaders securely anchored in their faith and practically equipped for the future marketplace.",
+    "pillarLabels": {
+      "Shift": "Runway",
+      "Sanctuary": "Identity",
+      "Connect": "Fun & Action"
+    },
+    "color": "#FF6B00",
+    "colorDark": "#C2410C",
+    "icon": "rocket-outline",
+    "heroImage": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1200&q=80",
+    "whatsappGroupLink": "https://chat.whatsapp.com/Fkq2vBcZtfLCuoS9CqGM7o",
+    "registrationFields": [
+      {
+        "key": "fullName",
+        "label": "Full name",
+        "placeholder": "Your name"
+      },
+      {
+        "key": "phone",
+        "label": "WhatsApp number",
+        "placeholder": "e.g. +27 82 000 0000"
+      },
+      {
+        "key": "age",
+        "label": "Age",
+        "placeholder": "16–21"
+      },
+      {
+        "key": "schoolOrWork",
+        "label": "School / college / work",
+        "placeholder": "Where are you now?"
+      },
+      {
+        "key": "goals",
+        "label": "What do you want to build this year?",
+        "placeholder": "Studies, career, skills…",
+        "multiline": true
+      }
+    ],
+    "programs": [
+      {
+        "name": "The Launch Pad",
+        "pillar": "Shift",
+        "blurb": "Career exposure, internships and job placements.",
+        "detail": "Work-shadow days, internship placements and CV clinics that open doors into the working world.",
+        "helpFields": [
+          {
+            "key": "field",
+            "label": "Career field of interest",
+            "placeholder": "e.g. IT, Nursing, Trades"
+          },
+          {
+            "key": "experience",
+            "label": "Experience so far",
+            "placeholder": "Part-time jobs, volunteering…",
+            "multiline": true
+          }
+        ]
+      },
+      {
+        "name": "Life Skills Workshops",
+        "pillar": "Shift",
+        "blurb": "Finance, CV writing and interview prep.",
+        "detail": "Hands-on workshops — open your first bank account, write a CV that gets read, and nail the interview."
+      },
+      {
+        "name": "Tuition Support",
+        "pillar": "Shift",
+        "blurb": "School and university fees.",
+        "detail": "Registration and tuition support for students who qualify, based on need and school reports.",
+        "helpFields": [
+          {
+            "key": "institution",
+            "label": "School / university",
+            "placeholder": "Where you study"
+          },
+          {
+            "key": "year",
+            "label": "Year of study",
+            "placeholder": "e.g. Matric / 2nd year"
+          },
+          {
+            "key": "amount",
+            "label": "Amount needed",
+            "placeholder": "e.g. R2 500"
+          }
+        ]
+      },
+      {
+        "name": "School Supply Drive",
+        "pillar": "Shift",
+        "blurb": "Stationery, uniforms and books.",
+        "detail": "Annual drive collecting packs of stationery, uniforms and set-work books before each school year starts."
+      },
+      {
+        "name": "Surge Fire",
+        "pillar": "Sanctuary",
+        "blurb": "Youth worship nights.",
+        "detail": "Monthly worship nights with music, testimony and prayer — optional and open to everyone."
+      },
+      {
+        "name": "Purpose Quest",
+        "pillar": "Sanctuary",
+        "blurb": "Identity and calling workshops.",
+        "detail": "A guided journey through identity, gifts and calling to help you find your purpose."
+      },
+      {
+        "name": "Surge Outings",
+        "pillar": "Connect",
+        "blurb": "Park visits and beach days.",
+        "detail": "Regular outings to parks, the beach and local attractions — friendship and fresh air."
+      },
+      {
+        "name": "Impact Squad",
+        "pillar": "Connect",
+        "blurb": "Local volunteering and community service.",
+        "detail": "Serve alongside your crew on local projects — food drives, clean-ups and outreach in the neighbourhood."
+      }
+    ]
+  },
+  {
+    "slug": "pulse",
+    "name": "Pulse",
+    "group": "Youth",
+    "ageRange": "21–33 yrs",
+    "tagline": "Live loud. Move forward.",
+    "description": "Young adults building careers, finances and identity — needing network and direction.",
+    "mission": "To equip young professionals and entrepreneurs with cutting-edge marketplace tools, long-term financial mastery, deep accountability networks, and an active marketplace calling.",
+    "vision": "A thriving network of young adults driving economic innovation and spiritual transformation within their specific corporate and civic industries.",
+    "pillarLabels": {
+      "Shift": "Acceleration",
+      "Sanctuary": "Wellness",
+      "Connect": "Fellowship"
+    },
+    "color": "#00B4D8",
+    "colorDark": "#0284C7",
+    "icon": "pulse-outline",
+    "heroImage": "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&q=80",
+    "whatsappGroupLink": "https://chat.whatsapp.com/Glr3wCdZugMDvpT9DrHN8p",
+    "registrationFields": [
+      {
+        "key": "fullName",
+        "label": "Full name",
+        "placeholder": "Your name"
+      },
+      {
+        "key": "phone",
+        "label": "WhatsApp number",
+        "placeholder": "e.g. +27 82 000 0000"
+      },
+      {
+        "key": "occupation",
+        "label": "Occupation / field",
+        "placeholder": "What do you do?"
+      },
+      {
+        "key": "interests",
+        "label": "What brings you to Pulse?",
+        "placeholder": "Networking, finance skills, community…",
+        "multiline": true
+      }
+    ],
+    "programs": [
+      {
+        "name": "The Hustle Hub",
+        "pillar": "Shift",
+        "blurb": "Co-working and entrepreneurship incubator.",
+        "detail": "Free co-working days plus a 12-week incubator for young businesses — mentorship, templates and pitch practice.",
+        "helpFields": [
+          {
+            "key": "business",
+            "label": "Business / idea",
+            "placeholder": "Tell us what you're building",
+            "multiline": true
+          },
+          {
+            "key": "stage",
+            "label": "Stage",
+            "placeholder": "Idea, starting, running"
+          }
+        ]
+      },
+      {
+        "name": "Pulse Wallet",
+        "pillar": "Shift",
+        "blurb": "Financial literacy: budgeting, investing, credit.",
+        "detail": "A practical money course: budgeting that works, debt and credit scores, and first steps into investing.",
+        "helpFields": [
+          {
+            "key": "moneyGoal",
+            "label": "Your biggest money goal",
+            "placeholder": "e.g. Save an emergency fund"
+          },
+          {
+            "key": "topic",
+            "label": "Topic you need most",
+            "placeholder": "Budgeting, credit, investing…"
+          }
+        ]
+      },
+      {
+        "name": "Career Workshops",
+        "pillar": "Shift",
+        "blurb": "CV writing, interviews and career planning.",
+        "detail": "Bring your CV, leave with a plan — writing labs, mock interviews and career mapping sessions.",
+        "helpFields": [
+          {
+            "key": "careerArea",
+            "label": "Career area",
+            "placeholder": "e.g. Marketing, Engineering"
+          },
+          {
+            "key": "goal",
+            "label": "Your next career step",
+            "placeholder": "New job, promotion, switch…",
+            "multiline": true
+          }
+        ]
+      },
+      {
+        "name": "Tuition & Study Grants",
+        "pillar": "Shift",
+        "blurb": "Support for further education.",
+        "detail": "Short-course and further-study grants awarded each term based on need and a simple application.",
+        "helpFields": [
+          {
+            "key": "course",
+            "label": "Course / programme",
+            "placeholder": "What do you want to study?"
+          },
+          {
+            "key": "institution",
+            "label": "Institution",
+            "placeholder": "Where"
+          },
+          {
+            "key": "amount",
+            "label": "Amount needed",
+            "placeholder": "e.g. R4 000"
+          }
+        ]
+      },
+      {
+        "name": "Pulse Faith",
+        "pillar": "Sanctuary",
+        "blurb": "Prayer groups and Bible study.",
+        "detail": "Optional weekly prayer groups and Bible studies for those who want to grow spiritually."
+      },
+      {
+        "name": "Pulse Check",
+        "pillar": "Sanctuary",
+        "blurb": "Mental health and wellness circles.",
+        "detail": "Confidential peer circles facilitated by trained volunteers — because your mind matters as much as your money."
+      },
+      {
+        "name": "Social Mixers",
+        "pillar": "Connect",
+        "blurb": "Potlucks and park braais.",
+        "detail": "Relaxed potlucks, park braais and game evenings — community without the pressure."
+      },
+      {
+        "name": "Purpose in Action",
+        "pillar": "Connect",
+        "blurb": "Project-based community impact.",
+        "detail": "Team up with your crew on a local project each quarter — plan it, run it and see the difference it makes."
+      }
+    ]
+  },
+  {
+    "slug": "prime",
+    "name": "Prime",
+    "group": "Singles (No Kids)",
+    "ageRange": "33+ yrs",
+    "tagline": "Own your stage. Flourish.",
+    "description": "Mature singles thriving independently — needing community and purpose.",
+    "mission": "To provide mature single adults with premium spaces for advanced career pivot planning, deep theological sanctuary, exceptional lifestyle networks, and multi-generational mentorship paths.",
+    "vision": "A leadership powerhouse of mature single professionals living integrated, influential lives while actively funding and mentoring the next generation.",
+    "pillarLabels": {
+      "Shift": "Optimization",
+      "Sanctuary": "Depth",
+      "Connect": "Premium"
+    },
+    "color": "#6C2BD9",
+    "colorDark": "#4A148C",
+    "icon": "diamond-outline",
+    "heroImage": "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=1200&q=80",
+    "whatsappGroupLink": "https://chat.whatsapp.com/Hms4xDeZvhNEwqU9EsIO9q",
+    "registrationFields": [
+      {
+        "key": "fullName",
+        "label": "Full name",
+        "placeholder": "Your name"
+      },
+      {
+        "key": "phone",
+        "label": "WhatsApp number",
+        "placeholder": "e.g. +27 82 000 0000"
+      },
+      {
+        "key": "interests",
+        "label": "Interests",
+        "placeholder": "Career, travel, wellness, giving back…",
+        "multiline": true
+      },
+      {
+        "key": "availability",
+        "label": "Best times to meet",
+        "placeholder": "e.g. Weekends, weekday evenings"
+      }
+    ],
+    "programs": [
+      {
+        "name": "Prime Pursuit",
+        "pillar": "Shift",
+        "blurb": "Career reinvention and skill-building.",
+        "detail": "Structured programmes for career pivots — new skills, new industries, new confidence.",
+        "helpFields": [
+          {
+            "key": "from",
+            "label": "Career you're moving from",
+            "placeholder": "Current field"
+          },
+          {
+            "key": "to",
+            "label": "Career you're moving toward",
+            "placeholder": "Where you want to go"
+          }
+        ]
+      },
+      {
+        "name": "Career Transition Help",
+        "pillar": "Shift",
+        "blurb": "Job search, side hustle and retirement planning.",
+        "detail": "Practical help with job searches, starting a side hustle or planning a dignified retirement.",
+        "helpFields": [
+          {
+            "key": "focus",
+            "label": "What do you need help with?",
+            "placeholder": "Job search, side hustle, retirement…",
+            "multiline": true
+          }
+        ]
+      },
+      {
+        "name": "Retirement & Estate Planning",
+        "pillar": "Shift",
+        "blurb": "Retirement income and estate planning.",
+        "detail": "Plan a dignified retirement and put an estate in order — wills, beneficiaries and wealth that outlives you."
+      },
+      {
+        "name": "Prime Reflection",
+        "pillar": "Sanctuary",
+        "blurb": "Life review and spiritual retreats.",
+        "detail": "Optional guided retreats to review the story so far and set direction for what's next."
+      },
+      {
+        "name": "Prayer Shield",
+        "pillar": "Sanctuary",
+        "blurb": "Intercessory prayer teams.",
+        "detail": "Optional teams that pray weekly for members' needs and celebrate answered prayer."
+      },
+      {
+        "name": "Crisis Support",
+        "pillar": "Sanctuary",
+        "blurb": "Emergency help per case.",
+        "detail": "When life happens — emergency financial, food or counselling support assessed case by case."
+      },
+      {
+        "name": "Prime Outings",
+        "pillar": "Connect",
+        "blurb": "Scenic hikes, vineyard lunches and weekend escapes.",
+        "detail": "Curated day outings and weekend escapes — scenic hikes, vineyard lunches and time away from the routine."
+      },
+      {
+        "name": "Legacy Lab",
+        "pillar": "Connect",
+        "blurb": "Mentorship training to give back to younger groups.",
+        "detail": "Become a trained mentor to Surge and Pulse members — turn your experience into someone else's shortcut."
+      },
+      {
+        "name": "Elders' Table",
+        "pillar": "Connect",
+        "blurb": "Wisdom-sharing sessions.",
+        "detail": "Quarterly dinners where stories and wisdom are passed between generations."
+      }
+    ]
+  },
+  {
+    "slug": "anchor",
+    "name": "Anchor",
+    "group": "Single Parents",
+    "ageRange": "Parenting but single",
+    "tagline": "Holding it all together.",
+    "description": "Single parents raising children alone — needing support, community and practical help.",
+    "mission": "To alleviate economic stress, cultivate deep personal restoration, and form healthy mutual-aid networks that stabilize whole homes.",
+    "vision": "A community where single parents transition from surviving to thriving, raising whole families while fulfilling their career and spiritual callings.",
+    "pillarLabels": {
+      "Shift": "Resilience",
+      "Sanctuary": "Restoration",
+      "Connect": "Community"
+    },
+    "color": "#2E7D32",
+    "colorDark": "#14532D",
+    "icon": "boat-outline",
+    "heroImage": "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=1200&q=80",
+    "whatsappGroupLink": "https://chat.whatsapp.com/Int5yEfZwiOFxrV9FtJP0r",
+    "registrationFields": [
+      {
+        "key": "fullName",
+        "label": "Full name",
+        "placeholder": "Your name"
+      },
+      {
+        "key": "phone",
+        "label": "WhatsApp number",
+        "placeholder": "e.g. +27 82 000 0000"
+      },
+      {
+        "key": "kidsAges",
+        "label": "Children's ages",
+        "placeholder": "e.g. 4 and 9"
+      },
+      {
+        "key": "needs",
+        "label": "What support would help most right now?",
+        "placeholder": "Childcare, food support, community…",
+        "multiline": true
+      }
+    ],
+    "programs": [
+      {
+        "name": "Single-Income Wealth",
+        "pillar": "Shift",
+        "blurb": "Budgeting, debt elimination and property investing.",
+        "detail": "Build a money structure that works on one income — a budget, a debt-elimination plan and a first step into property."
+      },
+      {
+        "name": "Childcare & Tuition Grants",
+        "pillar": "Shift",
+        "blurb": "Childcare, school fees and study support.",
+        "detail": "Grants toward childcare, school fees and uniforms so money never decides whether your child gets to learn."
+      },
+      {
+        "name": "Flexible Career Path",
+        "pillar": "Shift",
+        "blurb": "Career progression built around family life.",
+        "detail": "Coaching on hours, roles and study options that move your career forward without breaking the family rhythm."
+      },
+      {
+        "name": "Restoration Circles",
+        "pillar": "Sanctuary",
+        "blurb": "Co-parenting limits, burnout care and identity tracking.",
+        "detail": "Small groups that hold the hard parts — co-parenting boundaries, burnout care and remembering who you are."
+      },
+      {
+        "name": "Shield of Grace",
+        "pillar": "Sanctuary",
+        "blurb": "Parent fellowship and prayer.",
+        "detail": "A parent fellowship that prays for one another and shows up with a meal or a hand when a week goes sideways."
+      },
+      {
+        "name": "Emergency Cash Relief",
+        "pillar": "Sanctuary",
+        "blurb": "Rapid help when a month goes wrong.",
+        "detail": "Fast, dignified cash relief for the emergencies that would otherwise blow up the whole month."
+      },
+      {
+        "name": "Parent & Child Outings",
+        "pillar": "Connect",
+        "blurb": "Curated outings for parents and children.",
+        "detail": "Subsidised days out where you can simply enjoy your kids — memory-making without the cost."
+      },
+      {
+        "name": "Weekend Family Escapes",
+        "pillar": "Connect",
+        "blurb": "Restorative weekends with childcare built in.",
+        "detail": "Restorative weekend getaways with a childcare grid built in, so parents actually get to rest."
+      },
+      {
+        "name": "Resource Swap",
+        "pillar": "Connect",
+        "blurb": "Uniform and clothing exchange database.",
+        "detail": "A cooperative database for swapping uniforms and outgrown clothing — what your child has outgrown, another family needs."
+      }
+    ]
+  },
+  {
+    "slug": "spark",
+    "name": "Spark",
+    "group": "Couples (0–5 Years Married)",
+    "ageRange": "0 – 5 yrs married",
+    "tagline": "Lay it right from day one.",
+    "description": "Newly married couples building the foundations — needing unity, tools and each other.",
+    "mission": "To anchor newly married couples with unified financial blueprints, foundational communication tools, and Christ-centered relational habits to construct an unshakeable marital bedrock.",
+    "vision": "A generation of newly married teams navigating unified asset creation and deep emotional alignment, serving as an unshakeable nucleus for their future children.",
+    "pillarLabels": {
+      "Shift": "Foundation",
+      "Sanctuary": "Alignment",
+      "Connect": "Connection"
+    },
+    "color": "#E8A2B6",
+    "colorDark": "#9D174D",
+    "icon": "heart-outline",
+    "heroImage": "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=1200&q=80",
+    "whatsappGroupLink": "https://chat.whatsapp.com/Jot6zFgZxkPGysW9GuKQ1s",
+    "registrationFields": [
+      {
+        "key": "partnerOne",
+        "label": "Partner 1 full name",
+        "placeholder": "First partner"
+      },
+      {
+        "key": "partnerTwo",
+        "label": "Partner 2 full name",
+        "placeholder": "Second partner"
+      },
+      {
+        "key": "phone",
+        "label": "WhatsApp number",
+        "placeholder": "e.g. +27 82 000 0000"
+      },
+      {
+        "key": "yearsMarried",
+        "label": "How long have you been married?",
+        "placeholder": "e.g. 2 years"
+      }
+    ],
+    "programs": [
+      {
+        "name": "Joint Financial Visioning",
+        "pillar": "Shift",
+        "blurb": "One shared money vision for two lives.",
+        "detail": "Sit down together and build the shared money plan — income, goals and the first assets you create as a team."
+      },
+      {
+        "name": "First Home Blueprint",
+        "pillar": "Shift",
+        "blurb": "First-home buying and asset strategies.",
+        "detail": "From deposit to handover — strategies for buying your first home and getting the asset column started."
+      },
+      {
+        "name": "Dual-Career Charting",
+        "pillar": "Shift",
+        "blurb": "Unified dual-career path planning.",
+        "detail": "Chart both careers on one timeline — study, moves, timing and the trade-offs you agree on early."
+      },
+      {
+        "name": "Intimacy Preservation Circles",
+        "pillar": "Sanctuary",
+        "blurb": "Protecting closeness in the early years.",
+        "detail": "Small circles where couples talk honestly about staying close through work, money and in-law pressure."
+      },
+      {
+        "name": "Conflict Labs",
+        "pillar": "Sanctuary",
+        "blurb": "Communication and conflict resolution practice.",
+        "detail": "Practical labs for fair fighting — how to disagree, repair and come back to the same side."
+      },
+      {
+        "name": "Couples Devotionals",
+        "pillar": "Sanctuary",
+        "blurb": "Intentional devotional rhythms for two.",
+        "detail": "Simple rhythms for praying and reading together that survive real weeks, not just ideal ones."
+      },
+      {
+        "name": "Double-Date Socials",
+        "pillar": "Connect",
+        "blurb": "High-energy couple socials.",
+        "detail": "Double dates, game nights and socials where you make couple-friends who are walking the same road."
+      },
+      {
+        "name": "Young Couples' Getaways",
+        "pillar": "Connect",
+        "blurb": "Weekend escapes for two.",
+        "detail": "Affordable weekend getaways built for young couples — time away before life gets louder."
+      },
+      {
+        "name": "Babysitting Swap",
+        "pillar": "Connect",
+        "blurb": "Date night through a mutual swap network.",
+        "detail": "Swap sitters with other couples in the club so date night keeps happening — no cost, no guilt."
+      }
+    ]
+  },
+  {
+    "slug": "synergy",
+    "name": "Synergy",
+    "group": "Couples (6+ Years Married)",
+    "ageRange": "6+ yrs married",
+    "tagline": "Legacy, built together.",
+    "description": "Seasoned couples building legacy — needing depth, purpose and a hand on the next generation.",
+    "mission": "To empower seasoned couples to maximize their long-term family wealth, sustain generational marital resilience, and transition into vital community leadership and marital mentorship.",
+    "vision": "A structural cornerstone of mature couples driving multi-generational financial and spiritual legacy while serving as active mentors for younger marriages.",
+    "pillarLabels": {
+      "Shift": "Legacy",
+      "Sanctuary": "Resilience",
+      "Connect": "Mentoring"
+    },
+    "color": "#8A9A5B",
+    "colorDark": "#4D7C0F",
+    "icon": "people-outline",
+    "heroImage": "https://images.unsplash.com/photo-1511895426328-dc8714191300?w=1200&q=80",
+    "whatsappGroupLink": "https://chat.whatsapp.com/Kpu7AGhZylQHztX9HvLR2t",
+    "registrationFields": [
+      {
+        "key": "partnerOne",
+        "label": "Partner 1 full name",
+        "placeholder": "First partner"
+      },
+      {
+        "key": "partnerTwo",
+        "label": "Partner 2 full name",
+        "placeholder": "Second partner"
+      },
+      {
+        "key": "phone",
+        "label": "WhatsApp number",
+        "placeholder": "e.g. +27 82 000 0000"
+      },
+      {
+        "key": "yearsMarried",
+        "label": "How long have you been married?",
+        "placeholder": "e.g. 14 years"
+      }
+    ],
+    "programs": [
+      {
+        "name": "Generational Wealth Modelling",
+        "pillar": "Shift",
+        "blurb": "Long-term family wealth strategies.",
+        "detail": "Model the long game together — what you build now and how it passes to the generation after you."
+      },
+      {
+        "name": "University Funding Projections",
+        "pillar": "Shift",
+        "blurb": "Varsity funds planned years ahead.",
+        "detail": "Project study costs years out and build the savings plan that gets every child to varsity."
+      },
+      {
+        "name": "Property & Portfolio",
+        "pillar": "Shift",
+        "blurb": "Shared property and investment portfolios.",
+        "detail": "Optimise what you hold together — property, investments and a portfolio that serves the whole family."
+      },
+      {
+        "name": "Longevity Circles",
+        "pillar": "Sanctuary",
+        "blurb": "Marital longevity maintenance.",
+        "detail": "Circles for couples a few decades in — keeping the marriage healthy, warm and intentional over the long haul."
+      },
+      {
+        "name": "Empty-Nest Preparation",
+        "pillar": "Sanctuary",
+        "blurb": "Preparing for the season after the kids.",
+        "detail": "Prepare for the quiet house — conversations and rituals that carry a marriage into its next season."
+      },
+      {
+        "name": "Family Intercession Network",
+        "pillar": "Sanctuary",
+        "blurb": "High-level family prayer networks.",
+        "detail": "A prayer network covering the families of the house — standing together for children, homes and marriages."
+      },
+      {
+        "name": "Couples' Retreats",
+        "pillar": "Connect",
+        "blurb": "Premium weekend couples' retreats.",
+        "detail": "Premium weekend retreats for married couples — rest, reconnection and time to think about the decades ahead."
+      },
+      {
+        "name": "Legacy Galas",
+        "pillar": "Connect",
+        "blurb": "Formal dinners and annual celebrations.",
+        "detail": "Formal dinners and galas celebrating the families who have built something that lasts."
+      },
+      {
+        "name": "Spark Mentorship",
+        "pillar": "Connect",
+        "blurb": "Structured mentoring for newer couples.",
+        "detail": "A structured path to mentor Spark couples — hand what you've learned to the marriages starting out."
+      }
+    ]
+  }
+]

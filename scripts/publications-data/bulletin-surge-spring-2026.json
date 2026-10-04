@@ -1,0 +1,32 @@
+{
+  "id": "bulletin-surge-spring-2026",
+  "kind": "bulletin",
+  "clubSlug": "surge",
+  "title": "Surge Bulletin — Spring",
+  "issue": "Vol. 1",
+  "month": "September",
+  "year": 2026,
+  "season": {
+    "name": "Spring",
+    "year": 2026,
+    "label": "Spring 2026 · Sep 1 – Nov 30",
+    "start": "2026-09-01",
+    "end": "2026-11-30"
+  },
+  "cover": "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&q=80",
+  "summary": "Kickoff at the steps, the daily 'one step' study habit, and Surge Fire.",
+  "tags": ["SURGE", "SPRING", "DATES"],
+  "blocks": [
+    { "type": "heading", "text": "Dates that matter" },
+    { "type": "list", "items": [
+      "6 Sep — Surge Kickoff at the steps, 8am",
+      "Study habit — Footsteps one daily verse in Library, every day of the season",
+      "First Friday — Surge Connect, Launch Pad doors open",
+      "26 Oct — Surge Fire worship night, 7pm"
+    ] },
+    { "type": "heading", "text": "One step a day" },
+    { "type": "paragraph", "text": "Thirteen weeks of walking the Jesus way starts with one step: this season's Footsteps guide gives you a verse a day, matched to your actual life — the call, the beatitudes, love that goes lower, the cross, the sending. The study habit is the cadence, not the distance. Same few minutes, same chair, phone away. Do the step daily, and the way becomes the walk." },
+    { "type": "quote", "text": "Come, follow me.", "by": "Matthew 4:19" },
+    { "type": "quote", "text": "Rise. Build. Become.", "by": "Surge" }
+  ]
+}

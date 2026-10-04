@@ -1,0 +1,1669 @@
+{
+  "director": {
+    "name": "Farai Mabhena",
+    "role": "Sports Director"
+  },
+  "sports": [
+    "Football",
+    "Netball",
+    "Volleyball"
+  ],
+  "teams": [
+    {
+      "id": "sk-fc",
+      "clubSlug": "sprout-kids",
+      "sport": "Football",
+      "name": "Sprout Kids FC",
+      "initials": "SK FC",
+      "tagline": "Our youngest squad — Saturday kickabouts, camps and fun skills games.",
+      "logo": "/images/sports/football/sprout-kids.jpg"
+    },
+    {
+      "id": "stw-fc",
+      "clubSlug": "sprout-tweens",
+      "sport": "Football",
+      "name": "Sprout Tweens FC",
+      "initials": "TW FC",
+      "tagline": "Junior league football — skills, teamwork and match days.",
+      "logo": "/images/sports/football/sprout-tweens.jpg"
+    },
+    {
+      "id": "ste-fc",
+      "clubSlug": "sprout-teens",
+      "sport": "Football",
+      "name": "Sprout Teens FC",
+      "initials": "TE FC",
+      "tagline": "The senior Sprout squad — competitive fixtures all season.",
+      "logo": "/images/sports/football/sprout-teens.jpg"
+    },
+    {
+      "id": "surge-fc",
+      "clubSlug": "surge",
+      "sport": "Football",
+      "name": "Surge FC",
+      "initials": "SFC",
+      "tagline": "Youth league team — midweek training, weekend matches.",
+      "logo": "/images/sports/football/surge.jpg"
+    },
+    {
+      "id": "pulse-fc",
+      "clubSlug": "pulse",
+      "sport": "Football",
+      "name": "Pulse FC",
+      "initials": "PFC",
+      "tagline": "Sunday fixtures under the lights at the Relate grounds.",
+      "logo": "/images/sports/football/pulse.jpg"
+    },
+    {
+      "id": "sk-netball",
+      "clubSlug": "sprout-kids",
+      "sport": "Netball",
+      "name": "Sprout Kids Netball",
+      "initials": "SKN",
+      "tagline": "Saturday morning netball for kids — all positions, all fun.",
+      "logo": "/images/sports/netball/sprout-kids.jpg"
+    },
+    {
+      "id": "stw-netball",
+      "clubSlug": "sprout-tweens",
+      "sport": "Netball",
+      "name": "Sprout Tweens Netball",
+      "initials": "TWN",
+      "tagline": "League netball for tweens — weekend games, weekly training.",
+      "logo": "/images/sports/netball/sprout-tweens.jpg"
+    },
+    {
+      "id": "ste-netball",
+      "clubSlug": "sprout-teens",
+      "sport": "Netball",
+      "name": "Sprout Teens Netball",
+      "initials": "TEN",
+      "tagline": "Competitive teen netball — tournaments and club nights.",
+      "logo": "/images/sports/netball/sprout-teens.jpg"
+    },
+    {
+      "id": "surge-netball",
+      "clubSlug": "surge",
+      "sport": "Netball",
+      "name": "Surge Netball",
+      "initials": "SN",
+      "tagline": "Competitive youth netball running with the school term.",
+      "logo": "/images/sports/netball/surge.jpg"
+    },
+    {
+      "id": "pulse-netball",
+      "clubSlug": "pulse",
+      "sport": "Netball",
+      "name": "Pulse Netball",
+      "initials": "PN",
+      "tagline": "Evening netball clinic — every skill level welcome.",
+      "logo": "/images/sports/netball/pulse.jpg"
+    },
+    {
+      "id": "surge-volleyball",
+      "clubSlug": "surge",
+      "sport": "Volleyball",
+      "name": "Surge Volleyball",
+      "initials": "SV",
+      "tagline": "Friday court sessions — learn the game, make the team.",
+      "logo": "/images/sports/volleyball/surge.jpg"
+    },
+    {
+      "id": "pulse-volleyball",
+      "clubSlug": "pulse",
+      "sport": "Volleyball",
+      "name": "Pulse Volleyball",
+      "initials": "PV",
+      "tagline": "Weekend tournaments and social volleyball.",
+      "logo": "/images/sports/volleyball/pulse.jpg"
+    }
+  ],
+  "positionSlots": {
+    "Football": [
+      {
+        "name": "Goalkeeper",
+        "code": "GK"
+      },
+      {
+        "name": "Right Back",
+        "code": "RB"
+      },
+      {
+        "name": "Centre Back",
+        "code": "CB"
+      },
+      {
+        "name": "Centre Back",
+        "code": "CB"
+      },
+      {
+        "name": "Left Back",
+        "code": "LB"
+      },
+      {
+        "name": "Defensive Midfielder",
+        "code": "DM"
+      },
+      {
+        "name": "Central Midfielder",
+        "code": "CM"
+      },
+      {
+        "name": "Attacking Midfielder",
+        "code": "AM"
+      },
+      {
+        "name": "Right Winger",
+        "code": "RW"
+      },
+      {
+        "name": "Striker",
+        "code": "ST"
+      },
+      {
+        "name": "Left Winger",
+        "code": "LW"
+      }
+    ],
+    "Netball": [
+      {
+        "name": "Goal Shooter",
+        "code": "GS"
+      },
+      {
+        "name": "Goal Attack",
+        "code": "GA"
+      },
+      {
+        "name": "Wing Attack",
+        "code": "WA"
+      },
+      {
+        "name": "Centre",
+        "code": "C"
+      },
+      {
+        "name": "Wing Defence",
+        "code": "WD"
+      },
+      {
+        "name": "Goal Defence",
+        "code": "GD"
+      },
+      {
+        "name": "Goal Keeper",
+        "code": "GK"
+      }
+    ],
+    "Volleyball": [
+      {
+        "name": "Setter",
+        "code": "S"
+      },
+      {
+        "name": "Outside Hitter",
+        "code": "OH"
+      },
+      {
+        "name": "Outside Hitter",
+        "code": "OH"
+      },
+      {
+        "name": "Middle Blocker",
+        "code": "MB"
+      },
+      {
+        "name": "Middle Blocker",
+        "code": "MB"
+      },
+      {
+        "name": "Opposite Hitter",
+        "code": "OPP"
+      },
+      {
+        "name": "Libero",
+        "code": "L"
+      }
+    ]
+  },
+  "squadSize": {
+    "Football": 11,
+    "Netball": 7,
+    "Volleyball": 7
+  },
+  "maxPerPosition": 3,
+  "squads": {
+    "sk-fc": {
+      "coach": {
+        "name": "Tendai Zhou",
+        "role": "Head Coach"
+      },
+      "players": [
+        {
+          "name": "Goalkeeper",
+          "position": "Goalkeeper",
+          "number": 1,
+          "image": "",
+          "badge": "GK",
+          "placeholder": true
+        },
+        {
+          "name": "Right Back",
+          "position": "Right Back",
+          "number": 2,
+          "image": "",
+          "badge": "RB",
+          "placeholder": true
+        },
+        {
+          "name": "Centre Back",
+          "position": "Centre Back",
+          "number": 3,
+          "image": "",
+          "badge": "CB",
+          "placeholder": true
+        },
+        {
+          "name": "Centre Back",
+          "position": "Centre Back",
+          "number": 4,
+          "image": "",
+          "badge": "CB",
+          "placeholder": true
+        },
+        {
+          "name": "Left Back",
+          "position": "Left Back",
+          "number": 5,
+          "image": "",
+          "badge": "LB",
+          "placeholder": true
+        },
+        {
+          "name": "Defensive Midfielder",
+          "position": "Defensive Midfielder",
+          "number": 6,
+          "image": "",
+          "badge": "DM",
+          "placeholder": true
+        },
+        {
+          "name": "Central Midfielder",
+          "position": "Central Midfielder",
+          "number": 8,
+          "image": "",
+          "badge": "CM",
+          "placeholder": true
+        },
+        {
+          "name": "Attacking Midfielder",
+          "position": "Attacking Midfielder",
+          "number": 10,
+          "image": "",
+          "badge": "AM",
+          "placeholder": true
+        },
+        {
+          "name": "Right Winger",
+          "position": "Right Winger",
+          "number": 7,
+          "image": "",
+          "badge": "RW",
+          "placeholder": true
+        },
+        {
+          "name": "Striker",
+          "position": "Striker",
+          "number": 9,
+          "image": "",
+          "badge": "ST",
+          "placeholder": true
+        },
+        {
+          "name": "Left Winger",
+          "position": "Left Winger",
+          "number": 11,
+          "image": "",
+          "badge": "LW",
+          "placeholder": true
+        }
+      ],
+      "fixtures": [
+        {
+          "date": "2026-10-02",
+          "time": "09:00",
+          "competition": "Relate Youth League",
+          "opponent": "Highfield Rovers",
+          "venue": "Relate Grounds",
+          "home": true
+        },
+        {
+          "date": "2026-10-09",
+          "time": "09:00",
+          "competition": "Relate Youth League",
+          "opponent": "Brothers FC",
+          "venue": "Opposition Grounds",
+          "home": false
+        },
+        {
+          "date": "2026-10-16",
+          "time": "09:00",
+          "competition": "Spring 2026 Tournament",
+          "opponent": "Highfield Rovers",
+          "venue": "Relate Grounds",
+          "home": true
+        },
+        {
+          "date": "2026-10-23",
+          "time": "09:00",
+          "competition": "Relate Youth League",
+          "opponent": "Brothers FC",
+          "venue": "Opposition Grounds",
+          "home": false
+        },
+        {
+          "date": "2026-10-30",
+          "time": "09:00",
+          "competition": "Relate Youth League",
+          "opponent": "Highfield Rovers",
+          "venue": "Relate Grounds",
+          "home": true
+        }
+      ]
+    },
+    "stw-fc": {
+      "coach": {
+        "name": "Rudo Gumbo",
+        "role": "Head Coach"
+      },
+      "players": [
+        {
+          "name": "Goalkeeper",
+          "position": "Goalkeeper",
+          "number": 1,
+          "image": "",
+          "badge": "GK",
+          "placeholder": true
+        },
+        {
+          "name": "Right Back",
+          "position": "Right Back",
+          "number": 2,
+          "image": "",
+          "badge": "RB",
+          "placeholder": true
+        },
+        {
+          "name": "Centre Back",
+          "position": "Centre Back",
+          "number": 3,
+          "image": "",
+          "badge": "CB",
+          "placeholder": true
+        },
+        {
+          "name": "Centre Back",
+          "position": "Centre Back",
+          "number": 4,
+          "image": "",
+          "badge": "CB",
+          "placeholder": true
+        },
+        {
+          "name": "Left Back",
+          "position": "Left Back",
+          "number": 5,
+          "image": "",
+          "badge": "LB",
+          "placeholder": true
+        },
+        {
+          "name": "Defensive Midfielder",
+          "position": "Defensive Midfielder",
+          "number": 6,
+          "image": "",
+          "badge": "DM",
+          "placeholder": true
+        },
+        {
+          "name": "Central Midfielder",
+          "position": "Central Midfielder",
+          "number": 8,
+          "image": "",
+          "badge": "CM",
+          "placeholder": true
+        },
+        {
+          "name": "Attacking Midfielder",
+          "position": "Attacking Midfielder",
+          "number": 10,
+          "image": "",
+          "badge": "AM",
+          "placeholder": true
+        },
+        {
+          "name": "Right Winger",
+          "position": "Right Winger",
+          "number": 7,
+          "image": "",
+          "badge": "RW",
+          "placeholder": true
+        },
+        {
+          "name": "Striker",
+          "position": "Striker",
+          "number": 9,
+          "image": "",
+          "badge": "ST",
+          "placeholder": true
+        },
+        {
+          "name": "Left Winger",
+          "position": "Left Winger",
+          "number": 11,
+          "image": "",
+          "badge": "LW",
+          "placeholder": true
+        }
+      ],
+      "fixtures": [
+        {
+          "date": "2026-10-02",
+          "time": "10:30",
+          "competition": "Relate Youth League",
+          "opponent": "Mbabane Youth",
+          "venue": "Relate Grounds",
+          "home": true
+        },
+        {
+          "date": "2026-10-09",
+          "time": "10:30",
+          "competition": "Relate Youth League",
+          "opponent": "Township Stars",
+          "venue": "Opposition Grounds",
+          "home": false
+        },
+        {
+          "date": "2026-10-16",
+          "time": "10:30",
+          "competition": "Spring 2026 Tournament",
+          "opponent": "Mbabane Youth",
+          "venue": "Relate Grounds",
+          "home": true
+        },
+        {
+          "date": "2026-10-23",
+          "time": "10:30",
+          "competition": "Relate Youth League",
+          "opponent": "Township Stars",
+          "venue": "Opposition Grounds",
+          "home": false
+        },
+        {
+          "date": "2026-10-30",
+          "time": "10:30",
+          "competition": "Relate Youth League",
+          "opponent": "Mbabane Youth",
+          "venue": "Relate Grounds",
+          "home": true
+        }
+      ]
+    },
+    "ste-fc": {
+      "coach": {
+        "name": "Kudzai Moyo",
+        "role": "Head Coach"
+      },
+      "players": [
+        {
+          "name": "Goalkeeper",
+          "position": "Goalkeeper",
+          "number": 1,
+          "image": "",
+          "badge": "GK",
+          "placeholder": true
+        },
+        {
+          "name": "Right Back",
+          "position": "Right Back",
+          "number": 2,
+          "image": "",
+          "badge": "RB",
+          "placeholder": true
+        },
+        {
+          "name": "Centre Back",
+          "position": "Centre Back",
+          "number": 3,
+          "image": "",
+          "badge": "CB",
+          "placeholder": true
+        },
+        {
+          "name": "Centre Back",
+          "position": "Centre Back",
+          "number": 4,
+          "image": "",
+          "badge": "CB",
+          "placeholder": true
+        },
+        {
+          "name": "Left Back",
+          "position": "Left Back",
+          "number": 5,
+          "image": "",
+          "badge": "LB",
+          "placeholder": true
+        },
+        {
+          "name": "Defensive Midfielder",
+          "position": "Defensive Midfielder",
+          "number": 6,
+          "image": "",
+          "badge": "DM",
+          "placeholder": true
+        },
+        {
+          "name": "Central Midfielder",
+          "position": "Central Midfielder",
+          "number": 8,
+          "image": "",
+          "badge": "CM",
+          "placeholder": true
+        },
+        {
+          "name": "Attacking Midfielder",
+          "position": "Attacking Midfielder",
+          "number": 10,
+          "image": "",
+          "badge": "AM",
+          "placeholder": true
+        },
+        {
+          "name": "Right Winger",
+          "position": "Right Winger",
+          "number": 7,
+          "image": "",
+          "badge": "RW",
+          "placeholder": true
+        },
+        {
+          "name": "Striker",
+          "position": "Striker",
+          "number": 9,
+          "image": "",
+          "badge": "ST",
+          "placeholder": true
+        },
+        {
+          "name": "Left Winger",
+          "position": "Left Winger",
+          "number": 11,
+          "image": "",
+          "badge": "LW",
+          "placeholder": true
+        }
+      ],
+      "fixtures": [
+        {
+          "date": "2026-10-02",
+          "time": "14:00",
+          "competition": "Relate Youth League",
+          "opponent": "Kings College XI",
+          "venue": "Relate Grounds",
+          "home": true
+        },
+        {
+          "date": "2026-10-09",
+          "time": "14:00",
+          "competition": "Relate Youth League",
+          "opponent": "Riverside Athletic",
+          "venue": "Opposition Grounds",
+          "home": false
+        },
+        {
+          "date": "2026-10-16",
+          "time": "14:00",
+          "competition": "Spring 2026 Tournament",
+          "opponent": "Kings College XI",
+          "venue": "Relate Grounds",
+          "home": true
+        },
+        {
+          "date": "2026-10-23",
+          "time": "14:00",
+          "competition": "Relate Youth League",
+          "opponent": "Riverside Athletic",
+          "venue": "Opposition Grounds",
+          "home": false
+        },
+        {
+          "date": "2026-10-30",
+          "time": "14:00",
+          "competition": "Relate Youth League",
+          "opponent": "Kings College XI",
+          "venue": "Relate Grounds",
+          "home": true
+        }
+      ]
+    },
+    "surge-fc": {
+      "coach": {
+        "name": "Musa Ndlovu",
+        "role": "Head Coach"
+      },
+      "players": [
+        {
+          "name": "Goalkeeper",
+          "position": "Goalkeeper",
+          "number": 1,
+          "image": "",
+          "badge": "GK",
+          "placeholder": true
+        },
+        {
+          "name": "Right Back",
+          "position": "Right Back",
+          "number": 2,
+          "image": "",
+          "badge": "RB",
+          "placeholder": true
+        },
+        {
+          "name": "Centre Back",
+          "position": "Centre Back",
+          "number": 3,
+          "image": "",
+          "badge": "CB",
+          "placeholder": true
+        },
+        {
+          "name": "Centre Back",
+          "position": "Centre Back",
+          "number": 4,
+          "image": "",
+          "badge": "CB",
+          "placeholder": true
+        },
+        {
+          "name": "Left Back",
+          "position": "Left Back",
+          "number": 5,
+          "image": "",
+          "badge": "LB",
+          "placeholder": true
+        },
+        {
+          "name": "Defensive Midfielder",
+          "position": "Defensive Midfielder",
+          "number": 6,
+          "image": "",
+          "badge": "DM",
+          "placeholder": true
+        },
+        {
+          "name": "Central Midfielder",
+          "position": "Central Midfielder",
+          "number": 8,
+          "image": "",
+          "badge": "CM",
+          "placeholder": true
+        },
+        {
+          "name": "Attacking Midfielder",
+          "position": "Attacking Midfielder",
+          "number": 10,
+          "image": "",
+          "badge": "AM",
+          "placeholder": true
+        },
+        {
+          "name": "Right Winger",
+          "position": "Right Winger",
+          "number": 7,
+          "image": "",
+          "badge": "RW",
+          "placeholder": true
+        },
+        {
+          "name": "Striker",
+          "position": "Striker",
+          "number": 9,
+          "image": "",
+          "badge": "ST",
+          "placeholder": true
+        },
+        {
+          "name": "Left Winger",
+          "position": "Left Winger",
+          "number": 11,
+          "image": "",
+          "badge": "LW",
+          "placeholder": true
+        }
+      ],
+      "fixtures": [
+        {
+          "date": "2026-10-02",
+          "time": "15:00",
+          "competition": "Relate Youth League",
+          "opponent": "Brothers FC",
+          "venue": "Relate Grounds",
+          "home": true
+        },
+        {
+          "date": "2026-10-09",
+          "time": "15:00",
+          "competition": "Relate Youth League",
+          "opponent": "Highfield Rovers",
+          "venue": "Opposition Grounds",
+          "home": false
+        },
+        {
+          "date": "2026-10-16",
+          "time": "15:00",
+          "competition": "Spring 2026 Tournament",
+          "opponent": "Brothers FC",
+          "venue": "Relate Grounds",
+          "home": true
+        },
+        {
+          "date": "2026-10-23",
+          "time": "15:00",
+          "competition": "Relate Youth League",
+          "opponent": "Highfield Rovers",
+          "venue": "Opposition Grounds",
+          "home": false
+        },
+        {
+          "date": "2026-10-30",
+          "time": "15:00",
+          "competition": "Relate Youth League",
+          "opponent": "Brothers FC",
+          "venue": "Relate Grounds",
+          "home": true
+        }
+      ]
+    },
+    "pulse-fc": {
+      "coach": {
+        "name": "Sandile Mahlangu",
+        "role": "Head Coach"
+      },
+      "players": [
+        {
+          "name": "Goalkeeper",
+          "position": "Goalkeeper",
+          "number": 1,
+          "image": "",
+          "badge": "GK",
+          "placeholder": true
+        },
+        {
+          "name": "Right Back",
+          "position": "Right Back",
+          "number": 2,
+          "image": "",
+          "badge": "RB",
+          "placeholder": true
+        },
+        {
+          "name": "Centre Back",
+          "position": "Centre Back",
+          "number": 3,
+          "image": "",
+          "badge": "CB",
+          "placeholder": true
+        },
+        {
+          "name": "Centre Back",
+          "position": "Centre Back",
+          "number": 4,
+          "image": "",
+          "badge": "CB",
+          "placeholder": true
+        },
+        {
+          "name": "Left Back",
+          "position": "Left Back",
+          "number": 5,
+          "image": "",
+          "badge": "LB",
+          "placeholder": true
+        },
+        {
+          "name": "Defensive Midfielder",
+          "position": "Defensive Midfielder",
+          "number": 6,
+          "image": "",
+          "badge": "DM",
+          "placeholder": true
+        },
+        {
+          "name": "Central Midfielder",
+          "position": "Central Midfielder",
+          "number": 8,
+          "image": "",
+          "badge": "CM",
+          "placeholder": true
+        },
+        {
+          "name": "Attacking Midfielder",
+          "position": "Attacking Midfielder",
+          "number": 10,
+          "image": "",
+          "badge": "AM",
+          "placeholder": true
+        },
+        {
+          "name": "Right Winger",
+          "position": "Right Winger",
+          "number": 7,
+          "image": "",
+          "badge": "RW",
+          "placeholder": true
+        },
+        {
+          "name": "Striker",
+          "position": "Striker",
+          "number": 9,
+          "image": "",
+          "badge": "ST",
+          "placeholder": true
+        },
+        {
+          "name": "Left Winger",
+          "position": "Left Winger",
+          "number": 11,
+          "image": "",
+          "badge": "LW",
+          "placeholder": true
+        }
+      ],
+      "fixtures": [
+        {
+          "date": "2026-10-02",
+          "time": "16:00",
+          "competition": "Relate Youth League",
+          "opponent": "Township Stars",
+          "venue": "Relate Grounds",
+          "home": true
+        },
+        {
+          "date": "2026-10-09",
+          "time": "16:00",
+          "competition": "Relate Youth League",
+          "opponent": "Mbabane Youth",
+          "venue": "Opposition Grounds",
+          "home": false
+        },
+        {
+          "date": "2026-10-16",
+          "time": "16:00",
+          "competition": "Spring 2026 Tournament",
+          "opponent": "Township Stars",
+          "venue": "Relate Grounds",
+          "home": true
+        },
+        {
+          "date": "2026-10-23",
+          "time": "16:00",
+          "competition": "Relate Youth League",
+          "opponent": "Mbabane Youth",
+          "venue": "Opposition Grounds",
+          "home": false
+        },
+        {
+          "date": "2026-10-30",
+          "time": "16:00",
+          "competition": "Relate Youth League",
+          "opponent": "Township Stars",
+          "venue": "Relate Grounds",
+          "home": true
+        }
+      ]
+    },
+    "sk-netball": {
+      "coach": {
+        "name": "Chipo Sibanda",
+        "role": "Head Coach"
+      },
+      "players": [
+        {
+          "name": "Goal Shooter",
+          "position": "Goal Shooter",
+          "number": 1,
+          "image": "",
+          "badge": "GS",
+          "placeholder": true
+        },
+        {
+          "name": "Goal Attack",
+          "position": "Goal Attack",
+          "number": 2,
+          "image": "",
+          "badge": "GA",
+          "placeholder": true
+        },
+        {
+          "name": "Wing Attack",
+          "position": "Wing Attack",
+          "number": 3,
+          "image": "",
+          "badge": "WA",
+          "placeholder": true
+        },
+        {
+          "name": "Centre",
+          "position": "Centre",
+          "number": 4,
+          "image": "",
+          "badge": "C",
+          "placeholder": true
+        },
+        {
+          "name": "Wing Defence",
+          "position": "Wing Defence",
+          "number": 5,
+          "image": "",
+          "badge": "WD",
+          "placeholder": true
+        },
+        {
+          "name": "Goal Defence",
+          "position": "Goal Defence",
+          "number": 6,
+          "image": "",
+          "badge": "GD",
+          "placeholder": true
+        },
+        {
+          "name": "Goal Keeper",
+          "position": "Goal Keeper",
+          "number": 7,
+          "image": "",
+          "badge": "GK",
+          "placeholder": true
+        }
+      ],
+      "fixtures": [
+        {
+          "date": "2026-10-02",
+          "time": "09:00",
+          "competition": "Relate Netball League",
+          "opponent": "Riverside Gems",
+          "venue": "Relate Grounds",
+          "home": true
+        },
+        {
+          "date": "2026-10-09",
+          "time": "09:00",
+          "competition": "Relate Netball League",
+          "opponent": "Kings College",
+          "venue": "Opposition Courts",
+          "home": false
+        },
+        {
+          "date": "2026-10-16",
+          "time": "09:00",
+          "competition": "Spring 2026 Tournament",
+          "opponent": "Riverside Gems",
+          "venue": "Relate Grounds",
+          "home": true
+        },
+        {
+          "date": "2026-10-23",
+          "time": "09:00",
+          "competition": "Relate Netball League",
+          "opponent": "Kings College",
+          "venue": "Opposition Courts",
+          "home": false
+        },
+        {
+          "date": "2026-10-30",
+          "time": "09:00",
+          "competition": "Relate Netball League",
+          "opponent": "Riverside Gems",
+          "venue": "Relate Grounds",
+          "home": true
+        }
+      ]
+    },
+    "stw-netball": {
+      "coach": {
+        "name": "Nomsa Dube",
+        "role": "Head Coach"
+      },
+      "players": [
+        {
+          "name": "Goal Shooter",
+          "position": "Goal Shooter",
+          "number": 1,
+          "image": "",
+          "badge": "GS",
+          "placeholder": true
+        },
+        {
+          "name": "Goal Attack",
+          "position": "Goal Attack",
+          "number": 2,
+          "image": "",
+          "badge": "GA",
+          "placeholder": true
+        },
+        {
+          "name": "Wing Attack",
+          "position": "Wing Attack",
+          "number": 3,
+          "image": "",
+          "badge": "WA",
+          "placeholder": true
+        },
+        {
+          "name": "Centre",
+          "position": "Centre",
+          "number": 4,
+          "image": "",
+          "badge": "C",
+          "placeholder": true
+        },
+        {
+          "name": "Wing Defence",
+          "position": "Wing Defence",
+          "number": 5,
+          "image": "",
+          "badge": "WD",
+          "placeholder": true
+        },
+        {
+          "name": "Goal Defence",
+          "position": "Goal Defence",
+          "number": 6,
+          "image": "",
+          "badge": "GD",
+          "placeholder": true
+        },
+        {
+          "name": "Goal Keeper",
+          "position": "Goal Keeper",
+          "number": 7,
+          "image": "",
+          "badge": "GK",
+          "placeholder": true
+        }
+      ],
+      "fixtures": [
+        {
+          "date": "2026-10-02",
+          "time": "10:30",
+          "competition": "Relate Netball League",
+          "opponent": "Highfield Stars",
+          "venue": "Relate Grounds",
+          "home": true
+        },
+        {
+          "date": "2026-10-09",
+          "time": "10:30",
+          "competition": "Relate Netball League",
+          "opponent": "Valley Sparks",
+          "venue": "Opposition Courts",
+          "home": false
+        },
+        {
+          "date": "2026-10-16",
+          "time": "10:30",
+          "competition": "Spring 2026 Tournament",
+          "opponent": "Highfield Stars",
+          "venue": "Relate Grounds",
+          "home": true
+        },
+        {
+          "date": "2026-10-23",
+          "time": "10:30",
+          "competition": "Relate Netball League",
+          "opponent": "Valley Sparks",
+          "venue": "Opposition Courts",
+          "home": false
+        },
+        {
+          "date": "2026-10-30",
+          "time": "10:30",
+          "competition": "Relate Netball League",
+          "opponent": "Highfield Stars",
+          "venue": "Relate Grounds",
+          "home": true
+        }
+      ]
+    },
+    "ste-netball": {
+      "coach": {
+        "name": "Zanele Khumalo",
+        "role": "Head Coach"
+      },
+      "players": [
+        {
+          "name": "Goal Shooter",
+          "position": "Goal Shooter",
+          "number": 1,
+          "image": "",
+          "badge": "GS",
+          "placeholder": true
+        },
+        {
+          "name": "Goal Attack",
+          "position": "Goal Attack",
+          "number": 2,
+          "image": "",
+          "badge": "GA",
+          "placeholder": true
+        },
+        {
+          "name": "Wing Attack",
+          "position": "Wing Attack",
+          "number": 3,
+          "image": "",
+          "badge": "WA",
+          "placeholder": true
+        },
+        {
+          "name": "Centre",
+          "position": "Centre",
+          "number": 4,
+          "image": "",
+          "badge": "C",
+          "placeholder": true
+        },
+        {
+          "name": "Wing Defence",
+          "position": "Wing Defence",
+          "number": 5,
+          "image": "",
+          "badge": "WD",
+          "placeholder": true
+        },
+        {
+          "name": "Goal Defence",
+          "position": "Goal Defence",
+          "number": 6,
+          "image": "",
+          "badge": "GD",
+          "placeholder": true
+        },
+        {
+          "name": "Goal Keeper",
+          "position": "Goal Keeper",
+          "number": 7,
+          "image": "",
+          "badge": "GK",
+          "placeholder": true
+        }
+      ],
+      "fixtures": [
+        {
+          "date": "2026-10-02",
+          "time": "14:00",
+          "competition": "Relate Netball League",
+          "opponent": "Mbabane Cougars",
+          "venue": "Relate Grounds",
+          "home": true
+        },
+        {
+          "date": "2026-10-09",
+          "time": "14:00",
+          "competition": "Relate Netball League",
+          "opponent": "Township Fire",
+          "venue": "Opposition Courts",
+          "home": false
+        },
+        {
+          "date": "2026-10-16",
+          "time": "14:00",
+          "competition": "Spring 2026 Tournament",
+          "opponent": "Mbabane Cougars",
+          "venue": "Relate Grounds",
+          "home": true
+        },
+        {
+          "date": "2026-10-23",
+          "time": "14:00",
+          "competition": "Relate Netball League",
+          "opponent": "Township Fire",
+          "venue": "Opposition Courts",
+          "home": false
+        },
+        {
+          "date": "2026-10-30",
+          "time": "14:00",
+          "competition": "Relate Netball League",
+          "opponent": "Mbabane Cougars",
+          "venue": "Relate Grounds",
+          "home": true
+        }
+      ]
+    },
+    "surge-netball": {
+      "coach": {
+        "name": "Ayanda Ngcobo",
+        "role": "Head Coach"
+      },
+      "players": [
+        {
+          "name": "Goal Shooter",
+          "position": "Goal Shooter",
+          "number": 1,
+          "image": "",
+          "badge": "GS",
+          "placeholder": true
+        },
+        {
+          "name": "Goal Attack",
+          "position": "Goal Attack",
+          "number": 2,
+          "image": "",
+          "badge": "GA",
+          "placeholder": true
+        },
+        {
+          "name": "Wing Attack",
+          "position": "Wing Attack",
+          "number": 3,
+          "image": "",
+          "badge": "WA",
+          "placeholder": true
+        },
+        {
+          "name": "Centre",
+          "position": "Centre",
+          "number": 4,
+          "image": "",
+          "badge": "C",
+          "placeholder": true
+        },
+        {
+          "name": "Wing Defence",
+          "position": "Wing Defence",
+          "number": 5,
+          "image": "",
+          "badge": "WD",
+          "placeholder": true
+        },
+        {
+          "name": "Goal Defence",
+          "position": "Goal Defence",
+          "number": 6,
+          "image": "",
+          "badge": "GD",
+          "placeholder": true
+        },
+        {
+          "name": "Goal Keeper",
+          "position": "Goal Keeper",
+          "number": 7,
+          "image": "",
+          "badge": "GK",
+          "placeholder": true
+        }
+      ],
+      "fixtures": [
+        {
+          "date": "2026-10-02",
+          "time": "15:00",
+          "competition": "Relate Netball League",
+          "opponent": "Kings College",
+          "venue": "Relate Grounds",
+          "home": true
+        },
+        {
+          "date": "2026-10-09",
+          "time": "15:00",
+          "competition": "Relate Netball League",
+          "opponent": "Riverside Gems",
+          "venue": "Opposition Courts",
+          "home": false
+        },
+        {
+          "date": "2026-10-16",
+          "time": "15:00",
+          "competition": "Spring 2026 Tournament",
+          "opponent": "Kings College",
+          "venue": "Relate Grounds",
+          "home": true
+        },
+        {
+          "date": "2026-10-23",
+          "time": "15:00",
+          "competition": "Relate Netball League",
+          "opponent": "Riverside Gems",
+          "venue": "Opposition Courts",
+          "home": false
+        },
+        {
+          "date": "2026-10-30",
+          "time": "15:00",
+          "competition": "Relate Netball League",
+          "opponent": "Kings College",
+          "venue": "Relate Grounds",
+          "home": true
+        }
+      ]
+    },
+    "pulse-netball": {
+      "coach": {
+        "name": "Palesa Molefe",
+        "role": "Head Coach"
+      },
+      "players": [
+        {
+          "name": "Goal Shooter",
+          "position": "Goal Shooter",
+          "number": 1,
+          "image": "",
+          "badge": "GS",
+          "placeholder": true
+        },
+        {
+          "name": "Goal Attack",
+          "position": "Goal Attack",
+          "number": 2,
+          "image": "",
+          "badge": "GA",
+          "placeholder": true
+        },
+        {
+          "name": "Wing Attack",
+          "position": "Wing Attack",
+          "number": 3,
+          "image": "",
+          "badge": "WA",
+          "placeholder": true
+        },
+        {
+          "name": "Centre",
+          "position": "Centre",
+          "number": 4,
+          "image": "",
+          "badge": "C",
+          "placeholder": true
+        },
+        {
+          "name": "Wing Defence",
+          "position": "Wing Defence",
+          "number": 5,
+          "image": "",
+          "badge": "WD",
+          "placeholder": true
+        },
+        {
+          "name": "Goal Defence",
+          "position": "Goal Defence",
+          "number": 6,
+          "image": "",
+          "badge": "GD",
+          "placeholder": true
+        },
+        {
+          "name": "Goal Keeper",
+          "position": "Goal Keeper",
+          "number": 7,
+          "image": "",
+          "badge": "GK",
+          "placeholder": true
+        }
+      ],
+      "fixtures": [
+        {
+          "date": "2026-10-02",
+          "time": "16:00",
+          "competition": "Relate Netball League",
+          "opponent": "Valley Sparks",
+          "venue": "Relate Grounds",
+          "home": true
+        },
+        {
+          "date": "2026-10-09",
+          "time": "16:00",
+          "competition": "Relate Netball League",
+          "opponent": "Highfield Stars",
+          "venue": "Opposition Courts",
+          "home": false
+        },
+        {
+          "date": "2026-10-16",
+          "time": "16:00",
+          "competition": "Spring 2026 Tournament",
+          "opponent": "Valley Sparks",
+          "venue": "Relate Grounds",
+          "home": true
+        },
+        {
+          "date": "2026-10-23",
+          "time": "16:00",
+          "competition": "Relate Netball League",
+          "opponent": "Highfield Stars",
+          "venue": "Opposition Courts",
+          "home": false
+        },
+        {
+          "date": "2026-10-30",
+          "time": "16:00",
+          "competition": "Relate Netball League",
+          "opponent": "Valley Sparks",
+          "venue": "Relate Grounds",
+          "home": true
+        }
+      ]
+    },
+    "surge-volleyball": {
+      "coach": {
+        "name": "Lwazi Mavuso",
+        "role": "Head Coach"
+      },
+      "players": [
+        {
+          "name": "Setter",
+          "position": "Setter",
+          "number": 1,
+          "image": "",
+          "badge": "S",
+          "placeholder": true
+        },
+        {
+          "name": "Outside Hitter",
+          "position": "Outside Hitter",
+          "number": 2,
+          "image": "",
+          "badge": "OH",
+          "placeholder": true
+        },
+        {
+          "name": "Outside Hitter",
+          "position": "Outside Hitter",
+          "number": 3,
+          "image": "",
+          "badge": "OH",
+          "placeholder": true
+        },
+        {
+          "name": "Middle Blocker",
+          "position": "Middle Blocker",
+          "number": 4,
+          "image": "",
+          "badge": "MB",
+          "placeholder": true
+        },
+        {
+          "name": "Middle Blocker",
+          "position": "Middle Blocker",
+          "number": 5,
+          "image": "",
+          "badge": "MB",
+          "placeholder": true
+        },
+        {
+          "name": "Opposite Hitter",
+          "position": "Opposite Hitter",
+          "number": 6,
+          "image": "",
+          "badge": "OPP",
+          "placeholder": true
+        },
+        {
+          "name": "Libero",
+          "position": "Libero",
+          "number": 15,
+          "image": "",
+          "badge": "L",
+          "placeholder": true
+        }
+      ],
+      "fixtures": [
+        {
+          "date": "2026-10-02",
+          "time": "15:00",
+          "competition": "Relate Volleyball League",
+          "opponent": "Township Ace",
+          "venue": "Relate Grounds",
+          "home": true
+        },
+        {
+          "date": "2026-10-09",
+          "time": "15:00",
+          "competition": "Relate Volleyball League",
+          "opponent": "Mbabane Blue",
+          "venue": "Opposition Hall",
+          "home": false
+        },
+        {
+          "date": "2026-10-16",
+          "time": "15:00",
+          "competition": "Spring 2026 Tournament",
+          "opponent": "Township Ace",
+          "venue": "Relate Grounds",
+          "home": true
+        },
+        {
+          "date": "2026-10-23",
+          "time": "15:00",
+          "competition": "Relate Volleyball League",
+          "opponent": "Mbabane Blue",
+          "venue": "Opposition Hall",
+          "home": false
+        },
+        {
+          "date": "2026-10-30",
+          "time": "15:00",
+          "competition": "Relate Volleyball League",
+          "opponent": "Township Ace",
+          "venue": "Relate Grounds",
+          "home": true
+        }
+      ]
+    },
+    "pulse-volleyball": {
+      "coach": {
+        "name": "Nkosinathi Dlamini",
+        "role": "Head Coach"
+      },
+      "players": [
+        {
+          "name": "Setter",
+          "position": "Setter",
+          "number": 1,
+          "image": "",
+          "badge": "S",
+          "placeholder": true
+        },
+        {
+          "name": "Outside Hitter",
+          "position": "Outside Hitter",
+          "number": 2,
+          "image": "",
+          "badge": "OH",
+          "placeholder": true
+        },
+        {
+          "name": "Outside Hitter",
+          "position": "Outside Hitter",
+          "number": 3,
+          "image": "",
+          "badge": "OH",
+          "placeholder": true
+        },
+        {
+          "name": "Middle Blocker",
+          "position": "Middle Blocker",
+          "number": 4,
+          "image": "",
+          "badge": "MB",
+          "placeholder": true
+        },
+        {
+          "name": "Middle Blocker",
+          "position": "Middle Blocker",
+          "number": 5,
+          "image": "",
+          "badge": "MB",
+          "placeholder": true
+        },
+        {
+          "name": "Opposite Hitter",
+          "position": "Opposite Hitter",
+          "number": 6,
+          "image": "",
+          "badge": "OPP",
+          "placeholder": true
+        },
+        {
+          "name": "Libero",
+          "position": "Libero",
+          "number": 15,
+          "image": "",
+          "badge": "L",
+          "placeholder": true
+        }
+      ],
+      "fixtures": [
+        {
+          "date": "2026-10-02",
+          "time": "16:00",
+          "competition": "Relate Volleyball League",
+          "opponent": "Riverside Setters",
+          "venue": "Relate Grounds",
+          "home": true
+        },
+        {
+          "date": "2026-10-09",
+          "time": "16:00",
+          "competition": "Relate Volleyball League",
+          "opponent": "Kings College",
+          "venue": "Opposition Hall",
+          "home": false
+        },
+        {
+          "date": "2026-10-16",
+          "time": "16:00",
+          "competition": "Spring 2026 Tournament",
+          "opponent": "Riverside Setters",
+          "venue": "Relate Grounds",
+          "home": true
+        },
+        {
+          "date": "2026-10-23",
+          "time": "16:00",
+          "competition": "Relate Volleyball League",
+          "opponent": "Kings College",
+          "venue": "Opposition Hall",
+          "home": false
+        },
+        {
+          "date": "2026-10-30",
+          "time": "16:00",
+          "competition": "Relate Volleyball League",
+          "opponent": "Riverside Setters",
+          "venue": "Relate Grounds",
+          "home": true
+        }
+      ]
+    }
+  }
+}

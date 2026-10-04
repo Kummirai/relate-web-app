@@ -21,7 +21,7 @@ import { fileURLToPath } from "node:url";
 
 const PUBLICATIONS_DIR = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
-  "../../frontend/src/data/publications",
+  "publications-data",
 );
 
 const MONTH_INDEX = {

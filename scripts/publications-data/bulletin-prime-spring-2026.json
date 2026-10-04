@@ -1,0 +1,32 @@
+{
+  "id": "bulletin-prime-spring-2026",
+  "kind": "bulletin",
+  "clubSlug": "prime",
+  "title": "Prime Bulletin — Spring",
+  "issue": "Vol. 1",
+  "month": "September",
+  "year": 2026,
+  "season": {
+    "name": "Spring",
+    "year": 2026,
+    "label": "Spring 2026 · Sep 1 – Nov 30",
+    "start": "2026-09-01",
+    "end": "2026-11-30"
+  },
+  "cover": "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800&q=80",
+  "summary": "The Prime Table, the Flourishing Years guide, and the Fireside close-out.",
+  "tags": ["PRIME", "SPRING", "DATES"],
+  "blocks": [
+    { "type": "heading", "text": "Dates that matter" },
+    { "type": "list", "items": [
+      "12 Sep — Prime Table, first Saturday 7pm",
+      "Study habit — the Flourishing Years guide (in Library) is your week-by-week plan",
+      "21 Nov — Prime Fireside, 6pm",
+      "Mentor huddle — bring a younger friend to the Table"
+    ] },
+    { "type": "heading", "text": "Tend one corner a week" },
+    { "type": "paragraph", "text": "Prime's Spring study guide, The Flourishing Years, is built on a simple habit: one corner of the flourishing life tended each week — purpose, walls, body, work, money, friendship, legacy. No overload, just thirteen focused weeks. The study habit that carries it is the daily verse plus the weekly 'Try it' step, done before the week moves on. Mature, free, and built on the Rock." },
+    { "type": "quote", "text": "Offer your bodies as a living sacrifice, holy and pleasing to God—this is your true and proper worship.", "by": "Romans 12:1" },
+    { "type": "quote", "text": "Own your stage. Flourish.", "by": "Prime" }
+  ]
+}

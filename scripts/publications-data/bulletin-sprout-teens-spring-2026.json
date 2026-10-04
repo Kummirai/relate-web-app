@@ -1,0 +1,32 @@
+{
+  "id": "bulletin-sprout-teens-spring-2026",
+  "kind": "bulletin",
+  "clubSlug": "sprout-teens",
+  "title": "Sprout Teens Bulletin — Spring",
+  "issue": "Vol. 1",
+  "month": "September",
+  "year": 2026,
+  "season": {
+    "name": "Spring",
+    "year": 2026,
+    "label": "Spring 2026 · Sep 1 – Nov 30",
+    "start": "2026-09-01",
+    "end": "2026-11-30"
+  },
+  "cover": "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80",
+  "summary": "Teens kickoff, the storm week of the Rooted guide, and the serve weekend.",
+  "tags": ["SPROUT-TEENS", "SPRING", "DATES"],
+  "blocks": [
+    { "type": "heading", "text": "Dates that matter" },
+    { "type": "list", "items": [
+      "13 Sep — Sprout Teens Kickoff, 4pm in the Loft",
+      "Term theme — Habits: Rooted's week on storms is your don't-miss week",
+      "25 Oct — Teens Serve Weekend, morning",
+      "Take the challenge: one phone-free hour with the guide each week"
+    ] },
+    { "type": "heading", "text": "Roots hold in the storm" },
+    { "type": "paragraph", "text": "Your Spring guide, Roots & Shoots, is built for the real weather of being a teen — identity, friends, pressure, storms. The study habit that makes it work is the one the guide is named after: roots you grow before the storm hits. Same time each week, the Loft and the week's verses, phone away, journal open. The storms will come; roots decide whether you sway or stand." },
+    { "type": "quote", "text": "I am the vine; you are the branches. If you remain in me and I in you, you will bear much fruit.", "by": "John 15:5" },
+    { "type": "quote", "text": "Roots you can lean on.", "by": "Sprout Teens" }
+  ]
+}

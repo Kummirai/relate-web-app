@@ -1,0 +1,32 @@
+{
+  "id": "bulletin-sprout-tweens-spring-2026",
+  "kind": "bulletin",
+  "clubSlug": "sprout-tweens",
+  "title": "Sprout Tweens Bulletin — Spring",
+  "issue": "Vol. 1",
+  "month": "September",
+  "year": 2026,
+  "season": {
+    "name": "Spring",
+    "year": 2026,
+    "label": "Spring 2026 · Sep 1 – Nov 30",
+    "start": "2026-09-01",
+    "end": "2026-11-30"
+  },
+  "cover": "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=800&q=80",
+  "summary": "Tweens kickoff, the daily-water study habit and camp sign-ups.",
+  "tags": ["SPROUT-TWEENS", "SPRING", "DATES"],
+  "blocks": [
+    { "type": "heading", "text": "Dates that matter" },
+    { "type": "list", "items": [
+      "13 Sep — Sprout Tweens Kickoff, 11am, upstairs hall",
+      "Study habit — the Rooted guide's week on water: read a little every day, like watering a seed",
+      "22 Nov — Tweens Camp sign-ups open after service",
+      "Learn the season verse: Proverbs 3:5–6"
+    ] },
+    { "type": "heading", "text": "Water it every day" },
+    { "type": "paragraph", "text": "Roots & Shoots is the tweens' Spring theme, and the study habit is the watering can: a short read from the guide at the same time each day — before school, after homework, at dinner. Teenage roots grow on daily water, not occasional floods. Find your watering time in week two of the guide and hold it for the season." },
+    { "type": "quote", "text": "Trust in the Lord with all your heart and lean not on your own understanding.", "by": "Proverbs 3:5" },
+    { "type": "quote", "text": "A seed is not in a hurry.", "by": "Sprout Tweens" }
+  ]
+}

@@ -1,7 +1,7 @@
 /**
  * Season / study-guide calendar + publication document builder.
  *
- * This mirrors the mobile pipeline (frontend/scripts/generate-season.mjs):
+ * This mirrors the mobile pipeline (mobile_app/scripts/generate-season.mjs):
  * a seasonal study guide is always built from a canonical 7-day-per-week
  * calendar derived from the season's start/end dates, so the web reads the
  * exact same shape the Expo app renders.

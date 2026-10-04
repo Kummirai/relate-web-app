@@ -1,0 +1,3343 @@
+{
+  "id": "rooted-tweens-spring-2026",
+  "kind": "magazine",
+  "series": "Rooted",
+  "clubSlug": "sprout-tweens",
+  "title": "Rooted — Spring 2026",
+  "issue": "Season of Spring 2026",
+  "month": "September",
+  "year": 2026,
+  "season": {
+    "name": "Spring",
+    "year": 2026,
+    "label": "Spring 2026 · Sep 1 – Nov 30",
+    "start": "2026-09-01",
+    "end": "2026-11-30"
+  },
+  "theme": "Roots & Shoots",
+  "coverLines": [
+    "Roots do the hidden work",
+    "Thirteen weeks to a deep root",
+    "Grow where you're planted"
+  ],
+  "cover": "https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=1600&q=85",
+  "summary": "Spring 2026 study guide for Sprout Tweens (9–11): thirteen weeks of growing — the hidden root, living water, storms, pruning and fruit — with a verse, a try-it and a prayer for every day of the season.",
+  "tags": [
+    "SPROUT-TWEENS",
+    "SPRING",
+    "GROW"
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "How to use this study guide"
+    },
+    {
+      "type": "paragraph",
+      "text": "This is a study guide for Sprout Tweens. Spring has thirteen weeks, so we grow one thing a week — from the hidden root to the fruit on the branch. Each day has a verse to read aloud, a few lines to think about, a Try it list, and a prayer. You can read on your own, with a grown-up, or around a table. Day 5 each week is a short quiz; days 6 and 7 are rest and reflection days where you get to slow down."
+    },
+    {
+      "type": "heading",
+      "text": "Roots and shoots"
+    },
+    {
+      "type": "paragraph",
+      "text": "A tree has two lives. Above the ground is the part everyone sees — trunk, branches, leaves, fruit. Below the ground is the part nobody sees — the roots that drink, anchor and feed the whole tree. God does His most important work in you under the surface: in your prayer life, your heart, your secret choices. This season we are going deep first, so the visible part of your life has something to stand on."
+    },
+    {
+      "type": "paragraph",
+      "text": "Follow the steps on each day: read the verse, read the lines, do the Try it, then say the prayer. On day 5 there is a quiz to see what you remember. On days 6 and 7 you get to sit with the week — answer, draw, or just think it over. By the end of spring you will have grown a root system, not just a photo of a tree."
+    }
+  ],
+  "weeks": [
+    {
+      "index": 1,
+      "title": "Week 1 — The hidden root",
+      "theme": "The hidden root",
+      "intro": [
+        {
+          "type": "paragraph",
+          "text": "We begin under the soil. The part of you that grows best is the part almost nobody sees — what you do with God when the door is closed. This week we honour the hidden root."
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-01",
+          "day": 1,
+          "weekday": "Tuesday",
+          "title": "The hidden life",
+          "verse": {
+            "text": "But when you pray, go into your room, close the door and pray to your Father, who is unseen. Then your Father, who sees what is done in secret, will reward you.",
+            "by": "Matthew 6:6"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "A tree's biggest job happens where nobody is looking. The roots pull in water and food in the dark, under the ground, away from the show. Jesus says your most important life works the same way: the prayer that nobody hears, the kind choice nobody notices, the verse read alone before anyone is awake. God sees it. And He rewards it."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Find ten quiet minutes and close the door",
+                "Pray one sentence nobody else will ever hear",
+                "Tell yourself: 'the hidden root grows the visible tree'"
+              ],
+              "id": "reflect-1-1"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God to help you want the hidden life, not just the show",
+                "Thank Him that He sees what is done in secret"
+              ],
+              "id": "pray-1-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-02",
+          "day": 2,
+          "weekday": "Wednesday",
+          "title": "Rooted plumbing",
+          "verse": {
+            "text": "Rooted and built up in him, strengthened in the faith as you were taught, and overflowing with thankfulness.",
+            "by": "Colossians 2:7"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Roots are the tree's plumbing. They are not beautiful. They do not win prizes. But a tree without roots is just a stick with leaves for a day or two. Paul says a follower of Jesus is rooted in Christ — kept going by a constant, quiet delivery of life from Him. If you want to be known for your fruit, start by quietly connecting to your source."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Name the one habit that delivers God's words to you",
+                "Do it today, even if it feels small",
+                "End the day by listing one thing you are thankful for"
+              ],
+              "id": "reflect-1-2"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God to deepen the root that connects you to Him",
+                "Thank Him for the 'plumbing' that feeds your life"
+              ],
+              "id": "pray-1-2"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-03",
+          "day": 3,
+          "weekday": "Thursday",
+          "title": "He sees hearts",
+          "verse": {
+            "text": "The Lord does not look at the things people look at. People look at the outward appearance, but the Lord looks at the heart.",
+            "by": "1 Samuel 16:7"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "When God chose David to be king, everyone was looking at height and muscles. God was looking at the heart. That is a huge difference and one of the most freeing sentences in the whole Bible: you can stop performing. You are not being graded on your outside. The One who matters most is watching the root system — whether you truly love Him, or just look like you do."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Ask God to show you your heart the way He sees it",
+                "Drop one bit of 'performance' today — be the real you",
+                "Pick a friend and choose them for who they are, not how they look"
+              ],
+              "id": "reflect-1-3"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Let God poke around your heart and show you what He finds",
+                "Ask Him to grow whatever in you is truly good"
+              ],
+              "id": "pray-1-3"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-04",
+          "day": 4,
+          "weekday": "Friday",
+          "title": "Bad roots",
+          "verse": {
+            "text": "For the love of money is a root of all kinds of evil. Some people, eager for money, have wandered from the faith and pierced themselves with many griefs.",
+            "by": "1 Timothy 6:10"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Roots can go the wrong way too. A tree sends roots toward whatever feeds it — and if what it loves is money, or likes, or being right, that becomes its whole direction. When your heart's deepest taproot is money, you will twist everything toward it, and eventually it pierces you. The root is not evil to be rich; it's evil to be rooted in riches."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Spot one thing your 'root' is reaching toward this week",
+                "Check: would Jesus want this to be at the centre of you?",
+                "Say out loud: 'my heart's root belongs to God'"
+              ],
+              "id": "reflect-1-4"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Tell God where your loves are growing the wrong way",
+                "Ask Him to dig out any bad root and plant Himself instead"
+              ],
+              "id": "pray-1-4"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-05",
+          "day": 5,
+          "weekday": "Saturday",
+          "title": "Which tree?",
+          "verse": {
+            "text": "Likewise, every good tree bears good fruit, but a bad tree bears bad fruit.",
+            "by": "Matthew 7:17"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The fruit test is the quiz of the season. You cannot always see a tree's roots, but you can almost always see its fruit. Take this week's quiz, then keep watching what grows out of the tree you are becoming."
+            },
+            {
+              "type": "quiz",
+              "question": "When God chose a king from Jesse's sons, what did He look at?",
+              "options": [
+                "Their height and good looks",
+                "Their bank account",
+                "Their heart",
+                "Their oldest-child status"
+              ],
+              "correctIndex": 2,
+              "explain": "People look at the outside; God looks at the heart. That is why 1 Samuel 16:7 is one of the most freeing verses in the Bible — you are graded on the root, not the show.",
+              "id": "reflect-1-5"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God to keep your root healthy this week",
+                "Thank Him that He judges hearts, not performances"
+              ],
+              "id": "pray-1-5"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-06",
+          "day": 6,
+          "weekday": "Sunday",
+          "title": "Quiet strength",
+          "verse": {
+            "text": "In quietness and trust is your strength.",
+            "by": "Isaiah 30:15"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Day 6 is a rest day, and rest is not wasting time — it is strength training for the root. Tweak roots do not hurry. They sit in the soil and receive. Try some real quiet today: no screen, no noise, no list of things to fix. See if strength comes to you in the silence."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Sit completely quiet for one minute — no phone, no music. What did you feel or notice?",
+              "placeholder": "I noticed...",
+              "id": "reflect-1-6"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Rest quietly in God's presence today",
+                "Ask Him to meet you in the silence"
+              ],
+              "id": "pray-1-6"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-07",
+          "day": 7,
+          "weekday": "Monday",
+          "title": "The secret week",
+          "verse": {
+            "text": "Then your Father, who sees what is done in secret, will reward you.",
+            "by": "Matthew 6:4"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Week 1 is complete — all of it done mostly under the surface. That is the point. You have planted a hidden root, and hidden roots are what the Father rewards most. Write down, draw, or tell someone: what was the one hidden thing you did for God this week?"
+            },
+            {
+              "type": "reflection",
+              "prompt": "What is the most 'hidden' good thing you did this week? Why did you do it — and would you do it again?",
+              "placeholder": "The hidden thing I did...",
+              "id": "reflect-1-7"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank God for a whole week of hidden growth",
+                "Ask Him to deepen your secret life with Him next week"
+              ],
+              "id": "pray-1-7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "title": "Week 2 — Living water",
+      "theme": "Living water",
+      "intro": [
+        {
+          "type": "paragraph",
+          "text": "Roots do two jobs: anchor and drink. This week we talk about the drinking — the living water that fills the root, from deep wells that never run dry."
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-08",
+          "day": 8,
+          "weekday": "Tuesday",
+          "title": "Thirsty for God",
+          "verse": {
+            "text": "As the deer pants for streams of water, so my soul pants for you, my God.",
+            "by": "Psalm 42:1"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "You know the feeling after sport or a hot afternoon: your throat knows what it wants. The psalmist uses that for God. Our souls were built to want Him the way a body wants water — not because we're weak, but because we're designed that way. Thirst is not a flaw. Thirst is a direction."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Notice one time today your body feels thirsty",
+                "Let it remind you: 'my soul wants God like this'",
+                "Drink some water and thank God for His good design"
+              ],
+              "id": "reflect-2-1"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Tell God honestly what your soul is hungry and thirsty for",
+                "Thank Him that He made you to want Him"
+              ],
+              "id": "pray-2-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-09",
+          "day": 9,
+          "weekday": "Wednesday",
+          "title": "The well of joy",
+          "verse": {
+            "text": "With joy you will draw water from the wells of salvation.",
+            "by": "Isaiah 12:3"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "You do not have to scrounge for your own water. There are wells — places God has already dug for you: His salvation, His word, His people, His church. Drawing water is work, but it is joyful work, like carrying a full bucket home. So much of the Christian life is simply: go to the well, and draw."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Go to one of God's wells: a Bible passage, a church event, a prayer",
+                "Draw from it — actually read or pray or gather, don't just pass by",
+                "Say: 'with joy I draw from You, God'"
+              ],
+              "id": "reflect-2-2"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God to lead you to His well today",
+                "Thank Him for the wells He has already dug for you"
+              ],
+              "id": "pray-2-2"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-10",
+          "day": 10,
+          "weekday": "Thursday",
+          "title": "Rivers inside",
+          "verse": {
+            "text": "Whoever believes in me, as Scripture has said, rivers of living water will flow from within them.",
+            "by": "John 7:38"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "A canteen is a tank you carry; a spring is a source inside you. Jesus promises believers something better than a full water bottle — a source. Canteens run dry; rivers keep coming. The Spirit inside you does not just get you through today; He gives you something to give away to the people who are thirsty around you."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Think of one person who seems thirsty for hope",
+                "Wonder: could God use you to 'flow' some to them?",
+                "Do one kind thing that lets your inner river leak out"
+              ],
+              "id": "reflect-2-3"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God's Spirit to keep flowing in you today",
+                "Ask where He wants you to spill some of it out"
+              ],
+              "id": "pray-2-3"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-11",
+          "day": 11,
+          "weekday": "Friday",
+          "title": "Broken cisterns",
+          "verse": {
+            "text": "My people have committed two sins: They have forsaken me, the spring of living water, and have dug their own cisterns, broken cisterns that cannot hold water.",
+            "by": "Jeremiah 2:13"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "A cistern is a tank people built to catch rain — hard work, and guess what? Jeremiah's were cracked, so they leaked. The tragedy is not that the cisterns failed; it's that they were dug at all, right next to a living spring. When you chase everything except God to feel OK, you are carrying a leaking bucket past a fountain. There is an easier way."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Name one 'cistern' you sometimes dig instead of going to God",
+                "Notice how it leaks — it never really satisfies",
+                "Turn around and walk back to the spring today"
+              ],
+              "id": "reflect-2-4"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Tell God the cisterns you keep digging",
+                "Ask Him to help you want the spring more than the bucket"
+              ],
+              "id": "pray-2-4"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-12",
+          "day": 12,
+          "weekday": "Saturday",
+          "title": "Fresh or stale?",
+          "verse": {
+            "text": "Whoever drinks the water I give them will never thirst. Indeed, the water I give them will become in them a spring of water welling up to eternal life.",
+            "by": "John 4:14"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "It is quiz day — and the quiz is really a follow-up to the woman at the well. Jesus offered her living water, and she ran home to tell the whole town. Check what you remember about wells, springs, and how to tell the difference."
+            },
+            {
+              "type": "quiz",
+              "question": "A cistern is a tank people built themselves. What was wrong with Jeremiah's cisterns?",
+              "options": [
+                "They were built in the wrong country",
+                "They were broken and could not hold water",
+                "They only caught polluted rain",
+                "They froze solid in the winter"
+              ],
+              "correctIndex": 1,
+              "explain": "Jeremiah 2:13 says the people forsook the spring of living water and dug their own cisterns — broken ones that cannot hold water. Everything we build to replace God ends up leaking.",
+              "id": "reflect-2-5"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank Jesus for water that satisfies forever",
+                "Ask Him to well up in you like a spring"
+              ],
+              "id": "pray-2-5"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-13",
+          "day": 13,
+          "weekday": "Sunday",
+          "title": "The water jar",
+          "verse": {
+            "text": "Jesus answered, 'Everyone who drinks this water will be thirsty again.'",
+            "by": "John 4:13"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The woman came to the well carrying a heavy jar — her daily chore, day after day. She left the jar behind, maybe forever, because she found something better. Rest day: put your jar down. For one day, stop trying to fill your own bucket. Let the well do its job."
+            },
+            {
+              "type": "reflection",
+              "prompt": "What 'jar' do you carry every day — the thing you're always working to fill yourself? What would it feel like to set it down?",
+              "placeholder": "The jar I carry...",
+              "id": "reflect-2-6"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Set your jar down before God",
+                "Let Him be the well today instead of working for water"
+              ],
+              "id": "pray-2-6"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-14",
+          "day": 14,
+          "weekday": "Monday",
+          "title": "The watered land",
+          "verse": {
+            "text": "You care for the land and water it; you enrich it abundantly. You drench its furrows and level its ridges; you soften it with showers and bless its crops.",
+            "by": "Psalm 65:9-10"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "A second week of watering is done. Notice who does the watering here — the farmer's field doesn't water itself; God does. Your job is not to make it rain. Your job is to stay planted in the field He waters. List the ways God drenched your week, and thank the Farmer."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Where did God 'water' your week? Where did you feel softened, blessed, or fed?",
+              "placeholder": "God watered me when...",
+              "id": "reflect-2-7"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank the Farmer who waters your field",
+                "Ask Him to keep your roots drinking next week"
+              ],
+              "id": "pray-2-7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "title": "Week 3 — The sun above",
+      "theme": "The sun above",
+      "intro": [
+        {
+          "type": "paragraph",
+          "text": "Roots drink, but plants also need light. This week the 'sun' is the Son — joy, praise, and the light of God's face that makes everything above the ground grow."
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-15",
+          "day": 15,
+          "weekday": "Tuesday",
+          "title": "Light of the world",
+          "verse": {
+            "text": "I am the light of the world. Whoever follows me will never walk in darkness, but will have the light of life.",
+            "by": "John 8:12"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Seedlings do not grow toward the dark. Put them near a window and every leaf tips toward the light. Jesus calls Himself the light of the world — the window, the lamp, the sun. A whole life can tilt toward Him: your friends, your habits, your worries, your dreams. Follow Him and the dark is not a problem; it's just where the light hasn't reached you yet."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Watch a plant or your own shadow tip toward the light",
+                "Turn one worry toward Jesus in prayer today",
+                "Walk with your back straighter — the light is in front of you"
+              ],
+              "id": "reflect-3-1"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask Jesus to be your light today",
+                "Thank Him that the darkness is not the last word"
+              ],
+              "id": "pray-3-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-16",
+          "day": 16,
+          "weekday": "Wednesday",
+          "title": "Morning mercies",
+          "verse": {
+            "text": "Let the morning bring me word of your unfailing love, for I have put my trust in you.",
+            "by": "Psalm 143:8"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Morning is when light is decided. The psalmist asks for God's love at the very start of the day — before the bad news, before the fights, before the notifications. Start the day in the light and you carry it. Start it in the dark and you'll be chasing brightness all afternoon."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Wake up and say one line to God before checking anything",
+                "Name one piece of 'morning' that felt like His love",
+                "Save the first part of your brain for Him tomorrow too"
+              ],
+              "id": "reflect-3-2"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God to meet you before the noise does",
+                "Thank Him for unfailing love that starts the day"
+              ],
+              "id": "pray-3-2"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-17",
+          "day": 17,
+          "weekday": "Thursday",
+          "title": "Light has dawned",
+          "verse": {
+            "text": "The people walking in darkness have seen a great light; on those living in the land of deep darkness a light has dawned.",
+            "by": "Isaiah 9:2"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Isaiah said this about Jesus long before Jesus was born. The people sitting in the dark — and we've all had dark seasons — don't need a lecture; they need a dawn. Your light might be the first light someone else sees today. Don't underestimate the power of your simple, lamp-like presence in someone's dark room."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Look for someone who seems to be 'in the dark' today",
+                "Be a small dawn for them: a word, a joke, an invitation",
+                "Remember who the Great Light is — and who shines through you"
+              ],
+              "id": "reflect-3-3"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank Jesus that He dawned on your darkness",
+                "Ask God to use you as light in someone's day"
+              ],
+              "id": "pray-3-3"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-18",
+          "day": 18,
+          "weekday": "Friday",
+          "title": "No more fear",
+          "verse": {
+            "text": "The Lord is my light and my salvation — whom shall I fear?",
+            "by": "Psalm 27:1"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Light and fear can't share the same room. When God is your light, you can see what fear is hiding; when He is your salvation, you know who catches you. Fear talks loudly, but it was never in charge. Say today's verse out loud a couple of times and feel how light it gets."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Name your biggest fear and say it to God",
+                "Repeat: 'The Lord is my light — whom shall I fear?'",
+                "Do one brave, small thing in the light"
+              ],
+              "id": "reflect-3-4"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Hand God the fears that keep you in the dark",
+                "Ask Him to be your light when fear lies to you"
+              ],
+              "id": "pray-3-4"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-19",
+          "day": 19,
+          "weekday": "Saturday",
+          "title": "Shine out loud",
+          "verse": {
+            "text": "Let your light shine before others, that they may see your good deeds and glorify your Father in heaven.",
+            "by": "Matthew 5:16"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Wait — didn't week 1 say everything hidden? Both are true: your private life is the root, and your public life is the glow. Jesus isn't asking you to hide your light; He's asking you to lift it. Good deeds aren't about showing off — they're about pointing people to the Father. Quiz time: how well did the light sink in?"
+            },
+            {
+              "type": "quiz",
+              "question": "Why did Jesus tell us to let our light shine before others?",
+              "options": [
+                "So we can get compliments and likes",
+                "So people will see our good deeds and glorify our Father in heaven",
+                "So we can seem better than the people around us",
+                "So churches will grow bigger"
+              ],
+              "correctIndex": 1,
+              "explain": "The light you carry points somewhere else. Jesus says people 'may see your good deeds and glorify your Father in heaven' — the light is about Him, not the lamp.",
+              "id": "reflect-3-5"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God to keep your light shining toward Him",
+                "Thank Him for the light of life"
+              ],
+              "id": "pray-3-5"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-20",
+          "day": 20,
+          "weekday": "Sunday",
+          "title": "Rest in the light",
+          "verse": {
+            "text": "God saw all that he had made, and it was very good.",
+            "by": "Genesis 1:31"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "God took a rest day after making the light — the very first Sabbath, a whole day to enjoy what had been made. Rest day for you too. Don't make anything today. Just look at the people and places around you in the light and pronounce them good."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Set down what you're building for a while. What do you notice about your life when you look at it in God's light?",
+              "placeholder": "In the light, I see...",
+              "id": "reflect-3-6"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Stop and let God enjoy you",
+                "Thank Him for all that is very good, especially your life"
+              ],
+              "id": "pray-3-6"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-21",
+          "day": 21,
+          "weekday": "Monday",
+          "title": "The sun of justice",
+          "verse": {
+            "text": "But for you who revere my name, the sun of righteousness will rise with healing in its rays.",
+            "by": "Malachi 4:2"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Most suns burn you from above; this Sun heals you in its rays. God's light doesn't just show you what's wrong — it heals what's wrong. Three weeks of light and water and root: sit in the sunshine of Jesus and let Him mend what the week touched. Then write your week 3 reflection under that light."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Where did God's light find you this week — where did it shine on something or heal something?",
+              "placeholder": "God's light found me when...",
+              "id": "reflect-3-7"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Sit in the sun of righteousness and let Him heal you",
+                "Thank Him for light that heals instead of burning"
+              ],
+              "id": "pray-3-7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "title": "Week 4 — The taproot",
+      "theme": "The taproot",
+      "intro": [
+        {
+          "type": "paragraph",
+          "text": "Some trees grow one deep central root — a taproot — that goes straight down and anchors everything else. This week we anchor: Jesus Christ as the single deep root that holds you."
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-22",
+          "day": 22,
+          "weekday": "Tuesday",
+          "title": "One foundation",
+          "verse": {
+            "text": "For no one can lay any foundation other than the one already laid, which is Jesus Christ.",
+            "by": "1 Corinthians 3:11"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "You cannot lay two taproots. A tree can only go deep in one direction. Paul says it plainly: Jesus is the only foundation that was ever laid, and everything else we build on — reputation, grades, friends, feelings — is building on borrowed ground. Go deep here first, and everything else has a reference point."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Audit your week: what are you mainly building on?",
+                "Shift at least one thing to rest on Jesus",
+                "Say it: 'He is my one deep root'"
+              ],
+              "id": "reflect-4-1"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank Jesus that He is the foundation already laid",
+                "Ask Him to anchor the things you're building"
+              ],
+              "id": "pray-4-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-23",
+          "day": 23,
+          "weekday": "Wednesday",
+          "title": "Rooted in love",
+          "verse": {
+            "text": ".. being rooted and established in love, may have power, together with all the Lord's holy people, to grasp how wide and long and high and deep is the love of Christ.",
+            "by": "Ephesians 3:17-18"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The taproot is love. Not a fuzzy feeling — the actual, four-dimensional love of Christ, wide enough for everyone, long enough for eternity, high enough for heaven, deep enough for your worst day. Roots take time and everyone God's people together helps it grow. You are not growing alone; the whole forest is pulling the same way."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Say the four dimensions today: wide, long, high, deep",
+                "Measure one thing you thought was 'big' against God's love",
+                "Ask one person in your church to help you grasp it"
+              ],
+              "id": "reflect-4-2"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask to be rooted and established in His love",
+                "Thank Him that His love has four huge dimensions"
+              ],
+              "id": "pray-4-2"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-24",
+          "day": 24,
+          "weekday": "Thursday",
+          "title": "Firm anchor",
+          "verse": {
+            "text": "We have this hope as an anchor for the soul, firm and secure.",
+            "by": "Hebrews 6:19"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "An anchor holds a boat through storms without the boat seeing what's holding it. That's hope: an anchor for your soul. When your feelings wave around — and they will — the anchor holds. Hope is not guessing things will be fine; it's a settled trust in Someone who has proven Himself firm and secure."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Watch a rope or string hold something steady",
+                "Name one storm your hope is currently holding",
+                "Tell God: 'my hope's anchor is You'"
+              ],
+              "id": "reflect-4-3"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God to hold your soul steady when feelings wave",
+                "Thank Him for a hope that is firm and secure"
+              ],
+              "id": "pray-4-3"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-25",
+          "day": 25,
+          "weekday": "Friday",
+          "title": "The rock beneath",
+          "verse": {
+            "text": "Truly he is my rock and my salvation; he is my fortress, I will not be shaken.",
+            "by": "Psalm 62:6"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The psalmist stacks words like stones: rock, salvation, fortress. Notice the end of the line — 'I will not be shaken.' Not 'He will not shake' but 'I will not be shaken,' because standing on something unshakable changes what you are. The unmoved rock makes the mover stand still."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Stand on something solid and feel the difference",
+                "Repeat three times: 'He is my rock, I will not be shaken'",
+                "Name one thing that used to shake you — is it smaller now?"
+              ],
+              "id": "reflect-4-4"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Stand on the rock and feel stable",
+                "Thank God your fortress is not made of feelings"
+              ],
+              "id": "pray-4-4"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-26",
+          "day": 26,
+          "weekday": "Saturday",
+          "title": "Deep or shallow?",
+          "verse": {
+            "text": "Everyone who hears these words of mine and puts them into practice is like a wise man who built his house on the rock.",
+            "by": "Matthew 7:24"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Quiz day on foundations. The wise builder and the foolish builder heard the same words — the difference was the digging. It's not about who knows Scripture; it's about who digs down and obeys. Ready to check your taproot?"
+            },
+            {
+              "type": "quiz",
+              "question": "In Jesus' story, what made the wise man's house stand through the storm?",
+              "options": [
+                "He used the best brick and the most expensive wood",
+                "He dug down deep and laid his foundation on rock",
+                "He built somewhere high that the water couldn't reach",
+                "He kept his house very small"
+              ],
+              "correctIndex": 1,
+              "explain": "The hearer who puts Jesus' words into practice is like the man who dug down deep and laid his foundation on rock (Matthew 7:24-25). The difference was not the house; it was the depth.",
+              "id": "reflect-4-5"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask Jesus to help you dig deeper this week",
+                "Thank Him that He is the rock under it all"
+              ],
+              "id": "pray-4-5"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-27",
+          "day": 27,
+          "weekday": "Sunday",
+          "title": "Green pastures",
+          "verse": {
+            "text": "He makes me lie down in green pastures, he leads me beside quiet waters, he refreshes my soul.",
+            "by": "Psalm 23:2-3"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The Shepherd makes us lie down. Sheep have to be laid down — they won't rest on their own, they get anxious and graze wildly. God, the perfect Shepherd, sometimes has to 'make' you rest. Day 6 is His green pasture. Let yourself be led out of the hurry and refreshed."
+            },
+            {
+              "type": "reflection",
+              "prompt": "When did your soul last get 'refreshed' — truly restored, not just distracted? What would a green-pasture day look like this week?",
+              "placeholder": "My soul feels refreshed when...",
+              "id": "reflect-4-6"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask the Shepherd to make you lie down",
+                "Thank Him for quiet waters just for you"
+              ],
+              "id": "pray-4-6"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-28",
+          "day": 28,
+          "weekday": "Monday",
+          "title": "Established and firm",
+          "verse": {
+            "text": "If you continue in your faith, established and firm, and do not move from the hope held out in the gospel.",
+            "by": "Colossians 1:23"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Taproots are made by continuing. One good day doesn't make a deep root; months of small, boring, faithful days do. This week you anchored a lot of truth. Now the anchor works like any anchor — by staying. End the week firm and standing."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Which single truth from this week do you want to keep standing on? Write it where you'll see it.",
+              "placeholder": "The truth I'm standing on...",
+              "id": "reflect-4-7"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God to establish what He began this week",
+                "Thank Him for a rock, not sand, under your feet"
+              ],
+              "id": "pray-4-7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "title": "Week 5 — Storm weather",
+      "theme": "Storm weather",
+      "intro": [
+        {
+          "type": "paragraph",
+          "text": "Now we test the roots. Not every season is gentle growth — some weeks the wind comes. Storms are how you find out what your taproot is really anchored to."
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-29",
+          "day": 29,
+          "weekday": "Tuesday",
+          "title": "The test",
+          "verse": {
+            "text": "They are like a man building a house, who dug down deep and laid the foundation on rock. When a flood came, the torrent struck that house but could not shake it, because it was well built.",
+            "by": "Luke 6:48"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Notice the order in this verse. The man dug first, and the flood came later. Nobody builds a foundation in the middle of a flood. The storms that are hitting your life right now — or the ones coming next month — are the reason today's quiet digging matters. What feels like a boring Tuesday is actually building your storm-proofing."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Name one storm you're facing now or expecting soon",
+                "Ask: what depth is that storm going to test in me?",
+                "Do one boring, good habit today — that's your digging"
+              ],
+              "id": "reflect-5-1"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God to dig you deeper before the storm arrives",
+                "Thank Him that storms reveal, they don't defeat"
+              ],
+              "id": "pray-5-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-30",
+          "day": 30,
+          "weekday": "Wednesday",
+          "title": "Winds and waves",
+          "verse": {
+            "text": "God is our refuge and strength, an ever-present help in trouble. Therefore we will not fear, though the earth give way.",
+            "by": "Psalm 46:1-2"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "'Therefore we will not fear' — and then the extreme cases: earth giving way, mountains falling into the sea. The psalmist isn't imagining a tiny storm; he's imagining the end of the world, and still refusing fear. Why? Because 'God is our refuge' comes before 'therefore.' The reason precedes the fearlessness. Know the reason first."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Write the word 'therefore' and what comes before it",
+                "Name one 'earth giving way' fear you can hand to God",
+                "Say: 'God is ever-present help in this trouble'"
+              ],
+              "id": "reflect-5-2"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Tell God the extreme-case fears you're carrying",
+                "Ask Him to be your refuge before the wind rises"
+              ],
+              "id": "pray-5-2"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-01",
+          "day": 31,
+          "weekday": "Thursday",
+          "title": "He's in the boat",
+          "verse": {
+            "text": "He got up, rebuked the wind and said to the waves, 'Quiet! Be still!' Then the wind died down and it was completely calm.",
+            "by": "Mark 4:39"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The disciples panicked with Jesus asleep in their own boat. He was right there, and they still thought they were sinking alone. The storm was real, but so was the passenger. When your world is loud, remember who is in the boat with you. He can say 'Be still' to things you can't even see yet."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Name the 'storm' that feels loudest right now",
+                "Remind yourself: Jesus is in this same boat",
+                "Tell Him: 'You're allowed to wake up for this one'"
+              ],
+              "id": "reflect-5-3"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask Jesus to speak peace into your loudest storm",
+                "Thank Him that He rides the boat with you"
+              ],
+              "id": "pray-5-3"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-02",
+          "day": 32,
+          "weekday": "Friday",
+          "title": "Stand your ground",
+          "verse": {
+            "text": "Therefore put on the full armor of God, so that when the day of evil comes, you may be able to stand your ground, and after you have done everything, to stand.",
+            "by": "Ephesians 6:13"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Notice the goal of the armor: not to win the whole battle, not to be invincible — to stand. 'After you have done everything, to stand.' Storms don't ask you to be impressive; they ask you to not fall over. Some days, standing up straight with your armor on is the entire victory. Roots win by holding."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Stand up straight right now — posture isn't just physical",
+                "Put on one piece of God's armor mentally for the day",
+                "Set your goal as 'stand today,' not 'fix everything today'"
+              ],
+              "id": "reflect-5-4"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God to armor you for the day of evil",
+                "Thank Him that standing still counts as winning"
+              ],
+              "id": "pray-5-4"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-03",
+          "day": 33,
+          "weekday": "Saturday",
+          "title": "Sand or rock?",
+          "verse": {
+            "text": "But everyone who hears these words of mine and does not put them into practice is like a foolish man who built his house on sand.",
+            "by": "Matthew 7:26"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Storms don't punish the foolish; they expose the sand. The foolish man may have had a nicer view. But both builders got the same rain — and only one root was tested. Take the storm quiz and get your foundation checked."
+            },
+            {
+              "type": "quiz",
+              "question": "Why did the foolish builder's house fall in the storm?",
+              "options": [
+                "His storm was stronger than the wise man's storm",
+                "He put his house on sand instead of rock",
+                "He didn't hear Jesus' words at all",
+                "He hurried and used cheap materials"
+              ],
+              "correctIndex": 1,
+              "explain": "Both builders heard Jesus' words; the difference was doing them. The foolish man 'built his house on sand' (Matthew 7:26) — no deep dig, no rock, and the storm exposed it.",
+              "id": "reflect-5-5"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God to find any patch of sand in your foundation",
+                "Thank Him for the rock even while the rain falls"
+              ],
+              "id": "pray-5-5"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-04",
+          "day": 34,
+          "weekday": "Sunday",
+          "title": "Weaned and calm",
+          "verse": {
+            "text": "But I have calmed and quieted myself, I am like a weaned child with its mother; like a weaned child I am content.",
+            "by": "Psalm 131:2"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "A weaned child next to its mother isn't fussing for milk anymore — it just rests in her. That's the picture of storm-settled trust: not 'God, where's my answer?' but 'God, I'm with You and I'm content.' Rest day: quiet yourself like that. Let the storm shout; you've already decided who's with you."
+            },
+            {
+              "type": "reflection",
+              "prompt": "When you're in the middle of a storm, what steadies you the fastest? What 'quieting' is God teaching you?",
+              "placeholder": "What steadies me is...",
+              "id": "reflect-5-6"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Calm and quiet yourself before God",
+                "Thank Him for being enough even without the answer yet"
+              ],
+              "id": "pray-5-6"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-05",
+          "day": 35,
+          "weekday": "Monday",
+          "title": "Refuge in trouble",
+          "verse": {
+            "text": "The Lord is good, a refuge in times of trouble. He cares for those who trust in him.",
+            "by": "Nahum 1:7"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "A week of storms, and we end with a small, fierce verse: the Lord is good, a refuge in times of trouble. Not a storehouse in times of ease — a refuge in trouble. That's when He shows up best. Write the verse somewhere, name the storm, and put your name where 'those who trust in him' goes."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Looking back at this week, where did you feel God's protection in the middle of trouble?",
+              "placeholder": "God was a refuge when...",
+              "id": "reflect-5-7"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank God for being good even when it's stormy",
+                "Ask Him to keep being your refuge next week"
+              ],
+              "id": "pray-5-7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "title": "Week 6 — The pruning year",
+      "theme": "The pruning year",
+      "intro": [
+        {
+          "type": "paragraph",
+          "text": "Here is a gardener's secret you may not like at first: the best trees get cut. Pruning hurts for a season and grows the tree for years. This week we learn to trust the Gardener's knife."
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-10-06",
+          "day": 36,
+          "weekday": "Tuesday",
+          "title": "The good cut",
+          "verse": {
+            "text": "He cuts off every branch in me that bears no fruit, while every branch that does bear fruit he prunes so that it will be even more fruitful.",
+            "by": "John 15:2"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "There are two kinds of cutting in this verse, but they don't scare either kind of branch. The dead branch gets removed; the healthy branch gets pruned — clipped back so the tree's energy goes to fruit instead of to everywhere at once. Getting pruned isn't punishment. It means the Gardener believes you can bear more fruit."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Pick a habit that spreads you thin — the Gardener might clip it",
+                "Name one thing God has 'cut back' that later helped you",
+                "Thank God that pruning means He expects fruit"
+              ],
+              "id": "reflect-6-1"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Tell the Gardener He may cut what needs cutting",
+                "Thank Him that He prunes what bears fruit"
+              ],
+              "id": "pray-6-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-07",
+          "day": 37,
+          "weekday": "Wednesday",
+          "title": "Harvest of peace",
+          "verse": {
+            "text": "No discipline seems pleasant at the time, but painful. Later on, however, it produces a harvest of righteousness and peace.",
+            "by": "Hebrews 12:11"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "God is honest about it: discipline doesn't feel pleasant at the time. Anyone who says growing is always easy is not a gardener. But then comes the 'however' — the pivot. Later, it produces a harvest. You can't taste the harvest on pruning day. That's why we tell each other the truth about it now."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Think of one 'however' God is growing in your life",
+                "Be honest with God about the part that feels painful",
+                "Say: 'I will judge this season by its harvest, not its cuts'"
+              ],
+              "id": "reflect-6-2"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God for the 'however' — patience for the harvest",
+                "Tell Him the honest truth about what the cut feels like"
+              ],
+              "id": "pray-6-2"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-08",
+          "day": 38,
+          "weekday": "Thursday",
+          "title": "A clean heart",
+          "verse": {
+            "text": "Create in me a pure heart, O God, and renew a steadfast spirit within me.",
+            "by": "Psalm 51:10"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "David sang this after being exposed — after the pruning had to be severe. The word he uses is 'create': God, make a new heart in me, not just patch the old one. Pruning that removes sin is an act of creation. What looks like loss at the branch is actually blessing at the root. Let God have the branches He is reaching for."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Let God show you one 'branch' that needs to go",
+                "Ask Him to create, not just patch",
+                "Say with David: 'renew a steadfast spirit in me'"
+              ],
+              "id": "reflect-6-3"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God for a created-clean heart",
+                "Thank Him that He cuts, then creates"
+              ],
+              "id": "pray-6-3"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-09",
+          "day": 39,
+          "weekday": "Friday",
+          "title": "Cut by love",
+          "verse": {
+            "text": "Because the Lord disciplines those he loves, as a father the son he delights in.",
+            "by": "Proverbs 3:12"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The deepest truth about pruning is this: it comes from love. A gardener who prunes cares whether the tree fruits. A stranger doesn't bother. When God's direction cuts into your plans, it's not rejection — it's the classic parent move: because I delight in you, I'm not leaving you to grow wild."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Reframe one hard 'correction' as God's delight in you",
+                "Watch a real parent or gardener tend something carefully",
+                "Say out loud: 'God disciplines the ones He loves'"
+              ],
+              "id": "reflect-6-4"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank God that His cuts come from His delight",
+                "Ask Him to correct you like a father who loves you"
+              ],
+              "id": "pray-6-4"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-10",
+          "day": 40,
+          "weekday": "Saturday",
+          "title": "Fruit for His glory",
+          "verse": {
+            "text": "This is to my Father's glory, that you bear much fruit, showing yourselves to be my disciples.",
+            "by": "John 15:8"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Quiz day — and the key question is what all this pruning is for. It's not so your branch looks impressive. It's that you bear much fruit, and fruit brings glory to the Father, not the branch. The branch that is clipped the most often bears the most. Let's check what you remember about the Gardener's work."
+            },
+            {
+              "type": "quiz",
+              "question": "What does the Father prune a branch that already bears fruit?",
+              "options": [
+                "To punish it for growing too well",
+                "So it will be even more fruitful",
+                "To keep it small enough to manage",
+                "So other branches can get more sun"
+              ],
+              "correctIndex": 1,
+              "explain": "John 15:2: 'every branch that does bear fruit he prunes so that it will be even more fruitful.' Pruning is a promotion, not a punishment — more fruit is the goal.",
+              "id": "reflect-6-5"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask to bear fruit that brings the Father glory",
+                "Thank Him that He prunes branches He plans to use"
+              ],
+              "id": "pray-6-5"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-11",
+          "day": 41,
+          "weekday": "Sunday",
+          "title": "The way you should go",
+          "verse": {
+            "text": "I will instruct you and teach you in the way you should go; I will counsel you with my loving eye on you.",
+            "by": "Psalm 32:8"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Rest day after a week of pruning. The beautiful thing about being taught and counseled is that you're not left bleeding at the cut — you're guided. 'I will counsel you with my loving eye on you.' The Gardener who pruned is now watching over the healing. Rest in that."
+            },
+            {
+              "type": "reflection",
+              "prompt": "What is God currently 'teaching you in the way you should go'? What direction does this pruning season seem to be pointing?",
+              "placeholder": "God is teaching me...",
+              "id": "reflect-6-6"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Let God counsel you with His loving eye",
+                "Thank Him that pruning isn't the end — teaching is"
+              ],
+              "id": "pray-6-6"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-12",
+          "day": 42,
+          "weekday": "Monday",
+          "title": "Room to run",
+          "verse": {
+            "text": "Let us throw off everything that hinders and the sin that so easily entangles. And let us run with perseverance the race marked out for us.",
+            "by": "Hebrews 12:1"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Pruning is a runner's weight cut. The verse calls it throwing off what hinders — things that aren't even sin, just weight. Not every cut removes sin; some cuts free your energy. End the week by asking: what did you drop, and what can you now run faster for?"
+            },
+            {
+              "type": "reflection",
+              "prompt": "What is the heaviest thing you're carrying that isn't sin, just weight? What would 'throwing it off' look like?",
+              "placeholder": "I want to throw off...",
+              "id": "reflect-6-7"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God to show you what hinders you",
+                "Thank Him for a lighter, faster season ahead"
+              ],
+              "id": "pray-6-7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "title": "Week 7 — One trunk",
+      "theme": "One trunk",
+      "intro": [
+        {
+          "type": "paragraph",
+          "text": "A pruned branch is still attached to the tree. This week we zoom in on the oneness — the trunk, the vine, the one body we all grow from. Nobody grows alone; everybody is attached to somebody."
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-10-13",
+          "day": 43,
+          "weekday": "Tuesday",
+          "title": "Remain in me",
+          "verse": {
+            "text": "Remain in me, as I also remain in you. No branch can bear fruit by itself; it must remain in the vine. Neither can you bear fruit unless you remain in me.",
+            "by": "John 15:4"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "A branch doesn't 'try harder' to bear fruit. It stays attached. Fruit happens when a branch simply remains connected to the vine that feeds it. The Christian life at its most mature is not a frenzy — it's a remaining. Stay connected, and fruit comes by itself, like it does for apple branches."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Check your connection before you check your output",
+                "Do one 'remaining' habit: pray, read, sit with God",
+                "Trust that connection, not effort, produces fruit"
+              ],
+              "id": "reflect-7-1"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask Jesus to help you remain, not strive",
+                "Thank Him that fruit comes from connection"
+              ],
+              "id": "pray-7-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-14",
+          "day": 44,
+          "weekday": "Wednesday",
+          "title": "One body",
+          "verse": {
+            "text": "Just as a body, though one, has many parts, but all its many parts form one body, so it is with Christ.",
+            "by": "1 Corinthians 12:12"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The trunk sends the same sap to every branch, but not every branch is on the same side of the tree. Some face east, some face west; some are high, some are low. Your part of God's family looks different from the church down the street — that's not division, that's a body. Different parts, one body, same sap."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Spot a way your church differs from another — celebrate it",
+                "Use one talent or 'part' of you to serve someone",
+                "Say: 'many parts, one body, same sap'"
+              ],
+              "id": "reflect-7-2"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank God for being One over many parts",
+                "Ask how to use your part to serve the body"
+              ],
+              "id": "pray-7-2"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-15",
+          "day": 45,
+          "weekday": "Thursday",
+          "title": "Belonging",
+          "verse": {
+            "text": "So in Christ we, though many, form one body, and each member belongs to all the others.",
+            "by": "Romans 12:5"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Here's the best part of the one-body teaching: 'each member belongs to all the others.' You don't just attend church; you belong to people. When a branch on the far side of the tree is hurt, the whole tree feels it. Belonging means someone's joy is your joy, someone's storm is your storm."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Name the three people you 'belong to'",
+                "Do something that shares someone's joy or lightens their load",
+                "Tell one person: 'you belong to us'"
+              ],
+              "id": "reflect-7-3"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank God that you belong to a body",
+                "Ask to carry one person's storm this week"
+              ],
+              "id": "pray-7-3"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-16",
+          "day": 46,
+          "weekday": "Friday",
+          "title": "Grafted in",
+          "verse": {
+            "text": "If some of the branches have been broken off, and you, though a wild olive shoot, have been grafted in among the others and now share in the nourishing sap from the olive root.",
+            "by": "Romans 11:17"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Here's the wildest garden fact in the Bible: some of you weren't born on this tree. You're a wild olive shoot — grafted in. Nothing about you was native. The tree's root reaches all the way to God's promises, and now you share the sap. You didn't earn the trunk. You received the trunk. That changes how kind you are to the other branches."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Remind yourself: you were grafted in, not born attached",
+                "Show a new person the welcome you received",
+                "Say: 'I share the sap of God's promises'"
+              ],
+              "id": "reflect-7-4"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank God for grafting you into His tree",
+                "Ask to be as welcoming as the graft you received"
+              ],
+              "id": "pray-7-4"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-17",
+          "day": 47,
+          "weekday": "Saturday",
+          "title": "The vine, up close",
+          "verse": {
+            "text": "I am the vine; you are the branches. If you remain in me and I in you, you will bear much fruit; apart from me you can do nothing.",
+            "by": "John 15:5"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Quiz day on the most important attachment in your life. Jesus takes the picture from the grapevine — the branch that looks great but is clipped from the vine withers fast. Remember: the branch's whole future is the attachment. Here's your check: do you know exactly what grows you?"
+            },
+            {
+              "type": "quiz",
+              "question": "Jesus said 'apart from me you can do ____.' What's the complete ending?",
+              "options": [
+                "a few things, if you try hard",
+                "nothing",
+                "everything, eventually",
+                "better than when you're attached"
+              ],
+              "correctIndex": 1,
+              "explain": "John 15:5: 'apart from me you can do nothing.' The branch disconnected from the vine might look fine for an hour, but fruit is impossible without the attachment.",
+              "id": "reflect-7-5"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank Jesus that He is the vine holding you",
+                "Ask to stay attached and let fruit come"
+              ],
+              "id": "pray-7-5"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-18",
+          "day": 48,
+          "weekday": "Sunday",
+          "title": "Unity rest",
+          "verse": {
+            "text": "How good and pleasant it is when God's people live together in unity!",
+            "by": "Psalm 133:1"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Rest day — and this week's rest is about people. 'How good and pleasant' — the psalmist almost tastes it. Unity isn't a management goal; it's pleasant, life-giving, like oil on your head or dew on the mountain. Spend today with people you belong to, and let it feel as good as it's meant to."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Who are you most grateful to belong to? What does their 'sap' look like in your life — how do they feed you?",
+              "placeholder": "I'm grateful to belong to...",
+              "id": "reflect-7-6"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank God for the people who carry His sap to you",
+                "Ask to be pleasant unity, not a knot"
+              ],
+              "id": "pray-7-6"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-19",
+          "day": 49,
+          "weekday": "Monday",
+          "title": "The bond of peace",
+          "verse": {
+            "text": "Make every effort to keep the unity of the Spirit through the bond of peace.",
+            "by": "Ephesians 4:3"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Unity is worth effort, and the verse says exactly how: through peace. Not through being right all the time or winning debates — through the bond of peace. A tree doesn't snap at its own branches. End the week with one commitment: the branch on your left and the branch on your right, peace you will keep."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Is there a branch in your tree you need to make peace with this week? Name it honestly.",
+              "placeholder": "I need peace with...",
+              "id": "reflect-7-7"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God to keep you unified through peace",
+                "Thank Him for the trunk that holds all of you together"
+              ],
+              "id": "pray-7-7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "title": "Week 8 — Spreading branches",
+      "theme": "Spreading branches",
+      "intro": [
+        {
+          "type": "paragraph",
+          "text": "Attached branches grow outward. This week we talk about reaching — the branches of your life moving toward other people, as service and as shelter."
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-10-20",
+          "day": 50,
+          "weekday": "Tuesday",
+          "title": "Expand the tent",
+          "verse": {
+            "text": "Enlarge the place of your tent, stretch your tent curtains wide, do not hold back; lengthen your cords, strengthen your stakes.",
+            "by": "Isaiah 54:2"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "This is a stretching verse. It assumes your tent is too small and your welcome is too narrow. Lengthen the cords, strengthen the stakes — a bigger tent needs stronger anchoring. The way you grow outward is by going deeper. That's why we spent seven weeks on roots before we asked you to reach anyone."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Find one person who is outside your 'tent'",
+                "Do one thing that makes your welcome wider",
+                "Check your stakes: is your inner root strong enough for this?"
+              ],
+              "id": "reflect-8-1"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God to widen your life without shallowizing it",
+                "Thank Him for tents meant to be expanded"
+              ],
+              "id": "pray-8-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-21",
+          "day": 51,
+          "weekday": "Wednesday",
+          "title": "Carry each other",
+          "verse": {
+            "text": "Carry each other's burdens, and in this way you will fulfill the law of Christ.",
+            "by": "Galatians 6:2"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Branches carry more than their own leaves. A good branch holds up the branch next to it in heavy fruit. 'Carry each other's burdens' — that's not a metaphor for advice-giving. It means literally taking weight off someone: carrying the scolding voice in your head for them, carrying the load so they can breathe. Christ's whole law, fulfilled in the shape of a yield."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Find one burden someone is carrying and carry part",
+                "Don't just advise — actually lift something",
+                "Notice who is carrying you, and thank them"
+              ],
+              "id": "reflect-8-2"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God to show you a burden He wants you to share",
+                "Thank Him for the branch-holders in your life"
+              ],
+              "id": "pray-8-2"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-22",
+          "day": 52,
+          "weekday": "Thursday",
+          "title": "The latch",
+          "verse": {
+            "text": "Come to me, all you who are weary and burdened, and I will give you rest.",
+            "by": "Matthew 11:28"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Every branch has an open latch, and Jesus' latch reads: 'Come to me, all you who are weary.' Before you can carry anyone else's burden, you have to know the rest He gives for your own. You're not the tree; you're a branch. Point the weary to the trunk that never gets tired."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Bring your own weariness to Jesus first",
+                "Receive His rest before you serve",
+                "Tell someone weary: 'come to Him'"
+              ],
+              "id": "reflect-8-3"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Come to Jesus with your tired self",
+                "Ask Him to make you rest, then branch"
+              ],
+              "id": "pray-8-3"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-23",
+          "day": 53,
+          "weekday": "Friday",
+          "title": "A friend at all times",
+          "verse": {
+            "text": "A friend loves at all times, and a brother is born for a time of adversity.",
+            "by": "Proverbs 17:17"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Branch-shelter is what friendship is for. Fair-weather branches wave in fun and vanish in storms, but a friend loves 'at all times' — and the brother you're born for is meant for the hard time. Adversity doesn't test whether you're a nice person; it reveals whether you're a real branch to lean on."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Show a friend you love them on an ordinary day",
+                "Tell them: 'I'm here for your hard times too'",
+                "Thank one person who was born for your adversity"
+              ],
+              "id": "reflect-8-4"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank God for friends who are born for your storms",
+                "Ask to be that friend to someone"
+              ],
+              "id": "pray-8-4"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-24",
+          "day": 54,
+          "weekday": "Saturday",
+          "title": "Serve the branch",
+          "verse": {
+            "text": "For even the Son of Man did not come to be served, but to serve, and to give his life as a ransom for many.",
+            "by": "Mark 10:45"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Quiz day — and this is the quiz about the whole direction of your life. The strongest branch of all didn't use its place to be served; the Son of Man came to serve. When you understand that, 'spreading branches' stops being a chore and becomes the shape of everything. Check what you remember."
+            },
+            {
+              "type": "quiz",
+              "question": "The Son of Man came into the world to be ______. What belongs in the blank?",
+              "options": [
+                "served",
+                "admired",
+                "serving",
+                "famous"
+              ],
+              "correctIndex": 2,
+              "explain": "Mark 10:45: 'the Son of Man did not come to be served, but to serve, and to give his life as a ransom for many.' True greatness in God's tree faces outward.",
+              "id": "reflect-8-5"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask Jesus to shape you into a servant",
+                "Thank Him that He served, not so we could relax — so we could follow"
+              ],
+              "id": "pray-8-5"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-25",
+          "day": 55,
+          "weekday": "Sunday",
+          "title": "In the shadow",
+          "verse": {
+            "text": "Keep me as the apple of your eye; hide me in the shadow of your wings.",
+            "by": "Psalm 17:8"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Branches give shelter — and we also need shelter. Rest day. The same God who sends you to stretch your tent wide also hides you in the shadow of His wings. It's not selfish to be hidden for a day. Even a tree rests under the sky that covers it. Be the apple of His eye; rest there."
+            },
+            {
+              "type": "reflection",
+              "prompt": "When have you most needed to be 'hidden'? What does shelter feel like in your life right now?",
+              "placeholder": "I need shelter when...",
+              "id": "reflect-8-6"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Hide in the shadow of His wings today",
+                "Thank Him that both sending and sheltering are His work"
+              ],
+              "id": "pray-8-6"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-26",
+          "day": 56,
+          "weekday": "Monday",
+          "title": "Nest builders",
+          "verse": {
+            "text": "Each of you should use whatever gift you have received to serve others, as faithful stewards of God's grace in its various forms.",
+            "by": "1 Peter 4:10"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Branches exists partly so birds can nest in them. Your gifts — your actual, particular talents and grace — are God's way of building nests. 'Whatever gift you have received, use it to serve others.' Nothing you're good at is wasted. The circut board you can fix, the joke you can tell, the quiet way you listen — all nest wood."
+            },
+            {
+              "type": "reflection",
+              "prompt": "What gifts have you been given? Who might be able to 'nest' in them? List one concrete way to use one gift this week.",
+              "placeholder": "My gifts are...",
+              "id": "reflect-8-7"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God to show you the nests He wants built",
+                "Thank Him for gift-shaped grace, in its various forms"
+              ],
+              "id": "pray-8-7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "title": "Week 9 — Scattering seeds",
+      "theme": "Scattering seeds",
+      "intro": [
+        {
+          "type": "paragraph",
+          "text": "A tree that bears fruit is meant to give it away. This week we get open-handed: generosity, sowing, and the strange math of God, where giving makes you richer."
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-10-27",
+          "day": 57,
+          "weekday": "Tuesday",
+          "title": "A cheerful scatterer",
+          "verse": {
+            "text": "Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver.",
+            "by": "2 Corinthians 9:7"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Notice who loves what: God doesn't just accept your giving; He loves a cheerful giver. That means the heart of giving matters to Him as much as the amount. Money, time, snacks, forgiveness, attention — give what you've decided in your heart. A happy handful scatters better than a sulking trunkful."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Give something with joy on purpose, not out of guilt",
+                "Notice the difference in how it feels",
+                "Ask God what HE wants you to decide in your heart"
+              ],
+              "id": "reflect-9-1"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God to make you a cheerful giver",
+                "Thank Him that He loves the joy in your giving"
+              ],
+              "id": "pray-9-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-28",
+          "day": 58,
+          "weekday": "Wednesday",
+          "title": "Morning and evening",
+          "verse": {
+            "text": "Sow your seed in the morning, and at evening let your hands not be idle, for you do not know which will succeed, whether this or that, or whether both will do equally well.",
+            "by": "Ecclesiastes 11:6"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The farmer sows without knowing which seed will make it — so he sows in the morning and doesn't slack in the evening. You don't know which kindness will land, which verse will stick, which prayer will be answered. So scatter. Generosity hedges against the mystery; the more you sow, the more of your life is in the ground growing."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Sow something small in the morning",
+                "Sow something (even tiny) in the evening",
+                "Don't track which one 'works' — just trust the farmer's math"
+              ],
+              "id": "reflect-9-2"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank God that He knows which seeds will succeed",
+                "Ask for hands that stay open all day"
+              ],
+              "id": "pray-9-2"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-29",
+          "day": 59,
+          "weekday": "Thursday",
+          "title": "The strange math",
+          "verse": {
+            "text": "One person gives freely, yet gains even more; another withholds unduly, but comes to poverty.",
+            "by": "Proverbs 11:24"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "This verse breaks your calculator. Freely given, gains more; tightly held, comes to poverty. It's the law of the harvest, and it holds for non-money things too. Grip your time and no one can use it; give it and it multiplies in memory and friendship. The tight fist was never the safe place."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Let go of one thing you've been gripping (time, credit, control)",
+                "Watch what it does when it's free",
+                "Say: 'open hands grow; tight fists shrink'"
+              ],
+              "id": "reflect-9-3"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God to uncurl your fingers",
+                "Thank Him for a kingdom where giving multiplies"
+              ],
+              "id": "pray-9-3"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-30",
+          "day": 60,
+          "weekday": "Friday",
+          "title": "The widow's coin",
+          "verse": {
+            "text": "They all gave out of their wealth; but she, out of her poverty, put in everything — all she had to live on.",
+            "by": "Mark 12:44"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Jesus watched people give and quietly declared the poor widow the biggest giver of them all. Not because of the amount but because of what was left. She gave 'everything — all she had to live on.' God measures what remains, not just what's offered. Small seeds from a trusting hand is exactly how the kingdom is funded."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Give something that actually costs you",
+                "Let it be 'everything' for your situation, even if tiny",
+                "Remember God weighs what's left behind"
+              ],
+              "id": "reflect-9-4"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask for the widow's kind of trust",
+                "Thank God that He counts sacrifice, not size"
+              ],
+              "id": "pray-9-4"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-31",
+          "day": 61,
+          "weekday": "Saturday",
+          "title": "The harvest promise",
+          "verse": {
+            "text": "Let us not become weary in doing good, for at the proper time we will reap a harvest if we do not give up.",
+            "by": "Galatians 6:9"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Quiz day on the farmer's patience. The hardest part of sowing is that nothing shows for a while — and the verse warns against the exact failure: weariness, giving up. Take the quiz, then in your prayer, ask for the patience part."
+            },
+            {
+              "type": "quiz",
+              "question": "Galatians 6:9 promises a harvest 'at the proper time' if we do what?",
+              "options": [
+                "If we do not give up",
+                "If we give the most money",
+                "If we sow with the fastest-growing seeds",
+                "If we tell everyone about our sowing"
+              ],
+              "correctIndex": 0,
+              "explain": "'Let us not become weary in doing good, for at the proper time we will reap a harvest if we do not give up.' The harvest is guaranteed — the requirement is perseverance.",
+              "id": "reflect-9-5"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask for perseverance in the invisible season",
+                "Thank God that reaping time is set, not guessed"
+              ],
+              "id": "pray-9-5"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-01",
+          "day": 62,
+          "weekday": "Sunday",
+          "title": "God's good gift",
+          "verse": {
+            "text": "The Lord will indeed give what is good, and our land will yield its harvest.",
+            "by": "Psalm 85:12"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Rest day from sowing. The land doesn't yield its harvest because you managed it perfectly — the Lord gives what is good. You scatter, and He grows. Today you don't have to be productive. Let the Lord do His part while your hands stay in your lap."
+            },
+            {
+              "type": "reflection",
+              "prompt": "What is the one seed you most want to see grow this season? What would 'waiting at the proper time' feel like?",
+              "placeholder": "The seed I'm waiting on...",
+              "id": "reflect-9-6"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Rest while the Lord gives what is good",
+                "Thank Him for harvests you can't see yet"
+              ],
+              "id": "pray-9-6"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-02",
+          "day": 63,
+          "weekday": "Monday",
+          "title": "Lending to the Lord",
+          "verse": {
+            "text": "Whoever is kind to the poor lends to the Lord, and he will reward them for what they have done.",
+            "by": "Proverbs 19:17"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "End the week with the most generous thought of all: when you're kind to someone with little, you're making a loan — to the Lord. Not a donation to a stranger; a loan to the King. There is no safer investment. Write your week-9 reflection as someone who has already deposited with God."
+            },
+            {
+              "type": "reflection",
+              "prompt": "What did this week's generosity teach you about the 'strange math' of giving? What did you leave with open hands?",
+              "placeholder": "Giving taught me...",
+              "id": "reflect-9-7"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank God that He receives kindness as a loan to Him",
+                "Ask to be a person whose hands stayed open all week"
+              ],
+              "id": "pray-9-7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "title": "Week 10 — Seasonal fruit",
+      "theme": "Seasonal fruit",
+      "intro": [
+        {
+          "type": "paragraph",
+          "text": "Sowing is done; now we check the fruit. If roots send up anything, it's fruit — the visible character of your life. This week, we taste it."
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-11-03",
+          "day": 64,
+          "weekday": "Tuesday",
+          "title": "The fruit list",
+          "verse": {
+            "text": "But the fruit of the Spirit is love, joy, peace, forbearance, kindness, goodness, faithfulness, gentleness and self-control. Against such things there is no law.",
+            "by": "Galatians 5:22-23"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Here's the list: nine fruit, all growing from one Spirit. Not nine skills you must master — one orchard from one tree. And the strange final phrase: 'against such things there is no law.' You can never have too much of these. No rule was ever broken by too much kindness or gentleness."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Pick the two fruit your branch needs most this week",
+                "Ask the Spirit for one of them — not your own effort",
+                "Notice fruit on someone else's branch and tell them"
+              ],
+              "id": "reflect-10-1"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask the Spirit to grow the whole fruit list in you",
+                "Thank Him there is no law against too much fruit"
+              ],
+              "id": "pray-10-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-04",
+          "day": 65,
+          "weekday": "Wednesday",
+          "title": "Love, unpacked",
+          "verse": {
+            "text": "Love is patient, love is kind. It does not envy, it does not boast, it is not proud.",
+            "by": "1 Corinthians 13:4"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Paul unpacks love so it's not a feeling but a behavior. Patient and kind are things you do. It does not envy, it does not boast, it is not proud — things you refuse to do. Fruit you can test: today, was I patient? Was I kind? Did I envy or brag? Love shows up in verbs."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Do patience out loud today — wait without grumbling",
+                "Do kindness on purpose — one visible, small act",
+                "Catch yourself boasting once, and let it drop"
+              ],
+              "id": "reflect-10-2"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God to make His love into verbs in you",
+                "Thank Him that love can be practiced, not just felt"
+              ],
+              "id": "pray-10-2"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-05",
+          "day": 66,
+          "weekday": "Thursday",
+          "title": "Clothed in fruit",
+          "verse": {
+            "text": "Therefore, as God's chosen people, holy and dearly loved, clothe yourselves with compassion, kindness, humility, gentleness and patience.",
+            "by": "Colossians 3:12"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Clothing is a choice you make daily — you pick what to put on. Paul says: as chosen, holy, dearly loved people, get dressed in compassion, kindness, humility, gentleness, patience. It's a wardrobe. Some mornings you'll feel grumpy and want the old outfit. Choose the fruit anyway; it's how the dearly loved dress."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Get dressed in one fruit when you wake up",
+                "If the old grumpy outfit wins, change at lunch",
+                "Remember whose wardrobe it is — you're dearly loved"
+              ],
+              "id": "reflect-10-3"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God to help you get dressed in His clothes",
+                "Thank Him that you're chosen, holy, and dearly loved"
+              ],
+              "id": "pray-10-3"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-06",
+          "day": 67,
+          "weekday": "Friday",
+          "title": "God works in you",
+          "verse": {
+            "text": "For it is God who works in you to will and to act in order to fulfill his good purpose.",
+            "by": "Philippians 2:13"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Who grows the fruit? It is God who works in you. Not 'work up fruit in yourself,' but 'it is God who works in you.' Both the wanting and the doing come from Him working inside. Your part is staying connected and saying yes. The Gardener does the growing."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "When you want to do good, thank God for the want",
+                "When you do good, thank God for the power",
+                "Rest in 'it is God who works in you'"
+              ],
+              "id": "reflect-10-4"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank God that He is working in you right now",
+                "Ask Him to fulfill His good purpose through your fruit"
+              ],
+              "id": "pray-10-4"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-07",
+          "day": 68,
+          "weekday": "Saturday",
+          "title": "Fruit on the tree",
+          "verse": {
+            "text": "For each tree is recognized by its own fruit.",
+            "by": "Luke 6:44"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Quiz day on identification. You can't always tell a tree by its bark or its leaves — but fruit doesn't lie. Fig trees are known by figs. People are known by patience, kindness, humility. Time to check: when people meet you, what fruit are they tasting?"
+            },
+            {
+              "type": "quiz",
+              "question": "How is a tree recognized, according to Luke 6:44?",
+              "options": [
+                "By its height",
+                "By its own fruit",
+                "By its age",
+                "By how many leaves it drops"
+              ],
+              "correctIndex": 1,
+              "explain": "Luke 6:44: 'For each tree is recognized by its own fruit.' You can guess by bark and leaves, but fruit is the honest identification — and so it is for people.",
+              "id": "reflect-10-5"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God to grow fruit that identifies you well",
+                "Thank Him that He sees you as a tree, not a photo"
+              ],
+              "id": "pray-10-5"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-08",
+          "day": 69,
+          "weekday": "Sunday",
+          "title": "Come away",
+          "verse": {
+            "text": "Then, because so many people were coming and going that they did not even have a chance to eat, he said to them, 'Come with me by yourselves to a quiet place and get some rest.'",
+            "by": "Mark 6:31"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Even Jesus' own disciples got so busy they didn't have time to eat — and Jesus' answer wasn't 'do more.' It was 'come with me by yourselves to a quiet place and get some rest.' Fruit-bearing trees need rest from people. Rest day: come away, by yourself, quiet. Go."
+            },
+            {
+              "type": "reflection",
+              "prompt": "What fills your week so full there's 'no chance to eat'? What would a quiet place with Jesus actually look like for you?",
+              "placeholder": "My life gets full when...",
+              "id": "reflect-10-6"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Come away with Jesus to a quiet place",
+                "Thank Him that rest is a command, not a reward"
+              ],
+              "id": "pray-10-6"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-09",
+          "day": 70,
+          "weekday": "Monday",
+          "title": "Known by love",
+          "verse": {
+            "text": "By this everyone will know that you are my disciples, if you love one another.",
+            "by": "John 13:35"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Jesus made fruit very simple and very enormous: the way everyone will know you're His disciple is love. Not the perfect doctrine quiz. Love one another. Week 10 closes with the whole orchard in one line. Finish your reflection, and let love be the fruit the season is remembered by."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Which fruit of the Spirit did you taste most this week? Which one is God reaching to grow in you next?",
+              "placeholder": "God grew _____ in me this week",
+              "id": "reflect-10-7"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask to be known by love",
+                "Thank Jesus for a simple, enormous way to be recognized"
+              ],
+              "id": "pray-10-7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "title": "Week 11 — Tree by the water",
+      "theme": "Tree by the water",
+      "intro": [
+        {
+          "type": "paragraph",
+          "text": "Put every picture together now: a tree planted right beside a river, roots reaching the stream, leaves green through the worst drought. This is the whole goal of the season — to live your life planted by living water."
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-11-10",
+          "day": 71,
+          "weekday": "Tuesday",
+          "title": "Planted by streams",
+          "verse": {
+            "text": "That person is like a tree planted by streams of water, which yields its fruit in season and whose leaf does not wither — whatever they do prospers.",
+            "by": "Psalm 1:3"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Psalm 1 gives us the fountainhead image of the whole season. Notice what the tree does NOT do: panic. It yields fruit in season — not in every season, but in season. It withers in no season. 'Whatever they do prospers' — not because nothing goes wrong, but because the water keeps coming and the roots stay connected."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Draw or imagine your tree planted by a river",
+                "Underline: 'fruit IN SEASON, no withering'",
+                "Name one thing that shouldn't wither in your life"
+              ],
+              "id": "reflect-11-1"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank God for streams that never dry",
+                "Ask to be planted, not just passing by"
+              ],
+              "id": "pray-11-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-11",
+          "day": 72,
+          "weekday": "Wednesday",
+          "title": "No fear in heat",
+          "verse": {
+            "text": "They will be like a tree planted by the water that sends out its roots by the stream. It does not fear when heat comes; its leaves are always green.",
+            "by": "Jeremiah 17:8"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The key phrase is 'does not fear when heat comes.' Tree-people don't deny the heat; they don't feel it the same way. The drought is real, but their supply line goes to the stream. Your anchor is what heats fear out of the picture. Read the verse again and put your own heat in the sentence."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Name the 'heat' (pressure, deadline, worry) in your life",
+                "Reach your root to the stream once today",
+                "Say: 'I don't fear the heat; my root is by the water'"
+              ],
+              "id": "reflect-11-2"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God to be your stream in this season's heat",
+                "Thank Him for leaves that stay green anyway"
+              ],
+              "id": "pray-11-2"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-12",
+          "day": 73,
+          "weekday": "Thursday",
+          "title": "The rock was Christ",
+          "verse": {
+            "text": "They drank from the spiritual rock that accompanied them, and that rock was Christ.",
+            "by": "1 Corinthians 10:4"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "In the wilderness, Israel drank from water out of a rock — and Paul quietly reveals who the rock was. The water that followed them through the desert was Christ. Your stream was there in your wildernesses before you even knew to look. The Rock has been accompanying you the whole time, ready to give water."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Look back: when did God provide 'water' you didn't expect?",
+                "See the Rock who has accompanied you",
+                "Drink — receive from Him today"
+              ],
+              "id": "reflect-11-3"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank Christ, the Rock who has walked with you",
+                "Ask to know His water in your current wilderness"
+              ],
+              "id": "pray-11-3"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-13",
+          "day": 74,
+          "weekday": "Friday",
+          "title": "Fountain of life",
+          "verse": {
+            "text": "For with you is the fountain of life; in your light we see light.",
+            "by": "Psalm 36:9"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Rivers have sources, and the source of every good river is one fountain. 'With you is the fountain of life' — the spring deep behind your season. And look at the line's end: 'in your light we see light.' Everything bright you've ever enjoyed is reflected brightness. Your life's water all traces back to one living fountain."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Trace one good thing in your life back to its source",
+                "Worship at the fountain, not the stream",
+                "Say: 'with You is the fountain of life'"
+              ],
+              "id": "reflect-11-4"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank God that He is the source behind all sources",
+                "Ask to keep drinking where life actually comes from"
+              ],
+              "id": "pray-11-4"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-14",
+          "day": 75,
+          "weekday": "Saturday",
+          "title": "Flourish in His house",
+          "verse": {
+            "text": "The righteous will flourish like a palm tree, they will grow like a cedar of Lebanon; planted in the house of the Lord, they will flourish in the courts of our God.",
+            "by": "Psalm 92:12-13"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Quiz day — and this verse shows where the best trees are planted: in the courtyard of God's house, right where the water and the care gather. The righteous don't just survive; they flourish. Check what you remember about life by the water."
+            },
+            {
+              "type": "quiz",
+              "question": "Where do the righteous flourish, according to Psalm 92:13?",
+              "options": [
+                "In the deep woods far from anyone",
+                "In the house of the Lord, in the courts of God",
+                "On the dry hillside where they look dramatic",
+                "In the richest soil they can buy"
+              ],
+              "correctIndex": 1,
+              "explain": "Psalm 92:13: 'planted in the house of the Lord, they will flourish in the courts of our God.' The best planting spot is near God's presence and God's people.",
+              "id": "reflect-11-5"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask to flourish where God plants you",
+                "Thank Him for a house with roots-room in it"
+              ],
+              "id": "pray-11-5"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-15",
+          "day": 76,
+          "weekday": "Sunday",
+          "title": "Well-watered garden",
+          "verse": {
+            "text": "The Lord will guide you always; he will satisfy your needs in a sun-scorched land and will strengthen your frame. You will be like a well-watered garden.",
+            "by": "Isaiah 58:11"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Rest day for the water tree. 'Well-watered' is your identity. Even in sun-scorched land, God satisfies needs and strengthens frames — the water is not a hope, it's a promise. Today, don't work for the garden; be the garden. Let the water arrive."
+            },
+            {
+              "type": "reflection",
+              "prompt": "When have you felt most 'well-watered'? What does your soul look like when it's satisfied instead of scorched?",
+              "placeholder": "I feel well-watered when...",
+              "id": "reflect-11-6"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Be the well-watered garden, not the worried gardener",
+                "Thank God for satisfaction in a scorched land"
+              ],
+              "id": "pray-11-6"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-16",
+          "day": 77,
+          "weekday": "Monday",
+          "title": "The river's gladness",
+          "verse": {
+            "text": "There is a river whose streams make glad the city of God, the holy place where the Most High dwells.",
+            "by": "Psalm 46:4"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Three weeks left — and we end the water week inside the city. The river's streams 'make glad' — not just supply, but gladden. The water tree is not sustained and miserable; it's sustained and glad. Let week 11 end with rivers making your heart glad. That's what all this deep-rooted living is for."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Where has joy come from being planted by streams? What has this season's 'water' made glad in you?",
+              "placeholder": "The water has made me glad because...",
+              "id": "reflect-11-7"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Let the river's streams make you glad",
+                "Thank the Most High for dwelling in such a city"
+              ],
+              "id": "pray-11-7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 12,
+      "title": "Week 12 — Rings of the season",
+      "theme": "Rings of the season",
+      "intro": [
+        {
+          "type": "paragraph",
+          "text": "A tree's story is written in its rings — wide years and narrow years, good rain and drought. This week we learn to read seasons: the time for everything, and the patience to trust God with the calendar."
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-11-17",
+          "day": 78,
+          "weekday": "Tuesday",
+          "title": "A time for everything",
+          "verse": {
+            "text": "There is a time for everything, and a season for every activity under the heavens.",
+            "by": "Ecclesiastes 3:1"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The most freeing calendar is God's calendar: a time for everything. A time to grow and a time to rest. A time to speak and a time to be quiet. The reason life feels out of rhythm is usually that we're trying to do one season in another — blooming in winter, sleeping in spring. Ask what time it actually is for you."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Name your current 'season' — growing, waiting, pruning, resting?",
+                "Stop fighting the season you're in",
+                "Do what today's season calls for, not last month's"
+              ],
+              "id": "reflect-12-1"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God to show you what time it is",
+                "Thank Him for a season for everything"
+              ],
+              "id": "pray-12-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-18",
+          "day": 79,
+          "weekday": "Wednesday",
+          "title": "Beautiful in its time",
+          "verse": {
+            "text": "He has made everything beautiful in its time.",
+            "by": "Ecclesiastes 3:11"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The same verse right after 'a time for everything' holds the comfort: everything beautiful in its time. Not beautiful on your schedule. The ring you can't see the beauty of yet is the one being drawn slowly in the dark. God sees the whole tree at every age; He declares each season beautiful at its proper time."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Find one 'ugly now' part of your year and ask God to show its purpose",
+                "Trust that beauty is scheduled, not missing",
+                "Say: 'He has made everything beautiful in its time'"
+              ],
+              "id": "reflect-12-2"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Tell God the season you can't see beauty in yet",
+                "Thank Him for a beauty that waits for its time"
+              ],
+              "id": "pray-12-2"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-19",
+          "day": 80,
+          "weekday": "Thursday",
+          "title": "Numbered days",
+          "verse": {
+            "text": "Teach us to number our days, that we may gain a heart of wisdom.",
+            "by": "Psalm 90:12"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Every tree knows its days are numbered; that's why it makes rings instead of putting everything into one afternoon. 'Teach us to number our days' is not morbid — it's how you get wisdom. When you know the season has a number and a limit, you spend it on things that matter. Each day is a ring you're adding."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Look at a tree ring or a calendar — count ahead",
+                "Ask: am I using what's numbered like it's numbered?",
+                "Give this day a purpose worth a ring"
+              ],
+              "id": "reflect-12-3"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask for the wisdom of numbered days",
+                "Thank God for the days He's given you to count"
+              ],
+              "id": "pray-12-3"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-20",
+          "day": 81,
+          "weekday": "Friday",
+          "title": "Spring rains",
+          "verse": {
+            "text": "He will come to us like the rain, like the spring rains that water the earth.",
+            "by": "Hosea 6:3"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Hard seasons end — that's the quiet promise in this verse. The Lord comes to us 'like the spring rains that water the earth.' Spring always returns to the garden. If your rings have been drought-thin for a while, there is still rain on the calendar. God's arrival refreshes; He doesn't just command the ground to try harder."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Wait like a farmer for God's timing, not yours",
+                "Don't panic at the drought; watch for the rain",
+                "Say: 'He comes to me like spring rains'"
+              ],
+              "id": "reflect-12-4"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask for spring rain where you've been dry",
+                "Thank God that He comes as rain, not just requirement"
+              ],
+              "id": "pray-12-4"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-21",
+          "day": 82,
+          "weekday": "Saturday",
+          "title": "The patient farmer",
+          "verse": {
+            "text": "See how the farmer waits for the land to yield its valuable crop, patiently waiting for the autumn and spring rains.",
+            "by": "James 5:7"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Quiz day on patience. The farmer is the Bible's favorite picture of wise waiting — he doesn't check on every seed every hour, and he doesn't dig the whole field looking for progress. He waits for both rains and trusts the land. Here's today's check: how do you read your own rings?"
+            },
+            {
+              "type": "quiz",
+              "question": "In James 5:7, the farmer waits for the crop patiently. He waits for what two things?",
+              "options": [
+                "Autumn and spring rains",
+                "Warmer days and longer nights",
+                "New tools and hired workers",
+                "Morning and evening watering"
+              ],
+              "correctIndex": 0,
+              "explain": "'He waits for the land to yield its valuable crop, patiently waiting for the autumn and spring rains.' The farmer trusts a rhythm he can depend on — and so can you.",
+              "id": "reflect-12-5"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask to wait like the farmer, not like a panicked manager",
+                "Thank God for the autumn and spring of your seasons"
+              ],
+              "id": "pray-12-5"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-22",
+          "day": 83,
+          "weekday": "Sunday",
+          "title": "The moon's mark",
+          "verse": {
+            "text": "He made the moon to mark the seasons, and the sun knows when to go down.",
+            "by": "Psalm 104:19"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Rest day — and the excuse is cosmic: God timed the moon and the sun, making the whole sky a calendar of rest and rhythm. Night comes so rest can come. The moon marks the seasons so you can trust the turn. Rest beneath the order God built instead of fighting it."
+            },
+            {
+              "type": "reflection",
+              "prompt": "What season marker have you noticed lately — the day shortening, the sky, a birthday? What is it saying about where you are?",
+              "placeholder": "A season marker I've noticed...",
+              "id": "reflect-12-6"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Rest under God's ordered sky",
+                "Thank Him for moons and seasons that mark your life"
+              ],
+              "id": "pray-12-6"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-23",
+          "day": 84,
+          "weekday": "Monday",
+          "title": "A humble beginning",
+          "verse": {
+            "text": "Your beginnings will seem humble, so prosperous will your future be.",
+            "by": "Job 8:7"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Most great trees had laughable first rings. Job's friend Bildad — who got a lot wrong — got this line exactly right: humble beginnings, prosperous future. Your first ring doesn't dictate your last one. Sown in a small beginning, overtaking with growth — that's how God writes a season. End week 12 with hope about the rings still coming."
+            },
+            {
+              "type": "reflection",
+              "prompt": "What is one humble beginning God might be growing now toward something thriving? What's your best guess at the 'ring' you're in?",
+              "placeholder": "I think God is growing...",
+              "id": "reflect-12-7"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank God for your humble beginnings",
+                "Ask Him for the prosperous rings He has planned"
+              ],
+              "id": "pray-12-7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "title": "Week 13 — The giving grove",
+      "theme": "The giving grove",
+      "intro": [
+        {
+          "type": "paragraph",
+          "text": "One tree is an achievement; a grove is a community. We finish the season by standing beside each other — roots that grow toward each other, shade that shelters someone else, and a whole forest that sings."
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-11-24",
+          "day": 85,
+          "weekday": "Tuesday",
+          "title": "More blessed to give",
+          "verse": {
+            "text": "It is more blessed to give than to receive.",
+            "by": "Acts 20:35"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The grove's first law is Jesus' own summary of His whole giving life: the giver is the blessed one. A grove doesn't hoard its fruit or its shade; trees give away their leaves every autumn and call it a good year. As you end this season, ask what you've become — a taker in the grove, or a giver?"
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Give something today that costs you a little",
+                "Notice whose joy becomes yours",
+                "Say: 'I am built to give, like my Lord'"
+              ],
+              "id": "reflect-13-1"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank Jesus for the giver-hearted life",
+                "Ask to be more blessed by giving than keeping"
+              ],
+              "id": "pray-13-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-25",
+          "day": 86,
+          "weekday": "Wednesday",
+          "title": "Big enough to shelter",
+          "verse": {
+            "text": "Yet when planted, it grows up and becomes the largest of all garden plants, with such big branches that the birds can perch in its shade.",
+            "by": "Mark 4:32"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The tiniest seed of the season grows into a tree big enough for birds to perch in its shade. Notice the tree's reward — birds. Not applause, not prizes, birds. The purpose of bigness is shelter. The larger your root system grew this season, the more people should be able to rest under your life."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Name one 'bird' — someone who needs shade",
+                "Let your maturity cast a shadow that helps them",
+                "Remember: shelter, not show, is what bigness is for"
+              ],
+              "id": "reflect-13-2"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God to make you big enough to shelter",
+                "Thank Him for the birds He will send to your shade"
+              ],
+              "id": "pray-13-2"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-26",
+          "day": 87,
+          "weekday": "Thursday",
+          "title": "Build each other up",
+          "verse": {
+            "text": "Therefore encourage one another and build each other up.",
+            "by": "1 Thessalonians 5:11"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Trees in a grove interlock roots; people in God's family encourage each other. 'Encourage' literally means to put courage in. A grove that doesn't speak to its trees grows a forest of loners. Your words are root connections. Say one honest, specific, building thing to someone today — it travels to their root."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Give one specific, sincere encouragement (not flattery)",
+                "Say it to a fellow 'tree' in your family or church",
+                "Do it again tomorrow — groves do this weekly"
+              ],
+              "id": "reflect-13-3"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God to make your words root-connections",
+                "Thank Him for the people who build you up"
+              ],
+              "id": "pray-13-3"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-27",
+          "day": 88,
+          "weekday": "Friday",
+          "title": "Not a single tree",
+          "verse": {
+            "text": "You will be like a well-watered garden, like a spring whose waters never fail.",
+            "by": "Isaiah 58:11"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "We end close to where we began — only now the picture is bigger. One tree becomes a garden; one well becomes a spring. The whole season's growth was never about you becoming a perfect single tree. It was about you joining a grove, a garden, a spring that waters everything around it. You are part of something with more fruit than one branch can carry."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Look at your season as a whole — count how much grew",
+                "See yourself as part of the garden, not the whole orchard",
+                "Say: 'I am a spring whose waters never fail'"
+              ],
+              "id": "reflect-13-4"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank God for the garden you're planted in",
+                "Ask to be a spring that feeds the whole grove"
+              ],
+              "id": "pray-13-4"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-28",
+          "day": 89,
+          "weekday": "Saturday",
+          "title": "Do good to all",
+          "verse": {
+            "text": "Therefore, as we have opportunity, let us do good to all people, especially to those who belong to the family of believers.",
+            "by": "Galatians 6:10"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Final quiz of the season, and here's the question behind it: thirteen weeks of roots, and where does it all go? The answer is out, toward all people — with a special priority to God's family. A grove doesn't keep good for its own roots. Check what you remember, then let the season spill out."
+            },
+            {
+              "type": "quiz",
+              "question": "After a whole season of growing roots, where does God's goodness travel?",
+              "options": [
+                "Backward, into saving yourself",
+                "Upward, into feeling holy",
+                "Outward, doing good to all people",
+                "Sideways, only among close friends"
+              ],
+              "correctIndex": 2,
+              "explain": "Galatians 6:10: 'as we have opportunity, let us do good to all people.' Deep roots did their work over thirteen weeks — now the fruit moves outward, toward everyone.",
+              "id": "reflect-13-5"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask God to direct the season's growth outward",
+                "Thank Him for the whole family of believers to love"
+              ],
+              "id": "pray-13-5"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-29",
+          "day": 90,
+          "weekday": "Sunday",
+          "title": "The whole forest sings",
+          "verse": {
+            "text": "Let the fields be jubilant, and everything in them; let all the trees of the forest sing for joy.",
+            "by": "Psalm 96:12"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The last rest day of the season — and the forest itself sings. You don't need to do anything today. The grove is already celebrating. When your season ends well, the trees around you catch it. Sit with the people you belong to and let the whole forest make music."
+            },
+            {
+              "type": "reflection",
+              "prompt": "If the trees of the forest sang for joy today, which 'tree' in your life would provide the best harmony? What song is your season singing?",
+              "placeholder": "My season sings...",
+              "id": "reflect-13-6"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Join the forest in singing",
+                "Thank God for a grove worth rejoicing in"
+              ],
+              "id": "pray-13-6"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-30",
+          "day": 91,
+          "weekday": "Monday",
+          "title": "The last day",
+          "verse": {
+            "text": "...down the middle of the great street of the city. On each side of the river stood the tree of life, bearing twelve crops of fruit, yielding its fruit every month.",
+            "by": "Revelation 22:2"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The last verse of the season points to the last tree of the story: the tree of life in the city, bearing fruit every month, its leaves for the healing of the nations. Everything you grew this spring — every root, every ring, every fruit — is training for that tree. The end of the season is the beginning of the eternal grove. Finish well."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Thirteen weeks done. What did God grow in you this season? What do you want to keep doing daily, even after the guide ends?",
+              "placeholder": "This season grew ______ in me",
+              "id": "reflect-13-7"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank God for the whole season of root-growing",
+                "Ask to keep bearing fruit, month after month"
+              ],
+              "id": "pray-13-7"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

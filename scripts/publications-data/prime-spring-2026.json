@@ -1,0 +1,3343 @@
+{
+  "id": "prime-spring-2026",
+  "kind": "magazine",
+  "series": "Prime",
+  "clubSlug": "prime",
+  "title": "Prime — Spring 2026",
+  "issue": "Season of Spring 2026",
+  "month": "September",
+  "year": 2026,
+  "season": {
+    "name": "Spring",
+    "year": 2026,
+    "label": "Spring 2026 · Sep 1 – Nov 30",
+    "start": "2026-09-01",
+    "end": "2026-11-30"
+  },
+  "theme": "The Flourishing Years",
+  "coverLines": [
+    "Own your stage. Flourish.",
+    "Thirteen weeks to a well-tended life",
+    "Mature, free, and built on the Rock"
+  ],
+  "cover": "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1600&q=85",
+  "summary": "Spring 2026 study guide for Prime (33+: singles): thirteen weeks of cultivating a flourishing life — purpose, boundaries, health, work, money, friends, mentorship, singleness, dating and legacy — a verse and a daily read for every day of the season.",
+  "tags": [
+    "PRIME",
+    "SPRING",
+    "HABITS"
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "How to use this study guide"
+    },
+    {
+      "type": "paragraph",
+      "text": "This is a study guide for Prime. Not everyone gets to reclaim their thirties as a season of purpose — you do. Spring has thirteen weeks, and each week we tend one corner of the flourishing life: your purpose, your walls, your body, your work, your money, your friendships, the thing you're building to pass on. Each day has a verse to read, a few lines to chew on, one small Try it step, and a prayer. Day 5 is a short quiz; days 6 and 7 are rest and reflection days."
+    },
+    {
+      "type": "heading",
+      "text": "A stage, not a waiting room"
+    },
+    {
+      "type": "paragraph",
+      "text": "Singleness at this age is too often described as a holding pattern — as if the real life starts when a ring shows up. The Bible has a better frame: you are given a stage, not a waiting room. Paul describes the unmarried as 'concerned about the Lord's affairs,' devoted to him — an undivided gift the world is short on (1 Corinthians 7:32–35). This season you get to build a life that is not a rehearsal. These thirteen weeks are the tending of it."
+    },
+    {
+      "type": "paragraph",
+      "text": "Read the verse, read the lines, do the Try it, say the prayer. On day 5 each week there's a quiz; on days 6 and 7 you get rest and reflection. Flourishing isn't a mood; it's a rhythm. By winter you'll feel the difference."
+    }
+  ],
+  "weeks": [
+    {
+      "index": 1,
+      "title": "Week 1 — Your stage",
+      "theme": "Your stage",
+      "intro": [
+        {
+          "type": "paragraph",
+          "text": "Before we tend anything, we have to settle the location: you are not between acts. This is the stage you've been given, and God wrote the cast list. Week one repairs the frame so the rest of the season has somewhere to stand."
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-01",
+          "day": 1,
+          "weekday": "Tuesday",
+          "title": "All my days",
+          "verse": {
+            "text": "All the days ordained for me were written in your book before one of them came to be.",
+            "by": "Psalm 139:16"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The days you've already lived and the days still to come — all of them were in God's book before one began. That reframes this season of singleness: it is not a mistake orbiting somebody else's life. It is a written chapter. You don't have to defend the stage; you just have to be present on it."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Say slowly: 'my days are written in God's book'",
+                "Name one way you've treated this season as a detour",
+                "Move one small part of today back to center stage"
+              ],
+              "id": "reflect-1-1"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank God for days He planned before you lived them",
+                "Ask to inhabit your stage, not resent it"
+              ],
+              "id": "pray-1-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-02",
+          "day": 2,
+          "weekday": "Wednesday",
+          "title": "The one audience",
+          "verse": {
+            "text": "So whether you eat or drink or whatever you do, do it all for the glory of God.",
+            "by": "1 Corinthians 10:31"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "There is exactly one audience for a human life, and it is God. Whatever you are building — a career, a home, a body, a repaired heart — is glory-worthy work when it is done for him. The pressure of performing in front of family, peers and social media dissolves once you remember who the real audience is."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Ask before one task today: 'for whose glory am I doing this?'",
+                "Do one ordinary thing with God as your audience",
+                "Name one performer you can stop trying to impress"
+              ],
+              "id": "reflect-1-2"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Off this stage to the only audience that matters",
+                "Ask to live, eat and work for his glory"
+              ],
+              "id": "pray-1-2"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-03",
+          "day": 3,
+          "weekday": "Thursday",
+          "title": "Prepared in advance",
+          "verse": {
+            "text": "For we are God's handiwork, created in Christ Jesus to do good works, which God prepared in advance for us to do.",
+            "by": "Ephesians 2:10"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "You are not a blank slate improvising a life. You are God's handiwork, made in Christ for good works He already prepared for you. Some of those works are for this exact season — ones a married person, or a person twenty years younger, simply isn't positioned to do. Your uniqueness isn't an accident of your circumstances; it's a placement."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Write down 3 good works only your life could do right now",
+                "Pick one and make a move this week",
+                "Stop comparing your assignment to someone else's"
+              ],
+              "id": "reflect-1-3"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank God for works prepared in advance for your stage",
+                "Ask to find and do them"
+              ],
+              "id": "pray-1-3"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-04",
+          "day": 4,
+          "weekday": "Friday",
+          "title": "Widened not wasted",
+          "verse": {
+            "text": "But I would like you to be free from concern. An unmarried man is concerned about the Lord's affairs… but a married man is concerned about the affairs of this world.",
+            "by": "1 Corinthians 7:32–33"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Paul isn't insulting marriage; he is naming a difference. The undivided life has a capacity the divided one doesn't. Where you can go, who you can help, what you can risk for the kingdom — all of it is wider while your attention is single. This season is not singleness minus a spouse; it is devotion plus undividedness. Spend it, don't wait it out."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Name one kingdom thing a divided life couldn't do — and you can",
+                "Use your undivided hours for that thing today",
+                "Refuse to describe this season as 'wasted time'"
+              ],
+              "id": "reflect-1-4"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank God for attention that isn't split",
+                "Ask how to spend your undivided life well"
+              ],
+              "id": "pray-1-4"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-05",
+          "day": 5,
+          "weekday": "Saturday",
+          "title": "The stage test",
+          "verse": {
+            "text": "All the days ordained for me were written in your book before one of them came to be.",
+            "by": "Psalm 139:16"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Quiz day on your stage. The whole week has been one correction: this season is written, not wasted. Check what you remember, then let the frame hold — because the rest of spring is going to build on it."
+            },
+            {
+              "type": "quiz",
+              "question": "What does David say about his days in Psalm 139:16?",
+              "options": [
+                "That he should make the most of every hour",
+                "That all his days were ordained and written in God's book",
+                "That singleness is a waiting room",
+                "That the future is unknowable"
+              ],
+              "correctIndex": 1,
+              "explain": "'All the days ordained for me were written in your book before one of them came to be.' The season you're in is authored, not accidental.",
+              "id": "reflect-1-5"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank God your season is written by Him",
+                "Ask to live the chapter well"
+              ],
+              "id": "pray-1-5"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-06",
+          "day": 6,
+          "weekday": "Sunday",
+          "title": "The inventory",
+          "verse": {
+            "text": "Examine yourselves to see whether you are in the faith; test yourselves.",
+            "by": "2 Corinthians 13:5"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Rest day — and the rest a Prime needs is a truthful one. Before we start building rhythms, take inventory: what is actually yours right now — your money, your time, your skill, your wounds, your freedom? Rest happens when you audit reality without panic. God is not asking you to defend the list; He is asking you to see it, because the weeks ahead tend it."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Inventory your current stage: what time, talent, resources and freedom is God actually entrusting to you today?",
+              "placeholder": "What is actually mine right now...",
+              "id": "reflect-1-6"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank God for the inventory He has given you",
+                "Ask for honest eyes on this stage"
+              ],
+              "id": "pray-1-6"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-07",
+          "day": 7,
+          "weekday": "Monday",
+          "title": "Root the stage",
+          "verse": {
+            "text": "Blessed is the one who trusts in the Lord, whose confidence is in him. They will be like a tree planted by the water that sends out its roots by the stream.",
+            "by": "Jeremiah 17:7–8"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "A stage only flourishes if the life on it is rooted. The tree in Jeremiah doesn't fret when heat comes — roots in the stream keep it green. Your stage may not change, but its stability is decided by where your roots reach. Week one closes by planting the one enduring thing: trust in the Lord under everything else you'll build."
+            },
+            {
+              "type": "reflection",
+              "prompt": "What could heat and drought come for in this season (job, relationships, health)? Where are your roots reaching for water right now?",
+              "placeholder": "My roots reach toward...",
+              "id": "reflect-1-7"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Trust the Lord as the water under everything",
+                "Ask to be green in whatever heat the season brings"
+              ],
+              "id": "pray-1-7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "title": "Week 2 — A life of purpose",
+      "theme": "A life of purpose",
+      "intro": [
+        {
+          "type": "paragraph",
+          "text": "Purpose is not a slogan; it is a direction of travel. This week we let God set the compass — because a Prime who knows what they are for can afford to say no to what they are not for."
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-08",
+          "day": 8,
+          "weekday": "Tuesday",
+          "title": "Made for works",
+          "verse": {
+            "text": "We are… created in Christ Jesus to do good works, which God prepared in advance for us to do.",
+            "by": "Ephesians 2:10"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Purpose is downstream of being made. You were crafted for good works — not to earn salvation, but as the shape an alive-with-Christ life naturally takes. The question isn't 'what do I feel like doing?' but 'what did I see myself made for?' Look back at the season of life God has put you through; the works He prepared often match the pains He's already walked you out of."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "List 3 pains God has already brought you through",
+                "Ask: what good works matches those scars?",
+                "Tell God you're ready to be sent"
+              ],
+              "id": "reflect-2-1"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank Christ that your works are planned, not invented",
+                "Ask to see the shape of the good works ahead"
+              ],
+              "id": "pray-2-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-09",
+          "day": 9,
+          "weekday": "Wednesday",
+          "title": "A cup of cold water",
+          "verse": {
+            "text": "And if anyone gives even a cup of cold water to one of these little ones… I tell you, truly, they will certainly not lose their reward.",
+            "by": "Matthew 10:42"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Purpose is often smaller than we dream. Jesus counts a cup of cold water as kingdom work. The mature life is mostly built in unglamorous faithfulness: showing up, mentoring one younger person, paying for a friend's meal, being the sober adult in the room. Don't wait for a big mission to feel purposeful. Start handing out cups of water."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Give a 'cup of cold water' to one person today",
+                "Do it with no audience",
+                "Say: 'this counts, Jesus said so'"
+              ],
+              "id": "reflect-2-2"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank Jesus that small faithful gifts count",
+                "Ask to see the cups of water around you today"
+              ],
+              "id": "pray-2-2"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-10",
+          "day": 10,
+          "weekday": "Thursday",
+          "title": "Pressed toward the goal",
+          "verse": {
+            "text": "Forgetting what is behind and straining toward what is ahead, I press on toward the goal to win the prize for which God has called me heavenward in Christ Jesus.",
+            "by": "Philippians 3:13–14"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Purpose requires forgetting. The regret, the failed relationship, the job that didn't work, the years that feel lost — Paul's method is to let what's behind stay behind and strain for the call ahead. Flourishing is forward motion. Today, pick the thing you're still carrying from the past that is heaviest, and hand it to God so you can press on."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Name what you're still dragging from behind",
+                "Pray it over to God in one honest sentence",
+                "Strain toward one step of the call ahead"
+              ],
+              "id": "reflect-2-3"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Ask for the freedom of forgetting what is behind",
+                "Strengthen the press toward the goal"
+              ],
+              "id": "pray-2-3"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-11",
+          "day": 11,
+          "weekday": "Friday",
+          "title": "A purpose worth your life",
+          "verse": {
+            "text": "For to me, to live is Christ and to die is gain.",
+            "by": "Philippians 1:21"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The deepest purpose isn't a career achievement — it's a center. Paul's whole life compressed into four words: to live is Christ. Everything else (career, friendships, plans) orbits a center; if the center holds, the orbit holds. Ask yourself honestly today: what is the center my life is actually orbiting? The flourishing years answer that question on purpose."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Name the center your current life is orbiting",
+                "Put Christ back there if He's drifted",
+                "Let one decision today flow from the center"
+              ],
+              "id": "reflect-2-4"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Make Christ the center of the Prime years",
+                "Ask that even your ordinary life says 'to live is Christ'"
+              ],
+              "id": "pray-2-4"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-12",
+          "day": 12,
+          "weekday": "Saturday",
+          "title": "The purpose test",
+          "verse": {
+            "text": "We are God's handiwork, created in Christ Jesus to do good works, which God prepared in advance for us to do.",
+            "by": "Ephesians 2:10"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Quiz day on purpose. The week's truth, one more time: your works were prepared for you, which means they are findable, not invented. Check what stuck, then go find one of the works."
+            },
+            {
+              "type": "quiz",
+              "question": "According to Ephesians 2:10, God prepared good works for us for what reason?",
+              "options": [
+                "To earn our salvation",
+                "To keep us busy",
+                "For us to do as those created in Christ Jesus",
+                "To test our obedience"
+              ],
+              "correctIndex": 2,
+              "explain": "'We are his handiwork, created in Christ Jesus to do good works which God prepared in advance for us to do.' Works prepared, sins forgiven, life sent.",
+              "id": "reflect-2-5"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank God for pre-prepared works",
+                "Ask to walk into them"
+              ],
+              "id": "pray-2-5"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-13",
+          "day": 13,
+          "weekday": "Sunday",
+          "title": "The rest of calling",
+          "verse": {
+            "text": "He makes me lie down in green pastures, he leads me beside quiet waters.",
+            "by": "Psalm 23:2"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Rest day — because purpose people are the most prone to overwork it. The Shepherd brings His sheep to lie down. You are not the one holding your life together; the Shepherd's table, valley and house are all next to Him. Purpose and rest are not enemies; purpose that costs you rest was built on a wrong center."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Has this season's pursuit of purpose come at the cost of rest? What would 'lying down in green pastures' actually look like this week?",
+              "placeholder": "The Shepherd is inviting me to...",
+              "id": "reflect-2-6"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank the Shepherd for green pastures",
+                "Ask for purpose that doesn't steal rest"
+              ],
+              "id": "pray-2-6"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-14",
+          "day": 14,
+          "weekday": "Monday",
+          "title": "Sent with a sending",
+          "verse": {
+            "text": "Go and make disciples of all nations… teaching them to obey everything I have commanded you.",
+            "by": "Matthew 28:19–20"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Every purpose resolves into one sending. Whatever your exact works, the road ends at the Great Commission — making disciples wherever you have placement. For a Prime, that placement can be a workplace, a family network, a skill, a pocket of the city no one else reaches. You are sent with a sending. Let that scale your small weekly purpose."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Where is your placement for making disciples? Who is the 'one little one' or 'all nations' your stage reaches?",
+              "placeholder": "My placement is...",
+              "id": "reflect-2-7"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank God you are sent, not stranded",
+                "Ask to see your field of disciples"
+              ],
+              "id": "pray-2-7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "title": "Week 3 — Solitude & substance",
+      "theme": "Solitude & substance",
+      "intro": [
+        {
+          "type": "paragraph",
+          "text": "Singleness hands you solitude by default; flourishing turns it into substance. This week is about the practice of being with God alone — not as loneliness, but as the fire that makes a person worth being around."
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-15",
+          "day": 15,
+          "weekday": "Tuesday",
+          "title": "Very early",
+          "verse": {
+            "text": "Very early in the morning, while it was still dark, Jesus got up, left the house and went off to a solitary place, where he prayed.",
+            "by": "Mark 1:35"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The busiest Person in the Gospels made solitude a habit — before the crowds, again and again. If Jesus needed the solitary place, the person who lives alone and still doesn't meet God there is missing the whole point of the room. Your aloneness can be a complaint or a chapel. The morning silence is an appointment, not an echo."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Give God the first minutes of your day in solitude",
+                "Put the phone away before the prayer starts",
+                "Say: 'solitude is my appointment, not my loneliness'"
+              ],
+              "id": "reflect-3-1"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Meet me in the solitary place",
+                "Teach me to be alone with you without feeling alone"
+              ],
+              "id": "pray-3-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-16",
+          "day": 16,
+          "weekday": "Wednesday",
+          "title": "Press in silently",
+          "verse": {
+            "text": "Be still, and know that I am God.",
+            "by": "Psalm 46:10"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "'Be still' isn't advice to be quiet; it's an invitation to stop clutching. Stillness is how you know — really know — that God is God and you are not carrying the world. The still room is where the frantic self hands the controls back. Try it for five silent minutes today. It will feel like a long time. That's the point."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Sit in silence before God for five full minutes",
+                "When your mind wanders, return to 'I am God'",
+                "Notice what stillness does to your shoulders"
+              ],
+              "id": "reflect-3-2"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Give me stillness that knows You",
+                "Quiet the part of me that needs to grip everything"
+              ],
+              "id": "pray-3-2"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-17",
+          "day": 17,
+          "weekday": "Thursday",
+          "title": "Treasure in your heart",
+          "verse": {
+            "text": "But Mary treasured up all these things and pondered them in her heart.",
+            "by": "Luke 2:19"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Substance is built by treasuring and pondering, not scrolling. Mary didn't rush the mystery; she stored it and turned it over. Solitude is where you ponder — where a person doesn't just consume but becomes. What you ruminate on in the quiet is what you become in public. Guard the pondering time like it's your strongest asset, because it is."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Pick one truth from this season and ponder it all day",
+                "Write it down — treasured, not just heard",
+                "Notice what you've been ruminating on by default"
+              ],
+              "id": "reflect-3-3"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Teach me to treasure what matters most",
+                "Give my heart better things to ponder"
+              ],
+              "id": "pray-3-3"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-18",
+          "day": 18,
+          "weekday": "Friday",
+          "title": "The inner springs",
+          "verse": {
+            "text": "The good person brings good things out of the good stored up in their heart.",
+            "by": "Luke 6:45"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "You can only give what's stored. The mouth, the temper, the generosity — they all pour from a reservoir. Solitude fills the reservoir with good. If your public self keeps running dry, the answer isn't to try harder in public; it's to sit longer in the quiet and let good be stored up in you. Substance is an inside job."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Audit what your heart has been storing this month",
+                "Fill it with one truth from God's word today",
+                "Stop blaming your circumstances for an empty reservoir"
+              ],
+              "id": "reflect-3-4"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Store good things in my heart by Your presence",
+                "Make my overflow worth giving"
+              ],
+              "id": "pray-3-4"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-19",
+          "day": 19,
+          "weekday": "Saturday",
+          "title": "The solitude test",
+          "verse": {
+            "text": "Very early in the morning… he went off to a solitary place, where he prayed.",
+            "by": "Mark 1:35"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Quiz day on solitude. One verse, one practice, one reward: the solitary place with God is where the flourishing years are forged. Check what you remember, then keep the appointment."
+            },
+            {
+              "type": "quiz",
+              "question": "When did Jesus go to the solitary place to pray in Mark 1:35?",
+              "options": [
+                "After the crowd left in the evening",
+                "Early in the morning, while it was still dark",
+                "At noon in the temple",
+                "He never prayed alone"
+              ],
+              "correctIndex": 1,
+              "explain": "'Very early in the morning, while it was still dark, Jesus… went off to a solitary place, where he prayed.' The practice is pre-dawn, on purpose.",
+              "id": "reflect-3-5"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank Jesus for modeling the solitary place",
+                "Ask for the discipline of the early appointment"
+              ],
+              "id": "pray-3-5"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-20",
+          "day": 20,
+          "weekday": "Sunday",
+          "title": "Alone with the One",
+          "verse": {
+            "text": "You have made known to me the path of life; you will fill me with joy in your presence.",
+            "by": "Psalm 16:11"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Rest day — and the test of rest is whether you can be alone with God and find it good. David speaks of 'the path of life' and 'joy in your presence' as if they run together. Solitude was never the point; the presence it carries you into is. Let this quiet day be less about surviving your own company and more about enjoying His."
+            },
+            {
+              "type": "reflection",
+              "prompt": "When you're actually alone — no phone, no noise — what do you feel more of in God's presence: joy or unease? What would make the difference?",
+              "placeholder": "In the quiet I feel...",
+              "id": "reflect-3-6"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Fill my solitude with Your presence, not my thoughts",
+                "Make alone-with-You feel like the path of life"
+              ],
+              "id": "pray-3-6"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-21",
+          "day": 21,
+          "weekday": "Monday",
+          "title": "City on a hill",
+          "verse": {
+            "text": "You are the light of the world. A town built on a hill cannot be hidden.",
+            "by": "Matthew 5:14"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Here's why solitude produces substance instead of isolation: the light is for the city. Time alone with God equips you to be seen — warm, steady, distinct — in company, at work, in the hard conversations. A lone candle lit from Christ will not be hidden. This week's quiet has a purpose: next week's light."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Where does your city most need light that only your solitary-forged substance can give?",
+              "placeholder": "The light my stage is for...",
+              "id": "reflect-3-7"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Make my private solitude burn into public light",
+                "Let the town see, and let them credit her"
+              ],
+              "id": "pray-3-7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "title": "Week 4 — Walls and gates",
+      "theme": "Walls and gates",
+      "intro": [
+        {
+          "type": "paragraph",
+          "text": "The flourishing years are not only about building; they're about walls. Boundaries aren't unfriendly — they're the protection that lets good things grow undisturbed. This week we set the walls to match the life we're building."
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-22",
+          "day": 22,
+          "weekday": "Tuesday",
+          "title": "A city without walls",
+          "verse": {
+            "text": "Like a city whose walls are broken through is a person who lacks self-control.",
+            "by": "Proverbs 25:28"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The proverb is blunt: no self-control, no safety. A city with broken walls gets raided — and so does a life without boundaries. What raids you? The phone after midnight. The 'yes' to everything. The person who takes more than they give. This week is about walls, and they start with the small gates: what you let in and what you refuse."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Name the gates in your life currently broken through",
+                "Repair one small gate today (time, phone, food, yes)",
+                "Run the city from the inside, not the raids"
+              ],
+              "id": "reflect-4-1"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Rebuild the walls of my self-control",
+                "Guard the gates of my day"
+              ],
+              "id": "pray-4-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-23",
+          "day": 23,
+          "weekday": "Wednesday",
+          "title": "Guard your heart",
+          "verse": {
+            "text": "Above all else, guard your heart, for everything you do flows from it.",
+            "by": "Proverbs 4:23"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The inner gate is the most important one. What you watch, read, replay in your head and believe about yourself — it all flows out into what you do. For a single person building a future relationship, guarding the heart begins now, not in a relationship. Guard it above all else: the heart is the citadel of the city."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Do a media audit — what is your heart digesting?",
+                "Cut one input that's crowding out good",
+                "Say: 'above all else, I guard my heart'"
+              ],
+              "id": "reflect-4-2"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Set the guard on my heart",
+                "Help my eye gates let in what builds me"
+              ],
+              "id": "pray-4-2"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-24",
+          "day": 24,
+          "weekday": "Thursday",
+          "title": "A time for everything",
+          "verse": {
+            "text": "There is a time for everything, and a season for every activity under the heavens.",
+            "by": "Ecclesiastes 3:1"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Boundaries are how a time becomes a time. There is a time to work and a time to stop — and the wise person draws the line so each season gets its due. Without walls, it's all one blurry yes. Today, give your hours names: work-hours, rest-hours, people-hours. A named hour is a guarded hour."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Write tomorrow's hours with names",
+                "Protect one named hour from the blur",
+                "Notice: borders on a calendar are a form of worship"
+              ],
+              "id": "reflect-4-3"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Give me holy borders on my time",
+                "Make each season steward itself"
+              ],
+              "id": "pray-4-3"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-25",
+          "day": 25,
+          "weekday": "Friday",
+          "title": "Let no one despise",
+          "verse": {
+            "text": "Don't let anyone look down on you because you are young, but set an example for the believers in speech, in conduct, in love, in faith and in purity.",
+            "by": "1 Timothy 4:12"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The walls of a life are also for others' eyes. Paul names the example: speech, conduct, love, faith, purity. Boundaries protect your witness — a single person in a watchful family or workplace is watched more closely. Your walls aren't coldness; they're the reason people can trust what they see."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Pick one area — speech, conduct, purity — and raise a wall",
+                "Let your boundary be readable as love, not rejection",
+                "Set an example, not a spectacle"
+              ],
+              "id": "reflect-4-4"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Make my walls a witness, not a weapon",
+                "Guard my example in all five areas"
+              ],
+              "id": "pray-4-4"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-26",
+          "day": 26,
+          "weekday": "Saturday",
+          "title": "The wall test",
+          "verse": {
+            "text": "Like a city whose walls are broken through is a person who lacks self-control.",
+            "by": "Proverbs 25:28"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Quiz day on walls. One image to keep: your flourishing life is a city, and boundaries are its walls. Check what you remember about the gatekeeping, then go repair a gate."
+            },
+            {
+              "type": "quiz",
+              "question": "What does Proverbs 25:28 compare a person who lacks self-control to?",
+              "options": [
+                "A wandering sheep",
+                "A city with broken walls",
+                "A burning lamp",
+                "A ship without a sail"
+              ],
+              "correctIndex": 1,
+              "explain": "'Like a city whose walls are broken through is a person who lacks self-control.' Without walls, everything is raidable.",
+              "id": "reflect-4-5"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank You for this week's repaired gates",
+                "Hold the walls by Your strength, not my willpower"
+              ],
+              "id": "pray-4-5"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-27",
+          "day": 27,
+          "weekday": "Sunday",
+          "title": "The boundary of grace",
+          "verse": {
+            "text": "Love your neighbor as yourself.",
+            "by": "Mark 12:31"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Rest day — and the rest here is freedom from guilt about walls. Boundaries and love are not opposites: you can't sustain loving your neighbor for long from a city with broken walls. The Great Commandment assumes walls — love yourself enough to be whole, then love the neighbor from that wholeness. Rest in the boundary. Guilt is not a wall; it's an open gate."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Where have you called it selfish to set a boundary that love actually required? What would it look like to keep that wall with a clear heart?",
+              "placeholder": "The boundary I've been guilt-about...",
+              "id": "reflect-4-6"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Let me love from wholeness, not emptiness",
+                "Clear the guilt from my repaired walls"
+              ],
+              "id": "pray-4-6"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-28",
+          "day": 28,
+          "weekday": "Monday",
+          "title": "The broad place",
+          "verse": {
+            "text": "You have set my feet in a spacious place.",
+            "by": "Psalm 31:8"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Here's the beautiful end of boundaries: they create spaciousness, not restriction. The proverb's broken city is raided and crowded; the guarded city has room to breathe, grow, and welcome guests on its own terms. God sets your feet in a spacious place. Walls buy you that space. This week's gates let the good in and keep the raids out — and the flourishing years have room."
+            },
+            {
+              "type": "reflection",
+              "prompt": "With better walls this week, what space have you reclaimed? What's now possible inside that space?",
+              "placeholder": "The space worth protecting...",
+              "id": "reflect-4-7"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank God for the spacious place behind the walls",
+                "Use the space for what walls were meant for"
+              ],
+              "id": "pray-4-7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "title": "Week 5 — A body worth honoring",
+      "theme": "A body worth honoring",
+      "intro": [
+        {
+          "type": "paragraph",
+          "text": "The flourishing years are lived in a body. We tend it with the same respect we'd give a temple — which, Scripture says, is exactly what it is. This week, stewardship of the body takes its rightful place in the rhythm."
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-29",
+          "day": 29,
+          "weekday": "Tuesday",
+          "title": "Temple of the Spirit",
+          "verse": {
+            "text": "Do you not know that your bodies are temples of the Holy Spirit, who is in you, whom you have received from God?",
+            "by": "1 Corinthians 6:19"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Your body isn't a tool shed; it's a temple — the dwelling of the Holy Spirit. That changes how you treat it. Not because you must be a certain size or age, but because the One who lives in you deserves a building that's cared for. Sleep, movement, food, rest: all temple maintenance. Honor God with your body by honoring the body itself."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Walk (or move) one short way as an act of worship",
+                "Write down one way your body has carried you this year",
+                "Treat a meal and a night's sleep as sacred maintenance"
+              ],
+              "id": "reflect-5-1"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank You for this temple, aging and all",
+                "Teach me to honor You with how I care for it"
+              ],
+              "id": "pray-5-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-30",
+          "day": 30,
+          "weekday": "Wednesday",
+          "title": "Take care of the gift",
+          "verse": {
+            "text": "For you created my inmost being; you knit me together in my mother's womb. I praise you because I am fearfully and wonderfully made.",
+            "by": "Psalm 139:13–14"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The same psalmist who wrote about 'all my days' wrote about being knit together. Your body is handcrafted — and handcrafted things get cared for differently than rented ones. You may not feel young, but you are wonderfully made. Stewardship isn't vanity; it's returning to the Maker a gift He lent you, maintained."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Thank God for one specific feature of your body",
+                "Replace one self-criticism with thanksgiving",
+                "Do one maintenance act (water, walk, stretch)"
+              ],
+              "id": "reflect-5-2"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank You for fearfully/wonderfully made",
+                "Let my care of it match Your making of it"
+              ],
+              "id": "pray-5-2"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-01",
+          "day": 31,
+          "weekday": "Thursday",
+          "title": "Set a guard on appetite",
+          "verse": {
+            "text": "I discipline my body and keep it under control, lest after preaching to others I myself should be disqualified.",
+            "by": "1 Corinthians 9:27"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Paul, who poured out his life for others, still disciplined his body. Not to shame himself, but so his message and his life wouldn't contradict each other. Appetite management — for food, drink, screens, comfort — is a wall the flourishing years can't skip. A life worth preaching is a life worth disciplining."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Pick one appetite to put under control today",
+                "Discipline it for a reason, not as punishment",
+                "Let your body serve your mission, not raid it"
+              ],
+              "id": "reflect-5-3"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Teach me to discipline, not idolize, my body",
+                "Keep my appetites from disqualifying the message"
+              ],
+              "id": "pray-5-3"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-02",
+          "day": 32,
+          "weekday": "Friday",
+          "title": "Rest that restores",
+          "verse": {
+            "text": "Come to me, all you who are weary and burdened, and I will give you rest.",
+            "by": "Matthew 11:28"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "A body worth honoring is a body worth resting. Many in their thirties and forties push until they crash, then call burnout a rite of passage. Jesus invites the weary to come — not after the workload ends, but now. Rest is not the reward for finishing; it's how you survive to finish. Take rest seriously this week, before the body demands it."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Schedule an actual rest block this week",
+                "Take it, guilt-free, as obedience",
+                "Refuse to call exhaustion a badge of honor"
+              ],
+              "id": "reflect-5-4"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Give me rest that restores the temple",
+                "Meet me in the lowering of my pace"
+              ],
+              "id": "pray-5-4"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-03",
+          "day": 33,
+          "weekday": "Saturday",
+          "title": "The body test",
+          "verse": {
+            "text": "Do you not know that your bodies are temples of the Holy Spirit…? Therefore honor God with your bodies.",
+            "by": "1 Corinthians 6:19–20"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Quiz day on the body. One truth to anchor the week: the body is a temple with a Resident, and honor flows from that fact. Check what you remember, then tend the building."
+            },
+            {
+              "type": "quiz",
+              "question": "According to 1 Corinthians 6:19–20, why should we honor God with our bodies?",
+              "options": [
+                "Because we want to look young",
+                "Because our bodies are temples of the Holy Spirit",
+                "Because God judges appearance",
+                "Because fitness is righteousness"
+              ],
+              "correctIndex": 1,
+              "explain": "'Your bodies are temples of the Holy Spirit… Therefore honor God with your bodies.' The Resident makes it sacred.",
+              "id": "reflect-5-5"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank God for the indwelling of the Spirit in this body",
+                "Help me honor Him in the temple today"
+              ],
+              "id": "pray-5-5"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-04",
+          "day": 34,
+          "weekday": "Sunday",
+          "title": "Sabbath for the tent",
+          "verse": {
+            "text": "He makes me lie down in green pastures… and I will dwell in the house of the Lord forever.",
+            "by": "Psalm 23:2, 6"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Rest day, and the psalmist calls your body and home a 'tent' and a 'house' — something to dwell in, not just perform from. A body at sabbath is a tent pitched in green grass. This day, let the temple be still. No performance, no hustle. The Shepherd makes you lie down; it's not weakness to obey that."
+            },
+            {
+              "type": "reflection",
+              "prompt": "What does a truly restful day for your body look like? When did you last have one without earning it first?",
+              "placeholder": "Rest for me looks like...",
+              "id": "reflect-5-6"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Let me dwell in Your house wearing a rested body",
+                "Thank You for making me lie down"
+              ],
+              "id": "pray-5-6"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-05",
+          "day": 35,
+          "weekday": "Monday",
+          "title": "Body for the mission",
+          "verse": {
+            "text": "Therefore I urge you, brothers and sisters, in view of God's mercy, to offer your bodies as a living sacrifice, holy and pleasing to God — this is your true and proper worship.",
+            "by": "Romans 12:1"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The week closes where it began: the body is not an ornament, it's an offering. 'Offer your bodies as a living sacrifice' — the body is how you show up for God's purposes. Strong, rested, disciplined, honored — this is what you bring to the altar every morning. Not impressed with itself, but available."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Where is God calling you to place this body in service in this season? What would 'offering it' look like this week?",
+              "placeholder": "My body can serve where...",
+              "id": "reflect-5-7"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Take this body as a living sacrifice",
+                "Point my strength, rest and discipline to Your purposes"
+              ],
+              "id": "pray-5-7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "title": "Week 6 — Work and calling",
+      "theme": "Work and calling",
+      "intro": [
+        {
+          "type": "paragraph",
+          "text": "A Prime's work is a significant percentage of the waking life — and of the witness. This week we honor the sweat: work as calling, not just income; diligence as worship; and the workplace as a field for faith."
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-10-06",
+          "day": 36,
+          "weekday": "Tuesday",
+          "title": "Whatever you do",
+          "verse": {
+            "text": "Whatever you do, work at it with all your heart, as working for the Lord, not for human masters.",
+            "by": "Colossians 3:23"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "There is no unholy work if it's done for the Lord. The report, the shift, the email, the client call — 'whatever you do, work at it with all your heart.' Not for the boss, not for the pay slip, but for Christ. That single reframe turns a job into worship and a career into a calling. Try it on one task today."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Do one task 'as for the Lord' today, all heart",
+                "Refuse the two-speed version (slack when watched)",
+                "Say: 'my desk is an altar today'"
+              ],
+              "id": "reflect-6-1"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Work through me as I work for You",
+                "Let my diligence be seen as devotion"
+              ],
+              "id": "pray-6-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-07",
+          "day": 37,
+          "weekday": "Wednesday",
+          "title": "Six days",
+          "verse": {
+            "text": "Six days you shall labour and do all your work, but the seventh day is a sabbath to the Lord your God.",
+            "by": "Exodus 20:9–10"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The commandment assumes six days of real labor. Work is not the fall; it's the design — God worked, and he commissions humans to steward creation. The rhythm matters as much as the task: six devoted, one released. The Prime years get to take work seriously without being owned by it, because the seventh day draws the line."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Work one full block with genuine focus",
+                "Watch for the moment your ambition starts owning you",
+                "Thank God for work — and for the sabbath line"
+              ],
+              "id": "reflect-6-2"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Bless my six days of labor",
+                "Keep the seventh day sacred in my week"
+              ],
+              "id": "pray-6-2"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-08",
+          "day": 38,
+          "weekday": "Thursday",
+          "title": "Learn the ant",
+          "verse": {
+            "text": "Go to the ant, you sluggard; consider its ways and be wise! It has no commander, no overseer or ruler, yet it stores its provisions in summer.",
+            "by": "Proverbs 6:6–8"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The ant doesn't have a boss, doesn't have a deadline, and still works — storing in summer for the winter. Wisdom is working when nobody's watching. For the self-employed, the junior, the person between jobs, the discipline of the ant is the difference between drifting and building. You don't need an overseer; you need the habit."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Do one piece of unobserved work with full diligence",
+                "Store something today for a future season",
+                "Be the ant: no overseer, no slacking"
+              ],
+              "id": "reflect-6-3"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Give me the ant's self-motivated diligence",
+                "Let my unobserved hours build my future"
+              ],
+              "id": "pray-6-3"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-09",
+          "day": 39,
+          "weekday": "Friday",
+          "title": "Restoring the workweek",
+          "verse": {
+            "text": "For even when we were with you, we gave you this rule: 'The one who is unwilling to work shall not eat.'",
+            "by": "2 Thessalonians 3:10"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Paul was practical about work because he loved the community and didn't want the church thriving because of parasites. Work is not a curse — it's how people are dignified, families are fed, and generosity is funded. If you've been unemployed or under-employed, the way back is faithful small work done honestly. Eat, because you labored. That's a noble rule."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Do honest work today, however small",
+                "Refuse the identity of 'unemployable' — work is dignifying",
+                "Offer your labor as contribution, not just transaction"
+              ],
+              "id": "reflect-6-4"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Help my work feed me and fuel generosity",
+                "Restore the dignity of labor in my life"
+              ],
+              "id": "pray-6-4"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-10",
+          "day": 40,
+          "weekday": "Saturday",
+          "title": "The work test",
+          "verse": {
+            "text": "Whatever you do, work at it with all your heart, as working for the Lord, not for human masters.",
+            "by": "Colossians 3:23"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Quiz day on work. One verse, one posture: your desk is sacred. Check what you remember, then take it with you to work."
+            },
+            {
+              "type": "quiz",
+              "question": "How does Colossians 3:23 say we should work at whatever we do?",
+              "options": [
+                "With all our heart, as for the Lord",
+                "With attention only when watched",
+                "With the goal of promotion",
+                "As quickly as possible"
+              ],
+              "correctIndex": 0,
+              "explain": "'Whatever you do, work at it with all your heart, as working for the Lord, not for human masters.'",
+              "id": "reflect-6-5"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Let my work week be an offering",
+                "Work with all my heart as unto You"
+              ],
+              "id": "pray-6-5"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-11",
+          "day": 41,
+          "weekday": "Sunday",
+          "title": "Cease from labor",
+          "verse": {
+            "text": "By the seventh day God had finished the work he had been doing; so on the seventh day he rested from all his work.",
+            "by": "Genesis 2:2"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Rest day — and notice it's God who rested. Rest isn't an interruption of good work; it's the completion of it. 'Finishing' includes stopping. If your weeks have no stopping, you've misread the story: the Creator modeled the cease. Today, actually cease. The work will be there on day one; that's the point of day seven."
+            },
+            {
+              "type": "reflection",
+              "prompt": "What would it take for you to truly stop — leave the email closed, the phone down — for one full day? What makes you resist it?",
+              "placeholder": "What keeps me from ceasing is...",
+              "id": "reflect-6-6"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Teach me the blessing of finished work",
+                "Give me a sabbath that completes my hours"
+              ],
+              "id": "pray-6-6"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-12",
+          "day": 42,
+          "weekday": "Monday",
+          "title": "Work that outlasts",
+          "verse": {
+            "text": "Your eyes saw my unformed body; all the days ordained for me were written in your book.",
+            "by": "Psalm 139:16"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The week ends on the long view: some work outlasts your labor. The emails fade, but the colleague you mentored, the quality you stood for, the prayer over the work — those are 'days ordained' work. Keep one eye on the eternal ledger. Your work matters to God not mainly for its output, but for the person it's forming you into."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Which part of your workweek will matter in ten years? How does that change how you spend this week?",
+              "placeholder": "The work that will outlast me is...",
+              "id": "reflect-6-7"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Let my work build what outlasts it",
+                "Write my days in Your book, One who planned them"
+              ],
+              "id": "pray-6-7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "title": "Week 7 — Money and mastery",
+      "theme": "Money and mastery",
+      "intro": [
+        {
+          "type": "paragraph",
+          "text": "Money is the most practiced area of the modern life, and the most unexamined in the spiritual one. This week we don't worship money or despise it; we take mastery over it — budget, contentment, and a heart fixed on treasure that doesn't rust."
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-10-13",
+          "day": 43,
+          "weekday": "Tuesday",
+          "title": "Where your treasure is",
+          "verse": {
+            "text": "For where your treasure is, there your heart will be also.",
+            "by": "Matthew 6:21"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The heart follows the treasure, not the other way around. If you want to know where your heart truly is, don't listen to your words — read your bank statement. This week we let that honest accounting happen, because Scripture uses money as a diagnostic: it shows you, in daylight, what you actually love. Whatever we do this week, it starts with telling the truth about the treasure."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Look at where your last month's money actually went",
+                "Ask the honest question: what does that reveal I love?",
+                "Bring that answer to God without shame"
+              ],
+              "id": "reflect-7-1"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Show me where my treasure is — and my heart",
+                "Let my money submit to You, not rule me"
+              ],
+              "id": "pray-7-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-14",
+          "day": 44,
+          "weekday": "Wednesday",
+          "title": "Content with enough",
+          "verse": {
+            "text": "But godliness with contentment is great gain. For we brought nothing into the world, and we can take nothing out of it.",
+            "by": "1 Timothy 6:6–7"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The antidote to the devouring 'more' is godliness with contentment — a rare and, Paul says, great gain. You arrived with nothing and will leave with nothing; that isn't morbid, it's clarifying. Contentment is the ability to enjoy what you have without needing what you don't. It makes freedom possible with any income."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Name three things you already have that money can't buy",
+                "Enjoy one of them fully today",
+                "Let 'enough' be enough — not the enemy's word"
+              ],
+              "id": "reflect-7-2"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Teach me great gain: godliness with contentment",
+                "Quiet the appetite that never has enough"
+              ],
+              "id": "pray-7-2"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-15",
+          "day": 45,
+          "weekday": "Thursday",
+          "title": "Plans of the diligent",
+          "verse": {
+            "text": "The plans of the diligent lead to profit as surely as haste leads to poverty.",
+            "by": "Proverbs 21:5"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Mastery over money is planned, not accidental. The diligent plan; the hasty spend. A budget isn't unspiritual — it's wisdom wearing a spreadsheet. This week, if you don't already, sketch where the money goes: income, giving, saving, living. A plan that makes you steward money instead of being drifted by it is a wall you can eat off."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Write a simple plan for the next month's money",
+                "Put a line for generosity in it first",
+                "Choose diligence over haste, on purpose"
+              ],
+              "id": "reflect-7-3"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Give me diligence in planning my provision",
+                "Make my ledger a place where wisdom lives"
+              ],
+              "id": "pray-7-3"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-16",
+          "day": 46,
+          "weekday": "Friday",
+          "title": "No two masters",
+          "verse": {
+            "text": "You cannot serve both God and money.",
+            "by": "Matthew 6:24"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Jesus draws a hard line: no one serves two masters. You'll love one and hate the other — money and God don't do co-ownership. The surrendered Prime isn't the one who has no money; it's the one for whom money has no master-status. Whatever your balance, the question is posture: is money serving your calling, or are you serving its demands?"
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Name one way money has been bossing you",
+                "Put it under God's feet in prayer",
+                "Make one financial choice from servanthood, not fear"
+              ],
+              "id": "reflect-7-4"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "I cannot serve two masters — I serve You",
+                "Keep money in its servant role, not the throne"
+              ],
+              "id": "pray-7-4"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-17",
+          "day": 47,
+          "weekday": "Saturday",
+          "title": "The money test",
+          "verse": {
+            "text": "For where your treasure is, there your heart will be also.",
+            "by": "Matthew 6:21"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Quiz day on money. One diagnostic to remember: treasure reveals heart. Check what you remember about the mastery of money, then keep serving the one Master."
+            },
+            {
+              "type": "quiz",
+              "question": "How does Matthew 6:21 connect our treasure and our heart?",
+              "options": [
+                "Treasure is proof we work hard",
+                "Where our treasure is, our heart is also",
+                "We should hide our treasure",
+                "Heart decides to ignore treasure"
+              ],
+              "correctIndex": 1,
+              "explain": "'Where your treasure is, there your heart will be also.' Money reveals what we actually love.",
+              "id": "reflect-7-5"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Let my treasure follow my heart to You",
+                "Master my money for Your glory"
+              ],
+              "id": "pray-7-5"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-18",
+          "day": 48,
+          "weekday": "Sunday",
+          "title": "Simplicity of soul",
+          "verse": {
+            "text": "Give me neither poverty nor riches, but give me only my daily bread.",
+            "by": "Proverbs 30:8"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Rest day for the wallet. Agur's prayer is a model of holy moderation: not poverty (tempted to steal), not riches (tempted to deny God), only daily bread. There is a freedom in desiring exactly what God gives, day by day. Sit with that modest prayer today. It's the quiet that breaks the grip of the market's noise."
+            },
+            {
+              "type": "reflection",
+              "prompt": "What would 'only daily bread' feel like for you — and what part of your life is trying to be richer than that prayer?",
+              "placeholder": "The area wanting more than daily bread...",
+              "id": "reflect-7-6"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Give me neither riches nor poverty — daily bread",
+                "Delight me in simplicity of soul"
+              ],
+              "id": "pray-7-6"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-19",
+          "day": 49,
+          "weekday": "Monday",
+          "title": "Treasures in heaven",
+          "verse": {
+            "text": "But store up for yourselves treasures in heaven, where moths and vermin do not destroy, and where thieves do not break in and steal.",
+            "by": "Matthew 6:20"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The week closes my aiming higher: money can be converted into currency that outlives the bank. Generosity, mission, the training of a younger life, the relief of a neighbor — investments in the kingdom are stored where nothing rusts or breaks in. Mastery of money isn't accumulation; it's conversion. Trade the temporal for the eternal, and the flourishing years pay dividends forever."
+            },
+            {
+              "type": "reflection",
+              "prompt": "What part of your money could be converted this season into a treasure that thief cannot steal? What's holding it back?",
+              "placeholder": "I could convert...",
+              "id": "reflect-7-7"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Store my treasure where it cannot rust",
+                "Give me the courage of generous conversion"
+              ],
+              "id": "pray-7-7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "title": "Week 8 — A table for friends",
+      "theme": "A table for friends",
+      "intro": [
+        {
+          "type": "paragraph",
+          "text": "The flourishing life is not a solo act. This week we tend the table: friendship, hospitality, and the gift of a home with open doors in a world starving for welcome."
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-10-20",
+          "day": 50,
+          "weekday": "Tuesday",
+          "title": "A friend who sticks closer",
+          "verse": {
+            "text": "One who has unreliable friends soon comes to ruin, but there is a friend who sticks closer than a brother.",
+            "by": "Proverbs 18:24"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Friendship is a stewardship, not a luxury. Proverbs warns about unreliable friends and celebrates the one who sticks closer than family. As a single adult, intentional friendship can be harder — no school gates, no automatic circles. That's exactly why it must be tended on purpose. Invest in the friends who stick, and be the friend who sticks."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Call, message or visit one friend today",
+                "Ask a real question, not a small-talk one",
+                "Be the 'sticks closer' friend, not just the respondent"
+              ],
+              "id": "reflect-8-1"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank You for the friends who stick closer",
+                "Make me the kind of friend I need"
+              ],
+              "id": "pray-8-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-21",
+          "day": 51,
+          "weekday": "Wednesday",
+          "title": "Practice hospitality",
+          "verse": {
+            "text": "Share with the Lord's people who are in need. Practice hospitality.",
+            "by": "Romans 12:13"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Practice hospitality — the verb is 'pursue' in the Greek. Hospitality isn't decorative; it's a discipline. For the single person, the offer of a table is an act of priesthood: your home becomes a sanctuary for the lonely, the young, the single mom, the stranger. You don't need a perfect house or a catering budget. You need a kettle, a chair, and a 'come in.'"
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Invite someone over this week — anyone",
+                "Open the door to someone society leaves out",
+                "Let the table be simple but the welcome be wide"
+              ],
+              "id": "reflect-8-2"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Make my home a sanctuary of welcome",
+                "Let the angels I might host be real, not theoretical"
+              ],
+              "id": "pray-8-2"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-22",
+          "day": 52,
+          "weekday": "Thursday",
+          "title": "Iron sharpening iron",
+          "verse": {
+            "text": "As iron sharpens iron, so one person sharpens another.",
+            "by": "Proverbs 27:17"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Sharp friends are not the easiest friends. They ask the hard questions, tell you the truth about the relationship situation, call you on the stagnation. Iron sharpens by friction. If all your friendships are comfortable, you're being polished by nobody. This week, lean into one conversation that has some bite — the kind that leaves you sharper, not just smiling."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Ask one friend the question you've been avoiding",
+                "Receive the honest answer without defending",
+                "Let the friction sharpen you"
+              ],
+              "id": "reflect-8-3"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Give me iron friends who sharpen me",
+                "Make me a sharpener, not a flatterer"
+              ],
+              "id": "pray-8-3"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-23",
+          "day": 53,
+          "weekday": "Friday",
+          "title": "Open house",
+          "verse": {
+            "text": "Do not forget to show hospitality to strangers, for by so doing some people have shown hospitality to angels without knowing it.",
+            "by": "Hebrews 13:2"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Abraham's hospitality to three strangers became an encounter with God himself. The Bible treats open doors as a space where heaven shows up. Your home — rented, modest, whatever it is — is an embassy of the kingdom. When it's open, precious things walk in. Don't wait until the house is 'ready' to make it a house of welcome. Ready never arrives."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Open your door to one unexpected guest soon",
+                "Watch for the 'stranger' God has put near you",
+                "Stop waiting for 'ready' — open the door anyway"
+              ],
+              "id": "reflect-8-4"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Let my home be a place where You visit and I can't tell",
+                "Give me the courage of open doors"
+              ],
+              "id": "pray-8-4"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-24",
+          "day": 54,
+          "weekday": "Saturday",
+          "title": "The friendship test",
+          "verse": {
+            "text": "One who has unreliable friends soon comes to ruin, but there is a friend who sticks closer than a brother.",
+            "by": "Proverbs 18:24"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Quiz day on friendship. One proverb, one ordering of your social life: keep the stitchers, be the stitcher. Check what you remember, then go sit with a friend."
+            },
+            {
+              "type": "quiz",
+              "question": "What does Proverbs 18:24 say about friends?",
+              "options": [
+                "The more friends, the better",
+                "A friend who sticks closer than a brother beats unreliable ones",
+                "Friends are a distraction from God",
+                "Only family can be trusted"
+              ],
+              "correctIndex": 1,
+              "explain": "'There is a friend who sticks closer than a brother.' Quality and loyalty over volume.",
+              "id": "reflect-8-5"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank You for loyal friends in my life",
+                "Help me steward them well"
+              ],
+              "id": "pray-8-5"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-25",
+          "day": 55,
+          "weekday": "Sunday",
+          "title": "The loneliest are nearest",
+          "verse": {
+            "text": "God sets the lonely in families.",
+            "by": "Psalm 68:6"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Rest day at the table — and the rest is the reminder that loneliness is not your sentence. God's specialty is placing the lonely in families. Your table is part of that: when you set the lonely in your company, you're co-working with God. If you are the lonely one tonight, the first place to look is the table He's already spread. You are not set outside; you are set in."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Who around you is lonely right now — and are you? What would it take to seat either of you at a table this week?",
+              "placeholder": "The one God wants at a table is...",
+              "id": "reflect-8-6"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Set the lonely in families, starting with mine",
+                "Let me both give and receive a seat at a table"
+              ],
+              "id": "pray-8-6"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-26",
+          "day": 56,
+          "weekday": "Monday",
+          "title": "One another",
+          "verse": {
+            "text": "Now that you have purified yourselves by obeying the truth… love one another deeply, from the heart.",
+            "by": "1 Peter 1:22"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The New Testament's 'one anothers' are a whole architecture of friendship — love, encourage, bear burdens, forgive, honor. The table isn't the main event; the 'one another' that happens across it is. This week's table-setting was practice for a lifetime habit: a flourishing life is a connected life, and connected lives are the visible family of God."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Which 'one another' do you most need to practice right now — and with whom?",
+              "placeholder": "The one another I'll practice is...",
+              "id": "reflect-8-7"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Plant me deep in Your family",
+                "Make 'one another' the habit of my table"
+              ],
+              "id": "pray-8-7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "title": "Week 9 — Pass it down",
+      "theme": "Pass it down",
+      "intro": [
+        {
+          "type": "paragraph",
+          "text": "A Prime has something the world is short of: years of hard-won experience. This week is about passing it down — mentoring, legacy, and the quiet discipline of putting your life into someone else's."
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-10-27",
+          "day": 57,
+          "weekday": "Tuesday",
+          "title": "Entrust to faithful",
+          "verse": {
+            "text": "And the things you have heard me say in the presence of many witnesses entrust to reliable people who will also be qualified to teach others.",
+            "by": "2 Timothy 2:2"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Paul's legacy plan is a chain: he gave to Timothy, who entrusts to reliable people, who teach others. Your experience isn't meant to end with you. The mistakes, the lessons, the skills, the gospel — they're meant to be handed to reliable people who will pass them on. Who is your Timothy? If the answer is 'nobody yet,' that's the most strategic gap in your life."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Name one younger person God has put near you",
+                "Offer them something specific (skills, time, a listening ear)",
+                "Think in chains: who will they then pass it to?"
+              ],
+              "id": "reflect-9-1"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Show me the Timothy You're handing to me",
+                "Make me a reliable link in the chain"
+              ],
+              "id": "pray-9-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-28",
+          "day": 58,
+          "weekday": "Wednesday",
+          "title": "Silver and gold",
+          "verse": {
+            "text": "Silver or gold I do not have, but what I do have I give you.",
+            "by": "Acts 3:6"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Peter gave the lame man the one thing he had — and it changed his life. Mentoring doesn't require a title, a course, or a budget. It requires giving what you have: your attention, your story, your presence, your prayers. Some of the most powerful passing-down happens in a car ride, a meal, or a text that says 'I believe in you.' Give what you have."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Give one younger person your presence today",
+                "Tell them a story of a lesson you paid for",
+                "Forget the title; give the attention"
+              ],
+              "id": "reflect-9-2"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Let me give what I have, not what I lack",
+                "Multiply what I've received through my giving"
+              ],
+              "id": "pray-9-2"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-29",
+          "day": 59,
+          "weekday": "Thursday",
+          "title": "The second mile",
+          "verse": {
+            "text": "Above all, love each other deeply, because love covers over a multitude of sins.",
+            "by": "1 Peter 4:8"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Passing things down means loving people who are still being formed — which means forgiving them when they're immature, inconsistent, or ungrateful. Young adults in the making will drop the ball. 'Love each other deeply, because love covers a multitude of sins' is the instruction manual for mentoring. The days they disappoint you are the days the legacy is actually being built."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Extend grace to the learner who failed today",
+                "Remember your own younger mistakes",
+                "Let love cover the multitude of mentoring sins"
+              ],
+              "id": "reflect-9-3"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Give me a deep love that covers much",
+                "Use me to form, not just inform"
+              ],
+              "id": "pray-9-3"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-30",
+          "day": 60,
+          "weekday": "Friday",
+          "title": "Teaching as living",
+          "verse": {
+            "text": "But as for you, teach what is appropriate to sound doctrine… teach the older men, the older women… and train the younger men.",
+            "by": "Titus 2:1–4"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Titus gets a whole curriculum of passing down: older men and women teaching the younger how to live. Notice it's not a syllabus of doctrines — it's soberness, love, self-control, kindness, managing a home. You pass down a life more than a lecture. What have your years actually taught you? That is your course material. Teach it by living it where the younger can watch."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Write one 'life lesson' your years have taught you",
+                "Live it visibly this week — someone is learning from it",
+                "Ask who in your life is watching what you teach"
+              ],
+              "id": "reflect-9-4"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Make my life a curriculum worth studying",
+                "Let the younger learn soundness by watching me"
+              ],
+              "id": "pray-9-4"
+            }
+          ]
+        },
+        {
+          "date": "2026-10-31",
+          "day": 61,
+          "weekday": "Saturday",
+          "title": "The legacy test",
+          "verse": {
+            "text": "Entrust to reliable people who will also be qualified to teach others.",
+            "by": "2 Timothy 2:2"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Quiz day on legacy. One chain to remember: hear, entrust, teach. Check what you remember, then go start a link."
+            },
+            {
+              "type": "quiz",
+              "question": "In 2 Timothy 2:2, what does Paul tell Timothy to do with what he has heard?",
+              "options": [
+                "Keep it private",
+                "Entrust it to reliable people who will teach others",
+                "Preach it only on special occasions",
+                "Write a book"
+              ],
+              "correctIndex": 1,
+              "explain": "The legacy is a chain: entrust to reliable people who will teach others. It must move.",
+              "id": "reflect-9-5"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Make my learning move into another life",
+                "Keep me faithful in the chain"
+              ],
+              "id": "pray-9-5"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-01",
+          "day": 62,
+          "weekday": "Sunday",
+          "title": "Rest in repair",
+          "verse": {
+            "text": "He restores my soul. He guides me along the right paths for his name's sake.",
+            "by": "Psalm 23:3"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Rest day — because passing things down drains and heals at the same time. Mentoring surfaces your own scars; it exposes the places you still need restoring. The Shepherd 'restores my soul' — restoration is on His schedule, not your performance. Let the act of giving to others open the door for Him to give to you. The teacher is also a sheep."
+            },
+            {
+              "type": "reflection",
+              "prompt": "What has the past week's giving exposed in you that still needs restoring? Where do you need the Shepherd to guide you back onto the right path?",
+              "placeholder": "The part of me needing restoration...",
+              "id": "reflect-9-6"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Restore my soul as I give it away",
+                "Guide me back to the right paths"
+              ],
+              "id": "pray-9-6"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-02",
+          "day": 63,
+          "weekday": "Monday",
+          "title": "A race to pass the baton",
+          "verse": {
+            "text": "I have fought the good fight, I have finished the race, I have kept the faith.",
+            "by": "2 Timothy 4:7"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Paul's final summary isn't about trophies; it's about finishing and keeping. The opposite of a missed life is not a famous one — it's a finished one, with the baton handed on. Week by week you're building toward that line: fought, finished, kept. And because you passed it all down, the race continues in hands that aren't yours. That's the Prime vocation — to finish, and to make sure the race finishes with you still in it, cheering."
+            },
+            {
+              "type": "reflection",
+              "prompt": "What would 'keeping the faith' look like measured at the end of your life, not the end of this week? What baton is yours to hand?",
+              "placeholder": "The baton I must pass is...",
+              "id": "reflect-9-7"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Let me finish the race and keep the faith",
+                "Let my legacy be a race that keeps running"
+              ],
+              "id": "pray-9-7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "title": "Week 10 — The untangled heart",
+      "theme": "The untangled heart",
+      "intro": [
+        {
+          "type": "paragraph",
+          "text": "Singleness, seen from inside God's kingdom, is not an empty waiting room — it is an undivided devotion. This week we name that gift honestly, and let it turn our aloneness into attentiveness."
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-11-03",
+          "day": 64,
+          "weekday": "Tuesday",
+          "title": "Undivided",
+          "verse": {
+            "text": "An unmarried woman or man is concerned about the Lord's affairs, that they may be devoted to him in both body and spirit.",
+            "by": "1 Corinthians 7:34"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Paul isn't pitying the unmarried; he's describing an advantage. The undivided heart belongs to the Lord's affairs — a devotion 'in both body and spirit' that a divided life can't sustain at the same pitch. This is not a lesser status; it's a specific capacity. The question for a single Prime isn't 'when will I be complete?' but 'what is my undivided heart for right now?'"
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Name one Lord's-affair your undivided heart is for today",
+                "Spend one unshared hour on it",
+                "Refuse to describe yourself as 'incomplete'"
+              ],
+              "id": "reflect-10-1"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Receive my undivided heart as a gift, not a gap",
+                "Show me what this fullness is for"
+              ],
+              "id": "pray-10-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-04",
+          "day": 65,
+          "weekday": "Wednesday",
+          "title": "Set apart",
+          "verse": {
+            "text": "There are those who choose to live like eunuchs for the sake of the kingdom of heaven. The one who can accept this should accept it.",
+            "by": "Matthew 19:12"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Jesus names a shocking option: some 'choose' singleness for the sake of the kingdom. The word is 'eunuch' — a person made incapable/choosing not to marry, for a purpose beyond themselves. Jesus dignifies the choice. If singleness is your season (or your calling), reclaim it from the cultural pity: it can be a sanctuary, a staging ground, a sending place — for the kingdom."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "If given, receive your singleness as God's placement",
+                "Decide the 'sake of the kingdom' your singleness serves",
+                "Talk about your status with dignity, not apology"
+              ],
+              "id": "reflect-10-2"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank You for the kingdom-purpose of this season",
+                "Empty the shame out of my marital status"
+              ],
+              "id": "pray-10-2"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-05",
+          "day": 66,
+          "weekday": "Thursday",
+          "title": "Whole in one",
+          "verse": {
+            "text": "And he said to him, 'You shall love the Lord your God with all your heart and with all your soul and with all your mind.'",
+            "by": "Matthew 22:37"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The whole of you — heart, soul, mind — pointed one direction is an unusual, unmanufactured power. The world fragments the heart into many small loves; the first commandment gathers it back. In a season with fewer demands on your attention, you get to practice whole-heartedness at a level most can't. Don't fritter the gift on distraction."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Give God one hour of your whole heart today",
+                "Do one thing without checking a screen",
+                "Practice loving with all your mind — not just feelings"
+              ],
+              "id": "reflect-10-3"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Take all my heart, soul and mind",
+                "Gather the scattered loves into one direction"
+              ],
+              "id": "pray-10-3"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-06",
+          "day": 67,
+          "weekday": "Friday",
+          "title": "The gift discovered",
+          "verse": {
+            "text": "But I wish that all of you were as I am. But each of you has your own gift from God; one of this kind and another of that.",
+            "by": "1 Corinthians 7:7"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Paul wishes everyone were 'as I am' — unmarried and free — yet immediately insists it's a gift given to some, not a template for all. That is the grace of it: your singleness is not everyone's answer, but it is your gift to steward. Called gift, it changes from lack to leverage. Treat this season as a package of capacity God chose for you, and open it."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Name the 'gift' in your exact singleness",
+                "Open it — use what it makes possible",
+                "Bless, not envy, those with the other gift"
+              ],
+              "id": "reflect-10-4"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank You for the gift that is mine",
+                "Let me steward it, not resent it"
+              ],
+              "id": "pray-10-4"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-07",
+          "day": 68,
+          "weekday": "Saturday",
+          "title": "The singleness test",
+          "verse": {
+            "text": "An unmarried… man is concerned about the Lord's affairs.",
+            "by": "1 Corinthians 7:32–34"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Quiz day on the untangled heart. One advantage to remember: the undivided. Check what you remember, then go use the edge."
+            },
+            {
+              "type": "quiz",
+              "question": "What does Paul say the unmarried person is concerned about?",
+              "options": [
+                "Their own comfort",
+                "The affairs of this world",
+                "The Lord's affairs",
+                "Their future marriage"
+              ],
+              "correctIndex": 2,
+              "explain": "'The unmarried man is concerned about the Lord's affairs… devoted to him in both body and spirit.'",
+              "id": "reflect-10-5"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Consecrate my concern to Your affairs",
+                "Use the undivided for Your kingdom"
+              ],
+              "id": "pray-10-5"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-08",
+          "day": 69,
+          "weekday": "Sunday",
+          "title": "Rest in the right loneliness",
+          "verse": {
+            "text": "Your love is better than life.",
+            "by": "Psalm 63:3"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Rest day — and honest rest for the single heart includes naming the ache. There are nights your singleness feels like a deficiency and the Enemy whispers 'nobody chose you.' David, in a desert, answered the ache with the most radical line in the psalm: 'Your love is better than life.' Better than the life you thought you needed. Rest in a love that outbids every void."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Where does singleness ache in you most? Can you meet that place with 'Your love is better than life' — not as denial, but as the deeper claim?",
+              "placeholder": "The ache, and the answer...",
+              "id": "reflect-10-6"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Say it where it hurts: Your love is better than life",
+                "Rest in a love that outbids my voids"
+              ],
+              "id": "pray-10-6"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-09",
+          "day": 70,
+          "weekday": "Monday",
+          "title": "Held, not half",
+          "verse": {
+            "text": "I have loved you with an everlasting love.",
+            "by": "Jeremiah 31:3"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The week ends on the deepest truth: you are not half a person waiting to be completed — you are the object of an everlasting love. 'I have loved you with an everlasting love.' Before any human 'meant to be,' there is the love that meant you from eternity. A heart untangled from the need to be settled is free to be wholly present everywhere God sends it: whole, held, and on assignment."
+            },
+            {
+              "type": "reflection",
+              "prompt": "What would change in how you live this season if you truly operated from 'I am loved with an everlasting love' and not from 'I am still waiting'?",
+              "placeholder": "If I believed I was held, I would...",
+              "id": "reflect-10-7"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Let Your everlasting love finish me",
+                "Send me out whole, held, and free"
+              ],
+              "id": "pray-10-7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "title": "Week 11 — Guard the pursuit",
+      "theme": "Guard the pursuit",
+      "intro": [
+        {
+          "type": "paragraph",
+          "text": "If and when relationships are pursued in this season, Scripture's word of order is guarding — the heart, the aims, the pace. This week we prepare well-loved boundaries for the pursuit of love, so it builds rather than burns."
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-11-10",
+          "day": 71,
+          "weekday": "Tuesday",
+          "title": "Guard the heart",
+          "verse": {
+            "text": "Above all else, guard your heart, for everything you do flows from it.",
+            "by": "Proverbs 4:23"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The front line of dating is not chemistry; it's gatekeeping. 'Above all else, guard your heart' — because everything flows from it. That means being honest about why you're entering a pursuit: loneliness, conformity, or genuine interest in a person God has placed near you? Guarded hearts pursue from wholeness, not from leakiness."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Audit your motives for what you're currently pursuing",
+                "Let sobriety, not speed, drive any next step",
+                "Say: 'I guard my heart because everything flows from it'"
+              ],
+              "id": "reflect-11-1"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Set a guard on my heart before I give it",
+                "Let my pursuit start from wholeness, not loneliness"
+              ],
+              "id": "pray-11-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-11",
+          "day": 72,
+          "weekday": "Wednesday",
+          "title": "Fix your thoughts",
+          "verse": {
+            "text": "Finally, brothers and sisters, whatever is true, whatever is noble… think about such things.",
+            "by": "Philippians 4:8"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Before a relationship exists, your thoughts do. Philippians 4:8 gives the filter for the inner life: true, noble, right, pure, lovely, admirable. The imagination is where relationships are either sanctified or sabotaged. Feed the pursuit with clean, hopeful, realistic thoughts — and starve the fantasy that sets you up for disappointment."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Run today's mental input through the Phil 4:8 filter",
+                "Starve one fantasy; feed one true, pure thought",
+                "Let your mind be a place a relationship could stand"
+              ],
+              "id": "reflect-11-2"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Guard my thoughts as I prepare my heart",
+                "Fix my mind on what is true and pure"
+              ],
+              "id": "pray-11-2"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-12",
+          "day": 73,
+          "weekday": "Thursday",
+          "title": "Seek first the kingdom",
+          "verse": {
+            "text": "But seek first his kingdom and his righteousness, and all these things will be given to you as well.",
+            "by": "Matthew 6:33"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The verse about anxiety is also the verse about singleness: seek first the kingdom, and the 'these things' (including, often, a spouse) are handled by the Father who tends to them. The order matters. A pursuit that displaces the kingdom at the top makes everything wobble. Stay rooted in the Kingdom, and let the relationship be a gift within that seeking, not a rescue from it."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Check the top of your priorities — is the kingdom first?",
+                "Let one kingdom-task receive your best self today",
+                "Trust the Father with 'these things'"
+              ],
+              "id": "reflect-11-3"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Set Your kingdom first in my pursuit",
+                "Trust You with the 'everything else'"
+              ],
+              "id": "pray-11-3"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-13",
+          "day": 74,
+          "weekday": "Friday",
+          "title": "Do not be yoked",
+          "verse": {
+            "text": "Do not be yoked together with unbelievers. For what do righteousness and wickedness have in common?",
+            "by": "2 Corinthians 6:14"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "If pursuing marriage, the boundary Scripture draws sharply is the yoke: don't be unequally yoked with an unbeliever. The image is two animals pulling one plow — if they don't pull together, the plow goes nowhere. A marriage where the deepest thing isn't shared is the loneliest room in the world. Guarded pursuit asks the faith question early, honestly, and without resentment."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Be honest: is faith the central 'pull' of any pursuit?",
+                "Value the yoke over the infatuation",
+                "Decide the boundary now, not in the crush"
+              ],
+              "id": "reflect-11-4"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Keep me honest about the yoke",
+                "Let me only move in step with those who love You"
+              ],
+              "id": "pray-11-4"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-14",
+          "day": 75,
+          "weekday": "Saturday",
+          "title": "The pursuit test",
+          "verse": {
+            "text": "Above all else, guard your heart, for everything you do flows from it.",
+            "by": "Proverbs 4:23"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Quiz day on the pursuit. One commandment to carry: guard first, pursue second. Check what you remember, then keep the guard on."
+            },
+            {
+              "type": "quiz",
+              "question": "According to Proverbs 4:23, why must we guard our heart above all else?",
+              "options": [
+                "Others will break it anyway",
+                "Everything we do flows from it",
+                "It's the seat of romance only",
+                "To look strong"
+              ],
+              "correctIndex": 1,
+              "explain": "'Guard your heart, for everything you do flows from it.' The heart is the spring of the whole life.",
+              "id": "reflect-11-5"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Keep my guard high as I go",
+                "Let my heart be trustworthy to give"
+              ],
+              "id": "pray-11-5"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-15",
+          "day": 76,
+          "weekday": "Sunday",
+          "title": "Rest in the pause",
+          "verse": {
+            "text": "He leads me beside quiet waters, he refreshes my soul.",
+            "by": "Psalm 23:2–3"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Rest day — because pursuit is exhausting and the pause is part of the pattern. The Shepherd not only guides; He pauses beside quiet waters and refreshes. There is such a thing as pursuing too hard, too fast, too loudly; a season of quiet waters is where souls get ready for company. Let this whole day be a pause — no swiping, no planning, just refreshment."
+            },
+            {
+              "type": "reflection",
+              "prompt": "What would a deliberate pause from pursuing look like for a week? What is the 'quiet waters' God is leading you beside?",
+              "placeholder": "Quiet waters for me are...",
+              "id": "reflect-11-6"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Lead me beside quiet waters",
+                "Refresh my soul before it gives itself again"
+              ],
+              "id": "pray-11-6"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-16",
+          "day": 77,
+          "weekday": "Monday",
+          "title": "The open hand",
+          "verse": {
+            "text": "Delight yourself in the Lord, and he will give you the desires of your heart.",
+            "by": "Psalm 37:4"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The week ends with the great surrendering promise: delight yourself in the Lord and the desires of your heart — your actual deep desires — are given to you. It's not a math trick to get a spouse; it's the open hand. When your delight is in God, what you desire begins to align with what He gives. Hold any pursuit with an open palm: if God keeps the desire or provides a person, the delight stays in Him either way."
+            },
+            {
+              "type": "reflection",
+              "prompt": "What desire are you holding with a clenched fist? Would you be able to hand it fully to God and still delight in Him?",
+              "placeholder": "The desire I'm holding...",
+              "id": "reflect-11-7"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Delight my heart in You above all",
+                "Take my clenched desires and make them open-handed"
+              ],
+              "id": "pray-11-7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 12,
+      "title": "Week 12 — The examined life",
+      "theme": "The examined life",
+      "intro": [
+        {
+          "type": "paragraph",
+          "text": "Every flourishing life makes room for honest review. The unexamined life drifts; the examined life stewards. This week we do what Prime is built for — looking back, looking in, and letting God's searchlight show us next."
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-11-17",
+          "day": 78,
+          "weekday": "Tuesday",
+          "title": "Search me, God",
+          "verse": {
+            "text": "Search me, God, and know my heart; test me and know my anxious thoughts. See if there is any offensive way in me, and lead me in the way everlasting.",
+            "by": "Psalm 139:23–24"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "David doesn't hide from the searchlight; he invites it. 'Search me,' he prays — the heart, the anxious thoughts, the offensive ways. Examining a life isn't self-flagellation; it's self-candor under a loving God. The examined life begins with that invitation, and it ends with being led, not just diagnosed, in the way everlasting."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Pray Psalm 139:23–24 honestly — invite the search",
+                "Name one anxious thought and one offensive way",
+                "Let the search end in 'lead me,' not just 'show me'"
+              ],
+              "id": "reflect-12-1"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Search me; don't let me hide from Your light",
+                "Lead me in the way everlasting after the search"
+              ],
+              "id": "pray-12-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-18",
+          "day": 79,
+          "weekday": "Wednesday",
+          "title": "A truthful mirror",
+          "verse": {
+            "text": "Anyone who listens to the word but does not do what it says is like someone who looks at his face in a mirror and… goes away and immediately forgets what he looks like.",
+            "by": "James 1:23–24"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The mirror test is the heart of the examined life: look, remember, and act. Annual reviews, spiritual retreats, honest friends — they're mirrors. But a mirror that changes nothing is decoration. After this week's looking, the point is one actionable 'do what it says.' Flourishing is a life that acts on what it sees."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Take one honest look in the spiritual mirror",
+                "Write down what you see — don't let it fade",
+                "Turn one insight into an action this week"
+              ],
+              "id": "reflect-12-2"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Let me not forget what I see in Your word",
+                "Turn the mirror into motion"
+              ],
+              "id": "pray-12-2"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-19",
+          "day": 80,
+          "weekday": "Thursday",
+          "title": "Redeem the time",
+          "verse": {
+            "text": "Be very careful, then, how you live — not as unwise but as wise, making the most of every opportunity, because the days are evil.",
+            "by": "Ephesians 5:15–16"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The examined life is time-disciplined. 'Making the most of every opportunity' reads as 'redeeming the time' — buying back hours from the drift. You can't redeem time you don't audit. This week, actually look at where the hours went: the scrolling, the obligations, the 'just keeping up.' Wise living cuts what drifts and redeems what remains for what matters."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Audit one full day's hours honestly",
+                "Cut one time-waster that steals hours weekly",
+                "Redeem those hours for one thing that matters"
+              ],
+              "id": "reflect-12-3"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Teach me to number my days and redeem them",
+                "Make my calendar wiser than my habits"
+              ],
+              "id": "pray-12-3"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-20",
+          "day": 81,
+          "weekday": "Friday",
+          "title": "Press on in the check",
+          "verse": {
+            "text": "Examine yourselves to see whether you are in the faith; test yourselves.",
+            "by": "2 Corinthians 13:5"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Paul turns the mirror onto the deepest question: are you in the faith — actually? A Prime examining a life asks not just about habits but about the center. If the center is drifting toward self, success, or safety, the whole person follows. The test isn't anxiety; it's honest course-correction while there's still time to steer."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Ask the real question: is Christ truly my faith's center?",
+                "Name where the drift has been mild but real",
+                "Steer back today, while there is room"
+              ],
+              "id": "reflect-12-4"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Examine me for the faith that holds",
+                "Bring every drift back to the Center"
+              ],
+              "id": "pray-12-4"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-21",
+          "day": 82,
+          "weekday": "Saturday",
+          "title": "The examination test",
+          "verse": {
+            "text": "Examine yourselves to see whether you are in the faith; test yourselves.",
+            "by": "2 Corinthians 13:5"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Quiz day on the examined life. One discipline to own: look, so you can lead. Check what you remember, then stay in the honest mirror."
+            },
+            {
+              "type": "quiz",
+              "question": "How does 2 Corinthians 13:5 tell us to examine ourselves?",
+              "options": [
+                "Through our feelings about Sunday",
+                "By whether we are in the faith — test yourselves",
+                "By comparing ourselves to others",
+                "Only when in crisis"
+              ],
+              "correctIndex": 1,
+              "explain": "'Examine yourselves to see whether you are in the faith.' Honest, regular self-testing.",
+              "id": "reflect-12-5"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Keep me in the honest mirror",
+                "Let the examination lead, not condemn"
+              ],
+              "id": "pray-12-5"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-22",
+          "day": 83,
+          "weekday": "Sunday",
+          "title": "The still pool",
+          "verse": {
+            "text": "Be still, and know that I am God.",
+            "by": "Psalm 46:10"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Rest day — and there is no examination without stillness. Reflection only works when the water is still enough to see through. 'Be still, and know that I am God' is the posture under all self-review: you are not the one being examined by a disappointed judge, but seen by a God who knows. Stillness lets the anxious noise settle so you can actually hear the answer."
+            },
+            {
+              "type": "reflection",
+              "prompt": "What did the week's examination reveal that you'd been too busy or too noisy to see? Sit with it in the stillness.",
+              "placeholder": "In the stillness I saw...",
+              "id": "reflect-12-6"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Still my waters so I can be known",
+                "Let the knowing of You steady the knowing of me"
+              ],
+              "id": "pray-12-6"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-23",
+          "day": 84,
+          "weekday": "Monday",
+          "title": "New every morning",
+          "verse": {
+            "text": "Because of the Lord's great love we are not consumed, for his compassions never fail. They are new every morning.",
+            "by": "Lamentations 3:22–23"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The examined life could crush you if it ended in verdict — so it ends in mercy. Whatever this week's mirror showed you, the deeper truth is: His compassions are new every morning. You are not consumed by your discoveries; you're met by grace. The whole point of looking back is that every morning is a fresh beginning. Flourishing is not perfection; it's repentance that keeps pace with the new morning."
+            },
+            {
+              "type": "reflection",
+              "prompt": "What did this week's honesty show you that needs tomorrow's new mercy? Write the one thing you'll hand to God with the new morning.",
+              "placeholder": "Tomorrow's fresh start for...",
+              "id": "reflect-12-7"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank You that compassions are new every morning",
+                "Let the examined life end in mercy, not verdict"
+              ],
+              "id": "pray-12-7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "title": "Week 13 — Flourish and send",
+      "theme": "Flourish and send",
+      "intro": [
+        {
+          "type": "paragraph",
+          "text": "Thirteen weeks of tending, and now the flourishing life turns outward. This final week we gather the harvest and point it at the world: fruit that feeds others, and a life arranged to send good further than it goes."
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-11-24",
+          "day": 85,
+          "weekday": "Tuesday",
+          "title": "Bear much fruit",
+          "verse": {
+            "text": "This is to my Father's glory, that you bear much fruit, showing yourselves to be my disciples.",
+            "by": "John 15:8"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The whole season collapses into one glory-line: bear fruit. The vineyard of your life — purpose, boundaries, body, work, money, friends, legacy, undivided heart — was never meant to be beautiful for its own sake. It's meant to bear. Fruit is what others can eat. This week, ask one question over everything: what, this season, has ripened for someone else to taste?"
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Name the 'fruit' this season has ripened in you",
+                "Identify who it is for",
+                "Bear it — offer it this week"
+              ],
+              "id": "reflect-13-1"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Let my life bear much fruit to Your glory",
+                "Show me the hands my fruit is for"
+              ],
+              "id": "pray-13-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-25",
+          "day": 86,
+          "weekday": "Wednesday",
+          "title": "Abide to the end",
+          "verse": {
+            "text": "If you remain in me and my words remain in you, ask whatever you wish, and it will be done for you.",
+            "by": "John 15:7"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Fruit doesn't happen by striving; it happens by remaining. 'Remain in me' is the secret of every flourishing year: stay connected, let the words stay in you, and the asking, doing, and bearing follow. As the season closes, don't release the branches. Winter will test — the abiding vine has roots deep enough for both."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Renew your 'remaining' in Christ today, consciously",
+                "Let one of His words stay in you all day",
+                "Keep asking from inside the vine"
+              ],
+              "id": "reflect-13-2"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Keep me remaining in You past this season",
+                "Let Your words stay rooted in me"
+              ],
+              "id": "pray-13-2"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-26",
+          "day": 87,
+          "weekday": "Thursday",
+          "title": "The faithful manager",
+          "verse": {
+            "text": "His master replied, 'Well done, good and faithful servant! You have been faithful with a few things; I will put you in charge of many things. Come and share your master's happiness!'",
+            "by": "Matthew 25:21"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The aspiration of the flourishing life, finally, is a Master's 'well done.' Not applause — the approval of the One who gave you the talents. He started you with 'a few things' and watches how you steward them. Faithful with the few — that's the entire exam. The Prime years are time to be faithful with the few so the 'many things' are safe in your hands."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Take stock of your 'few things' with fresh gratitude",
+                "Steward them today with the Master in view",
+                "Let 'well done' be the audience you work for"
+              ],
+              "id": "reflect-13-3"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Make me faithful in the few things You gave",
+                "Let me meet You at 'well done'"
+              ],
+              "id": "pray-13-3"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-27",
+          "day": 88,
+          "weekday": "Friday",
+          "title": "Steady to the end",
+          "verse": {
+            "text": "Therefore, my dear brothers and sisters, stand firm. Let nothing move you. Always give yourselves fully to the work of the Lord, because you know that your labor in the Lord is not in vain.",
+            "by": "1 Corinthians 15:58"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Flourishing has an endurance clause: stand firm, let nothing move you. The Enemy's favorite tactic in the flourishing years is a slow drift disguised as a short-cut. Steadiness is spiritual stamina. And the verse's engine is the last clause — your labor in the Lord is not in vain. Nothing you've built this season in Him is wasted, even what looks small."
+            },
+            {
+              "type": "checklist",
+              "title": "Try it today",
+              "items": [
+                "Stand firm on one point the season taught you",
+                "Let 'not in vain' fuel today's work",
+                "Refuse the shortcut that would move you"
+              ],
+              "id": "reflect-13-4"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Hold me steady at the season's close",
+                "Confirm: my labor in You is not in vain"
+              ],
+              "id": "pray-13-4"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-28",
+          "day": 89,
+          "weekday": "Saturday",
+          "title": "The harvest test",
+          "verse": {
+            "text": "This is to my Father's glory, that you bear much fruit.",
+            "by": "John 15:8"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Quiz day on the harvest. One line to end on: the fruit is for His glory. Check what you remember of this season's truths, then take the harvest onward."
+            },
+            {
+              "type": "quiz",
+              "question": "According to John 15:8, what brings glory to the Father?",
+              "options": [
+                "Being busy for God",
+                "Bearing much fruit as disciples",
+                "Being approved by people",
+                "Avoiding mistakes"
+              ],
+              "correctIndex": 1,
+              "explain": "'This is to my Father's glory, that you bear much fruit, showing yourselves to be my disciples.'",
+              "id": "reflect-13-5"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Gather every fruit this season for Your glory",
+                "Send me onward with fruit in hand"
+              ],
+              "id": "pray-13-5"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-29",
+          "day": 90,
+          "weekday": "Sunday",
+          "title": "The last green pasture",
+          "verse": {
+            "text": "Surely your goodness and love will follow me all the days of my life, and I will dwell in the house of the Lord forever.",
+            "by": "Psalm 23:6"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Rest day at the end of the season — and the shepherd psalm closes with the whole flourishing life in one verse: goodness and love following all your days, a house in the Lord forever. Everything you've tended this spring has been inside that promise. So rest well. The season ends the way it began — with a Shepherd, a table, and the certainty that the goodness follows."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Which week of this study most changed how you'll live? What is the one 'flourish' you're carrying out of spring?",
+              "placeholder": "The flourish I'm carrying forward...",
+              "id": "reflect-13-6"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Thank You for the goodness that follows me",
+                "Let me dwell in Your house, house of the season and forever"
+              ],
+              "id": "pray-13-6"
+            }
+          ]
+        },
+        {
+          "date": "2026-11-30",
+          "day": 91,
+          "weekday": "Monday",
+          "title": "Sent with the harvest",
+          "verse": {
+            "text": "Then I heard the voice of the Lord saying, 'Whom shall I send? And who will go for us?' And I said, 'Here am I. Send me!'",
+            "by": "Isaiah 6:8"
+          },
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "The flourishing years were never the destination; they were the staging ground. The season's last word is a sending: 'Whom shall I send?' The cultivated life, the trained body, the steward's soul, the open table, the passed-down legacy — all of it answers, 'Here am I. Send me.' Go out of this season as you came in — present, and offering: here am I, send me."
+            },
+            {
+              "type": "reflection",
+              "prompt": "Where is this season sending you? Say your 'here am I' out loud — to your work, your family, your city, your God.",
+              "placeholder": "Here am I; send me to...",
+              "id": "reflect-13-7"
+            },
+            {
+              "type": "pray",
+              "title": "Pray it today",
+              "items": [
+                "Here am I; send me",
+                "Let the flourishing years end in a sending, not an ending"
+              ],
+              "id": "pray-13-7"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
