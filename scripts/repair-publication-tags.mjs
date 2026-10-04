@@ -38,8 +38,8 @@ async function main() {
       (typeof doc.clubSlug === "string" && doc.clubSlug) || "RELATE"
     ).toUpperCase();
 
-    const tags: string[] = Array.isArray(doc.tags)
-      ? doc.tags.filter((t: unknown): t is string => typeof t === "string")
+    const tags = Array.isArray(doc.tags)
+      ? doc.tags.filter((t) => typeof t === "string")
       : [];
     const normalized = [...new Set(tags.map((t) => t.toUpperCase()))];
     if (!normalized.includes(clubTag)) normalized.unshift(clubTag);

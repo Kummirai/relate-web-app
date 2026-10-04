@@ -25,13 +25,11 @@ export function VerseProvider({ children }) {
   const [error, setError] = useState();
 
   const loadVerse = async () => {
-    setLoading(true);
-    setError(null);
-
     const data = await fetchVerseOfTheDay();
 
     if (data) {
       setVerse(data);
+      setError(null);
     } else {
       setError("Failed to load verse of the day.");
     }
@@ -39,13 +37,35 @@ export function VerseProvider({ children }) {
     setLoading(false);
   };
 
+  // Loading starts as true in useState; only an explicit refetch (an event
+  // handler) flips the flag back, so the mount effect never sets state
+  // synchronously.
+  const refetch = () => {
+    setLoading(true);
+    setError(null);
+    return loadVerse();
+  };
+
   useEffect(() => {
-    loadVerse();
+    let cancelled = false;
+    fetchVerseOfTheDay().then((data) => {
+      if (cancelled) return;
+      if (data) {
+        setVerse(data);
+        setError(null);
+      } else {
+        setError("Failed to load verse of the day.");
+      }
+      setLoading(false);
+    });
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   return (
     <VerseContext.Provider
-      value={{ verse, loading, error, refetch: loadVerse }}
+      value={{ verse, loading, error, refetch }}
     >
       {children}
     </VerseContext.Provider>
