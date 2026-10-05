@@ -31,6 +31,8 @@ export type Skill = {
   name: string;
   description: string;
   icon: string;
+  /** Royalty-free photo for the skill card (absolute URL on relateworld.org). */
+  image?: string;
   levels: SkillLevel[];
 };
 

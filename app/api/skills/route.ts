@@ -64,6 +64,7 @@ export async function GET(request: NextRequest) {
         clubSlug: string;
         description: string;
         icon: string;
+        image?: string;
         levelId: string;
         requirements: { text: string; criteria: string[] }[];
         levels: {
@@ -94,6 +95,7 @@ export async function GET(request: NextRequest) {
           clubSlug: club.slug,
           description: skill.description,
           icon: skill.icon,
+          image: skill.image,
           levelId: skill.levels[0]?.id ?? "",
           requirements: skill.levels[0]?.requirements ?? [],
           // Full per-level copy for clients that group requirements by level.

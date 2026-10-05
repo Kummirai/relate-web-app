@@ -12,6 +12,7 @@ import { readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { buildSproutClubs } from "./lib/sprout-skills.mjs";
+import { applySkillImages } from "./lib/skill-images.mjs";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const OUT = path.join(HERE, "skills-import.json");
@@ -20,7 +21,7 @@ const doc = JSON.parse(readFileSync(OUT, "utf8"));
 const adults = doc.clubs.filter((club) => !club.slug.startsWith("sprout"));
 const sprout = buildSproutClubs();
 
-doc.clubs = [...adults, ...sprout];
+doc.clubs = applySkillImages([...adults, ...sprout]);
 writeFileSync(OUT, JSON.stringify(doc, null, 2));
 
 for (const club of sprout) {
