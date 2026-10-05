@@ -27,10 +27,17 @@ export type SkillLevel = {
 export type Skill = {
   id: string;
   name: string;
-  clubSlug: string;
   description: string;
   icon: string;
   levels: SkillLevel[];
+};
+
+/** One club inside the framework document — skills grouped per club. */
+export type SkillsClub = {
+  slug: string;
+  name: string;
+  ageRange?: string;
+  skills: Skill[];
 };
 
 export type SkillProgress = {
@@ -73,7 +80,7 @@ export async function getSkillsFramework(db: any) {
   void id;
   void createdAt;
   void updatedAt;
-  return rest as { clubs: Skill[] };
+  return rest as { clubs: SkillsClub[] };
 }
 
 export async function getSkillProgress(db: any, userId: string, skillId: string, levelId: string) {
