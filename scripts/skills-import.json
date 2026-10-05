@@ -1,0 +1,3958 @@
+{
+  "clubs": [
+    {
+      "slug": "surge",
+      "name": "Surge",
+      "ageRange": "16–21 yrs",
+      "skills": [
+        {
+          "id": "python",
+          "name": "Python",
+          "icon": "code-slash",
+          "description": "Programming fundamentals with Python, from setup to projects.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#3B82F6",
+              "colorDark": "#1E40AF",
+              "requirements": [
+                {
+                  "text": "Setup & basics: install Python and write a Hello World program.",
+                  "criteria": [
+                    "Installs Python 3.x",
+                    "Creates hello.py",
+                    "Prints Hello World"
+                  ]
+                },
+                {
+                  "text": "Variables and data types: work with integers, floats, and strings.",
+                  "criteria": [
+                    "Declares 3 variables of different types",
+                    "Performs arithmetic operations",
+                    "Prints the type of each variable"
+                  ]
+                },
+                {
+                  "text": "Conditionals and loops: control program flow with if-else and loops.",
+                  "criteria": [
+                    "Writes an if-else statement",
+                    "Uses a for loop to iterate 5 times",
+                    "Uses a while loop with a condition"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "2",
+              "name": "Level 2",
+              "levelNumber": 2,
+              "color": "#60A5FA",
+              "colorDark": "#1E3A8A",
+              "requirements": [
+                {
+                  "text": "Functions: define and call reusable functions with parameters and return values.",
+                  "criteria": [
+                    "Defines a function with 2 parameters",
+                    "Calls it with 2 different arguments",
+                    "Returns and prints a value"
+                  ]
+                },
+                {
+                  "text": "File I/O: read from and write to text files safely.",
+                  "criteria": [
+                    "Creates a file and writes 3 lines",
+                    "Reads the file and prints contents",
+                    "Appends a new line without overwriting"
+                  ]
+                },
+                {
+                  "text": "Error handling: use try-except to catch common errors.",
+                  "criteria": [
+                    "Wraps file read in try-except",
+                    "Catches FileNotFoundError",
+                    "Prints a custom error message"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "3",
+              "name": "Level 3",
+              "levelNumber": 3,
+              "color": "#93C5FD",
+              "colorDark": "#1E40AF",
+              "requirements": [
+                {
+                  "text": "Modules: import and use standard library and custom modules.",
+                  "criteria": [
+                    "Imports math module",
+                    "Uses at least 2 math functions",
+                    "Imports a custom module"
+                  ]
+                },
+                {
+                  "text": "Mini project: build a CLI todo list with add, view, and save commands.",
+                  "criteria": [
+                    "Builds a CLI todo list with add/view",
+                    "Stores todos in a JSON file",
+                    "Implements at least 3 commands"
+                  ]
+                },
+                {
+                  "text": "Code quality: write clean, documented, PEP-8-compliant code.",
+                  "criteria": [
+                    "Adds docstrings to all functions",
+                    "Uses meaningful variable names",
+                    "Follows PEP 8 formatting"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "web-design",
+          "name": "Web Design",
+          "icon": "globe",
+          "description": "Design responsive websites with HTML, CSS, and modern layout techniques.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#3B82F6",
+              "colorDark": "#1E40AF",
+              "requirements": [
+                {
+                  "text": "HTML structure: create a valid HTML5 document with semantic sections.",
+                  "criteria": [
+                    "Creates a valid HTML5 document",
+                    "Uses header/main/footer",
+                    "Adds 3 semantic tags"
+                  ]
+                },
+                {
+                  "text": "CSS styling: style elements with an external stylesheet.",
+                  "criteria": [
+                    "Links an external CSS file",
+                    "Styles 3 different elements",
+                    "Uses at least 2 selectors"
+                  ]
+                },
+                {
+                  "text": "Responsive basics: adapt layout for different screen sizes.",
+                  "criteria": [
+                    "Adds a viewport meta tag",
+                    "Uses max-width for layout",
+                    "Tests on 2 screen sizes"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "2",
+              "name": "Level 2",
+              "levelNumber": 2,
+              "color": "#60A5FA",
+              "colorDark": "#1E3A8A",
+              "requirements": [
+                {
+                  "text": "Flexbox/Grid: build layouts with modern CSS techniques.",
+                  "criteria": [
+                    "Builds a nav with flexbox",
+                    "Creates a card grid with CSS Grid",
+                    "Centers content both ways"
+                  ]
+                },
+                {
+                  "text": "Forms: create and style accessible forms.",
+                  "criteria": [
+                    "Adds a contact form with 3 inputs",
+                    "Uses required and type attributes",
+                    "Styles focus states"
+                  ]
+                },
+                {
+                  "text": "Deploy: publish a site to a free host.",
+                  "criteria": [
+                    "Deploys to a free host",
+                    "Has a custom domain or subdomain",
+                    "Loads in under 2 seconds"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ms-office",
+          "name": "MS Office",
+          "icon": "document-text",
+          "description": "Master Microsoft Word, Excel, and PowerPoint for school and work.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#3B82F6",
+              "colorDark": "#1E40AF",
+              "requirements": [
+                {
+                  "text": "Word: create a 2-page formatted document.",
+                  "criteria": [
+                    "Creates a 2-page document",
+                    "Applies a style heading",
+                    "Inserts a page break"
+                  ]
+                },
+                {
+                  "text": "Excel: build a budget sheet with formulas and formatting.",
+                  "criteria": [
+                    "Creates a 5-row budget sheet",
+                    "Uses SUM on 3 columns",
+                    "Applies currency formatting"
+                  ]
+                },
+                {
+                  "text": "PowerPoint: build a 3-slide presentation with transitions.",
+                  "criteria": [
+                    "Builds a 3-slide deck",
+                    "Adds a transition to all slides",
+                    "Uses a consistent theme"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "2",
+              "name": "Level 2",
+              "levelNumber": 2,
+              "color": "#60A5FA",
+              "colorDark": "#1E3A8A",
+              "requirements": [
+                {
+                  "text": "Word mail merge: personalise documents for multiple recipients.",
+                  "criteria": [
+                    "Sets up a mail merge with 10 names",
+                    "Inserts merge fields",
+                    "Exports to PDF"
+                  ]
+                },
+                {
+                  "text": "Excel charts and conditional formatting.",
+                  "criteria": [
+                    "Creates a chart from data",
+                    "Adds a title and labels",
+                    "Applies conditional formatting"
+                  ]
+                },
+                {
+                  "text": "PowerPoint master slides: enforce consistent branding.",
+                  "criteria": [
+                    "Edits the slide master",
+                    "Adds a logo placeholder",
+                    "Applies master to all slides"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cv-writing",
+          "name": "CV Writing",
+          "icon": "document",
+          "description": "Create a professional CV that stands out to employers.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#3B82F6",
+              "colorDark": "#1E40AF",
+              "requirements": [
+                {
+                  "text": "Structure: build a complete CV with all essential sections.",
+                  "criteria": [
+                    "Includes 5 sections",
+                    "Uses reverse-chronological order",
+                    "Fits on 2 pages"
+                  ]
+                },
+                {
+                  "text": "Content: write achievement-focused bullet points.",
+                  "criteria": [
+                    "Uses 5 action verbs",
+                    "Quantifies 2 achievements with numbers",
+                    "Tailors to 1 job description"
+                  ]
+                },
+                {
+                  "text": "Formatting: polish the CV for readability and ATS.",
+                  "criteria": [
+                    "Uses a clean font",
+                    "Consistent bullet style",
+                    "Saved as PDF with correct filename"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "interview-skills",
+          "name": "Interview Skills",
+          "icon": "people",
+          "description": "Prepare for and excel in job interviews.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#3B82F6",
+              "colorDark": "#1E40AF",
+              "requirements": [
+                {
+                  "text": "Research: learn about the company and role.",
+                  "criteria": [
+                    "Researches 3 facts about the company",
+                    "Identifies 2 key values",
+                    "Prepares 3 questions to ask"
+                  ]
+                },
+                {
+                  "text": "Common questions: prepare STAR stories.",
+                  "criteria": [
+                    "Prepares STAR stories for 3 questions",
+                    "Practises answers aloud 3 times",
+                    "Records a 2-minute video response"
+                  ]
+                },
+                {
+                  "text": "Professional presence: demonstrate confidence and etiquette.",
+                  "criteria": [
+                    "Dresses appropriately for a mock interview",
+                    "Maintains eye contact for 80% of the interview",
+                    "Thanks the interviewer"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "public-speaking",
+          "name": "Public Speaking",
+          "icon": "mic",
+          "description": "Deliver confident, structured presentations to an audience.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#3B82F6",
+              "colorDark": "#1E40AF",
+              "requirements": [
+                {
+                  "text": "Speech structure: write and deliver a 3-minute speech.",
+                  "criteria": [
+                    "Writes a 3-minute speech with intro/body/conclusion",
+                    "Includes 1 story or statistic",
+                    "Practises 5 times"
+                  ]
+                },
+                {
+                  "text": "Delivery: speak clearly with purposeful gestures.",
+                  "criteria": [
+                    "Speaks clearly at moderate pace",
+                    "Uses 3 hand gestures",
+                    "Maintains eye contact with 3 audience members"
+                  ]
+                },
+                {
+                  "text": "Visual aids: support the speech with slides.",
+                  "criteria": [
+                    "Creates a 3-slide deck",
+                    "Uses 1 image per slide",
+                    "Reads from notes less than 20% of the time"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "2",
+              "name": "Level 2",
+              "levelNumber": 2,
+              "color": "#60A5FA",
+              "colorDark": "#1E3A8A",
+              "requirements": [
+                {
+                  "text": "Storytelling: use narrative to persuade.",
+                  "criteria": [
+                    "Opens with a personal anecdote",
+                    "Uses 2 rhetorical devices",
+                    "Ends with a clear call to action"
+                  ]
+                },
+                {
+                  "text": "Handling Q&A: answer audience questions confidently.",
+                  "criteria": [
+                    "Answers 3 audience questions",
+                    "Restates each question before answering",
+                    "Admits when unsure"
+                  ]
+                },
+                {
+                  "text": "Persuasion: deliver a 5-minute persuasive talk.",
+                  "criteria": [
+                    "Uses 3 persuasive techniques",
+                    "Anticipates 2 counterarguments",
+                    "Delivers a 5-minute persuasive talk"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "study-skills",
+          "name": "Study Skills",
+          "icon": "book",
+          "description": "Learn smarter with effective note-taking, time management, and exam prep.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#3B82F6",
+              "colorDark": "#1E40AF",
+              "requirements": [
+                {
+                  "text": "Note-taking: use the Cornell method for 1 lecture.",
+                  "criteria": [
+                    "Uses Cornell method for 1 lecture",
+                    "Summarizes each section in 1 sentence",
+                    "Reviews notes within 24 hours"
+                  ]
+                },
+                {
+                  "text": "Time management: build a focused study schedule.",
+                  "criteria": [
+                    "Creates a weekly study schedule",
+                    "Blocks 2-hour focused sessions",
+                    "Uses a timer for 25-minute sprints"
+                  ]
+                },
+                {
+                  "text": "Exam preparation: use active recall and spaced repetition.",
+                  "criteria": [
+                    "Creates a 1-page cheat sheet",
+                    "Teaches 1 topic to a peer",
+                    "Sleeps 7+ hours before a practice test"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "first-aid",
+          "name": "First Aid",
+          "icon": "medkit",
+          "description": "Learn essential first aid skills for emergencies.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#3B82F6",
+              "colorDark": "#1E40AF",
+              "requirements": [
+                {
+                  "text": "CPR basics: perform hands-only CPR.",
+                  "criteria": [
+                    "Demonstrates hands-only CPR for 2 minutes",
+                    "Correct compression depth (5-6 cm)",
+                    "Correct rate (100-120/min)"
+                  ]
+                },
+                {
+                  "text": "Wound care: clean and dress a wound.",
+                  "criteria": [
+                    "Cleans a wound with saline",
+                    "Applies sterile dressing",
+                    "Secures with bandage"
+                  ]
+                },
+                {
+                  "text": "Emergency response: assess and act in an emergency.",
+                  "criteria": [
+                    "Checks scene safety",
+                    "Calls emergency services with clear info",
+                    "Monitors casualty until help arrives"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "2",
+              "name": "Level 2",
+              "levelNumber": 2,
+              "color": "#60A5FA",
+              "colorDark": "#1E3A8A",
+              "requirements": [
+                {
+                  "text": "Bandaging: apply different bandage types.",
+                  "criteria": [
+                    "Applies a finger bandage",
+                    "Applies a triangular bandage sling",
+                    "Checks circulation after 5 minutes"
+                  ]
+                },
+                {
+                  "text": "Burns and fractures: provide initial care.",
+                  "criteria": [
+                    "Treats a minor burn with cool water for 10 minutes",
+                    "Splints a suspected fracture",
+                    "Recognizes when to call for help"
+                  ]
+                },
+                {
+                  "text": "First aid kit: assemble and maintain a personal kit.",
+                  "criteria": [
+                    "Assembles a personal first aid kit",
+                    "Checks expiry dates on 5 items",
+                    "Labels all items clearly"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "financial-literacy",
+          "name": "Financial Literacy",
+          "icon": "wallet",
+          "description": "Understand budgeting, saving, and growing money wisely.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#3B82F6",
+              "colorDark": "#1E40AF",
+              "requirements": [
+                {
+                  "text": "Budgeting: track expenses and categorize spending.",
+                  "criteria": [
+                    "Tracks expenses for 7 days",
+                    "Categorizes into 4 groups",
+                    "Identifies 1 area to cut spending"
+                  ]
+                },
+                {
+                  "text": "Saving: set and work toward a SMART savings goal.",
+                  "criteria": [
+                    "Sets a SMART savings goal",
+                    "Opens a savings account",
+                    "Automates a monthly deposit"
+                  ]
+                },
+                {
+                  "text": "Debt awareness: understand different types of debt.",
+                  "criteria": [
+                    "Defines 3 types of debt",
+                    "Calculates total interest on a loan",
+                    "Lists 2 strategies to reduce debt"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "2",
+              "name": "Level 2",
+              "levelNumber": 2,
+              "color": "#60A5FA",
+              "colorDark": "#1E3A8A",
+              "requirements": [
+                {
+                  "text": "Investments: explore how money grows over time.",
+                  "criteria": [
+                    "Explains 3 investment types",
+                    "Calculates compound interest over 5 years",
+                    "Opens a retirement account"
+                  ]
+                },
+                {
+                  "text": "Insurance: compare and choose coverage.",
+                  "criteria": [
+                    "Compares 2 health insurance plans",
+                    "Explains deductible vs premium",
+                    "Files a sample claim"
+                  ]
+                },
+                {
+                  "text": "Taxes: read a payslip and understand deductions.",
+                  "criteria": [
+                    "Reads a pay slip and identifies deductions",
+                    "Files a simple tax return",
+                    "Explains 2 tax deductions"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "leadership",
+          "name": "Leadership",
+          "icon": "star",
+          "description": "Develop self-leadership and the ability to guide others.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#3B82F6",
+              "colorDark": "#1E40AF",
+              "requirements": [
+                {
+                  "text": "Goal setting: write and track SMART goals.",
+                  "criteria": [
+                    "Writes 3 SMART goals",
+                    "Tracks progress weekly",
+                    "Adjusts 1 goal after 4 weeks"
+                  ]
+                },
+                {
+                  "text": "Time management: use prioritisation frameworks.",
+                  "criteria": [
+                    "Uses Eisenhower matrix for 1 week",
+                    "Blocks deep-work time",
+                    "Says no to 1 low-priority request"
+                  ]
+                },
+                {
+                  "text": "Emotional intelligence: recognise and manage emotions.",
+                  "criteria": [
+                    "Keeps a 1-week emotion journal",
+                    "Identifies 3 emotional triggers",
+                    "Practises active listening in 2 conversations"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "2",
+              "name": "Level 2",
+              "levelNumber": 2,
+              "color": "#60A5FA",
+              "colorDark": "#1E3A8A",
+              "requirements": [
+                {
+                  "text": "Delegation: assign and follow up on tasks.",
+                  "criteria": [
+                    "Delegates 2 tasks to peers",
+                    "Provides clear instructions and deadlines",
+                    "Follows up on outcomes"
+                  ]
+                },
+                {
+                  "text": "Conflict resolution: mediate peer disputes.",
+                  "criteria": [
+                    "Mediates 1 peer dispute",
+                    "Uses neutral language",
+                    "Documents agreed actions"
+                  ]
+                },
+                {
+                  "text": "Project management: deliver a small project on time.",
+                  "criteria": [
+                    "Plans a project with milestones",
+                    "Tracks progress with a Kanban board",
+                    "Delivers final outcome on time"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "pulse",
+      "name": "Pulse",
+      "ageRange": "21–33 yrs",
+      "skills": [
+        {
+          "id": "career-readiness",
+          "name": "Career Readiness",
+          "icon": "briefcase",
+          "description": "Prepare for the job market with CV, applications, and interview skills.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#8B5CF6",
+              "colorDark": "#4C1D95",
+              "requirements": [
+                {
+                  "text": "Self-assessment: identify strengths, weaknesses, and interests.",
+                  "criteria": [
+                    "Lists 5 strengths and 3 weaknesses",
+                    "Identifies 2 career interests",
+                    "Completes a skills audit"
+                  ]
+                },
+                {
+                  "text": "Resume: create a targeted 1-page CV.",
+                  "criteria": [
+                    "Creates a 1-page CV",
+                    "Uses action verbs for each role",
+                    "Tailors CV to 1 job description"
+                  ]
+                },
+                {
+                  "text": "Application: apply to real roles and track progress.",
+                  "criteria": [
+                    "Applies to 3 real jobs",
+                    "Writes a cover letter for 1",
+                    "Tracks applications in a spreadsheet"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cv-linkedin",
+          "name": "CV & LinkedIn",
+          "icon": "document",
+          "description": "Optimise your CV and LinkedIn profile for recruiters.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#8B5CF6",
+              "colorDark": "#4C1D95",
+              "requirements": [
+                {
+                  "text": "LinkedIn profile: complete a recruiter-ready profile.",
+                  "criteria": [
+                    "Adds a professional photo",
+                    "Writes a headline with keywords",
+                    "Lists 3 experiences"
+                  ]
+                },
+                {
+                  "text": "CV optimisation: align your CV with job ads.",
+                  "criteria": [
+                    "Adds 5 keywords from job ads",
+                    "Quantifies 3 achievements",
+                    "Removes outdated information"
+                  ]
+                },
+                {
+                  "text": "Online presence: clean up and grow your digital footprint.",
+                  "criteria": [
+                    "Removes unprofessional content from social media",
+                    "Adds 2 recommendations",
+                    "Shares 1 industry article"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "financial-planning",
+          "name": "Financial Planning",
+          "icon": "wallet",
+          "description": "Plan, protect, and grow your finances across all life stages.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#8B5CF6",
+              "colorDark": "#4C1D95",
+              "requirements": [
+                {
+                  "text": "Budgeting: track spending and create a zero-based budget.",
+                  "criteria": [
+                    "Logs all expenses for 30 days",
+                    "Categorizes into needs/wants",
+                    "Creates a zero-based budget"
+                  ]
+                },
+                {
+                  "text": "Emergency fund: build a safety net.",
+                  "criteria": [
+                    "Calculates 3-month expenses",
+                    "Opens a separate savings account",
+                    "Makes first deposit"
+                  ]
+                },
+                {
+                  "text": "Protection: review insurance and create a will.",
+                  "criteria": [
+                    "Reviews insurance coverage",
+                    "Creates an emergency fund",
+                    "Writes a basic will"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "2",
+              "name": "Level 2",
+              "levelNumber": 2,
+              "color": "#A78BFA",
+              "colorDark": "#5B21B6",
+              "requirements": [
+                {
+                  "text": "Debt management: list and tackle debt strategically.",
+                  "criteria": [
+                    "Lists all debts with interest rates",
+                    "Calculates total debt",
+                    "Chooses 1 payoff strategy"
+                  ]
+                },
+                {
+                  "text": "Credit building: improve credit score and report.",
+                  "criteria": [
+                    "Checks credit report",
+                    "Disputes 1 error",
+                    "Improves score by 20 points"
+                  ]
+                },
+                {
+                  "text": "Tax planning: understand and optimise taxes.",
+                  "criteria": [
+                    "Reviews tax withholdings",
+                    "Claims eligible deductions",
+                    "Files on time"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "3",
+              "name": "Level 3",
+              "levelNumber": 3,
+              "color": "#C4B5FD",
+              "colorDark": "#6D28D9",
+              "requirements": [
+                {
+                  "text": "Retirement planning: build long-term security.",
+                  "criteria": [
+                    "Calculates retirement needs",
+                    "Opens a retirement account",
+                    "Sets monthly contribution"
+                  ]
+                },
+                {
+                  "text": "Estate planning: protect and transfer wealth.",
+                  "criteria": [
+                    "Creates a will",
+                    "Names beneficiaries on 2 accounts",
+                    "Stores documents securely"
+                  ]
+                },
+                {
+                  "text": "Investment strategy: diversify and rebalance.",
+                  "criteria": [
+                    "Diversifies across 3 asset classes",
+                    "Rebalances portfolio quarterly",
+                    "Reviews annual fees"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "budgeting",
+          "name": "Budgeting",
+          "icon": "calculator",
+          "description": "Master personal budgeting and cash-flow management.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#8B5CF6",
+              "colorDark": "#4C1D95",
+              "requirements": [
+                {
+                  "text": "Income tracking: record all income sources.",
+                  "criteria": [
+                    "Tracks all income for 1 month",
+                    "Identifies irregular income",
+                    "Creates an average monthly figure"
+                  ]
+                },
+                {
+                  "text": "Expense categories: create and stick to spending limits.",
+                  "criteria": [
+                    "Creates 8 spending categories",
+                    "Sets limits for each",
+                    "Tracks actual vs planned"
+                  ]
+                },
+                {
+                  "text": "Review cycle: adjust and improve monthly.",
+                  "criteria": [
+                    "Reviews budget every Sunday",
+                    "Adjusts limits monthly",
+                    "Achieves 80% adherence for 1 month"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "investing-basics",
+          "name": "Investing Basics",
+          "icon": "trending-up",
+          "description": "Understand markets, asset classes, and how to start investing.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#8B5CF6",
+              "colorDark": "#4C1D95",
+              "requirements": [
+                {
+                  "text": "Terminology: learn core investing vocabulary.",
+                  "criteria": [
+                    "Defines 10 investing terms",
+                    "Explains risk vs return",
+                    "Compares saving vs investing"
+                  ]
+                },
+                {
+                  "text": "Asset classes: understand stocks, bonds, property, and cash.",
+                  "criteria": [
+                    "Explains 4 asset classes",
+                    "Lists 2 examples each",
+                    "Chooses 1 based on risk tolerance"
+                  ]
+                },
+                {
+                  "text": "Getting started: open an account and make a first investment.",
+                  "criteria": [
+                    "Opens a brokerage account",
+                    "Buys 1 ETF",
+                    "Sets up automatic investing"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "2",
+              "name": "Level 2",
+              "levelNumber": 2,
+              "color": "#A78BFA",
+              "colorDark": "#5B21B6",
+              "requirements": [
+                {
+                  "text": "Fundamental analysis: evaluate companies.",
+                  "criteria": [
+                    "Reads a company's annual report",
+                    "Calculates P/E ratio",
+                    "Compares 2 competitors"
+                  ]
+                },
+                {
+                  "text": "Portfolio building: construct a diversified portfolio.",
+                  "criteria": [
+                    "Builds a diversified portfolio",
+                    "Allocates across 4 sectors",
+                    "Sets rebalancing rules"
+                  ]
+                },
+                {
+                  "text": "Risk management: protect your investments.",
+                  "criteria": [
+                    "Sets stop-loss on 1 position",
+                    "Allocates 10% to cash",
+                    "Reviews portfolio monthly"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "entrepreneurship",
+          "name": "Entrepreneurship",
+          "icon": "business",
+          "description": "Validate ideas, plan a business, and launch an MVP.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#8B5CF6",
+              "colorDark": "#4C1D95",
+              "requirements": [
+                {
+                  "text": "Idea validation: test demand before building.",
+                  "criteria": [
+                    "Interviews 10 potential customers",
+                    "Identifies 3 pain points",
+                    "Creates a value proposition"
+                  ]
+                },
+                {
+                  "text": "Business plan: write a 1-page plan.",
+                  "criteria": [
+                    "Writes a 1-page business plan",
+                    "Projects 12-month revenue",
+                    "Identifies 3 risks"
+                  ]
+                },
+                {
+                  "text": "MVP: build and test a minimum viable product.",
+                  "criteria": [
+                    "Builds a minimum viable product",
+                    "Tests with 5 users",
+                    "Iterates based on feedback"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "2",
+              "name": "Level 2",
+              "levelNumber": 2,
+              "color": "#A78BFA",
+              "colorDark": "#5B21B6",
+              "requirements": [
+                {
+                  "text": "Marketing: plan and run a campaign.",
+                  "criteria": [
+                    "Creates a marketing plan",
+                    "Runs 1 campaign",
+                    "Tracks conversion rate"
+                  ]
+                },
+                {
+                  "text": "Sales: make and close sales calls.",
+                  "criteria": [
+                    "Makes 10 sales calls",
+                    "Closes 2 deals",
+                    "Documents objections and responses"
+                  ]
+                },
+                {
+                  "text": "Metrics: track key performance indicators.",
+                  "criteria": [
+                    "Tracks 5 key metrics weekly",
+                    "Creates a dashboard",
+                    "Adjusts strategy based on data"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "public-speaking-pulse",
+          "name": "Public Speaking",
+          "icon": "mic",
+          "description": "Deliver persuasive presentations and facilitate workshops.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#8B5CF6",
+              "colorDark": "#4C1D95",
+              "requirements": [
+                {
+                  "text": "Preparation: research audience and practise.",
+                  "criteria": [
+                    "Researches the audience",
+                    "Outlines a 5-minute talk",
+                    "Practises 3 times"
+                  ]
+                },
+                {
+                  "text": "Delivery: speak without filler words.",
+                  "criteria": [
+                    "Uses a confident opening",
+                    "Speaks without filler words",
+                    "Manages 1 minute of Q&A"
+                  ]
+                },
+                {
+                  "text": "Visuals: create clean supporting slides.",
+                  "criteria": [
+                    "Creates a clean slide deck",
+                    "Uses 1 image per slide",
+                    "Reads from slides less than 30% of the time"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "2",
+              "name": "Level 2",
+              "levelNumber": 2,
+              "color": "#A78BFA",
+              "colorDark": "#5B21B6",
+              "requirements": [
+                {
+                  "text": "Persuasive speaking: build a 10-minute talk.",
+                  "criteria": [
+                    "Builds a 10-minute persuasive talk",
+                    "Uses 3 rhetorical devices",
+                    "Handles 3 tough questions"
+                  ]
+                },
+                {
+                  "text": "Workshop facilitation: design and lead a session.",
+                  "criteria": [
+                    "Designs a 30-minute workshop",
+                    "Engages participants with 2 activities",
+                    "Collects feedback"
+                  ]
+                },
+                {
+                  "text": "Storytelling: use narrative to connect.",
+                  "criteria": [
+                    "Tells a 5-minute personal story",
+                    "Uses emotion and detail",
+                    "Connects story to a larger lesson"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "digital-skills",
+          "name": "Digital Skills",
+          "icon": "laptop",
+          "description": "Use cloud tools, manage projects, and automate workflows.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#8B5CF6",
+              "colorDark": "#4C1D95",
+              "requirements": [
+                {
+                  "text": "Online safety: protect accounts and data.",
+                  "criteria": [
+                    "Creates strong passwords for 3 accounts",
+                    "Enables 2FA",
+                    "Identifies 3 phishing signs"
+                  ]
+                },
+                {
+                  "text": "Cloud tools: collaborate online.",
+                  "criteria": [
+                    "Uses Google Drive for file sharing",
+                    "Collaborates on a shared doc",
+                    "Manages folder permissions"
+                  ]
+                },
+                {
+                  "text": "Communication: run effective virtual meetings.",
+                  "criteria": [
+                    "Schedules a Zoom meeting with 3 people",
+                    "Shares screen and annotates",
+                    "Records and shares a meeting"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "2",
+              "name": "Level 2",
+              "levelNumber": 2,
+              "color": "#A78BFA",
+              "colorDark": "#5B21B6",
+              "requirements": [
+                {
+                  "text": "Project management: track work with boards and lists.",
+                  "criteria": [
+                    "Sets up a Trello/Asana board",
+                    "Creates 3 task lists with deadlines",
+                    "Tracks 1 project to completion"
+                  ]
+                },
+                {
+                  "text": "Data analysis: turn data into insights.",
+                  "criteria": [
+                    "Creates a pivot table in Excel",
+                    "Builds a chart in Google Sheets",
+                    "Writes a 1-page insight report"
+                  ]
+                },
+                {
+                  "text": "Automation: save time with workflows.",
+                  "criteria": [
+                    "Creates 1 Zapier/Zap automation",
+                    "Builds 1 email template",
+                    "Schedules 1 recurring task"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "networking",
+          "name": "Networking",
+          "icon": "people",
+          "description": "Build professional relationships and a personal brand.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#8B5CF6",
+              "colorDark": "#4C1D95",
+              "requirements": [
+                {
+                  "text": "Introduction: craft and deliver an elevator pitch.",
+                  "criteria": [
+                    "Prepares a 30-second elevator pitch",
+                    "Attends 1 networking event",
+                    "Follows up with 2 contacts"
+                  ]
+                },
+                {
+                  "text": "Relationship building: nurture connections.",
+                  "criteria": [
+                    "Schedules 1 coffee chat",
+                    "Adds value in 1 conversation",
+                    "Maintains a contact spreadsheet"
+                  ]
+                },
+                {
+                  "text": "Personal brand: define and share your expertise.",
+                  "criteria": [
+                    "Defines a personal brand statement",
+                    "Updates LinkedIn headline",
+                    "Shares 1 weekly insight"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "mentoring",
+          "name": "Mentoring",
+          "icon": "heart",
+          "description": "Support others with active listening, feedback, and goal setting.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#8B5CF6",
+              "colorDark": "#4C1D95",
+              "requirements": [
+                {
+                  "text": "Active listening: listen without fixing.",
+                  "criteria": [
+                    "Practises reflective listening in 3 conversations",
+                    "Avoids interrupting for 10 minutes",
+                    "Summarizes back what was heard"
+                  ]
+                },
+                {
+                  "text": "Goal setting with mentee: help someone set SMART goals.",
+                  "criteria": [
+                    "Helps a mentee set 2 SMART goals",
+                    "Reviews progress weekly",
+                    "Celebrates 1 milestone"
+                  ]
+                },
+                {
+                  "text": "Feedback: give and receive constructive feedback.",
+                  "criteria": [
+                    "Gives feedback using SBI model",
+                    "Receives feedback without defensiveness",
+                    "Implements 1 piece of feedback"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "prime",
+      "name": "Prime",
+      "ageRange": "33+",
+      "skills": [
+        {
+          "id": "financial-freedom",
+          "name": "Financial Freedom",
+          "icon": "wallet",
+          "description": "Build net worth, passive income, and long-term wealth.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#F59E0B",
+              "colorDark": "#92400E",
+              "requirements": [
+                {
+                  "text": "Net worth: calculate and track your financial position.",
+                  "criteria": [
+                    "Lists all assets and liabilities",
+                    "Calculates net worth",
+                    "Sets a 12-month growth target"
+                  ]
+                },
+                {
+                  "text": "Cash flow: build a surplus budget.",
+                  "criteria": [
+                    "Tracks monthly cash flow",
+                    "Creates a surplus budget",
+                    "Increases savings rate by 5%"
+                  ]
+                },
+                {
+                  "text": "Protection: safeguard income and family.",
+                  "criteria": [
+                    "Reviews insurance coverage",
+                    "Creates an emergency fund",
+                    "Writes a basic will"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "2",
+              "name": "Level 2",
+              "levelNumber": 2,
+              "color": "#FBBF24",
+              "colorDark": "#78350F",
+              "requirements": [
+                {
+                  "text": "Passive income: create income that does not require active work.",
+                  "criteria": [
+                    "Identifies 2 passive income streams",
+                    "Builds 1 stream",
+                    "Tracks monthly passive income"
+                  ]
+                },
+                {
+                  "text": "Debt freedom: eliminate high-interest debt.",
+                  "criteria": [
+                    "Lists all debts",
+                    "Chooses a payoff method",
+                    "Pays off 1 small debt"
+                  ]
+                },
+                {
+                  "text": "Investing: allocate income to long-term growth.",
+                  "criteria": [
+                    "Invests 15% of income",
+                    "Builds a diversified portfolio",
+                    "Reviews quarterly"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "3",
+              "name": "Level 3",
+              "levelNumber": 3,
+              "color": "#FCD34D",
+              "colorDark": "#92400E",
+              "requirements": [
+                {
+                  "text": "Real estate: explore property investment.",
+                  "criteria": [
+                    "Researches property investment",
+                    "Calculates ROI on 1 property",
+                    "Considers REITs"
+                  ]
+                },
+                {
+                  "text": "Business: start or invest in a business.",
+                  "criteria": [
+                    "Starts or invests in a business",
+                    "Tracks business metrics",
+                    "Reinvests 30% of profits"
+                  ]
+                },
+                {
+                  "text": "Legacy: plan for generational wealth.",
+                  "criteria": [
+                    "Sets legacy goals",
+                    "Establishes a trust or fund",
+                    "Documents values for heirs"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "investing",
+          "name": "Investing",
+          "icon": "trending-up",
+          "description": "Master valuation, portfolio construction, and tax optimisation.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#F59E0B",
+              "colorDark": "#92400E",
+              "requirements": [
+                {
+                  "text": "Markets: understand how stock markets work.",
+                  "criteria": [
+                    "Explains how stock markets work",
+                    "Identifies 3 major indices",
+                    "Reads stock prices"
+                  ]
+                },
+                {
+                  "text": "Asset allocation: spread risk across asset classes.",
+                  "criteria": [
+                    "Defines 4 asset classes",
+                    "Allocates a portfolio across classes",
+                    "Rebalances quarterly"
+                  ]
+                },
+                {
+                  "text": "Risk management: protect capital.",
+                  "criteria": [
+                    "Defines 5 investment risks",
+                    "Uses diversification",
+                    "Sets a maximum loss limit"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "2",
+              "name": "Level 2",
+              "levelNumber": 2,
+              "color": "#FBBF24",
+              "colorDark": "#78350F",
+              "requirements": [
+                {
+                  "text": "Valuation: compare stocks using fundamentals.",
+                  "criteria": [
+                    "Calculates P/E ratio",
+                    "Compares 2 stocks",
+                    "Values a simple company"
+                  ]
+                },
+                {
+                  "text": "Portfolio construction: build a diversified portfolio.",
+                  "criteria": [
+                    "Builds a 10-stock portfolio",
+                    "Monitors correlation",
+                    "Targets a Sharpe ratio"
+                  ]
+                },
+                {
+                  "text": "Tax optimization: reduce tax drag on returns.",
+                  "criteria": [
+                    "Uses tax-advantaged accounts",
+                    "Harvests tax losses",
+                    "Reviews tax implications annually"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "career-growth",
+          "name": "Career Growth",
+          "icon": "briefcase",
+          "description": "Advance in your career through visibility, performance, and development.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#F59E0B",
+              "colorDark": "#92400E",
+              "requirements": [
+                {
+                  "text": "Performance: exceed KPIs and document achievements.",
+                  "criteria": [
+                    "Exceeds KPIs for 1 quarter",
+                    "Documents 3 achievements",
+                    "Requests a review meeting"
+                  ]
+                },
+                {
+                  "text": "Visibility: raise your profile at work.",
+                  "criteria": [
+                    "Presents in 2 team meetings",
+                    "Writes 1 internal article",
+                    "Volunteers for a cross-team project"
+                  ]
+                },
+                {
+                  "text": "Development: keep skills current.",
+                  "criteria": [
+                    "Completes 1 online course",
+                    "Attends 1 industry event",
+                    "Updates LinkedIn with 1 new skill"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "health-wellness",
+          "name": "Health & Wellness",
+          "icon": "fitness",
+          "description": "Build sustainable habits for physical and mental health.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#F59E0B",
+              "colorDark": "#92400E",
+              "requirements": [
+                {
+                  "text": "Exercise: meet WHO activity guidelines.",
+                  "criteria": [
+                    "Exercises 150 minutes per week",
+                    "Tracks workouts for 4 weeks",
+                    "Completes a fitness assessment"
+                  ]
+                },
+                {
+                  "text": "Nutrition: plan and track healthy meals.",
+                  "criteria": [
+                    "Plans 5 healthy meals",
+                    "Tracks macros for 1 week",
+                    "Reduces sugar intake by 50%"
+                  ]
+                },
+                {
+                  "text": "Sleep: establish a consistent sleep routine.",
+                  "criteria": [
+                    "Sleeps 7-9 hours nightly for 2 weeks",
+                    "Tracks sleep quality",
+                    "Establishes a bedtime routine"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "2",
+              "name": "Level 2",
+              "levelNumber": 2,
+              "color": "#FBBF24",
+              "colorDark": "#78350F",
+              "requirements": [
+                {
+                  "text": "Stress management: build daily resilience habits.",
+                  "criteria": [
+                    "Practises meditation for 10 minutes daily for 2 weeks",
+                    "Uses box breathing during stress",
+                    "Tracks mood daily"
+                  ]
+                },
+                {
+                  "text": "Work-life balance: set and keep boundaries.",
+                  "criteria": [
+                    "Sets boundaries on work hours",
+                    "Takes all annual leave",
+                    "Has 1 hobby outside work"
+                  ]
+                },
+                {
+                  "text": "Preventive care: stay on top of health checks.",
+                  "criteria": [
+                    "Schedules a medical checkup",
+                    "Completes 2 screenings",
+                    "Follows a vaccination schedule"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cooking",
+          "name": "Cooking",
+          "icon": "restaurant",
+          "description": "Learn kitchen fundamentals and advance to entertaining.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#F59E0B",
+              "colorDark": "#92400E",
+              "requirements": [
+                {
+                  "text": "Knife skills: chop safely and efficiently.",
+                  "criteria": [
+                    "Dices an onion in under 3 minutes",
+                    "Juliennes a carrot",
+                    "Holds knife safely for 5 minutes"
+                  ]
+                },
+                {
+                  "text": "Techniques: master basic cooking methods.",
+                  "criteria": [
+                    "Boils, sautés, and roasts vegetables",
+                    "Makes a basic vinaigrette",
+                    "Cooks rice perfectly"
+                  ]
+                },
+                {
+                  "text": "Meal planning: plan and cook 3 dinners.",
+                  "criteria": [
+                    "Plans 3 dinners for a week",
+                    "Creates a shopping list",
+                    "Cooks 3 planned meals"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "2",
+              "name": "Level 2",
+              "levelNumber": 2,
+              "color": "#FBBF24",
+              "colorDark": "#78350F",
+              "requirements": [
+                {
+                  "text": "Proteins: cook meat and plant-based proteins well.",
+                  "criteria": [
+                    "Cooks chicken to 74°C",
+                    "Makes a pan sauce",
+                    "Rest meat before serving"
+                  ]
+                },
+                {
+                  "text": "Baking: bake from scratch.",
+                  "criteria": [
+                    "Bakes bread from scratch",
+                    "Makes a cake with frosting",
+                    "Follows a recipe exactly"
+                  ]
+                },
+                {
+                  "text": "Entertaining: host a small dinner.",
+                  "criteria": [
+                    "Plans a 3-course dinner for 4",
+                    "Prepares 1 dish ahead",
+                    "Cleans as you cook"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "home-management",
+          "name": "Home Management",
+          "icon": "home",
+          "description": "Maintain and organise a home efficiently.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#F59E0B",
+              "colorDark": "#92400E",
+              "requirements": [
+                {
+                  "text": "Cleaning: deep clean and schedule upkeep.",
+                  "criteria": [
+                    "Deep cleans 1 room in 1 hour",
+                    "Creates a cleaning schedule",
+                    "Uses 5 cleaning products correctly"
+                  ]
+                },
+                {
+                  "text": "Maintenance: handle basic home repairs.",
+                  "criteria": [
+                    "Changes a light bulb safely",
+                    "Unblocks a drain",
+                    "Resets a tripped breaker"
+                  ]
+                },
+                {
+                  "text": "Organisation: declutter and label storage.",
+                  "criteria": [
+                    "Declutters 1 closet",
+                    "Labels storage containers",
+                    "Implements a one-in-one-out rule for 1 month"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "digital-skills-prime",
+          "name": "Digital Skills",
+          "icon": "laptop",
+          "description": "Use cloud tools, manage projects, and automate workflows.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#F59E0B",
+              "colorDark": "#92400E",
+              "requirements": [
+                {
+                  "text": "Online safety: protect accounts and data.",
+                  "criteria": [
+                    "Creates strong passwords for 3 accounts",
+                    "Enables 2FA",
+                    "Identifies 3 phishing signs"
+                  ]
+                },
+                {
+                  "text": "Cloud tools: collaborate online.",
+                  "criteria": [
+                    "Uses Google Drive for file sharing",
+                    "Collaborates on a shared doc",
+                    "Manages folder permissions"
+                  ]
+                },
+                {
+                  "text": "Communication: run effective virtual meetings.",
+                  "criteria": [
+                    "Schedules a Zoom meeting with 3 people",
+                    "Shares screen and annotates",
+                    "Records and shares a meeting"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "2",
+              "name": "Level 2",
+              "levelNumber": 2,
+              "color": "#FBBF24",
+              "colorDark": "#78350F",
+              "requirements": [
+                {
+                  "text": "Project management: track work with boards and lists.",
+                  "criteria": [
+                    "Sets up a Trello/Asana board",
+                    "Creates 3 task lists with deadlines",
+                    "Tracks 1 project to completion"
+                  ]
+                },
+                {
+                  "text": "Data analysis: turn data into insights.",
+                  "criteria": [
+                    "Creates a pivot table in Excel",
+                    "Builds a chart in Google Sheets",
+                    "Writes a 1-page insight report"
+                  ]
+                },
+                {
+                  "text": "Automation: save time with workflows.",
+                  "criteria": [
+                    "Creates 1 Zapier/Zap automation",
+                    "Builds 1 email template",
+                    "Schedules 1 recurring task"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "leadership-prime",
+          "name": "Leadership",
+          "icon": "star",
+          "description": "Develop self-leadership and the ability to guide others.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#F59E0B",
+              "colorDark": "#92400E",
+              "requirements": [
+                {
+                  "text": "Goal setting: write and track SMART goals.",
+                  "criteria": [
+                    "Writes 3 SMART goals",
+                    "Tracks progress weekly",
+                    "Adjusts 1 goal after 4 weeks"
+                  ]
+                },
+                {
+                  "text": "Time management: use prioritisation frameworks.",
+                  "criteria": [
+                    "Uses Eisenhower matrix for 1 week",
+                    "Blocks deep-work time",
+                    "Says no to 1 low-priority request"
+                  ]
+                },
+                {
+                  "text": "Emotional intelligence: recognise and manage emotions.",
+                  "criteria": [
+                    "Keeps a 1-week emotion journal",
+                    "Identifies 3 emotional triggers",
+                    "Practises active listening in 2 conversations"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "2",
+              "name": "Level 2",
+              "levelNumber": 2,
+              "color": "#FBBF24",
+              "colorDark": "#78350F",
+              "requirements": [
+                {
+                  "text": "Delegation: assign and follow up on tasks.",
+                  "criteria": [
+                    "Delegates 2 tasks to peers",
+                    "Provides clear instructions and deadlines",
+                    "Follows up on outcomes"
+                  ]
+                },
+                {
+                  "text": "Conflict resolution: mediate peer disputes.",
+                  "criteria": [
+                    "Mediates 1 peer dispute",
+                    "Uses neutral language",
+                    "Documents agreed actions"
+                  ]
+                },
+                {
+                  "text": "Project management: deliver a small project on time.",
+                  "criteria": [
+                    "Plans a project with milestones",
+                    "Tracks progress with a Kanban board",
+                    "Delivers final outcome on time"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "mentoring-prime",
+          "name": "Mentoring",
+          "icon": "heart",
+          "description": "Support others with active listening, feedback, and goal setting.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#F59E0B",
+              "colorDark": "#92400E",
+              "requirements": [
+                {
+                  "text": "Active listening: listen without fixing.",
+                  "criteria": [
+                    "Practises reflective listening in 3 conversations",
+                    "Avoids interrupting for 10 minutes",
+                    "Summarizes back what was heard"
+                  ]
+                },
+                {
+                  "text": "Goal setting with mentee: help someone set SMART goals.",
+                  "criteria": [
+                    "Helps a mentee set 2 SMART goals",
+                    "Reviews progress weekly",
+                    "Celebrates 1 milestone"
+                  ]
+                },
+                {
+                  "text": "Feedback: give and receive constructive feedback.",
+                  "criteria": [
+                    "Gives feedback using SBI model",
+                    "Receives feedback without defensiveness",
+                    "Implements 1 piece of feedback"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "faith-foundations",
+          "name": "Faith Foundations",
+          "icon": "spiritual",
+          "description": "Grow in prayer, scripture, and spiritual community.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#F59E0B",
+              "colorDark": "#92400E",
+              "requirements": [
+                {
+                  "text": "Prayer: establish a daily prayer habit.",
+                  "criteria": [
+                    "Prays daily for 30 days",
+                    "Uses a prayer journal",
+                    "Prays with 1 partner weekly"
+                  ]
+                },
+                {
+                  "text": "Scripture: read and memorise the Bible regularly.",
+                  "criteria": [
+                    "Reads the Bible 5 days a week",
+                    "Memorizes 5 verses",
+                    "Joins a Bible study group"
+                  ]
+                },
+                {
+                  "text": "Worship: gather and serve regularly.",
+                  "criteria": [
+                    "Attends weekly service",
+                    "Participates in worship",
+                    "Serves in 1 ministry"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "2",
+              "name": "Level 2",
+              "levelNumber": 2,
+              "color": "#FBBF24",
+              "colorDark": "#78350F",
+              "requirements": [
+                {
+                  "text": "Doctrine: study core Christian teachings.",
+                  "criteria": [
+                    "Studies 3 core doctrines",
+                    "Explains grace in 1 sentence",
+                    "Discusses theology with 2 others"
+                  ]
+                },
+                {
+                  "text": "Service: put faith into action.",
+                  "criteria": [
+                    "Volunteers 10 hours",
+                    "Helps 1 person in need",
+                    "Documents service experiences"
+                  ]
+                },
+                {
+                  "text": "Community: grow in accountability.",
+                  "criteria": [
+                    "Joins a small group",
+                    "Submits to accountability",
+                    "Mentors 1 new believer"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "anchor",
+      "name": "Anchor",
+      "ageRange": "Single Parents",
+      "skills": [
+        {
+          "id": "parenting",
+          "name": "Parenting",
+          "icon": "people",
+          "description": "Build a nurturing, structured environment for children.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#10B981",
+              "colorDark": "#065F46",
+              "requirements": [
+                {
+                  "text": "Child development: understand age-appropriate milestones.",
+                  "criteria": [
+                    "Reads 1 book on child development",
+                    "Identifies 3 developmental milestones",
+                    "Applies 1 technique daily"
+                  ]
+                },
+                {
+                  "text": "Boundaries: set and enforce clear house rules.",
+                  "criteria": [
+                    "Sets 3 clear house rules",
+                    "Enforces consequences consistently",
+                    "Praises good behaviour daily"
+                  ]
+                },
+                {
+                  "text": "Connection: build a strong parent-child bond.",
+                  "criteria": [
+                    "Has 30 minutes of 1:1 time daily",
+                    "Reads together nightly",
+                    "Shares feelings openly"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "2",
+              "name": "Level 2",
+              "levelNumber": 2,
+              "color": "#34D399",
+              "colorDark": "#064E3B",
+              "requirements": [
+                {
+                  "text": "Positive discipline: guide behaviour without shouting.",
+                  "criteria": [
+                    "Uses time-out correctly",
+                    "Avoids shouting for 1 week",
+                    "Rewards positive behaviour"
+                  ]
+                },
+                {
+                  "text": "Routines: create predictable daily and nightly rhythms.",
+                  "criteria": [
+                    "Creates a morning routine",
+                    "Creates a bedtime routine",
+                    "Uses a visual schedule"
+                  ]
+                },
+                {
+                  "text": "Emotional coaching: help children name and manage feelings.",
+                  "criteria": [
+                    "Names emotions for the child",
+                    "Validates feelings",
+                    "Teaches coping strategies"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "3",
+              "name": "Level 3",
+              "levelNumber": 3,
+              "color": "#6EE7B7",
+              "colorDark": "#065F46",
+              "requirements": [
+                {
+                  "text": "Special needs awareness: recognise and support diverse needs.",
+                  "criteria": [
+                    "Identifies 3 common special needs",
+                    "Adapts communication style",
+                    "Advocates at school"
+                  ]
+                },
+                {
+                  "text": "Co-parenting: communicate effectively with a co-parent.",
+                  "criteria": [
+                    "Communicates effectively with co-parent",
+                    "Keeps conflict away from children",
+                    "Documents agreements"
+                  ]
+                },
+                {
+                  "text": "Leadership: mentor other single parents.",
+                  "criteria": [
+                    "Leads a parenting workshop",
+                    "Mentors 1 new parent",
+                    "Creates a parenting resource guide"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "budgeting-anchor",
+          "name": "Budgeting",
+          "icon": "calculator",
+          "description": "Manage household finances on a single income.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#10B981",
+              "colorDark": "#065F46",
+              "requirements": [
+                {
+                  "text": "Expense tracking: know where every rand goes.",
+                  "criteria": [
+                    "Tracks household expenses for 30 days",
+                    "Categorizes into needs/wants",
+                    "Identifies 2 savings opportunities"
+                  ]
+                },
+                {
+                  "text": "Income management: plan for variable income.",
+                  "criteria": [
+                    "Lists all income sources",
+                    "Creates a cash-flow plan",
+                    "Plans for irregular income"
+                  ]
+                },
+                {
+                  "text": "Debt reduction: attack debt strategically.",
+                  "criteria": [
+                    "Lists all debts with minimums",
+                    "Chooses a payoff method",
+                    "Makes extra payments for 3 months"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "financial-planning-anchor",
+          "name": "Financial Planning",
+          "icon": "wallet",
+          "description": "Protect your family and plan for the future.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#10B981",
+              "colorDark": "#065F46",
+              "requirements": [
+                {
+                  "text": "Emergency fund: create a financial safety net.",
+                  "criteria": [
+                    "Calculates 3-month expenses",
+                    "Opens a separate account",
+                    "Automates savings"
+                  ]
+                },
+                {
+                  "text": "Insurance: compare and choose coverage.",
+                  "criteria": [
+                    "Reviews current policies",
+                    "Compares 2 providers",
+                    "Files a test claim"
+                  ]
+                },
+                {
+                  "text": "Goals: set and prioritise financial goals.",
+                  "criteria": [
+                    "Sets 3 financial goals",
+                    "Prioritizes by timeline",
+                    "Allocates savings accordingly"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "2",
+              "name": "Level 2",
+              "levelNumber": 2,
+              "color": "#34D399",
+              "colorDark": "#064E3B",
+              "requirements": [
+                {
+                  "text": "College savings: plan for education costs.",
+                  "criteria": [
+                    "Opens a college fund",
+                    "Researches 2 savings plans",
+                    "Calculates future cost"
+                  ]
+                },
+                {
+                  "text": "Tax planning: maximise refunds and minimise liabilities.",
+                  "criteria": [
+                    "Reviews tax withholdings",
+                    "Claims eligible deductions",
+                    "Files on time"
+                  ]
+                },
+                {
+                  "text": "Estate planning: protect your children's future.",
+                  "criteria": [
+                    "Creates a will",
+                    "Names a guardian",
+                    "Stores documents safely"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cv-job-search",
+          "name": "CV & Job Search",
+          "icon": "document",
+          "description": "Re-enter or advance in the workplace with a strong CV.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#10B981",
+              "colorDark": "#065F46",
+              "requirements": [
+                {
+                  "text": "CV: create a focused 1-page CV.",
+                  "criteria": [
+                    "Creates a 1-page CV",
+                    "Highlights transferable skills",
+                    "Tailors to 1 job description"
+                  ]
+                },
+                {
+                  "text": "Cover letter: explain your story compellingly.",
+                  "criteria": [
+                    "Writes a cover letter for 1 job",
+                    "Addresses a gap positively",
+                    "Includes 1 achievement"
+                  ]
+                },
+                {
+                  "text": "Interview: practise common questions.",
+                  "criteria": [
+                    "Practises 5 common questions",
+                    "Researches the company",
+                    "Dresses professionally"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "time-management",
+          "name": "Time Management",
+          "icon": "time",
+          "description": "Balance work, parenting, and personal time effectively.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#10B981",
+              "colorDark": "#065F46",
+              "requirements": [
+                {
+                  "text": "Prioritisation: focus on what matters most.",
+                  "criteria": [
+                    "Uses Eisenhower matrix daily",
+                    "Completes top 3 tasks daily",
+                    "Reviews priorities weekly"
+                  ]
+                },
+                {
+                  "text": "Scheduling: block time and protect it.",
+                  "criteria": [
+                    "Blocks time on a calendar",
+                    "Includes buffers between tasks",
+                    "Says no to 1 low-priority request"
+                  ]
+                },
+                {
+                  "text": "Focus: eliminate distractions for deep work.",
+                  "criteria": [
+                    "Eliminates distractions for 2 hours",
+                    "Uses Pomodoro technique",
+                    "Tracks time spent on tasks"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cooking-on-a-budget",
+          "name": "Cooking on a Budget",
+          "icon": "restaurant",
+          "description": "Prepare nutritious, affordable meals for the family.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#10B981",
+              "colorDark": "#065F46",
+              "requirements": [
+                {
+                  "text": "Meal planning: plan 5 dinners within a budget.",
+                  "criteria": [
+                    "Plans 5 dinners for R200",
+                    "Creates a shopping list",
+                    "Shops from the list"
+                  ]
+                },
+                {
+                  "text": "Cooking skills: cook 3 staple meals from scratch.",
+                  "criteria": [
+                    "Cooks 3 staple meals from scratch",
+                    "Uses leftovers creatively",
+                    "Reads nutrition labels"
+                  ]
+                },
+                {
+                  "text": "Bulk cooking: cook once, eat many times.",
+                  "criteria": [
+                    "Cooks a large batch and freezes portions",
+                    "Labels with dates",
+                    "Reheats safely"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "first-aid-anchor",
+          "name": "First Aid",
+          "icon": "medkit",
+          "description": "Learn essential first aid skills for emergencies.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#10B981",
+              "colorDark": "#065F46",
+              "requirements": [
+                {
+                  "text": "CPR basics: perform hands-only CPR.",
+                  "criteria": [
+                    "Demonstrates hands-only CPR for 2 minutes",
+                    "Correct compression depth (5-6 cm)",
+                    "Correct rate (100-120/min)"
+                  ]
+                },
+                {
+                  "text": "Wound care: clean and dress a wound.",
+                  "criteria": [
+                    "Cleans a wound with saline",
+                    "Applies sterile dressing",
+                    "Secures with bandage"
+                  ]
+                },
+                {
+                  "text": "Emergency response: assess and act in an emergency.",
+                  "criteria": [
+                    "Checks scene safety",
+                    "Calls emergency services with clear info",
+                    "Monitors casualty until help arrives"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "2",
+              "name": "Level 2",
+              "levelNumber": 2,
+              "color": "#34D399",
+              "colorDark": "#064E3B",
+              "requirements": [
+                {
+                  "text": "Bandaging: apply different bandage types.",
+                  "criteria": [
+                    "Applies a finger bandage",
+                    "Applies a triangular bandage sling",
+                    "Checks circulation after 5 minutes"
+                  ]
+                },
+                {
+                  "text": "Burns and fractures: provide initial care.",
+                  "criteria": [
+                    "Treats a minor burn with cool water for 10 minutes",
+                    "Splints a suspected fracture",
+                    "Recognizes when to call for help"
+                  ]
+                },
+                {
+                  "text": "First aid kit: assemble and maintain a personal kit.",
+                  "criteria": [
+                    "Assembles a personal first aid kit",
+                    "Checks expiry dates on 5 items",
+                    "Labels all items clearly"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "counselling-basics",
+          "name": "Counselling Basics",
+          "icon": "heart",
+          "description": "Learn foundational listening and support skills.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#10B981",
+              "colorDark": "#065F46",
+              "requirements": [
+                {
+                  "text": "Active listening: listen without interrupting or fixing.",
+                  "criteria": [
+                    "Listens without interrupting for 10 minutes",
+                    "Reflects feelings back",
+                    "Avoids giving unsolicited advice"
+                  ]
+                },
+                {
+                  "text": "Boundaries: identify and communicate personal boundaries.",
+                  "criteria": [
+                    "Identifies 3 personal boundaries",
+                    "Communicates 1 boundary clearly",
+                    "Respects others' boundaries"
+                  ]
+                },
+                {
+                  "text": "Resources: know when and how to refer.",
+                  "criteria": [
+                    "Lists 3 local support services",
+                    "Creates a resource handout",
+                    "Refers someone appropriately"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "digital-skills-anchor",
+          "name": "Digital Skills",
+          "icon": "laptop",
+          "description": "Use cloud tools, manage projects, and automate workflows.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#10B981",
+              "colorDark": "#065F46",
+              "requirements": [
+                {
+                  "text": "Online safety: protect accounts and data.",
+                  "criteria": [
+                    "Creates strong passwords for 3 accounts",
+                    "Enables 2FA",
+                    "Identifies 3 phishing signs"
+                  ]
+                },
+                {
+                  "text": "Cloud tools: collaborate online.",
+                  "criteria": [
+                    "Uses Google Drive for file sharing",
+                    "Collaborates on a shared doc",
+                    "Manages folder permissions"
+                  ]
+                },
+                {
+                  "text": "Communication: run effective virtual meetings.",
+                  "criteria": [
+                    "Schedules a Zoom meeting with 3 people",
+                    "Shares screen and annotates",
+                    "Records and shares a meeting"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "2",
+              "name": "Level 2",
+              "levelNumber": 2,
+              "color": "#34D399",
+              "colorDark": "#064E3B",
+              "requirements": [
+                {
+                  "text": "Project management: track work with boards and lists.",
+                  "criteria": [
+                    "Sets up a Trello/Asana board",
+                    "Creates 3 task lists with deadlines",
+                    "Tracks 1 project to completion"
+                  ]
+                },
+                {
+                  "text": "Data analysis: turn data into insights.",
+                  "criteria": [
+                    "Creates a pivot table in Excel",
+                    "Builds a chart in Google Sheets",
+                    "Writes a 1-page insight report"
+                  ]
+                },
+                {
+                  "text": "Automation: save time with workflows.",
+                  "criteria": [
+                    "Creates 1 Zapier/Zap automation",
+                    "Builds 1 email template",
+                    "Schedules 1 recurring task"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "faith-resilience",
+          "name": "Faith & Resilience",
+          "icon": "spiritual",
+          "description": "Build spiritual strength and resilience for life's challenges.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#10B981",
+              "colorDark": "#065F46",
+              "requirements": [
+                {
+                  "text": "Prayer: establish a daily prayer habit.",
+                  "criteria": [
+                    "Prays daily for 30 days",
+                    "Keeps a prayer journal",
+                    "Prays with 1 other person weekly"
+                  ]
+                },
+                {
+                  "text": "Scripture: read and memorise the Bible regularly.",
+                  "criteria": [
+                    "Reads the Bible 5 days a week",
+                    "Memorizes 5 verses",
+                    "Joins a Bible study"
+                  ]
+                },
+                {
+                  "text": "Community: grow in spiritual community.",
+                  "criteria": [
+                    "Attends weekly service",
+                    "Joins a small group",
+                    "Serves in 1 ministry"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "2",
+              "name": "Level 2",
+              "levelNumber": 2,
+              "color": "#34D399",
+              "colorDark": "#064E3B",
+              "requirements": [
+                {
+                  "text": "Perseverance: draw strength from past hardships.",
+                  "criteria": [
+                    "Identifies 1 past hardship survived",
+                    "Lists 3 lessons learned",
+                    "Uses 1 coping strategy"
+                  ]
+                },
+                {
+                  "text": "Hope: anchor yourself in hope.",
+                  "criteria": [
+                    "Writes a hope statement",
+                    "Shares with 1 trusted person",
+                    "Revisits it monthly"
+                  ]
+                },
+                {
+                  "text": "Purpose: align daily life with values.",
+                  "criteria": [
+                    "Defines personal mission",
+                    "Aligns actions with values",
+                    "Serves in a meaningful role"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "spark",
+      "name": "Spark",
+      "ageRange": "0–5 yrs married",
+      "skills": [
+        {
+          "id": "communication",
+          "name": "Communication",
+          "icon": "chatbubbles",
+          "description": "Build a foundation of honest, loving communication.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#EC4899",
+              "colorDark": "#9D174D",
+              "requirements": [
+                {
+                  "text": "Active listening: listen without interrupting.",
+                  "criteria": [
+                    "Listens without interrupting for 5 minutes",
+                    "Reflects back what was heard",
+                    "Asks clarifying questions"
+                  ]
+                },
+                {
+                  "text": "Expression: share feelings without blame.",
+                  "criteria": [
+                    "Uses I statements",
+                    "Shares feelings without blame",
+                    "Expresses appreciation daily"
+                  ]
+                },
+                {
+                  "text": "Check-ins: hold regular relationship check-ins.",
+                  "criteria": [
+                    "Has a weekly 30-minute check-in",
+                    "Uses a talking stick or timer",
+                    "Notes 1 action item"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "2",
+              "name": "Level 2",
+              "levelNumber": 2,
+              "color": "#F472B6",
+              "colorDark": "#831843",
+              "requirements": [
+                {
+                  "text": "Vulnerability: share fears and ask for support.",
+                  "criteria": [
+                    "Shares 1 fear with spouse",
+                    "Asks for help with 1 struggle",
+                    "Listens without fixing"
+                  ]
+                },
+                {
+                  "text": "Nonverbal communication: notice and use body language.",
+                  "criteria": [
+                    "Notices body language",
+                    "Uses touch intentionally",
+                    "Maintains eye contact during talks"
+                  ]
+                },
+                {
+                  "text": "Conflict framing: turn complaints into requests.",
+                  "criteria": [
+                    "Reframes 1 complaint as a request",
+                    "Identifies the underlying need",
+                    "Agrees on 1 solution"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "conflict-resolution",
+          "name": "Conflict Resolution",
+          "icon": "handshake",
+          "description": "De-escalate tension and repair after disagreement.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#EC4899",
+              "colorDark": "#9D174D",
+              "requirements": [
+                {
+                  "text": "Timeouts: agree on a signal and cool-down period.",
+                  "criteria": [
+                    "Agrees on a timeout signal",
+                    "Takes 20 minutes to cool down",
+                    "Returns to discuss calmly"
+                  ]
+                },
+                {
+                  "text": "Listening: hear the full story before responding.",
+                  "criteria": [
+                    "Listens to the full story before responding",
+                    "Avoids interrupting",
+                    "Summarizes spouse's view"
+                  ]
+                },
+                {
+                  "text": "Compromise: find solutions that work for both.",
+                  "criteria": [
+                    "Identifies 3 possible solutions",
+                    "Chooses 1 both can accept",
+                    "Sets a trial period"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "2",
+              "name": "Level 2",
+              "levelNumber": 2,
+              "color": "#F472B6",
+              "colorDark": "#831843",
+              "requirements": [
+                {
+                  "text": "Apology: offer a specific and sincere apology.",
+                  "criteria": [
+                    "Offers a specific apology",
+                    "Takes responsibility",
+                    "Asks how to make amends"
+                  ]
+                },
+                {
+                  "text": "Forgiveness: let go of resentment within 24 hours.",
+                  "criteria": [
+                    "Forgives within 24 hours",
+                    "Lets go of resentment",
+                    "Discusses prevention"
+                  ]
+                },
+                {
+                  "text": "Reconnection: rebuild trust after conflict.",
+                  "criteria": [
+                    "Plans a reconciliation activity",
+                    "Rebuilds trust through actions",
+                    "Celebrates resolution"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "budgeting-together",
+          "name": "Budgeting Together",
+          "icon": "calculator",
+          "description": "Align on money goals and manage finances as a team.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#EC4899",
+              "colorDark": "#9D174D",
+              "requirements": [
+                {
+                  "text": "Money conversation: talk openly about finances.",
+                  "criteria": [
+                    "Has 1 honest talk about money",
+                    "Shares financial history",
+                    "Lists 3 shared goals"
+                  ]
+                },
+                {
+                  "text": "Joint budget: build a budget together.",
+                  "criteria": [
+                    "Lists all income and expenses",
+                    "Allocates to categories",
+                    "Signs off on the budget"
+                  ]
+                },
+                {
+                  "text": "Accountability: review budget together weekly.",
+                  "criteria": [
+                    "Checks budget weekly together",
+                    "Adjusts when overspent",
+                    "Celebrates staying under budget"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "financial-planning-spark",
+          "name": "Financial Planning",
+          "icon": "wallet",
+          "description": "Plan, protect, and grow your finances as a couple.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#EC4899",
+              "colorDark": "#9D174D",
+              "requirements": [
+                {
+                  "text": "Goals: set 3 joint financial goals.",
+                  "criteria": [
+                    "Sets 3 joint financial goals",
+                    "Prioritizes by timeline",
+                    "Writes a vision board"
+                  ]
+                },
+                {
+                  "text": "Cash flow: track spending together.",
+                  "criteria": [
+                    "Creates a joint spreadsheet",
+                    "Tracks spending for 30 days",
+                    "Identifies 2 areas to save"
+                  ]
+                },
+                {
+                  "text": "Protection: review insurance and create a will.",
+                  "criteria": [
+                    "Reviews insurance together",
+                    "Creates a will",
+                    "Names beneficiaries"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "2",
+              "name": "Level 2",
+              "levelNumber": 2,
+              "color": "#F472B6",
+              "colorDark": "#831843",
+              "requirements": [
+                {
+                  "text": "Investing: grow wealth together.",
+                  "criteria": [
+                    "Opens a joint investment account",
+                    "Invests monthly",
+                    "Reviews quarterly"
+                  ]
+                },
+                {
+                  "text": "Large purchases: plan and save for major goals.",
+                  "criteria": [
+                    "Saves for a down payment",
+                    "Compares loan options",
+                    "Plans a 3-year savings goal"
+                  ]
+                },
+                {
+                  "text": "Legacy: plan for generational giving.",
+                  "criteria": [
+                    "Writes a legacy plan",
+                    "Sets up a trust",
+                    "Teaches children about money"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "home-setup",
+          "name": "Home Setup",
+          "icon": "home",
+          "description": "Create a functional and welcoming home together.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#EC4899",
+              "colorDark": "#9D174D",
+              "requirements": [
+                {
+                  "text": "Space planning: design a functional floor plan.",
+                  "criteria": [
+                    "Draws a floor plan",
+                    "Assigns spaces to functions",
+                    "Declutters 1 room"
+                  ]
+                },
+                {
+                  "text": "Routines: establish daily and weekly rhythms.",
+                  "criteria": [
+                    "Creates a morning routine",
+                    "Creates an evening routine",
+                    "Creates a weekly cleaning schedule"
+                  ]
+                },
+                {
+                  "text": "Traditions: build meaningful family traditions.",
+                  "criteria": [
+                    "Establishes 1 weekly tradition",
+                    "Creates a holiday plan",
+                    "Builds a memory box"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cooking-together",
+          "name": "Cooking Together",
+          "icon": "restaurant",
+          "description": "Learn to cook and entertain as a couple.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#EC4899",
+              "colorDark": "#9D174D",
+              "requirements": [
+                {
+                  "text": "Knife skills: chop safely and efficiently together.",
+                  "criteria": [
+                    "Dices an onion safely",
+                    "Cuts vegetables evenly",
+                    "Cleans and stores knives"
+                  ]
+                },
+                {
+                  "text": "Recipes: follow and adapt recipes.",
+                  "criteria": [
+                    "Follows 3 recipes exactly",
+                    "Substitutes 1 ingredient",
+                    "Adjusts seasoning"
+                  ]
+                },
+                {
+                  "text": "Meal prep: prepare ingredients in advance.",
+                  "criteria": [
+                    "Plans 3 meals",
+                    "Prepares ingredients in advance",
+                    "Stores portions correctly"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "2",
+              "name": "Level 2",
+              "levelNumber": 2,
+              "color": "#F472B6",
+              "colorDark": "#831843",
+              "requirements": [
+                {
+                  "text": "Menu planning: design a multi-course dinner.",
+                  "criteria": [
+                    "Plans a 3-course dinner",
+                    "Creates a timeline",
+                    "Shops from a list"
+                  ]
+                },
+                {
+                  "text": "Timing: coordinate multiple dishes.",
+                  "criteria": [
+                    "Times 3 dishes to finish together",
+                    "Uses a timer",
+                    "Keeps food warm safely"
+                  ]
+                },
+                {
+                  "text": "Hosting: welcome and serve guests warmly.",
+                  "criteria": [
+                    "Sets the table nicely",
+                    "Greets guests warmly",
+                    "Cleans during the meal"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "parenting-prep",
+          "name": "Parenting Prep",
+          "icon": "people",
+          "description": "Prepare emotionally and practically for children.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#EC4899",
+              "colorDark": "#9D174D",
+              "requirements": [
+                {
+                  "text": "Education: learn about parenting philosophies.",
+                  "criteria": [
+                    "Reads 1 parenting book",
+                    "Attends a class",
+                    "Lists 3 parenting philosophies"
+                  ]
+                },
+                {
+                  "text": "Practical skills: master baby care basics.",
+                  "criteria": [
+                    "Learns to swaddle",
+                    "Practises diapering",
+                    "Installs a car seat"
+                  ]
+                },
+                {
+                  "text": "Support: build a village around your family.",
+                  "criteria": [
+                    "Builds a support network",
+                    "Identifies 2 mentors",
+                    "Plans for help after birth"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "faith-together",
+          "name": "Faith Together",
+          "icon": "spiritual",
+          "description": "Grow spiritually as a couple and build a faith-centred home.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#EC4899",
+              "colorDark": "#9D174D",
+              "requirements": [
+                {
+                  "text": "Prayer: pray together daily.",
+                  "criteria": [
+                    "Prays together daily for 2 weeks",
+                    "Prays for 3 specific things",
+                    "Uses a prayer list"
+                  ]
+                },
+                {
+                  "text": "Scripture: read and discuss the Bible together.",
+                  "criteria": [
+                    "Reads the Bible together weekly",
+                    "Memorizes 5 verses",
+                    "Discusses 1 passage"
+                  ]
+                },
+                {
+                  "text": "Worship: attend and serve together.",
+                  "criteria": [
+                    "Attends service together",
+                    "Serves together",
+                    "Creates a home altar"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "2",
+              "name": "Level 2",
+              "levelNumber": 2,
+              "color": "#F472B6",
+              "colorDark": "#831843",
+              "requirements": [
+                {
+                  "text": "Theology: study core doctrines together.",
+                  "criteria": [
+                    "Studies 3 doctrines together",
+                    "Discusses beliefs",
+                    "Reads 1 theology book"
+                  ]
+                },
+                {
+                  "text": "Service: volunteer together monthly.",
+                  "criteria": [
+                    "Volunteers together monthly",
+                    "Helps 1 family in need",
+                    "Documents impact"
+                  ]
+                },
+                {
+                  "text": "Legacy: create a family faith plan.",
+                  "criteria": [
+                    "Writes a family mission statement",
+                    "Creates a tradition",
+                    "Teaches children faith"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "intimacy-connection",
+          "name": "Intimacy & Connection",
+          "icon": "heart",
+          "description": "Deepen emotional and physical intimacy in marriage.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#EC4899",
+              "colorDark": "#9D174D",
+              "requirements": [
+                {
+                  "text": "Emotional intimacy: share inner thoughts daily.",
+                  "criteria": [
+                    "Shares 1 inner thought daily",
+                    "Listens without fixing",
+                    "Validates feelings"
+                  ]
+                },
+                {
+                  "text": "Physical intimacy: initiate affection regularly.",
+                  "criteria": [
+                    "Initiates affection 3 times a week",
+                    "Has a weekly date night",
+                    "Talks openly about needs"
+                  ]
+                },
+                {
+                  "text": "Quality time: protect uninterrupted time together.",
+                  "criteria": [
+                    "Has 1 hour of uninterrupted time daily",
+                    "Does 1 activity together weekly",
+                    "Turns off phones"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "2",
+              "name": "Level 2",
+              "levelNumber": 2,
+              "color": "#F472B6",
+              "colorDark": "#831843",
+              "requirements": [
+                {
+                  "text": "Vulnerability: share deep fears and needs.",
+                  "criteria": [
+                    "Shares 1 deep fear",
+                    "Asks for support",
+                    "Listens without judgment"
+                  ]
+                },
+                {
+                  "text": "Growth together: work on 1 relationship habit.",
+                  "criteria": [
+                    "Sets 1 relationship goal",
+                    "Works on 1 habit",
+                    "Celebrates progress monthly"
+                  ]
+                },
+                {
+                  "text": "Romance: keep romance alive.",
+                  "criteria": [
+                    "Plans 1 surprise date",
+                    "Writes love notes weekly",
+                    "Revisits first dates"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "goal-setting",
+          "name": "Goal Setting",
+          "icon": "flag",
+          "description": "Create and pursue shared goals as a couple.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#EC4899",
+              "colorDark": "#9D174D",
+              "requirements": [
+                {
+                  "text": "Vision: create a shared 5-year plan.",
+                  "criteria": [
+                    "Creates a shared vision board",
+                    "Writes a 5-year plan",
+                    "Identifies 3 core values"
+                  ]
+                },
+                {
+                  "text": "SMART goals: set measurable joint goals.",
+                  "criteria": [
+                    "Sets 3 SMART goals",
+                    "Tracks progress weekly",
+                    "Reviews monthly"
+                  ]
+                },
+                {
+                  "text": "Accountability: check in and adjust together.",
+                  "criteria": [
+                    "Checks in on goals weekly",
+                    "Adjusts when needed",
+                    "Celebrates achievements"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "synergy",
+      "name": "Synergy",
+      "ageRange": "6+ yrs married",
+      "skills": [
+        {
+          "id": "advanced-communication",
+          "name": "Advanced Communication",
+          "icon": "chatbubbles",
+          "description": "Master dialogue, difficult conversations, and feedback.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#6366F1",
+              "colorDark": "#312E81",
+              "requirements": [
+                {
+                  "text": "Dialogue: converse without arguing for 10 minutes.",
+                  "criteria": [
+                    "Uses dialogue for 10 minutes without arguing",
+                    "Validates before responding",
+                    "Finds common ground"
+                  ]
+                },
+                {
+                  "text": "Difficult conversations: prepare and stay calm.",
+                  "criteria": [
+                    "Prepares for 1 difficult talk",
+                    "Uses non-defensive language",
+                    "Agrees on next steps"
+                  ]
+                },
+                {
+                  "text": "Feedback: give and receive well.",
+                  "criteria": [
+                    "Gives feedback using SBI",
+                    "Receives feedback without defensiveness",
+                    "Acts on feedback"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "2",
+              "name": "Level 2",
+              "levelNumber": 2,
+              "color": "#818CF8",
+              "colorDark": "#3730A3",
+              "requirements": [
+                {
+                  "text": "Persuasion: influence with logic and emotion.",
+                  "criteria": [
+                    "Persuades spouse using logic and emotion",
+                    "Anticipates objections",
+                    "Finds win-win solutions"
+                  ]
+                },
+                {
+                  "text": "Public speaking as a couple: present together.",
+                  "criteria": [
+                    "Delivers a 10-minute talk together",
+                    "Handles Q&A",
+                    "Uses visual aids"
+                  ]
+                },
+                {
+                  "text": "Negotiation: agree on major decisions.",
+                  "criteria": [
+                    "Negotiates 3 decisions",
+                    "Uses principled negotiation",
+                    "Documents agreements"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "conflict-resolution-synergy",
+          "name": "Conflict Resolution",
+          "icon": "handshake",
+          "description": "Transform conflict into growth and model healthy resolution.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#6366F1",
+              "colorDark": "#312E81",
+              "requirements": [
+                {
+                  "text": "Triggers: identify and communicate personal triggers.",
+                  "criteria": [
+                    "Identifies 3 personal triggers",
+                    "Communicates triggers calmly",
+                    "Avoids escalation"
+                  ]
+                },
+                {
+                  "text": "Repair: repair within 24 hours.",
+                  "criteria": [
+                    "Repairs within 24 hours",
+                    "Offers a genuine apology",
+                    "Restores trust through action"
+                  ]
+                },
+                {
+                  "text": "Mediation: help others resolve conflict.",
+                  "criteria": [
+                    "Mediates a friend's conflict",
+                    "Remains neutral",
+                    "Helps find common ground"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "2",
+              "name": "Level 2",
+              "levelNumber": 2,
+              "color": "#818CF8",
+              "colorDark": "#3730A3",
+              "requirements": [
+                {
+                  "text": "Patterns: break negative conflict cycles.",
+                  "criteria": [
+                    "Identifies 1 conflict pattern",
+                    "Breaks the cycle",
+                    "Creates a new pattern"
+                  ]
+                },
+                {
+                  "text": "Growth: turn conflict into personal growth.",
+                  "criteria": [
+                    "Turns 1 conflict into growth",
+                    "Learns a lesson",
+                    "Applies it to future conflicts"
+                  ]
+                },
+                {
+                  "text": "Legacy: teach conflict resolution to others.",
+                  "criteria": [
+                    "Teaches conflict resolution to children",
+                    "Mentors a younger couple",
+                    "Documents lessons learned"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "financial-legacy",
+          "name": "Financial Legacy",
+          "icon": "wallet",
+          "description": "Build, protect, and pass on wealth across generations.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#6366F1",
+              "colorDark": "#312E81",
+              "requirements": [
+                {
+                  "text": "Net worth: calculate and track your financial position.",
+                  "criteria": [
+                    "Calculates net worth",
+                    "Sets a 5-year growth target",
+                    "Reviews monthly"
+                  ]
+                },
+                {
+                  "text": "Cash flow: create and stick to a joint budget.",
+                  "criteria": [
+                    "Creates a joint budget",
+                    "Tracks for 3 months",
+                    "Achieves 90% adherence"
+                  ]
+                },
+                {
+                  "text": "Protection: review insurance and estate basics.",
+                  "criteria": [
+                    "Reviews all insurance",
+                    "Creates an emergency fund",
+                    "Writes a will"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "2",
+              "name": "Level 2",
+              "levelNumber": 2,
+              "color": "#818CF8",
+              "colorDark": "#3730A3",
+              "requirements": [
+                {
+                  "text": "Passive income: create income streams.",
+                  "criteria": [
+                    "Identifies 2 passive income streams",
+                    "Builds 1 stream",
+                    "Tracks monthly income"
+                  ]
+                },
+                {
+                  "text": "Debt freedom: eliminate bad debt.",
+                  "criteria": [
+                    "Lists all debts",
+                    "Chooses a payoff method",
+                    "Pays off 1 debt"
+                  ]
+                },
+                {
+                  "text": "Investing: grow wealth consistently.",
+                  "criteria": [
+                    "Invests 20% of income",
+                    "Diversifies across 5 assets",
+                    "Reviews quarterly"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "3",
+              "name": "Level 3",
+              "levelNumber": 3,
+              "color": "#A5B4FC",
+              "colorDark": "#4338CA",
+              "requirements": [
+                {
+                  "text": "Estate planning: create a comprehensive plan.",
+                  "criteria": [
+                    "Creates a comprehensive will",
+                    "Sets up trusts",
+                    "Names guardians"
+                  ]
+                },
+                {
+                  "text": "Giving: build a legacy of generosity.",
+                  "criteria": [
+                    "Donates 10% of income",
+                    "Volunteers 50 hours",
+                    "Mentors 2 people"
+                  ]
+                },
+                {
+                  "text": "Succession: plan for business or wealth transfer.",
+                  "criteria": [
+                    "Creates a succession plan",
+                    "Documents processes",
+                    "Trains successors"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "investing-synergy",
+          "name": "Investing",
+          "icon": "trending-up",
+          "description": "Master valuation, portfolio construction, and tax optimisation.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#6366F1",
+              "colorDark": "#312E81",
+              "requirements": [
+                {
+                  "text": "Markets: understand how stock markets work.",
+                  "criteria": [
+                    "Explains how stock markets work",
+                    "Identifies 3 major indices",
+                    "Reads stock prices"
+                  ]
+                },
+                {
+                  "text": "Asset allocation: spread risk across asset classes.",
+                  "criteria": [
+                    "Defines 4 asset classes",
+                    "Allocates a portfolio across classes",
+                    "Rebalances quarterly"
+                  ]
+                },
+                {
+                  "text": "Risk management: protect capital.",
+                  "criteria": [
+                    "Defines 5 investment risks",
+                    "Uses diversification",
+                    "Sets a maximum loss limit"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "2",
+              "name": "Level 2",
+              "levelNumber": 2,
+              "color": "#818CF8",
+              "colorDark": "#3730A3",
+              "requirements": [
+                {
+                  "text": "Valuation: compare stocks using fundamentals.",
+                  "criteria": [
+                    "Calculates P/E ratio",
+                    "Compares 2 stocks",
+                    "Values a simple company"
+                  ]
+                },
+                {
+                  "text": "Portfolio construction: build a diversified portfolio.",
+                  "criteria": [
+                    "Builds a 10-stock portfolio",
+                    "Monitors correlation",
+                    "Targets a Sharpe ratio"
+                  ]
+                },
+                {
+                  "text": "Tax optimization: reduce tax drag on returns.",
+                  "criteria": [
+                    "Uses tax-advantaged accounts",
+                    "Harvests tax losses",
+                    "Reviews tax implications annually"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "parenting-teens",
+          "name": "Parenting Teens",
+          "icon": "people",
+          "description": "Understand, guide, and launch teenagers into adulthood.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#6366F1",
+              "colorDark": "#312E81",
+              "requirements": [
+                {
+                  "text": "Development: understand adolescent brain and needs.",
+                  "criteria": [
+                    "Reads 1 book on teen development",
+                    "Identifies 3 teen needs",
+                    "Attends a workshop"
+                  ]
+                },
+                {
+                  "text": "Communication: connect without arguing.",
+                  "criteria": [
+                    "Has weekly 1:1 time",
+                    "Listens without judgment",
+                    "Asks open-ended questions"
+                  ]
+                },
+                {
+                  "text": "Boundaries: set and enforce clear rules.",
+                  "criteria": [
+                    "Sets 3 clear boundaries",
+                    "Enforces consistently",
+                    "Explains the why"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "2",
+              "name": "Level 2",
+              "levelNumber": 2,
+              "color": "#818CF8",
+              "colorDark": "#3730A3",
+              "requirements": [
+                {
+                  "text": "Influence: guide without controlling.",
+                  "criteria": [
+                    "Influences without controlling",
+                    "Models behaviour",
+                    "Shares personal stories"
+                  ]
+                },
+                {
+                  "text": "Challenges: handle crises calmly.",
+                  "criteria": [
+                    "Handles 1 crisis calmly",
+                    "Researches 1 teen issue",
+                    "Connects to professional help if needed"
+                  ]
+                },
+                {
+                  "text": "Launching: prepare teens for independence.",
+                  "criteria": [
+                    "Discusses independence",
+                    "Teaches life skills",
+                    "Celebrates milestones"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "marriage-enrichment",
+          "name": "Marriage Enrichment",
+          "icon": "heart",
+          "description": "Deepen connection, intimacy, and shared meaning.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#6366F1",
+              "colorDark": "#312E81",
+              "requirements": [
+                {
+                  "text": "Quality time: protect time for each other.",
+                  "criteria": [
+                    "Has a weekly date night",
+                    "Takes a quarterly retreat",
+                    "Has daily check-ins"
+                  ]
+                },
+                {
+                  "text": "Intimacy: nurture emotional and physical closeness.",
+                  "criteria": [
+                    "Talks about needs openly",
+                    "Initiates affection",
+                    "Has a weekly intimacy talk"
+                  ]
+                },
+                {
+                  "text": "Fun: laugh and create memories together.",
+                  "criteria": [
+                    "Does 1 new activity monthly",
+                    "Laughs together daily",
+                    "Creates shared memories"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "2",
+              "name": "Level 2",
+              "levelNumber": 2,
+              "color": "#818CF8",
+              "colorDark": "#3730A3",
+              "requirements": [
+                {
+                  "text": "Vision: create a shared future.",
+                  "criteria": [
+                    "Creates a shared vision",
+                    "Sets annual goals",
+                    "Reviews quarterly"
+                  ]
+                },
+                {
+                  "text": "Service: serve together.",
+                  "criteria": [
+                    "Serves together monthly",
+                    "Helps another couple",
+                    "Volunteers as a family"
+                  ]
+                },
+                {
+                  "text": "Legacy: build something that outlasts you.",
+                  "criteria": [
+                    "Writes a marriage mission statement",
+                    "Creates family traditions",
+                    "Documents story"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "leadership-synergy",
+          "name": "Leadership",
+          "icon": "star",
+          "description": "Develop self-leadership and the ability to guide others.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#6366F1",
+              "colorDark": "#312E81",
+              "requirements": [
+                {
+                  "text": "Goal setting: write and track SMART goals.",
+                  "criteria": [
+                    "Writes 3 SMART goals",
+                    "Tracks progress weekly",
+                    "Adjusts 1 goal after 4 weeks"
+                  ]
+                },
+                {
+                  "text": "Time management: use prioritisation frameworks.",
+                  "criteria": [
+                    "Uses Eisenhower matrix for 1 week",
+                    "Blocks deep-work time",
+                    "Says no to 1 low-priority request"
+                  ]
+                },
+                {
+                  "text": "Emotional intelligence: recognise and manage emotions.",
+                  "criteria": [
+                    "Keeps a 1-week emotion journal",
+                    "Identifies 3 emotional triggers",
+                    "Practises active listening in 2 conversations"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "2",
+              "name": "Level 2",
+              "levelNumber": 2,
+              "color": "#818CF8",
+              "colorDark": "#3730A3",
+              "requirements": [
+                {
+                  "text": "Delegation: assign and follow up on tasks.",
+                  "criteria": [
+                    "Delegates 2 tasks to peers",
+                    "Provides clear instructions and deadlines",
+                    "Follows up on outcomes"
+                  ]
+                },
+                {
+                  "text": "Conflict resolution: mediate peer disputes.",
+                  "criteria": [
+                    "Mediates 1 peer dispute",
+                    "Uses neutral language",
+                    "Documents agreed actions"
+                  ]
+                },
+                {
+                  "text": "Project management: deliver a small project on time.",
+                  "criteria": [
+                    "Plans a project with milestones",
+                    "Tracks progress with a Kanban board",
+                    "Delivers final outcome on time"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "mentoring-couples",
+          "name": "Mentoring Couples",
+          "icon": "heart",
+          "description": "Walk alongside other couples with encouragement and wisdom.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#6366F1",
+              "colorDark": "#312E81",
+              "requirements": [
+                {
+                  "text": "Connection: meet with a couple regularly.",
+                  "criteria": [
+                    "Meets with 1 couple monthly",
+                    "Listens to their story",
+                    "Offers encouragement"
+                  ]
+                },
+                {
+                  "text": "Guidance: share lessons and help set goals.",
+                  "criteria": [
+                    "Shares 1 personal lesson",
+                    "Helps set 1 goal",
+                    "Checks in weekly"
+                  ]
+                },
+                {
+                  "text": "Support: provide practical and emotional help.",
+                  "criteria": [
+                    "Provides practical help 2 times",
+                    "Connects to resources",
+                    "Celebrates milestones"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "health-wellness-synergy",
+          "name": "Health & Wellness",
+          "icon": "fitness",
+          "description": "Build sustainable habits for physical and mental health.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#6366F1",
+              "colorDark": "#312E81",
+              "requirements": [
+                {
+                  "text": "Exercise: meet WHO activity guidelines.",
+                  "criteria": [
+                    "Exercises 150 minutes per week",
+                    "Tracks workouts for 4 weeks",
+                    "Completes a fitness assessment"
+                  ]
+                },
+                {
+                  "text": "Nutrition: plan and track healthy meals.",
+                  "criteria": [
+                    "Plans 5 healthy meals",
+                    "Tracks macros for 1 week",
+                    "Reduces sugar intake by 50%"
+                  ]
+                },
+                {
+                  "text": "Sleep: establish a consistent sleep routine.",
+                  "criteria": [
+                    "Sleeps 7-9 hours nightly for 2 weeks",
+                    "Tracks sleep quality",
+                    "Establishes a bedtime routine"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "2",
+              "name": "Level 2",
+              "levelNumber": 2,
+              "color": "#818CF8",
+              "colorDark": "#3730A3",
+              "requirements": [
+                {
+                  "text": "Stress management: build daily resilience habits.",
+                  "criteria": [
+                    "Practises meditation for 10 minutes daily for 2 weeks",
+                    "Uses box breathing during stress",
+                    "Tracks mood daily"
+                  ]
+                },
+                {
+                  "text": "Work-life balance: set and keep boundaries.",
+                  "criteria": [
+                    "Sets boundaries on work hours",
+                    "Takes all annual leave",
+                    "Has 1 hobby outside work"
+                  ]
+                },
+                {
+                  "text": "Preventive care: stay on top of health checks.",
+                  "criteria": [
+                    "Schedules a medical checkup",
+                    "Completes 2 screenings",
+                    "Follows a vaccination schedule"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "faith-legacy",
+          "name": "Faith & Legacy",
+          "icon": "spiritual",
+          "description": "Build a lasting spiritual legacy for your family.",
+          "levels": [
+            {
+              "id": "1",
+              "name": "Level 1",
+              "levelNumber": 1,
+              "color": "#6366F1",
+              "colorDark": "#312E81",
+              "requirements": [
+                {
+                  "text": "Prayer: pray together daily.",
+                  "criteria": [
+                    "Prays together daily for 30 days",
+                    "Keeps a prayer journal",
+                    "Prays with another couple"
+                  ]
+                },
+                {
+                  "text": "Scripture: read and discuss the Bible together.",
+                  "criteria": [
+                    "Reads the Bible together weekly",
+                    "Memorizes 5 verses",
+                    "Discusses 1 passage"
+                  ]
+                },
+                {
+                  "text": "Worship: attend and serve together.",
+                  "criteria": [
+                    "Attends service together",
+                    "Serves together",
+                    "Creates a family altar"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "2",
+              "name": "Level 2",
+              "levelNumber": 2,
+              "color": "#818CF8",
+              "colorDark": "#3730A3",
+              "requirements": [
+                {
+                  "text": "Values: define and teach family values.",
+                  "criteria": [
+                    "Defines 5 family values",
+                    "Teaches values to children",
+                    "Lives out 1 value daily"
+                  ]
+                },
+                {
+                  "text": "Traditions: create lasting family traditions.",
+                  "criteria": [
+                    "Creates 3 family traditions",
+                    "Keeps them for 1 year",
+                    "Passes 1 to next generation"
+                  ]
+                },
+                {
+                  "text": "Giving: build a legacy of generosity.",
+                  "criteria": [
+                    "Donates 10% of income",
+                    "Volunteers 50 hours",
+                    "Mentors 1 family"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

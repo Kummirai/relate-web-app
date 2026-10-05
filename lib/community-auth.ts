@@ -181,6 +181,9 @@ export async function ensureIndexes(db: any) {
       // Sprout honor progress — one record per account × honor
       db.collection("honor_progress").createIndex({ userId: 1, badgeId: 1 }, { unique: true }),
       db.collection("honor_progress").createIndex({ userId: 1, status: 1, updatedAt: -1 }),
+      // Skills progress — one record per account × skill × level
+      db.collection("skill_progress").createIndex({ userId: 1, skillId: 1, levelId: 1 }, { unique: true }),
+      db.collection("skill_progress").createIndex({ userId: 1, status: 1, updatedAt: -1 }),
     ]);
   } catch {}
 }

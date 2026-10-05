@@ -1,16 +1,16 @@
 /**
- * Seeds the club catalog, store catalogue, sports catalog and Sprout honors
- * framework into Mongo from the JSON produced by scripts/make-imports.mjs.
+ * Seeds the club catalog, store catalogue, sports catalog, skills framework
+ * and Sprout honors framework into Mongo from the JSON produced by scripts/make-imports.mjs.
  *
  * Usage (from the backend directory):
  *
  *   node --env-file=.env.local scripts/seed-catalogs.mjs            # everything
  *   node --env-file=.env.local scripts/seed-catalogs.mjs clubs store
  *
- * Targets: clubs | store | sports | honors
+ * Targets: clubs | store | sports | skills | honors
  *
  * Semantics:
- *   - clubs / sports / honors have no admin editor yet, so they are replaced
+ *   - clubs / sports / skills / honors have no admin editor yet, so they are replaced
  *     wholesale on re-run (upsert by slug/id) — re-seeding picks up content
  *     changes from the app constants.
  *   - store items only ever land with $setOnInsert: once an item exists, admin
@@ -48,6 +48,14 @@ const TARGETS = {
     mode: "replace",
     wrap: (doc) => ({ id: "default", ...doc }),
   },
+  skills: {
+    collection: "skills",
+    file: "skills-import.json",
+    filter: () => ({ id: "framework" }),
+    index: { id: 1 },
+    mode: "replace",
+    wrap: (doc) => ({ id: "framework", ...doc }),
+  },
   honors: {
     collection: "sprout_honors",
     file: "honors-import.json",
@@ -71,7 +79,7 @@ for (const name of names) {
 async function seed(name, db, target) {
   const { collection, file, filter, index, mode, wrap } = target;
   const json = readJson(file);
-  // clubs/store ship as arrays; sports/honors are single config documents.
+  // clubs/store ship as arrays; sports/skills/honors are single config documents.
   const docs = Array.isArray(json) ? json : [json];
   const col = db.collection(collection);
   let inserted = 0;
