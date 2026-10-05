@@ -1,6 +1,7 @@
 import { writeFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { buildSproutClubs } from "./lib/sprout-skills.mjs";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const OUT = path.join(HERE, "skills-import.json");
@@ -1242,6 +1243,6 @@ const clubs = [
   }
 ];
 
-const doc = { clubs };
+const doc = { clubs: [...clubs, ...buildSproutClubs()] };
 writeFileSync(OUT, JSON.stringify(doc, null, 2));
-console.log(`Wrote ${OUT}`);
+console.log(`Wrote ${OUT} (${doc.clubs.length} clubs)`);

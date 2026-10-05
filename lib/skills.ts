@@ -18,6 +18,8 @@ export type SkillRequirement = {
 export type SkillLevel = {
   id: string;
   name: string;
+  /** Optional blurb shown above a level's skills (age band + focus for Sprout). */
+  description?: string;
   levelNumber: number;
   color: string;
   colorDark: string;

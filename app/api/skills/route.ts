@@ -47,7 +47,17 @@ export async function GET(request: NextRequest) {
       const club = framework.clubs.find((c) => c.slug === clubSlug);
       if (!club) return publicNotFound("Club skills not found");
 
-      const levelMap = new Map<string, { id: string; name: string; color: string; colorDark: string; order: number }>();
+      const levelMap = new Map<
+        string,
+        {
+          id: string;
+          name: string;
+          description?: string;
+          color: string;
+          colorDark: string;
+          order: number;
+        }
+      >();
       const skills: {
         id: string;
         name: string;
@@ -56,6 +66,15 @@ export async function GET(request: NextRequest) {
         icon: string;
         levelId: string;
         requirements: { text: string; criteria: string[] }[];
+        levels: {
+          id: string;
+          name: string;
+          levelNumber: number;
+          color: string;
+          colorDark: string;
+          description?: string;
+          requirements: { text: string; criteria: string[] }[];
+        }[];
       }[] = [];
 
       for (const skill of club.skills) {
@@ -63,6 +82,7 @@ export async function GET(request: NextRequest) {
           levelMap.set(level.id, {
             id: level.id,
             name: level.name,
+            description: level.description,
             color: level.color,
             colorDark: level.colorDark,
             order: level.levelNumber,
@@ -76,6 +96,16 @@ export async function GET(request: NextRequest) {
           icon: skill.icon,
           levelId: skill.levels[0]?.id ?? "",
           requirements: skill.levels[0]?.requirements ?? [],
+          // Full per-level copy for clients that group requirements by level.
+          levels: skill.levels.map((level) => ({
+            id: level.id,
+            name: level.name,
+            levelNumber: level.levelNumber,
+            color: level.color,
+            colorDark: level.colorDark,
+            description: level.description,
+            requirements: level.requirements,
+          })),
         });
       }
 
@@ -90,6 +120,11 @@ export async function GET(request: NextRequest) {
             color: clubColors.color,
             colorDark: clubColors.colorDark,
           },
+          // Flat aliases — the mobile catalog reads these instead of `club`.
+          clubSlug: club.slug,
+          clubName: club.name,
+          clubColor: clubColors.color,
+          clubColorDark: clubColors.colorDark,
           levels,
           skills,
           skillCount: skills.length,
