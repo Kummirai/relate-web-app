@@ -1,5 +1,6 @@
 import { NextRequest } from "next/server";
 import { getDb } from "@/lib/mongodb";
+import { getClubDoc } from "@/lib/clubs";
 import {
   DEFAULT_CALENDAR_YEAR,
   getCalendar,
@@ -34,6 +35,10 @@ export async function GET(
 
     const yearParam = request.nextUrl.searchParams.get("year");
     const db = await getDb();
+    // An unknown club has no calendar to serve — 404 like /api/clubs/[slug].
+    const club = await getClubDoc(db, clubSlug);
+    if (!club) return publicNotFound("Club not found");
+
     const calendar =
       yearParam && /^\d{4}$/.test(yearParam)
         ? await getCalendar(db, clubSlug, Number(yearParam))
