@@ -1,18 +1,22 @@
 /**
- * Seeds the club catalog, store catalogue, sports catalog, skills framework
- * and Sprout honors framework into Mongo from the JSON produced by scripts/make-imports.mjs.
+ * Seeds the club catalog, store catalogue, sports catalog, skills framework,
+ * Sprout honors framework and club program calendars into Mongo from the JSON
+ * produced by scripts/make-imports.mjs (program-calendar-import.json is authored
+ * from the yearly program docs).
  *
  * Usage (from the backend directory):
  *
  *   node --env-file=.env.local scripts/seed-catalogs.mjs            # everything
  *   node --env-file=.env.local scripts/seed-catalogs.mjs clubs store
  *
- * Targets: clubs | store | sports | skills | honors
+ * Targets: clubs | store | sports | skills | honors | calendar
  *
  * Semantics:
- *   - clubs / sports / skills / honors have no admin editor yet, so they are replaced
- *     wholesale on re-run (upsert by slug/id) — re-seeding picks up content
- *     changes from the app constants.
+ *   - clubs / sports / skills / honors / calendar have no admin editor yet, so they are
+ *     replaced wholesale on re-run (upsert by slug/id/clubSlug+year) — re-seeding picks
+ *     up content changes from the JSON inputs.
+ *   - calendar entries replaced this way reset admin-authored years too, so only
+ *     re-run the calendar target when you intend to publish the shipped year.
  *   - store items only ever land with $setOnInsert: once an item exists, admin
  *     edits in Mongo win and re-seeding never clobbers them.
  */
@@ -63,6 +67,13 @@ const TARGETS = {
     index: { id: 1 },
     mode: "replace",
     wrap: (doc) => ({ id: "framework", ...doc }),
+  },
+  calendar: {
+    collection: "program_calendars",
+    file: "program-calendar-import.json",
+    filter: (doc) => ({ clubSlug: doc.clubSlug, year: doc.year }),
+    index: { clubSlug: 1, year: 1 },
+    mode: "replace",
   },
 };
 

@@ -1,0 +1,449 @@
+[
+  {
+    "clubSlug": "sprout-kids",
+    "year": 2027,
+    "entries": [
+      {
+        "id": "sprout-kids-2027-03-06-smart-saver-kickoff",
+        "date": "2027-03-06",
+        "title": "Smart Saver Kickoff",
+        "description": "Launching the 6-month piggy bank savings challenge for the September trip. Setting personal savings goals and crafting saving jars.",
+        "term": "Term 1"
+      },
+      {
+        "id": "sprout-kids-2027-03-20-outdoor-scavenger-hunt-park-safety",
+        "date": "2027-03-20",
+        "title": "Outdoor Scavenger Hunt & Park Safety",
+        "description": "Learning park safety, group partner checks, and completing a nature scavenger hunt (+ Savings Check 1).",
+        "term": "Term 1",
+        "setting": "Outdoor"
+      },
+      {
+        "id": "sprout-kids-2027-04-03-computer-hardware-basics-part-i",
+        "date": "2027-04-03",
+        "title": "Computer Hardware Basics: Part I",
+        "description": "Identifying physical computer parts (monitor, CPU, keyboard, mouse) through hands-on identification games.",
+        "term": "Term 1",
+        "setting": "Indoor"
+      },
+      {
+        "id": "sprout-kids-2027-04-17-computer-hardware-basics-part-ii",
+        "date": "2027-04-17",
+        "title": "Computer Hardware Basics: Part II",
+        "description": "How hardware components connect, proper care of devices, and basic typing posture (+ Savings Check 2).",
+        "term": "Term 1",
+        "setting": "Indoor"
+      },
+      {
+        "id": "sprout-kids-2027-05-01-life-saver-workshop",
+        "date": "2027-05-01",
+        "title": "Life Saver Workshop",
+        "description": "Memorizing full home address, emergency contacts (112 roleplays), and practicing basic scrape care.",
+        "term": "Term 1",
+        "setting": "Indoor"
+      },
+      {
+        "id": "sprout-kids-2027-05-15-smart-saver-needs-vs-wants",
+        "date": "2027-05-15",
+        "title": "Smart Saver: Needs vs. Wants",
+        "description": "Sorting coin values, understanding budgets, and tracking mid-term savings (+ Savings Check 3).",
+        "term": "Term 1",
+        "setting": "Indoor"
+      },
+      {
+        "id": "sprout-kids-2027-06-05-indoor-fun-day-team-challenges",
+        "date": "2027-06-05",
+        "title": "Indoor Fun Day & Team Challenges",
+        "description": "Board games, team puzzles, indoor relay games, and creative crafts.",
+        "term": "Term 2",
+        "setting": "Indoor"
+      },
+      {
+        "id": "sprout-kids-2027-06-19-scratch-programming-getting-started",
+        "date": "2027-06-19",
+        "title": "Scratch Programming: Getting Started",
+        "description": "Introduction to Scratch/ScratchJr interface, understanding stage sprites, and drag-and-drop movement.",
+        "term": "Term 2",
+        "setting": "Indoor"
+      },
+      {
+        "id": "sprout-kids-2027-07-03-scratch-programming-animation-sound",
+        "date": "2027-07-03",
+        "title": "Scratch Programming: Animation & Sound",
+        "description": "Adding character dialogues, sounds, and background changes to create a mini animated story (+ Savings Check 4).",
+        "term": "Term 2",
+        "setting": "Indoor"
+      },
+      {
+        "id": "sprout-kids-2027-07-17-scratch-programming-simple-games",
+        "date": "2027-07-17",
+        "title": "Scratch Programming: Simple Games",
+        "description": "Building interactive clicker games or simple maze navigation using arrow controls.",
+        "term": "Term 2",
+        "setting": "Indoor"
+      },
+      {
+        "id": "sprout-kids-2027-08-07-scratch-project-lab",
+        "date": "2027-08-07",
+        "title": "Scratch Project Lab",
+        "description": "Designing a custom mini Scratch project to showcase to peers and families.",
+        "term": "Term 2",
+        "setting": "Indoor"
+      },
+      {
+        "id": "sprout-kids-2027-08-21-smart-saver-final-count-trip-prep",
+        "date": "2027-08-21",
+        "title": "Smart Saver Final Count & Trip Prep",
+        "description": "Opening piggy banks, counting total savings built since March, and finalizing plans for the September outing!",
+        "term": "Term 2",
+        "setting": "Indoor"
+      },
+      {
+        "id": "sprout-kids-2027-09-04-the-september-savings-outing",
+        "date": "2027-09-04",
+        "title": "The September Savings Outing!",
+        "description": "The big reward trip funded directly by the kids' 6-month savings project!",
+        "term": "Term 3",
+        "setting": "Outdoor"
+      },
+      {
+        "id": "sprout-kids-2027-09-18-sprout-kids-sports-day-obstacle-course",
+        "date": "2027-09-18",
+        "title": "Sprout Kids Sports Day & Obstacle Course",
+        "description": "Relay races, obstacle courses, balance tracks, tug-of-war, and outdoor games.",
+        "term": "Term 3",
+        "setting": "Outdoor"
+      },
+      {
+        "id": "sprout-kids-2027-10-02-capstone-showcase-prep",
+        "date": "2027-10-02",
+        "title": "Capstone Showcase Prep",
+        "description": "Finalizing Scratch project displays and setting up showcase boards.",
+        "term": "Term 3",
+        "setting": "Indoor"
+      },
+      {
+        "id": "sprout-kids-2027-10-16-sprout-kids-showcase",
+        "date": "2027-10-16",
+        "title": "Sprout Kids Showcase",
+        "description": "Demonstrating Scratch games and sharing savings achievements with families.",
+        "term": "Term 3",
+        "setting": "Indoor"
+      },
+      {
+        "id": "sprout-kids-2027-11-06-badge-certification-day",
+        "date": "2027-11-06",
+        "title": "Badge & Certification Day",
+        "description": "Official evaluation and signing off on completed skills (Smart Saver, Hardware, Scratch, Life Saver).",
+        "term": "Term 3",
+        "setting": "Indoor"
+      },
+      {
+        "id": "sprout-kids-2027-11-20-year-end-sprout-festival-graduation",
+        "date": "2027-11-20",
+        "title": "Year-End Sprout Festival & Graduation",
+        "description": "Certificate ceremony, family celebration dinner, awards, and end-of-year fun.",
+        "term": "Term 3",
+        "setting": "Indoor/Outdoor"
+      }
+    ]
+  },
+  {
+    "clubSlug": "sprout-tweens",
+    "year": 2027,
+    "entries": [
+      {
+        "id": "sprout-tweens-2027-03-06-smart-saver-master-kickoff",
+        "date": "2027-03-06",
+        "title": "Smart Saver Master Kickoff",
+        "description": "Launching the 6-month budget and savings project for the September outing. Setting personal targets and learning menu/expense tracking.",
+        "term": "Term 1"
+      },
+      {
+        "id": "sprout-tweens-2027-03-20-outdoor-navigation-park-safety",
+        "date": "2027-03-20",
+        "title": "Outdoor Navigation & Park Safety",
+        "description": "Map reading, team communication, and safety check-ins (+ Savings Check 1).",
+        "term": "Term 1",
+        "setting": "Outdoor"
+      },
+      {
+        "id": "sprout-tweens-2027-04-03-computer-basics-hardware",
+        "date": "2027-04-03",
+        "title": "Computer Basics & Hardware",
+        "description": "Understanding system components (CPU, RAM, storage, peripherals), safe workstation setup, and file management basics.",
+        "term": "Term 1",
+        "setting": "Indoor"
+      },
+      {
+        "id": "sprout-tweens-2027-04-17-microsoft-word-basics",
+        "date": "2027-04-17",
+        "title": "Microsoft Word Basics",
+        "description": "Formatting text, creating headers, inserting images, and building a structured one-page report (+ Savings Check 2).",
+        "term": "Term 1",
+        "setting": "Indoor"
+      },
+      {
+        "id": "sprout-tweens-2027-05-01-life-saver-specialist",
+        "date": "2027-05-01",
+        "title": "Life Saver Specialist",
+        "description": "Hazard response: proper emergency treatment steps for minor burns, insect stings, nosebleeds, and 112 emergency calling.",
+        "term": "Term 1",
+        "setting": "Indoor"
+      },
+      {
+        "id": "sprout-tweens-2027-05-15-smart-saver-master-menu-budgeting",
+        "date": "2027-05-15",
+        "title": "Smart Saver Master: Menu Budgeting",
+        "description": "Planning balanced menus on a fixed budget and comparing unit prices across brands (+ Savings Check 3).",
+        "term": "Term 1",
+        "setting": "Indoor"
+      },
+      {
+        "id": "sprout-tweens-2027-06-05-indoor-team-challenge-brain-teasers",
+        "date": "2027-06-05",
+        "title": "Indoor Team Challenge & Brain Teasers",
+        "description": "Logic puzzles, team problem-solving games, and indoor challenges.",
+        "term": "Term 2",
+        "setting": "Indoor"
+      },
+      {
+        "id": "sprout-tweens-2027-06-19-microsoft-word-advanced-reports",
+        "date": "2027-06-19",
+        "title": "Microsoft Word: Advanced Reports",
+        "description": "Creating structured multi-page documents, bulleted lists, and tables.",
+        "term": "Term 2",
+        "setting": "Indoor"
+      },
+      {
+        "id": "sprout-tweens-2027-07-03-microsoft-excel-spreadsheets-data",
+        "date": "2027-07-03",
+        "title": "Microsoft Excel: Spreadsheets & Data",
+        "description": "Introduction to rows, columns, basic formulas (SUM, AVERAGE), and tracking budgets (+ Savings Check 4).",
+        "term": "Term 2",
+        "setting": "Indoor"
+      },
+      {
+        "id": "sprout-tweens-2027-07-17-microsoft-excel-graphs-charts",
+        "date": "2027-07-17",
+        "title": "Microsoft Excel: Graphs & Charts",
+        "description": "Turning budget numbers into visual pie charts and bar graphs.",
+        "term": "Term 2",
+        "setting": "Indoor"
+      },
+      {
+        "id": "sprout-tweens-2027-08-07-microsoft-powerpoint-presentation-pitch",
+        "date": "2027-08-07",
+        "title": "Microsoft PowerPoint: Presentation Pitch",
+        "description": "Designing a 3-slide pitch presentation for a project or event.",
+        "term": "Term 2",
+        "setting": "Indoor"
+      },
+      {
+        "id": "sprout-tweens-2027-08-21-smart-saver-master-final-count-trip-plan",
+        "date": "2027-08-21",
+        "title": "Smart Saver Master Final Count & Trip Plan",
+        "description": "Opening savings, balancing the budget spreadsheet for the trip, and finalizing trip details!",
+        "term": "Term 2",
+        "setting": "Indoor"
+      },
+      {
+        "id": "sprout-tweens-2027-09-04-the-september-savings-outing",
+        "date": "2027-09-04",
+        "title": "The September Savings Outing!",
+        "description": "The reward trip planned and funded by the tweens' 6-month savings challenge!",
+        "term": "Term 3",
+        "setting": "Outdoor"
+      },
+      {
+        "id": "sprout-tweens-2027-09-18-sprout-tweens-sports-day",
+        "date": "2027-09-18",
+        "title": "Sprout Tweens Sports Day",
+        "description": "Track events, obstacle courses, team relay races, and outdoor field games.",
+        "term": "Term 3",
+        "setting": "Outdoor"
+      },
+      {
+        "id": "sprout-tweens-2027-10-02-capstone-showcase-prep",
+        "date": "2027-10-02",
+        "title": "Capstone Showcase Prep",
+        "description": "Finalizing report documents, budget charts, and slide decks for presentation.",
+        "term": "Term 3",
+        "setting": "Indoor"
+      },
+      {
+        "id": "sprout-tweens-2027-10-16-sprout-tweens-showcase",
+        "date": "2027-10-16",
+        "title": "Sprout Tweens Showcase",
+        "description": "Presenting Microsoft Office reports and demonstrating financial tracking skills to parents.",
+        "term": "Term 3",
+        "setting": "Indoor"
+      },
+      {
+        "id": "sprout-tweens-2027-11-06-badge-certification-day",
+        "date": "2027-11-06",
+        "title": "Badge & Certification Day",
+        "description": "Official leader sign-offs for completed skills (Smart Saver Master, Life Saver Specialist, Office Specialist).",
+        "term": "Term 3",
+        "setting": "Indoor"
+      },
+      {
+        "id": "sprout-tweens-2027-11-20-year-end-sprout-festival-graduation",
+        "date": "2027-11-20",
+        "title": "Year-End Sprout Festival & Graduation",
+        "description": "Awards ceremony, presentation of certificates, and family celebration dinner.",
+        "term": "Term 3",
+        "setting": "Indoor/Outdoor"
+      }
+    ]
+  },
+  {
+    "clubSlug": "sprout-teens",
+    "year": 2027,
+    "entries": [
+      {
+        "id": "sprout-teens-2027-03-06-financial-strategist-kickoff",
+        "date": "2027-03-06",
+        "title": "Financial Strategist Kickoff",
+        "description": "Launching the 6-month event financial project for the September outing. Building full expense models, setting revenue targets, and tracking budget variance.",
+        "term": "Term 1"
+      },
+      {
+        "id": "sprout-teens-2027-03-20-outdoor-leadership-team-navigation",
+        "date": "2027-03-20",
+        "title": "Outdoor Leadership & Team Navigation",
+        "description": "Advanced map reading, group coordination, and wilderness safety protocols (+ Financial Check 1).",
+        "term": "Term 1",
+        "setting": "Outdoor"
+      },
+      {
+        "id": "sprout-teens-2027-04-03-tech-track-programming-vs-graphic-design-orientation-selecti",
+        "date": "2027-04-03",
+        "title": "Tech Track: Programming vs. Graphic Design (Orientation & Selection)",
+        "description": "Students select their focus path for Terms 1 & 2: Programming: Introduction to Python/JavaScript text syntax, variables, and data types. Graphic Design: Fundamentals of layout design, color theory, typography, and canvas tools.",
+        "term": "Term 1",
+        "setting": "Indoor"
+      },
+      {
+        "id": "sprout-teens-2027-04-17-tech-track-core-skill-building",
+        "date": "2027-04-17",
+        "title": "Tech Track: Core Skill Building",
+        "description": "Programming: Writing conditionals (if/else), loops, and function basics. Graphic Design: Creating vector shapes, photo masking, and branding asset design (+ Financial Check 2).",
+        "term": "Term 1",
+        "setting": "Indoor"
+      },
+      {
+        "id": "sprout-teens-2027-05-01-first-responder-workshop",
+        "date": "2027-05-01",
+        "title": "First Responder Workshop",
+        "description": "Practicing CPR/AED routines, choking intervention (Heimlich maneuver), and handling severe injury scenarios under instruction.",
+        "term": "Term 1",
+        "setting": "Indoor"
+      },
+      {
+        "id": "sprout-teens-2027-05-15-financial-strategist-event-budgeting-unit-costs",
+        "date": "2027-05-15",
+        "title": "Financial Strategist: Event Budgeting & Unit Costs",
+        "description": "Calculating break-even points, supplier quotes, and managing the group trip budget (+ Financial Check 3).",
+        "term": "Term 1",
+        "setting": "Indoor"
+      },
+      {
+        "id": "sprout-teens-2027-06-05-indoor-leadership-strategy-workshop",
+        "date": "2027-06-05",
+        "title": "Indoor Leadership & Strategy Workshop",
+        "description": "Business simulation games, logic challenges, and team problem-solving.",
+        "term": "Term 2",
+        "setting": "Indoor"
+      },
+      {
+        "id": "sprout-teens-2027-06-19-tech-track-intermediate-development",
+        "date": "2027-06-19",
+        "title": "Tech Track: Intermediate Development",
+        "description": "Programming: Processing user input, handling arrays/lists, and building logic algorithms. Graphic Design: Designing multi-page document layouts, event posters, and promotional materials.",
+        "term": "Term 2",
+        "setting": "Indoor"
+      },
+      {
+        "id": "sprout-teens-2027-07-03-tech-track-project-planning-architecture",
+        "date": "2027-07-03",
+        "title": "Tech Track: Project Planning & Architecture",
+        "description": "Programming: Structuring functional scripts or web applications. Graphic Design: Creating full brand style guides and digital mockups (+ Financial Check 4).",
+        "term": "Term 2",
+        "setting": "Indoor"
+      },
+      {
+        "id": "sprout-teens-2027-07-17-tech-track-interactive-advanced-features",
+        "date": "2027-07-17",
+        "title": "Tech Track: Interactive & Advanced Features",
+        "description": "Programming: Connecting user inputs to dynamic outputs and error handling. Graphic Design: Creating interactive UI elements and polished export formats.",
+        "term": "Term 2",
+        "setting": "Indoor"
+      },
+      {
+        "id": "sprout-teens-2027-08-07-tech-track-capstone-lab",
+        "date": "2027-08-07",
+        "title": "Tech Track: Capstone Lab",
+        "description": "Polishing custom programs or graphic design portfolios for presentation.",
+        "term": "Term 2",
+        "setting": "Indoor"
+      },
+      {
+        "id": "sprout-teens-2027-08-21-financial-strategist-final-audit-trip-finalization",
+        "date": "2027-08-21",
+        "title": "Financial Strategist Final Audit & Trip Finalization",
+        "description": "Reconciling 6-month revenue vs. expenses, finalizing itinerary costs, and presenting the final budget report!",
+        "term": "Term 2",
+        "setting": "Indoor"
+      },
+      {
+        "id": "sprout-teens-2027-09-04-the-september-savings-outing",
+        "date": "2027-09-04",
+        "title": "The September Savings Outing!",
+        "description": "The reward trip fully budgeted, managed, and funded by the teens' 6-month financial strategy project!",
+        "term": "Term 3",
+        "setting": "Outdoor"
+      },
+      {
+        "id": "sprout-teens-2027-09-18-sprout-teens-sports-day-leadership-challenge",
+        "date": "2027-09-18",
+        "title": "Sprout Teens Sports Day & Leadership Challenge",
+        "description": "Field sports, strategy-based obstacle courses, relay races, and team competitions.",
+        "term": "Term 3",
+        "setting": "Outdoor"
+      },
+      {
+        "id": "sprout-teens-2027-10-02-capstone-showcase-prep",
+        "date": "2027-10-02",
+        "title": "Capstone Showcase Prep",
+        "description": "Finalizing software demos, graphic portfolio displays, and financial reports.",
+        "term": "Term 3",
+        "setting": "Indoor"
+      },
+      {
+        "id": "sprout-teens-2027-10-16-sprout-teens-showcase",
+        "date": "2027-10-16",
+        "title": "Sprout Teens Showcase",
+        "description": "Presenting software applications, graphic design portfolios, and financial strategy models to families and mentors.",
+        "term": "Term 3",
+        "setting": "Indoor"
+      },
+      {
+        "id": "sprout-teens-2027-11-06-badge-certification-day",
+        "date": "2027-11-06",
+        "title": "Badge & Certification Day",
+        "description": "Official leader sign-offs for completed skills (Financial Strategist, First Responder, and Software Engineer / Design track).",
+        "term": "Term 3",
+        "setting": "Indoor"
+      },
+      {
+        "id": "sprout-teens-2027-11-20-year-end-sprout-festival-graduation",
+        "date": "2027-11-20",
+        "title": "Year-End Sprout Festival & Graduation",
+        "description": "Awards gala, certificate presentations, celebration dinner, and annual achievements.",
+        "term": "Term 3",
+        "setting": "Indoor/Outdoor"
+      }
+    ]
+  }
+]
