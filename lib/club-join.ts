@@ -68,7 +68,8 @@ export const CLUB_TEAMS: Record<string, Record<string, string>> = {
 export type ClubJoinInput = {
   clubSlug: string;
   clubName?: string;
-  teamId: string;
+  /** Optional — team sign-ups go through the player registration form now. */
+  teamId?: string;
   teamName?: string;
   name: string;
   age?: number;
@@ -99,18 +100,20 @@ const REF_LENGTH = 8;
 
 let referenceIndex: Promise<unknown> | null = null;
 
-/** One-time unique index on membership IDs (legacy rows have none). */
-function ensureReferenceIndex(db: Awaited<ReturnType<typeof getDb>>) {
+/** One-time indexes: unique membership IDs (legacy rows have none) + the /me lookup. */
+export function ensureClubJoinIndexes(db: Awaited<ReturnType<typeof getDb>>) {
   if (!referenceIndex) {
-    referenceIndex = db
-      .collection(CLUB_JOIN_COL)
-      .createIndex(
-        { reference: 1 },
-        { unique: true, partialFilterExpression: { reference: { $exists: true } } },
-      )
-      .catch((e) => {
-        console.error("[club-join] reference index failed:", e?.message);
-      });
+    referenceIndex = Promise.all([
+      db
+        .collection(CLUB_JOIN_COL)
+        .createIndex(
+          { reference: 1 },
+          { unique: true, partialFilterExpression: { reference: { $exists: true } } },
+        ),
+      db.collection(CLUB_JOIN_COL).createIndex({ userId: 1, createdAt: -1 }),
+    ]).catch((e) => {
+      console.error("[club-join] indexes failed:", e?.message);
+    });
   }
   return referenceIndex;
 }
@@ -233,7 +236,7 @@ export async function createClubJoinApplication(
     );
 
   const db = await getDb();
-  await ensureReferenceIndex(db);
+  await ensureClubJoinIndexes(db);
   const reference = await makeReference(db, clubSlug);
 
   const doc = {
@@ -277,5 +280,163 @@ export async function createClubJoinApplication(
     status: "active",
     nextSteps:
       "You're a member — your membership is active right away. Keep your membership ID; your leader can look you up by it.",
+  };
+}
+
+/**
+ * Clubs in age order. When an active member's age falls outside their club's
+ * band they are moved forward to the next club whose band fits them.
+ */
+const CLUB_LADDER = [
+  "sprout-kids",
+  "sprout-tweens",
+  "sprout-teens",
+  "sprout",
+  "surge",
+  "pulse",
+  "prime",
+];
+
+/** Whole years between the join date and now — age ticks on join anniversaries. */
+function yearsSince(from: Date): number {
+  const ms = Date.now() - new Date(from).getTime();
+  return Number.isFinite(ms) && ms > 0
+    ? Math.floor(ms / (365.25 * 24 * 60 * 60 * 1000))
+    : 0;
+}
+
+/** The member's current age, tracked from the age they joined with. */
+function ageNow(doc: { age?: number; createdAt?: Date }): number | null {
+  if (typeof doc.age !== "number" || !doc.createdAt) return null;
+  return doc.age + yearsSince(new Date(doc.createdAt));
+}
+
+/** Next club down the ladder whose age band contains `age`, or null. */
+function nextClubFor(clubSlug: string, age: number): string | null {
+  const idx = CLUB_LADDER.indexOf(clubSlug);
+  if (idx === -1) return null;
+  for (let i = idx + 1; i < CLUB_LADDER.length; i++) {
+    const band = CLUB_AGE_RANGES[CLUB_LADDER[i]];
+    if (band && age >= band.min && age <= band.max) return CLUB_LADDER[i];
+  }
+  return null;
+}
+
+async function clubDisplayName(db: Awaited<ReturnType<typeof getDb>>, slug: string): Promise<string> {
+  const club = await db.collection("clubs").findOne({ slug }, { projection: { name: 1 } });
+  if (club?.name) return club.name;
+  return slug.replace(/(^|-)([a-z])/g, (_m, _d, c: string) => ` ${c.toUpperCase()}`).trim();
+}
+
+/**
+ * Age-out promotion — if the member no longer fits their club's band, claim
+ * the old row (atomic, so concurrent reads can't double-promote) and create
+ * an active membership in the next fitting club with a fresh membership ID.
+ */
+async function promoteIfAgedOut(
+  db: Awaited<ReturnType<typeof getDb>>,
+  doc: any,
+): Promise<any> {
+  if (doc?.status !== "active") return doc;
+  const age = ageNow(doc);
+  if (age == null) return doc;
+  const band = CLUB_AGE_RANGES[doc.clubSlug];
+  if (!band || (age >= band.min && age <= band.max)) return doc;
+
+  const target = nextClubFor(doc.clubSlug, age);
+  if (!target) return doc;
+
+  const now = new Date();
+  const claim = await db.collection(CLUB_JOIN_COL).updateOne(
+    { _id: doc._id, status: "active", promotedTo: { $exists: false } },
+    {
+      $set: {
+        status: "graduated",
+        promotedTo: target,
+        promotedAt: now,
+        updatedAt: now,
+      },
+    },
+  );
+  if (claim.modifiedCount === 0) {
+    // Another read promoted it already — hand back the freshest row.
+    return (
+      (await db
+        .collection(CLUB_JOIN_COL)
+        .findOne({ userId: doc.userId }, { sort: { createdAt: -1 } })) ?? doc
+    );
+  }
+
+  const reference = await makeReference(db, target);
+  const promoted = {
+    reference,
+    ...(doc.userId ? { userId: doc.userId } : {}),
+    clubSlug: target,
+    clubName: await clubDisplayName(db, target),
+    name: doc.name,
+    age,
+    gender: doc.gender,
+    phone: doc.phone,
+    ...(doc.area ? { area: doc.area } : {}),
+    interests: Array.isArray(doc.interests) ? doc.interests : [],
+    ...(doc.guardian ? { guardian: doc.guardian } : {}),
+    ...(doc.parentConsent ? { parentConsent: doc.parentConsent } : {}),
+    ...(doc.conduct ? { conduct: doc.conduct } : {}),
+    commitmentAccepted: doc.commitmentAccepted === true,
+    ...(doc.clubGatheringAccepted ? { clubGatheringAccepted: true } : {}),
+    promotedFrom: { clubSlug: doc.clubSlug, reference: doc.reference, at: now },
+    status: "active",
+    createdAt: now,
+    updatedAt: now,
+  };
+
+  try {
+    await db.collection(CLUB_JOIN_COL).insertOne(promoted);
+  } catch (e) {
+    // Creation failed — put the old membership back in service.
+    await db.collection(CLUB_JOIN_COL).updateOne(
+      { _id: doc._id },
+      { $set: { status: "active", updatedAt: new Date() }, $unset: { promotedTo: "", promotedAt: "" } },
+    );
+    throw e;
+  }
+  return promoted;
+}
+
+/**
+ * The signed-in member's latest membership — aged out members are promoted to
+ * the next club first, so callers always see the club they belong to today.
+ */
+export async function getLatestMembership(
+  userId: string,
+): Promise<Record<string, unknown> | null> {
+  const db = await getDb();
+  await ensureClubJoinIndexes(db);
+  const latest = await db
+    .collection(CLUB_JOIN_COL)
+    .findOne({ userId }, { sort: { createdAt: -1 } });
+  if (!latest) return null;
+  const doc = await promoteIfAgedOut(db, latest);
+  return serializeMembership(doc);
+}
+
+/** Membership rows shaped the way the web/mobile membership views read them. */
+export function serializeMembership(doc: any) {
+  return {
+    id: String(doc._id),
+    reference: doc.reference,
+    clubSlug: doc.clubSlug,
+    clubName: doc.clubName,
+    name: doc.name,
+    age: doc.age,
+    gender: doc.gender,
+    phone: doc.phone,
+    area: doc.area ?? "",
+    interests: Array.isArray(doc.interests) ? doc.interests : [],
+    ...(doc.teamId ? { teamId: doc.teamId } : {}),
+    ...(doc.teamName ? { teamName: doc.teamName } : {}),
+    ...(doc.sport ? { sport: doc.sport } : {}),
+    status: doc.status,
+    joinedAt: doc.createdAt,
   };
 }

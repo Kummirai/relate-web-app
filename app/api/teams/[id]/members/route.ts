@@ -12,10 +12,10 @@ import { getDb } from "@/lib/mongodb";
 /**
  * GET /api/teams/{teamId}/members
  *
- * Public roster of members who registered for a squad (Football, Netball,
- * Volleyball) — first names only, so team pages can show who's on the team
- * without exposing personal details. Joins are active on submission, so the
- * list reflects registrations as they land.
+ * Public roster of players on a squad (Football, Netball, Volleyball) —
+ * first names only, so team pages show who's actually registered for the
+ * team without exposing personal details. Reads the player registrations
+ * (the position-based sign-up form), so the list matches the team sheet.
  *
  * Rate-limited per IP; short cacheable so team pages stay cheap.
  */
@@ -39,11 +39,11 @@ export async function GET(
     const filter = { teamId, status: "active" };
 
     const count = await db
-      .collection("club_join_applications")
+      .collection("sports_registrations")
       .countDocuments(filter);
 
     const rows = await db
-      .collection("club_join_applications")
+      .collection("sports_registrations")
       .find(filter)
       .project({ name: 1, createdAt: 1 })
       .sort({ createdAt: -1 })
