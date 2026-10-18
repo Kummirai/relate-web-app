@@ -225,189 +225,190 @@ const clubs = [
     ageRange: "21–33 yrs",
     skills: [
       {
-        id: "career-readiness", name: "Career Readiness", icon: "briefcase",
-        description: "Prepare for the job market with CV, applications, and interview skills.",
+        id: "pulse_01_smart_saver",
+        name: "Smart Saver: The Launch Fund",
+        icon: "wallet",
+        type: "Compulsory",
+        description: "Financial mastery aimed at funding higher education (e.g., BYU-Pathway) or launching a business. Cash withdrawals are locked; funds are disbursed directly to institutions or for verified business expenses.",
+        output: "Paid tuition for the next academic block, or a legally registered business.",
+        detail: {
+          tools: ["Tuition Tracker", "Startup Capital Tracker", "Stokvel Rotation Manager", "Disbursement Request Form"],
+          learningProvider: "RelateWorld Smart Saver curriculum",
+          launchFund: {
+            goalName: "Tuition or Business Launch",
+            targetAmount: 8000,
+            autoRouting: "Commissions and service earnings route here automatically",
+            disbursementRule: "Requires an institution invoice or verified business expense"
+          }
+        },
         levels: [
           {
-            id: "1", name: "Level 1", levelNumber: 1, color: "#8B5CF6", colorDark: "#4C1D95",
+            id: "1", name: "Learning", levelNumber: 1, color: "#8B5CF6", colorDark: "#4C1D95",
+            description: "Learn the core skills — tracked module by module.",
             requirements: [
-              { text: "Self-assessment: identify strengths, weaknesses, and interests.", criteria: ["Lists 5 strengths and 3 weaknesses", "Identifies 2 career interests", "Completes a skills audit"] },
-              { text: "Resume: create a targeted 1-page CV.", criteria: ["Creates a 1-page CV", "Uses action verbs for each role", "Tailors CV to 1 job description"] },
-              { text: "Application: apply to real roles and track progress.", criteria: ["Applies to 3 real jobs", "Writes a cover letter for 1", "Tracks applications in a spreadsheet"] }
+              { text: "Money mastery: budgeting, payslips and cash-flow basics.", criteria: ["Completes the budgeting module", "Explains needs vs wants with own examples", "Sets a savings goal with target amount and date"] },
+              { text: "Stokvel rotation: understand group savings mechanics.", criteria: ["Joins or forms a stokvel rotation", "Records contributions in the Stokvel Rotation Manager", "Explains the payout schedule"] },
+              { text: "Disbursement rules: how locked funds move.", criteria: ["Reads the disbursement policy", "Identifies 3 verified tuition or business expenses", "Knows why cash withdrawals are locked"] }
             ]
           }
         ]
       },
       {
-        id: "cv-linkedin", name: "CV & LinkedIn", icon: "document",
-        description: "Optimise your CV and LinkedIn profile for recruiters.",
-        levels: [
-          {
-            id: "1", name: "Level 1", levelNumber: 1, color: "#8B5CF6", colorDark: "#4C1D95",
-            requirements: [
-              { text: "LinkedIn profile: complete a recruiter-ready profile.", criteria: ["Adds a professional photo", "Writes a headline with keywords", "Lists 3 experiences"] },
-              { text: "CV optimisation: align your CV with job ads.", criteria: ["Adds 5 keywords from job ads", "Quantifies 3 achievements", "Removes outdated information"] },
-              { text: "Online presence: clean up and grow your digital footprint.", criteria: ["Removes unprofessional content from social media", "Adds 2 recommendations", "Shares 1 industry article"] }
-            ]
+        id: "pulse_02_digital_brand_studio",
+        name: "Digital Brand Studio",
+        icon: "document-text",
+        type: "Elective",
+        description: "Learn graphic design, apply skills through paid Relate Projects, and build a portfolio to launch a freelance agency or enrol in a design qualification.",
+        output: "Registered design business and a portfolio of real paid client work.",
+        detail: {
+          tools: ["Affinity Designer", "Canva Pro"],
+          learningProvider: "Affinity Designer & Canva Pro curriculum",
+          projects: [
+            { title: "Design RelateWorld sports flyers", tier: "Tier 1 (Beginner)", fee: "R150" },
+            { title: "Social media kit for Surge", tier: "Tier 2 (Intermediate)", fee: "R350" },
+            { title: "Event certificates for club showcases", tier: "Tier 1 (Beginner)", fee: "R150" }
+          ],
+          unlockRule: "Complete the Learning phase to unlock paid client projects.",
+          launchFund: {
+            goalName: "Design Business Launch Fund",
+            targetAmount: 5000,
+            autoRouting: "100% of Relate Project earnings routed here",
+            disbursementRule: "Requires a CIPC or course enrolment invoice"
           }
-        ]
-      },
-      {
-        id: "financial-planning", name: "Financial Planning", icon: "wallet",
-        description: "Plan, protect, and grow your finances across all life stages.",
+        },
         levels: [
           {
-            id: "1", name: "Level 1", levelNumber: 1, color: "#8B5CF6", colorDark: "#4C1D95",
+            id: "1", name: "Learning", levelNumber: 1, color: "#8B5CF6", colorDark: "#4C1D95",
+            description: "Learn the core skills — tracked module by module.",
             requirements: [
-              { text: "Budgeting: track spending and create a zero-based budget.", criteria: ["Logs all expenses for 30 days", "Categorizes into needs/wants", "Creates a zero-based budget"] },
-              { text: "Emergency fund: build a safety net.", criteria: ["Calculates 3-month expenses", "Opens a separate savings account", "Makes first deposit"] },
-              { text: "Protection: review insurance and create a will.", criteria: ["Reviews insurance coverage", "Creates an emergency fund", "Writes a basic will"] }
+              { text: "Affinity Designer: vector tools and shapes.", criteria: ["Draws shapes with the pen and shape tools", "Builds a composition using layers", "Exports a design as PNG and SVG"] },
+              { text: "Canva Pro: fast branded templates.", criteria: ["Builds a branded template kit", "Uses brand colours and fonts consistently", "Produces 2 resize-ready designs"] },
+              { text: "Brand strategy & client communication.", criteria: ["Writes a 1-page brand brief", "Runs a client discovery conversation", "Presents 2 mood boards for feedback"] }
             ]
           },
           {
-            id: "2", name: "Level 2", levelNumber: 2, color: "#A78BFA", colorDark: "#5B21B6",
+            id: "2", name: "Relate Projects", levelNumber: 2, color: "#A78BFA", colorDark: "#5B21B6",
+            description: "Apply skills on real paid Relate Projects.",
             requirements: [
-              { text: "Debt management: list and tackle debt strategically.", criteria: ["Lists all debts with interest rates", "Calculates total debt", "Chooses 1 payoff strategy"] },
-              { text: "Credit building: improve credit score and report.", criteria: ["Checks credit report", "Disputes 1 error", "Improves score by 20 points"] },
-              { text: "Tax planning: understand and optimise taxes.", criteria: ["Reviews tax withholdings", "Claims eligible deductions", "Files on time"] }
+              { text: "Design RelateWorld sports flyers.", criteria: ["Designs 2 event flyers", "Gets sign-off from the club lead", "Delivers print-ready files"] },
+              { text: "Social media kits for Surge.", criteria: ["Builds a 6-post kit", "Applies the Surge brand kit", "Delivers on the agreed date"] },
+              { text: "Event certificates for club showcases.", criteria: ["Designs a certificate template", "Personalises 5 certificates", "Delivers editable and PDF versions"] }
             ]
           },
           {
-            id: "3", name: "Level 3", levelNumber: 3, color: "#C4B5FD", colorDark: "#6D28D9",
+            id: "3", name: "Launch", levelNumber: 3, color: "#C4B5FD", colorDark: "#6D28D9",
+            description: "Launch: qualification, registration, or paying work.",
             requirements: [
-              { text: "Retirement planning: build long-term security.", criteria: ["Calculates retirement needs", "Opens a retirement account", "Sets monthly contribution"] },
-              { text: "Estate planning: protect and transfer wealth.", criteria: ["Creates a will", "Names beneficiaries on 2 accounts", "Stores documents securely"] },
-              { text: "Investment strategy: diversify and rebalance.", criteria: ["Diversifies across 3 asset classes", "Rebalances portfolio quarterly", "Reviews annual fees"] }
+              { text: "CIPC business registration.", criteria: ["Chooses and checks a business name", "Compiles CIPC registration documents", "Registers the business"] },
+              { text: "Accredited design course enrolment.", criteria: ["Shortlists 2 design courses", "Completes an application", "Secures acceptance or funding"] }
             ]
           }
         ]
       },
       {
-        id: "budgeting", name: "Budgeting", icon: "calculator",
-        description: "Master personal budgeting and cash-flow management.",
-        levels: [
-          {
-            id: "1", name: "Level 1", levelNumber: 1, color: "#8B5CF6", colorDark: "#4C1D95",
-            requirements: [
-              { text: "Income tracking: record all income sources.", criteria: ["Tracks all income for 1 month", "Identifies irregular income", "Creates an average monthly figure"] },
-              { text: "Expense categories: create and stick to spending limits.", criteria: ["Creates 8 spending categories", "Sets limits for each", "Tracks actual vs planned"] },
-              { text: "Review cycle: adjust and improve monthly.", criteria: ["Reviews budget every Sunday", "Adjusts limits monthly", "Achieves 80% adherence for 1 month"] }
-            ]
+        id: "pulse_03_software_web_dev",
+        name: "Software & Web Development",
+        icon: "code-slash",
+        type: "Elective",
+        description: "Learn full-stack development via The Odin Project (HTML, CSS, JS, Node, Express, PostgreSQL, React), add Next.js, apply skills through paid Relate Projects, and launch a career or BYU-Pathway enrolment.",
+        output: "A portfolio of Odin projects + paid Relate Projects, and proof of readiness for BYU-Pathway or freelance work.",
+        detail: {
+          tools: ["The Odin Project", "VS Code", "GitHub", "Next.js", "PostgreSQL"],
+          learningProvider: "The Odin Project (Full Stack JavaScript)",
+          projects: [
+            { title: "Fix CSS bug on RelateWorld landing page", tier: "Tier 1 (Beginner)", fee: "R150" },
+            { title: "Build a Next.js booking page for a local business", tier: "Tier 2 (Advanced)", fee: "R800" },
+            { title: "Build a Next.js marketing page for RelateWorld", tier: "Tier 2 (Advanced)", fee: "R500" }
+          ],
+          unlockRule: "Member must complete 'React Basics' to unlock Tier 2 projects.",
+          unlockAfter: "React Basics",
+          launchFund: {
+            goalName: "BYU-Pathway Tuition",
+            targetAmount: 8000,
+            autoRouting: "100% of Relate Project earnings routed here",
+            disbursementRule: "Requires BYU-Pathway invoice upload"
           }
-        ]
-      },
-      {
-        id: "investing-basics", name: "Investing Basics", icon: "trending-up",
-        description: "Understand markets, asset classes, and how to start investing.",
+        },
         levels: [
           {
-            id: "1", name: "Level 1", levelNumber: 1, color: "#8B5CF6", colorDark: "#4C1D95",
+            id: "1", name: "Learning", levelNumber: 1, color: "#8B5CF6", colorDark: "#4C1D95",
+            description: "Learn the core skills — tracked module by module.",
             requirements: [
-              { text: "Terminology: learn core investing vocabulary.", criteria: ["Defines 10 investing terms", "Explains risk vs return", "Compares saving vs investing"] },
-              { text: "Asset classes: understand stocks, bonds, property, and cash.", criteria: ["Explains 4 asset classes", "Lists 2 examples each", "Chooses 1 based on risk tolerance"] },
-              { text: "Getting started: open an account and make a first investment.", criteria: ["Opens a brokerage account", "Buys 1 ETF", "Sets up automatic investing"] }
+              { text: "HTML & CSS Basics", criteria: ["Builds a 3-page static site", "Lays out pages with Flexbox or Grid", "Passes the HTML & CSS review checklist"] },
+              { text: "JavaScript Fundamentals", criteria: ["Writes functions, arrays and objects", "Handles events and DOM updates", "Completes the JavaScript fundamentals exercises"] },
+              { text: "React Basics", criteria: ["Builds a component-based page", "Manages state with hooks", "Deploys a React app"] },
+              { text: "Node & Express", criteria: ["Builds a REST API with Express", "Implements routes and middleware", "Connects the frontend to the API"] },
+              { text: "PostgreSQL Database", criteria: ["Designs tables and relations", "Writes SQL queries with joins", "Stores app data in Postgres"] },
+              { text: "Next.js Bridge Module", criteria: ["Builds a Next.js page with routing", "Implements server-side data fetching", "Deploys the Next.js project"] }
             ]
           },
           {
-            id: "2", name: "Level 2", levelNumber: 2, color: "#A78BFA", colorDark: "#5B21B6",
+            id: "2", name: "Relate Projects", levelNumber: 2, color: "#A78BFA", colorDark: "#5B21B6",
+            description: "Apply skills on real paid Relate Projects.",
             requirements: [
-              { text: "Fundamental analysis: evaluate companies.", criteria: ["Reads a company's annual report", "Calculates P/E ratio", "Compares 2 competitors"] },
-              { text: "Portfolio building: construct a diversified portfolio.", criteria: ["Builds a diversified portfolio", "Allocates across 4 sectors", "Sets rebalancing rules"] },
-              { text: "Risk management: protect your investments.", criteria: ["Sets stop-loss on 1 position", "Allocates 10% to cash", "Reviews portfolio monthly"] }
-            ]
-          }
-        ]
-      },
-      {
-        id: "entrepreneurship", name: "Entrepreneurship", icon: "business",
-        description: "Validate ideas, plan a business, and launch an MVP.",
-        levels: [
-          {
-            id: "1", name: "Level 1", levelNumber: 1, color: "#8B5CF6", colorDark: "#4C1D95",
-            requirements: [
-              { text: "Idea validation: test demand before building.", criteria: ["Interviews 10 potential customers", "Identifies 3 pain points", "Creates a value proposition"] },
-              { text: "Business plan: write a 1-page plan.", criteria: ["Writes a 1-page business plan", "Projects 12-month revenue", "Identifies 3 risks"] },
-              { text: "MVP: build and test a minimum viable product.", criteria: ["Builds a minimum viable product", "Tests with 5 users", "Iterates based on feedback"] }
+              { text: "Fix CSS bug on RelateWorld landing page", criteria: ["Bug reproduced and fixed", "Passed QA review", "R150 routed to Launch Fund"] },
+              { text: "Build a Next.js booking page for a local business", criteria: ["Scoped with the client", "Built and deployed", "R800 routed to Launch Fund"] },
+              { text: "Build a Next.js marketing page for RelateWorld", criteria: ["Design approved", "Page built and deployed", "R500 routed to Launch Fund"] }
             ]
           },
           {
-            id: "2", name: "Level 2", levelNumber: 2, color: "#A78BFA", colorDark: "#5B21B6",
+            id: "3", name: "Launch", levelNumber: 3, color: "#C4B5FD", colorDark: "#6D28D9",
+            description: "Launch: qualification, registration, or paying work.",
             requirements: [
-              { text: "Marketing: plan and run a campaign.", criteria: ["Creates a marketing plan", "Runs 1 campaign", "Tracks conversion rate"] },
-              { text: "Sales: make and close sales calls.", criteria: ["Makes 10 sales calls", "Closes 2 deals", "Documents objections and responses"] },
-              { text: "Metrics: track key performance indicators.", criteria: ["Tracks 5 key metrics weekly", "Creates a dashboard", "Adjusts strategy based on data"] }
+              { text: "Pathway A: BYU-Pathway Software Development enrolment.", criteria: ["Reviews the programme requirements", "Submits the enrolment application", "Receives acceptance or funding confirmation"] },
+              { text: "Pathway B: freelance dev shop launch.", criteria: ["Registers the business (CIPC)", "Publishes a portfolio site", "Lands the first paying client"] }
             ]
           }
         ]
       },
       {
-        id: "public-speaking-pulse", name: "Public Speaking", icon: "mic",
-        description: "Deliver persuasive presentations and facilitate workshops.",
+        id: "pulse_04_data_market_intelligence",
+        name: "Data & Market Intelligence",
+        icon: "trending-up",
+        type: "Elective",
+        description: "Learn data science, analyze real organizational data, and build a consultancy or earn an accredited data certificate.",
+        output: "A real market research report delivered to a business, or an accredited certificate.",
+        detail: {
+          tools: ["Python", "pandas", "Google Sheets", "Data visualization"],
+          learningProvider: "Python (pandas) & Google Sheets curriculum",
+          projects: [
+            { title: "Analyse club attendance trends", tier: "Tier 1 (Beginner)", fee: "R150" },
+            { title: "Track Smart Saver trends", tier: "Tier 1 (Beginner)", fee: "R150" },
+            { title: "Market research report for a local SME", tier: "Tier 2 (Advanced)", fee: "R500" }
+          ],
+          unlockRule: "Complete the Learning phase to unlock paid data projects.",
+          launchFund: {
+            goalName: "Google Data Analytics Certificate",
+            targetAmount: 6000,
+            autoRouting: "100% of Relate Project earnings routed here",
+            disbursementRule: "Requires an enrolment invoice upload"
+          }
+        },
         levels: [
           {
-            id: "1", name: "Level 1", levelNumber: 1, color: "#8B5CF6", colorDark: "#4C1D95",
+            id: "1", name: "Learning", levelNumber: 1, color: "#8B5CF6", colorDark: "#4C1D95",
+            description: "Learn the core skills — tracked module by module.",
             requirements: [
-              { text: "Preparation: research audience and practise.", criteria: ["Researches the audience", "Outlines a 5-minute talk", "Practises 3 times"] },
-              { text: "Delivery: speak without filler words.", criteria: ["Uses a confident opening", "Speaks without filler words", "Manages 1 minute of Q&A"] },
-              { text: "Visuals: create clean supporting slides.", criteria: ["Creates a clean slide deck", "Uses 1 image per slide", "Reads from slides less than 30% of the time"] }
+              { text: "Python & pandas: load and clean data.", criteria: ["Loads a CSV into pandas", "Handles missing values", "Produces a cleaned dataset"] },
+              { text: "Google Sheets & statistics: summaries that hold up.", criteria: ["Builds formulas (AVERAGE, COUNTIF)", "Calculates mean, median and mode", "Describes spread in plain language"] },
+              { text: "Data visualization: charts that communicate.", criteria: ["Builds 3 chart types", "Labels axes and sources", "Tells the story in 3 sentences"] }
             ]
           },
           {
-            id: "2", name: "Level 2", levelNumber: 2, color: "#A78BFA", colorDark: "#5B21B6",
+            id: "2", name: "Relate Projects", levelNumber: 2, color: "#A78BFA", colorDark: "#5B21B6",
+            description: "Apply skills on real paid Relate Projects.",
             requirements: [
-              { text: "Persuasive speaking: build a 10-minute talk.", criteria: ["Builds a 10-minute persuasive talk", "Uses 3 rhetorical devices", "Handles 3 tough questions"] },
-              { text: "Workshop facilitation: design and lead a session.", criteria: ["Designs a 30-minute workshop", "Engages participants with 2 activities", "Collects feedback"] },
-              { text: "Storytelling: use narrative to connect.", criteria: ["Tells a 5-minute personal story", "Uses emotion and detail", "Connects story to a larger lesson"] }
-            ]
-          }
-        ]
-      },
-      {
-        id: "digital-skills", name: "Digital Skills", icon: "laptop",
-        description: "Use cloud tools, manage projects, and automate workflows.",
-        levels: [
-          {
-            id: "1", name: "Level 1", levelNumber: 1, color: "#8B5CF6", colorDark: "#4C1D95",
-            requirements: [
-              { text: "Online safety: protect accounts and data.", criteria: ["Creates strong passwords for 3 accounts", "Enables 2FA", "Identifies 3 phishing signs"] },
-              { text: "Cloud tools: collaborate online.", criteria: ["Uses Google Drive for file sharing", "Collaborates on a shared doc", "Manages folder permissions"] },
-              { text: "Communication: run effective virtual meetings.", criteria: ["Schedules a Zoom meeting with 3 people", "Shares screen and annotates", "Records and shares a meeting"] }
+              { text: "Analyse club attendance trends.", criteria: ["Collects a term of attendance data", "Builds the attendance dashboard", "Presents 3 insights to the club"] },
+              { text: "Track Smart Saver trends.", criteria: ["Aggregates savings logs", "Charts deposits against goals", "Reports findings to facilitators"] },
+              { text: "Market research report for a local SME.", criteria: ["Runs a customer survey", "Analyses the responses", "Delivers a 2-page report"] }
             ]
           },
           {
-            id: "2", name: "Level 2", levelNumber: 2, color: "#A78BFA", colorDark: "#5B21B6",
+            id: "3", name: "Launch", levelNumber: 3, color: "#C4B5FD", colorDark: "#6D28D9",
+            description: "Launch: qualification, registration, or paying work.",
             requirements: [
-              { text: "Project management: track work with boards and lists.", criteria: ["Sets up a Trello/Asana board", "Creates 3 task lists with deadlines", "Tracks 1 project to completion"] },
-              { text: "Data analysis: turn data into insights.", criteria: ["Creates a pivot table in Excel", "Builds a chart in Google Sheets", "Writes a 1-page insight report"] },
-              { text: "Automation: save time with workflows.", criteria: ["Creates 1 Zapier/Zap automation", "Builds 1 email template", "Schedules 1 recurring task"] }
-            ]
-          }
-        ]
-      },
-      {
-        id: "networking", name: "Networking", icon: "people",
-        description: "Build professional relationships and a personal brand.",
-        levels: [
-          {
-            id: "1", name: "Level 1", levelNumber: 1, color: "#8B5CF6", colorDark: "#4C1D95",
-            requirements: [
-              { text: "Introduction: craft and deliver an elevator pitch.", criteria: ["Prepares a 30-second elevator pitch", "Attends 1 networking event", "Follows up with 2 contacts"] },
-              { text: "Relationship building: nurture connections.", criteria: ["Schedules 1 coffee chat", "Adds value in 1 conversation", "Maintains a contact spreadsheet"] },
-              { text: "Personal brand: define and share your expertise.", criteria: ["Defines a personal brand statement", "Updates LinkedIn headline", "Shares 1 weekly insight"] }
-            ]
-          }
-        ]
-      },
-      {
-        id: "mentoring", name: "Mentoring", icon: "heart",
-        description: "Support others with active listening, feedback, and goal setting.",
-        levels: [
-          {
-            id: "1", name: "Level 1", levelNumber: 1, color: "#8B5CF6", colorDark: "#4C1D95",
-            requirements: [
-              { text: "Active listening: listen without fixing.", criteria: ["Practises reflective listening in 3 conversations", "Avoids interrupting for 10 minutes", "Summarizes back what was heard"] },
-              { text: "Goal setting with mentee: help someone set SMART goals.", criteria: ["Helps a mentee set 2 SMART goals", "Reviews progress weekly", "Celebrates 1 milestone"] },
-              { text: "Feedback: give and receive constructive feedback.", criteria: ["Gives feedback using SBI model", "Receives feedback without defensiveness", "Implements 1 piece of feedback"] }
+              { text: "Google Data Analytics Certificate enrolment.", criteria: ["Reviews the certificate syllabus", "Submits enrolment", "Finishes course module 1"] },
+              { text: "Launch a data consultancy.", criteria: ["Defines 1 service offering", "Publishes a one-page pitch", "Signs the first paying client"] }
             ]
           }
         ]
