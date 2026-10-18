@@ -38,6 +38,15 @@ export type SkillDetail = {
   tools?: string[];
   /** Curriculum provider shown in the learning tracker (e.g. "The Odin Project"). */
   learningProvider?: string;
+  /** External course URL the member learns from (e.g. the free Cisco NetAcad programme). */
+  learningUrl?: string;
+  /** In-app features that support this skill — chips in the overview card. */
+  appFeatures?: string[];
+  /** Entry routes for the skill — rendered as the "Your pathway" card. */
+  pathways?: {
+    sproutGraduate?: string;
+    directEntrant?: string;
+  };
   /** Paid Relate Projects — order matches the "Relate Projects" level requirements. */
   projects?: SkillProject[];
   /** Display copy for the project board's unlock rule. */

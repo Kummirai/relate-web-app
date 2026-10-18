@@ -414,7 +414,7 @@
     "ageRange": "16–21 yrs",
     "tagline": "Rise. Build. Become.",
     "description": "Young people stepping into adulthood — needing guidance, skills and purpose.",
-    "mission": "To empower teenagers and young adults with foundational identity, essential life skills, and academic support to successfully transition into independent adulthood.",
+    "mission": "Transition to independence through real-world application, client work, and funding higher education.",
     "vision": "A generation of confident, purpose-driven young leaders securely anchored in their faith and practically equipped for the future marketplace.",
     "pillarLabels": {
       "Shift": "Runway",
@@ -577,111 +577,7 @@
         "multiline": true
       }
     ],
-    "programs": [
-      {
-        "name": "The Hustle Hub",
-        "pillar": "Shift",
-        "blurb": "Co-working and entrepreneurship incubator.",
-        "detail": "Free co-working days plus a 12-week incubator for young businesses — mentorship, templates and pitch practice.",
-        "helpFields": [
-          {
-            "key": "business",
-            "label": "Business / idea",
-            "placeholder": "Tell us what you're building",
-            "multiline": true
-          },
-          {
-            "key": "stage",
-            "label": "Stage",
-            "placeholder": "Idea, starting, running"
-          }
-        ]
-      },
-      {
-        "name": "Pulse Wallet",
-        "pillar": "Shift",
-        "blurb": "Financial literacy: budgeting, investing, credit.",
-        "detail": "A practical money course: budgeting that works, debt and credit scores, and first steps into investing.",
-        "helpFields": [
-          {
-            "key": "moneyGoal",
-            "label": "Your biggest money goal",
-            "placeholder": "e.g. Save an emergency fund"
-          },
-          {
-            "key": "topic",
-            "label": "Topic you need most",
-            "placeholder": "Budgeting, credit, investing…"
-          }
-        ]
-      },
-      {
-        "name": "Career Workshops",
-        "pillar": "Shift",
-        "blurb": "CV writing, interviews and career planning.",
-        "detail": "Bring your CV, leave with a plan — writing labs, mock interviews and career mapping sessions.",
-        "helpFields": [
-          {
-            "key": "careerArea",
-            "label": "Career area",
-            "placeholder": "e.g. Marketing, Engineering"
-          },
-          {
-            "key": "goal",
-            "label": "Your next career step",
-            "placeholder": "New job, promotion, switch…",
-            "multiline": true
-          }
-        ]
-      },
-      {
-        "name": "Tuition & Study Grants",
-        "pillar": "Shift",
-        "blurb": "Support for further education.",
-        "detail": "Short-course and further-study grants awarded each term based on need and a simple application.",
-        "helpFields": [
-          {
-            "key": "course",
-            "label": "Course / programme",
-            "placeholder": "What do you want to study?"
-          },
-          {
-            "key": "institution",
-            "label": "Institution",
-            "placeholder": "Where"
-          },
-          {
-            "key": "amount",
-            "label": "Amount needed",
-            "placeholder": "e.g. R4 000"
-          }
-        ]
-      },
-      {
-        "name": "Pulse Faith",
-        "pillar": "Sanctuary",
-        "blurb": "Prayer groups and Bible study.",
-        "detail": "Optional weekly prayer groups and Bible studies for those who want to grow spiritually."
-      },
-      {
-        "name": "Pulse Check",
-        "pillar": "Sanctuary",
-        "blurb": "Mental health and wellness circles.",
-        "detail": "Confidential peer circles facilitated by trained volunteers — because your mind matters as much as your money."
-      },
-      {
-        "name": "Social Mixers",
-        "pillar": "Connect",
-        "blurb": "Potlucks and park braais.",
-        "detail": "Relaxed potlucks, park braais and game evenings — community without the pressure."
-      },
-      {
-        "name": "Purpose in Action",
-        "pillar": "Connect",
-        "blurb": "Project-based community impact.",
-        "detail": "Team up with your crew on a local project each quarter — plan it, run it and see the difference it makes."
-      }
-    ]
+    "programs": []
   },
   {
     "slug": "prime",

@@ -6,181 +6,215 @@
       "ageRange": "16–21 yrs",
       "skills": [
         {
-          "id": "python",
-          "name": "Python",
-          "icon": "code-slash",
-          "description": "Programming fundamentals with Python, from setup to projects.",
+          "id": "surge_01_money_mastery",
+          "name": "Smart Saver: The Launch Fund",
+          "icon": "wallet",
+          "type": "Compulsory",
+          "description": "Learn to manage real income from Relate Projects and route it into a locked savings fund for university, college, or accredited certifications.",
+          "output": "An active bank account with a dedicated University Fund, a working monthly budget, and a completed CV.",
+          "detail": {
+            "learningProvider": "RelateWorld Smart Saver curriculum",
+            "appFeatures": [
+              "University Tuition Calculator",
+              "Locked Savings Tracker (Goal vs. Saved)",
+              "Real-World Budget Planner",
+              "Income Routing (Auto-transfer project earnings)"
+            ],
+            "launchFund": {
+              "goalName": "University Fund",
+              "targetAmount": 8000,
+              "autoRouting": "100% of earnings from Relate Projects are routed here.",
+              "disbursementRule": "Requires proof of university/certificate registration."
+            },
+            "pathways": {
+              "sproutGraduate": "Advanced budgeting, understanding payslips, opening a dedicated University Savings Account, tracking projected tuition costs.",
+              "directEntrant": "Needs vs wants, basic budgeting, opening a bank account, and setting up the University Savings Account."
+            }
+          },
           "levels": [
             {
               "id": "1",
-              "name": "Level 1",
+              "name": "Learning",
               "levelNumber": 1,
               "color": "#3B82F6",
               "colorDark": "#1E40AF",
+              "description": "Learn the core skills — tracked module by module.",
               "requirements": [
                 {
-                  "text": "Setup & basics: install Python and write a Hello World program.",
+                  "text": "Money mastery: budgeting, payslips and cash-flow basics.",
                   "criteria": [
-                    "Installs Python 3.x",
-                    "Creates hello.py",
-                    "Prints Hello World"
+                    "Completes the budgeting module",
+                    "Explains needs vs wants with own examples",
+                    "Builds a monthly budget from a real payslip"
                   ]
                 },
                 {
-                  "text": "Variables and data types: work with integers, floats, and strings.",
+                  "text": "University Savings Account: open and fund it.",
                   "criteria": [
-                    "Declares 3 variables of different types",
-                    "Performs arithmetic operations",
-                    "Prints the type of each variable"
+                    "Opens a dedicated savings account",
+                    "Sets a tuition goal with target amount and date",
+                    "Records the first deposit into the University Fund"
                   ]
                 },
                 {
-                  "text": "Conditionals and loops: control program flow with if-else and loops.",
+                  "text": "Tuition & certification planning.",
                   "criteria": [
-                    "Writes an if-else statement",
-                    "Uses a for loop to iterate 5 times",
-                    "Uses a while loop with a condition"
+                    "Lists 3 possible courses or certifications with costs",
+                    "Tracks projected tuition in the Tuition Calculator",
+                    "Knows the withdrawal rule: proof of registration"
+                  ]
+                },
+                {
+                  "text": "Income routing & real-world budget.",
+                  "criteria": [
+                    "Routes project earnings automatically",
+                    "Updates the Real-World Budget Planner monthly",
+                    "Compares actual vs planned spending"
+                  ]
+                }
+              ]
+            }
+          ],
+          "image": "https://relateworld.org/images/skills/smart-saver.jpg"
+        },
+        {
+          "id": "surge_02_freelance_design",
+          "name": "Graphic Design (Affinity)",
+          "icon": "document-text",
+          "type": "Elective",
+          "description": "Learn design, apply skills through paid Relate Projects, and route earnings to the University Fund.",
+          "output": "Professional portfolio, proof of paid client work, and a boosted University Fund.",
+          "detail": {
+            "tools": [
+              "Affinity Designer"
+            ],
+            "learningProvider": "Affinity Designer curriculum",
+            "appFeatures": [
+              "Fast-Track Bridge Tracker",
+              "Client Brief Board",
+              "Invoice Generator",
+              "Portfolio Publisher"
+            ],
+            "projects": [
+              {
+                "title": "Design flyers for RelateWorld sports events",
+                "tier": "Tier 1 (Beginner)",
+                "fee": "R150"
+              },
+              {
+                "title": "RelateWorld branding project",
+                "tier": "Tier 2 (Intermediate)",
+                "fee": "R500"
+              },
+              {
+                "title": "Mentor junior Sprout designers",
+                "tier": "Tier 2 (Intermediate)",
+                "fee": "R350"
+              }
+            ],
+            "unlockRule": "Complete the Learning phase to unlock paid client projects.",
+            "launchFund": {
+              "goalName": "University Fund",
+              "targetAmount": 8000,
+              "autoRouting": "100% of earnings from Relate Projects are routed here.",
+              "disbursementRule": "Requires proof of university/certificate registration."
+            },
+            "pathways": {
+              "sproutGraduate": "Bridge skipped — advanced Affinity, pricing, contracts, portfolio curation. Unlocks the RelateWorld branding project and mentoring junior Sprout designers.",
+              "directEntrant": "Fast-track bridge first (6 weeks): Affinity basics, colour theory, typography — then pricing, contracts and portfolio curation. Unlocks designing flyers for RelateWorld sports events."
+            }
+          },
+          "levels": [
+            {
+              "id": "1",
+              "name": "Learning",
+              "levelNumber": 1,
+              "color": "#3B82F6",
+              "colorDark": "#1E40AF",
+              "description": "Learn the core skills — tracked module by module.",
+              "requirements": [
+                {
+                  "text": "Affinity foundations: vector tools, shapes and layers.",
+                  "criteria": [
+                    "Draws shapes with the pen and shape tools",
+                    "Builds a composition using layers",
+                    "Exports a design as PNG and SVG"
+                  ]
+                },
+                {
+                  "text": "Colour theory & typography.",
+                  "criteria": [
+                    "Builds a 2-colour palette with a contrast check",
+                    "Sets a type scale for headings and body",
+                    "Applies both to a sample poster"
+                  ]
+                },
+                {
+                  "text": "Pricing, contracts & portfolio curation.",
+                  "criteria": [
+                    "Writes a simple rate card",
+                    "Uses a one-page client contract",
+                    "Publishes 3 portfolio pieces"
                   ]
                 }
               ]
             },
             {
               "id": "2",
-              "name": "Level 2",
+              "name": "Relate Projects",
               "levelNumber": 2,
               "color": "#60A5FA",
               "colorDark": "#1E3A8A",
+              "description": "Apply skills on real paid Relate Projects.",
               "requirements": [
                 {
-                  "text": "Functions: define and call reusable functions with parameters and return values.",
+                  "text": "Design flyers for RelateWorld sports events.",
                   "criteria": [
-                    "Defines a function with 2 parameters",
-                    "Calls it with 2 different arguments",
-                    "Returns and prints a value"
+                    "Designs 2 event flyers",
+                    "Gets sign-off from the club lead",
+                    "Delivers print-ready files"
                   ]
                 },
                 {
-                  "text": "File I/O: read from and write to text files safely.",
+                  "text": "RelateWorld branding project.",
                   "criteria": [
-                    "Creates a file and writes 3 lines",
-                    "Reads the file and prints contents",
-                    "Appends a new line without overwriting"
+                    "Delivers a logo and brand kit",
+                    "Documents colours, fonts and usage",
+                    "Gets sign-off from the club lead"
                   ]
                 },
                 {
-                  "text": "Error handling: use try-except to catch common errors.",
+                  "text": "Mentor junior Sprout designers.",
                   "criteria": [
-                    "Wraps file read in try-except",
-                    "Catches FileNotFoundError",
-                    "Prints a custom error message"
+                    "Runs 2 mentoring sessions",
+                    "Reviews 2 junior designs with written feedback",
+                    "Logs the sessions with the club leader"
                   ]
                 }
               ]
             },
             {
               "id": "3",
-              "name": "Level 3",
+              "name": "Launch",
               "levelNumber": 3,
               "color": "#93C5FD",
-              "colorDark": "#1E40AF",
+              "colorDark": "#2563EB",
+              "description": "Launch: qualification, registration, or paying work.",
               "requirements": [
                 {
-                  "text": "Modules: import and use standard library and custom modules.",
+                  "text": "Register the design business or enrol in a design qualification.",
                   "criteria": [
-                    "Imports math module",
-                    "Uses at least 2 math functions",
-                    "Imports a custom module"
+                    "Chooses CIPC registration or a course",
+                    "Compiles the needed documents",
+                    "Completes registration or enrolment"
                   ]
                 },
                 {
-                  "text": "Mini project: build a CLI todo list with add, view, and save commands.",
+                  "text": "First paying client outside RelateWorld.",
                   "criteria": [
-                    "Builds a CLI todo list with add/view",
-                    "Stores todos in a JSON file",
-                    "Implements at least 3 commands"
-                  ]
-                },
-                {
-                  "text": "Code quality: write clean, documented, PEP-8-compliant code.",
-                  "criteria": [
-                    "Adds docstrings to all functions",
-                    "Uses meaningful variable names",
-                    "Follows PEP 8 formatting"
-                  ]
-                }
-              ]
-            }
-          ],
-          "image": "https://relateworld.org/images/skills/python.jpg"
-        },
-        {
-          "id": "web-design",
-          "name": "Web Design",
-          "icon": "globe",
-          "description": "Design responsive websites with HTML, CSS, and modern layout techniques.",
-          "levels": [
-            {
-              "id": "1",
-              "name": "Level 1",
-              "levelNumber": 1,
-              "color": "#3B82F6",
-              "colorDark": "#1E40AF",
-              "requirements": [
-                {
-                  "text": "HTML structure: create a valid HTML5 document with semantic sections.",
-                  "criteria": [
-                    "Creates a valid HTML5 document",
-                    "Uses header/main/footer",
-                    "Adds 3 semantic tags"
-                  ]
-                },
-                {
-                  "text": "CSS styling: style elements with an external stylesheet.",
-                  "criteria": [
-                    "Links an external CSS file",
-                    "Styles 3 different elements",
-                    "Uses at least 2 selectors"
-                  ]
-                },
-                {
-                  "text": "Responsive basics: adapt layout for different screen sizes.",
-                  "criteria": [
-                    "Adds a viewport meta tag",
-                    "Uses max-width for layout",
-                    "Tests on 2 screen sizes"
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "2",
-              "name": "Level 2",
-              "levelNumber": 2,
-              "color": "#60A5FA",
-              "colorDark": "#1E3A8A",
-              "requirements": [
-                {
-                  "text": "Flexbox/Grid: build layouts with modern CSS techniques.",
-                  "criteria": [
-                    "Builds a nav with flexbox",
-                    "Creates a card grid with CSS Grid",
-                    "Centers content both ways"
-                  ]
-                },
-                {
-                  "text": "Forms: create and style accessible forms.",
-                  "criteria": [
-                    "Adds a contact form with 3 inputs",
-                    "Uses required and type attributes",
-                    "Styles focus states"
-                  ]
-                },
-                {
-                  "text": "Deploy: publish a site to a free host.",
-                  "criteria": [
-                    "Deploys to a free host",
-                    "Has a custom domain or subdomain",
-                    "Loads in under 2 seconds"
+                    "Pitches to 1 external client",
+                    "Delivers the paid brief",
+                    "Routes the fee to the University Fund"
                   ]
                 }
               ]
@@ -189,505 +223,301 @@
           "image": "https://relateworld.org/images/skills/web-design.jpg"
         },
         {
-          "id": "ms-office",
-          "name": "MS Office",
-          "icon": "document-text",
-          "description": "Master Microsoft Word, Excel, and PowerPoint for school and work.",
+          "id": "surge_03_build_and_ship",
+          "name": "Software & Web Development",
+          "icon": "code-slash",
+          "type": "Elective",
+          "description": "Learn to code, build live tools, and route earnings to the University Fund.",
+          "output": "A functioning, deployed technical tool, and a boosted University Fund.",
+          "detail": {
+            "tools": [
+              "The Odin Project",
+              "VS Code",
+              "GitHub",
+              "Next.js",
+              "PostgreSQL"
+            ],
+            "learningProvider": "The Odin Project (Full Stack JavaScript)",
+            "appFeatures": [
+              "Fast-Track Bridge Tracker",
+              "GitHub Portfolio Sync",
+              "Bug Bounty Board",
+              "Deployment Checklist"
+            ],
+            "projects": [
+              {
+                "title": "Build a landing page for a local business",
+                "tier": "Tier 2 (Advanced)",
+                "fee": "R800"
+              },
+              {
+                "title": "Build the sports fixture generator",
+                "tier": "Tier 2 (Advanced)",
+                "fee": "R500"
+              },
+              {
+                "title": "Fix RelateWorld app bugs",
+                "tier": "Tier 1 (Beginner)",
+                "fee": "R150"
+              }
+            ],
+            "unlockRule": "Complete the Learning phase to unlock paid build projects.",
+            "launchFund": {
+              "goalName": "University Fund",
+              "targetAmount": 8000,
+              "autoRouting": "100% of earnings from Relate Projects are routed here.",
+              "disbursementRule": "Requires proof of university/certificate registration."
+            },
+            "pathways": {
+              "sproutGraduate": "Bridge skipped — Git/GitHub, advanced JS, React/Node, deployment. Unlocks the sports fixture generator and RelateWorld bug fixes.",
+              "directEntrant": "Fast-track bridge first (8 weeks): HTML, CSS, basic JavaScript — then Git/GitHub, React/Node and deployment. Unlocks a landing page for a local business."
+            }
+          },
           "levels": [
             {
               "id": "1",
-              "name": "Level 1",
+              "name": "Learning",
               "levelNumber": 1,
               "color": "#3B82F6",
               "colorDark": "#1E40AF",
+              "description": "Learn the core skills — tracked module by module.",
               "requirements": [
                 {
-                  "text": "Word: create a 2-page formatted document.",
+                  "text": "HTML, CSS & JavaScript foundations.",
                   "criteria": [
-                    "Creates a 2-page document",
-                    "Applies a style heading",
-                    "Inserts a page break"
+                    "Builds a multi-page layout",
+                    "Writes functions and arrays in JS",
+                    "Styles a page with responsive CSS"
                   ]
                 },
                 {
-                  "text": "Excel: build a budget sheet with formulas and formatting.",
+                  "text": "Git/GitHub & collaborative code.",
                   "criteria": [
-                    "Creates a 5-row budget sheet",
-                    "Uses SUM on 3 columns",
-                    "Applies currency formatting"
+                    "Creates and branches a repo",
+                    "Merges a pull request",
+                    "Pushes a finished project to GitHub"
                   ]
                 },
                 {
-                  "text": "PowerPoint: build a 3-slide presentation with transitions.",
+                  "text": "React/Node & deployment.",
                   "criteria": [
-                    "Builds a 3-slide deck",
-                    "Adds a transition to all slides",
-                    "Uses a consistent theme"
+                    "Builds a React component with state",
+                    "Serves data from a Node endpoint",
+                    "Deploys the app and shares the live URL"
                   ]
                 }
               ]
             },
             {
               "id": "2",
-              "name": "Level 2",
+              "name": "Relate Projects",
               "levelNumber": 2,
               "color": "#60A5FA",
               "colorDark": "#1E3A8A",
+              "description": "Apply skills on real paid Relate Projects.",
               "requirements": [
                 {
-                  "text": "Word mail merge: personalise documents for multiple recipients.",
+                  "text": "Build a landing page for a local business.",
                   "criteria": [
-                    "Sets up a mail merge with 10 names",
-                    "Inserts merge fields",
-                    "Exports to PDF"
+                    "Collects the client brief",
+                    "Builds and deploys the page",
+                    "Gets client sign-off"
                   ]
                 },
                 {
-                  "text": "Excel charts and conditional formatting.",
+                  "text": "Build the sports fixture generator.",
                   "criteria": [
-                    "Creates a chart from data",
-                    "Adds a title and labels",
-                    "Applies conditional formatting"
+                    "Models the fixture data",
+                    "Generates a full round of fixtures",
+                    "Shares the tool with the club"
                   ]
                 },
                 {
-                  "text": "PowerPoint master slides: enforce consistent branding.",
+                  "text": "Fix RelateWorld app bugs.",
                   "criteria": [
-                    "Edits the slide master",
-                    "Adds a logo placeholder",
-                    "Applies master to all slides"
+                    "Reproduces 2 reported bugs",
+                    "Ships the fixes with a pull request",
+                    "Confirms the fixes in production"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "3",
+              "name": "Launch",
+              "levelNumber": 3,
+              "color": "#93C5FD",
+              "colorDark": "#2563EB",
+              "description": "Launch: qualification, registration, or paying work.",
+              "requirements": [
+                {
+                  "text": "Deployment checklist: ship and monitor.",
+                  "criteria": [
+                    "Sets up a custom domain or subdomain",
+                    "Configures error monitoring",
+                    "Documents the setup for handover"
+                  ]
+                },
+                {
+                  "text": "Portfolio & pathway next step.",
+                  "criteria": [
+                    "Publishes 3 GitHub projects",
+                    "Presents the deployed tool",
+                    "Routes earnings to the University Fund"
                   ]
                 }
               ]
             }
           ],
-          "image": "https://relateworld.org/images/skills/ms-office.jpg"
+          "image": "https://relateworld.org/images/skills/software-engineer.jpg"
         },
         {
-          "id": "cv-writing",
-          "name": "CV Writing",
-          "icon": "document",
-          "description": "Create a professional CV that stands out to employers.",
-          "levels": [
-            {
-              "id": "1",
-              "name": "Level 1",
-              "levelNumber": 1,
-              "color": "#3B82F6",
-              "colorDark": "#1E40AF",
-              "requirements": [
-                {
-                  "text": "Structure: build a complete CV with all essential sections.",
-                  "criteria": [
-                    "Includes 5 sections",
-                    "Uses reverse-chronological order",
-                    "Fits on 2 pages"
-                  ]
-                },
-                {
-                  "text": "Content: write achievement-focused bullet points.",
-                  "criteria": [
-                    "Uses 5 action verbs",
-                    "Quantifies 2 achievements with numbers",
-                    "Tailors to 1 job description"
-                  ]
-                },
-                {
-                  "text": "Formatting: polish the CV for readability and ATS.",
-                  "criteria": [
-                    "Uses a clean font",
-                    "Consistent bullet style",
-                    "Saved as PDF with correct filename"
-                  ]
-                }
-              ]
+          "id": "surge_04_data_for_decisions",
+          "name": "Data Science",
+          "icon": "trending-up",
+          "type": "Elective",
+          "description": "Learn data analysis, solve real problems, and route earnings to the University Fund.",
+          "output": "A real analysis presented to the club, and a boosted University Fund.",
+          "detail": {
+            "tools": [
+              "Python",
+              "pandas",
+              "Google Sheets",
+              "Data visualization"
+            ],
+            "learningProvider": "Cisco NetAcad · Introduction to Data Science (free)",
+            "learningUrl": "https://www.netacad.com/courses/introduction-data-science?courseLang=en-US",
+            "appFeatures": [
+              "Fast-Track Bridge Tracker",
+              "Survey Builder",
+              "Report Template Generator"
+            ],
+            "projects": [
+              {
+                "title": "Analyse sports league attendance",
+                "tier": "Tier 1 (Beginner)",
+                "fee": "R150"
+              },
+              {
+                "title": "Track and analyse Smart Saver trends for Sprout",
+                "tier": "Tier 1 (Beginner)",
+                "fee": "R150"
+              },
+              {
+                "title": "Build sponsor impact reports",
+                "tier": "Tier 2 (Advanced)",
+                "fee": "R500"
+              }
+            ],
+            "unlockRule": "Complete the Learning phase to unlock paid data projects.",
+            "launchFund": {
+              "goalName": "University Fund",
+              "targetAmount": 8000,
+              "autoRouting": "100% of earnings from Relate Projects are routed here.",
+              "disbursementRule": "Requires proof of university/certificate registration."
+            },
+            "pathways": {
+              "sproutGraduate": "Bridge skipped — advanced Python (pandas), data cleaning, visualization. Unlocks sports league attendance analysis and sponsor impact reports.",
+              "directEntrant": "Fast-track bridge first (6 weeks): spreadsheet formulas, basic statistics, intro to Python — then data cleaning and visualization (matplotlib). Unlocks Smart Saver trend tracking."
             }
-          ],
-          "image": "https://relateworld.org/images/skills/cv-writing.jpg"
-        },
-        {
-          "id": "interview-skills",
-          "name": "Interview Skills",
-          "icon": "people",
-          "description": "Prepare for and excel in job interviews.",
+          },
           "levels": [
             {
               "id": "1",
-              "name": "Level 1",
+              "name": "Learning",
               "levelNumber": 1,
               "color": "#3B82F6",
               "colorDark": "#1E40AF",
+              "description": "Learn the core skills — tracked module by module.",
               "requirements": [
                 {
-                  "text": "Research: learn about the company and role.",
+                  "text": "Spreadsheets & basic statistics.",
                   "criteria": [
-                    "Researches 3 facts about the company",
-                    "Identifies 2 key values",
-                    "Prepares 3 questions to ask"
+                    "Builds pivot tables and charts",
+                    "Calculates mean, median and spread",
+                    "Explains one misleading chart"
                   ]
                 },
                 {
-                  "text": "Common questions: prepare STAR stories.",
+                  "text": "Python data cleaning with pandas.",
                   "criteria": [
-                    "Prepares STAR stories for 3 questions",
-                    "Practises answers aloud 3 times",
-                    "Records a 2-minute video response"
+                    "Loads a CSV into pandas",
+                    "Cleans missing and duplicate rows",
+                    "Filters and aggregates a dataset"
                   ]
                 },
                 {
-                  "text": "Professional presence: demonstrate confidence and etiquette.",
+                  "text": "Visualization & presenting insights.",
                   "criteria": [
-                    "Dresses appropriately for a mock interview",
-                    "Maintains eye contact for 80% of the interview",
-                    "Thanks the interviewer"
-                  ]
-                }
-              ]
-            }
-          ],
-          "image": "https://relateworld.org/images/skills/interview-skills.jpg"
-        },
-        {
-          "id": "public-speaking",
-          "name": "Public Speaking",
-          "icon": "mic",
-          "description": "Deliver confident, structured presentations to an audience.",
-          "levels": [
-            {
-              "id": "1",
-              "name": "Level 1",
-              "levelNumber": 1,
-              "color": "#3B82F6",
-              "colorDark": "#1E40AF",
-              "requirements": [
-                {
-                  "text": "Speech structure: write and deliver a 3-minute speech.",
-                  "criteria": [
-                    "Writes a 3-minute speech with intro/body/conclusion",
-                    "Includes 1 story or statistic",
-                    "Practises 5 times"
-                  ]
-                },
-                {
-                  "text": "Delivery: speak clearly with purposeful gestures.",
-                  "criteria": [
-                    "Speaks clearly at moderate pace",
-                    "Uses 3 hand gestures",
-                    "Maintains eye contact with 3 audience members"
-                  ]
-                },
-                {
-                  "text": "Visual aids: support the speech with slides.",
-                  "criteria": [
-                    "Creates a 3-slide deck",
-                    "Uses 1 image per slide",
-                    "Reads from notes less than 20% of the time"
+                    "Builds 3 chart types with matplotlib",
+                    "Writes a 3-sentence takeaway per chart",
+                    "Presents findings to a partner"
                   ]
                 }
               ]
             },
             {
               "id": "2",
-              "name": "Level 2",
+              "name": "Relate Projects",
               "levelNumber": 2,
               "color": "#60A5FA",
               "colorDark": "#1E3A8A",
+              "description": "Apply skills on real paid Relate Projects.",
               "requirements": [
                 {
-                  "text": "Storytelling: use narrative to persuade.",
+                  "text": "Analyse sports league attendance.",
                   "criteria": [
-                    "Opens with a personal anecdote",
-                    "Uses 2 rhetorical devices",
-                    "Ends with a clear call to action"
+                    "Collects attendance data",
+                    "Finds 2 trends in the data",
+                    "Shares a one-page summary"
                   ]
                 },
                 {
-                  "text": "Handling Q&A: answer audience questions confidently.",
+                  "text": "Track and analyse Smart Saver trends for Sprout.",
                   "criteria": [
-                    "Answers 3 audience questions",
-                    "Restates each question before answering",
-                    "Admits when unsure"
+                    "Compiles the savings data",
+                    "Identifies seasonal patterns",
+                    "Recommends 1 savings change"
                   ]
                 },
                 {
-                  "text": "Persuasion: deliver a 5-minute persuasive talk.",
+                  "text": "Build sponsor impact reports.",
                   "criteria": [
-                    "Uses 3 persuasive techniques",
-                    "Anticipates 2 counterarguments",
-                    "Delivers a 5-minute persuasive talk"
-                  ]
-                }
-              ]
-            }
-          ],
-          "image": "https://relateworld.org/images/skills/public-speaking.jpg"
-        },
-        {
-          "id": "study-skills",
-          "name": "Study Skills",
-          "icon": "book",
-          "description": "Learn smarter with effective note-taking, time management, and exam prep.",
-          "levels": [
-            {
-              "id": "1",
-              "name": "Level 1",
-              "levelNumber": 1,
-              "color": "#3B82F6",
-              "colorDark": "#1E40AF",
-              "requirements": [
-                {
-                  "text": "Note-taking: use the Cornell method for 1 lecture.",
-                  "criteria": [
-                    "Uses Cornell method for 1 lecture",
-                    "Summarizes each section in 1 sentence",
-                    "Reviews notes within 24 hours"
-                  ]
-                },
-                {
-                  "text": "Time management: build a focused study schedule.",
-                  "criteria": [
-                    "Creates a weekly study schedule",
-                    "Blocks 2-hour focused sessions",
-                    "Uses a timer for 25-minute sprints"
-                  ]
-                },
-                {
-                  "text": "Exam preparation: use active recall and spaced repetition.",
-                  "criteria": [
-                    "Creates a 1-page cheat sheet",
-                    "Teaches 1 topic to a peer",
-                    "Sleeps 7+ hours before a practice test"
-                  ]
-                }
-              ]
-            }
-          ],
-          "image": "https://relateworld.org/images/skills/study-skills.jpg"
-        },
-        {
-          "id": "first-aid",
-          "name": "First Aid",
-          "icon": "medkit",
-          "description": "Learn essential first aid skills for emergencies.",
-          "levels": [
-            {
-              "id": "1",
-              "name": "Level 1",
-              "levelNumber": 1,
-              "color": "#3B82F6",
-              "colorDark": "#1E40AF",
-              "requirements": [
-                {
-                  "text": "CPR basics: perform hands-only CPR.",
-                  "criteria": [
-                    "Demonstrates hands-only CPR for 2 minutes",
-                    "Correct compression depth (5-6 cm)",
-                    "Correct rate (100-120/min)"
-                  ]
-                },
-                {
-                  "text": "Wound care: clean and dress a wound.",
-                  "criteria": [
-                    "Cleans a wound with saline",
-                    "Applies sterile dressing",
-                    "Secures with bandage"
-                  ]
-                },
-                {
-                  "text": "Emergency response: assess and act in an emergency.",
-                  "criteria": [
-                    "Checks scene safety",
-                    "Calls emergency services with clear info",
-                    "Monitors casualty until help arrives"
+                    "Calculates the key sponsor metrics",
+                    "Builds the report template",
+                    "Delivers the report to sponsors"
                   ]
                 }
               ]
             },
             {
-              "id": "2",
-              "name": "Level 2",
-              "levelNumber": 2,
-              "color": "#60A5FA",
-              "colorDark": "#1E3A8A",
+              "id": "3",
+              "name": "Launch",
+              "levelNumber": 3,
+              "color": "#93C5FD",
+              "colorDark": "#2563EB",
+              "description": "Launch: qualification, registration, or paying work.",
               "requirements": [
                 {
-                  "text": "Bandaging: apply different bandage types.",
+                  "text": "Real analysis presented to the club.",
                   "criteria": [
-                    "Applies a finger bandage",
-                    "Applies a triangular bandage sling",
-                    "Checks circulation after 5 minutes"
+                    "Frames a business question",
+                    "Delivers the analysis deck",
+                    "Receives club feedback"
                   ]
                 },
                 {
-                  "text": "Burns and fractures: provide initial care.",
+                  "text": "Accredited certificate or paid data work.",
                   "criteria": [
-                    "Treats a minor burn with cool water for 10 minutes",
-                    "Splints a suspected fracture",
-                    "Recognizes when to call for help"
-                  ]
-                },
-                {
-                  "text": "First aid kit: assemble and maintain a personal kit.",
-                  "criteria": [
-                    "Assembles a personal first aid kit",
-                    "Checks expiry dates on 5 items",
-                    "Labels all items clearly"
+                    "Completes the Cisco NetAcad course",
+                    "Earns the certificate or completes a paid brief",
+                    "Routes earnings to the University Fund"
                   ]
                 }
               ]
             }
           ],
-          "image": "https://relateworld.org/images/skills/first-aid.jpg"
-        },
-        {
-          "id": "financial-literacy",
-          "name": "Financial Literacy",
-          "icon": "wallet",
-          "description": "Understand budgeting, saving, and growing money wisely.",
-          "levels": [
-            {
-              "id": "1",
-              "name": "Level 1",
-              "levelNumber": 1,
-              "color": "#3B82F6",
-              "colorDark": "#1E40AF",
-              "requirements": [
-                {
-                  "text": "Budgeting: track expenses and categorize spending.",
-                  "criteria": [
-                    "Tracks expenses for 7 days",
-                    "Categorizes into 4 groups",
-                    "Identifies 1 area to cut spending"
-                  ]
-                },
-                {
-                  "text": "Saving: set and work toward a SMART savings goal.",
-                  "criteria": [
-                    "Sets a SMART savings goal",
-                    "Opens a savings account",
-                    "Automates a monthly deposit"
-                  ]
-                },
-                {
-                  "text": "Debt awareness: understand different types of debt.",
-                  "criteria": [
-                    "Defines 3 types of debt",
-                    "Calculates total interest on a loan",
-                    "Lists 2 strategies to reduce debt"
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "2",
-              "name": "Level 2",
-              "levelNumber": 2,
-              "color": "#60A5FA",
-              "colorDark": "#1E3A8A",
-              "requirements": [
-                {
-                  "text": "Investments: explore how money grows over time.",
-                  "criteria": [
-                    "Explains 3 investment types",
-                    "Calculates compound interest over 5 years",
-                    "Opens a retirement account"
-                  ]
-                },
-                {
-                  "text": "Insurance: compare and choose coverage.",
-                  "criteria": [
-                    "Compares 2 health insurance plans",
-                    "Explains deductible vs premium",
-                    "Files a sample claim"
-                  ]
-                },
-                {
-                  "text": "Taxes: read a payslip and understand deductions.",
-                  "criteria": [
-                    "Reads a pay slip and identifies deductions",
-                    "Files a simple tax return",
-                    "Explains 2 tax deductions"
-                  ]
-                }
-              ]
-            }
-          ],
-          "image": "https://relateworld.org/images/skills/financial-literacy.jpg"
-        },
-        {
-          "id": "leadership",
-          "name": "Leadership",
-          "icon": "star",
-          "description": "Develop self-leadership and the ability to guide others.",
-          "levels": [
-            {
-              "id": "1",
-              "name": "Level 1",
-              "levelNumber": 1,
-              "color": "#3B82F6",
-              "colorDark": "#1E40AF",
-              "requirements": [
-                {
-                  "text": "Goal setting: write and track SMART goals.",
-                  "criteria": [
-                    "Writes 3 SMART goals",
-                    "Tracks progress weekly",
-                    "Adjusts 1 goal after 4 weeks"
-                  ]
-                },
-                {
-                  "text": "Time management: use prioritisation frameworks.",
-                  "criteria": [
-                    "Uses Eisenhower matrix for 1 week",
-                    "Blocks deep-work time",
-                    "Says no to 1 low-priority request"
-                  ]
-                },
-                {
-                  "text": "Emotional intelligence: recognise and manage emotions.",
-                  "criteria": [
-                    "Keeps a 1-week emotion journal",
-                    "Identifies 3 emotional triggers",
-                    "Practises active listening in 2 conversations"
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "2",
-              "name": "Level 2",
-              "levelNumber": 2,
-              "color": "#60A5FA",
-              "colorDark": "#1E3A8A",
-              "requirements": [
-                {
-                  "text": "Delegation: assign and follow up on tasks.",
-                  "criteria": [
-                    "Delegates 2 tasks to peers",
-                    "Provides clear instructions and deadlines",
-                    "Follows up on outcomes"
-                  ]
-                },
-                {
-                  "text": "Conflict resolution: mediate peer disputes.",
-                  "criteria": [
-                    "Mediates 1 peer dispute",
-                    "Uses neutral language",
-                    "Documents agreed actions"
-                  ]
-                },
-                {
-                  "text": "Project management: deliver a small project on time.",
-                  "criteria": [
-                    "Plans a project with milestones",
-                    "Tracks progress with a Kanban board",
-                    "Delivers final outcome on time"
-                  ]
-                }
-              ]
-            }
-          ],
-          "image": "https://relateworld.org/images/skills/leadership.jpg"
+          "image": "https://relateworld.org/images/skills/python.jpg"
         }
       ]
     },
@@ -758,17 +588,16 @@
         },
         {
           "id": "pulse_02_digital_brand_studio",
-          "name": "Digital Brand Studio",
+          "name": "Graphic Design (Affinity)",
           "icon": "document-text",
           "type": "Elective",
           "description": "Learn graphic design, apply skills through paid Relate Projects, and build a portfolio to launch a freelance agency or enrol in a design qualification.",
           "output": "Registered design business and a portfolio of real paid client work.",
           "detail": {
             "tools": [
-              "Affinity Designer",
-              "Canva Pro"
+              "Affinity Designer"
             ],
-            "learningProvider": "Affinity Designer & Canva Pro curriculum",
+            "learningProvider": "Affinity Designer curriculum",
             "projects": [
               {
                 "title": "Design RelateWorld sports flyers",
@@ -812,7 +641,7 @@
                   ]
                 },
                 {
-                  "text": "Canva Pro: fast branded templates.",
+                  "text": "Affinity styles & templates: reusable branded layouts.",
                   "criteria": [
                     "Builds a branded template kit",
                     "Uses brand colours and fonts consistently",
@@ -1058,7 +887,7 @@
         },
         {
           "id": "pulse_04_data_market_intelligence",
-          "name": "Data & Market Intelligence",
+          "name": "Data Science",
           "icon": "trending-up",
           "type": "Elective",
           "description": "Learn data science, analyze real organizational data, and build a consultancy or earn an accredited data certificate.",
@@ -1070,7 +899,8 @@
               "Google Sheets",
               "Data visualization"
             ],
-            "learningProvider": "Python (pandas) & Google Sheets curriculum",
+            "learningProvider": "Cisco NetAcad · Introduction to Data Science (free)",
+            "learningUrl": "https://www.netacad.com/courses/introduction-data-science?courseLang=en-US",
             "projects": [
               {
                 "title": "Analyse club attendance trends",
