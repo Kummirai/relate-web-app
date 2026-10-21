@@ -16,6 +16,7 @@ import {
   resolveTeam,
   storageConfigured,
   uploadPlayerPhoto,
+  SPORTS_REG_COL,
 } from "@/lib/sports-registrations";
 import { isSport, positionsForSport, MAX_PER_POSITION } from "@/lib/sports-positions";
 
@@ -117,6 +118,24 @@ export async function POST(request: NextRequest) {
         { error: "Add a profile photo before registering." },
         { status: 400, maxAge: 0 },
       );
+    }
+
+    // One team per member — checked before the photo upload so a blocked
+    // registration never leaves an orphaned file in storage.
+    {
+      const db = await getDb();
+      const mine = await db
+        .collection(SPORTS_REG_COL)
+        .findOne({ userId }, { projection: { teamName: 1, teamId: 1 } });
+      if (mine) {
+        const theirs = mine.teamName || mine.teamId;
+        return publicJson(
+          {
+            error: `Already registered for ${theirs} — a member can only register for one team.`,
+          },
+          { status: 409, maxAge: 0 },
+        );
+      }
     }
 
     const { url, path } = await uploadPlayerPhoto(teamId, photo);

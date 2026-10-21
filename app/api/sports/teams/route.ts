@@ -1,6 +1,7 @@
 import { NextRequest } from "next/server";
 import { getDb } from "@/lib/mongodb";
 import { getSportsConfig } from "@/lib/sports-teams";
+import { MAX_PER_POSITION } from "@/lib/sports-positions";
 import {
   publicError,
   publicJson,
@@ -29,7 +30,12 @@ export async function GET(request: NextRequest) {
       return publicNotFound("No teams published yet");
     }
 
-    return publicJson(config, { headers: rateLimitHeaders(rl) });
+    // The seed doc can lag the code, so the per-position cap always comes
+    // from the live constant (clients read it for "places left" copy).
+    return publicJson(
+      { ...config, maxPerPosition: MAX_PER_POSITION },
+      { headers: rateLimitHeaders(rl) },
+    );
   } catch (error) {
     console.error("GET /api/sports/teams failed", error);
     return publicError();

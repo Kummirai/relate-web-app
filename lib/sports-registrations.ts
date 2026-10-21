@@ -14,6 +14,7 @@ import {
  * Sports team registration — a player claims a position on a squad.
  *
  * Two rules drive everything here:
+ *   - a member registers for at most one team (checked by userId);
  *   - a position holds MAX_PER_POSITION registrants per squad (starter + depth);
  *   - the first applicants are the ones who appear on the team sheet, so rows
  *     are ordered by createdAt and later applicants wait in line behind them.
@@ -188,7 +189,7 @@ function asInt(value: unknown): number {
 
 /**
  * Validate + persist a player registration. Throws 400 with a clear message on
- * bad input, 409 when this player already registered for the squad.
+ * bad input, 409 when this member has already registered for a team.
  */
 export async function createSportsRegistration(
   input: SportsRegistrationInput,
@@ -238,9 +239,13 @@ export async function createSportsRegistration(
   const db = await getDb();
   const col = db.collection(SPORTS_REG_COL);
 
-  const existing = await col.findOne({ userId: input.userId, teamId });
+  const existing = await col.findOne({ userId: input.userId });
   if (existing) {
-    throw httpError(409, "This player is already registered for that squad.");
+    const theirs = existing.teamName || existing.teamId;
+    throw httpError(
+      409,
+      `Already registered for ${theirs} — a member can only register for one team.`,
+    );
   }
 
   const taken = await col.countDocuments({

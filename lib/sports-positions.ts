@@ -54,7 +54,7 @@ export const SQUAD_SIZE: Record<Sport, number> = {
  * How many registrants a single position holds per squad: the starter plus
  * depth. Beyond this the applicant is still accepted, as a waitlist entry.
  */
-export const MAX_PER_POSITION = 3;
+export const MAX_PER_POSITION = 4;
 
 export function isSport(value: unknown): value is Sport {
   return value === "Football" || value === "Netball" || value === "Volleyball";
