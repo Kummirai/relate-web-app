@@ -5,9 +5,8 @@ import { resolveSession, findUserById } from "@/lib/community-auth";
 /**
  * Lists the participants (club registrations) for a club.
  *
- * Access control: admin, or a facilitator with training completed (the same
- * rule that unlocks group creation). This is the roster that lets club leads
- * see who has registered — including the activity each joined (e.g. bible_quiz).
+ * Access control: admin only — the roster that lets club leads see who has
+ * registered, including the activity each joined (e.g. bible_quiz).
  */
 export async function GET(
   request: NextRequest,
@@ -28,10 +27,7 @@ export async function GET(
 
     const userDoc = await findUserById(db, user.id);
     const role = userDoc?.role || "user";
-    const isAdmin = role === "admin";
-    const isTrainedFacilitator =
-      role === "facilitator" && userDoc?.facilitatorTrainingCompleted === true;
-    if (!isAdmin && !isTrainedFacilitator) {
+    if (role !== "admin") {
       return NextResponse.json({ error: "Not allowed" }, { status: 403 });
     }
 

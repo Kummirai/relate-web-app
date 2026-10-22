@@ -66,8 +66,8 @@ export async function resolveAdminOrOwner(
 
 /**
  * Resolves the session and returns the full user doc only when they are
- * allowed to create community groups: admins, and facilitators who have
- * completed their training.
+ * allowed to create community groups — admins only (the old facilitator
+ * role gate was retired).
  */
 export async function requireGroupCreator(request: NextRequest): Promise<any | null> {
   try {
@@ -79,9 +79,6 @@ export async function requireGroupCreator(request: NextRequest): Promise<any | n
     const user = await findUserById(db, session.user.id);
     if (!user) return null;
     if (user.role === "admin") return user;
-    if (user.role === "facilitator" && user.facilitatorTrainingCompleted === true) {
-      return user;
-    }
     return null;
   } catch {
     return null;
@@ -118,8 +115,6 @@ export async function ensureIndexes(db: any) {
       db.collection("event_registrations").createIndex({ eventId: 1, userId: 1 }),
       db.collection("community_groups").createIndex({ createdAt: -1 }),
       db.collection("community_groups").createIndex({ inviteCode: 1 }, { unique: true, sparse: true }),
-      db.collection("facilitator_applications").createIndex({ userId: 1, createdAt: -1 }),
-      db.collection("facilitator_applications").createIndex({ status: 1, createdAt: -1 }),
       db.collection("community_requests").createIndex({ createdAt: -1 }),
       db.collection("help_requests").createIndex({ createdAt: -1 }),
       db.collection("help_requests").createIndex({ userId: 1, createdAt: -1 }),
@@ -184,6 +179,16 @@ export async function ensureIndexes(db: any) {
       // Skills progress — one record per account × skill × level
       db.collection("skill_progress").createIndex({ userId: 1, skillId: 1, levelId: 1 }, { unique: true }),
       db.collection("skill_progress").createIndex({ userId: 1, status: 1, updatedAt: -1 }),
+      // Club services marketplace — claim by status, "my work" by claimer
+      db.collection("club_services").createIndex({ status: 1, createdAt: -1 }),
+      db.collection("club_services").createIndex({ acceptedById: 1, status: 1 }),
+      db.collection("club_services").createIndex({ posterId: 1, createdAt: -1 }),
+      // Volunteer offices + applications
+      db.collection("volunteer_offices").createIndex({ status: 1, createdAt: -1 }),
+      db.collection("volunteer_offices").createIndex({ clubSlug: 1, createdAt: -1 }),
+      db.collection("volunteer_office_applications").createIndex({ officeId: 1, createdAt: -1 }),
+      db.collection("volunteer_office_applications").createIndex({ userId: 1, createdAt: -1 }),
+      db.collection("volunteer_office_applications").createIndex({ status: 1, createdAt: -1 }),
     ]);
   } catch {}
 }

@@ -24,9 +24,9 @@ export async function POST(request: NextRequest) {
     if (!userId) {
       return NextResponse.json({ error: "userId is required" }, { status: 400 });
     }
-    if (role !== "admin" && role !== "user" && role !== "facilitator") {
+    if (role !== "admin" && role !== "user") {
       return NextResponse.json(
-        { error: 'role must be "admin", "facilitator" or "user"' },
+        { error: 'role must be "admin" or "user"' },
         { status: 400 },
       );
     }

@@ -122,7 +122,7 @@ export async function POST(request: NextRequest) {
     const user = await requireGroupCreator(request);
     if (!user) {
       return NextResponse.json(
-        { error: "Only admins and trained facilitators can create groups." },
+        { error: "Only admins can create groups." },
         { status: 403 },
       );
     }
