@@ -5,6 +5,7 @@ import {
   VOLUNTEER_OFFICES_COLLECTION,
   OFFICE_APPLICATIONS_COLLECTION,
   normalizeArea,
+  parseBullets,
   serializeOffice,
 } from "@/lib/volunteer-offices";
 import { notifyAllUsers } from "@/lib/inapp-notify";
@@ -94,6 +95,9 @@ export async function POST(request: NextRequest) {
       description,
       area,
       clubSlug,
+      responsibilities: parseBullets(body.responsibilities),
+      qualifications: parseBullets(body.qualifications),
+      applicationQuestions: parseBullets(body.applicationQuestions),
       postedById: admin.id,
       postedByName: admin.name || "Admin",
       status: "open",

@@ -4,6 +4,7 @@ import { resolveSession, requireAdmin, ensureIndexes } from "@/lib/community-aut
 import {
   CLUB_SERVICES_COLLECTION,
   SERVICE_TYPES,
+  parseDueDate,
   type ServiceType,
   serializeService,
 } from "@/lib/club-services";
@@ -74,6 +75,7 @@ export async function POST(request: NextRequest) {
       typeof body.clubSlug === "string" && body.clubSlug.trim()
         ? body.clubSlug.trim()
         : null;
+    const dueDate = parseDueDate(body.dueDate);
 
     if (!title || !description) {
       return NextResponse.json(
@@ -94,6 +96,7 @@ export async function POST(request: NextRequest) {
       acceptedById: null,
       acceptedByName: null,
       acceptedAt: null,
+      dueDate,
       submission: null,
       review: null,
       createdAt: now,

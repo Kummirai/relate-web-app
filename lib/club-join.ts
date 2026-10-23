@@ -237,6 +237,26 @@ export async function createClubJoinApplication(
 
   const db = await getDb();
   await ensureClubJoinIndexes(db);
+
+  // One active membership per person — you can't sit in two clubs at once.
+  // (Graduated members age out of the ladder and may join the next club.)
+  if (input.userId) {
+    const existing = await db
+      .collection(CLUB_JOIN_COL)
+      .findOne(
+        { userId: input.userId, status: "active" },
+        { sort: { createdAt: -1 } },
+      );
+    if (existing) {
+      throw httpError(
+        409,
+        `You're already a member of ${
+          existing.clubName || existing.clubSlug
+        } — one club at a time.`,
+      );
+    }
+  }
+
   const reference = await makeReference(db, clubSlug);
 
   const doc = {

@@ -20,6 +20,11 @@ export type VolunteerOffice = {
   description: string;
   area: string | null;
   clubSlug: string | null;
+  /** Optional vacancy-style bullet lists (one heading + points each). */
+  responsibilities: string[] | null;
+  qualifications: string[] | null;
+  /** Optional custom questions the admin wants each applicant to answer. */
+  applicationQuestions: string[] | null;
   postedById: string;
   postedByName: string;
   status: OfficeStatus;
@@ -35,6 +40,8 @@ export type OfficeApplication = {
   name: string;
   email: string | null;
   motivation: string;
+  /** Per-question answers when the office defines applicationQuestions. */
+  answers: { question: string; answer: string }[] | null;
   status: OfficeApplicationStatus;
   reviewNote: string | null;
   createdAt: Date;
@@ -53,6 +60,26 @@ export function normalizeArea(value: unknown): string | null {
   return (VOLUNTEER_AREAS as readonly string[]).includes(trimmed)
     ? trimmed
     : trimmed;
+}
+
+/**
+ * Vacancy bullet lists: accepts an array of strings or a newline-separated
+ * string ("one point per line"). Empty/invalid input stores null so the
+ * field stays optional.
+ */
+export function parseBullets(value: unknown): string[] | null {
+  const raw = Array.isArray(value)
+    ? value
+    : typeof value === "string"
+      ? value.split("\n")
+      : [];
+  const bullets = raw
+    .filter((v): v is string => typeof v === "string")
+    .map((v) => v.trim().replace(/^[-•*]\s*/, ""))
+    .filter(Boolean)
+    .slice(0, 12)
+    .map((v) => v.slice(0, 160));
+  return bullets.length ? bullets : null;
 }
 
 export function serializeOffice(doc: any) {

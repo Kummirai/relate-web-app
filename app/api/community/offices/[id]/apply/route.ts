@@ -58,8 +58,39 @@ export async function POST(
     }
 
     const body = await request.json();
-    const motivation =
-      typeof body.motivation === "string" ? body.motivation.trim() : "";
+
+    // Offices may define custom application questions; when they do, each
+    // must be answered and the combined answers become the motivation text
+    // (so older review screens keep working). Without questions the plain
+    // motivation field is required.
+    const questions: string[] = Array.isArray(office.applicationQuestions)
+      ? office.applicationQuestions.filter((q: unknown): q is string => typeof q === "string" && !!q.trim())
+      : [];
+    const rawAnswers: any[] = Array.isArray(body.answers) ? body.answers : [];
+
+    let motivation = "";
+    let answers: { question: string; answer: string }[] | null = null;
+
+    if (questions.length) {
+      answers = [];
+      for (const question of questions) {
+        const match = rawAnswers.find(
+          (a: any) => a && typeof a.question === "string" && a.question.trim() === question.trim(),
+        );
+        const answer = match && typeof match.answer === "string" ? match.answer.trim() : "";
+        if (!answer) {
+          return NextResponse.json(
+            { error: `Please answer: ${question}` },
+            { status: 400 },
+          );
+        }
+        answers.push({ question, answer });
+      }
+      motivation = answers.map((a) => `${a.question}\n${a.answer}`).join("\n\n");
+    } else {
+      motivation = typeof body.motivation === "string" ? body.motivation.trim() : "";
+    }
+
     if (motivation.length < 20) {
       return NextResponse.json(
         { error: "Tell them why you're a good fit (at least 20 characters)." },
@@ -75,6 +106,7 @@ export async function POST(
       name: userDoc?.name || user.name || "Unknown",
       email: userDoc?.email || null,
       motivation,
+      answers,
       status: "pending",
       reviewNote: null,
       createdAt: now,

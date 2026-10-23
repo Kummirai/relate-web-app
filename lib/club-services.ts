@@ -46,6 +46,8 @@ export type ClubService = {
   acceptedById: string | null;
   acceptedByName: string | null;
   acceptedAt: Date | null;
+  /** Optional target date for the work ("due by"). */
+  dueDate: Date | null;
   submission: ServiceSubmission | null;
   review: ServiceReview | null;
   createdAt: Date;
@@ -63,6 +65,16 @@ export function isHttpUrl(value: unknown): value is string {
   } catch {
     return false;
   }
+}
+
+/**
+ * Accepts "YYYY-MM-DD" or any Date-parsable string; returns null for empty
+ * or invalid input so a bad date never blocks posting.
+ */
+export function parseDueDate(value: unknown): Date | null {
+  if (typeof value !== "string" || !value.trim()) return null;
+  const parsed = new Date(value.trim());
+  return Number.isNaN(parsed.getTime()) ? null : parsed;
 }
 
 /**

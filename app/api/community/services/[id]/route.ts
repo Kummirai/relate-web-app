@@ -5,6 +5,7 @@ import { resolveSession, requireAdmin } from "@/lib/community-auth";
 import {
   CLUB_SERVICES_COLLECTION,
   SERVICE_TYPES,
+  parseDueDate,
   type ServiceType,
   serializeService,
 } from "@/lib/club-services";
@@ -84,6 +85,7 @@ export async function PATCH(
       set.description = body.description.trim();
     }
     if (SERVICE_TYPES.includes(body.type as ServiceType)) set.type = body.type;
+    if (body.dueDate !== undefined) set.dueDate = parseDueDate(body.dueDate);
     if (body.clubSlug !== undefined) {
       set.clubSlug =
         typeof body.clubSlug === "string" && body.clubSlug.trim()

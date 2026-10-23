@@ -6,6 +6,7 @@ import {
   VOLUNTEER_OFFICES_COLLECTION,
   OFFICE_APPLICATIONS_COLLECTION,
   normalizeArea,
+  parseBullets,
   serializeOffice,
 } from "@/lib/volunteer-offices";
 
@@ -84,6 +85,15 @@ export async function PATCH(
       set.description = body.description.trim();
     }
     if (body.area !== undefined) set.area = normalizeArea(body.area);
+    if (body.responsibilities !== undefined) {
+      set.responsibilities = parseBullets(body.responsibilities);
+    }
+    if (body.qualifications !== undefined) {
+      set.qualifications = parseBullets(body.qualifications);
+    }
+    if (body.applicationQuestions !== undefined) {
+      set.applicationQuestions = parseBullets(body.applicationQuestions);
+    }
     if (body.clubSlug !== undefined) {
       set.clubSlug =
         typeof body.clubSlug === "string" && body.clubSlug.trim()
