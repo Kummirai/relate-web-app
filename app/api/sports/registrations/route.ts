@@ -8,6 +8,7 @@ import {
   publicTooMany,
 } from "@/lib/public-api/render";
 import { resolveUser } from "@/lib/community-auth";
+import { getLatestMembership } from "@/lib/club-join";
 import { getDb } from "@/lib/mongodb";
 import { notifyAdmins } from "@/lib/inapp-notify";
 import {
@@ -88,6 +89,23 @@ export async function POST(request: NextRequest) {
         { error: "Sign in to register for a team." },
         { status: 401, maxAge: 0 },
       );
+    }
+
+    // Club members only — the app gates on the Membership ID before it shows
+    // the team picker, and the API enforces the same rule so a team seat can
+    // never be claimed without a club membership behind it.
+    {
+      const membership = await getLatestMembership(userId);
+      if (
+        !membership ||
+        !membership.reference ||
+        membership.status === "graduated"
+      ) {
+        return publicJson(
+          { error: "Join a club first to register for a team." },
+          { status: 403, maxAge: 0 },
+        );
+      }
     }
 
     if (!storageConfigured()) {

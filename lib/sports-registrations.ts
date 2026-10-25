@@ -355,3 +355,62 @@ export async function listSportsRegistrations(
     };
   });
 }
+
+export type MySportsRegistration = {
+  id: string;
+  teamId: string;
+  teamName: string;
+  clubSlug: string;
+  clubName: string;
+  sport: Sport;
+  position: string;
+  positionCode: string;
+  name: string;
+  photoUrl: string;
+  status: "active" | "waitlist";
+  order: number;
+  createdAt: string;
+};
+
+/**
+ * The signed-in member's own registration (a member registers for at most one
+ * team), with their live place in the position queue — what the "you're already
+ * on a team" card renders. Null when they haven't registered yet.
+ */
+export async function getMyRegistration(
+  userId: string,
+): Promise<MySportsRegistration | null> {
+  const db = await getDb();
+  const col = db.collection(SPORTS_REG_COL);
+  const row = await col.findOne({ userId });
+  if (!row) return null;
+
+  const teamId = String(row.teamId ?? "");
+  const position = String(row.position ?? "");
+  const status = row.status === "waitlist" ? "waitlist" : "active";
+  // Players ahead of them in the same slot — same ordering the roster uses.
+  const ahead = await col.countDocuments({
+    teamId,
+    position,
+    status,
+    createdAt: { $lt: row.createdAt },
+  });
+  const createdAt =
+    row.createdAt instanceof Date ? row.createdAt.toISOString() : "";
+
+  return {
+    id: String(row._id),
+    teamId,
+    teamName: String(row.teamName ?? ""),
+    clubSlug: String(row.clubSlug ?? ""),
+    clubName: String(row.clubName ?? ""),
+    sport: (isSport(row.sport) ? row.sport : "Football") as Sport,
+    position,
+    positionCode: String(row.positionCode ?? ""),
+    name: String(row.name ?? ""),
+    photoUrl: String(row.photoUrl ?? ""),
+    status,
+    order: ahead + 1,
+    createdAt,
+  };
+}
