@@ -1,5 +1,5 @@
-import { randomBytes } from "crypto";
 import { getDb } from "./mongodb";
+import { isCloudinaryConfigured, uploadToCloudinary } from "./cloudinary";
 import { CLUB_TEAMS } from "./club-join";
 import {
   MAX_PER_POSITION,
@@ -89,22 +89,11 @@ export function resolveTeam(
   return { sport, teams };
 }
 
-/** Where a player's photo lives in Supabase Storage (avatars/players/…). */
-export const PHOTO_BUCKET = "avatars";
-export const PHOTO_PREFIX = "players";
-
-const SUPABASE_URL =
-  process.env.NEXT_PUBLIC_SUPABASE_URL ||
-  process.env.EXPO_PUBLIC_SUPABASE_URL ||
-  process.env.SUPABASE_URL ||
-  "";
-const SERVICE_ROLE_KEY =
-  process.env.SUPABASE_SERVICE_ROLE_KEY ||
-  process.env.SUPABASE_SERVICE_KEY ||
-  "";
+/** Where a player's photo lives in Cloudinary (relate/players/{teamId}/…). */
+export const PHOTO_FOLDER = "relate/players";
 
 export function storageConfigured(): boolean {
-  return Boolean(SUPABASE_URL && SERVICE_ROLE_KEY);
+  return isCloudinaryConfigured;
 }
 
 export const MAX_PHOTO_BYTES = 4 * 1024 * 1024;
@@ -118,9 +107,9 @@ export const PHOTO_TYPES: Record<string, string> = {
 };
 
 /**
- * Stores the headshot under avatars/players/{teamId}/… with the service role
- * key. The bucket is public-read, so the returned URL can be used as-is by the
- * squad pages; no insert policy is needed because we never go through RLS.
+ * Stores the headshot under relate/players/{teamId}/… with an unsigned
+ * Cloudinary preset. The account is public-read, so the returned secure URL
+ * can be used as-is by the squad pages; only the URL string is persisted.
  */
 export async function uploadPlayerPhoto(
   teamId: string,
@@ -128,8 +117,8 @@ export async function uploadPlayerPhoto(
 ): Promise<{ url: string; path: string }> {
   if (!storageConfigured()) {
     const missing = [
-      !SUPABASE_URL ? "NEXT_PUBLIC_SUPABASE_URL" : null,
-      !SERVICE_ROLE_KEY ? "SUPABASE_SERVICE_ROLE_KEY" : null,
+      !process.env.CLOUDINARY_CLOUD_NAME ? "CLOUDINARY_CLOUD_NAME" : null,
+      !process.env.CLOUDINARY_UPLOAD_PRESET ? "CLOUDINARY_UPLOAD_PRESET" : null,
     ].filter(Boolean);
     throw httpError(
       503,
@@ -141,41 +130,15 @@ export async function uploadPlayerPhoto(
     throw httpError(413, "Photo is too large — 4 MB maximum.");
   }
   const contentType = (file.type || "").toLowerCase();
-  const ext = PHOTO_TYPES[contentType];
-  if (!ext) throw httpError(415, "Use a JPEG, PNG, WebP or AVIF image.");
+  if (!PHOTO_TYPES[contentType]) throw httpError(415, "Use a JPEG, PNG, WebP or AVIF image.");
 
-  const stamp = new Date().toISOString().slice(0, 10);
-  const path = `${PHOTO_PREFIX}/${teamId}/${stamp}_${randomBytes(6).toString("hex")}.${ext}`;
-
-  const res = await fetch(`${SUPABASE_URL}/storage/v1/object/${PHOTO_BUCKET}/${path}`, {
-    method: "POST",
-    headers: {
-      apikey: SERVICE_ROLE_KEY,
-      Authorization: `Bearer ${SERVICE_ROLE_KEY}`,
-      "Content-Type": contentType,
-      "x-upsert": "false",
-      "cache-control": "31536000",
-    },
-    body: await file.arrayBuffer(),
-  });
-
-  if (!res.ok) {
-    const detail = (await res.json().catch(() => null)) as {
-      message?: string;
-      error?: string;
-    } | null;
-    console.error(
-      "[sports-registrations] storage upload failed:",
-      res.status,
-      detail?.message ?? detail?.error ?? res.statusText,
-    );
-    throw httpError(502, `Could not store the photo (${res.status}). Try again.`);
+  try {
+    return await uploadToCloudinary(file, `${PHOTO_FOLDER}/${teamId}`);
+  } catch (err) {
+    const detail = err instanceof Error ? err.message : "";
+    console.error("[sports-registrations] cloudinary upload failed:", detail || err);
+    throw httpError(502, `Could not store the photo${detail ? ` — ${detail}` : ""}. Try again.`);
   }
-
-  return {
-    url: `${SUPABASE_URL}/storage/v1/object/public/${PHOTO_BUCKET}/${path}`,
-    path: `${PHOTO_BUCKET}/${path}`,
-  };
 }
 
 function clean(value: unknown): string {

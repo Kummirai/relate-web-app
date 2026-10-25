@@ -75,7 +75,7 @@ export async function GET(request: NextRequest) {
  *
  * Fields: clubSlug, clubName, teamId, teamName, position, name, age, gender?,
  * phone?, heightCm, religion, foot, hand  +  photo (file, ≤4 MB).
- * Requires a signed-in account; the photo goes to Supabase Storage first so a
+ * Requires a signed-in account; the photo goes to Cloudinary first so a
  * failed upload never leaves a record without a face.
  */
 export async function POST(request: NextRequest) {
