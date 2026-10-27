@@ -68,6 +68,7 @@ export async function GET(request: NextRequest) {
         type?: "Compulsory" | "Elective";
         output?: string;
         detail?: import("@/lib/skills").SkillDetail;
+        modules?: import("@/lib/skills").SkillModule[];
         levelId: string;
         requirements: { text: string; criteria: string[] }[];
         levels: {
@@ -102,6 +103,7 @@ export async function GET(request: NextRequest) {
           type: skill.type,
           output: skill.output,
           detail: skill.detail,
+          modules: skill.modules,
           levelId: skill.levels[0]?.id ?? "",
           requirements: skill.levels[0]?.requirements ?? [],
           // Full per-level copy for clients that group requirements by level.

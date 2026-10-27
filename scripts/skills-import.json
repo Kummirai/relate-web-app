@@ -548,6 +548,35 @@
               "disbursementRule": "Requires an institution invoice or verified business expense"
             }
           },
+          "modules": [
+            {
+              "id": "pulse_01_smart_saver_m1",
+              "trackCategory": "smart_saver",
+              "title": "The Allowance & Stipend Budget",
+              "description": "Apply the 60/20/20 survival framework (60% needs, 20% wants, 20% savings), track micro-drains like mobile data, fast food and transit, and manage mid-month cash crunches with weekly caps.",
+              "order": 1,
+              "durationMinutes": 90,
+              "deliverableDescription": "Personal monthly budget map built inside the Relate World Smart Saver app feature."
+            },
+            {
+              "id": "pulse_01_smart_saver_m2",
+              "trackCategory": "smart_saver",
+              "title": "Student & Entry-Level Banking",
+              "description": "Choose zero-fee or low-fee youth and student banking accounts, avoid ATM and overdraft penalty fees, and shield accounts from phishing, phone scams and money-mule schemes.",
+              "order": 2,
+              "durationMinutes": 75,
+              "deliverableDescription": "Bank account audit checklist and security configuration guide."
+            },
+            {
+              "id": "pulse_01_smart_saver_m3",
+              "trackCategory": "smart_saver",
+              "title": "Saving for First Milestones",
+              "description": "Set up automated micro-savings for first milestones — driver's licence, interview outfits, graduation fees, rental deposits — and separate short-term liquid savings from long-term funds.",
+              "order": 3,
+              "durationMinutes": 75,
+              "deliverableDescription": "Minimum 1 active milestone savings target configured with automated logging."
+            }
+          ],
           "levels": [
             {
               "id": "1",
@@ -1023,6 +1052,182 @@
             }
           ],
           "image": "https://relateworld.org/images/skills/python.jpg"
+        },
+        {
+          "id": "pulse_05_career_launch",
+          "name": "Career Launch & Employability",
+          "icon": "briefcase",
+          "type": "Compulsory",
+          "description": "Bridge education and employment — build a credible CV, ace interviews, and walk into the workplace with professional confidence.",
+          "output": "A reviewed PDF CV, a completed mock interview, and a signed workplace readiness pledge.",
+          "detail": {
+            "learningProvider": "RelateWorld Career Launch curriculum",
+            "appFeatures": [
+              "CV Readiness Checklist",
+              "STAR Interview Practice",
+              "Workplace Readiness Pledge"
+            ]
+          },
+          "modules": [
+            {
+              "id": "pulse_05_career_launch_m1",
+              "trackCategory": "career_launch",
+              "title": "The No-Experience CV & Professional Identity",
+              "description": "Translate academic projects, volunteer work, sports leadership and personal projects into CV experience, format a clean ATS-friendly single-page CV, and build a professional LinkedIn presence.",
+              "order": 1,
+              "durationMinutes": 90,
+              "deliverableDescription": "Complete, reviewed PDF CV ready for applications."
+            },
+            {
+              "id": "pulse_05_career_launch_m2",
+              "trackCategory": "career_launch",
+              "title": "Interview Mastery & Communication",
+              "description": "Answer behavioural interview questions using the STAR method, master body language and professional tone in virtual and in-person interviews, and follow up with thank-you notes.",
+              "order": 2,
+              "durationMinutes": 90,
+              "deliverableDescription": "Participation in a 1-on-1 mock interview session with feedback."
+            },
+            {
+              "id": "pulse_05_career_launch_m3",
+              "trackCategory": "career_launch",
+              "title": "Workplace Readiness & Professional Etiquette",
+              "description": "Understand employment contracts, working hours and leave policies; use professional email and chat etiquette and punctuality; handle constructive feedback and workplace relationships well.",
+              "order": 3,
+              "durationMinutes": 60,
+              "deliverableDescription": "Signed workplace readiness completion pledge."
+            }
+          ],
+          "levels": [
+            {
+              "id": "1",
+              "name": "Learning",
+              "levelNumber": 1,
+              "color": "#8B5CF6",
+              "colorDark": "#4C1D95",
+              "description": "Learn the core skills — tracked module by module.",
+              "requirements": []
+            }
+          ],
+          "image": "https://relateworld.org/images/skills/cv-linkedin.jpg"
+        },
+        {
+          "id": "pulse_06_digital_productivity",
+          "name": "Digital & Academic Productivity",
+          "icon": "laptop",
+          "type": "Compulsory",
+          "description": "Practical mastery of modern office software, responsible AI research, and daily organisation tools required in academic and corporate environments.",
+          "output": "A structured document and spreadsheet assignment, an ethical AI research brief, and a 7-day time-blocked schedule.",
+          "detail": {
+            "tools": [
+              "Docs",
+              "Sheets",
+              "Slides",
+              "Google Calendar"
+            ],
+            "learningProvider": "RelateWorld Digital Productivity curriculum",
+            "appFeatures": [
+              "7-Day Time-Block Scheduler",
+              "AI-Assisted Research Checklist"
+            ]
+          },
+          "modules": [
+            {
+              "id": "pulse_06_digital_productivity_m1",
+              "trackCategory": "digital_productivity",
+              "title": "Essential Office Tools (Docs, Sheets, Slides)",
+              "description": "Structure and format documents with a table of contents, use spreadsheet formulas (SUM, AVERAGE, COUNTIF) with basic charts and sorting, and build slide decks with clear visual hierarchy.",
+              "order": 1,
+              "durationMinutes": 120,
+              "deliverableDescription": "Multi-page document and financial/data spreadsheet assignment."
+            },
+            {
+              "id": "pulse_06_digital_productivity_m2",
+              "trackCategory": "digital_productivity",
+              "title": "Responsible AI & Research Literacy",
+              "description": "Use AI tools ethically for study planning, summarisation and concept breakdown without plagiarism; evaluate source credibility, fact-check online information, and reference correctly.",
+              "order": 2,
+              "durationMinutes": 90,
+              "deliverableDescription": "Research brief created using ethical AI-assisted workflows."
+            },
+            {
+              "id": "pulse_06_digital_productivity_m3",
+              "trackCategory": "digital_productivity",
+              "title": "Task & Time Management Workflows",
+              "description": "Time-block the week in digital calendars, prioritise with the Eisenhower Matrix (urgent vs important), and overcome procrastination on exam and project deadlines.",
+              "order": 3,
+              "durationMinutes": 90,
+              "deliverableDescription": "7-day time-blocked calendar schedule for upcoming academic or personal goals."
+            }
+          ],
+          "levels": [
+            {
+              "id": "1",
+              "name": "Learning",
+              "levelNumber": 1,
+              "color": "#8B5CF6",
+              "colorDark": "#4C1D95",
+              "description": "Learn the core skills — tracked module by module.",
+              "requirements": []
+            }
+          ],
+          "image": "https://relateworld.org/images/skills/ms-office.jpg"
+        },
+        {
+          "id": "pulse_07_wellness_fitness",
+          "name": "Personal Wellness & Mental Fitness",
+          "icon": "fitness",
+          "type": "Compulsory",
+          "description": "Foster physical stamina, emotional resilience and healthy stress-management habits during high-pressure life transitions.",
+          "output": "A daily stress-reduction routine, bi-weekly group session attendance, and a 14-day sleep consistency log.",
+          "detail": {
+            "learningProvider": "RelateWorld Wellness curriculum",
+            "appFeatures": [
+              "Sleep Consistency Log",
+              "Stress-Reduction Routine Builder",
+              "Group Fitness Sessions"
+            ]
+          },
+          "modules": [
+            {
+              "id": "pulse_07_wellness_fitness_m1",
+              "trackCategory": "wellness_fitness",
+              "title": "Stress Management & Burnout Prevention",
+              "description": "Spot the physical and mental warning signs of academic and life burnout, practise breathing techniques and grounding exercises, and know when and where to seek professional or peer support.",
+              "order": 1,
+              "durationMinutes": 75,
+              "deliverableDescription": "Personalized daily stress-reduction routine."
+            },
+            {
+              "id": "pulse_07_wellness_fitness_m2",
+              "trackCategory": "wellness_fitness",
+              "title": "Active Fitness & Group Movement",
+              "description": "Join weekly or bi-weekly structured group athletic sessions, learn basic bodyweight strength exercises with warm-up and cool-down routines, and treat physical activity as core to cognitive health.",
+              "order": 2,
+              "durationMinutes": 60,
+              "deliverableDescription": "Attendance in bi-weekly group sports or fitness sessions."
+            },
+            {
+              "id": "pulse_07_wellness_fitness_m3",
+              "trackCategory": "wellness_fitness",
+              "title": "Sleep Hygiene & Daily Energy",
+              "description": "Understand how blue light, caffeine and late-night study sessions damage sleep quality, and structure consistent sleep-wake cycles to optimize cognitive performance.",
+              "order": 3,
+              "durationMinutes": 60,
+              "deliverableDescription": "14-day sleep consistency tracking log."
+            }
+          ],
+          "levels": [
+            {
+              "id": "1",
+              "name": "Learning",
+              "levelNumber": 1,
+              "color": "#8B5CF6",
+              "colorDark": "#4C1D95",
+              "description": "Learn the core skills — tracked module by module.",
+              "requirements": []
+            }
+          ],
+          "image": "https://relateworld.org/images/skills/health-wellness.jpg"
         }
       ]
     },
@@ -1031,6 +1236,79 @@
       "name": "Prime",
       "ageRange": "33+",
       "skills": [
+        {
+          "id": "prime_smart_saver",
+          "name": "Smart Saver: Family Resilience",
+          "icon": "wallet",
+          "type": "Compulsory",
+          "description": "Stretch limited household income, eliminate high-cost debt traps, build accessible emergency cushions, and leverage trusted community savings structures without falling victim to bank fees or financial scams.",
+          "output": "A 30-day family survival budget map, an active emergency cushion, a debt clearance roadmap, and an organised family vital-document audit.",
+          "detail": {
+            "tools": [
+              "60/20/20 Budget Map",
+              "Emergency Cushion Tracker",
+              "Stokvel Health Check",
+              "Debt Snowball Roadmap"
+            ],
+            "learningProvider": "RelateWorld Smart Saver curriculum",
+            "appFeatures": [
+              "30-Day Survival Budget Map",
+              "Emergency Cushion Tracker",
+              "Stokvel Checklist",
+              "Debt Tracker"
+            ]
+          },
+          "modules": [
+            {
+              "id": "prime_smart_saver_m1",
+              "trackCategory": "smart_saver",
+              "title": "Tight Household Cash Flow & Emergency Cushions",
+              "description": "Apply the 60/20/20 survival budget when essentials consume most income, buffer irregular earnings across lean months, build a R500–R1,500 emergency cushion in zero-fee accounts, and plug micro-leaks like store-card fees and costly money transfers.",
+              "order": 1,
+              "durationMinutes": 120,
+              "deliverableDescription": "30-day family survival budget map with an active Emergency Cushion target configured in the app."
+            },
+            {
+              "id": "prime_smart_saver_m2",
+              "trackCategory": "smart_saver",
+              "title": "Stokvels, Savings Clubs & Community Safety Nets",
+              "description": "Choose and audit local savings groups — stokvels, burial societies, grocery clubs — with clear payout rotation rules, written record-keeping and fraud protection, and structure grocery clubs for year-end bulk-buying discounts.",
+              "order": 2,
+              "durationMinutes": 90,
+              "deliverableDescription": "A stokvel/savings club health assessment checklist."
+            },
+            {
+              "id": "prime_smart_saver_m3",
+              "trackCategory": "smart_saver",
+              "title": "Debt Defense & Micro-Loan Shielding",
+              "description": "Identify mashonisas, predatory micro-finance lenders and aggressive store accounts; apply the debt snowball on low income while keeping food, rent and utilities secured; negotiate with creditors before default.",
+              "order": 3,
+              "durationMinutes": 90,
+              "deliverableDescription": "A step-by-step debt clearance roadmap."
+            },
+            {
+              "id": "prime_smart_saver_m4",
+              "trackCategory": "smart_saver",
+              "title": "Asset Protection & Family Continuity",
+              "description": "Compare affordable funeral cover and community support funds against high-cost commercial insurance, write simple family agreements for housing, land and assets, and store vital documents safely from fire, flood and loss.",
+              "order": 4,
+              "durationMinutes": 90,
+              "deliverableDescription": "Family Vital Document & Asset Organization Audit."
+            }
+          ],
+          "levels": [
+            {
+              "id": "1",
+              "name": "Learning",
+              "levelNumber": 1,
+              "color": "#F59E0B",
+              "colorDark": "#92400E",
+              "description": "Learn the core skills — tracked module by module.",
+              "requirements": []
+            }
+          ],
+          "image": "https://relateworld.org/images/skills/budgeting.jpg"
+        },
         {
           "id": "financial-freedom",
           "name": "Financial Freedom",

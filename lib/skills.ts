@@ -32,6 +32,24 @@ export type SkillProject = {
   fee?: string;
 };
 
+/** Curriculum domains the modules belong to (Pulse tracks; Prime's single track). */
+export type SkillTrackCategory =
+  | "smart_saver"
+  | "career_launch"
+  | "digital_productivity"
+  | "wellness_fitness";
+
+/** One curriculum module inside a skill — progress lives in `module_progress`. */
+export type SkillModule = {
+  id: string;
+  trackCategory: SkillTrackCategory;
+  title: string;
+  description: string;
+  order: number;
+  durationMinutes: number;
+  deliverableDescription: string;
+};
+
 /** Static widget content for the skill detail page (member state is derived at runtime). */
 export type SkillDetail = {
   /** Tools the member uses — shown as chips in the overview. */
@@ -75,6 +93,8 @@ export type Skill = {
   output?: string;
   /** Widget content for the skill detail page. */
   detail?: SkillDetail;
+  /** Curriculum modules (Pulse tracks / Prime Smart Saver) — module progress is separate. */
+  modules?: SkillModule[];
   levels: SkillLevel[];
 };
 
@@ -100,11 +120,28 @@ export type SkillProgress = {
   createdAt: Date;
 };
 
+/** Per-member progress for one curriculum module (`module_progress` collection). */
+export type ModuleProgress = {
+  /** UUID assigned on first save. */
+  id: string;
+  userId: string;
+  skillId: string;
+  moduleId: string;
+  completed: boolean;
+  completedAt: Date | null;
+  deliverableSubmitted: boolean;
+  deliverableUrl: string | null;
+  updatedAt: Date;
+  createdAt: Date;
+};
+
 export async function ensureSkillIndexes(db: any) {
   return Promise.all([
     db.collection(SKILLS_COLLECTION).createIndex({ id: 1 }, { unique: true }),
     db.collection("skill_progress").createIndex({ userId: 1, skillId: 1, levelId: 1 }, { unique: true }),
     db.collection("skill_progress").createIndex({ userId: 1, status: 1, updatedAt: -1 }),
+    db.collection("module_progress").createIndex({ userId: 1, moduleId: 1 }, { unique: true }),
+    db.collection("module_progress").createIndex({ userId: 1, skillId: 1 }),
   ]);
 }
 

@@ -91,6 +91,7 @@ const clubs = (framework.clubs ?? []).map((club) => {
         type: skill.type,
         output: skill.output,
         detail: skill.detail,
+        modules: skill.modules,
         levelId: firstLevel?.id ?? "",
         requirements: firstLevel?.requirements ?? [],
         levels: (skill.levels ?? []).map((level) => ({
@@ -136,6 +137,9 @@ export type {
   SkillDetail,
   SkillProject,
   SkillProgress,
+  SkillModule,
+  SkillTrackCategory,
+  ModuleProgress,
   ClubSkills,
 } from "@/services/skills-catalog";
 

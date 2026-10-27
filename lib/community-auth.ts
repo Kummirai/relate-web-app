@@ -179,6 +179,9 @@ export async function ensureIndexes(db: any) {
       // Skills progress — one record per account × skill × level
       db.collection("skill_progress").createIndex({ userId: 1, skillId: 1, levelId: 1 }, { unique: true }),
       db.collection("skill_progress").createIndex({ userId: 1, status: 1, updatedAt: -1 }),
+      // Module progress — one record per account × curriculum module
+      db.collection("module_progress").createIndex({ userId: 1, moduleId: 1 }, { unique: true }),
+      db.collection("module_progress").createIndex({ userId: 1, skillId: 1 }),
       // Club services marketplace — claim by status, "my work" by claimer
       db.collection("club_services").createIndex({ status: 1, createdAt: -1 }),
       db.collection("club_services").createIndex({ acceptedById: 1, status: 1 }),
