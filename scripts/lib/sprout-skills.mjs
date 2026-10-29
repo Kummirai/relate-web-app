@@ -213,11 +213,23 @@ const SPROUT_SKILLS = [
     type: "Elective",
     description: "Computational thinking, logic, and coding from blocks to real text-based code.",
     output: "A working game or web page built from scratch.",
-    appFeatures: ["Scratch/VS Code Links", "Code Snippet Repository", "Project Board"],
+    appFeatures: ["Embedded Learning Portal", "Code Snippet Repository", "Project Board"],
+    appFeaturesByBand: {
+      tweens: [
+        "4-Year Evolving Profile portal",
+        "Live in-browser code sandbox",
+        "Milestone & quiz XP",
+        "Master Web Builder Badge",
+      ],
+    },
     learningProvider: "Scratch to code curriculum (ScratchJr → Scratch → HTML/CSS → Python)",
+    learningProviders: {
+      tweens:
+        "The 4-Year Evolving Profile portal — one personal website grown from HTML/CSS (age 9) through grids, forms and JavaScript (10–11) to a published multi-page hub (12), with a live sandbox, milestones, quizzes and XP.",
+    },
     tools: {
       kids: ["ScratchJr"],
-      tweens: ["Scratch", "HTML/CSS"],
+      tweens: ["HTML", "CSS", "JavaScript", "Built-in Sandbox"],
       teens: ["HTML/CSS", "JavaScript", "Python (VS Code)"],
     },
     requirements: {
@@ -249,27 +261,35 @@ const SPROUT_SKILLS = [
       ],
       tweens: [
         {
-          text: "Loops, variables and basic web page structure.",
+          text: "Year 1 — The Digital Identity: HTML structure and CSS basics on your personal profile website (Reward: Badge Points).",
           criteria: [
-            "Uses loops and variables in Scratch",
-            "Builds a basic HTML/CSS page",
-            "Explains where each variable is used",
+            "Navbar, hero with photo, biography and footer built in the live sandbox",
+            "Uses headings, paragraphs, images with alt text and core CSS colours/spacing",
+            "Year 1 concept check passed in the Learning Portal",
           ],
         },
         {
-          text: "Build a 'Needs vs. Wants' game in Scratch (Reward: Badge Points).",
+          text: "Year 2 — The Showcase & Hobby Hub: CSS grids, hover effects and a Fan Feedback form.",
           criteria: [
-            "Game responds to player choices",
-            "Uses at least one loop and one variable",
-            "Badge Points recorded on the project board",
+            "Hobby gallery built as a CSS grid of cards",
+            "Likes vs Dislikes comparison cards with lists",
+            "Working feedback form with labels, inputs and a submit button",
           ],
         },
         {
-          text: "A working game or web page built from scratch.",
+          text: "Year 3 — The Interactive Profile: JavaScript theme toggle, click counter, calculator and welcome popup.",
           criteria: [
-            "Game runs without errors",
-            "Web page opens with valid HTML/CSS",
-            "Both saved to the project board",
+            "Dark/light toggle and click counter wired with addEventListener",
+            "Age-in-days calculator using a function and if/else",
+            "Personalised welcome popup using prompt()",
+          ],
+        },
+        {
+          text: "Year 4 — The Master Showcase Hub: a published 4-page website (Reward: Master Web Builder Badge).",
+          criteria: [
+            "index, about, projects and contact pages linked with hyperlinks",
+            "Responsive @media layout driven by one shared stylesheet",
+            "Master Web Builder Badge claimed in the Learning Portal",
           ],
         },
       ],
@@ -418,10 +438,12 @@ function bandLevel(band, requirements) {
 /** Detail copy for an age-club copy of a skill: the band's own tools, provider and fund. */
 function ageClubDetail(skill, bandId) {
   const detail = {};
-  if (skill.learningProvider) detail.learningProvider = skill.learningProvider;
+  const provider = skill.learningProviders?.[bandId] ?? skill.learningProvider;
+  if (provider) detail.learningProvider = provider;
   if (skill.learningUrl) detail.learningUrl = skill.learningUrl;
   if (skill.tools?.[bandId]) detail.tools = skill.tools[bandId];
-  if (skill.appFeatures) detail.appFeatures = skill.appFeatures;
+  const features = skill.appFeaturesByBand?.[bandId] ?? skill.appFeatures;
+  if (features) detail.appFeatures = features;
   if (skill.launchFund) detail.launchFund = skill.launchFund;
   return detail;
 }

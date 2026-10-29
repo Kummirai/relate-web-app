@@ -218,7 +218,7 @@
     "slug": "sprout-tweens",
     "name": "Sprout Tweens",
     "group": "Children",
-    "ageRange": "9 – 11 yrs",
+    "ageRange": "9 – 12 yrs",
     "tagline": "Growing strong, finding their voice.",
     "description": "Tweens exploring who they are becoming — independence with a safety net. Bigger challenges, real leadership and widening friendships.",
     "parentSlug": "sprout",
@@ -241,7 +241,7 @@
       {
         "key": "childAge",
         "label": "Child's age",
-        "placeholder": "9–11"
+        "placeholder": "9–12"
       },
       {
         "key": "phone",

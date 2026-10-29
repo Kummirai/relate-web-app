@@ -4061,7 +4061,7 @@
               "levelNumber": 2,
               "color": "#4CAF50",
               "colorDark": "#2E7D32",
-              "description": "Ages 9 – 11. Intermediate care skills, comparative budgeting, document creation and visual game design.",
+              "description": "Ages 9 – 12. Intermediate care skills, comparative budgeting, document creation and visual game design.",
               "requirements": [
                 {
                   "text": "Full savings log, personal savings goal and the 24-hour pause.",
@@ -4179,7 +4179,7 @@
               "levelNumber": 2,
               "color": "#4CAF50",
               "colorDark": "#2E7D32",
-              "description": "Ages 9 – 11. Intermediate care skills, comparative budgeting, document creation and visual game design.",
+              "description": "Ages 9 – 12. Intermediate care skills, comparative budgeting, document creation and visual game design.",
               "requirements": [
                 {
                   "text": "Vector basics, typography and the rw badge in Affinity Designer.",
@@ -4253,7 +4253,7 @@
           "output": "A working game or web page built from scratch.",
           "detail": {
             "appFeatures": [
-              "Scratch/VS Code Links",
+              "Embedded Learning Portal",
               "Code Snippet Repository",
               "Project Board"
             ]
@@ -4299,30 +4299,38 @@
               "levelNumber": 2,
               "color": "#4CAF50",
               "colorDark": "#2E7D32",
-              "description": "Ages 9 – 11. Intermediate care skills, comparative budgeting, document creation and visual game design.",
+              "description": "Ages 9 – 12. Intermediate care skills, comparative budgeting, document creation and visual game design.",
               "requirements": [
                 {
-                  "text": "Loops, variables and basic web page structure.",
+                  "text": "Year 1 — The Digital Identity: HTML structure and CSS basics on your personal profile website (Reward: Badge Points).",
                   "criteria": [
-                    "Uses loops and variables in Scratch",
-                    "Builds a basic HTML/CSS page",
-                    "Explains where each variable is used"
+                    "Navbar, hero with photo, biography and footer built in the live sandbox",
+                    "Uses headings, paragraphs, images with alt text and core CSS colours/spacing",
+                    "Year 1 concept check passed in the Learning Portal"
                   ]
                 },
                 {
-                  "text": "Build a 'Needs vs. Wants' game in Scratch (Reward: Badge Points).",
+                  "text": "Year 2 — The Showcase & Hobby Hub: CSS grids, hover effects and a Fan Feedback form.",
                   "criteria": [
-                    "Game responds to player choices",
-                    "Uses at least one loop and one variable",
-                    "Badge Points recorded on the project board"
+                    "Hobby gallery built as a CSS grid of cards",
+                    "Likes vs Dislikes comparison cards with lists",
+                    "Working feedback form with labels, inputs and a submit button"
                   ]
                 },
                 {
-                  "text": "A working game or web page built from scratch.",
+                  "text": "Year 3 — The Interactive Profile: JavaScript theme toggle, click counter, calculator and welcome popup.",
                   "criteria": [
-                    "Game runs without errors",
-                    "Web page opens with valid HTML/CSS",
-                    "Both saved to the project board"
+                    "Dark/light toggle and click counter wired with addEventListener",
+                    "Age-in-days calculator using a function and if/else",
+                    "Personalised welcome popup using prompt()"
+                  ]
+                },
+                {
+                  "text": "Year 4 — The Master Showcase Hub: a published 4-page website (Reward: Master Web Builder Badge).",
+                  "criteria": [
+                    "index, about, projects and contact pages linked with hyperlinks",
+                    "Responsive @media layout driven by one shared stylesheet",
+                    "Master Web Builder Badge claimed in the Learning Portal"
                   ]
                 }
               ]
@@ -4419,7 +4427,7 @@
               "levelNumber": 2,
               "color": "#4CAF50",
               "colorDark": "#2E7D32",
-              "description": "Ages 9 – 11. Intermediate care skills, comparative budgeting, document creation and visual game design.",
+              "description": "Ages 9 – 12. Intermediate care skills, comparative budgeting, document creation and visual game design.",
               "requirements": [
                 {
                   "text": "Surveys, averages, bar charts and clean data entry.",
@@ -4617,7 +4625,7 @@
               "ScratchJr"
             ],
             "appFeatures": [
-              "Scratch/VS Code Links",
+              "Embedded Learning Portal",
               "Code Snippet Repository",
               "Project Board"
             ]
@@ -4723,7 +4731,7 @@
     {
       "slug": "sprout-tweens",
       "name": "Sprout Tweens",
-      "ageRange": "9 – 11 yrs",
+      "ageRange": "9 – 12 yrs",
       "skills": [
         {
           "id": "sprout_01_smart_saver",
@@ -4751,7 +4759,7 @@
               "levelNumber": 2,
               "color": "#4CAF50",
               "colorDark": "#2E7D32",
-              "description": "Ages 9 – 11. Intermediate care skills, comparative budgeting, document creation and visual game design.",
+              "description": "Ages 9 – 12. Intermediate care skills, comparative budgeting, document creation and visual game design.",
               "requirements": [
                 {
                   "text": "Full savings log, personal savings goal and the 24-hour pause.",
@@ -4806,7 +4814,7 @@
               "levelNumber": 2,
               "color": "#4CAF50",
               "colorDark": "#2E7D32",
-              "description": "Ages 9 – 11. Intermediate care skills, comparative budgeting, document creation and visual game design.",
+              "description": "Ages 9 – 12. Intermediate care skills, comparative budgeting, document creation and visual game design.",
               "requirements": [
                 {
                   "text": "Vector basics, typography and the rw badge in Affinity Designer.",
@@ -4845,15 +4853,18 @@
           "description": "Computational thinking, logic, and coding from blocks to real text-based code.",
           "output": "A working game or web page built from scratch.",
           "detail": {
-            "learningProvider": "Scratch to code curriculum (ScratchJr → Scratch → HTML/CSS → Python)",
+            "learningProvider": "The 4-Year Evolving Profile portal — one personal website grown from HTML/CSS (age 9) through grids, forms and JavaScript (10–11) to a published multi-page hub (12), with a live sandbox, milestones, quizzes and XP.",
             "tools": [
-              "Scratch",
-              "HTML/CSS"
+              "HTML",
+              "CSS",
+              "JavaScript",
+              "Built-in Sandbox"
             ],
             "appFeatures": [
-              "Scratch/VS Code Links",
-              "Code Snippet Repository",
-              "Project Board"
+              "4-Year Evolving Profile portal",
+              "Live in-browser code sandbox",
+              "Milestone & quiz XP",
+              "Master Web Builder Badge"
             ]
           },
           "levels": [
@@ -4863,30 +4874,38 @@
               "levelNumber": 2,
               "color": "#4CAF50",
               "colorDark": "#2E7D32",
-              "description": "Ages 9 – 11. Intermediate care skills, comparative budgeting, document creation and visual game design.",
+              "description": "Ages 9 – 12. Intermediate care skills, comparative budgeting, document creation and visual game design.",
               "requirements": [
                 {
-                  "text": "Loops, variables and basic web page structure.",
+                  "text": "Year 1 — The Digital Identity: HTML structure and CSS basics on your personal profile website (Reward: Badge Points).",
                   "criteria": [
-                    "Uses loops and variables in Scratch",
-                    "Builds a basic HTML/CSS page",
-                    "Explains where each variable is used"
+                    "Navbar, hero with photo, biography and footer built in the live sandbox",
+                    "Uses headings, paragraphs, images with alt text and core CSS colours/spacing",
+                    "Year 1 concept check passed in the Learning Portal"
                   ]
                 },
                 {
-                  "text": "Build a 'Needs vs. Wants' game in Scratch (Reward: Badge Points).",
+                  "text": "Year 2 — The Showcase & Hobby Hub: CSS grids, hover effects and a Fan Feedback form.",
                   "criteria": [
-                    "Game responds to player choices",
-                    "Uses at least one loop and one variable",
-                    "Badge Points recorded on the project board"
+                    "Hobby gallery built as a CSS grid of cards",
+                    "Likes vs Dislikes comparison cards with lists",
+                    "Working feedback form with labels, inputs and a submit button"
                   ]
                 },
                 {
-                  "text": "A working game or web page built from scratch.",
+                  "text": "Year 3 — The Interactive Profile: JavaScript theme toggle, click counter, calculator and welcome popup.",
                   "criteria": [
-                    "Game runs without errors",
-                    "Web page opens with valid HTML/CSS",
-                    "Both saved to the project board"
+                    "Dark/light toggle and click counter wired with addEventListener",
+                    "Age-in-days calculator using a function and if/else",
+                    "Personalised welcome popup using prompt()"
+                  ]
+                },
+                {
+                  "text": "Year 4 — The Master Showcase Hub: a published 4-page website (Reward: Master Web Builder Badge).",
+                  "criteria": [
+                    "index, about, projects and contact pages linked with hyperlinks",
+                    "Responsive @media layout driven by one shared stylesheet",
+                    "Master Web Builder Badge claimed in the Learning Portal"
                   ]
                 }
               ]
@@ -4920,7 +4939,7 @@
               "levelNumber": 2,
               "color": "#4CAF50",
               "colorDark": "#2E7D32",
-              "description": "Ages 9 – 11. Intermediate care skills, comparative budgeting, document creation and visual game design.",
+              "description": "Ages 9 – 12. Intermediate care skills, comparative budgeting, document creation and visual game design.",
               "requirements": [
                 {
                   "text": "Surveys, averages, bar charts and clean data entry.",
@@ -5086,7 +5105,7 @@
               "Python (VS Code)"
             ],
             "appFeatures": [
-              "Scratch/VS Code Links",
+              "Embedded Learning Portal",
               "Code Snippet Repository",
               "Project Board"
             ]
