@@ -328,48 +328,7 @@
           "placeholder": true
         }
       ],
-      "fixtures": [
-        {
-          "date": "2026-10-02",
-          "time": "09:00",
-          "competition": "Relate Youth League",
-          "opponent": "Highfield Rovers",
-          "venue": "Relate Grounds",
-          "home": true
-        },
-        {
-          "date": "2026-10-09",
-          "time": "09:00",
-          "competition": "Relate Youth League",
-          "opponent": "Brothers FC",
-          "venue": "Opposition Grounds",
-          "home": false
-        },
-        {
-          "date": "2026-10-16",
-          "time": "09:00",
-          "competition": "Spring 2026 Tournament",
-          "opponent": "Highfield Rovers",
-          "venue": "Relate Grounds",
-          "home": true
-        },
-        {
-          "date": "2026-10-23",
-          "time": "09:00",
-          "competition": "Relate Youth League",
-          "opponent": "Brothers FC",
-          "venue": "Opposition Grounds",
-          "home": false
-        },
-        {
-          "date": "2026-10-30",
-          "time": "09:00",
-          "competition": "Relate Youth League",
-          "opponent": "Highfield Rovers",
-          "venue": "Relate Grounds",
-          "home": true
-        }
-      ]
+      "fixtures": []
     },
     "stw-fc": {
       "coach": {
@@ -466,48 +425,7 @@
           "placeholder": true
         }
       ],
-      "fixtures": [
-        {
-          "date": "2026-10-02",
-          "time": "10:30",
-          "competition": "Relate Youth League",
-          "opponent": "Mbabane Youth",
-          "venue": "Relate Grounds",
-          "home": true
-        },
-        {
-          "date": "2026-10-09",
-          "time": "10:30",
-          "competition": "Relate Youth League",
-          "opponent": "Township Stars",
-          "venue": "Opposition Grounds",
-          "home": false
-        },
-        {
-          "date": "2026-10-16",
-          "time": "10:30",
-          "competition": "Spring 2026 Tournament",
-          "opponent": "Mbabane Youth",
-          "venue": "Relate Grounds",
-          "home": true
-        },
-        {
-          "date": "2026-10-23",
-          "time": "10:30",
-          "competition": "Relate Youth League",
-          "opponent": "Township Stars",
-          "venue": "Opposition Grounds",
-          "home": false
-        },
-        {
-          "date": "2026-10-30",
-          "time": "10:30",
-          "competition": "Relate Youth League",
-          "opponent": "Mbabane Youth",
-          "venue": "Relate Grounds",
-          "home": true
-        }
-      ]
+      "fixtures": []
     },
     "ste-fc": {
       "coach": {
@@ -604,48 +522,7 @@
           "placeholder": true
         }
       ],
-      "fixtures": [
-        {
-          "date": "2026-10-02",
-          "time": "14:00",
-          "competition": "Relate Youth League",
-          "opponent": "Kings College XI",
-          "venue": "Relate Grounds",
-          "home": true
-        },
-        {
-          "date": "2026-10-09",
-          "time": "14:00",
-          "competition": "Relate Youth League",
-          "opponent": "Riverside Athletic",
-          "venue": "Opposition Grounds",
-          "home": false
-        },
-        {
-          "date": "2026-10-16",
-          "time": "14:00",
-          "competition": "Spring 2026 Tournament",
-          "opponent": "Kings College XI",
-          "venue": "Relate Grounds",
-          "home": true
-        },
-        {
-          "date": "2026-10-23",
-          "time": "14:00",
-          "competition": "Relate Youth League",
-          "opponent": "Riverside Athletic",
-          "venue": "Opposition Grounds",
-          "home": false
-        },
-        {
-          "date": "2026-10-30",
-          "time": "14:00",
-          "competition": "Relate Youth League",
-          "opponent": "Kings College XI",
-          "venue": "Relate Grounds",
-          "home": true
-        }
-      ]
+      "fixtures": []
     },
     "surge-fc": {
       "coach": {
@@ -742,48 +619,7 @@
           "placeholder": true
         }
       ],
-      "fixtures": [
-        {
-          "date": "2026-10-02",
-          "time": "15:00",
-          "competition": "Relate Youth League",
-          "opponent": "Brothers FC",
-          "venue": "Relate Grounds",
-          "home": true
-        },
-        {
-          "date": "2026-10-09",
-          "time": "15:00",
-          "competition": "Relate Youth League",
-          "opponent": "Highfield Rovers",
-          "venue": "Opposition Grounds",
-          "home": false
-        },
-        {
-          "date": "2026-10-16",
-          "time": "15:00",
-          "competition": "Spring 2026 Tournament",
-          "opponent": "Brothers FC",
-          "venue": "Relate Grounds",
-          "home": true
-        },
-        {
-          "date": "2026-10-23",
-          "time": "15:00",
-          "competition": "Relate Youth League",
-          "opponent": "Highfield Rovers",
-          "venue": "Opposition Grounds",
-          "home": false
-        },
-        {
-          "date": "2026-10-30",
-          "time": "15:00",
-          "competition": "Relate Youth League",
-          "opponent": "Brothers FC",
-          "venue": "Relate Grounds",
-          "home": true
-        }
-      ]
+      "fixtures": []
     },
     "pulse-fc": {
       "coach": {
@@ -880,48 +716,7 @@
           "placeholder": true
         }
       ],
-      "fixtures": [
-        {
-          "date": "2026-10-02",
-          "time": "16:00",
-          "competition": "Relate Youth League",
-          "opponent": "Township Stars",
-          "venue": "Relate Grounds",
-          "home": true
-        },
-        {
-          "date": "2026-10-09",
-          "time": "16:00",
-          "competition": "Relate Youth League",
-          "opponent": "Mbabane Youth",
-          "venue": "Opposition Grounds",
-          "home": false
-        },
-        {
-          "date": "2026-10-16",
-          "time": "16:00",
-          "competition": "Spring 2026 Tournament",
-          "opponent": "Township Stars",
-          "venue": "Relate Grounds",
-          "home": true
-        },
-        {
-          "date": "2026-10-23",
-          "time": "16:00",
-          "competition": "Relate Youth League",
-          "opponent": "Mbabane Youth",
-          "venue": "Opposition Grounds",
-          "home": false
-        },
-        {
-          "date": "2026-10-30",
-          "time": "16:00",
-          "competition": "Relate Youth League",
-          "opponent": "Township Stars",
-          "venue": "Relate Grounds",
-          "home": true
-        }
-      ]
+      "fixtures": []
     },
     "sk-netball": {
       "coach": {
@@ -986,48 +781,7 @@
           "placeholder": true
         }
       ],
-      "fixtures": [
-        {
-          "date": "2026-10-02",
-          "time": "09:00",
-          "competition": "Relate Netball League",
-          "opponent": "Riverside Gems",
-          "venue": "Relate Grounds",
-          "home": true
-        },
-        {
-          "date": "2026-10-09",
-          "time": "09:00",
-          "competition": "Relate Netball League",
-          "opponent": "Kings College",
-          "venue": "Opposition Courts",
-          "home": false
-        },
-        {
-          "date": "2026-10-16",
-          "time": "09:00",
-          "competition": "Spring 2026 Tournament",
-          "opponent": "Riverside Gems",
-          "venue": "Relate Grounds",
-          "home": true
-        },
-        {
-          "date": "2026-10-23",
-          "time": "09:00",
-          "competition": "Relate Netball League",
-          "opponent": "Kings College",
-          "venue": "Opposition Courts",
-          "home": false
-        },
-        {
-          "date": "2026-10-30",
-          "time": "09:00",
-          "competition": "Relate Netball League",
-          "opponent": "Riverside Gems",
-          "venue": "Relate Grounds",
-          "home": true
-        }
-      ]
+      "fixtures": []
     },
     "stw-netball": {
       "coach": {
@@ -1092,48 +846,7 @@
           "placeholder": true
         }
       ],
-      "fixtures": [
-        {
-          "date": "2026-10-02",
-          "time": "10:30",
-          "competition": "Relate Netball League",
-          "opponent": "Highfield Stars",
-          "venue": "Relate Grounds",
-          "home": true
-        },
-        {
-          "date": "2026-10-09",
-          "time": "10:30",
-          "competition": "Relate Netball League",
-          "opponent": "Valley Sparks",
-          "venue": "Opposition Courts",
-          "home": false
-        },
-        {
-          "date": "2026-10-16",
-          "time": "10:30",
-          "competition": "Spring 2026 Tournament",
-          "opponent": "Highfield Stars",
-          "venue": "Relate Grounds",
-          "home": true
-        },
-        {
-          "date": "2026-10-23",
-          "time": "10:30",
-          "competition": "Relate Netball League",
-          "opponent": "Valley Sparks",
-          "venue": "Opposition Courts",
-          "home": false
-        },
-        {
-          "date": "2026-10-30",
-          "time": "10:30",
-          "competition": "Relate Netball League",
-          "opponent": "Highfield Stars",
-          "venue": "Relate Grounds",
-          "home": true
-        }
-      ]
+      "fixtures": []
     },
     "ste-netball": {
       "coach": {
@@ -1198,48 +911,7 @@
           "placeholder": true
         }
       ],
-      "fixtures": [
-        {
-          "date": "2026-10-02",
-          "time": "14:00",
-          "competition": "Relate Netball League",
-          "opponent": "Mbabane Cougars",
-          "venue": "Relate Grounds",
-          "home": true
-        },
-        {
-          "date": "2026-10-09",
-          "time": "14:00",
-          "competition": "Relate Netball League",
-          "opponent": "Township Fire",
-          "venue": "Opposition Courts",
-          "home": false
-        },
-        {
-          "date": "2026-10-16",
-          "time": "14:00",
-          "competition": "Spring 2026 Tournament",
-          "opponent": "Mbabane Cougars",
-          "venue": "Relate Grounds",
-          "home": true
-        },
-        {
-          "date": "2026-10-23",
-          "time": "14:00",
-          "competition": "Relate Netball League",
-          "opponent": "Township Fire",
-          "venue": "Opposition Courts",
-          "home": false
-        },
-        {
-          "date": "2026-10-30",
-          "time": "14:00",
-          "competition": "Relate Netball League",
-          "opponent": "Mbabane Cougars",
-          "venue": "Relate Grounds",
-          "home": true
-        }
-      ]
+      "fixtures": []
     },
     "surge-netball": {
       "coach": {
@@ -1304,48 +976,7 @@
           "placeholder": true
         }
       ],
-      "fixtures": [
-        {
-          "date": "2026-10-02",
-          "time": "15:00",
-          "competition": "Relate Netball League",
-          "opponent": "Kings College",
-          "venue": "Relate Grounds",
-          "home": true
-        },
-        {
-          "date": "2026-10-09",
-          "time": "15:00",
-          "competition": "Relate Netball League",
-          "opponent": "Riverside Gems",
-          "venue": "Opposition Courts",
-          "home": false
-        },
-        {
-          "date": "2026-10-16",
-          "time": "15:00",
-          "competition": "Spring 2026 Tournament",
-          "opponent": "Kings College",
-          "venue": "Relate Grounds",
-          "home": true
-        },
-        {
-          "date": "2026-10-23",
-          "time": "15:00",
-          "competition": "Relate Netball League",
-          "opponent": "Riverside Gems",
-          "venue": "Opposition Courts",
-          "home": false
-        },
-        {
-          "date": "2026-10-30",
-          "time": "15:00",
-          "competition": "Relate Netball League",
-          "opponent": "Kings College",
-          "venue": "Relate Grounds",
-          "home": true
-        }
-      ]
+      "fixtures": []
     },
     "pulse-netball": {
       "coach": {
@@ -1410,48 +1041,7 @@
           "placeholder": true
         }
       ],
-      "fixtures": [
-        {
-          "date": "2026-10-02",
-          "time": "16:00",
-          "competition": "Relate Netball League",
-          "opponent": "Valley Sparks",
-          "venue": "Relate Grounds",
-          "home": true
-        },
-        {
-          "date": "2026-10-09",
-          "time": "16:00",
-          "competition": "Relate Netball League",
-          "opponent": "Highfield Stars",
-          "venue": "Opposition Courts",
-          "home": false
-        },
-        {
-          "date": "2026-10-16",
-          "time": "16:00",
-          "competition": "Spring 2026 Tournament",
-          "opponent": "Valley Sparks",
-          "venue": "Relate Grounds",
-          "home": true
-        },
-        {
-          "date": "2026-10-23",
-          "time": "16:00",
-          "competition": "Relate Netball League",
-          "opponent": "Highfield Stars",
-          "venue": "Opposition Courts",
-          "home": false
-        },
-        {
-          "date": "2026-10-30",
-          "time": "16:00",
-          "competition": "Relate Netball League",
-          "opponent": "Valley Sparks",
-          "venue": "Relate Grounds",
-          "home": true
-        }
-      ]
+      "fixtures": []
     },
     "surge-volleyball": {
       "coach": {
@@ -1516,48 +1106,7 @@
           "placeholder": true
         }
       ],
-      "fixtures": [
-        {
-          "date": "2026-10-02",
-          "time": "15:00",
-          "competition": "Relate Volleyball League",
-          "opponent": "Township Ace",
-          "venue": "Relate Grounds",
-          "home": true
-        },
-        {
-          "date": "2026-10-09",
-          "time": "15:00",
-          "competition": "Relate Volleyball League",
-          "opponent": "Mbabane Blue",
-          "venue": "Opposition Hall",
-          "home": false
-        },
-        {
-          "date": "2026-10-16",
-          "time": "15:00",
-          "competition": "Spring 2026 Tournament",
-          "opponent": "Township Ace",
-          "venue": "Relate Grounds",
-          "home": true
-        },
-        {
-          "date": "2026-10-23",
-          "time": "15:00",
-          "competition": "Relate Volleyball League",
-          "opponent": "Mbabane Blue",
-          "venue": "Opposition Hall",
-          "home": false
-        },
-        {
-          "date": "2026-10-30",
-          "time": "15:00",
-          "competition": "Relate Volleyball League",
-          "opponent": "Township Ace",
-          "venue": "Relate Grounds",
-          "home": true
-        }
-      ]
+      "fixtures": []
     },
     "pulse-volleyball": {
       "coach": {
@@ -1622,48 +1171,7 @@
           "placeholder": true
         }
       ],
-      "fixtures": [
-        {
-          "date": "2026-10-02",
-          "time": "16:00",
-          "competition": "Relate Volleyball League",
-          "opponent": "Riverside Setters",
-          "venue": "Relate Grounds",
-          "home": true
-        },
-        {
-          "date": "2026-10-09",
-          "time": "16:00",
-          "competition": "Relate Volleyball League",
-          "opponent": "Kings College",
-          "venue": "Opposition Hall",
-          "home": false
-        },
-        {
-          "date": "2026-10-16",
-          "time": "16:00",
-          "competition": "Spring 2026 Tournament",
-          "opponent": "Riverside Setters",
-          "venue": "Relate Grounds",
-          "home": true
-        },
-        {
-          "date": "2026-10-23",
-          "time": "16:00",
-          "competition": "Relate Volleyball League",
-          "opponent": "Kings College",
-          "venue": "Opposition Hall",
-          "home": false
-        },
-        {
-          "date": "2026-10-30",
-          "time": "16:00",
-          "competition": "Relate Volleyball League",
-          "opponent": "Riverside Setters",
-          "venue": "Relate Grounds",
-          "home": true
-        }
-      ]
+      "fixtures": []
     }
   }
 }
