@@ -99,7 +99,29 @@ export async function GET(request: NextRequest) {
         { count: 0, amount: 0 },
       );
 
-    return NextResponse.json({ data: { accounts, pendingWithdrawals, pendingQueue } });
+    const members = await db
+      .collection("user")
+      .find({})
+      .project({ id: 1, name: 1, email: 1, age: 1 })
+      .sort({ createdAt: -1 })
+      .limit(500)
+      .toArray();
+
+    return NextResponse.json({
+      data: {
+        accounts,
+        pendingWithdrawals,
+        pendingQueue,
+        members: members
+          .filter((m: any) => m.id)
+          .map((m: any) => ({
+            userId: String(m.id),
+            name: m.name || m.email || "Unknown member",
+            email: m.email || "",
+            age: Number.isFinite(Number(m.age)) ? Number(m.age) : null,
+          })),
+      },
+    });
   } catch (e) {
     console.error("GET /api/admin/smart-saver failed", e);
     return NextResponse.json({ error: "Failed to load savings." }, { status: 500 });
