@@ -15,7 +15,7 @@ export const CLUBS: ClubEntry[] = [
   { slug: "sprout", name: "Sprout", color: "#4CAF50", tagline: "Little ones growing together" },
   { slug: "sprout-kids", name: "Sprout Kids", color: "#66BB6A", tagline: "Kids 6–8 learning to read God's story" },
   { slug: "sprout-tweens", name: "Sprout Tweens", color: "#4CAF50", tagline: "Tweens 9–12 growing deep roots" },
-  { slug: "sprout-teens", name: "Sprout Teens", color: "#43A047", tagline: "Teens 12–15 finding their footing" },
+  { slug: "sprout-teens", name: "Sprout Teens", color: "#43A047", tagline: "Teens 13–15 finding their footing" },
   { slug: "surge", name: "Surge", color: "#FF6B00", tagline: "Youth stepping into purpose" },
   { slug: "pulse", name: "Pulse", color: "#00B4D8", tagline: "Young adults building life and faith" },
   { slug: "prime", name: "Prime", color: "#6C2BD9", tagline: "Adults in their prime" },

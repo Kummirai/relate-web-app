@@ -31,8 +31,8 @@ const CLUB_AGE_RANGES: Record<string, { min: number; max: number }> = {
   sprout: { min: 6, max: 15 },
   prime: { min: 33, max: 99 },
   "sprout-kids": { min: 6, max: 8 },
-  "sprout-tweens": { min: 9, max: 11 },
-  "sprout-teens": { min: 12, max: 15 },
+  "sprout-tweens": { min: 9, max: 12 },
+  "sprout-teens": { min: 13, max: 15 },
   surge: { min: 16, max: 21 },
   pulse: { min: 21, max: 33 },
 };

@@ -225,7 +225,7 @@ const SPROUT_SKILLS = [
     learningProvider: "Scratch to code curriculum (ScratchJr → Scratch → HTML/CSS → Python)",
     learningProviders: {
       tweens:
-        "The 4-Year Evolving Profile portal — one personal website grown from HTML/CSS (age 9) through grids, forms and JavaScript (10–11) to a published multi-page hub (12), with a live sandbox, milestones, quizzes and XP.",
+        "The 4-Year Evolving Profile portal — one personal website grown from HTML/CSS (age 9) through grids, forms and JavaScript (10–11) to a published multi-page hub (12), with curated external resources and instructor-approved milestones.",
     },
     tools: {
       kids: ["ScratchJr"],

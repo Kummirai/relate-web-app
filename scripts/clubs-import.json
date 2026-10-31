@@ -315,7 +315,7 @@
     "slug": "sprout-teens",
     "name": "Sprout Teens",
     "group": "Children",
-    "ageRange": "12 – 15 yrs",
+    "ageRange": "13 – 15 yrs",
     "tagline": "Reaching high, ready for more.",
     "description": "Teens stepping toward adulthood — leadership, mentorship and bigger challenges in a community that knows them by name.",
     "parentSlug": "sprout",
@@ -338,7 +338,7 @@
       {
         "key": "childAge",
         "label": "Child's age",
-        "placeholder": "12–15"
+        "placeholder": "13–15"
       },
       {
         "key": "phone",
