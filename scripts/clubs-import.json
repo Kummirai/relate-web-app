@@ -3,7 +3,7 @@
     "slug": "sprout",
     "name": "Sprout",
     "group": "Children",
-    "ageRange": "6–15 yrs",
+    "ageRange": "6–16 yrs",
     "tagline": "Growing strong, reaching high.",
     "description": "Children in their formative years — needing nurturing, guidance, education support and a safe environment to grow.",
     "mission": "Nurture foundational skills, financial literacy, and character through age-appropriate learning and practical application.",
@@ -26,7 +26,7 @@
       {
         "key": "childAge",
         "label": "Child's age",
-        "placeholder": "6–15"
+        "placeholder": "6–16"
       },
       {
         "key": "phone",
@@ -315,7 +315,7 @@
     "slug": "sprout-teens",
     "name": "Sprout Teens",
     "group": "Children",
-    "ageRange": "13 – 15 yrs",
+    "ageRange": "13 – 16 yrs",
     "tagline": "Reaching high, ready for more.",
     "description": "Teens stepping toward adulthood — leadership, mentorship and bigger challenges in a community that knows them by name.",
     "parentSlug": "sprout",
@@ -338,7 +338,7 @@
       {
         "key": "childAge",
         "label": "Child's age",
-        "placeholder": "13–15"
+        "placeholder": "13–16"
       },
       {
         "key": "phone",
@@ -412,7 +412,7 @@
     "slug": "surge",
     "name": "Surge",
     "group": "Young Youth",
-    "ageRange": "16–21 yrs",
+    "ageRange": "17–21 yrs",
     "tagline": "Rise. Build. Become.",
     "description": "Young people stepping into adulthood — needing guidance, skills and purpose.",
     "mission": "Transition to independence through real-world application, client work, and funding higher education.",
@@ -441,7 +441,7 @@
       {
         "key": "age",
         "label": "Age",
-        "placeholder": "16–21"
+        "placeholder": "17–21"
       },
       {
         "key": "schoolOrWork",

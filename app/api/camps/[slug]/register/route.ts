@@ -86,7 +86,7 @@ export async function POST(
       return publicBadRequest("Please enter the camper's full name.");
 
     const age = dob ? ageFromDob(dob) : null;
-    if (!age || age < 6 || age > 15)
+    if (!age || age < 6 || age > 16)
       return publicBadRequest(
         "Campers must be between 6 and 15 years old — check the date of birth.",
       );

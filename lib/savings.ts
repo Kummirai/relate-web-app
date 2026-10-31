@@ -19,6 +19,7 @@ export const SAVINGS_TARGETS: SavingsTarget[] = [
   { age: 13, weekly: 35, annual: 1750, cumulative: 7550 },
   { age: 14, weekly: 40, annual: 2000, cumulative: 9550 },
   { age: 15, weekly: 48, annual: 2400, cumulative: 11950 },
+  { age: 16, weekly: 55, annual: 2750, cumulative: 14700 },
 ];
 
 export function savingsForAge(age: number): SavingsTarget | null {

@@ -3,7 +3,7 @@
     {
       "slug": "surge",
       "name": "Surge",
-      "ageRange": "16–21 yrs",
+      "ageRange": "17–21 yrs",
       "skills": [
         {
           "id": "surge_01_money_mastery",
@@ -4005,7 +4005,7 @@
     {
       "slug": "sprout",
       "name": "Sprout",
-      "ageRange": "6–15 yrs",
+      "ageRange": "6–16 yrs",
       "skills": [
         {
           "id": "sprout_01_smart_saver",
@@ -4094,7 +4094,7 @@
               "levelNumber": 3,
               "color": "#43A047",
               "colorDark": "#1B5E20",
-              "description": "Ages 13 – 15. Crisis management, event budget planning, professional documentation and text-based coding.",
+              "description": "Ages 13 – 16. Crisis management, event budget planning, professional documentation and text-based coding.",
               "requirements": [
                 {
                   "text": "Group savings pot (Stokvel), pay yourself first and goal reviews.",
@@ -4213,7 +4213,7 @@
               "levelNumber": 3,
               "color": "#43A047",
               "colorDark": "#1B5E20",
-              "description": "Ages 13 – 15. Crisis management, event budget planning, professional documentation and text-based coding.",
+              "description": "Ages 13 – 16. Crisis management, event budget planning, professional documentation and text-based coding.",
               "requirements": [
                 {
                   "text": "Full projects, brand systems and print-ready files.",
@@ -4341,7 +4341,7 @@
               "levelNumber": 3,
               "color": "#43A047",
               "colorDark": "#1B5E20",
-              "description": "Ages 13 – 15. Crisis management, event budget planning, professional documentation and text-based coding.",
+              "description": "Ages 13 – 16. Crisis management, event budget planning, professional documentation and text-based coding.",
               "requirements": [
                 {
                   "text": "Functions, arrays and real-world coding logic.",
@@ -4461,7 +4461,7 @@
               "levelNumber": 3,
               "color": "#43A047",
               "colorDark": "#1B5E20",
-              "description": "Ages 13 – 15. Crisis management, event budget planning, professional documentation and text-based coding.",
+              "description": "Ages 13 – 16. Crisis management, event budget planning, professional documentation and text-based coding.",
               "requirements": [
                 {
                   "text": "Data cleaning, visualization and finding trends.",
@@ -4975,7 +4975,7 @@
     {
       "slug": "sprout-teens",
       "name": "Sprout Teens",
-      "ageRange": "13 – 15 yrs",
+      "ageRange": "13 – 16 yrs",
       "skills": [
         {
           "id": "sprout_01_smart_saver",
@@ -5003,7 +5003,7 @@
               "levelNumber": 3,
               "color": "#43A047",
               "colorDark": "#1B5E20",
-              "description": "Ages 13 – 15. Crisis management, event budget planning, professional documentation and text-based coding.",
+              "description": "Ages 13 – 16. Crisis management, event budget planning, professional documentation and text-based coding.",
               "requirements": [
                 {
                   "text": "Group savings pot (Stokvel), pay yourself first and goal reviews.",
@@ -5059,7 +5059,7 @@
               "levelNumber": 3,
               "color": "#43A047",
               "colorDark": "#1B5E20",
-              "description": "Ages 13 – 15. Crisis management, event budget planning, professional documentation and text-based coding.",
+              "description": "Ages 13 – 16. Crisis management, event budget planning, professional documentation and text-based coding.",
               "requirements": [
                 {
                   "text": "Full projects, brand systems and print-ready files.",
@@ -5117,7 +5117,7 @@
               "levelNumber": 3,
               "color": "#43A047",
               "colorDark": "#1B5E20",
-              "description": "Ages 13 – 15. Crisis management, event budget planning, professional documentation and text-based coding.",
+              "description": "Ages 13 – 16. Crisis management, event budget planning, professional documentation and text-based coding.",
               "requirements": [
                 {
                   "text": "Functions, arrays and real-world coding logic.",
@@ -5175,7 +5175,7 @@
               "levelNumber": 3,
               "color": "#43A047",
               "colorDark": "#1B5E20",
-              "description": "Ages 13 – 15. Crisis management, event budget planning, professional documentation and text-based coding.",
+              "description": "Ages 13 – 16. Crisis management, event budget planning, professional documentation and text-based coding.",
               "requirements": [
                 {
                   "text": "Data cleaning, visualization and finding trends.",

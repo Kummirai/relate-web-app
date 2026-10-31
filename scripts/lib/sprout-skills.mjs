@@ -481,7 +481,7 @@ export function buildSproutClubs() {
   const parentEntry = {
     slug: "sprout",
     name: parent.name ?? "Sprout",
-    ageRange: parent.ageRange ?? "6–15 yrs",
+    ageRange: parent.ageRange ?? "6–16 yrs",
     skills: SPROUT_SKILLS.map((skill) =>
       toSkill(
         skill,

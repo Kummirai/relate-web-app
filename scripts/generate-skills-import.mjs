@@ -11,7 +11,7 @@ const clubs = [
   {
     slug: "surge",
     name: "Surge",
-    ageRange: "16–21 yrs",
+    ageRange: "17–21 yrs",
     skills: [
       {
         id: "surge_01_money_mastery",
