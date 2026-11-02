@@ -27,7 +27,7 @@ export function savingsForAge(age: number): SavingsTarget | null {
   return SAVINGS_TARGETS.find((t) => t.age === n) ?? null;
 }
 
-/** Immutable split — 60% University Freedom Fund vault, 40% spendable wallet. */
+/** Immutable split — 60% Smart Saver vault, 40% spendable wallet. */
 export const SMART_SAVER_SPLIT = { vault: 0.6, wallet: 0.4 } as const;
 
 export function splitContribution(amount: number) {

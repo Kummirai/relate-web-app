@@ -4,7 +4,7 @@ import { savingsForAge, splitContribution } from "@/lib/savings";
  * Smart Saver ledger — blueprint §3.
  *
  * Every credit is split 60/40 the moment it is recorded: 60% into the locked
- * University Freedom Fund vault, 40% into the spendable wallet. Contributions
+ * Smart Saver vault, 40% into the spendable wallet. Contributions
  * sit in the pending weekly queue until the Saturday batch settlement, so the
  * ledger always shows what is pending versus what is available.
  *

@@ -158,7 +158,7 @@ export async function POST(request: NextRequest) {
       await createNotification(db, userId, {
         type: "smart_saver_credit",
         title: "Savings credited",
-        body: `R${rands(amountCents)} added — R${rands(entry.vaultCents)} to your University Freedom Fund and R${rands(
+        body: `R${rands(amountCents)} added — R${rands(entry.vaultCents)} to Smart Saver and R${rands(
           entry.walletCents,
         )} to your wallet after Saturday settlement.`,
         data: { amount: rands(amountCents) },
