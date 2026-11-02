@@ -37,6 +37,15 @@ export async function POST(
         { $pull: { joinedUserIds: userId }, $inc: { members: -1 } },
       );
     } else {
+      if (
+        Number(group.maxMembers) > 0 &&
+        Number(group.members || 0) >= Number(group.maxMembers)
+      ) {
+        return NextResponse.json(
+          { error: "This group is full." },
+          { status: 409 },
+        );
+      }
       await db.collection("community_groups").updateOne(
         { _id: new ObjectId(id) },
         { $addToSet: { joinedUserIds: userId }, $inc: { members: 1 } },

@@ -518,6 +518,165 @@
             }
           ],
           "image": "https://relateworld.org/images/skills/python.jpg"
+        },
+        {
+          "id": "surge_05_video_editing",
+          "name": "Video Editing & YouTube Channel Production",
+          "icon": "videocam",
+          "type": "Elective",
+          "description": "Create and grow a small team YouTube channel through storytelling, filming, editing, publishing, analytics, and responsible monetisation.",
+          "output": "A verified team YouTube channel, one published show or series, three edited videos, and a repeatable monthly production plan.",
+          "detail": {
+            "tools": [
+              "CapCut",
+              "Adobe Premiere Pro",
+              "DaVinci Resolve",
+              "YouTube Studio",
+              "Google Workspace"
+            ],
+            "learningProvider": "YouTube Creator Academy",
+            "learningUrl": "https://creatoracademy.youtube.com/",
+            "appFeatures": [
+              "Channel Focus Selector",
+              "Team Production Board",
+              "Video Publishing Checklist",
+              "Copyright and Safety Check",
+              "YouTube Analytics Review"
+            ],
+            "projects": [
+              {
+                "title": "Produce a three-video club series",
+                "tier": "Tier 1 (Beginner)",
+                "fee": "R150 per published video"
+              },
+              {
+                "title": "Create an event highlight reel",
+                "tier": "Tier 2 (Intermediate)",
+                "fee": "R350"
+              },
+              {
+                "title": "Build and manage a sponsor-ready channel",
+                "tier": "Tier 3 (Advanced)",
+                "fee": "R750"
+              }
+            ],
+            "unlockRule": "Complete the learning and safety checks before publishing a public channel.",
+            "launchFund": {
+              "goalName": "University Fund",
+              "targetAmount": 8000,
+              "autoRouting": "Eligible project earnings are routed according to the Smart Saver 60/40 payout rules.",
+              "disbursementRule": "Requires proof of university or accredited certificate registration."
+            },
+            "pathways": {
+              "sproutGraduate": "Advanced storytelling, editing workflows, audience retention, thumbnails, analytics, sponsorships, and team leadership.",
+              "directEntrant": "Fast-track bridge first: camera basics, file organisation, simple cuts, titles, captions, copyright, and safe publishing."
+            }
+          },
+          "levels": [
+            {
+              "id": "1",
+              "name": "Learning",
+              "levelNumber": 1,
+              "color": "#3B82F6",
+              "colorDark": "#1E40AF",
+              "description": "Learn safe, repeatable video production and run a four-to-five-member channel team.",
+              "requirements": [
+                {
+                  "text": "Choose a channel focus and audience.",
+                  "criteria": [
+                    "Selects a channel niche such as sport, education, lifestyle, culture, comedy, gaming, news, music, or entrepreneurship",
+                    "Defines a target audience and weekly value promise",
+                    "Records the focus and two content pillars in the team production plan"
+                  ]
+                },
+                {
+                  "text": "Learn the edit and publish workflow.",
+                  "criteria": [
+                    "Creates a rough cut with clear story structure",
+                    "Adds clean titles, music, transitions, captions, and safe thumbnails",
+                    "Publishes one video only after passing the content and copyright checklist"
+                  ]
+                },
+                {
+                  "text": "Create responsibly with a small team.",
+                  "criteria": [
+                  "Joins a channel team of four to five verified club members",
+                    "Completes assigned roles for scripting, filming, editing, and publishing",
+                    "Obtains consent before recording or publishing identifiable people"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "2",
+              "name": "Production",
+              "levelNumber": 2,
+              "color": "#F59E0B",
+              "colorDark": "#B45309",
+              "description": "Produce consistent videos for the channel and real RelateWorld projects.",
+              "requirements": [
+                {
+                  "text": "Run a repeatable production cycle.",
+                  "criteria": [
+                    "Plans at least three videos in advance",
+                    "Tracks scripts, files, feedback, approvals, and publish dates",
+                    "Completes the series on schedule"
+                  ]
+                },
+                {
+                  "text": "Improve quality and audience retention.",
+                  "criteria": [
+                    "Reviews watch time, retention, traffic, and viewer feedback",
+                    "Tests a better hook, thumbnail, or title",
+                    "Explains two data-backed improvements for the next video"
+                  ]
+                },
+                {
+                  "text": "Deliver paid project work.",
+                  "criteria": [
+                    "Accepts a role or brief through RelateWorld",
+                    "Passes the client review",
+                    "Records project earnings and routes the approved payout split"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "3",
+              "name": "Channel leadership",
+              "levelNumber": 3,
+              "color": "#22C55E",
+              "colorDark": "#15803D",
+              "description": "Lead a sustainable channel team and earn through approved channel work.",
+              "requirements": [
+                {
+                  "text": "Build a brand and monthly schedule.",
+                  "criteria": [
+                    "Defines channel positioning and visual identity",
+                    "Creates a 30-day content calendar",
+                    "Sets upload frequency the team can sustain"
+                  ]
+                },
+                {
+                  "text": "Manage the team and channel assets.",
+                  "criteria": [
+                    "Assigns producer, editor, script, presenter, and thumbnail owners",
+                    "Uses approved access and shared asset-storage practices",
+                    "Documents handover and account recovery information"
+                  ]
+                },
+                {
+                  "text": "Complete the monetisation pathway.",
+                  "criteria": [
+                    "Uses only original or licensed assets",
+                    "Separates channel, sponsorship, and member income records",
+                    "Publishes three approved videos and presents a channel growth report"
+                  ]
+                }
+              ]
+            }
+          ],
+          "image": "https://relateworld.org/images/skills/video-editing.jpg"
         }
       ]
     },
@@ -4491,6 +4650,72 @@
             }
           ],
           "image": "https://relateworld.org/images/skills/python.jpg"
+        },
+        {
+          "id": "sprout_05_video_editing",
+          "name": "Video Editing & YouTube Channels",
+          "icon": "videocam",
+          "type": "Elective",
+          "description": "Plan, film, edit, publish, and review a safe team YouTube channel.",
+          "output": "Three edited club videos, one team YouTube channel, and a monthly content plan.",
+          "detail": {
+            "learningProvider": "YouTube Creator Academy",
+            "learningUrl": "https://creatoracademy.youtube.com/",
+            "tools": [
+              "CapCut",
+              "Canva",
+              "DaVinci Resolve",
+              "YouTube Studio",
+              "Google Workspace"
+            ],
+            "appFeatures": [
+              "Channel Focus Selector",
+              "Production Team Board",
+              "YouTube Publishing Checklist",
+              "Safety and Consent Check",
+              "Channel Analytics Review"
+            ],
+            "pathways": {
+              "directEntrant": "Start with framing, simple cuts, captions, thumbnails, responsible filming, copyright basics, and supervised publishing."
+            }
+          },
+          "levels": [
+            {
+              "id": "teens",
+              "name": "Sprout Teens",
+              "levelNumber": 3,
+              "color": "#43A047",
+              "colorDark": "#1B5E20",
+              "description": "Ages 13 – 16. Create supervised videos, work in a four-to-five-member channel team, and build a responsible portfolio.",
+              "requirements": [
+                {
+                  "text": "Choose and plan the team channel.",
+                  "criteria": [
+                    "Chooses a channel focus with a club leader, such as sport, education, lifestyle, culture, gaming, music, or entrepreneurship",
+                    "Works in a team of four to five members with clear roles",
+                    "Creates a monthly content calendar with three planned videos"
+                  ]
+                },
+                {
+                  "text": "Film and edit safely.",
+                  "criteria": [
+                    "Obtains permission before filming or publishing identifiable people",
+                    "Creates a simple cut with clear titles, captions, music, and a thumbnail",
+                    "Uses only original or approved content and credits all licensed assets"
+                  ]
+                },
+                {
+                  "text": "Publish and review the channel.",
+                  "criteria": [
+                    "Publishes videos only after leader approval",
+                    "Records views, watch time, and viewer feedback in the production board",
+                    "Completes three published videos and presents one improvement for the next month"
+                  ]
+                }
+              ]
+            }
+          ],
+          "image": "https://relateworld.org/images/skills/video-editing.jpg"
         }
       ]
     },

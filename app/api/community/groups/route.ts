@@ -77,6 +77,9 @@ export async function GET(request: NextRequest) {
         description: g.description,
         category: g.category || "prayer",
         clubSlug: g.clubSlug || undefined,
+        channelFocus: g.channelFocus || undefined,
+        channelName: g.channelName || undefined,
+        channelUrl: g.channelUrl || undefined,
         imageUrl: g.imageUrl || null,
         facilitator: g.facilitator || "",
         location: g.location || "",
@@ -138,10 +141,37 @@ export async function POST(request: NextRequest) {
         { status: 400 },
       );
     }
+    const category =
+      typeof data.category === "string" && data.category.trim()
+        ? data.category.trim()
+        : "prayer";
+    const maxMembers = Number.isFinite(Number(data.maxMembers))
+      ? Math.max(0, Math.floor(Number(data.maxMembers)))
+      : 0;
+    if (category === "youtube") {
+      if (!String(data.channelName || "").trim()) {
+        return NextResponse.json(
+          { error: "A YouTube channel name is required." },
+          { status: 400 },
+        );
+      }
+      if (!String(data.channelFocus || "").trim()) {
+        return NextResponse.json(
+          { error: "A YouTube channel focus is required." },
+          { status: 400 },
+        );
+      }
+      if (maxMembers < 4 || maxMembers > 5) {
+        return NextResponse.json(
+          { error: "YouTube channel teams must have 4 to 5 members." },
+          { status: 400 },
+        );
+      }
+    }
     const doc = {
       name: data.name || "",
       description: data.description || "",
-      category: data.category || "prayer",
+      category,
       clubSlug,
       imageUrl: data.imageUrl || null,
       facilitator: data.facilitator || "",
@@ -151,7 +181,19 @@ export async function POST(request: NextRequest) {
       contactInfo: data.contactInfo || "",
       meetingTime: data.meetingTime || "",
       schedule: data.schedule || "",
-      maxMembers: data.maxMembers || 0,
+      maxMembers,
+      channelFocus:
+        data.category === "youtube" && typeof data.channelFocus === "string"
+          ? data.channelFocus.trim()
+          : "",
+      channelName:
+        data.category === "youtube" && typeof data.channelName === "string"
+          ? data.channelName.trim()
+          : "",
+      channelUrl:
+        data.category === "youtube" && typeof data.channelUrl === "string"
+          ? data.channelUrl.trim()
+          : "",
       author: data.author || user.name || "Anonymous",
       userId: userId || null,
       inviteCode: await makeInviteCode(db),
@@ -220,6 +262,12 @@ export async function PUT(request: NextRequest) {
     if (updateData.meetingTime !== undefined) setFields.meetingTime = updateData.meetingTime;
     if (updateData.schedule !== undefined) setFields.schedule = updateData.schedule;
     if (updateData.maxMembers !== undefined) setFields.maxMembers = updateData.maxMembers;
+    if (updateData.channelFocus !== undefined)
+      setFields.channelFocus = String(updateData.channelFocus).trim();
+    if (updateData.channelName !== undefined)
+      setFields.channelName = String(updateData.channelName).trim();
+    if (updateData.channelUrl !== undefined)
+      setFields.channelUrl = String(updateData.channelUrl).trim();
 
     await db.collection("community_groups").updateOne(
       { _id: new ObjectId(_id) },
