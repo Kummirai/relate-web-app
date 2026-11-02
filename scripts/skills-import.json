@@ -600,7 +600,7 @@
                 {
                   "text": "Create responsibly with a small team.",
                   "criteria": [
-                  "Joins a channel team of four to five verified club members",
+                    "Joins a channel team of four to five verified club members",
                     "Completes assigned roles for scripting, filming, editing, and publishing",
                     "Obtains consent before recording or publishing identifiable people"
                   ]
@@ -4650,72 +4650,6 @@
             }
           ],
           "image": "https://relateworld.org/images/skills/python.jpg"
-        },
-        {
-          "id": "sprout_05_video_editing",
-          "name": "Video Editing & YouTube Channels",
-          "icon": "videocam",
-          "type": "Elective",
-          "description": "Plan, film, edit, publish, and review a safe team YouTube channel.",
-          "output": "Three edited club videos, one team YouTube channel, and a monthly content plan.",
-          "detail": {
-            "learningProvider": "YouTube Creator Academy",
-            "learningUrl": "https://creatoracademy.youtube.com/",
-            "tools": [
-              "CapCut",
-              "Canva",
-              "DaVinci Resolve",
-              "YouTube Studio",
-              "Google Workspace"
-            ],
-            "appFeatures": [
-              "Channel Focus Selector",
-              "Production Team Board",
-              "YouTube Publishing Checklist",
-              "Safety and Consent Check",
-              "Channel Analytics Review"
-            ],
-            "pathways": {
-              "directEntrant": "Start with framing, simple cuts, captions, thumbnails, responsible filming, copyright basics, and supervised publishing."
-            }
-          },
-          "levels": [
-            {
-              "id": "teens",
-              "name": "Sprout Teens",
-              "levelNumber": 3,
-              "color": "#43A047",
-              "colorDark": "#1B5E20",
-              "description": "Ages 13 – 16. Create supervised videos, work in a four-to-five-member channel team, and build a responsible portfolio.",
-              "requirements": [
-                {
-                  "text": "Choose and plan the team channel.",
-                  "criteria": [
-                    "Chooses a channel focus with a club leader, such as sport, education, lifestyle, culture, gaming, music, or entrepreneurship",
-                    "Works in a team of four to five members with clear roles",
-                    "Creates a monthly content calendar with three planned videos"
-                  ]
-                },
-                {
-                  "text": "Film and edit safely.",
-                  "criteria": [
-                    "Obtains permission before filming or publishing identifiable people",
-                    "Creates a simple cut with clear titles, captions, music, and a thumbnail",
-                    "Uses only original or approved content and credits all licensed assets"
-                  ]
-                },
-                {
-                  "text": "Publish and review the channel.",
-                  "criteria": [
-                    "Publishes videos only after leader approval",
-                    "Records views, watch time, and viewer feedback in the production board",
-                    "Completes three published videos and presents one improvement for the next month"
-                  ]
-                }
-              ]
-            }
-          ],
-          "image": "https://relateworld.org/images/skills/video-editing.jpg"
         }
       ]
     },
@@ -5430,6 +5364,72 @@
             }
           ],
           "image": "https://relateworld.org/images/skills/python.jpg"
+        },
+        {
+          "id": "sprout_05_video_editing",
+          "name": "Video Editing & YouTube Channels",
+          "icon": "videocam",
+          "type": "Elective",
+          "description": "Plan, film, edit, publish, and review a safe team YouTube channel.",
+          "output": "Three edited club videos, one team YouTube channel, and a monthly content plan.",
+          "detail": {
+            "learningProvider": "YouTube Creator Academy",
+            "learningUrl": "https://creatoracademy.youtube.com/",
+            "tools": [
+              "CapCut",
+              "Canva",
+              "DaVinci Resolve",
+              "YouTube Studio",
+              "Google Workspace"
+            ],
+            "appFeatures": [
+              "Channel Focus Selector",
+              "Production Team Board",
+              "YouTube Publishing Checklist",
+              "Safety and Consent Check",
+              "Channel Analytics Review"
+            ],
+            "pathways": {
+              "directEntrant": "Start with framing, simple cuts, captions, thumbnails, responsible filming, copyright basics, and supervised publishing."
+            }
+          },
+          "levels": [
+            {
+              "id": "teens",
+              "name": "Sprout Teens",
+              "levelNumber": 3,
+              "color": "#43A047",
+              "colorDark": "#1B5E20",
+              "description": "Ages 13 – 16. Create supervised videos, work in a four-to-five-member channel team, and build a responsible portfolio.",
+              "requirements": [
+                {
+                  "text": "Choose and plan the team channel.",
+                  "criteria": [
+                    "Chooses a channel focus with a club leader, such as sport, education, lifestyle, culture, gaming, music, or entrepreneurship",
+                    "Works in a team of four to five members with clear roles",
+                    "Creates a monthly content calendar with three planned videos"
+                  ]
+                },
+                {
+                  "text": "Film and edit safely.",
+                  "criteria": [
+                    "Obtains permission before filming or publishing identifiable people",
+                    "Creates a simple cut with clear titles, captions, music, and a thumbnail",
+                    "Uses only original or approved content and credits all licensed assets"
+                  ]
+                },
+                {
+                  "text": "Publish and review the channel.",
+                  "criteria": [
+                    "Publishes videos only after leader approval",
+                    "Records views, watch time, and viewer feedback in the production board",
+                    "Completes three published videos and presents one improvement for the next month"
+                  ]
+                }
+              ]
+            }
+          ],
+          "image": "https://relateworld.org/images/skills/video-editing.jpg"
         }
       ]
     }
