@@ -83,7 +83,11 @@ export async function GET(request: NextRequest) {
     if (eventsCache && Date.now() - eventsCache.ts < EVENTS_TTL) {
       // Re-derive user-specific fields.
       const data = eventsCache.data
-        .filter((e: any) => !clubFilter || e.clubSlug === clubFilter)
+        .filter((e: any) =>
+          !clubFilter ||
+          (typeof e.clubSlug === "string" &&
+            e.clubSlug.trim().toLowerCase() === clubFilter)
+        )
         .map((e: any) => ({
           ...e,
           hasRsvpd: userId ? e._rsvpUserIds.includes(userId) : false,
@@ -184,7 +188,14 @@ export async function GET(request: NextRequest) {
       hasRsvpd: userId ? e._rsvpUserIds.includes(userId) : false,
       isOwner: userId ? e._ownerUserId === userId : false,
     }));
-    return NextResponse.json({ data: response }, { headers: CACHE_HEADERS });
+    const filteredResponse = clubFilter
+      ? response.filter((e: any) =>
+          typeof e.clubSlug === "string"
+            ? e.clubSlug.trim().toLowerCase() === clubFilter
+            : false,
+        )
+      : response;
+    return NextResponse.json({ data: filteredResponse }, { headers: CACHE_HEADERS });
   } catch {
     return NextResponse.json({ data: [] });
   }
