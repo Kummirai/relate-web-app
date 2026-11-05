@@ -30,9 +30,7 @@ export async function GET(request: NextRequest) {
   } else if (clubCode) {
     url.searchParams.set("club_code", `eq.${clubCode}`);
   }
-  url.searchParams.set("is_master", "eq.false");
   url.searchParams.set("limit", accountIdentifier ? "1" : "200");
-  url.searchParams.set("order", "created_at.desc");
 
   const response = await fetch(url, {
     headers: {
@@ -56,12 +54,18 @@ export async function GET(request: NextRequest) {
       { status: 502 },
     );
   }
-  if (!accountIdentifier) return NextResponse.json({ data: rows });
-  if (rows.length !== 1) {
+  const recipientAccounts = (rows as Record<string, unknown>[]).filter(
+    (row): row is Record<string, unknown> =>
+      typeof row === "object" &&
+      row !== null &&
+      !("is_master" in row && row.is_master === true),
+  );
+  if (!accountIdentifier) return NextResponse.json({ data: recipientAccounts });
+  if (recipientAccounts.length !== 1) {
     return NextResponse.json(
       { error: "No Smart Saver account found for that number or code" },
       { status: 404 },
     );
   }
-  return NextResponse.json({ data: rows[0] });
+  return NextResponse.json({ data: recipientAccounts[0] });
 }
