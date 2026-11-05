@@ -32,16 +32,45 @@ export async function GET(request: NextRequest) {
   }
   url.searchParams.set("limit", accountIdentifier ? "1" : "200");
 
-  const response = await fetch(url, {
-    headers: {
-      apikey: SERVICE_ROLE_KEY,
-      Authorization: `Bearer ${SERVICE_ROLE_KEY}`,
-      Accept: "application/json",
-    },
-    cache: "no-store",
-  });
-  const text = await response.text();
+  const fetchAccounts = async (select: string) => {
+    const requestUrl = new URL(url);
+    requestUrl.searchParams.set("select", select);
+    return fetch(requestUrl, {
+      headers: {
+        apikey: SERVICE_ROLE_KEY,
+        Authorization: `Bearer ${SERVICE_ROLE_KEY}`,
+        Accept: "application/json",
+      },
+      cache: "no-store",
+    });
+  };
+
+  let response = await fetchAccounts(
+    "id,user_id,account_type,display_name,club_slug,club_code,account_number,is_master",
+  );
+  let text = await response.text();
   let rows: unknown;
+
+  if (!response.ok) {
+    let fallbackResponse = await fetchAccounts(
+      "id,user_id,account_type,display_name,club_slug,club_code",
+    );
+    if (fallbackResponse.ok) {
+      response = fallbackResponse;
+      text = await response.text();
+    } else {
+      try {
+        rows = text ? JSON.parse(text) : null;
+      } catch {
+        rows = { message: text.slice(0, 300) };
+      }
+      console.error("[smart-saver accounts] lookup failed", response.status, rows);
+      return NextResponse.json(
+        { error: "Account lookup failed", details: rows },
+        { status: 502 },
+      );
+    }
+  }
   try {
     rows = text ? JSON.parse(text) : null;
   } catch {
@@ -58,7 +87,8 @@ export async function GET(request: NextRequest) {
     (row): row is Record<string, unknown> =>
       typeof row === "object" &&
       row !== null &&
-      !("is_master" in row && row.is_master === true),
+      row.is_master !== true &&
+      row.user_id !== null,
   );
   if (!accountIdentifier) return NextResponse.json({ data: recipientAccounts });
   if (recipientAccounts.length !== 1) {
