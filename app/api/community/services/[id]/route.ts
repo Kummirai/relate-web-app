@@ -215,7 +215,12 @@ export async function PATCH(
           body: `${rewardAmount} was paid to your Smart Saver Relate account. Open Smart Saver to see your new balance.`,
         };
       }
-    } else if (action === "reopen") {
+} else if (action === "reopen") {
+      const reviewNote =
+        typeof body?.note === "string"
+          ? body.note.trim()
+          : null;
+
       if (existing.status === "closed") {
         // Fully fresh listing again — release any old claim.
         set.status = "open";
@@ -223,11 +228,15 @@ export async function PATCH(
         set.acceptedByName = null;
         set.acceptedAt = null;
         set.submission = null;
-        set.review = null;
+        set.review = reviewNote
+          ? { note: reviewNote, approved: false, reviewedBy: admin.id, reviewedAt: now }
+          : null;
       } else if (existing.status === "submitted" || existing.status === "approved") {
-        // Send it back — claim kept so the same member can revise.
+        // Send it back — claim kept so the same member can revise with admin notes.
         set.status = "accepted";
-        set.review = null;
+        set.review = reviewNote
+          ? { note: reviewNote, approved: false, reviewedBy: admin.id, reviewedAt: now }
+          : { approved: false, reviewedBy: admin.id, reviewedAt: now };
         if (existing.status === "approved") set.submission = null;
       } else if (existing.status === "accepted") {
         set.status = "open";
@@ -235,6 +244,9 @@ export async function PATCH(
         set.acceptedByName = null;
         set.acceptedAt = null;
         set.submission = null;
+        set.review = reviewNote
+          ? { note: reviewNote, approved: false, reviewedBy: admin.id, reviewedAt: now }
+          : null;
       }
       if (existing.acceptedById && existing.status !== "open") {
         notifyClaimer = {
