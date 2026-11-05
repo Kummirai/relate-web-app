@@ -24,6 +24,7 @@ export type ServiceSubmission = {
   note: string;
   githubLink: string | null;
   imageUrl: string | null;
+  imageUrls: string[];
   submittedAt: Date;
 };
 
@@ -40,6 +41,7 @@ export type ClubService = {
   description: string;
   type: ServiceType;
   clubSlug: string | null;
+  rewardAmount: number | null;
   posterId: string;
   posterName: string;
   status: ServiceStatus;
@@ -83,15 +85,21 @@ export function parseDueDate(value: unknown): Date | null {
  */
 export function validateSubmission(
   type: ServiceType,
-  input: { githubLink?: string | null; imageUrl?: string | null },
+  input: { githubLink?: string | null; imageUrl?: string | null; imageUrls?: string[] },
 ): string | null {
   if (type === "bug" && !isHttpUrl(input.githubLink)) {
     return "A GitHub PR or commit link is required for bug fixes.";
   }
-  if (type === "design" && !isHttpUrl(input.imageUrl)) {
+  const hasImages = (input.imageUrls?.length ?? 0) > 0;
+  if (type === "design" && !hasImages && !isHttpUrl(input.imageUrl)) {
     return "An image upload is required for design work.";
   }
-  if (type === "other" && !isHttpUrl(input.githubLink) && !isHttpUrl(input.imageUrl)) {
+  if (
+    type === "other"
+    && !isHttpUrl(input.githubLink)
+    && !isHttpUrl(input.imageUrl)
+    && !hasImages
+  ) {
     return "Attach your deliverable — a link or an image.";
   }
   return null;

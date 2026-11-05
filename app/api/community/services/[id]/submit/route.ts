@@ -66,8 +66,12 @@ export async function POST(
     const note = typeof body.note === "string" ? body.note.trim() : "";
     const githubLink = isHttpUrl(body.githubLink) ? body.githubLink.trim() : null;
     const imageUrl = isHttpUrl(body.imageUrl) ? body.imageUrl.trim() : null;
+    const imageUrls = Array.isArray(body.imageUrls)
+      ? body.imageUrls.filter(isHttpUrl).map((url: string) => url.trim())
+      : [];
+    if (imageUrl && !imageUrls.includes(imageUrl)) imageUrls.unshift(imageUrl);
 
-    const invalid = validateSubmission(existing.type, { githubLink, imageUrl });
+    const invalid = validateSubmission(existing.type, { githubLink, imageUrl, imageUrls });
     if (invalid) {
       return NextResponse.json({ error: invalid }, { status: 400 });
     }
@@ -78,7 +82,13 @@ export async function POST(
       );
     }
 
-    const submission = { note, githubLink, imageUrl, submittedAt: new Date() };
+    const submission = {
+      note,
+      githubLink,
+      imageUrl: imageUrls[0] ?? imageUrl,
+      imageUrls,
+      submittedAt: new Date(),
+    };
     await db.collection(CLUB_SERVICES_COLLECTION).updateOne(
       { _id: new ObjectId(id) },
       { $set: { status: "submitted", submission, updatedAt: new Date() } },

@@ -76,6 +76,7 @@ export async function POST(request: NextRequest) {
         ? body.clubSlug.trim()
         : null;
     const dueDate = parseDueDate(body.dueDate);
+    const rewardAmount = Number(body.rewardAmount);
 
     if (!title || !description) {
       return NextResponse.json(
@@ -97,6 +98,7 @@ export async function POST(request: NextRequest) {
       acceptedByName: null,
       acceptedAt: null,
       dueDate,
+      rewardAmount: Number.isFinite(rewardAmount) && rewardAmount > 0 ? rewardAmount : null,
       submission: null,
       review: null,
       createdAt: now,

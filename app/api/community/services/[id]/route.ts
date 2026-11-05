@@ -12,6 +12,75 @@ import {
 import { createNotification } from "@/lib/inapp-notify";
 import { getUserPushTokens, sendPushNotifications } from "@/lib/push";
 
+const SUPABASE_URL =
+  process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL || "";
+const SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || "";
+
+async function payApprovedWorker(
+  workerId: string,
+  amount: number,
+  serviceTitle: string,
+  serviceId: string,
+  db: any,
+): Promise<string> {
+  if (!SUPABASE_URL || !SERVICE_ROLE_KEY) {
+    throw new Error("Smart Saver settlement is not configured");
+  }
+  const worker = await db.collection("user").findOne({
+    $or: [{ id: workerId }, { _id: ObjectId.isValid(workerId) ? new ObjectId(workerId) : null }],
+  });
+  if (!worker?.email) throw new Error("The worker account has no email address");
+
+  const authResponse = await fetch(
+    `${SUPABASE_URL}/auth/v1/admin/users?email=${encodeURIComponent(worker.email)}`,
+    {
+      headers: { apikey: SERVICE_ROLE_KEY, Authorization: `Bearer ${SERVICE_ROLE_KEY}` },
+      cache: "no-store",
+    },
+  );
+  if (!authResponse.ok) throw new Error("Could not find the worker in Smart Saver");
+  const authResult = await authResponse.json();
+  const authUser = (authResult.users ?? []).find(
+    (user: any) =>
+      user.email?.toLowerCase() === String(worker.email).toLowerCase(),
+  );
+  if (!authUser?.id) throw new Error("The worker has no linked Smart Saver account");
+
+  const accountsUrl = new URL(`${SUPABASE_URL}/rest/v1/accounts`);
+  accountsUrl.searchParams.set("select", "id");
+  accountsUrl.searchParams.set("user_id", `eq.${authUser.id}`);
+  accountsUrl.searchParams.set("account_type", "eq.relate");
+  accountsUrl.searchParams.set("limit", "1");
+  const accountsResponse = await fetch(accountsUrl, {
+    headers: { apikey: SERVICE_ROLE_KEY, Authorization: `Bearer ${SERVICE_ROLE_KEY}` },
+    cache: "no-store",
+  });
+  if (!accountsResponse.ok) throw new Error("Could not load the Smart Saver account");
+  const accounts = await accountsResponse.json();
+  const accountId = accounts?.[0]?.id;
+  if (!accountId) throw new Error("The worker has no Relate account in Smart Saver");
+
+  const settlementResponse = await fetch(
+    `${SUPABASE_URL}/rest/v1/rpc/relate_settle_account`,
+    {
+      method: "POST",
+      headers: {
+        apikey: SERVICE_ROLE_KEY,
+        Authorization: `Bearer ${SERVICE_ROLE_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        p_destination_account_id: accountId,
+        p_amount: amount,
+        p_description: `Service payment: ${serviceTitle} (${serviceId})`,
+      }),
+      cache: "no-store",
+    },
+  );
+  if (!settlementResponse.ok) throw new Error("Smart Saver could not process the payment");
+  return accountId;
+}
+
 /**
  * One service.
  *
@@ -102,6 +171,37 @@ export async function PATCH(
           { status: 409 },
         );
       }
+      if (existing.payment?.status === "paid") {
+        return NextResponse.json({ error: "Payment already made" }, { status: 409 });
+      }
+      const rewardAmount = Number(existing.rewardAmount);
+      if (!existing.acceptedById || !Number.isFinite(rewardAmount) || rewardAmount <= 0) {
+        return NextResponse.json(
+          { error: "A worker and positive reward amount are required" },
+          { status: 400 },
+        );
+      }
+      let paymentAccountId: string;
+      try {
+        paymentAccountId = await payApprovedWorker(
+          existing.acceptedById,
+          rewardAmount,
+          existing.title,
+          id,
+          db,
+        );
+      } catch (error) {
+        return NextResponse.json(
+          { error: error instanceof Error ? error.message : "Payment could not be made" },
+          { status: 502 },
+        );
+      }
+      set.payment = {
+        status: "paid",
+        amount: rewardAmount,
+        accountId: paymentAccountId,
+        paidAt: now,
+      };
       set.status = "approved";
       set.review = {
         approved: true,
@@ -112,7 +212,7 @@ export async function PATCH(
       if (existing.acceptedById) {
         notifyClaimer = {
           title: "Service approved",
-          body: `Your work on "${existing.title}" was approved.`,
+          body: `${rewardAmount} was paid to your Smart Saver Relate account. Open Smart Saver to see your new balance.`,
         };
       }
     } else if (action === "reopen") {
