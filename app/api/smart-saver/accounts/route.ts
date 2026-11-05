@@ -42,10 +42,17 @@ export async function GET(request: NextRequest) {
     },
     cache: "no-store",
   });
-  const rows = await response.json();
+  const text = await response.text();
+  let rows: unknown;
+  try {
+    rows = text ? JSON.parse(text) : null;
+  } catch {
+    rows = { message: text.slice(0, 300) };
+  }
   if (!response.ok || !Array.isArray(rows)) {
+    console.error("[smart-saver accounts] lookup failed", response.status, rows);
     return NextResponse.json(
-      { error: "Account lookup failed", details: typeof rows === "object" ? rows : undefined },
+      { error: "Account lookup failed", details: rows },
       { status: 502 },
     );
   }
