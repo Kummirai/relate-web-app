@@ -75,6 +75,25 @@ export type OrderStatusEntry = {
   note?: string;
 };
 
+const BANKING_SETTINGS_ID = "sponsorship_banking";
+
+/** Banking details are shared by sponsorship pledges and store checkouts. */
+export async function bankingFor(db: any) {
+  const doc = await db.collection("settings").findOne({ _id: BANKING_SETTINGS_ID });
+  if (doc?.banking && typeof doc.banking === "object") {
+    return {
+      bankName: doc.banking.bankName ?? "",
+      accountHolder: doc.banking.accountHolder ?? "",
+      accountNumber: doc.banking.accountNumber ?? "",
+      branchCode: doc.banking.branchCode ?? "",
+      accountType: doc.banking.accountType ?? "",
+      reference: doc.banking.reference ?? "",
+      instructions: doc.banking.instructions ?? "",
+    };
+  }
+  return null;
+}
+
 export function ensureOrderIndexes(db: any) {
   return Promise.all([
     db.collection(ORDERS_COLLECTION).createIndex({ createdAt: -1 }),

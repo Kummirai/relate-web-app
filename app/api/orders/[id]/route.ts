@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { ObjectId } from "mongodb";
 import { getDb } from "@/lib/mongodb";
 import { requireAdmin, resolveSession } from "@/lib/community-auth";
-import { ensureOrderIndexes, serializeOrder } from "@/lib/orders";
+import { bankingFor, ensureOrderIndexes, serializeOrder } from "@/lib/orders";
 
 /**
  * A single order — receipt, banking details and progress timeline.
@@ -38,7 +38,10 @@ export async function GET(
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    return NextResponse.json({ data: serializeOrder(doc) });
+    return NextResponse.json({
+      data: serializeOrder(doc),
+      banking: await bankingFor(db),
+    });
   } catch {
     return NextResponse.json({ error: "Failed to load order" }, { status: 500 });
   }

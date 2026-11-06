@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { getDb } from "@/lib/mongodb";
 import { resolveSession } from "@/lib/community-auth";
 import {
+  bankingFor,
   buildOrderDoc,
   ensureOrderIndexes,
   loadCatalogue,
@@ -9,25 +10,6 @@ import {
   serializeOrder,
 } from "@/lib/orders";
 import { publicOptions } from "@/lib/public-api/render";
-
-const BANKING_SETTINGS_ID = "sponsorship_banking";
-
-/** Banking details are shared by sponsorship pledges and store checkouts. */
-async function bankingFor(db: any) {
-  const doc = await db.collection("settings").findOne({ _id: BANKING_SETTINGS_ID });
-  if (doc?.banking && typeof doc.banking === "object") {
-    return {
-      bankName: doc.banking.bankName ?? "",
-      accountHolder: doc.banking.accountHolder ?? "",
-      accountNumber: doc.banking.accountNumber ?? "",
-      branchCode: doc.banking.branchCode ?? "",
-      accountType: doc.banking.accountType ?? "",
-      reference: doc.banking.reference ?? "",
-      instructions: doc.banking.instructions ?? "",
-    };
-  }
-  return null;
-}
 
 /**
  * Checkout and order history.
