@@ -17,8 +17,9 @@
  *     up content changes from the JSON inputs.
  *   - calendar entries replaced this way reset admin-authored years too, so only
  *     re-run the calendar target when you intend to publish the shipped year.
- *   - store items only ever land with $setOnInsert: once an item exists, admin
- *     edits in Mongo win and re-seeding never clobbers them.
+ *   - store is the merchandise seed: re-seeding publishes content changes from
+ *     the JSON (name, price, images, details). Admin toggles like active or
+ *     inStock are preserved because the JSON omits them unless intended.
  */
 import { readFileSync } from "node:fs";
 import path from "node:path";
@@ -42,7 +43,7 @@ const TARGETS = {
     file: "store-import.json",
     filter: (doc) => ({ id: doc.id }),
     index: { id: 1 },
-    mode: "insert-only",
+    mode: "replace",
   },
   sports: {
     collection: "sports_config",

@@ -4,7 +4,7 @@
     "category": "Apparel",
     "name": "Relate Tee (Black)",
     "price": 160,
-    "blurb": "Heavyweight black tee in soft ringspun cotton with the gold Relate emblem — sizes XS to XL.",
+    "blurb": "Heavyweight black tee in soft ringspun cotton with the Relate World emblem — sizes XS to XL.",
     "image": "/images/store/relate-tee/t-shirt-1.png",
     "images": [
       "/images/store/relate-tee/t-shirt-1.png",
@@ -24,408 +24,276 @@
     ],
     "details": [
       "Heavyweight 100% ringspun cotton in black",
-      "Gold Relate emblem printed on the chest",
+      "Relate World emblem printed on the chest",
       "Unisex fit — sizes XS to XL",
       "Every purchase funds Relate clubs & programs",
       "Order on WhatsApp — pay on delivery or EFT"
     ],
-    "rating": 4.9,
-    "active": true
-  },
-  {
-    "id": "club-hoodie",
-    "category": "Apparel",
-    "name": "Club Hoodie",
-    "price": 450,
-    "blurb": "Cozy pullover hoodie for club days and camps.",
-    "image": "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400&h=400&fit=crop&q=80&auto=format",
-    "images": [],
-    "sizes": [],
-    "details": [],
-    "rating": 4.6,
-    "active": true
-  },
-  {
-    "id": "faith-cap",
-    "category": "Apparel",
-    "name": "Faith Cap",
-    "price": 180,
-    "blurb": "Gold-embroidered cap for sunny outings.",
-    "image": "https://images.unsplash.com/photo-1521369909029-2afed882baee?w=400&h=400&fit=crop&q=80&auto=format",
-    "images": [],
-    "sizes": [],
-    "details": [],
-    "rating": 3.9,
-    "active": true
-  },
-  {
-    "id": "tote-bag",
-    "category": "Accessories",
-    "name": "Tote Bag",
-    "price": 150,
-    "blurb": "Everyday tote — books, snacks and everything in between.",
-    "image": "https://images.unsplash.com/photo-1597484661643-2f5fef640dd1?w=400&h=400&fit=crop&q=80&auto=format",
-    "images": [],
-    "sizes": [],
-    "details": [],
-    "rating": 4.5,
-    "active": true
-  },
-  {
-    "id": "sip-bottle",
-    "category": "Accessories",
-    "name": "Sip Bottle",
-    "price": 190,
-    "blurb": "BPA-free bottle to keep your water cold.",
-    "image": "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=400&h=400&fit=crop&q=80&auto=format",
-    "images": [],
-    "sizes": [],
-    "details": [],
-    "rating": 3.8,
-    "active": true
-  },
-  {
-    "id": "faith-wristband",
-    "category": "Accessories",
-    "name": "Faith Wristband",
-    "price": 30,
-    "blurb": "Silicone wristband — wear your club colours.",
-    "image": "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=400&h=400&fit=crop&q=80&auto=format",
-    "images": [],
-    "sizes": [],
-    "details": [],
-    "rating": 3.6,
-    "active": true
-  },
-  {
-    "id": "sunday-mug",
-    "category": "Home & Study",
-    "name": "Sunday Mug",
-    "price": 160,
-    "blurb": "Heavy ceramic mug for study breaks.",
-    "image": "https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=400&h=400&fit=crop&q=80&auto=format",
-    "images": [],
-    "sizes": [],
-    "details": [],
-    "rating": 4.7,
-    "active": true
-  },
-  {
-    "id": "study-notebook",
-    "category": "Home & Study",
-    "name": "Notebook",
-    "price": 90,
-    "blurb": "A5 notebook for homework and ideas.",
-    "image": "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=400&h=400&fit=crop&q=80&auto=format",
-    "images": [],
-    "sizes": [],
-    "details": [],
-    "rating": 3.9,
-    "active": true
-  },
-  {
-    "id": "prayer-journal",
-    "category": "Home & Study",
-    "name": "Prayer Journal",
-    "price": 140,
-    "blurb": "Guided journal with weekly reflection pages.",
-    "image": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=400&fit=crop&q=80&auto=format",
-    "images": [],
-    "sizes": [],
-    "details": [],
-    "rating": 4.8,
-    "active": true
-  },
-  {
-    "id": "sticker-pack",
-    "category": "Home & Study",
-    "name": "Sticker Pack",
-    "price": 40,
-    "blurb": "Ten vinyl stickers for books and laptops.",
-    "image": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400&h=400&fit=crop&q=80&auto=format",
-    "images": [],
-    "sizes": [],
-    "details": [],
-    "rating": 3.7,
-    "active": true
+    "rating": 4.9
   },
   {
     "id": "relate-hoodie",
     "category": "Apparel",
-    "name": "Relate Hoodie",
+    "name": "Relate Hoodie (Navy)",
     "price": 450,
-    "blurb": "Heavyweight fleece hoodie in Relate navy. Perfect for chilly club nights.",
-    "image": "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=800&q=80",
+    "blurb": "Brushed-fleece navy hoodie with the Relate World wordmark — club days, camps and cold mornings.",
+    "image": "/images/store/relate-hoodie/1.jpg",
     "images": [
-      "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=800&q=80"
+      "/images/store/relate-hoodie/1.jpg"
     ],
-    "sizes": [],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
     "details": [
-      "Heavyweight fleece hoodie in Relate navy. Perfect for chilly club nights."
+      "Soft brushed fleece, 260gsm",
+      "Relate World wordmark and rw mark on the chest",
+      "Kangaroo pocket and drawstring hood",
+      "Unisex fit — sizes S to XXL",
+      "Every purchase funds Relate clubs & programs"
     ],
-    "rating": null,
-    "active": true
+    "rating": 4.8
   },
   {
-    "id": "relate-snapback",
+    "id": "relate-cap",
     "category": "Apparel",
-    "name": "Relate Snapback Cap",
+    "name": "Relate Cap (Black)",
     "price": 120,
-    "blurb": "Adjustable snapback with an embroidered Relate leaf. One size fits most.",
-    "image": "https://images.unsplash.com/photo-1521369909029-2afed882baee?w=800&q=80",
+    "blurb": "Six-panel black cap with the cyan rw mark embroidered on the front.",
+    "image": "/images/store/relate-cap/1.jpg",
     "images": [
-      "https://images.unsplash.com/photo-1521369909029-2afed882baee?w=800&q=80"
+      "/images/store/relate-cap/1.jpg"
     ],
-    "sizes": [],
+    "sizes": [
+      "One size"
+    ],
     "details": [
-      "Adjustable snapback with an embroidered Relate leaf. One size fits most."
+      "Cotton twill six-panel cap in black",
+      "Cyan rw logo embroidered on the front",
+      "Adjustable strap — one size fits most",
+      "Every purchase funds Relate clubs & programs"
     ],
-    "rating": null,
-    "active": true
+    "rating": 4.7
   },
   {
     "id": "relate-beanie",
     "category": "Apparel",
-    "name": "Relate Beanie",
+    "name": "Relate Beanie (Navy)",
     "price": 110,
-    "blurb": "Knitted winter beanie, cuffed with a small woven Relate label.",
-    "image": "https://images.unsplash.com/photo-1576871337622-98d48d1cf531?w=800&q=80",
+    "blurb": "Ribbed knit navy beanie with a woven rw label on the cuff.",
+    "image": "/images/store/relate-beanie/1.jpg",
     "images": [
-      "https://images.unsplash.com/photo-1576871337622-98d48d1cf531?w=800&q=80"
+      "/images/store/relate-beanie/1.jpg"
     ],
-    "sizes": [],
+    "sizes": [
+      "One size"
+    ],
     "details": [
-      "Knitted winter beanie, cuffed with a small woven Relate label."
+      "Soft ribbed acrylic knit in navy",
+      "Woven rw label on the fold-up cuff",
+      "One size fits most",
+      "Every purchase funds Relate clubs & programs"
     ],
-    "rating": null,
-    "active": true
+    "rating": 4.6
+  },
+  {
+    "id": "sprout-kids-tee",
+    "category": "Apparel",
+    "name": "Sprout Kids Tee (Green)",
+    "price": 165,
+    "blurb": "Bright green tee for Sprout kids — leaf logo on the chest, soft combed cotton.",
+    "image": "/images/store/sprout-kids-tee/1.jpg",
+    "images": [
+      "/images/store/sprout-kids-tee/1.jpg"
+    ],
+    "sizes": [
+      "4-5",
+      "6-7",
+      "8-9",
+      "10-11",
+      "12-13"
+    ],
+    "details": [
+      "Combed cotton tee in Sprout green",
+      "Sprout leaf logo with Relate World mark",
+      "Kids sizes 4-5 to 12-13",
+      "Every purchase funds Relate clubs & programs"
+    ],
+    "rating": 4.9
+  },
+  {
+    "id": "surge-tee",
+    "category": "Apparel",
+    "name": "Surge Club Tee (Orange)",
+    "price": 165,
+    "blurb": "Vibrant orange Surge tee with the bolt logo — for training days and match days.",
+    "image": "/images/store/surge-tee/1.jpg",
+    "images": [
+      "/images/store/surge-tee/1.jpg"
+    ],
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "details": [
+      "Combed cotton tee in Surge orange",
+      "Surge bolt logo with Relate World mark",
+      "Unisex fit — sizes XS to XL",
+      "Every purchase funds Relate clubs & programs"
+    ],
+    "rating": 4.8
   },
   {
     "id": "relate-tote",
     "category": "Accessories",
     "name": "Relate Tote Bag",
-    "price": 95,
-    "blurb": "Everyday canvas tote with the Relate leaf. Carries your Bible, books and groceries.",
-    "image": "https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?w=800&q=80",
+    "price": 150,
+    "blurb": "Natural canvas tote with the Relate World mark — books, snacks and everything in between.",
+    "image": "/images/store/relate-tote/1.jpg",
     "images": [
-      "https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?w=800&q=80"
+      "/images/store/relate-tote/1.jpg"
     ],
-    "sizes": [],
+    "sizes": [
+      "One size"
+    ],
     "details": [
-      "Everyday canvas tote with the Relate leaf. Carries your Bible, books and groceries."
+      "Heavy natural canvas with reinforced handles",
+      "Relate World print in navy and cyan",
+      "Fits A4 folders and a water bottle",
+      "Every purchase funds Relate clubs & programs"
     ],
-    "rating": null,
-    "active": true
+    "rating": 4.7
   },
   {
     "id": "relate-bottle",
     "category": "Accessories",
     "name": "Relate Water Bottle",
-    "price": 130,
-    "blurb": "BPA-free steel bottle, keeps drinks cold. Screen-printed leaf logo.",
-    "image": "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=800&q=80",
+    "price": 190,
+    "blurb": "Matte cyan steel bottle that keeps water cold through every club session.",
+    "image": "/images/store/relate-bottle/1.jpg",
     "images": [
-      "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=800&q=80"
+      "/images/store/relate-bottle/1.jpg"
     ],
-    "sizes": [],
+    "sizes": [
+      "750ml"
+    ],
     "details": [
-      "BPA-free steel bottle, keeps drinks cold. Screen-printed leaf logo."
+      "Double-wall stainless steel, 750ml",
+      "Keeps drinks cold for 24 hours",
+      "Navy cap, matte cyan body with rw mark",
+      "Every purchase funds Relate clubs & programs"
     ],
-    "rating": null,
-    "active": true
+    "rating": 4.8
   },
   {
     "id": "relate-wristband",
     "category": "Accessories",
     "name": "Relate Wristband",
     "price": 40,
-    "blurb": "Silicone wristband in club colours. Wear it as a daily reminder.",
-    "image": "https://images.unsplash.com/photo-1511081692775-05d0f180a065?w=800&q=80",
+    "blurb": "Cyan silicone wristband — wear the Relate World name every day.",
+    "image": "/images/store/relate-wristband/1.jpg",
     "images": [
-      "https://images.unsplash.com/photo-1511081692775-05d0f180a065?w=800&q=80"
+      "/images/store/relate-wristband/1.jpg"
     ],
-    "sizes": [],
+    "sizes": [
+      "One size"
+    ],
     "details": [
-      "Silicone wristband in club colours. Wear it as a daily reminder."
+      "Soft silicone in Relate cyan",
+      "Debossed Relate World lettering",
+      "One size fits most",
+      "Every purchase funds Relate clubs & programs"
     ],
-    "rating": null,
-    "active": true
+    "rating": 4.5
   },
   {
     "id": "relate-pins",
     "category": "Accessories",
-    "name": "Relate Enamel Pins",
-    "price": 55,
-    "blurb": "Set of three enamel pins — leaf, heart and dove. Add them to a bag or lanyard.",
-    "image": "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=800&q=80",
+    "name": "Relate Enamel Pin Set",
+    "price": 65,
+    "blurb": "Set of three enamel pins — rw mark, Connect · Learn · Grow, and the Relate heart.",
+    "image": "/images/store/relate-pins/1.jpg",
     "images": [
-      "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=800&q=80"
+      "/images/store/relate-pins/1.jpg"
     ],
-    "sizes": [],
+    "sizes": [
+      "Set of 3"
+    ],
     "details": [
-      "Set of three enamel pins — leaf, heart and dove. Add them to a bag or lanyard."
+      "Three hard-enamel pins with rubber backs",
+      "rw logo, tagline bar and heart designs",
+      "Butter clasp — pin them on bags, caps or jackets",
+      "Every purchase funds Relate clubs & programs"
     ],
-    "rating": null,
-    "active": true
+    "rating": 4.6
   },
   {
     "id": "relate-stickers",
     "category": "Accessories",
     "name": "Relate Sticker Pack",
     "price": 60,
-    "blurb": "Ten die-cut stickers for laptops, water bottles and journals.",
-    "image": "https://images.unsplash.com/photo-1611388989920-9fb6b7fe4b13?w=800&q=80",
+    "blurb": "Die-cut vinyl stickers to brand your bottle, laptop or bible cover.",
+    "image": "/images/store/relate-stickers/1.jpg",
     "images": [
-      "https://images.unsplash.com/photo-1611388989920-9fb6b7fe4b13?w=800&q=80"
+      "/images/store/relate-stickers/1.jpg"
     ],
-    "sizes": [],
+    "sizes": [
+      "Pack of 6"
+    ],
     "details": [
-      "Ten die-cut stickers for laptops, water bottles and journals."
+      "Six die-cut vinyl stickers",
+      "rw logo, Relate World wordmark and doodles",
+      "Waterproof and fade-resistant",
+      "Every purchase funds Relate clubs & programs"
     ],
-    "rating": null,
-    "active": true
+    "rating": 4.5
   },
   {
     "id": "relate-mug",
-    "category": "Accessories",
-    "name": "Relate Mug",
-    "price": 85,
-    "blurb": "Ceramic mug with the Relate leaf on the inside — a little gold at the bottom of every cup.",
-    "image": "https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=800&q=80",
+    "category": "Home & Study",
+    "name": "Relate Mug (Navy)",
+    "price": 160,
+    "blurb": "Navy ceramic mug with a cyan handle — for quiet mornings and study nights.",
+    "image": "/images/store/relate-mug/1.jpg",
     "images": [
-      "https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=800&q=80"
+      "/images/store/relate-mug/1.jpg"
     ],
-    "sizes": [],
+    "sizes": [
+      "350ml"
+    ],
     "details": [
-      "Ceramic mug with the Relate leaf on the inside — a little gold at the bottom of every cup."
+      "Ceramic mug, 350ml, in navy with cyan handle",
+      "Relate World wordmark printed on both sides",
+      "Dishwasher and microwave safe",
+      "Every purchase funds Relate clubs & programs"
     ],
-    "rating": null,
-    "active": true
+    "rating": 4.8
   },
   {
-    "id": "sprout-tee",
-    "category": "Apparel",
-    "name": "Sprout Club Tee",
-    "price": 165,
-    "blurb": "Sprout-coloured t-shirt for the youngest crew. Kids' and adult sizes.",
-    "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800&q=80",
+    "id": "relate-journal",
+    "category": "Home & Study",
+    "name": "Relate Journal (Navy)",
+    "price": 140,
+    "blurb": "Hardcover journal with the rw mark — notes, prayers and plans in one place.",
+    "image": "/images/store/relate-journal/1.jpg",
     "images": [
-      "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800&q=80"
+      "/images/store/relate-journal/1.jpg"
     ],
-    "sizes": [],
+    "sizes": [
+      "A5"
+    ],
     "details": [
-      "Club: sprout",
-      "Sprout-coloured t-shirt for the youngest crew. Kids' and adult sizes."
+      "A5 hardcover, 192 lined pages",
+      "Elastic closure band and ribbon marker",
+      "Embossed rw mark on the cover",
+      "Every purchase funds Relate clubs & programs"
     ],
-    "rating": null,
-    "active": true
-  },
-  {
-    "id": "surge-tee",
-    "category": "Apparel",
-    "name": "Surge Club Tee",
-    "price": 165,
-    "blurb": "High-energy orange tee for the Surge crew. Unisex fit.",
-    "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800&q=80"
-    ],
-    "sizes": [],
-    "details": [
-      "Club: surge",
-      "High-energy orange tee for the Surge crew. Unisex fit."
-    ],
-    "rating": null,
-    "active": true
-  },
-  {
-    "id": "pulse-tee",
-    "category": "Apparel",
-    "name": "Pulse Club Tee",
-    "price": 165,
-    "blurb": "Blue Pulse tee — in step with the season. Sizes S–XXL.",
-    "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800&q=80"
-    ],
-    "sizes": [],
-    "details": [
-      "Club: pulse",
-      "Blue Pulse tee — in step with the season. Sizes S–XXL."
-    ],
-    "rating": null,
-    "active": true
-  },
-  {
-    "id": "prime-tee",
-    "category": "Apparel",
-    "name": "Prime Club Tee",
-    "price": 165,
-    "blurb": "Royal purple tee for the Prime Club. Unisex fit.",
-    "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800&q=80"
-    ],
-    "sizes": [],
-    "details": [
-      "Club: prime",
-      "Royal purple tee for the Prime Club. Unisex fit."
-    ],
-    "rating": null,
-    "active": true
-  },
-  {
-    "id": "anchor-tee",
-    "category": "Apparel",
-    "name": "Anchor Club Tee",
-    "price": 165,
-    "blurb": "Green tee from the Anchor family — steady and true. Sizes S–XXL.",
-    "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800&q=80"
-    ],
-    "sizes": [],
-    "details": [
-      "Club: anchor",
-      "Green tee from the Anchor family — steady and true. Sizes S–XXL."
-    ],
-    "rating": null,
-    "active": true
-  },
-  {
-    "id": "spark-tee",
-    "category": "Apparel",
-    "name": "Spark Club Tee",
-    "price": 165,
-    "blurb": "Blush-pink tee for the newly married crew. Unisex fit, S–XXL.",
-    "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800&q=80"
-    ],
-    "sizes": [],
-    "details": [
-      "Club: spark",
-      "Blush-pink tee for the newly married crew. Unisex fit, S–XXL."
-    ],
-    "rating": null,
-    "active": true
-  },
-  {
-    "id": "synergy-tee",
-    "category": "Apparel",
-    "name": "Synergy Club Tee",
-    "price": 165,
-    "blurb": "Olive tee for the seasoned couples crew. Unisex fit, S–XXL.",
-    "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800&q=80"
-    ],
-    "sizes": [],
-    "details": [
-      "Club: synergy",
-      "Olive tee for the seasoned couples crew. Unisex fit, S–XXL."
-    ],
-    "rating": null,
-    "active": true
+    "rating": 4.9
   }
 ]
