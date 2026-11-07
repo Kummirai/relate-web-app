@@ -5,7 +5,12 @@
  * writes and the public storefront speak the same shape.
  */
 
-export const STORE_CATEGORIES = ["Apparel", "Accessories", "Home & Study"] as const;
+export const STORE_CATEGORIES = [
+  "Apparel",
+  "Sportswear",
+  "Accessories",
+  "Home & Study",
+] as const;
 
 export type StoreCategory = (typeof STORE_CATEGORIES)[number];
 

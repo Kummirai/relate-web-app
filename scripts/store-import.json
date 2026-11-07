@@ -39,7 +39,8 @@
     "blurb": "Brushed-fleece navy hoodie with the Relate World wordmark — club days, camps and cold mornings.",
     "image": "/images/store/relate-hoodie/1.jpg",
     "images": [
-      "/images/store/relate-hoodie/1.jpg"
+      "/images/store/relate-hoodie/1.jpg",
+      "/images/store/relate-hoodie/2.jpg"
     ],
     "sizes": [
       "S",
@@ -65,7 +66,8 @@
     "blurb": "Six-panel black cap with the cyan rw mark embroidered on the front.",
     "image": "/images/store/relate-cap/1.jpg",
     "images": [
-      "/images/store/relate-cap/1.jpg"
+      "/images/store/relate-cap/1.jpg",
+      "/images/store/relate-cap/2.jpg"
     ],
     "sizes": [
       "One size"
@@ -86,7 +88,8 @@
     "blurb": "Ribbed knit navy beanie with a woven rw label on the cuff.",
     "image": "/images/store/relate-beanie/1.jpg",
     "images": [
-      "/images/store/relate-beanie/1.jpg"
+      "/images/store/relate-beanie/1.jpg",
+      "/images/store/relate-beanie/2.jpg"
     ],
     "sizes": [
       "One size"
@@ -107,7 +110,8 @@
     "blurb": "Bright green tee for Sprout kids — leaf logo on the chest, soft combed cotton.",
     "image": "/images/store/sprout-kids-tee/1.jpg",
     "images": [
-      "/images/store/sprout-kids-tee/1.jpg"
+      "/images/store/sprout-kids-tee/1.jpg",
+      "/images/store/sprout-kids-tee/2.jpg"
     ],
     "sizes": [
       "4-5",
@@ -132,7 +136,8 @@
     "blurb": "Vibrant orange Surge tee with the bolt logo — for training days and match days.",
     "image": "/images/store/surge-tee/1.jpg",
     "images": [
-      "/images/store/surge-tee/1.jpg"
+      "/images/store/surge-tee/1.jpg",
+      "/images/store/surge-tee/2.jpg"
     ],
     "sizes": [
       "XS",
@@ -157,7 +162,8 @@
     "blurb": "Natural canvas tote with the Relate World mark — books, snacks and everything in between.",
     "image": "/images/store/relate-tote/1.jpg",
     "images": [
-      "/images/store/relate-tote/1.jpg"
+      "/images/store/relate-tote/1.jpg",
+      "/images/store/relate-tote/2.jpg"
     ],
     "sizes": [
       "One size"
@@ -178,7 +184,8 @@
     "blurb": "Matte cyan steel bottle that keeps water cold through every club session.",
     "image": "/images/store/relate-bottle/1.jpg",
     "images": [
-      "/images/store/relate-bottle/1.jpg"
+      "/images/store/relate-bottle/1.jpg",
+      "/images/store/relate-bottle/2.jpg"
     ],
     "sizes": [
       "750ml"
@@ -199,7 +206,8 @@
     "blurb": "Cyan silicone wristband — wear the Relate World name every day.",
     "image": "/images/store/relate-wristband/1.jpg",
     "images": [
-      "/images/store/relate-wristband/1.jpg"
+      "/images/store/relate-wristband/1.jpg",
+      "/images/store/relate-wristband/2.jpg"
     ],
     "sizes": [
       "One size"
@@ -220,7 +228,8 @@
     "blurb": "Set of three enamel pins — rw mark, Connect · Learn · Grow, and the Relate heart.",
     "image": "/images/store/relate-pins/1.jpg",
     "images": [
-      "/images/store/relate-pins/1.jpg"
+      "/images/store/relate-pins/1.jpg",
+      "/images/store/relate-pins/2.jpg"
     ],
     "sizes": [
       "Set of 3"
@@ -241,7 +250,8 @@
     "blurb": "Die-cut vinyl stickers to brand your bottle, laptop or bible cover.",
     "image": "/images/store/relate-stickers/1.jpg",
     "images": [
-      "/images/store/relate-stickers/1.jpg"
+      "/images/store/relate-stickers/1.jpg",
+      "/images/store/relate-stickers/2.jpg"
     ],
     "sizes": [
       "Pack of 6"
@@ -262,7 +272,8 @@
     "blurb": "Navy ceramic mug with a cyan handle — for quiet mornings and study nights.",
     "image": "/images/store/relate-mug/1.jpg",
     "images": [
-      "/images/store/relate-mug/1.jpg"
+      "/images/store/relate-mug/1.jpg",
+      "/images/store/relate-mug/2.jpg"
     ],
     "sizes": [
       "350ml"
@@ -283,7 +294,8 @@
     "blurb": "Hardcover journal with the rw mark — notes, prayers and plans in one place.",
     "image": "/images/store/relate-journal/1.jpg",
     "images": [
-      "/images/store/relate-journal/1.jpg"
+      "/images/store/relate-journal/1.jpg",
+      "/images/store/relate-journal/2.jpg"
     ],
     "sizes": [
       "A5"
@@ -295,5 +307,89 @@
       "Every purchase funds Relate clubs & programs"
     ],
     "rating": 4.9
+  },
+  {
+    "id": "football-kit",
+    "category": "Sportswear",
+    "name": "Relate Football Kit (Navy/Cyan)",
+    "price": 650,
+    "blurb": "Match-day football kit — navy jersey and shorts with cyan trim and the Relate World crest.",
+    "image": "/images/store/football-kit/1.jpg",
+    "images": [
+      "/images/store/football-kit/1.jpg",
+      "/images/store/football-kit/2.jpg"
+    ],
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "details": [
+      "Breathable performance jersey and shorts in navy with cyan trim",
+      "Relate World crest and rw mark on the chest",
+      "Moisture-wicking fabric for training and match days",
+      "Unisex fit — sizes XS to XXL",
+      "Every purchase funds Relate clubs & programs"
+    ],
+    "rating": 4.9
+  },
+  {
+    "id": "netball-kit",
+    "category": "Sportswear",
+    "name": "Relate Netball Kit (Cyan/Navy)",
+    "price": 620,
+    "blurb": "Match-day netball dress in Relate cyan with navy side panels and the rw crest.",
+    "image": "/images/store/netball-kit/1.jpg",
+    "images": [
+      "/images/store/netball-kit/1.jpg",
+      "/images/store/netball-kit/2.jpg"
+    ],
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "details": [
+      "Lightweight netball dress in Relate cyan with navy panels",
+      "Relate World crest and rw mark on the chest",
+      "Stretch fit with built-in shorts lining",
+      "Sizes XS to XXL",
+      "Every purchase funds Relate clubs & programs"
+    ],
+    "rating": 4.8
+  },
+  {
+    "id": "volleyball-kit",
+    "category": "Sportswear",
+    "name": "Relate Volleyball Kit (Cyan)",
+    "price": 630,
+    "blurb": "Volleyball kit — cyan jersey and navy shorts with the Relate World crest, built for the court.",
+    "image": "/images/store/volleyball-kit/1.jpg",
+    "images": [
+      "/images/store/volleyball-kit/1.jpg",
+      "/images/store/volleyball-kit/2.jpg"
+    ],
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "details": [
+      "Quick-dry volleyball jersey in Relate cyan with navy shorts",
+      "Relate World crest and rw mark on the chest",
+      "Four-way stretch fabric for full court movement",
+      "Unisex fit — sizes XS to XXL",
+      "Every purchase funds Relate clubs & programs"
+    ],
+    "rating": 4.8
   }
 ]
