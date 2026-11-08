@@ -20,7 +20,7 @@ export function buildFinancialReport(body: any, fallbackName: string) {
     status: "published",
     income: {
       balanceBroughtDown: toNonNegNumber(body?.income?.balanceBroughtDown),
-      sponsorships: toNonNegNumber(body?.income?.sponsorships),
+      foundersFund: toNonNegNumber(body?.income?.foundersFund),
       events: toNonNegNumber(body?.income?.events),
       donations: toNonNegNumber(body?.income?.donations),
       books: toNonNegNumber(body?.income?.books),

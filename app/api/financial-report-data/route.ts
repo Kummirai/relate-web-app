@@ -144,7 +144,7 @@ export async function GET(request: NextRequest) {
       const pr = prevReport[0];
       const pi =
         (Number(pr.income?.balanceBroughtDown) || 0) +
-        (Number(pr.income?.sponsorships) || 0) +
+        (Number(pr.income?.foundersFund ?? pr.income?.sponsorships) || 0) +
         (Number(pr.income?.events) || 0) +
         (Number(pr.income?.donations) || 0) +
         (Number(pr.income?.books) || 0) +
@@ -163,7 +163,7 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json({
       data: {
-        sponsorships: Math.round(sponsorships * 100) / 100,
+        foundersFund: Math.round(sponsorships * 100) / 100,
         amountsUsed: Math.round(amountsUsed * 100) / 100,
         balanceBroughtDown,
         period,

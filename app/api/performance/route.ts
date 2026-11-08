@@ -38,13 +38,17 @@ function num(value: unknown): number {
 }
 
 const INCOME_LABELS: Record<string, string> = {
-  balanceBroughtDown: "Balance brought down",
-  sponsorships: "Sponsorships",
+  foundersFund: "Founders’ Fund",
+  // Reports filed before the rename still store the old key.
+  sponsorships: "Founders’ Fund",
   events: "Events",
   donations: "Donations",
   books: "Books & resources",
   other: "Other income",
 };
+
+/** The carried balance is not income — it was already counted in the month it was earned. */
+const CARRIED_KEY = "balancebroughtdown";
 
 /** "amountsFromRecords" → "Amounts from records". */
 function humanize(key: string): string {
@@ -74,18 +78,23 @@ function amount(section: any, key: string): number {
   return typeof n === "number" && Number.isFinite(n) ? n : 0;
 }
 
+function isCarried(key: string): boolean {
+  return key.toLowerCase() === CARRIED_KEY;
+}
+
+/** Income earned this period — the balance brought down is left out. */
 function incomeOf(doc: any): number {
-  return sectionTotal(doc?.income);
+  let total = 0;
+  for (const [key, value] of Object.entries(doc?.income ?? {})) {
+    if (/description$/i.test(key) || isCarried(key)) continue;
+    const n = typeof value === "string" ? Number(value) : value;
+    if (typeof n === "number" && Number.isFinite(n)) total += n;
+  }
+  return total;
 }
 
 function expenditureOf(doc: any): number {
   return sectionTotal(doc?.expenses);
-}
-
-/** Money raised this period — report income less the balance it carried in,
- * which was already counted in the month it was earned. */
-function raisedOf(doc: any): number {
-  return incomeOf(doc) - amount(doc?.income, "balanceBroughtDown");
 }
 
 function currentSeason(date: Date) {
@@ -141,6 +150,8 @@ export async function GET(request: NextRequest) {
 
     const ordered = [...byMonth.entries()].sort((a, b) => a[0] - b[0]);
     const windowed = ordered.slice(-10);
+    // What the previous report left in the account when this window opened.
+    const openingBalance = amount(windowed[0]?.[1]?.income, "balanceBroughtDown");
 
     const months = windowed.map(([month, doc]) => {
       const income = incomeOf(doc);
@@ -152,7 +163,7 @@ export async function GET(request: NextRequest) {
         income,
         expenses,
         net: income - expenses,
-        raised: raisedOf(doc),
+        raised: income,
       };
     });
 
@@ -169,24 +180,26 @@ export async function GET(request: NextRequest) {
     const mixKeys = new Set<string>();
     for (const [, doc] of windowed) {
       for (const [key, value] of Object.entries(doc?.income ?? {})) {
-        if (/description$/i.test(key)) continue;
+        if (/description$/i.test(key) || isCarried(key)) continue;
         const n = typeof value === "string" ? Number(value) : value;
         if (typeof n === "number" && Number.isFinite(n) && n !== 0) {
           mixKeys.add(key);
         }
       }
     }
-    const incomeMix = [...mixKeys]
-      .map((key) => ({
-        key,
-        label: INCOME_LABELS[key] ?? humanize(key),
-        value: windowed.reduce(
-          (sum, [, doc]) => sum + amount(doc?.income, key),
-          0,
-        ),
-      }))
-      .filter((row) => row.value > 0)
-      .sort((a, b) => b.value - a.value);
+    const mixByLabel = new Map<string, { key: string; label: string; value: number }>();
+    for (const key of mixKeys) {
+      const label = INCOME_LABELS[key] ?? humanize(key);
+      const value = windowed.reduce(
+        (sum, [, doc]) => sum + amount(doc?.income, key),
+        0,
+      );
+      if (value <= 0) continue;
+      const existing = mixByLabel.get(label);
+      if (existing) existing.value += value;
+      else mixByLabel.set(label, { key, label, value });
+    }
+    const incomeMix = [...mixByLabel.values()].sort((a, b) => b.value - a.value);
 
     const latestDoc = yearEntries[0]?.doc ?? null;
     const latestImpact = latestDoc?.impact
@@ -199,10 +212,9 @@ export async function GET(request: NextRequest) {
         }
       : null;
 
-    const raised = months.reduce((sum, m) => sum + m.raised, 0);
-    // The newest month's net is the report's closing balance — the funds the
-    // account actually holds.
-    const balance = months.length > 0 ? months[months.length - 1].net : 0;
+    const raised = totals.income;
+    // Carried balance plus what the window raised, less what it spent.
+    const balance = openingBalance + totals.income - totals.expenses;
     const season = currentSeason(now);
 
     return NextResponse.json({
