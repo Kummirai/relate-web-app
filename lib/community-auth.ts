@@ -162,6 +162,10 @@ export async function ensureIndexes(db: any) {
       db.collection("user_study_progress").createIndex({ userId: 1, startedAt: -1 }),
       // Financial report period lookups
       db.collection("financial_reports").createIndex({ period: 1, status: 1, createdAt: -1 }),
+      // Seasonal appraisals — inbox by subject, review backlog by status
+      db.collection("appraisals").createIndex({ subjectUserId: 1, createdAt: -1 }),
+      db.collection("appraisals").createIndex({ status: 1, createdAt: -1 }),
+      db.collection("appraisals").createIndex({ type: 1, season: 1, seasonYear: 1, status: 1 }),
       // Quiz sessions sorted listing
       db.collection("quiz_sessions").createIndex({ session: 1 }, { unique: true }),
       // Interactive reading responses — one doc per user × publication × day

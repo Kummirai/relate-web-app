@@ -102,6 +102,61 @@ function currentSeason(date: Date) {
 }
 
 /**
+ * Approved appraisals for the most recent season on record: individual scores
+ * and department scores, exactly as signed off by the admin.
+ */
+async function loadAppraisals(db: any) {
+  const docs = await db
+    .collection("appraisals")
+    .find({ status: "approved" })
+    .sort({ seasonYear: -1, reviewedAt: -1 })
+    .limit(300)
+    .toArray();
+
+  if (docs.length === 0) return null;
+
+  const latest = docs[0];
+  const seasonName = String(latest.season || "");
+  const seasonYear = Number(latest.seasonYear) || 0;
+
+  const inSeason = docs.filter(
+    (doc: any) => doc.season === seasonName && Number(doc.seasonYear) === seasonYear,
+  );
+
+  const round = (value: number) => Math.round(value * 10) / 10;
+
+  const individuals = inSeason
+    .filter((doc: any) => doc.type === "individual")
+    .map((doc: any) => ({
+      id: doc._id.toString(),
+      name: doc.subjectName || "Member",
+      department: doc.department || null,
+      score: typeof doc.score === "number" ? round(doc.score) : 0,
+      band: doc.band || null,
+    }))
+    .sort((a: any, b: any) => b.score - a.score);
+
+  const departments = inSeason
+    .filter((doc: any) => doc.type === "department")
+    .map((doc: any) => ({
+      id: doc._id.toString(),
+      department: doc.department || "Department",
+      lead: doc.subjectName || null,
+      score: typeof doc.score === "number" ? round(doc.score) : 0,
+      band: doc.band || null,
+      collected: Number(doc.answers?.collected) || 0,
+      revenueTarget: Number(doc.answers?.revenueTarget) || 0,
+    }))
+    .sort((a: any, b: any) => a.score - b.score);
+
+  return {
+    season: { name: seasonName, year: seasonYear },
+    individuals,
+    departments,
+  };
+}
+
+/**
  * Signed-in members: organisation performance for the requested year, built
  * from published financial reports only. Department and individual scores are
  * not part of this endpoint — they arrive with the seasonal appraisals.
@@ -217,6 +272,8 @@ export async function GET(request: NextRequest) {
     const balance = openingBalance + totals.income - totals.expenses;
     const season = currentSeason(now);
 
+    const appraisals = await loadAppraisals(db);
+
     return NextResponse.json({
       data: {
         year,
@@ -231,6 +288,7 @@ export async function GET(request: NextRequest) {
         totals,
         months,
         incomeMix,
+        appraisals,
         latestImpact,
         latestReport: latestDoc
           ? {
