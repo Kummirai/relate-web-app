@@ -125,9 +125,14 @@ export async function GET(request: NextRequest) {
       if (!byMonth.has(month)) byMonth.set(month, entry.doc);
     }
 
+    const ordered = [...byMonth.entries()].sort((a, b) => a[0] - b[0]);
+    // The carried balance into the first month on screen — this is what the
+    // previous report actually left in the account.
+    const openingBalance = num(ordered.slice(-10)[0]?.[1]?.income?.balanceBroughtDown);
+
     let cumulative = 0;
-    const months = [...byMonth.entries()]
-      .sort((a, b) => a[0] - b[0])
+    const months = ordered
+      .slice(-10)
       .map(([month, doc]) => {
         const income = incomeOf(doc);
         const expenses = expenditureOf(doc);
@@ -142,8 +147,7 @@ export async function GET(request: NextRequest) {
           net,
           cumulative,
         };
-      })
-      .slice(-10);
+      });
 
     const totals = months.reduce(
       (acc, m) => ({
@@ -175,6 +179,7 @@ export async function GET(request: NextRequest) {
       : null;
 
     const raised = totals.income;
+    const balance = openingBalance + totals.income - totals.expenses;
     const season = currentSeason(now);
 
     return NextResponse.json({
@@ -187,6 +192,8 @@ export async function GET(request: NextRequest) {
           remaining: Math.max(0, TARGET - raised),
           progressPct: Math.min(999, Math.round((raised / TARGET) * 100)),
         },
+        openingBalance,
+        balance,
         totals,
         months,
         incomeMix,
