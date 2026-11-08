@@ -41,7 +41,9 @@ export async function GET(
         income: doc.income || {},
         expenses: doc.expenses || {},
         impact: doc.impact || {},
+        otherActivities: doc.otherActivities || "",
         notes: doc.notes || "",
+        customFields: doc.customFields || [],
       },
     });
   } catch (error) {
@@ -104,6 +106,43 @@ export async function PATCH(
   } catch (error) {
     return NextResponse.json(
       { error: "Failed to update financial report" },
+      { status: 500 },
+    );
+  }
+}
+
+/**
+ * Admin only: remove a report that was filed by mistake. Published readers
+ * simply stop seeing it; nothing else is rewritten.
+ */
+export async function DELETE(
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> },
+) {
+  try {
+    const admin = await requireAdmin(request);
+    if (!admin) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    const { id } = await params;
+    if (!ObjectId.isValid(id)) {
+      return NextResponse.json({ error: "Invalid ID format" }, { status: 400 });
+    }
+
+    const db = await getDb();
+    const result = await db
+      .collection("financial_reports")
+      .deleteOne({ _id: new ObjectId(id) });
+
+    if (result.deletedCount === 0) {
+      return NextResponse.json({ error: "Report not found" }, { status: 404 });
+    }
+
+    return NextResponse.json({ data: { _id: id } });
+  } catch (error) {
+    return NextResponse.json(
+      { error: "Failed to delete financial report" },
       { status: 500 },
     );
   }

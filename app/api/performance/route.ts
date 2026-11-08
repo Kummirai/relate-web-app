@@ -37,15 +37,8 @@ function num(value: unknown): number {
   return Number.isFinite(n) ? n : 0;
 }
 
-const INCOME_KEYS = [
-  "sponsorships",
-  "events",
-  "donations",
-  "books",
-  "other",
-] as const;
-
 const INCOME_LABELS: Record<string, string> = {
+  balanceBroughtDown: "Balance brought down",
   sponsorships: "Sponsorships",
   events: "Events",
   donations: "Donations",
@@ -53,25 +46,46 @@ const INCOME_LABELS: Record<string, string> = {
   other: "Other income",
 };
 
-const EXPENSE_KEYS = [
-  "amountsFromRecords",
-  "meals",
-  "groceries",
-  "tuition",
-  "transport",
-  "employment",
-  "materials",
-  "other",
-] as const;
+/** "amountsFromRecords" → "Amounts from records". */
+function humanize(key: string): string {
+  const spaced = key.replace(/([a-z0-9])([A-Z])/g, "$1 $2").replace(/_/g, " ");
+  return spaced.charAt(0).toUpperCase() + spaced.slice(1).toLowerCase();
+}
 
-/** Coffer progress counts new income only — the carried balance would
- * otherwise be counted twice. */
+/**
+ * Every amount the report actually carries. Field names are read from the
+ * document itself, so a new income or expense line is summed as soon as it is
+ * filed — nothing here enumerates the report's sections.
+ */
+function sectionTotal(section: unknown): number {
+  if (!section || typeof section !== "object") return 0;
+  let total = 0;
+  for (const [key, value] of Object.entries(section as Record<string, unknown>)) {
+    if (/description$/i.test(key)) continue;
+    const n = typeof value === "string" ? Number(value) : value;
+    if (typeof n === "number" && Number.isFinite(n)) total += n;
+  }
+  return total;
+}
+
+function amount(section: any, key: string): number {
+  const value = section?.[key];
+  const n = typeof value === "string" ? Number(value) : value;
+  return typeof n === "number" && Number.isFinite(n) ? n : 0;
+}
+
 function incomeOf(doc: any): number {
-  return INCOME_KEYS.reduce((sum, key) => sum + num(doc?.income?.[key]), 0);
+  return sectionTotal(doc?.income);
 }
 
 function expenditureOf(doc: any): number {
-  return EXPENSE_KEYS.reduce((sum, key) => sum + num(doc?.expenses?.[key]), 0);
+  return sectionTotal(doc?.expenses);
+}
+
+/** Money raised this period — report income less the balance it carried in,
+ * which was already counted in the month it was earned. */
+function raisedOf(doc: any): number {
+  return incomeOf(doc) - amount(doc?.income, "balanceBroughtDown");
 }
 
 function currentSeason(date: Date) {
@@ -126,46 +140,53 @@ export async function GET(request: NextRequest) {
     }
 
     const ordered = [...byMonth.entries()].sort((a, b) => a[0] - b[0]);
-    // The carried balance into the first month on screen — this is what the
-    // previous report actually left in the account.
-    const openingBalance = num(ordered.slice(-10)[0]?.[1]?.income?.balanceBroughtDown);
+    const windowed = ordered.slice(-10);
 
-    let cumulative = 0;
-    const months = ordered
-      .slice(-10)
-      .map(([month, doc]) => {
-        const income = incomeOf(doc);
-        const expenses = expenditureOf(doc);
-        const net = income - expenses;
-        cumulative += income;
-        return {
-          month,
-          label: MONTHS[month].slice(0, 3),
-          period: doc.period,
-          income,
-          expenses,
-          net,
-          cumulative,
-        };
-      });
+    const months = windowed.map(([month, doc]) => {
+      const income = incomeOf(doc);
+      const expenses = expenditureOf(doc);
+      return {
+        month,
+        label: MONTHS[month].slice(0, 3),
+        period: doc.period,
+        income,
+        expenses,
+        net: income - expenses,
+        raised: raisedOf(doc),
+      };
+    });
 
     const totals = months.reduce(
       (acc, m) => ({
         income: acc.income + m.income,
         expenses: acc.expenses + m.expenses,
-        net: acc.net + m.net,
       }),
-      { income: 0, expenses: 0, net: 0 },
+      { income: 0, expenses: 0 },
     );
 
-    const incomeMix = INCOME_KEYS.map((key) => ({
-      key,
-      label: INCOME_LABELS[key],
-      value: months.reduce(
-        (sum, m) => sum + num(byMonth.get(m.month)?.income?.[key]),
-        0,
-      ),
-    })).filter((row) => row.value > 0);
+    // Every income key that appears in the windowed reports, with the amount
+    // actually filed under it.
+    const mixKeys = new Set<string>();
+    for (const [, doc] of windowed) {
+      for (const [key, value] of Object.entries(doc?.income ?? {})) {
+        if (/description$/i.test(key)) continue;
+        const n = typeof value === "string" ? Number(value) : value;
+        if (typeof n === "number" && Number.isFinite(n) && n !== 0) {
+          mixKeys.add(key);
+        }
+      }
+    }
+    const incomeMix = [...mixKeys]
+      .map((key) => ({
+        key,
+        label: INCOME_LABELS[key] ?? humanize(key),
+        value: windowed.reduce(
+          (sum, [, doc]) => sum + amount(doc?.income, key),
+          0,
+        ),
+      }))
+      .filter((row) => row.value > 0)
+      .sort((a, b) => b.value - a.value);
 
     const latestDoc = yearEntries[0]?.doc ?? null;
     const latestImpact = latestDoc?.impact
@@ -178,8 +199,10 @@ export async function GET(request: NextRequest) {
         }
       : null;
 
-    const raised = totals.income;
-    const balance = openingBalance + totals.income - totals.expenses;
+    const raised = months.reduce((sum, m) => sum + m.raised, 0);
+    // The newest month's net is the report's closing balance — the funds the
+    // account actually holds.
+    const balance = months.length > 0 ? months[months.length - 1].net : 0;
     const season = currentSeason(now);
 
     return NextResponse.json({
@@ -192,7 +215,6 @@ export async function GET(request: NextRequest) {
           remaining: Math.max(0, TARGET - raised),
           progressPct: Math.min(999, Math.round((raised / TARGET) * 100)),
         },
-        openingBalance,
         balance,
         totals,
         months,
