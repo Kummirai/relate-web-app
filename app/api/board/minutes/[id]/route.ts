@@ -5,8 +5,10 @@ import { requireAdmin } from "@/lib/community-auth";
 import {
   applyAttendance,
   composeMinutesSummary,
+  formatBoardDate,
   listBoardMembers,
   mergeActionItems,
+  notifyBoardMembers,
   pickText,
   sanitizeMinutesSections,
   serializeMinutes,
@@ -122,6 +124,79 @@ export async function PATCH(
   } catch {
     return NextResponse.json(
       { error: "Failed to update the minutes" },
+      { status: 500 },
+    );
+  }
+}
+
+/**
+ * Admin (secretary): remove minutes that were logged against the wrong
+ * meeting. The meeting goes back to awaiting minutes so it can be re-logged.
+ *
+ * DELETE /api/board/minutes/[id]
+ */
+export async function DELETE(
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> },
+) {
+  try {
+    const admin = await requireAdmin(request);
+    if (!admin) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    const { id } = await params;
+    if (!ObjectId.isValid(id)) {
+      return NextResponse.json({ error: "Invalid minutes" }, { status: 400 });
+    }
+
+    const db = await getDb();
+    const minutes = await db
+      .collection("board_minutes")
+      .findOne({ _id: new ObjectId(id) });
+    if (!minutes) {
+      return NextResponse.json({ error: "Minutes not found" }, { status: 404 });
+    }
+
+    await db.collection("board_minutes").deleteOne({ _id: minutes._id });
+
+    if (ObjectId.isValid(minutes.meetingId)) {
+      await db.collection("board_meetings").updateOne(
+        { _id: new ObjectId(minutes.meetingId) },
+        {
+          $set: { status: "SCHEDULED", updatedAt: new Date() },
+          $unset: { minutesId: "", minutesPublishedAt: "" },
+        },
+      );
+    }
+
+    const title = minutes.meetingTitle || "Board meeting";
+    const when = formatBoardDate(minutes.meetingDate);
+    const members = await listBoardMembers(db);
+    await notifyBoardMembers(
+      db,
+      members,
+      {
+        type: "board_minutes_deleted",
+        title: "Board minutes removed",
+        body: `${title} — ${when}. The minutes were withdrawn for correction.`,
+        data: { meetingId: String(minutes.meetingId || "") },
+        email: {
+          subject: `Board minutes removed: ${title}`,
+          paragraphs: [
+            `The minutes logged for ${title} have been removed.`,
+            `Meeting: ${when}`,
+            "They can be logged again once corrected.",
+          ],
+        },
+      },
+      admin.id,
+    );
+
+    return NextResponse.json({ success: true });
+  } catch {
+    return NextResponse.json(
+      { error: "Failed to delete the minutes" },
       { status: 500 },
     );
   }

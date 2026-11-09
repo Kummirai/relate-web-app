@@ -386,6 +386,11 @@ export type BoardNotice = {
 /**
  * In-app notification, push and (when configured) email for a set of board
  * members. Never throws: the meeting/minutes write must stand on its own.
+ *
+ * The actor who triggered the change still gets the in-app record — the
+ * notification centre doubles as the board's activity log, and on a small
+ * board the actor can be the only admin online. Push and email stay with
+ * everyone else so nobody buzzes their own phone.
  */
 export async function notifyBoardMembers(
   db: any,
@@ -393,7 +398,9 @@ export async function notifyBoardMembers(
   notice: BoardNotice,
   exceptUserId?: string | null,
 ) {
-  const targets = members.filter((m) => m.id && m.id !== exceptUserId);
+  if (!members.length) return;
+  const targets = members.filter((m) => m.id);
+  const remote = targets.filter((m) => m.id !== exceptUserId);
   if (!targets.length) return;
 
   try {
@@ -413,10 +420,12 @@ export async function notifyBoardMembers(
     console.error("[board] in-app notification failed", e);
   }
 
+  if (!remote.length) return;
+
   try {
     const tokens = await db
       .collection("push_tokens")
-      .find({ userId: { $in: targets.map((m) => m.id) } })
+      .find({ userId: { $in: remote.map((m) => m.id) } })
       .toArray();
     await sendPushNotifications(
       tokens.map((t: any) => t.token).filter(Boolean),
@@ -431,7 +440,7 @@ export async function notifyBoardMembers(
   if (notice.email) {
     try {
       await sendBoardEmails(
-        targets,
+        remote,
         notice.email.subject,
         notice.email.paragraphs,
       );

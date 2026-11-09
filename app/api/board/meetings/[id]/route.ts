@@ -123,3 +123,77 @@ export async function PATCH(
     );
   }
 }
+
+/**
+ * Admin (secretary): remove a meeting scheduled in error. Meetings that
+ * already have minutes must have those withdrawn first, so no published
+ * record is orphaned.
+ *
+ * DELETE /api/board/meetings/[id]
+ */
+export async function DELETE(
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> },
+) {
+  try {
+    const admin = await requireAdmin(request);
+    if (!admin) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    const { id } = await params;
+    if (!ObjectId.isValid(id)) {
+      return NextResponse.json({ error: "Invalid meeting" }, { status: 400 });
+    }
+
+    const db = await getDb();
+    const meeting = await db
+      .collection("board_meetings")
+      .findOne({ _id: new ObjectId(id) });
+    if (!meeting) {
+      return NextResponse.json({ error: "Meeting not found" }, { status: 404 });
+    }
+
+    const minutes = await db.collection("board_minutes").findOne({ meetingId: id });
+    if (minutes) {
+      return NextResponse.json(
+        {
+          error:
+            "This meeting already has minutes — delete the minutes first, then the meeting.",
+        },
+        { status: 409 },
+      );
+    }
+
+    await db.collection("board_meetings").deleteOne({ _id: meeting._id });
+
+    const title = meeting.title || "Board meeting";
+    const when = formatBoardDate(meeting.scheduledDate);
+    const members = await listBoardMembers(db);
+    await notifyBoardMembers(
+      db,
+      members,
+      {
+        type: "board_meeting_deleted",
+        title: "Board meeting cancelled",
+        body: `${title} — ${when} was removed from the schedule.`,
+        email: {
+          subject: `Board meeting removed: ${title}`,
+          paragraphs: [
+            `${title} has been removed from the board schedule.`,
+            `It was due: ${when}`,
+            "No further attendance is needed.",
+          ],
+        },
+      },
+      admin.id,
+    );
+
+    return NextResponse.json({ success: true });
+  } catch {
+    return NextResponse.json(
+      { error: "Failed to delete the meeting" },
+      { status: 500 },
+    );
+  }
+}
