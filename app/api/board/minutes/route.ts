@@ -4,6 +4,7 @@ import { getDb } from "@/lib/mongodb";
 import { requireAdmin } from "@/lib/community-auth";
 import {
   applyAttendance,
+  composeMinutesSummary,
   formatBoardDate,
   listBoardMembers,
   minutesWindow,
@@ -12,6 +13,7 @@ import {
   parseDate,
   pickText,
   sanitizeActionItems,
+  sanitizeMinutesSections,
   serializeMinutes,
 } from "@/lib/board-governance";
 
@@ -48,6 +50,8 @@ export async function GET(request: NextRequest) {
       query.$or = [
         { summary: regex },
         { meetingTitle: regex },
+        { "sections.title": regex },
+        { "sections.points": regex },
         { "actionItems.taskDescription": regex },
         { "actionItems.assigneeName": regex },
       ];
@@ -92,7 +96,10 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Choose a meeting" }, { status: 400 });
     }
 
-    const summary = pickText(body?.summary, 20000);
+    const sections = sanitizeMinutesSections(body?.sections);
+    const summary = sections.length
+      ? composeMinutesSummary(sections)
+      : pickText(body?.summary, 20000);
     if (!summary) {
       return NextResponse.json(
         { error: "Write the meeting summary and key decisions" },
@@ -164,6 +171,7 @@ export async function POST(request: NextRequest) {
       hoursAfterMeeting: window.hoursAfterMeeting,
       within48h: window.within48h,
       summary,
+      sections,
       minutesDocumentUrl: documentUrl,
       actionItems,
       createdAt: now,

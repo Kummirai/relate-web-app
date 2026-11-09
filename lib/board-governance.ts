@@ -34,12 +34,23 @@ export type BoardRsvp = {
   status: RsvpStatus;
 };
 
+/** An agenda line, optionally with lettered sub-points (1, 1a, 1b). */
+export type AgendaItem = {
+  text: string;
+  subs: string[];
+};
+
+export type MinutesSection = {
+  title: string;
+  points: string[];
+};
+
 export type BoardMeeting = {
   _id: string;
   title: string;
   scheduledDate: string | null;
   location: string;
-  agenda: string[];
+  agenda: AgendaItem[];
   rsvps: BoardRsvp[];
   status: MeetingStatus;
   createdAt: string | null;
@@ -66,6 +77,7 @@ export type BoardMinutes = {
   hoursAfterMeeting: number | null;
   within48h: boolean;
   summary: string;
+  sections: MinutesSection[];
   minutesDocumentUrl: string;
   actionItems: BoardActionItem[];
   createdAt: string | null;
@@ -103,12 +115,88 @@ export function isObjectIdString(value: unknown): boolean {
   return typeof value === "string" && /^[a-f0-9]{24}$/i.test(value);
 }
 
-export function sanitizeAgenda(value: unknown): string[] {
+function sanitizeSubs(value: unknown): string[] {
   if (!Array.isArray(value)) return [];
   return value
     .map((entry) => pickText(entry, 240))
     .filter(Boolean)
-    .slice(0, 30);
+    .slice(0, 20);
+}
+
+/**
+ * Accepts both the current `{ text, subs }` shape and the original plain
+ * string lines, so meetings created before sub-points existed still load.
+ */
+export function sanitizeAgenda(value: unknown): AgendaItem[] {
+  if (!Array.isArray(value)) return [];
+  const items: AgendaItem[] = [];
+  for (const entry of value.slice(0, 30)) {
+    if (typeof entry === "string") {
+      const text = pickText(entry, 240);
+      if (text) items.push({ text, subs: [] });
+      continue;
+    }
+    const text = pickText((entry as any)?.text, 240);
+    if (!text) continue;
+    items.push({ text, subs: sanitizeSubs((entry as any)?.subs) });
+  }
+  return items;
+}
+
+/** Read-side normalisation: old string agenda lines become items. */
+export function serializeAgenda(value: unknown): AgendaItem[] {
+  if (!Array.isArray(value)) return [];
+  return value
+    .map((entry: any) =>
+      typeof entry === "string"
+        ? { text: entry, subs: [] as string[] }
+        : {
+            text: typeof entry?.text === "string" ? entry.text : "",
+            subs: Array.isArray(entry?.subs)
+              ? entry.subs.filter((sub: any) => typeof sub === "string" && sub)
+              : [],
+          },
+    )
+    .filter((item) => item.text);
+}
+
+export function sanitizeMinutesSections(value: unknown): MinutesSection[] {
+  if (!Array.isArray(value)) return [];
+  const sections: MinutesSection[] = [];
+  for (const entry of value.slice(0, 30)) {
+    const title = pickText((entry as any)?.title, 160);
+    const points = Array.isArray((entry as any)?.points)
+      ? (entry as any).points
+          .map((point: any) => pickText(point, 2000))
+          .filter(Boolean)
+          .slice(0, 40)
+      : [];
+    if (!title && !points.length) continue;
+    sections.push({ title: title || "Notes", points });
+  }
+  return sections;
+}
+
+/** The flat summary stays in sync so search, emails and old clients keep working. */
+export function composeMinutesSummary(sections: MinutesSection[]): string {
+  return sections
+    .map((section) =>
+      [section.title, ...section.points.map((point) => `• ${point}`)]
+        .filter(Boolean)
+        .join("\n"),
+    )
+    .join("\n\n")
+    .slice(0, 20000);
+}
+
+/** Numbered agenda lines for notification emails: 1., a., b. */
+export function agendaEmailLines(agenda: AgendaItem[]): string[] {
+  return agenda.flatMap((item, index) => [
+    `${index + 1}. ${item.text}`,
+    ...item.subs.map(
+      (sub, subIndex) => `   ${String.fromCharCode(97 + subIndex)}. ${sub}`,
+    ),
+  ]);
 }
 
 /** The board roster: every active admin, newest listing fields only. */
@@ -154,7 +242,7 @@ export function serializeMeeting(doc: any) {
     title: doc.title || "Board meeting",
     scheduledDate: iso(doc.scheduledDate),
     location: doc.location || "",
-    agenda: Array.isArray(doc.agenda) ? doc.agenda : [],
+    agenda: serializeAgenda(doc.agenda),
     rsvps,
     status: isMeetingStatus(doc.status) ? doc.status : "SCHEDULED",
     createdAt: iso(doc.createdAt),
@@ -196,6 +284,7 @@ export function serializeMinutes(doc: any) {
       typeof doc.hoursAfterMeeting === "number" ? doc.hoursAfterMeeting : null,
     within48h: doc.within48h !== false,
     summary: doc.summary || "",
+    sections: sanitizeMinutesSections(doc.sections),
     minutesDocumentUrl: doc.minutesDocumentUrl || "",
     actionItems,
     createdAt: iso(doc.createdAt),
@@ -241,20 +330,31 @@ export function sanitizeActionItems(
   raw: unknown,
   members: BoardMember[],
 ): BoardActionItem[] {
+  return mergeActionItems(raw, members, []);
+}
+
+/** Editing minutes keeps each task's id and progress; new rows start pending. */
+export function mergeActionItems(
+  raw: unknown,
+  members: BoardMember[],
+  existing: BoardActionItem[],
+): BoardActionItem[] {
   const roster = new Map(members.map((m) => [m.id, m]));
+  const prior = new Map(existing.map((item) => [item.taskId, item]));
   const items: BoardActionItem[] = [];
   for (const entry of Array.isArray(raw) ? raw : []) {
     const description = pickText((entry as any)?.taskDescription, 600);
     const assignee = roster.get(pickText((entry as any)?.assigneeId, 64));
     if (!description || !assignee) continue;
     const dueDate = parseDate((entry as any)?.dueDate);
+    const previous = prior.get(pickText((entry as any)?.taskId, 64));
     items.push({
-      taskId: randomUUID(),
+      taskId: previous ? previous.taskId : randomUUID(),
       assigneeId: assignee.id,
       assigneeName: assignee.name,
       taskDescription: description,
       dueDate: dueDate ? dueDate.toISOString() : null,
-      status: "PENDING",
+      status: previous ? previous.status : "PENDING",
     });
     if (items.length >= 50) break;
   }

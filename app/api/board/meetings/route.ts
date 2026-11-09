@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { getDb } from "@/lib/mongodb";
 import { requireAdmin } from "@/lib/community-auth";
 import {
+  agendaEmailLines,
   formatBoardDate,
   isMeetingStatus,
   listBoardMembers,
@@ -130,7 +131,7 @@ export async function POST(request: NextRequest) {
             `When: ${when}`,
             `Where: ${location}`,
             ...(agenda.length
-              ? ["Agenda:", ...agenda.map((item) => `• ${item}`)]
+              ? ["Agenda:", ...agendaEmailLines(agenda)]
               : []),
             "Open the board governance portal to confirm your attendance or send apologies.",
           ],

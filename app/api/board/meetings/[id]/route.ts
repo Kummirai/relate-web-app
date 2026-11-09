@@ -3,6 +3,7 @@ import { ObjectId } from "mongodb";
 import { getDb } from "@/lib/mongodb";
 import { requireAdmin } from "@/lib/community-auth";
 import {
+  agendaEmailLines,
   formatBoardDate,
   isMeetingStatus,
   listBoardMembers,
@@ -88,6 +89,7 @@ export async function PATCH(
 
     const title = String(updates.title || meeting.title);
     const when = formatBoardDate(updated?.scheduledDate);
+    const agenda = sanitizeAgenda(updated?.agenda);
     const members = await listBoardMembers(db);
     await notifyBoardMembers(
       db,
@@ -103,6 +105,9 @@ export async function PATCH(
             "A board meeting has been updated.",
             `When: ${when}`,
             `Where: ${updated?.location || meeting.location || "Relate World HQ"}`,
+            ...(agenda.length
+              ? ["Agenda:", ...agendaEmailLines(agenda)]
+              : []),
             "Open the board governance portal to confirm your attendance or send apologies.",
           ],
         },
