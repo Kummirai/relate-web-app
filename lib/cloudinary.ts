@@ -28,13 +28,26 @@ export async function uploadToCloudinary(
   file: File | Blob,
   folder: string,
 ): Promise<{ url: string; path: string }> {
+  return uploadToCloudinaryFile(file, folder, "image");
+}
+
+/**
+ * Upload any supported asset (image or PDF). `auto` lets Cloudinary pick the
+ * resource type, which is what signed minutes need — PDFs land as raw files
+ * while scanned images stay optimisable.
+ */
+export async function uploadToCloudinaryFile(
+  file: File | Blob,
+  folder: string,
+  resourceType: "image" | "raw" | "auto" = "auto",
+): Promise<{ url: string; path: string }> {
   const body = new FormData();
   body.append("file", file);
   body.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
   body.append("folder", folder);
 
   const res = await fetch(
-    `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`,
+    `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/${resourceType}/upload`,
     { method: "POST", body },
   );
   const json = (await res.json().catch(() => null)) as {

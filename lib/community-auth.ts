@@ -166,6 +166,12 @@ export async function ensureIndexes(db: any) {
       db.collection("appraisals").createIndex({ subjectUserId: 1, createdAt: -1 }),
       db.collection("appraisals").createIndex({ status: 1, createdAt: -1 }),
       db.collection("appraisals").createIndex({ type: 1, season: 1, seasonYear: 1, status: 1 }),
+      // Board governance — upcoming meetings, minutes archive, task lookups
+      db.collection("board_meetings").createIndex({ scheduledDate: 1, status: 1 }),
+      db.collection("board_meetings").createIndex({ status: 1, scheduledDate: -1 }),
+      db.collection("board_minutes").createIndex({ meetingId: 1 }, { unique: true }),
+      db.collection("board_minutes").createIndex({ publishedAt: -1 }),
+      db.collection("board_minutes").createIndex({ "actionItems.assigneeId": 1 }),
       // Quiz sessions sorted listing
       db.collection("quiz_sessions").createIndex({ session: 1 }, { unique: true }),
       // Interactive reading responses — one doc per user × publication × day
