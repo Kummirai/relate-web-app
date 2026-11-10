@@ -15,6 +15,7 @@ import {
   sanitizeActionItems,
   sanitizeMinutesSections,
   serializeMinutes,
+  serializeMinutesSummary,
 } from "@/lib/board-governance";
 
 function escapeRegex(value: string): string {
@@ -24,8 +25,10 @@ function escapeRegex(value: string): string {
 /**
  * Published minutes archive. Search covers the summary, decisions and every
  * action item; `filter` narrows by task state and the 48-hour rule.
+ * `view=cards` returns only the list-card fields so the mobile archive can
+ * show a whole year of sittings without loading every decision.
  *
- * GET /api/board/minutes?search=&filter=all|pending|on-time|late
+ * GET /api/board/minutes?search=&filter=all|pending|on-time|late&view=cards
  */
 export async function GET(request: NextRequest) {
   try {
@@ -39,6 +42,7 @@ export async function GET(request: NextRequest) {
     const search = (searchParams.get("search") || "").trim();
     const filterKey = searchParams.get("filter") || "all";
     const meetingId = searchParams.get("meetingId");
+    const cardsOnly = searchParams.get("view") === "cards";
 
     const query: any = {};
     if (meetingId) query.meetingId = meetingId;
@@ -65,7 +69,9 @@ export async function GET(request: NextRequest) {
       .toArray();
 
     return NextResponse.json({
-      data: docs.map(serializeMinutes),
+      data: cardsOnly
+        ? docs.map(serializeMinutesSummary)
+        : docs.map(serializeMinutes),
       boardMembers: await listBoardMembers(db),
       currentUserId: admin.id,
     });

@@ -15,6 +15,44 @@ import {
 } from "@/lib/board-governance";
 
 /**
+ * Admin (board member): one full minutes record for the detail screen — the
+ * archive lists cards only, so the decisions and action items load on demand.
+ *
+ * GET /api/board/minutes/[id]
+ */
+export async function GET(
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> },
+) {
+  try {
+    const admin = await requireAdmin(request);
+    if (!admin) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    const { id } = await params;
+    if (!ObjectId.isValid(id)) {
+      return NextResponse.json({ error: "Invalid minutes" }, { status: 400 });
+    }
+
+    const db = await getDb();
+    const minutes = await db
+      .collection("board_minutes")
+      .findOne({ _id: new ObjectId(id) });
+    if (!minutes) {
+      return NextResponse.json({ error: "Minutes not found" }, { status: 404 });
+    }
+
+    return NextResponse.json({ data: serializeMinutes(minutes) });
+  } catch {
+    return NextResponse.json(
+      { error: "Failed to load the minutes" },
+      { status: 500 },
+    );
+  }
+}
+
+/**
  * Admin (secretary): correct published minutes. Sections, the signed document
  * and action items can all change; existing tasks keep their id and progress,
  * and the original 48-hour compliance figures are left untouched.

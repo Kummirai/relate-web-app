@@ -294,6 +294,27 @@ export function serializeMinutes(doc: any) {
 }
 
 /**
+ * List-card shape for the minutes archive: enough to show a titled card with
+ * its dates without shipping every section, point and task for the whole year.
+ */
+export function serializeMinutesSummary(doc: any) {
+  const rawItems = Array.isArray(doc?.actionItems) ? doc.actionItems : [];
+  const total = rawItems.length;
+  const done = rawItems.filter((t: any) => t?.status === "DONE").length;
+  return {
+    _id: doc._id.toString(),
+    meetingId: String(doc.meetingId || ""),
+    meetingTitle: doc.meetingTitle || "Board meeting",
+    meetingDate: iso(doc.meetingDate),
+    publishedBy: String(doc.publishedBy || ""),
+    publishedByName: doc.publishedByName || "Secretary",
+    publishedAt: iso(doc.publishedAt),
+    within48h: doc.within48h !== false,
+    counts: { total, done, open: total - done },
+  };
+}
+
+/**
  * The 48-hour rule: minutes should be logged within two days of the meeting.
  * Late logs are accepted (never lost) but flagged so the archive can show
  * compliance rather than silently letting the deadline pass.
