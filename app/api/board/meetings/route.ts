@@ -11,6 +11,7 @@ import {
   pickText,
   sanitizeAgenda,
   serializeMeeting,
+  serializeMeetingCard,
 } from "@/lib/board-governance";
 
 /**
@@ -45,12 +46,26 @@ export async function GET(request: NextRequest) {
     }
     if (status && isMeetingStatus(status)) filter.status = status;
 
+    // List screens only need the card fields — agenda and RSVPs load on open.
+    const cardsOnly = searchParams.get("view") === "cards";
     const docs = await db
       .collection("board_meetings")
-      .find(filter)
+      .find(
+        filter,
+        cardsOnly
+          ? { projection: { title: 1, scheduledDate: 1, location: 1, status: 1 } }
+          : {},
+      )
       .sort({ scheduledDate: scope === "upcoming" ? 1 : -1 })
       .limit(200)
       .toArray();
+
+    if (cardsOnly) {
+      return NextResponse.json({
+        data: docs.map(serializeMeetingCard),
+        currentUserId: admin.id,
+      });
+    }
 
     return NextResponse.json({
       data: docs.map(serializeMeeting),

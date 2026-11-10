@@ -227,6 +227,17 @@ export function rsvpCounts(rsvps: BoardRsvp[]) {
   };
 }
 
+/** List-card shape — no agenda or attendee list; open the meeting for those. */
+export function serializeMeetingCard(doc: any) {
+  return {
+    _id: doc._id.toString(),
+    title: doc.title || "Board meeting",
+    scheduledDate: iso(doc.scheduledDate),
+    location: doc.location || "",
+    status: isMeetingStatus(doc.status) ? doc.status : "SCHEDULED",
+  };
+}
+
 export function serializeMeeting(doc: any) {
   const rsvps: BoardRsvp[] = Array.isArray(doc?.rsvps)
     ? doc.rsvps.map((r: any) => ({
