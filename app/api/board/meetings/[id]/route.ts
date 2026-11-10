@@ -15,6 +15,48 @@ import {
 } from "@/lib/board-governance";
 
 /**
+ * Admin (board member): one meeting as a read-only record — the schedule
+ * screen is for creating and editing, so viewing a sitting never starts
+ * from the scheduler form.
+ *
+ * GET /api/board/meetings/[id]
+ */
+export async function GET(
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> },
+) {
+  try {
+    const admin = await requireAdmin(request);
+    if (!admin) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    const { id } = await params;
+    if (!ObjectId.isValid(id)) {
+      return NextResponse.json({ error: "Invalid meeting" }, { status: 400 });
+    }
+
+    const db = await getDb();
+    const meeting = await db
+      .collection("board_meetings")
+      .findOne({ _id: new ObjectId(id) });
+    if (!meeting) {
+      return NextResponse.json({ error: "Meeting not found" }, { status: 404 });
+    }
+
+    return NextResponse.json({
+      data: serializeMeeting(meeting),
+      currentUserId: admin.id,
+    });
+  } catch {
+    return NextResponse.json(
+      { error: "Failed to load the meeting" },
+      { status: 500 },
+    );
+  }
+}
+
+/**
  * Admin (secretary): update a meeting. Every board member is told about the
  * change by in-app, push and email.
  *
