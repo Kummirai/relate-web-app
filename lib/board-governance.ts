@@ -32,6 +32,7 @@ export type BoardRsvp = {
   name: string;
   role: string;
   status: RsvpStatus;
+  reason: string;
 };
 
 /** An agenda line, optionally with lettered sub-points (1, 1a, 1b). */
@@ -245,6 +246,7 @@ export function serializeMeeting(doc: any) {
         name: r.name || "Board member",
         role: r.role || "admin",
         status: isRsvpStatus(r.status) ? r.status : "PENDING",
+        reason: pickText(r.reason, 300),
       }))
     : [];
 
@@ -339,23 +341,42 @@ export function minutesWindow(meetingDate: Date, publishedAt: Date) {
   };
 }
 
+type AttendanceUpdate = {
+  status: "ATTENDING" | "APOLOGY";
+  /** null means the register did not send a reason, so keep the existing one. */
+  reason: string | null;
+};
+
 export function applyAttendance(
   rsvps: BoardRsvp[],
   raw: unknown,
 ): BoardRsvp[] {
-  const updates = new Map<string, RsvpStatus>();
+  const updates = new Map<string, AttendanceUpdate>();
   for (const entry of Array.isArray(raw) ? raw : []) {
     const userId = pickText((entry as any)?.userId, 64);
     const status = (entry as any)?.status;
     if (userId && (status === "ATTENDING" || status === "APOLOGY")) {
-      updates.set(userId, status);
+      updates.set(userId, {
+        status,
+        reason:
+          typeof (entry as any)?.reason === "string"
+            ? pickText((entry as any).reason, 300)
+            : null,
+      });
     }
   }
-  return rsvps.map((rsvp) =>
-    updates.has(rsvp.userId)
-      ? { ...rsvp, status: updates.get(rsvp.userId) as RsvpStatus }
-      : rsvp,
-  );
+  return rsvps.map((rsvp) => {
+    const update = updates.get(rsvp.userId);
+    if (!update) return rsvp;
+    if (update.status === "ATTENDING") {
+      return { ...rsvp, status: update.status, reason: "" };
+    }
+    return {
+      ...rsvp,
+      status: update.status,
+      ...(update.reason !== null ? { reason: update.reason } : {}),
+    };
+  });
 }
 
 export function sanitizeActionItems(

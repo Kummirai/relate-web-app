@@ -4,13 +4,16 @@ import { getDb } from "@/lib/mongodb";
 import { findUserById, requireAdmin } from "@/lib/community-auth";
 import {
   isRsvpStatus,
+  pickText,
   serializeMeeting,
 } from "@/lib/board-governance";
 
 /**
- * Board member: record attendance for the signed-in admin.
+ * Board member: record attendance for the signed-in admin. An apology can
+ * carry a short reason so the chair and secretary know why a member is away.
  *
- * PATCH /api/board/meetings/[id]/rsvp  { status: "ATTENDING" | "APOLOGY" }
+ * PATCH /api/board/meetings/[id]/rsvp
+ *   { status: "ATTENDING" | "APOLOGY", reason?: string }
  */
 export async function PATCH(
   request: NextRequest,
@@ -39,6 +42,9 @@ export async function PATCH(
       return NextResponse.json({ error: "Unknown RSVP status" }, { status: 400 });
     }
 
+    const reason =
+      typeof body?.reason === "string" ? pickText(body.reason, 300) : null;
+
     const db = await getDb();
     const meetings = db.collection("board_meetings");
     const meeting = await meetings.findOne({ _id: new ObjectId(id) });
@@ -50,14 +56,18 @@ export async function PATCH(
     const alreadyListed = rsvps.some((r: any) => r.userId === admin.id);
 
     if (alreadyListed) {
+      const updates: Record<string, unknown> = {
+        "rsvps.$[member].status": status,
+        updatedAt: new Date(),
+      };
+      if (status === "ATTENDING") {
+        updates["rsvps.$[member].reason"] = "";
+      } else if (reason !== null) {
+        updates["rsvps.$[member].reason"] = reason;
+      }
       await meetings.updateOne(
         { _id: meeting._id },
-        {
-          $set: {
-            "rsvps.$[member].status": status,
-            updatedAt: new Date(),
-          },
-        },
+        { $set: updates },
         { arrayFilters: [{ "member.userId": admin.id }] },
       );
     } else {
@@ -71,6 +81,7 @@ export async function PATCH(
               name: user?.name || admin.name || "Board member",
               role: user?.role || "admin",
               status,
+              reason: status === "APOLOGY" ? reason || "" : "",
             },
           },
           $set: { updatedAt: new Date() },

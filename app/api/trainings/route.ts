@@ -8,7 +8,11 @@ import {
   parseDate,
   pickText,
 } from "@/lib/board-governance";
-import { serializeTraining } from "@/lib/trainings";
+import {
+  sanitizeTrainingDays,
+  serializeTraining,
+  trainingDayLines,
+} from "@/lib/trainings";
 
 /**
  * Officer and position trainings. Admins (the board) schedule them; only
@@ -66,6 +70,7 @@ export async function POST(request: NextRequest) {
     const db = await getDb();
     const location = pickText(body?.location, 160);
     const imageUrl = pickText(body?.imageUrl, 600);
+    const days = sanitizeTrainingDays(body?.days);
     const now = new Date();
     const doc = {
       title,
@@ -73,6 +78,8 @@ export async function POST(request: NextRequest) {
       scheduledDate,
       location,
       imageUrl,
+      days,
+      attendance: [] as unknown[],
       createdBy: admin.id,
       createdByName: admin.name || "Board Secretary",
       createdAt: now,
@@ -96,9 +103,11 @@ export async function POST(request: NextRequest) {
           paragraphs: [
             "A training has been scheduled for officers and positions.",
             `When: ${when}`,
+            ...(days.length > 1 ? [`Runs over ${days.length} days.`] : []),
+            ...trainingDayLines(days),
             ...(location ? [`Where: ${location}`] : []),
             ...(description ? [description] : []),
-            "Open the app to see the full details.",
+            "Open the app to see the full details and mark your attendance.",
           ],
         },
       },

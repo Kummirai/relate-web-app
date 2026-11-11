@@ -9,7 +9,11 @@ import {
   parseDate,
   pickText,
 } from "@/lib/board-governance";
-import { serializeTraining } from "@/lib/trainings";
+import {
+  sanitizeTrainingDays,
+  serializeTraining,
+  trainingDayLines,
+} from "@/lib/trainings";
 
 async function findTraining(id: string) {
   if (!ObjectId.isValid(id)) return null;
@@ -38,7 +42,12 @@ export async function GET(
       return NextResponse.json({ error: "Training not found" }, { status: 404 });
     }
 
-    return NextResponse.json({ data: serializeTraining(training) });
+    return NextResponse.json({
+      data: serializeTraining(training),
+      currentUserId: admin.id,
+      canManage:
+        !training.createdBy || String(training.createdBy) === admin.id,
+    });
   } catch {
     return NextResponse.json(
       { error: "Failed to load the training" },
@@ -66,6 +75,12 @@ export async function PATCH(
     const training = await findTraining(id);
     if (!training) {
       return NextResponse.json({ error: "Training not found" }, { status: 404 });
+    }
+    if (training.createdBy && String(training.createdBy) !== admin.id) {
+      return NextResponse.json(
+        { error: "Only the admin who scheduled this training can change it" },
+        { status: 403 },
+      );
     }
 
     const body = await request.json().catch(() => ({}));
@@ -96,6 +111,9 @@ export async function PATCH(
     }
     if (body?.imageUrl !== undefined) {
       updates.imageUrl = pickText(body.imageUrl, 600);
+    }
+    if (body?.days !== undefined) {
+      updates.days = sanitizeTrainingDays(body.days);
     }
 
     if (!Object.keys(updates).length) {
@@ -128,6 +146,10 @@ export async function PATCH(
           paragraphs: [
             "A training on the officer calendar has been updated.",
             `When: ${when}`,
+            ...(updated?.days?.length > 1
+              ? [`Runs over ${updated.days.length} days.`]
+              : []),
+            ...trainingDayLines(sanitizeTrainingDays(updated?.days)),
             ...(updated?.location ? [`Where: ${updated.location}`] : []),
             "Open the app to see the latest details.",
           ],
@@ -165,32 +187,43 @@ export async function DELETE(
     if (!training) {
       return NextResponse.json({ error: "Training not found" }, { status: 404 });
     }
+    if (training.createdBy && String(training.createdBy) !== admin.id) {
+      return NextResponse.json(
+        { error: "Only the admin who scheduled this training can delete it" },
+        { status: 403 },
+      );
+    }
 
     const db = await getDb();
     await db.collection("trainings").deleteOne({ _id: training._id });
 
     const title = training.title || "Training";
     const when = formatBoardDate(training.scheduledDate);
-    const members = await listBoardMembers(db);
-    await notifyBoardMembers(
-      db,
-      members,
-      {
-        type: "training_deleted",
-        title: "Training cancelled",
-        body: `${title} — ${when} was removed from the calendar.`,
-        data: { trainingId: id },
-        email: {
-          subject: `Training removed: ${title}`,
-          paragraphs: [
-            `${title} has been removed from the training calendar.`,
-            `It was due: ${when}`,
-            "No further action is needed.",
-          ],
+    try {
+      const members = await listBoardMembers(db);
+      await notifyBoardMembers(
+        db,
+        members,
+        {
+          type: "training_deleted",
+          title: "Training cancelled",
+          body: `${title} — ${when} was removed from the calendar.`,
+          data: { trainingId: id },
+          email: {
+            subject: `Training removed: ${title}`,
+            paragraphs: [
+              `${title} has been removed from the training calendar.`,
+              `It was due: ${when}`,
+              "No further action is needed.",
+            ],
+          },
         },
-      },
-      admin.id,
-    );
+        admin.id,
+      );
+    } catch {
+      // The training is already gone; a notification failure must not report
+      // the delete as failed.
+    }
 
     return NextResponse.json({ success: true });
   } catch {
