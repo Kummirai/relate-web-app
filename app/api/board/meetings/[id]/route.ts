@@ -9,6 +9,7 @@ import {
   listBoardMembers,
   notifyBoardMembers,
   parseDate,
+  parseMeetingLink,
   pickText,
   sanitizeAgenda,
   serializeMeeting,
@@ -108,6 +109,16 @@ export async function PATCH(
     if (typeof body?.location === "string") {
       updates.location = pickText(body.location, 160) || "Relate World HQ";
     }
+    if (body?.meetingLink !== undefined) {
+      const meetingLink = parseMeetingLink(body.meetingLink);
+      if (meetingLink === null) {
+        return NextResponse.json(
+          { error: "Enter a full meeting link starting with https://" },
+          { status: 400 },
+        );
+      }
+      updates.meetingLink = meetingLink;
+    }
     if (body?.agenda !== undefined) updates.agenda = sanitizeAgenda(body.agenda);
     if (body?.status !== undefined) {
       if (!isMeetingStatus(body.status)) {
@@ -147,6 +158,7 @@ export async function PATCH(
             "A board meeting has been updated.",
             `When: ${when}`,
             `Where: ${updated?.location || meeting.location || "Relate World HQ"}`,
+            ...(updated?.meetingLink ? [`Join online: ${updated.meetingLink}`] : []),
             ...(agenda.length
               ? ["Agenda:", ...agendaEmailLines(agenda)]
               : []),

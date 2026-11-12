@@ -6,6 +6,7 @@ import {
   listBoardMembers,
   notifyBoardMembers,
   parseDate,
+  parseMeetingLink,
   pickText,
 } from "@/lib/board-governance";
 import {
@@ -66,6 +67,13 @@ export async function POST(request: NextRequest) {
         { status: 400 },
       );
     }
+    const meetingLink = parseMeetingLink(body?.meetingLink);
+    if (meetingLink === null) {
+      return NextResponse.json(
+        { error: "Enter a full meeting link starting with https://" },
+        { status: 400 },
+      );
+    }
 
     const db = await getDb();
     const location = pickText(body?.location, 160);
@@ -77,6 +85,7 @@ export async function POST(request: NextRequest) {
       description,
       scheduledDate,
       location,
+      meetingLink,
       imageUrl,
       days,
       attendance: [] as unknown[],
@@ -106,6 +115,7 @@ export async function POST(request: NextRequest) {
             ...(days.length > 1 ? [`Runs over ${days.length} days.`] : []),
             ...trainingDayLines(days),
             ...(location ? [`Where: ${location}`] : []),
+            ...(meetingLink ? [`Join online: ${meetingLink}`] : []),
             ...(description ? [description] : []),
             "Open the app to see the full details and mark your attendance.",
           ],

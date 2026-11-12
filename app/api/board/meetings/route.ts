@@ -8,6 +8,7 @@ import {
   listBoardMembers,
   notifyBoardMembers,
   parseDate,
+  parseMeetingLink,
   pickText,
   sanitizeAgenda,
   serializeMeeting,
@@ -53,7 +54,15 @@ export async function GET(request: NextRequest) {
       .find(
         filter,
         cardsOnly
-          ? { projection: { title: 1, scheduledDate: 1, location: 1, status: 1 } }
+          ? {
+              projection: {
+                title: 1,
+                scheduledDate: 1,
+                location: 1,
+                meetingLink: 1,
+                status: 1,
+              },
+            }
           : {},
       )
       .sort({ scheduledDate: scope === "upcoming" ? 1 : -1 })
@@ -100,6 +109,13 @@ export async function POST(request: NextRequest) {
         { status: 400 },
       );
     }
+    const meetingLink = parseMeetingLink(body?.meetingLink);
+    if (meetingLink === null) {
+      return NextResponse.json(
+        { error: "Enter a full meeting link starting with https://" },
+        { status: 400 },
+      );
+    }
 
     const db = await getDb();
     const members = await listBoardMembers(db);
@@ -114,6 +130,7 @@ export async function POST(request: NextRequest) {
       title,
       scheduledDate,
       location,
+      meetingLink,
       agenda,
       rsvps: members.map((m) => ({
         userId: m.id,
@@ -145,6 +162,7 @@ export async function POST(request: NextRequest) {
             `A board meeting has been scheduled.`,
             `When: ${when}`,
             `Where: ${location}`,
+            ...(meetingLink ? [`Join online: ${meetingLink}`] : []),
             ...(agenda.length
               ? ["Agenda:", ...agendaEmailLines(agenda)]
               : []),

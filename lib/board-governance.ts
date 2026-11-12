@@ -51,6 +51,7 @@ export type BoardMeeting = {
   title: string;
   scheduledDate: string | null;
   location: string;
+  meetingLink: string;
   agenda: AgendaItem[];
   rsvps: BoardRsvp[];
   status: MeetingStatus;
@@ -105,6 +106,22 @@ export function parseDate(value: unknown): Date | null {
   if (!value) return null;
   const date = value instanceof Date ? value : new Date(String(value));
   return Number.isNaN(date.getTime()) ? null : date;
+}
+
+const MEETING_LINK_PATTERN = /^https?:\/\//i;
+
+/** Read-side: only a full http(s) URL survives; anything else becomes "". */
+export function sanitizeMeetingLink(value: unknown): string {
+  const link = pickText(value, 600);
+  return MEETING_LINK_PATTERN.test(link) ? link : "";
+}
+
+/** Write-side: "" means no link, null means the value is not a usable URL. */
+export function parseMeetingLink(value: unknown): string | null {
+  if (value === undefined || value === null) return "";
+  const link = pickText(value, 600);
+  if (!link) return "";
+  return MEETING_LINK_PATTERN.test(link) ? link : null;
 }
 
 function iso(value: unknown): string | null {
@@ -235,6 +252,7 @@ export function serializeMeetingCard(doc: any) {
     title: doc.title || "Board meeting",
     scheduledDate: iso(doc.scheduledDate),
     location: doc.location || "",
+    meetingLink: sanitizeMeetingLink(doc.meetingLink),
     status: isMeetingStatus(doc.status) ? doc.status : "SCHEDULED",
   };
 }
@@ -255,6 +273,7 @@ export function serializeMeeting(doc: any) {
     title: doc.title || "Board meeting",
     scheduledDate: iso(doc.scheduledDate),
     location: doc.location || "",
+    meetingLink: sanitizeMeetingLink(doc.meetingLink),
     agenda: serializeAgenda(doc.agenda),
     rsvps,
     status: isMeetingStatus(doc.status) ? doc.status : "SCHEDULED",

@@ -7,6 +7,7 @@ import {
   listBoardMembers,
   notifyBoardMembers,
   parseDate,
+  parseMeetingLink,
   pickText,
 } from "@/lib/board-governance";
 import {
@@ -109,6 +110,16 @@ export async function PATCH(
     if (body?.location !== undefined) {
       updates.location = pickText(body.location, 160);
     }
+    if (body?.meetingLink !== undefined) {
+      const meetingLink = parseMeetingLink(body.meetingLink);
+      if (meetingLink === null) {
+        return NextResponse.json(
+          { error: "Enter a full meeting link starting with https://" },
+          { status: 400 },
+        );
+      }
+      updates.meetingLink = meetingLink;
+    }
     if (body?.imageUrl !== undefined) {
       updates.imageUrl = pickText(body.imageUrl, 600);
     }
@@ -151,6 +162,7 @@ export async function PATCH(
               : []),
             ...trainingDayLines(sanitizeTrainingDays(updated?.days)),
             ...(updated?.location ? [`Where: ${updated.location}`] : []),
+            ...(updated?.meetingLink ? [`Join online: ${updated.meetingLink}`] : []),
             "Open the app to see the latest details.",
           ],
         },

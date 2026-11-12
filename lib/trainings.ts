@@ -1,4 +1,4 @@
-import { parseDate } from "./board-governance";
+import { parseDate, sanitizeMeetingLink } from "./board-governance";
 
 /**
  * Officer and position training sessions. The board (admin users) is the
@@ -42,6 +42,7 @@ export type Training = {
   description: string;
   scheduledDate: string | null;
   location: string;
+  meetingLink: string;
   imageUrl: string;
   days: TrainingDay[];
   attendance: TrainingAttendance[];
@@ -161,6 +162,7 @@ export function serializeTraining(doc: any): Training {
     description: doc.description || "",
     scheduledDate: iso(doc.scheduledDate),
     location: doc.location || "",
+    meetingLink: sanitizeMeetingLink(doc.meetingLink),
     imageUrl: doc.imageUrl || "",
     days,
     attendance,
