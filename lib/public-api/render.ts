@@ -26,11 +26,14 @@ export function publicJson(
 ): NextResponse {
   const { status = 200, maxAge = DEFAULT_MAX_AGE, headers = {} } = options;
   const h = new Headers();
-  h.set(
-    "Cache-Control",
-    `public, max-age=${maxAge}, stale-while-revalidate=${DEFAULT_STALE}`,
-  );
-  h.set("Cache-Control", "no-store");
+  if (maxAge > 0) {
+    h.set(
+      "Cache-Control",
+      `public, max-age=${maxAge}, s-maxage=${maxAge}, stale-while-revalidate=${DEFAULT_STALE}`,
+    );
+  } else {
+    h.set("Cache-Control", "no-store");
+  }
   h.set("Access-Control-Allow-Origin", "*");
   h.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
   h.set("Access-Control-Allow-Headers", "Content-Type");

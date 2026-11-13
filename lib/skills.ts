@@ -135,14 +135,23 @@ export type ModuleProgress = {
   createdAt: Date;
 };
 
+let skillIndexes: Promise<unknown> | null = null;
+
 export async function ensureSkillIndexes(db: any) {
-  return Promise.all([
-    db.collection(SKILLS_COLLECTION).createIndex({ id: 1 }, { unique: true }),
-    db.collection("skill_progress").createIndex({ userId: 1, skillId: 1, levelId: 1 }, { unique: true }),
-    db.collection("skill_progress").createIndex({ userId: 1, status: 1, updatedAt: -1 }),
-    db.collection("module_progress").createIndex({ userId: 1, moduleId: 1 }, { unique: true }),
-    db.collection("module_progress").createIndex({ userId: 1, skillId: 1 }),
-  ]);
+  if (!skillIndexes) {
+    skillIndexes = Promise.all([
+      db.collection(SKILLS_COLLECTION).createIndex({ id: 1 }, { unique: true }),
+      db.collection("skill_progress").createIndex({ userId: 1, skillId: 1, levelId: 1 }, { unique: true }),
+      db.collection("skill_progress").createIndex({ userId: 1, status: 1, updatedAt: -1 }),
+      db.collection("module_progress").createIndex({ userId: 1, moduleId: 1 }, { unique: true }),
+      db.collection("module_progress").createIndex({ userId: 1, skillId: 1 }),
+    ]).catch((e) => {
+      // Reset so a transient failure doesn't permanently poison the guard.
+      skillIndexes = null;
+      throw e;
+    });
+  }
+  return skillIndexes;
 }
 
 function statusOf(checks: boolean[]): "not_started" | "in_progress" | "complete" {
