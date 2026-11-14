@@ -1,9 +1,11 @@
 /**
- * Program calendar — one club's plan for a year (2027 runs March → November).
+ * Program calendar — one year's plan for a club or for the whole organization
+ * (2027 runs March → November).
  *
- * One document per club+year in `program_calendars`; every entry is authored
+ * One document per scope+year in `program_calendars`; every entry is authored
  * through the admin API (nothing about the calendar is hardcoded in either
- * app). Reads are public via GET /api/clubs/[slug]/calendar, writes go through
+ * app). Club reads are public via GET /api/clubs/[slug]/calendar, organization
+ * and club reads together via GET /api/program-calendar, writes go through
  * /api/admin/program-calendar. Seeded from
  * scripts/program-calendar-import.json by scripts/seed-catalogs.mjs.
  */
@@ -11,6 +13,14 @@
 const CALENDAR_COLLECTION = "program_calendars";
 
 export const DEFAULT_CALENDAR_YEAR = 2027;
+
+/**
+ * Scope reserved for the organization-wide calendar. It shares the clubSlug
+ * field and the same collection, so no club may take this slug.
+ */
+export const ORGANIZATION_SCOPE = "relate";
+
+export const ORGANIZATION_CALENDAR_NAME = "Relate";
 
 export type CalendarEntry = {
   id: string;
