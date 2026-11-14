@@ -165,7 +165,10 @@ function eventLines(
   if (entry.description) lines.push(property("DESCRIPTION", entry.description));
   if (entry.location) lines.push(property("LOCATION", entry.location));
   const categories = [entry.term, entry.setting].filter(Boolean) as string[];
-  if (categories.length) lines.push(property("CATEGORIES", categories.join(",")));
+  // CATEGORIES is a list of TEXT values: escape each one, keep the commas bare.
+  if (categories.length) {
+    lines.push(foldLine(`CATEGORIES:${categories.map(escapeText).join(",")}`));
+  }
   if (entry.time && !range) lines.push(property("X-RELATE-TIME", entry.time));
   lines.push("SEQUENCE:0", "STATUS:CONFIRMED", "END:VEVENT");
   return lines;
