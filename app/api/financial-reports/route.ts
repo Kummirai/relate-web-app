@@ -52,12 +52,17 @@ export async function GET(request: NextRequest) {
           "other",
           "amountsFromRecords",
         ]);
+        // The carried balance is not income — it was counted in the period it
+        // was earned. Charts and "raised" totals must exclude it.
+        const carried = Number(r.income?.balanceBroughtDown) || 0;
         return {
           _id: r._id.toString(),
           period: r.period,
           preparedBy: r.preparedBy,
           createdAt: r.createdAt,
           income,
+          raised: income - carried,
+          balanceBroughtDown: carried,
           expenses,
           net: income - expenses,
         };
