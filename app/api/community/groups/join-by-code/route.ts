@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getDb } from "@/lib/mongodb";
 import { resolveSession } from "@/lib/community-auth";
+import { invalidateCards } from "@/lib/card-view";
 import { createNotification } from "@/lib/inapp-notify";
 import { getUserPushTokens, sendPushNotifications } from "@/lib/push";
 
@@ -37,6 +38,7 @@ export async function POST(request: NextRequest) {
         { _id: group._id },
         { $addToSet: { joinedUserIds: user.id }, $inc: { members: 1 } },
       );
+      invalidateCards("community_groups");
 
       if (group.userId && group.userId !== user.id) {
         try {

@@ -4,6 +4,24 @@ import { getDb } from "@/lib/mongodb";
 import { resolveSession, requireAdmin, requireGroupCreator, ensureIndexes, fetchParticipants } from "@/lib/community-auth";
 import { makeInviteCode } from "@/lib/daily";
 import { bumpDiscoverVersion } from "@/lib/discover-version";
+import {
+  CARD_CACHE_HEADERS,
+  invalidateCards,
+  isCardView,
+  readCards,
+} from "@/lib/card-view";
+
+// Keep in sync with the fields DiscoverCard renders on the mobile rail.
+const GROUP_CARD_FIELDS = {
+  name: 1,
+  imageUrl: 1,
+  members: 1,
+  maxMembers: 1,
+  meetingTime: 1,
+  live: 1,
+  clubSlug: 1,
+  createdAt: 1,
+} as const;
 
 // Cache for the groups list (30s TTL). Avoids running the full pipeline
 // (find + fetchParticipants + comment aggregation) on every request.
@@ -18,6 +36,19 @@ const CACHE_HEADERS = {
 export async function GET(request: NextRequest) {
   try {
     const db = await getDb();
+
+    // Lean rail payload: skips participant hydration and the comment-count
+    // aggregation, neither of which a discover card shows.
+    if (isCardView(request)) {
+      const data = await readCards(
+        db,
+        "community_groups",
+        request,
+        GROUP_CARD_FIELDS,
+      );
+      return NextResponse.json({ data }, { headers: CARD_CACHE_HEADERS });
+    }
+
     await ensureIndexes(db);
     const user = await resolveSession(request);
     const userId = user?.id || null;
@@ -206,6 +237,7 @@ export async function POST(request: NextRequest) {
     };
     const result = await db.collection("community_groups").insertOne(doc);
     groupsCache = null; // Invalidate cache
+    invalidateCards("community_groups");
     await bumpDiscoverVersion();
     return NextResponse.json(
       {
@@ -274,6 +306,7 @@ export async function PUT(request: NextRequest) {
       { $set: setFields },
     );
     groupsCache = null; // Invalidate cache
+    invalidateCards("community_groups");
     await bumpDiscoverVersion();
 
     const updated = await db.collection("community_groups").findOne({ _id: new ObjectId(_id) });
@@ -304,6 +337,7 @@ export async function DELETE(request: NextRequest) {
     // Clean up the group's encouragement thread so no orphaned comments linger.
     await db.collection("community_group_comments").deleteMany({ groupId: _id });
     groupsCache = null; // Invalidate cache
+    invalidateCards("community_groups");
     await bumpDiscoverVersion();
     return NextResponse.json({ success: true });
   } catch {

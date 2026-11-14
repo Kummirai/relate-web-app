@@ -8,6 +8,23 @@ export async function GET(request: NextRequest) {
     if (!user) return NextResponse.json({ data: [] });
 
     const db = await getDb();
+
+    // Ref view: the caller only needs to know *what* is saved, so skip
+    // hydrating every bookmarked document (one full find per section).
+    if (request.nextUrl.searchParams.get("view") === "ref") {
+      const refs = await db
+        .collection("user_bookmarks")
+        .find({ userId: user.id }, { projection: { section: 1, itemId: 1 } })
+        .sort({ createdAt: -1 })
+        .toArray();
+      return NextResponse.json(
+        {
+          data: refs.map((b: any) => ({ section: b.section, itemId: b.itemId })),
+        },
+        { headers: { "Cache-Control": "private, no-store" } },
+      );
+    }
+
     const bookmarks = await db
       .collection("user_bookmarks")
       .find({ userId: user.id })

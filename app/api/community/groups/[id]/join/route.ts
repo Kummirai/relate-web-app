@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { getDb } from "@/lib/mongodb";
 import { ObjectId } from "mongodb";
 import { resolveSession } from "@/lib/community-auth";
+import { invalidateCards } from "@/lib/card-view";
 import { createNotification } from "@/lib/inapp-notify";
 import { getUserPushTokens, sendPushNotifications } from "@/lib/push";
 import { NextRequest } from "next/server";
@@ -87,6 +88,7 @@ export async function POST(
       }
     }
 
+    invalidateCards("community_groups");
     const updated = await db.collection("community_groups").findOne({ _id: new ObjectId(id) });
     return NextResponse.json({
       data: {

@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { ObjectId } from "mongodb";
 import { getDb } from "@/lib/mongodb";
 import { resolveSession, resolveAdminOrOwner } from "@/lib/community-auth";
+import { invalidateCards } from "@/lib/card-view";
 import {
   createDailyMeetingToken,
   createDailyRoom,
@@ -114,6 +115,7 @@ export async function POST(
         { _id: new ObjectId(id) },
         { $set: { live: true, activeSession } },
       );
+      invalidateCards("community_groups");
 
       // Notify every joined member (except the moderator who started it) so
       // they can jump into the call with the access code.
@@ -232,6 +234,7 @@ export async function DELETE(
       { _id: new ObjectId(id) },
       { $set: { live: false }, $unset: { activeSession: "" } },
     );
+    invalidateCards("community_groups");
     if (session?.roomName) {
       await deleteDailyRoom(session.roomName);
     }

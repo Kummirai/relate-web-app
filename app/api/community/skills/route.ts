@@ -3,6 +3,20 @@ import { ObjectId } from "mongodb";
 import { getDb } from "@/lib/mongodb";
 import { resolveSession, ensureIndexes, fetchParticipants } from "@/lib/community-auth";
 import { bumpDiscoverVersion } from "@/lib/discover-version";
+import {
+  CARD_CACHE_HEADERS,
+  invalidateCards,
+  isCardView,
+  readCards,
+} from "@/lib/card-view";
+
+// Keep in sync with the fields DiscoverCard renders on the mobile rail.
+const SKILL_CARD_FIELDS = {
+  title: 1,
+  category: 1,
+  offering: 1,
+  createdAt: 1,
+} as const;
 
 // Cache for the skills list (30s TTL).
 let skillsCache: { data: any; ts: number } | null = null;
@@ -16,6 +30,18 @@ const CACHE_HEADERS = {
 export async function GET(request: NextRequest) {
   try {
     const db = await getDb();
+
+    // Lean rail payload: skips the connections scan and participant hydration.
+    if (isCardView(request)) {
+      const data = await readCards(
+        db,
+        "community_skills",
+        request,
+        SKILL_CARD_FIELDS,
+      );
+      return NextResponse.json({ data }, { headers: CARD_CACHE_HEADERS });
+    }
+
     await ensureIndexes(db);
     const user = await resolveSession(request);
     const userId = user?.id || null;
@@ -111,6 +137,7 @@ export async function POST(request: NextRequest) {
     };
     const result = await db.collection("community_skills").insertOne(doc);
     skillsCache = null; // Invalidate cache
+    invalidateCards("community_skills");
     await bumpDiscoverVersion();
     return NextResponse.json(
       { data: { _id: result.insertedId, ...doc, connected: false, connectionCount: 0, isOwner: !!userId } },
@@ -147,6 +174,7 @@ export async function PUT(request: NextRequest) {
       { $set: setFields },
     );
     skillsCache = null; // Invalidate cache
+    invalidateCards("community_skills");
     await bumpDiscoverVersion();
 
     const updated = await db.collection("community_skills").findOne({ _id: new ObjectId(_id) });
@@ -174,6 +202,7 @@ export async function DELETE(request: NextRequest) {
     await db.collection("community_skills").deleteOne({ _id: new ObjectId(_id) });
     await db.collection("community_skill_connections").deleteMany({ skillId: _id });
     skillsCache = null; // Invalidate cache
+    invalidateCards("community_skills");
     await bumpDiscoverVersion();
     return NextResponse.json({ success: true });
   } catch {
