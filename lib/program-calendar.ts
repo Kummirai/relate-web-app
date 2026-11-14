@@ -196,10 +196,19 @@ export async function getLatestCalendar(
 /** Years that have a published plan, so a reader can jump to a non-empty one. */
 export async function listCalendarYears(db: any, clubSlug?: string): Promise<number[]> {
   await ensureCalendarIndexes(db);
-  const years = await db
+  // Grouped rather than `distinct`: the client declares Stable API v1 strictly,
+  // and `distinct` is not a v1 command, so the server would reject it.
+  const rows = await db
     .collection(CALENDAR_COLLECTION)
-    .distinct("year", clubSlug ? { clubSlug } : {});
-  return years.filter((y: unknown) => typeof y === "number").sort((a: number, b: number) => a - b);
+    .aggregate([
+      ...(clubSlug ? [{ $match: { clubSlug } }] : []),
+      { $group: { _id: "$year" } },
+      { $sort: { _id: 1 } },
+    ])
+    .toArray();
+  return rows
+    .map((row: any) => row._id)
+    .filter((year: unknown) => typeof year === "number");
 }
 
 export async function listCalendars(db: any, year?: number): Promise<ProgramCalendarDoc[]> {
