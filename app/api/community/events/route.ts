@@ -7,14 +7,18 @@ import {
   fetchParticipants,
   requireAdmin,
 } from "@/lib/community-auth";
-import { parseFee } from "@/lib/fees";
 import { bumpDiscoverVersion } from "@/lib/discover-version";
 import {
   CARD_CACHE_HEADERS,
+  SUMMARY_CACHE_HEADERS,
   invalidateCards,
   isCardView,
+  isSummaryView,
   readCards,
+  readProjected,
+  stripInternal,
 } from "@/lib/card-view";
+import { toEventRow } from "@/lib/event-payload";
 
 // Cache for the events list (30s TTL).
 let eventsCache: { data: any; ts: number } | null = null;
@@ -31,6 +35,21 @@ const EVENT_CARD_FIELDS = {
   imageUrl: 1,
   clubSlug: 1,
   createdAt: 1,
+} as const;
+
+// Activity-list payload: the dashboard renders a title, a date/place line, an
+// attendee count and the viewer's own flags. rsvpUserIds and userId are read to
+// derive those flags but never sent.
+const EVENT_SUMMARY_FIELDS = {
+  title: 1,
+  date: 1,
+  time: 1,
+  location: 1,
+  author: 1,
+  attending: 1,
+  createdAt: 1,
+  userId: 1,
+  rsvpUserIds: 1,
 } as const;
 
 // Shared CDN cache: keeps the heavy list build from repeating on cold starts.
@@ -102,6 +121,40 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ data }, { headers: CARD_CACHE_HEADERS });
     }
 
+    if (isSummaryView(request)) {
+      await ensureIndexes(db);
+      const user = await resolveSession(request);
+      const userId = user?.id || null;
+      const rows = await readProjected(
+        db,
+        "community_events",
+        request,
+        EVENT_SUMMARY_FIELDS,
+      );
+      let bookmarkedIds = new Set<string>();
+      if (userId) {
+        const bookmarks = await db
+          .collection("user_bookmarks")
+          .find({ userId, section: "events" }, { projection: { itemId: 1 } })
+          .toArray();
+        bookmarkedIds = new Set(bookmarks.map((b: any) => b.itemId));
+      }
+      const data = rows.map((e: any) => ({
+        _id: e._id,
+        title: e.title,
+        date: e.date,
+        time: e.time,
+        location: e.location,
+        author: e.author || "",
+        attending: e.attending || 0,
+        createdAt: e.createdAt,
+        hasRsvpd: userId ? (e.rsvpUserIds || []).includes(userId) : false,
+        isOwner: userId ? e.userId === userId : false,
+        isBookmarked: userId ? bookmarkedIds.has(e._id.toString()) : false,
+      }));
+      return NextResponse.json({ data }, { headers: SUMMARY_CACHE_HEADERS });
+    }
+
     await ensureIndexes(db);
     const user = await resolveSession(request);
     const userId = user?.id || null;
@@ -121,7 +174,7 @@ export async function GET(request: NextRequest) {
             e.clubSlug.trim().toLowerCase() === clubFilter)
         )
         .map((e: any) => ({
-          ...e,
+          ...stripInternal(e),
           hasRsvpd: userId ? e._rsvpUserIds.includes(userId) : false,
           isOwner: userId ? e._ownerUserId === userId : false,
         }));
@@ -157,66 +210,20 @@ export async function GET(request: NextRequest) {
       for (const r of regs) myRegs.set(r.eventId?.toString(), r);
     }
 
-    const data = events.map((e: any) => {
-      const rsvpUsers = (e.rsvpUserIds || [])
-        .map((id: string) => participants.get(id))
-        .filter(Boolean);
-      const fee = parseFee(e.fee);
-      const myReg = userId ? myRegs.get(e._id.toString()) : undefined;
-      const totalDue = fee.amount * (myReg?.bringingPartner ? 2 : 1);
-      const amountPaid = myReg?.amountPaid || 0;
-      const pendingAmount = myReg?.pendingAmount || 0;
-      const remaining = Math.max(0, totalDue - amountPaid);
-      const hasPaid = totalDue === 0 || remaining <= 0;
-      const hasRsvpd = userId ? (e.rsvpUserIds || []).includes(userId) : false;
-      return {
-        _id: e._id,
-        title: e.title,
-        date: e.date,
-        time: e.time,
-        dateTo: e.dateTo || undefined,
-        timeTo: e.timeTo || undefined,
-        agenda: Array.isArray(e.agenda) ? e.agenda : [],
-        notes: e.notes || "",
-        location: e.location,
-        description: e.description,
-        fee: e.fee || "Free",
-        feeAmount: fee.amount,
-        feeSymbol: fee.symbol,
-        clubSlug: e.clubSlug || undefined,
-        imageUrl: e.imageUrl || null,
-        author: e.author || "",
-        category: e.category || undefined,
-        eyebrow: e.eyebrow || undefined,
-        titleAccent: e.titleAccent || undefined,
-        host: e.host || undefined,
-        capacity: e.capacity || undefined,
-        tags: Array.isArray(e.tags) ? e.tags : [],
-        details: Array.isArray(e.details) ? e.details : [],
-        userId: e.userId || null,
-        attending: e.attending || 0,
-        hasRsvpd,
-        hasPaid,
-        amountPaid: userId && hasRsvpd ? amountPaid : 0,
-        pendingAmount: userId && hasRsvpd ? pendingAmount : 0,
-        remaining: userId && hasRsvpd ? remaining : totalDue,
-        totalDue,
-        myPartner: userId && hasRsvpd ? !!myReg?.bringingPartner : false,
-        isBookmarked: userId ? bookmarkedIds.has(e._id.toString()) : false,
-        rsvpUsers,
-        createdAt: e.createdAt,
-        // Store raw IDs for cache re-derivation.
-        _rsvpUserIds: e.rsvpUserIds || [],
-        _ownerUserId: e.userId || null,
-        _ownerAuthor: e.author || null,
-      };
-    });
+    const data = events.map((e: any) =>
+      toEventRow(e, {
+        userId,
+        participants,
+        bookmarkedIds,
+        myReg: userId ? myRegs.get(e._id.toString()) : undefined,
+      }),
+    );
 
     eventsCache = { data, ts: Date.now() };
 
     // Re-derive user-specific fields.
     const response = data.map((e: any) => ({
-      ...e,
+      ...stripInternal(e),
       hasRsvpd: userId ? e._rsvpUserIds.includes(userId) : false,
       isOwner: userId ? e._ownerUserId === userId : false,
     }));

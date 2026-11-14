@@ -109,6 +109,9 @@ export async function ensureIndexes(db: any) {
       db.collection("community_skills").createIndex({ createdAt: -1 }),
       db.collection("community_jobs").createIndex({ createdAt: -1 }),
       db.collection("community_events").createIndex({ createdAt: -1 }),
+      // Club-scoped card reads filter on clubSlug then sort by createdAt.
+      db.collection("community_events").createIndex({ clubSlug: 1, createdAt: -1 }),
+      db.collection("community_groups").createIndex({ clubSlug: 1, createdAt: -1 }),
       db.collection("community_request_comments").createIndex({ requestId: 1, createdAt: 1 }),
       db.collection("community_group_comments").createIndex({ groupId: 1, createdAt: 1 }),
       db.collection("event_registrations").createIndex({ eventId: 1 }),

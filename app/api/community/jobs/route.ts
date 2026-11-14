@@ -2,6 +2,22 @@ import { NextRequest, NextResponse } from "next/server";
 import { ObjectId } from "mongodb";
 import { getDb } from "@/lib/mongodb";
 import { resolveSession, ensureIndexes, fetchParticipants } from "@/lib/community-auth";
+import {
+  SUMMARY_CACHE_HEADERS,
+  isSummaryView,
+  readProjected,
+} from "@/lib/card-view";
+
+// Activity-list payload: title, the company/place line, an applicant count and
+// the viewer's own flags.
+const JOB_SUMMARY_FIELDS = {
+  title: 1,
+  company: 1,
+  location: 1,
+  author: 1,
+  createdAt: 1,
+  userId: 1,
+} as const;
 
 export async function GET(request: NextRequest) {
   try {
@@ -9,6 +25,51 @@ export async function GET(request: NextRequest) {
     await ensureIndexes(db);
     const user = await resolveSession(request);
     const userId = user?.id || null;
+
+    // Counts and the viewer's own flag arrive as one row per job, so no
+    // application document or applicant profile is ever fetched.
+    if (isSummaryView(request)) {
+      const rows = await readProjected(
+        db,
+        "community_jobs",
+        request,
+        JOB_SUMMARY_FIELDS,
+      );
+      const counts = await db
+        .collection("community_job_applications")
+        .aggregate([
+          { $match: { jobId: { $in: rows.map((j: any) => j._id.toString()) } } },
+          {
+            $group: {
+              _id: "$jobId",
+              count: { $sum: 1 },
+              mine: {
+                $sum: { $cond: [{ $eq: ["$userId", userId] }, 1, 0] },
+              },
+            },
+          },
+        ])
+        .toArray();
+      const byJob = new Map<string, any>(counts.map((c: any) => [c._id, c]));
+      const data = rows.map((j: any) => {
+        const agg = byJob.get(j._id.toString());
+        return {
+          _id: j._id,
+          title: j.title,
+          company: j.company,
+          location: j.location,
+          author: j.author,
+          createdAt: j.createdAt,
+          applicationCount: agg?.count || 0,
+          applied: userId ? (agg?.mine || 0) > 0 : false,
+          isOwner: userId
+            ? j.userId === userId ||
+              (!j.userId && !!user.name && j.author === user.name)
+            : false,
+        };
+      });
+      return NextResponse.json({ data }, { headers: SUMMARY_CACHE_HEADERS });
+    }
 
     const jobs = await db
       .collection("community_jobs")

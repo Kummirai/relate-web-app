@@ -5,9 +5,13 @@ import { resolveSession, ensureIndexes, fetchParticipants } from "@/lib/communit
 import { bumpDiscoverVersion } from "@/lib/discover-version";
 import {
   CARD_CACHE_HEADERS,
+  SUMMARY_CACHE_HEADERS,
   invalidateCards,
   isCardView,
+  isSummaryView,
   readCards,
+  readProjected,
+  stripInternal,
 } from "@/lib/card-view";
 
 // Keep in sync with the fields DiscoverCard renders on the mobile rail.
@@ -16,6 +20,16 @@ const SKILL_CARD_FIELDS = {
   category: 1,
   offering: 1,
   createdAt: 1,
+} as const;
+
+// Activity-list payload: title, a description excerpt, a connection count and
+// the viewer's own flags.
+const SKILL_SUMMARY_FIELDS = {
+  title: 1,
+  description: 1,
+  author: 1,
+  createdAt: 1,
+  userId: 1,
 } as const;
 
 // Cache for the skills list (30s TTL).
@@ -42,6 +56,50 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ data }, { headers: CARD_CACHE_HEADERS });
     }
 
+    if (isSummaryView(request)) {
+      await ensureIndexes(db);
+      const user = await resolveSession(request);
+      const userId = user?.id || null;
+      const rows = await readProjected(
+        db,
+        "community_skills",
+        request,
+        SKILL_SUMMARY_FIELDS,
+      );
+      // Counts and the viewer's own flag come back as one row per skill, so
+      // no connector document or user profile is ever fetched.
+      const counts = await db
+        .collection("community_skill_connections")
+        .aggregate([
+          { $match: { skillId: { $in: rows.map((s: any) => s._id.toString()) } } },
+          {
+            $group: {
+              _id: "$skillId",
+              count: { $sum: 1 },
+              mine: {
+                $sum: { $cond: [{ $eq: ["$userId", userId] }, 1, 0] },
+              },
+            },
+          },
+        ])
+        .toArray();
+      const bySkill = new Map<string, any>(counts.map((c: any) => [c._id, c]));
+      const data = rows.map((s: any) => {
+        const agg = bySkill.get(s._id.toString());
+        return {
+          _id: s._id,
+          title: s.title,
+          description: s.description,
+          author: s.author,
+          createdAt: s.createdAt,
+          connectionCount: agg?.count || 0,
+          connected: userId ? (agg?.mine || 0) > 0 : false,
+          isOwner: userId ? s.userId === userId : false,
+        };
+      });
+      return NextResponse.json({ data }, { headers: SUMMARY_CACHE_HEADERS });
+    }
+
     await ensureIndexes(db);
     const user = await resolveSession(request);
     const userId = user?.id || null;
@@ -49,7 +107,7 @@ export async function GET(request: NextRequest) {
     // Serve from cache if fresh enough.
     if (skillsCache && Date.now() - skillsCache.ts < SKILLS_TTL) {
       const data = skillsCache.data.map((s: any) => ({
-        ...s,
+        ...stripInternal(s),
         connected: userId ? s._connectedUserIds.includes(userId) : false,
         isOwner: userId ? s._ownerUserId === userId : false,
       }));
@@ -110,7 +168,7 @@ export async function GET(request: NextRequest) {
 
     // Re-derive user-specific fields.
     const response = data.map((s: any) => ({
-      ...s,
+      ...stripInternal(s),
       connected: userId ? s._connectedUserIds.includes(userId) : false,
       isOwner: userId ? s._ownerUserId === userId : false,
     }));

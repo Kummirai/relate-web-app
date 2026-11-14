@@ -6,9 +6,13 @@ import { makeInviteCode } from "@/lib/daily";
 import { bumpDiscoverVersion } from "@/lib/discover-version";
 import {
   CARD_CACHE_HEADERS,
+  SUMMARY_CACHE_HEADERS,
   invalidateCards,
   isCardView,
+  isSummaryView,
   readCards,
+  readProjected,
+  stripInternal,
 } from "@/lib/card-view";
 
 // Keep in sync with the fields DiscoverCard renders on the mobile rail.
@@ -21,6 +25,19 @@ const GROUP_CARD_FIELDS = {
   live: 1,
   clubSlug: 1,
   createdAt: 1,
+} as const;
+
+// Activity-list payload: name, the meeting line, a member count and the
+// viewer's own flags. joinedUserIds and userId derive the flags but stay off
+// the wire.
+const GROUP_SUMMARY_FIELDS = {
+  name: 1,
+  meetingTime: 1,
+  schedule: 1,
+  members: 1,
+  createdAt: 1,
+  userId: 1,
+  joinedUserIds: 1,
 } as const;
 
 // Cache for the groups list (30s TTL). Avoids running the full pipeline
@@ -49,6 +66,31 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ data }, { headers: CARD_CACHE_HEADERS });
     }
 
+    if (isSummaryView(request)) {
+      await ensureIndexes(db);
+      const user = await resolveSession(request);
+      const userId = user?.id || null;
+      const rows = await readProjected(
+        db,
+        "community_groups",
+        request,
+        GROUP_SUMMARY_FIELDS,
+      );
+      const data = rows.map((g: any) => ({
+        _id: g._id,
+        name: g.name,
+        meetingTime: g.meetingTime || "",
+        schedule: g.schedule || "",
+        members: g.members || 0,
+        createdAt: g.createdAt,
+        hasJoined: userId
+          ? (g.joinedUserIds || []).includes(userId) || g.userId === userId
+          : false,
+        isOwner: userId ? g.userId === userId : false,
+      }));
+      return NextResponse.json({ data }, { headers: SUMMARY_CACHE_HEADERS });
+    }
+
     await ensureIndexes(db);
     const user = await resolveSession(request);
     const userId = user?.id || null;
@@ -66,7 +108,7 @@ export async function GET(request: NextRequest) {
       const data = groupsCache.data
         .filter((g: any) => !clubFilter || g.clubSlug === clubFilter)
         .map((g: any) => ({
-          ...g,
+          ...stripInternal(g),
           hasJoined: userId
             ? (g._joinedUserIds || []).includes(userId) || g._ownerUserId === userId
             : false,
@@ -138,13 +180,18 @@ export async function GET(request: NextRequest) {
 
     // Re-derive user-specific fields for the response.
     const response = data.map((g: any) => ({
-      ...g,
+      ...stripInternal(g),
       hasJoined: userId
         ? g._joinedUserIds.includes(userId) || g._ownerUserId === userId
         : false,
       isOwner: userId ? g._ownerUserId === userId : false,
     }));
-    return NextResponse.json({ data: response }, { headers: CACHE_HEADERS });
+    // The cache is built unfiltered so it can serve every club, so the club
+    // filter has to be applied here too — not only on the cache-hit path.
+    const filteredResponse = clubFilter
+      ? response.filter((g: any) => g.clubSlug === clubFilter)
+      : response;
+    return NextResponse.json({ data: filteredResponse }, { headers: CACHE_HEADERS });
   } catch {
     return NextResponse.json({ data: [] });
   }

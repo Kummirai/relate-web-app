@@ -2,12 +2,30 @@ import { NextRequest, NextResponse } from "next/server";
 import { ObjectId } from "mongodb";
 import { getDb } from "@/lib/mongodb";
 import { resolveSession, ensureIndexes, fetchParticipants } from "@/lib/community-auth";
+import {
+  SUMMARY_CACHE_HEADERS,
+  isSummaryView,
+  readProjected,
+} from "@/lib/card-view";
 import { notifyAllUsers, notifyAdmins } from "@/lib/inapp-notify";
 import {
   getAllPushTokens,
   getAdminPushTokens,
   sendPushNotifications,
 } from "@/lib/push";
+
+// Activity-list payload: request text, an excerpt, the pray count and the
+// viewer's own flags. Email is deliberately absent.
+const REQUEST_SUMMARY_FIELDS = {
+  title: 1,
+  text: 1,
+  description: 1,
+  author: 1,
+  prayCount: 1,
+  createdAt: 1,
+  userId: 1,
+  prayedUserIds: 1,
+} as const;
 
 /** Builds the notification body shown next to a prayer request. */
 function requestBody(category?: string, anonymous?: boolean, author?: string) {
@@ -50,6 +68,33 @@ export async function GET(request: NextRequest) {
     await ensureIndexes(db);
     const user = await resolveSession(request);
     const userId = user?.id || null;
+
+    // Activity-list payload: the dashboard shows the request text, an excerpt
+    // and whether the viewer prayed. Skips participant hydration and the
+    // comment-count aggregation, and never returns the requester's email.
+    if (isSummaryView(request)) {
+      const rows = await readProjected(
+        db,
+        "community_requests",
+        request,
+        REQUEST_SUMMARY_FIELDS,
+      );
+      const data = rows.map((r: any) => ({
+        _id: r._id,
+        title: r.title || r.text,
+        text: r.text,
+        description: r.description || r.text,
+        author: r.author,
+        prayCount: r.prayCount || 0,
+        createdAt: r.createdAt,
+        prayedByMe: userId ? (r.prayedUserIds || []).includes(userId) : false,
+        isOwner: userId
+          ? r.userId === userId ||
+            (!r.userId && !!user.name && r.author === user.name)
+          : false,
+      }));
+      return NextResponse.json({ data }, { headers: SUMMARY_CACHE_HEADERS });
+    }
 
     const requests = await db
       .collection("community_requests")
