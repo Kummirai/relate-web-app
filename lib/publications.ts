@@ -45,7 +45,7 @@ export async function listPublications(opts: {
   return (await db
     .collection("publications")
     .find(query)
-    .sort({ year: -1, publishedAt: -1 })
+    .sort({ publishedAt: -1 })
     .limit(opts.limit && opts.limit > 0 ? opts.limit : 100)
     .project({ weeks: 0, blocks: 0, intro: 0 })
     .toArray()) as PubCursor[];

@@ -64,7 +64,7 @@ export async function GET(request: NextRequest) {
     const items = await db
       .collection("publications")
       .find(query)
-      .sort({ publishedAt: -1, year: -1 })
+      .sort({ publishedAt: -1 })
       .skip(offset)
       .limit(limit)
       .project({ blocks: 0, weeks: 0 })

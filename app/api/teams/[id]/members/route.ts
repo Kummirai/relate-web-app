@@ -8,6 +8,7 @@ import {
   publicTooMany,
 } from "@/lib/public-api/render";
 import { getDb } from "@/lib/mongodb";
+import { ensureSportsRegistrationIndexes } from "@/lib/sports-registrations";
 
 /**
  * GET /api/teams/{teamId}/members
@@ -36,6 +37,7 @@ export async function GET(
     }
 
     const db = await getDb();
+    await ensureSportsRegistrationIndexes(db);
     const filter = { teamId, status: "active" };
 
     const count = await db

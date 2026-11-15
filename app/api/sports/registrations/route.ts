@@ -13,6 +13,7 @@ import { getDb } from "@/lib/mongodb";
 import { notifyAdmins } from "@/lib/inapp-notify";
 import {
   createSportsRegistration,
+  ensureSportsRegistrationIndexes,
   listSportsRegistrations,
   resolveTeam,
   storageConfigured,
@@ -142,6 +143,7 @@ export async function POST(request: NextRequest) {
     // registration never leaves an orphaned file in storage.
     {
       const db = await getDb();
+      await ensureSportsRegistrationIndexes(db);
       const mine = await db
         .collection(SPORTS_REG_COL)
         .findOne({ userId }, { projection: { teamName: 1, teamId: 1 } });

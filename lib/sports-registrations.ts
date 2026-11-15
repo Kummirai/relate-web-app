@@ -25,6 +25,22 @@ import {
 
 export const SPORTS_REG_COL = "sports_registrations";
 
+let sportsRegistrationIndexesEnsured = false;
+
+export async function ensureSportsRegistrationIndexes(db: any) {
+  if (sportsRegistrationIndexesEnsured) return;
+  try {
+    await Promise.all([
+      db.collection(SPORTS_REG_COL).createIndex({ userId: 1 }),
+      db.collection(SPORTS_REG_COL).createIndex({ teamId: 1, createdAt: -1 }),
+      db.collection(SPORTS_REG_COL).createIndex({ teamId: 1, position: 1, status: 1, createdAt: 1 }),
+    ]);
+    sportsRegistrationIndexesEnsured = true;
+  } catch (error) {
+    console.error("[sports-registrations] index creation failed:", error);
+  }
+}
+
 export type SportsRegistrationInput = {
   userId: string;
   clubSlug: string;
@@ -200,6 +216,7 @@ export async function createSportsRegistration(
   }
 
   const db = await getDb();
+  await ensureSportsRegistrationIndexes(db);
   const col = db.collection(SPORTS_REG_COL);
 
   const existing = await col.findOne({ userId: input.userId });
@@ -271,6 +288,7 @@ export async function listSportsRegistrations(
   teamId: string,
 ): Promise<SportsRegistrationPublic[]> {
   const db = await getDb();
+  await ensureSportsRegistrationIndexes(db);
   const rows = await db
     .collection(SPORTS_REG_COL)
     .find({ teamId })
@@ -344,6 +362,7 @@ export async function getMyRegistration(
   userId: string,
 ): Promise<MySportsRegistration | null> {
   const db = await getDb();
+  await ensureSportsRegistrationIndexes(db);
   const col = db.collection(SPORTS_REG_COL);
   const row = await col.findOne({ userId });
   if (!row) return null;

@@ -128,6 +128,8 @@ export async function ensureIndexes(db: any) {
       db.collection("community_skill_connections").createIndex({ skillId: 1, userId: 1 }, { unique: true }),
       db.collection("community_job_applications").createIndex({ jobId: 1 }),
       db.collection("community_job_applications").createIndex({ jobId: 1, userId: 1 }, { unique: true }),
+      db.collection("club_registrations").createIndex({ clubSlug: 1, createdAt: -1 }),
+      db.collection("club_registrations").createIndex({ userId: 1, clubSlug: 1, createdAt: -1 }),
       db.collection("user").createIndex({ id: 1 }),
       db.collection("push_tokens").createIndex({ userId: 1 }),
       db.collection("notifications").createIndex({ userId: 1, createdAt: -1 }),

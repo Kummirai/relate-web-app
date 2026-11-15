@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getDb } from "@/lib/mongodb";
-import { resolveSession, findUserById } from "@/lib/community-auth";
+import { resolveSession, findUserById, ensureIndexes } from "@/lib/community-auth";
 
 /**
  * Lists the participants (club registrations) for a club.
@@ -20,6 +20,7 @@ export async function GET(
     }
 
     const db = await getDb();
+    await ensureIndexes(db);
     const user = await resolveSession(request);
     if (!user) {
       return NextResponse.json({ error: "Sign in to view participants" }, { status: 401 });

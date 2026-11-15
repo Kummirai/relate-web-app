@@ -87,6 +87,7 @@ export async function GET(
     // any signed-in user.
     if (clubSlug !== "relate") {
       const db = await getDb();
+      await ensureIndexes(db);
       const isMember = await db
         .collection("club_registrations")
         .findOne({ userId: userId.id, clubSlug }, { projection: { _id: 1 } });
