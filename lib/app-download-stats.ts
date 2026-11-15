@@ -1,11 +1,7 @@
 /**
  * APK download counts from the public GitHub releases that host the Android
- * build. GitHub is where the APK is distributed, so summing the APK asset
- * download counts across releases gives the organisation's app-reach number
- * without adding extra analytics.
- *
- * Cached in-memory for ten minutes: releases change rarely and the public
- * GitHub API is rate limited.
+ * build. Download counts change slowly, so the result is cached for a day —
+ * one GitHub request per day, no polling.
  */
 export type AppDownloadStats = {
     downloads: number;
@@ -16,7 +12,7 @@ export type AppDownloadStats = {
 
 const OWNER = "Kummirai";
 const REPO = "learnmore";
-const CACHE_TTL = 10 * 60 * 1000;
+const CACHE_TTL = 24 * 60 * 60 * 1000;
 
 let cache: { data: AppDownloadStats; ts: number } | null = null;
 
