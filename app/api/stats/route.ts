@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getDb } from "@/lib/mongodb";
+import { getAppDownloadStats } from "@/lib/app-download-stats";
 
 // Cache stats for 5 minutes to avoid running countDocuments on every request.
 // In serverless, this survives warm instances but resets on cold starts —
@@ -16,10 +17,15 @@ export async function GET(request: NextRequest) {
     }
 
     const db = await getDb();
-    const [downloads, families] = await Promise.all([
-      db.collection("user").countDocuments(),
+    const [app, families, users] = await Promise.all([
+      getAppDownloadStats(),
       db.collection("familyrecords").countDocuments(),
+      db.collection("user").countDocuments(),
     ]);
+
+    // Real APK downloads when GitHub is reachable; registered accounts as the
+    // fallback so the stat never disappears.
+    const downloads = app?.downloads ?? users;
 
     const data = { est: "Jan 2026", downloads, families };
     statsCache = { data, ts: Date.now() };

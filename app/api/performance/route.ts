@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getDb } from "@/lib/mongodb";
 import { resolveSession } from "@/lib/community-auth";
+import { getAppDownloadStats } from "@/lib/app-download-stats";
 
 const TARGET = 33_000;
 
@@ -272,7 +273,10 @@ export async function GET(request: NextRequest) {
     const balance = openingBalance + totals.income - totals.expenses;
     const season = currentSeason(now);
 
-    const appraisals = await loadAppraisals(db);
+    const [appraisals, app] = await Promise.all([
+      loadAppraisals(db),
+      getAppDownloadStats(),
+    ]);
 
     return NextResponse.json({
       data: {
@@ -289,6 +293,7 @@ export async function GET(request: NextRequest) {
         months,
         incomeMix,
         appraisals,
+        app,
         latestImpact,
         latestReport: latestDoc
           ? {
