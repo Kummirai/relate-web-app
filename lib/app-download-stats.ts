@@ -3,11 +3,18 @@
  * build. Download counts change slowly, so the result is cached for a day —
  * one GitHub request per day, no polling.
  */
+export type AppDownloadRelease = {
+    version: string;
+    publishedAt: string | null;
+    downloads: number;
+};
+
 export type AppDownloadStats = {
     downloads: number;
     latestVersion: string | null;
     latestDownloads: number;
     releases: number;
+    history: AppDownloadRelease[];
 };
 
 const OWNER = "Kummirai";
@@ -19,6 +26,7 @@ let cache: { data: AppDownloadStats; ts: number } | null = null;
 type GitHubAsset = { name?: string; download_count?: number };
 type GitHubRelease = {
     tag_name?: string;
+    published_at?: string;
     draft?: boolean;
     prerelease?: boolean;
     assets?: GitHubAsset[];
@@ -54,6 +62,7 @@ export async function getAppDownloadStats(): Promise<AppDownloadStats | null> {
         let latestVersion: string | null = null;
         let latestDownloads = 0;
         let count = 0;
+        const history: AppDownloadRelease[] = [];
 
         for (const release of releases) {
             if (release.draft) continue;
@@ -66,6 +75,11 @@ export async function getAppDownloadStats(): Promise<AppDownloadStats | null> {
             );
             downloads += releaseDownloads;
             count += 1;
+            history.push({
+                version: (release.tag_name ?? "").replace(/^v/i, "") || "unknown",
+                publishedAt: release.published_at ?? null,
+                downloads: releaseDownloads,
+            });
 
             if (latestVersion === null) {
                 latestVersion = (release.tag_name ?? "").replace(/^v/i, "") || null;
@@ -78,6 +92,7 @@ export async function getAppDownloadStats(): Promise<AppDownloadStats | null> {
             latestVersion,
             latestDownloads,
             releases: count,
+            history,
         };
         cache = { data, ts: Date.now() };
         return data;
