@@ -59,16 +59,31 @@ export async function GET(request: NextRequest) {
       $or: [{ createdAt: { $gte: since } }, { createdAt: { $gte: since.toISOString() } }],
     };
 
-    const [totalUsers, admins, newUsers, families, userDocs, familyDocs, app] =
-      await Promise.all([
-        db.collection("user").countDocuments(),
-        db.collection("user").countDocuments({ role: "admin" }),
-        db.collection("user").countDocuments(recent),
-        db.collection("familyrecords").countDocuments(),
-        db.collection("user").find({}, { projection: { createdAt: 1 } }).toArray(),
-        db.collection("familyrecords").find({}, { projection: { createdAt: 1 } }).toArray(),
-        getAppDownloadStats(),
-      ]);
+    const [
+      totalUsers,
+      admins,
+      newUsers,
+      families,
+      userDocs,
+      familyDocs,
+      clubMemberDocs,
+      clubEventDocs,
+      app,
+    ] = await Promise.all([
+      db.collection("user").countDocuments(),
+      db.collection("user").countDocuments({ role: "admin" }),
+      db.collection("user").countDocuments(recent),
+      db.collection("familyrecords").countDocuments(),
+      db.collection("user").find({}, { projection: { createdAt: 1 } }).toArray(),
+      db.collection("familyrecords").find({}, { projection: { createdAt: 1 } }).toArray(),
+      db.collection("club_join_applications")
+        .find({ status: "active" }, { projection: { createdAt: 1 } })
+        .toArray(),
+      db.collection("community_events")
+        .find({ clubSlug: { $exists: true, $nin: [null, ""] } }, { projection: { createdAt: 1 } })
+        .toArray(),
+      getAppDownloadStats(),
+    ]);
 
     const months = lastMonths(now);
     const downloads = new Map<string, number>();
@@ -81,6 +96,8 @@ export async function GET(request: NextRequest) {
 
     const userTotals = cumulative(monthlyCounts(userDocs), months);
     const familyTotals = cumulative(monthlyCounts(familyDocs), months);
+    const clubMemberTotals = cumulative(monthlyCounts(clubMemberDocs), months);
+    const clubEventTotals = cumulative(monthlyCounts(clubEventDocs), months);
     const downloadTotals = cumulative(downloads, months);
 
     return NextResponse.json({
@@ -91,6 +108,8 @@ export async function GET(request: NextRequest) {
             label: month.label,
             users: userTotals[index],
             families: familyTotals[index],
+            clubMembers: clubMemberTotals[index],
+            clubEvents: clubEventTotals[index],
             downloads: downloadTotals[index],
           })),
         },
