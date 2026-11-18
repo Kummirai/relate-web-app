@@ -30,11 +30,49 @@ function completedIn(day: unknown) {
   return PRAYERS.filter((prayer) => record[prayer] === true).length;
 }
 
+function streakThroughYesterday(streaks: Record<string, unknown>, today: string) {
+  let streak = 0;
+  let key = previousDayKey(today);
+  for (let i = 0; i < 3660; i++) {
+    if (completedIn(streaks[key]) < STREAK_THRESHOLD) break;
+    streak++;
+    key = previousDayKey(key);
+  }
+  return streak;
+}
+
+function buildReminder(done: number, pastStreak: number) {
+  const remaining = STREAK_THRESHOLD - done;
+  if (done >= STREAK_THRESHOLD) {
+    return {
+      title: "Streak secured",
+      body: `You have prayed ${done} times today. Your ${pastStreak + 1}-day prayer streak is safe.`,
+    };
+  }
+  if (pastStreak > 0) {
+    return {
+      title: "Keep your streak alive",
+      body: `You are on a ${pastStreak}-day prayer streak. You have prayed ${done} of ${STREAK_THRESHOLD} today — pray ${remaining} more to keep it.`,
+    };
+  }
+  if (done > 0) {
+    return {
+      title: "Time to pray",
+      body: `You have prayed ${done} of ${STREAK_THRESHOLD} today. ${remaining} more ${remaining === 1 ? "starts" : "start"} a new streak.`,
+    };
+  }
+  return {
+    title: "Time to pray",
+    body: "You have not prayed yet today. One prayer is all it takes to start a new streak.",
+  };
+}
+
 /**
- * Daily streak reminder (Vercel cron, 13:00 Africa/Lusaka — after the noon
- * prayer). Users who already reached the 3-prayer threshold today are skipped;
- * everyone else gets either a "your streak is at risk" push or a "start a new
- * streak" push. Requires CRON_SECRET when set (Vercel sends it automatically).
+ * Daily prayer streak reminder (Vercel cron, 13:00 Africa/Lusaka — after the
+ * noon prayer). Every message depends on the user's live prayer record for
+ * that day: users behind on prayers are nudged (streak at risk, or start a
+ * streak), and users who already reached the threshold get a "streak secured"
+ * note. Requires CRON_SECRET when set (Vercel sends it automatically).
  */
 export async function GET(request: NextRequest) {
   const secret = process.env.CRON_SECRET;
@@ -90,24 +128,9 @@ export async function GET(request: NextRequest) {
       const streaks =
         doc?.streaks && typeof doc.streaks === "object" ? doc.streaks : {};
       const done = completedIn(streaks[today]);
-      if (done >= STREAK_THRESHOLD) continue;
-
-      let streak = 0;
-      let key = previousDayKey(today);
-      for (let i = 0; i < 3660; i++) {
-        if (completedIn(streaks[key]) < STREAK_THRESHOLD) break;
-        streak++;
-        key = previousDayKey(key);
-      }
-
-      const remaining = STREAK_THRESHOLD - done;
-      const title = streak > 0 ? "Keep your streak alive" : "Time to pray";
-      const body =
-        streak > 0
-          ? `You are on a ${streak}-day prayer streak. You have prayed ${done} of ${STREAK_THRESHOLD} today — pray ${remaining} more to keep it.`
-          : done > 0
-            ? `You have prayed ${done} of ${STREAK_THRESHOLD} today. ${remaining} more ${remaining === 1 ? "starts" : "start"} a new streak.`
-            : "You have not prayed yet today. One prayer is all it takes to start a new streak.";
+      const pastStreak = streakThroughYesterday(streaks, today);
+      const { title, body } = buildReminder(done, pastStreak);
+      const remaining = Math.max(0, STREAK_THRESHOLD - done);
 
       for (const to of tokens) {
         messages.push({
