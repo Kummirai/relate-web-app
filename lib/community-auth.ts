@@ -207,6 +207,8 @@ export async function ensureIndexes(db: any) {
       db.collection("volunteer_office_applications").createIndex({ officeId: 1, createdAt: -1 }),
       db.collection("volunteer_office_applications").createIndex({ userId: 1, createdAt: -1 }),
       db.collection("volunteer_office_applications").createIndex({ status: 1, createdAt: -1 }),
+      db.collection("onboarding_induction").createIndex({ userId: 1 }, { unique: true }),
+      db.collection("onboarding_induction").createIndex({ status: 1, createdAt: 1 }),
     ]);
   } catch {}
 }
