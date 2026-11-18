@@ -51,6 +51,50 @@ export async function getAllPushTokens(
  */
 export const DEFAULT_PUSH_CHANNEL_ID = "requests";
 
+export type PushMessage = {
+  to: string;
+  title: string;
+  body: string;
+  data?: Record<string, unknown>;
+  channelId?: string;
+};
+
+/**
+ * Sends pre-built messages (different title/body per recipient) through the
+ * Expo push API in chunks of 100. Must be awaited by the caller — on serverless
+ * runtimes (Vercel) un-awaited promises are frozen once the response is flushed.
+ */
+export async function sendPushMessages(messages: PushMessage[]) {
+  const payload = messages
+    .filter((message) => message.to)
+    .map((message) => ({
+      to: message.to,
+      title: message.title,
+      body: message.body,
+      sound: "default",
+      priority: "high",
+      channelId: message.channelId || DEFAULT_PUSH_CHANNEL_ID,
+      data: message.data || {},
+    }));
+  if (!payload.length) return;
+  const CHUNK = 100;
+  try {
+    for (let i = 0; i < payload.length; i += CHUNK) {
+      const res = await fetch("https://exp.host/--/api/v2/push/send", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload.slice(i, i + CHUNK)),
+      });
+      if (!res.ok) {
+        const text = await res.text().catch(() => "");
+        console.error(`[push] Expo API ${res.status}: ${text.slice(0, 500)}`);
+      }
+    }
+  } catch (e) {
+    console.error("[push] Expo send failed", e);
+  }
+}
+
 /**
  * Delivery via the Expo push API. The API accepts at most 100 messages per
  * request, so large broadcasts (e.g. "notify all users") are sent in chunks.
@@ -66,29 +110,7 @@ export async function sendPushNotifications(
 ) {
   const unique = [...new Set(tokens.filter(Boolean))];
   if (!unique.length) return;
-  const CHUNK = 100;
-  const messages = unique.map((to) => ({
-    to,
-    title,
-    body,
-    sound: "default",
-    priority: "high",
-    channelId,
-    data,
-  }));
-  try {
-    for (let i = 0; i < messages.length; i += CHUNK) {
-      const res = await fetch("https://exp.host/--/api/v2/push/send", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(messages.slice(i, i + CHUNK)),
-      });
-      if (!res.ok) {
-        const text = await res.text().catch(() => "");
-        console.error(`[push] Expo API ${res.status}: ${text.slice(0, 500)}`);
-      }
-    }
-  } catch (e) {
-    console.error("[push] Expo send failed", e);
-  }
+  await sendPushMessages(
+    unique.map((to) => ({ to, title, body, data, channelId })),
+  );
 }
