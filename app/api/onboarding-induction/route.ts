@@ -139,32 +139,37 @@ export async function POST(request: NextRequest) {
       .findOne({ userId: uid });
     const submissionId = String(submission?._id || "");
 
-    const approverId = await getApproverId(db);
-    if (approverId) {
-      const title = "Onboarding & induction submitted";
-      const bodyText = `${String(user.name || "An admin")} submitted their onboarding and induction for approval.`;
-      const notificationData = {
-        route: "/onboarding-induction",
-        action: "review",
-        submissionId,
-        userId: uid,
-      };
-      await createNotification(db, approverId, {
-        type: "onboarding_induction",
-        title,
-        body: bodyText,
-        data: notificationData,
-      });
-      if (approverId !== uid) {
-        const tokens = await getUserPushTokens(db, approverId);
-        await sendPushNotifications(tokens, title, bodyText, notificationData);
+    try {
+      const approverId = await getApproverId(db);
+      if (approverId) {
+        const title = "Onboarding & induction submitted";
+        const bodyText = `${String(user.name || "An admin")} submitted their onboarding and induction for approval.`;
+        const notificationData = {
+          route: "/onboarding-induction",
+          action: "review",
+          submissionId,
+          userId: uid,
+        };
+        await createNotification(db, approverId, {
+          type: "onboarding_induction",
+          title,
+          body: bodyText,
+          data: notificationData,
+        });
+        if (approverId !== uid) {
+          const tokens = await getUserPushTokens(db, approverId);
+          await sendPushNotifications(tokens, title, bodyText, notificationData);
+        }
       }
+    } catch (error) {
+      console.error("[onboarding] submit notification failed", error);
     }
 
     return NextResponse.json({
       data: submission ? serializeOnboarding(submission) : null,
     });
-  } catch {
+  } catch (error) {
+    console.error("[onboarding] submit failed", error);
     return NextResponse.json({ error: "Failed to submit onboarding" }, { status: 500 });
   }
 }

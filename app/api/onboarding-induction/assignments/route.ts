@@ -85,21 +85,26 @@ export async function POST(request: NextRequest) {
       startDate: startDate.toISOString().slice(0, 10),
       dueDate: dueDate.toISOString().slice(0, 10),
     };
-    await createNotification(db, targetId, {
-      type: "onboarding_induction",
-      title,
-      body: bodyText,
-      data: notificationData,
-    });
-    if (targetId !== admin.id) {
-      const tokens = await getUserPushTokens(db, targetId);
-      await sendPushNotifications(tokens, title, bodyText, notificationData);
+    try {
+      await createNotification(db, targetId, {
+        type: "onboarding_induction",
+        title,
+        body: bodyText,
+        data: notificationData,
+      });
+      if (targetId !== admin.id) {
+        const tokens = await getUserPushTokens(db, targetId);
+        await sendPushNotifications(tokens, title, bodyText, notificationData);
+      }
+    } catch (error) {
+      console.error("[onboarding] assignment notification failed", error);
     }
 
     return NextResponse.json({
       data: submission ? serializeOnboarding(submission) : null,
     });
-  } catch {
+  } catch (error) {
+    console.error("[onboarding] assignment failed", error);
     return NextResponse.json({ error: "Failed to assign onboarding" }, { status: 500 });
   }
 }

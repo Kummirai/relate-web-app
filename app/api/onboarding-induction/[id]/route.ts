@@ -109,14 +109,18 @@ export async function PATCH(
       submissionId: id,
       status,
     };
-    await createNotification(db, userId, {
-      type: "onboarding_induction",
-      title,
-      body: bodyText,
-      data: notificationData,
-    });
-    const tokens = await getUserPushTokens(db, userId);
-    await sendPushNotifications(tokens, title, bodyText, notificationData);
+    try {
+      await createNotification(db, userId, {
+        type: "onboarding_induction",
+        title,
+        body: bodyText,
+        data: notificationData,
+      });
+      const tokens = await getUserPushTokens(db, userId);
+      await sendPushNotifications(tokens, title, bodyText, notificationData);
+    } catch (error) {
+      console.error("[onboarding] review notification failed", error);
+    }
 
     const updated = await db
       .collection(ONBOARDING_COLLECTION)
@@ -124,7 +128,8 @@ export async function PATCH(
     return NextResponse.json({
       data: updated ? serializeOnboarding(updated) : null,
     });
-  } catch {
+  } catch (error) {
+    console.error("[onboarding] review failed", error);
     return NextResponse.json({ error: "Failed to review submission" }, { status: 500 });
   }
 }
