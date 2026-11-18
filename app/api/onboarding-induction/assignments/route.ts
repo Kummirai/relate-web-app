@@ -78,15 +78,22 @@ export async function POST(request: NextRequest) {
       .findOne({ userId: targetId });
     const title = "Onboarding & induction assigned";
     const bodyText = `Your onboarding window is ${startDate.toISOString().slice(0, 10)} to ${dueDate.toISOString().slice(0, 10)}.`;
+    const notificationData = {
+      route: "/onboarding-induction",
+      action: "form",
+      submissionId: String(submission?._id || ""),
+      startDate: startDate.toISOString().slice(0, 10),
+      dueDate: dueDate.toISOString().slice(0, 10),
+    };
     await createNotification(db, targetId, {
       type: "onboarding_induction",
       title,
       body: bodyText,
-      data: { submissionId: String(submission?._id || ""), startDate, dueDate },
+      data: notificationData,
     });
     if (targetId !== admin.id) {
       const tokens = await getUserPushTokens(db, targetId);
-      await sendPushNotifications(tokens, title, bodyText);
+      await sendPushNotifications(tokens, title, bodyText, notificationData);
     }
 
     return NextResponse.json({

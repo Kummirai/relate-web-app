@@ -72,6 +72,7 @@ export async function sendPushNotifications(
     title,
     body,
     sound: "default",
+    priority: "high",
     channelId,
     data,
   }));

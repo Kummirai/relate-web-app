@@ -31,6 +31,7 @@ const BOOLEAN_KEYS = [
 
 export type OnboardingAnswers = Record<(typeof BOOLEAN_KEYS)[number], boolean> & {
   note: string;
+  reasons: Record<string, string>;
 };
 
 export type OnboardingStatus =
@@ -41,7 +42,7 @@ export type OnboardingStatus =
   | "retake";
 
 export function emptyAnswers(): OnboardingAnswers {
-  const answers = { note: "" } as OnboardingAnswers;
+  const answers = { note: "", reasons: {} } as OnboardingAnswers;
   for (const key of BOOLEAN_KEYS) {
     answers[key] = false;
   }
@@ -59,6 +60,17 @@ export function sanitizeAnswers(raw: unknown): OnboardingAnswers {
   }
   answers.note =
     typeof source.note === "string" ? source.note.trim().slice(0, 2000) : "";
+  const rawReasons = source.reasons;
+  if (rawReasons && typeof rawReasons === "object" && !Array.isArray(rawReasons)) {
+    for (const [key, value] of Object.entries(rawReasons)) {
+      if (
+        (BOOLEAN_KEYS as readonly string[]).includes(key) &&
+        typeof value === "string"
+      ) {
+        answers.reasons[key] = value.trim().slice(0, 500);
+      }
+    }
+  }
   return answers;
 }
 
@@ -87,7 +99,10 @@ export function isApproverEmail(email: unknown): boolean {
 }
 
 export async function getApproverId(db: any): Promise<string | null> {
-  const user = await db.collection("user").findOne({ email: ONBOARDING_APPROVER_EMAIL });
+  const escaped = ONBOARDING_APPROVER_EMAIL.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const user = await db.collection("user").findOne({
+    email: { $regex: `^${escaped}$`, $options: "i" },
+  });
   if (!user) return null;
   return String(user.id || user._id?.toString() || "");
 }
@@ -98,7 +113,7 @@ export function serializeOnboarding(doc: any) {
     userId: String(doc.userId || ""),
     userName: String(doc.userName || ""),
     userEmail: String(doc.userEmail || ""),
-    answers: { ...emptyAnswers(), ...(doc.answers || {}) } as OnboardingAnswers,
+    answers: { ...emptyAnswers(), ...sanitizeAnswers(doc.answers || {}) } as OnboardingAnswers,
     status: doc.status as OnboardingStatus,
     startDate: serializeDate(doc.startDate),
     dueDate: serializeDate(doc.dueDate),

@@ -103,14 +103,20 @@ export async function PATCH(
             ? `Your onboarding and induction needs attention: ${reviewNote}`
             : "Your onboarding and induction was not approved yet. Please review and resubmit.";
 
+    const notificationData = {
+      route: "/onboarding-induction",
+      action: status === "retake" ? "retake" : "form",
+      submissionId: id,
+      status,
+    };
     await createNotification(db, userId, {
       type: "onboarding_induction",
       title,
       body: bodyText,
-      data: { submissionId: id, status },
+      data: notificationData,
     });
     const tokens = await getUserPushTokens(db, userId);
-    await sendPushNotifications(tokens, title, bodyText);
+    await sendPushNotifications(tokens, title, bodyText, notificationData);
 
     const updated = await db
       .collection(ONBOARDING_COLLECTION)

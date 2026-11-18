@@ -143,15 +143,21 @@ export async function POST(request: NextRequest) {
     if (approverId) {
       const title = "Onboarding & induction submitted";
       const bodyText = `${String(user.name || "An admin")} submitted their onboarding and induction for approval.`;
+      const notificationData = {
+        route: "/onboarding-induction",
+        action: "review",
+        submissionId,
+        userId: uid,
+      };
       await createNotification(db, approverId, {
         type: "onboarding_induction",
         title,
         body: bodyText,
-        data: { submissionId, userId: uid },
+        data: notificationData,
       });
       if (approverId !== uid) {
         const tokens = await getUserPushTokens(db, approverId);
-        await sendPushNotifications(tokens, title, bodyText);
+        await sendPushNotifications(tokens, title, bodyText, notificationData);
       }
     }
 
