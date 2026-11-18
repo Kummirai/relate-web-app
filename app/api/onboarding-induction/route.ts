@@ -109,6 +109,11 @@ export async function POST(request: NextRequest) {
     const existing = await db
       .collection(ONBOARDING_COLLECTION)
       .findOne({ userId: uid });
+    const previousAttempt = Number(existing?.attempt) || 0;
+    const attempt =
+      existing && existing.status === "pending"
+        ? Math.max(previousAttempt, 1)
+        : previousAttempt + 1;
     const update: Record<string, any> = {
       $set: {
         userId: uid,
@@ -118,17 +123,15 @@ export async function POST(request: NextRequest) {
         status: "pending",
         submittedAt: now,
         updatedAt: now,
+        attempt,
       },
       $unset: {
         reviewNote: "",
         reviewedBy: "",
         reviewedAt: "",
       },
-      $setOnInsert: { createdAt: now, attempt: 1 },
+      $setOnInsert: { createdAt: now },
     };
-    if (existing && existing.status !== "pending") {
-      update.$inc = { attempt: 1 };
-    }
 
     await db
       .collection(ONBOARDING_COLLECTION)
