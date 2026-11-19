@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getDb } from "@/lib/mongodb";
 import { createNotification } from "@/lib/inapp-notify";
-import { sendPushMessages, type PushMessage } from "@/lib/push";
-import { ONBOARDING_COLLECTION } from "@/lib/onboarding-induction";
+import { sendPushMessages, getUserPushTokens, type PushMessage } from "@/lib/push";
+import { ONBOARDING_COLLECTION, getApproverId } from "@/lib/onboarding-induction";
 
 const TIME_ZONE = "Africa/Lusaka";
 /** Records the assignee still has to act on. "pending" means it is already with the approver. */
@@ -56,10 +56,12 @@ function buildReminder(status: string, daysLeft: number, dueKey: string) {
 }
 
 /**
- * Daily reminder for admins with an outstanding onboarding/induction record
- * (assigned and not yet submitted, sent back for retake, or rejected). The
- * message follows the live record: days left, due today, or overdue, and
- * stops on its own once the record is submitted for approval.
+ * Daily onboarding/induction nudge, both directions:
+ * - assignees with an outstanding record (assigned, retake or rejected) get a
+ *   reminder that follows the live record — days left, due today, or overdue;
+ * - the approver gets a reminder for each submission that has been waiting on
+ *   review for a day or more.
+ * Each stops on its own once the record moves on.
  */
 export async function GET(request: NextRequest) {
   const secret = process.env.CRON_SECRET;
@@ -150,10 +152,51 @@ export async function GET(request: NextRequest) {
       }
     }
 
+    // Approver side: submissions that have been waiting on review for a day
+    // or more. Today's submissions wait for tomorrow's run.
+    let pendingReview = 0;
+    const approverId = await getApproverId(db);
+    if (approverId) {
+      const pending = await db
+        .collection(ONBOARDING_COLLECTION)
+        .find({ status: "pending", submittedAt: { $type: "date" } })
+        .toArray();
+      const approverTokens = [
+        ...new Set(await getUserPushTokens(db, approverId)),
+      ];
+      for (const doc of pending) {
+        const waiting = daysBetween(dayKey(new Date(doc.submittedAt)), today);
+        if (waiting < 1) continue;
+        pendingReview++;
+        const who = String(doc.userName || doc.userEmail || "An admin");
+        const title = "Onboarding waiting for your review";
+        const body = `${who} submitted their onboarding and induction ${
+          waiting === 1 ? "yesterday" : `${waiting} days ago`
+        } — it is still waiting for your approval.`;
+        const data = {
+          route: "/onboarding-induction",
+          action: "review",
+          submissionId: String(doc._id),
+          status: "pending",
+          reviewReminder: true,
+        };
+        await createNotification(db, approverId, {
+          type: "onboarding_induction",
+          title,
+          body,
+          data,
+        });
+        for (const to of approverTokens) {
+          messages.push({ to, title, body, data });
+        }
+      }
+    }
+
     await sendPushMessages(messages);
     return NextResponse.json({
       day: today,
       records: docs.length,
+      pendingReview,
       sent: messages.length,
     });
   } catch (error) {
