@@ -35,6 +35,24 @@ function monthlyCounts(records: { createdAt?: unknown }[]): Map<string, number> 
   return counts;
 }
 
+// Per-club monthly counts, keyed by the club slug stored on the record.
+function monthlyCountsByClub(
+  records: { clubSlug?: unknown; createdAt?: unknown }[],
+): Map<string, Map<string, number>> {
+  const byClub = new Map<string, Map<string, number>>();
+  for (const record of records) {
+    const slug = typeof record.clubSlug === "string" ? record.clubSlug.trim() : "";
+    if (!slug) continue;
+    const date = toDate(record.createdAt);
+    if (!date) continue;
+    const bucket = byClub.get(slug) ?? new Map<string, number>();
+    const month = monthKey(date);
+    bucket.set(month, (bucket.get(month) ?? 0) + 1);
+    byClub.set(slug, bucket);
+  }
+  return byClub;
+}
+
 function cumulative(counts: Map<string, number>, months: { key: string }[]): number[] {
   const first = months[0].key;
   let running = 0;
@@ -67,7 +85,7 @@ export async function GET(request: NextRequest) {
       userDocs,
       familyDocs,
       clubMemberDocs,
-      clubEventDocs,
+      clubDocs,
       app,
     ] = await Promise.all([
       db.collection("user").countDocuments(),
@@ -77,10 +95,10 @@ export async function GET(request: NextRequest) {
       db.collection("user").find({}, { projection: { createdAt: 1 } }).toArray(),
       db.collection("familyrecords").find({}, { projection: { createdAt: 1 } }).toArray(),
       db.collection("club_join_applications")
-        .find({ status: "active" }, { projection: { createdAt: 1 } })
+        .find({ status: "active" }, { projection: { createdAt: 1, clubSlug: 1 } })
         .toArray(),
-      db.collection("community_events")
-        .find({ clubSlug: { $exists: true, $nin: [null, ""] } }, { projection: { createdAt: 1 } })
+      db.collection("clubs")
+        .find({}, { projection: { slug: 1, name: 1, color: 1, colorDark: 1 } })
         .toArray(),
       getAppDownloadStats(),
     ]);
@@ -96,9 +114,52 @@ export async function GET(request: NextRequest) {
 
     const userTotals = cumulative(monthlyCounts(userDocs), months);
     const familyTotals = cumulative(monthlyCounts(familyDocs), months);
-    const clubMemberTotals = cumulative(monthlyCounts(clubMemberDocs), months);
-    const clubEventTotals = cumulative(monthlyCounts(clubEventDocs), months);
     const downloadTotals = cumulative(downloads, months);
+
+    const membersByClub = monthlyCountsByClub(clubMemberDocs);
+    type ClubMeta = { name: string; color: string };
+    const clubInfo = new Map<string, ClubMeta>();
+    for (const club of clubDocs as any[]) {
+      clubInfo.set(club.slug, {
+        name: club.name || club.slug,
+        color: club.colorDark || club.color || "",
+      });
+    }
+    const clubOrder = (clubDocs as any[]).map((club) => club.slug as string);
+    for (const slug of membersByClub.keys()) {
+      if (clubInfo.has(slug)) continue;
+      clubInfo.set(slug, {
+        name: slug.replace(/(^|-)([a-z])/g, (_m, dash: string, c: string) =>
+          `${dash === "-" ? " " : ""}${c.toUpperCase()}`,
+        ),
+        color: "",
+      });
+      clubOrder.push(slug);
+    }
+    // Age ladder order, so the chips read Sprout classes → Sprout → Surge …
+    const LADDER = [
+      "sprout-kids",
+      "sprout-tweens",
+      "sprout-teens",
+      "sprout",
+      "surge",
+      "pulse",
+      "prime",
+      "anchor",
+      "spark",
+      "synergy",
+    ];
+    clubOrder.sort((a, b) => {
+      const ai = LADDER.indexOf(a);
+      const bi = LADDER.indexOf(b);
+      return (ai === -1 ? LADDER.length : ai) - (bi === -1 ? LADDER.length : bi);
+    });
+    const clubSeries = clubOrder.map((slug) => ({
+      slug,
+      name: clubInfo.get(slug)?.name ?? slug,
+      color: clubInfo.get(slug)?.color ?? "",
+      members: cumulative(membersByClub.get(slug) ?? new Map<string, number>(), months),
+    }));
 
     return NextResponse.json({
       data: {
@@ -108,10 +169,9 @@ export async function GET(request: NextRequest) {
             label: month.label,
             users: userTotals[index],
             families: familyTotals[index],
-            clubMembers: clubMemberTotals[index],
-            clubEvents: clubEventTotals[index],
             downloads: downloadTotals[index],
           })),
+          clubs: clubSeries,
         },
       },
     });

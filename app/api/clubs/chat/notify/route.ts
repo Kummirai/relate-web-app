@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { ObjectId } from "mongodb";
 import { getDb } from "@/lib/mongodb";
 import { sendPushMessages } from "@/lib/push";
 
@@ -54,13 +55,41 @@ export async function POST(request: NextRequest) {
       .filter((id: string) => id && id !== senderId);
     if (!userIds.length) return NextResponse.json({ ok: true });
 
-    const [club, tokens] = await Promise.all([
+    const validObjectIds = userIds
+      .filter((id) => ObjectId.isValid(id))
+      .map((id) => new ObjectId(id));
+
+    const [club, tokens, users] = await Promise.all([
       db.collection("clubs").findOne({ slug }, { projection: { name: 1 } }),
       db
         .collection("push_tokens")
         .find({ userId: { $in: userIds } })
         .toArray(),
+      db
+        .collection("user")
+        .find(
+          {
+            $or: [
+              { id: { $in: userIds } },
+              ...(validObjectIds.length ? [{ _id: { $in: validObjectIds } }] : []),
+            ],
+          },
+          { projection: { id: 1, mutedClubChats: 1 } },
+        )
+        .toArray(),
     ]);
+
+    // Members who muted this club's chat stay silent.
+    const mutedIds = new Set(
+      users
+        .filter(
+          (u: any) =>
+            Array.isArray(u.mutedClubChats) && u.mutedClubChats.includes(slug),
+        )
+        .map((u: any) => String(u.id ?? u._id)),
+    );
+    const targets = tokens.filter((t: any) => !mutedIds.has(String(t.userId)));
+
     const clubName = String(club?.name ?? "Club chat");
     const preview = text
       ? text.length > 120
@@ -69,7 +98,7 @@ export async function POST(request: NextRequest) {
       : "Sent a photo";
 
     await sendPushMessages(
-      tokens
+      targets
         .map((t: any) => String(t.token ?? ""))
         .filter(Boolean)
         .map((to: string) => ({
