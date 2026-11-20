@@ -79,16 +79,40 @@ export async function GET(
     const rows = await db
       .collection(CLUB_JOIN_COL)
       .find(filter)
-      .project({ name: 1, createdAt: 1 })
+      .project({ name: 1, createdAt: 1, userId: 1 })
       .sort({ createdAt: -1 })
       .limit(60)
       .toArray();
 
-    const members = rows.map((row: any) => ({
-      firstName: String(row.name ?? "").trim().split(/\s+/)[0] || "Member",
-      joinedAt:
-        row.createdAt instanceof Date ? row.createdAt.toISOString() : null,
-    }));
+    // Avatars live on the user record; chat bubbles key members by the same id
+    // that Supabase messages carry as sender_id.
+    const userIds = rows
+      .map((row: any) => String(row.userId ?? ""))
+      .filter(Boolean);
+    const imageById = new Map<string, string>();
+    if (userIds.length) {
+      const users = await db
+        .collection("user")
+        .find({ id: { $in: userIds } })
+        .project({ id: 1, image: 1 })
+        .toArray();
+      for (const u of users) {
+        const id = String(u.id ?? "");
+        const image = typeof u.image === "string" ? u.image : "";
+        if (id && image) imageById.set(id, image);
+      }
+    }
+
+    const members = rows.map((row: any) => {
+      const id = String(row.userId ?? "");
+      return {
+        id,
+        firstName: String(row.name ?? "").trim().split(/\s+/)[0] || "Member",
+        image: imageById.get(id) ?? null,
+        joinedAt:
+          row.createdAt instanceof Date ? row.createdAt.toISOString() : null,
+      };
+    });
 
     return publicJson(
       { count, members },
