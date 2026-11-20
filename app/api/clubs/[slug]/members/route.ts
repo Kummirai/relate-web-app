@@ -8,7 +8,7 @@ import {
   publicTooMany,
 } from "@/lib/public-api/render";
 import { getDb } from "@/lib/mongodb";
-import { resolveSession, findUserById } from "@/lib/community-auth";
+import { resolveSession, findUserById, fetchParticipants } from "@/lib/community-auth";
 import { ensureClubJoinIndexes } from "@/lib/club-join";
 
 const CLUB_JOIN_COL = "club_join_applications";
@@ -85,30 +85,19 @@ export async function GET(
       .toArray();
 
     // Avatars live on the user record; chat bubbles key members by the same id
-    // that Supabase messages carry as sender_id.
+    // that Supabase messages carry as sender_id. fetchParticipants matches both
+    // `id` and `_id` user docs, since not every record carries better-auth's id.
     const userIds = rows
       .map((row: any) => String(row.userId ?? ""))
       .filter(Boolean);
-    const imageById = new Map<string, string>();
-    if (userIds.length) {
-      const users = await db
-        .collection("user")
-        .find({ id: { $in: userIds } })
-        .project({ id: 1, image: 1 })
-        .toArray();
-      for (const u of users) {
-        const id = String(u.id ?? "");
-        const image = typeof u.image === "string" ? u.image : "";
-        if (id && image) imageById.set(id, image);
-      }
-    }
+    const people = await fetchParticipants(db, userIds);
 
     const members = rows.map((row: any) => {
       const id = String(row.userId ?? "");
       return {
         id,
         firstName: String(row.name ?? "").trim().split(/\s+/)[0] || "Member",
-        image: imageById.get(id) ?? null,
+        image: people.get(id)?.image ?? null,
         joinedAt:
           row.createdAt instanceof Date ? row.createdAt.toISOString() : null,
       };
