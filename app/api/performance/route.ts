@@ -197,19 +197,30 @@ export async function GET(request: NextRequest) {
       yearEntries = parsed.filter((entry: any) => entry.period.year === year);
     }
 
-    // One entry per month: the most recently created report wins.
+    // One entry per month: the most recently written report wins, and an edit
+    // (updatedAt) beats an older version even though createdAt never changes.
+    const versionOf = (doc: any): number => {
+      const at = doc?.updatedAt ?? doc?.createdAt;
+      const t = at ? new Date(at).getTime() : 0;
+      return Number.isFinite(t) ? t : 0;
+    };
     const byMonth = new Map<number, any>();
     for (const entry of yearEntries) {
       const month = entry.period.month as number;
-      if (!byMonth.has(month)) byMonth.set(month, entry.doc);
+      const current = byMonth.get(month);
+      if (!current || versionOf(entry.doc) > versionOf(current)) {
+        byMonth.set(month, entry.doc);
+      }
     }
 
+    // The coffer target is annual, so every month reported this year counts —
+    // trimming to the last 10 months silently dropped January once November
+    // was filed, making income (and progress) appear to fall after an edit.
     const ordered = [...byMonth.entries()].sort((a, b) => a[0] - b[0]);
-    const windowed = ordered.slice(-10);
-    // What the previous report left in the account when this window opened.
-    const openingBalance = amount(windowed[0]?.[1]?.income, "balanceBroughtDown");
+    // What the previous report left in the account when this year opened.
+    const openingBalance = amount(ordered[0]?.[1]?.income, "balanceBroughtDown");
 
-    const months = windowed.map(([month, doc]) => {
+    const months = ordered.map(([month, doc]) => {
       const income = incomeOf(doc);
       const expenses = expenditureOf(doc);
       return {
@@ -231,10 +242,10 @@ export async function GET(request: NextRequest) {
       { income: 0, expenses: 0 },
     );
 
-    // Every income key that appears in the windowed reports, with the amount
+    // Every income key that appears in this year's reports, with the amount
     // actually filed under it.
     const mixKeys = new Set<string>();
-    for (const [, doc] of windowed) {
+    for (const [, doc] of ordered) {
       for (const [key, value] of Object.entries(doc?.income ?? {})) {
         if (/description$/i.test(key) || isCarried(key)) continue;
         const n = typeof value === "string" ? Number(value) : value;
@@ -246,7 +257,7 @@ export async function GET(request: NextRequest) {
     const mixByLabel = new Map<string, { key: string; label: string; value: number }>();
     for (const key of mixKeys) {
       const label = INCOME_LABELS[key] ?? humanize(key);
-      const value = windowed.reduce(
+      const value = ordered.reduce(
         (sum, [, doc]) => sum + amount(doc?.income, key),
         0,
       );
@@ -257,7 +268,7 @@ export async function GET(request: NextRequest) {
     }
     const incomeMix = [...mixByLabel.values()].sort((a, b) => b.value - a.value);
 
-    const latestDoc = yearEntries[0]?.doc ?? null;
+    const latestDoc = ordered[ordered.length - 1]?.[1] ?? null;
     const latestImpact = latestDoc?.impact
       ? {
           families: num(latestDoc.impact.families),
