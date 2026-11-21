@@ -16,12 +16,8 @@ export type StoreCategory = (typeof STORE_CATEGORIES)[number];
 
 export const STORE_COLLECTION = "store_items";
 
-export function ensureStoreIndexes(db: any) {
-  return Promise.all([
-    db.collection(STORE_COLLECTION).createIndex({ createdAt: -1 }),
-    db.collection(STORE_COLLECTION).createIndex({ active: 1, createdAt: -1 }),
-    db.collection(STORE_COLLECTION).createIndex({ category: 1 }),
-  ]);
+export function ensureStoreIndexes(_db: any) {
+  return Promise.resolve();
 }
 
 export function serializeStoreItem(doc: any) {

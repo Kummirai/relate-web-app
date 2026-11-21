@@ -32,12 +32,8 @@ export const VOLUNTEER_AREAS = [
 
 export const VOLUNTEER_COLLECTION = "volunteer_requests";
 
-export function ensureVolunteerIndexes(db: any) {
-  return Promise.all([
-    db.collection(VOLUNTEER_COLLECTION).createIndex({ createdAt: -1 }),
-    db.collection(VOLUNTEER_COLLECTION).createIndex({ status: 1, createdAt: -1 }),
-    db.collection(VOLUNTEER_COLLECTION).createIndex({ email: 1 }),
-  ]);
+export function ensureVolunteerIndexes(_db: any) {
+  return Promise.resolve();
 }
 
 export function serializeVolunteer(doc: any) {

@@ -98,24 +98,8 @@ const REF_ALPHABET = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
 /** Every membership ID is exactly this many characters long. */
 const REF_LENGTH = 8;
 
-let referenceIndex: Promise<unknown> | null = null;
-
-/** One-time indexes: unique membership IDs (legacy rows have none) + the /me lookup. */
-export function ensureClubJoinIndexes(db: Awaited<ReturnType<typeof getDb>>) {
-  if (!referenceIndex) {
-    referenceIndex = Promise.all([
-      db
-        .collection(CLUB_JOIN_COL)
-        .createIndex(
-          { reference: 1 },
-          { unique: true, partialFilterExpression: { reference: { $exists: true } } },
-        ),
-      db.collection(CLUB_JOIN_COL).createIndex({ userId: 1, createdAt: -1 }),
-    ]).catch((e) => {
-      console.error("[club-join] indexes failed:", e?.message);
-    });
-  }
-  return referenceIndex;
+export function ensureClubJoinIndexes(_db: Awaited<ReturnType<typeof getDb>>) {
+  return Promise.resolve();
 }
 
 /**

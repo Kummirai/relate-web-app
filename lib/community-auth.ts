@@ -5,11 +5,22 @@ import { getDb } from "./mongodb";
 
 export type ResolvedUser = { id: string; name: string | null };
 
+const sessionByRequest = new WeakMap<NextRequest, Promise<any>>();
+
+function getSession(request: NextRequest): Promise<any> {
+  const pending = sessionByRequest.get(request);
+  if (pending) return pending;
+  const next = auth.api.getSession({ headers: request.headers }).catch((err) => {
+    sessionByRequest.delete(request);
+    throw err;
+  });
+  sessionByRequest.set(request, next);
+  return next;
+}
+
 export async function resolveUser(request: NextRequest): Promise<string | null> {
   try {
-    const session = await auth.api.getSession({
-      headers: request.headers,
-    });
+    const session = await getSession(request);
     if (!session?.user) return null;
     return session.user.id;
   } catch {
@@ -31,9 +42,7 @@ export async function findUserById(db: any, id: string): Promise<any | null> {
 /** Resolves the session and returns the user only when their role is "admin". */
 export async function requireAdmin(request: NextRequest): Promise<ResolvedUser | null> {
   try {
-    const session = await auth.api.getSession({
-      headers: request.headers,
-    });
+    const session = await getSession(request);
     if (!session?.user) return null;
     const db = await getDb();
     const user = await findUserById(db, session.user.id);
@@ -71,9 +80,7 @@ export async function resolveAdminOrOwner(
  */
 export async function requireGroupCreator(request: NextRequest): Promise<any | null> {
   try {
-    const session = await auth.api.getSession({
-      headers: request.headers,
-    });
+    const session = await getSession(request);
     if (!session?.user) return null;
     const db = await getDb();
     const user = await findUserById(db, session.user.id);
@@ -87,9 +94,7 @@ export async function requireGroupCreator(request: NextRequest): Promise<any | n
 
 export async function resolveSession(request: NextRequest): Promise<ResolvedUser | null> {
   try {
-    const session = await auth.api.getSession({
-      headers: request.headers,
-    });
+    const session = await getSession(request);
     if (!session?.user) return null;
     return { id: session.user.id, name: session.user.name || null };
   } catch {
@@ -99,119 +104,7 @@ export async function resolveSession(request: NextRequest): Promise<ResolvedUser
 
 export type ParticipantUser = { id: string; name: string; email: string; image: string | null };
 
-let indexesEnsured = false;
-
-export async function ensureIndexes(db: any) {
-  if (indexesEnsured) return;
-  indexesEnsured = true;
-  try {
-    await Promise.all([
-      db.collection("community_skills").createIndex({ createdAt: -1 }),
-      db.collection("community_jobs").createIndex({ createdAt: -1 }),
-      db.collection("community_events").createIndex({ createdAt: -1 }),
-      // Club-scoped card reads filter on clubSlug then sort by createdAt.
-      db.collection("community_events").createIndex({ clubSlug: 1, createdAt: -1 }),
-      db.collection("community_groups").createIndex({ clubSlug: 1, createdAt: -1 }),
-      db.collection("community_request_comments").createIndex({ requestId: 1, createdAt: 1 }),
-      db.collection("community_group_comments").createIndex({ groupId: 1, createdAt: 1 }),
-      db.collection("event_registrations").createIndex({ eventId: 1 }),
-      db.collection("event_registrations").createIndex({ eventId: 1, userId: 1 }),
-      db.collection("community_groups").createIndex({ createdAt: -1 }),
-      db.collection("community_groups").createIndex({ inviteCode: 1 }, { unique: true, sparse: true }),
-      db.collection("community_requests").createIndex({ createdAt: -1 }),
-      db.collection("help_requests").createIndex({ createdAt: -1 }),
-      db.collection("help_requests").createIndex({ userId: 1, createdAt: -1 }),
-      db.collection("help_requests").createIndex({ status: 1, createdAt: -1 }),
-      db.collection("community_devotionals").createIndex({ createdAt: -1 }),
-      db.collection("community_devotionals").createIndex({ authorId: 1 }),
-      db.collection("community_skill_connections").createIndex({ skillId: 1 }),
-      db.collection("community_skill_connections").createIndex({ skillId: 1, userId: 1 }, { unique: true }),
-      db.collection("community_job_applications").createIndex({ jobId: 1 }),
-      db.collection("community_job_applications").createIndex({ jobId: 1, userId: 1 }, { unique: true }),
-      db.collection("club_registrations").createIndex({ clubSlug: 1, createdAt: -1 }),
-      db.collection("club_registrations").createIndex({ userId: 1, clubSlug: 1, createdAt: -1 }),
-      db.collection("user").createIndex({ id: 1 }),
-      db.collection("push_tokens").createIndex({ userId: 1 }),
-      db.collection("notifications").createIndex({ userId: 1, createdAt: -1 }),
-      db.collection("notifications").createIndex({ userId: 1, read: 1 }),
-      db.collection("familyrecords").createIndex({ createdAt: -1 }),
-      db.collection("user_activity").createIndex({ userId: 1, createdAt: -1 }),
-      db.collection("user_activity").createIndex({ type: 1, createdAt: -1 }),
-      db.collection("user_bookmarks").createIndex({ userId: 1, section: 1, itemId: 1 }, { unique: true }),
-      db.collection("user_bookmarks").createIndex({ userId: 1, createdAt: -1 }),
-      db.collection("user_study_progress").createIndex({ userId: 1, slug: 1 }),
-      db.collection("user_streaks").createIndex({ userId: 1 }),
-      db.collection("reading_streaks").createIndex({ userId: 1 }),
-      db.collection("user_prayer_preferences").createIndex({ userId: 1 }),
-      db.collection("quiz_registrations").createIndex({ createdAt: -1 }),
-      db.collection("quiz_leaderboard").createIndex({ name: 1 }),
-      db.collection("bible_versions").createIndex({ version: 1 }),
-      db.collection("bible_versions").createIndex({ version: 1, "verses.book": 1, "verses.chapter": 1 }),
-      db.collection("financial_reports").createIndex({ createdAt: -1 }),
-      db.collection("financial_reports").createIndex({ status: 1, createdAt: -1 }),
-      db.collection("community_social_joins").createIndex({ userId: 1, status: 1 }),
-      db.collection("community_social_joins").createIndex({ status: 1, createdAt: -1 }),
-      // User admin search + listing
-      db.collection("user").createIndex({ createdAt: -1 }),
-      db.collection("user").createIndex({ name: 1, email: 1 }),
-      // Financial report action log queries
-      db.collection("familyrecords").createIndex({ "actionLog.date": 1 }),
-      // Admin help request triage by assignee
-      db.collection("help_requests").createIndex({ assignedTo: 1, createdAt: -1 }),
-      // School grant applications
-      db.collection("school_grants").createIndex({ createdAt: -1 }),
-      db.collection("school_grants").createIndex({ status: 1, createdAt: -1 }),
-      db.collection("school_grants").createIndex({ userId: 1, createdAt: -1 }),
-      db.collection("school_grants").createIndex({ assignedTo: 1, createdAt: -1 }),
-      // Study progress sorted listing
-      db.collection("user_study_progress").createIndex({ userId: 1, startedAt: -1 }),
-      // Financial report period lookups
-      db.collection("financial_reports").createIndex({ period: 1, status: 1, createdAt: -1 }),
-      // Seasonal appraisals — inbox by subject, review backlog by status
-      db.collection("appraisals").createIndex({ subjectUserId: 1, createdAt: -1 }),
-      db.collection("appraisals").createIndex({ status: 1, createdAt: -1 }),
-      db.collection("appraisals").createIndex({ type: 1, season: 1, seasonYear: 1, status: 1 }),
-      // Board governance — upcoming meetings, minutes archive, task lookups
-      db.collection("board_meetings").createIndex({ scheduledDate: 1, status: 1 }),
-      db.collection("board_meetings").createIndex({ status: 1, scheduledDate: -1 }),
-      db.collection("board_minutes").createIndex({ meetingId: 1 }, { unique: true }),
-      db.collection("board_minutes").createIndex({ publishedAt: -1 }),
-      db.collection("board_minutes").createIndex({ "actionItems.assigneeId": 1 }),
-      // Quiz sessions sorted listing
-      db.collection("quiz_sessions").createIndex({ session: 1 }, { unique: true }),
-      // Interactive reading responses — one doc per user × publication × day
-      db.collection("user_reading_responses").createIndex({ userId: 1, publicationId: 1, date: 1 }, { unique: true }),
-      db.collection("user_reading_responses").createIndex({ userId: 1, publicationId: 1 }),
-      // Club chat messages — newest-first per channel, ordered pagination
-      db.collection("club_chat_messages").createIndex({ clubSlug: 1, createdAt: -1 }),
-      db.collection("club_chat_messages").createIndex({ userId: 1, createdAt: -1 }),
-      // Camp registrations — one open sign-up per account × edition, newest first
-      db.collection("camp_registrations").createIndex({ userId: 1, campSlug: 1, edition: 1 }),
-      db.collection("camp_registrations").createIndex({ createdAt: -1 }),
-      // Sprout honor progress — one record per account × honor
-      db.collection("honor_progress").createIndex({ userId: 1, badgeId: 1 }, { unique: true }),
-      db.collection("honor_progress").createIndex({ userId: 1, status: 1, updatedAt: -1 }),
-      // Skills progress — one record per account × skill × level
-      db.collection("skill_progress").createIndex({ userId: 1, skillId: 1, levelId: 1 }, { unique: true }),
-      db.collection("skill_progress").createIndex({ userId: 1, status: 1, updatedAt: -1 }),
-      // Module progress — one record per account × curriculum module
-      db.collection("module_progress").createIndex({ userId: 1, moduleId: 1 }, { unique: true }),
-      db.collection("module_progress").createIndex({ userId: 1, skillId: 1 }),
-      // Club services marketplace — claim by status, "my work" by claimer
-      db.collection("club_services").createIndex({ status: 1, createdAt: -1 }),
-      db.collection("club_services").createIndex({ acceptedById: 1, status: 1 }),
-      db.collection("club_services").createIndex({ posterId: 1, createdAt: -1 }),
-      // Volunteer offices + applications
-      db.collection("volunteer_offices").createIndex({ status: 1, createdAt: -1 }),
-      db.collection("volunteer_offices").createIndex({ clubSlug: 1, createdAt: -1 }),
-      db.collection("volunteer_office_applications").createIndex({ officeId: 1, createdAt: -1 }),
-      db.collection("volunteer_office_applications").createIndex({ userId: 1, createdAt: -1 }),
-      db.collection("volunteer_office_applications").createIndex({ status: 1, createdAt: -1 }),
-      db.collection("onboarding_induction").createIndex({ userId: 1 }, { unique: true }),
-      db.collection("onboarding_induction").createIndex({ status: 1, createdAt: 1 }),
-    ]);
-  } catch {}
-}
+export async function ensureIndexes(_db: any) {}
 
 export async function fetchParticipants(db: any, userIds: string[]): Promise<Map<string, ParticipantUser>> {
   const map = new Map<string, ParticipantUser>();

@@ -9,7 +9,6 @@ import {
 } from "@/lib/public-api/render";
 import { getDb } from "@/lib/mongodb";
 import { resolveSession, findUserById, fetchParticipants } from "@/lib/community-auth";
-import { ensureClubJoinIndexes } from "@/lib/club-join";
 
 const CLUB_JOIN_COL = "club_join_applications";
 
@@ -46,18 +45,17 @@ export async function GET(
     }
 
     const db = await getDb();
-    await ensureClubJoinIndexes(db);
 
-    const userDoc = await findUserById(db, session.id);
+    const [userDoc, mine] = await Promise.all([
+      findUserById(db, session.id),
+      db.collection(CLUB_JOIN_COL).findOne(
+        { userId: session.id, status: "active" },
+        { sort: { createdAt: -1 }, projection: { clubSlug: 1 } },
+      ),
+    ]);
     const isAdmin = userDoc?.role === "admin";
 
     if (!isAdmin) {
-      const mine = await db
-        .collection(CLUB_JOIN_COL)
-        .findOne(
-          { userId: session.id, status: "active" },
-          { sort: { createdAt: -1 }, projection: { clubSlug: 1 } },
-        );
       const mySlug = String(mine?.clubSlug ?? "");
       const covered =
         mySlug === clubSlug ||
@@ -75,14 +73,16 @@ export async function GET(
         ? { status: "active", clubSlug: { $in: SPROUT_SLUGS } }
         : { status: "active", clubSlug };
 
-    const count = await db.collection(CLUB_JOIN_COL).countDocuments(filter);
-    const rows = await db
-      .collection(CLUB_JOIN_COL)
-      .find(filter)
-      .project({ name: 1, createdAt: 1, userId: 1 })
-      .sort({ createdAt: -1 })
-      .limit(60)
-      .toArray();
+    const [count, rows] = await Promise.all([
+      db.collection(CLUB_JOIN_COL).countDocuments(filter),
+      db
+        .collection(CLUB_JOIN_COL)
+        .find(filter)
+        .project({ name: 1, createdAt: 1, userId: 1 })
+        .sort({ createdAt: -1 })
+        .limit(60)
+        .toArray(),
+    ]);
 
     // Avatars live on the user record; chat bubbles key members by the same id
     // that Supabase messages carry as sender_id. fetchParticipants matches both

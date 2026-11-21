@@ -9,20 +9,6 @@ import { getDb } from "@/lib/mongodb";
  * to a cross-origin OAuth redirect, then hands back the session cookie the
  * web app should re-issue on its own domain.
  */
-let ttlEnsured = false;
-
-async function ensureBridgeIndex(db: any) {
-  if (ttlEnsured) return;
-  ttlEnsured = true;
-  try {
-    await db
-      .collection("bridge_tokens")
-      .createIndex({ expiresAt: 1 }, { expireAfterSeconds: 120 });
-  } catch {
-    // Index creation is best-effort; the query still filters by expiresAt.
-  }
-}
-
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json().catch(() => null);
@@ -32,7 +18,6 @@ export async function POST(request: NextRequest) {
     }
 
     const db = await getDb();
-    await ensureBridgeIndex(db);
 
     const doc = await db.collection("bridge_tokens").findOne({
       token,

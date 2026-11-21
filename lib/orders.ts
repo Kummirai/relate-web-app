@@ -94,13 +94,8 @@ export async function bankingFor(db: any) {
   return null;
 }
 
-export function ensureOrderIndexes(db: any) {
-  return Promise.all([
-    db.collection(ORDERS_COLLECTION).createIndex({ createdAt: -1 }),
-    db.collection(ORDERS_COLLECTION).createIndex({ userId: 1, createdAt: -1 }),
-    db.collection(ORDERS_COLLECTION).createIndex({ status: 1, createdAt: -1 }),
-    db.collection(ORDERS_COLLECTION).createIndex({ orderNumber: 1 }, { unique: true }),
-  ]);
+export function ensureOrderIndexes(_db: any) {
+  return Promise.resolve();
 }
 
 export function serializeOrder(doc: any) {

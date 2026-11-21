@@ -19,9 +19,7 @@ export type SportsConfig = {
   squads?: Record<string, unknown>;
 };
 
-export async function ensureSportsIndexes(db: any) {
-  return db.collection(SPORTS_COLLECTION).createIndex({ id: 1 }, { unique: true });
-}
+export async function ensureSportsIndexes(_db: any) {}
 
 export async function getSportsConfig(db: any): Promise<SportsConfig | null> {
   await ensureSportsIndexes(db);

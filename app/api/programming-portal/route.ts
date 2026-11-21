@@ -50,24 +50,6 @@ type PortalDoc = {
   updatedAt: Date;
 };
 
-let portalIndexesEnsured = false;
-
-async function ensurePortalIndexes(db: any) {
-  if (portalIndexesEnsured) return;
-  portalIndexesEnsured = true;
-  try {
-    await db
-      .collection("programming_portal_progress")
-      .createIndex({ userId: 1 }, { unique: true });
-    await db
-      .collection("programming_portal_progress")
-      .createIndex({ updatedAt: -1 });
-  } catch (e) {
-    portalIndexesEnsured = false;
-    console.error("ensurePortalIndexes failed", e);
-  }
-}
-
 function emptyDoc(userId: string): PortalDoc {
   return {
     userId,
@@ -161,7 +143,6 @@ export async function GET(request: NextRequest) {
 
     const db = await getDb();
     await ensureIndexes(db);
-    await ensurePortalIndexes(db);
 
     const session = await resolveSession(request);
     if (!session) {

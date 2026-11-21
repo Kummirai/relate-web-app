@@ -17,9 +17,7 @@ export type HonorsFramework = {
   honorCount?: number;
 };
 
-export async function ensureHonorsIndexes(db: any) {
-  return db.collection(HONORS_COLLECTION).createIndex({ id: 1 }, { unique: true });
-}
+export async function ensureHonorsIndexes(_db: any) {}
 
 export async function getHonorsFramework(db: any): Promise<HonorsFramework | null> {
   await ensureHonorsIndexes(db);

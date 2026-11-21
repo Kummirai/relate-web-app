@@ -37,21 +37,7 @@ export type ClubDoc = {
   programs: ClubProgram[];
 };
 
-let clubIndexes: Promise<unknown> | null = null;
-
-export async function ensureClubIndexes(db: any) {
-  if (!clubIndexes) {
-    clubIndexes = Promise.all([
-      db.collection(CLUB_COLLECTION).createIndex({ slug: 1 }, { unique: true }),
-      db.collection(CLUB_COLLECTION).createIndex({ parentSlug: 1 }),
-    ]).catch((e) => {
-      // Reset so a transient failure doesn't permanently poison the guard.
-      clubIndexes = null;
-      throw e;
-    });
-  }
-  return clubIndexes;
-}
+export async function ensureClubIndexes(_db: any) {}
 
 /** Strip Mongo identity fields so clients only ever see the stable slug. */
 export function serializeClub(doc: any): ClubDoc {

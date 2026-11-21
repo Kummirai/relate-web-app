@@ -147,11 +147,7 @@ export function normalizeCalendar(
   return { doc: { clubSlug: slug, year: numericYear, entries: normalized } };
 }
 
-export async function ensureCalendarIndexes(db: any) {
-  return db
-    .collection(CALENDAR_COLLECTION)
-    .createIndex({ clubSlug: 1, year: 1 }, { unique: true });
-}
+export async function ensureCalendarIndexes(_db: any) {}
 
 /** Strip Mongo identity fields so clients only see the calendar itself. */
 export function serializeCalendar(doc: any): ProgramCalendarDoc {

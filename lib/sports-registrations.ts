@@ -25,21 +25,7 @@ import {
 
 export const SPORTS_REG_COL = "sports_registrations";
 
-let sportsRegistrationIndexesEnsured = false;
-
-export async function ensureSportsRegistrationIndexes(db: any) {
-  if (sportsRegistrationIndexesEnsured) return;
-  try {
-    await Promise.all([
-      db.collection(SPORTS_REG_COL).createIndex({ userId: 1 }),
-      db.collection(SPORTS_REG_COL).createIndex({ teamId: 1, createdAt: -1 }),
-      db.collection(SPORTS_REG_COL).createIndex({ teamId: 1, position: 1, status: 1, createdAt: 1 }),
-    ]);
-    sportsRegistrationIndexesEnsured = true;
-  } catch (error) {
-    console.error("[sports-registrations] index creation failed:", error);
-  }
-}
+export async function ensureSportsRegistrationIndexes(_db: any) {}
 
 export type SportsRegistrationInput = {
   userId: string;
