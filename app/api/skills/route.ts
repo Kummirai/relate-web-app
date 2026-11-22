@@ -11,6 +11,7 @@ import {
 } from "@/lib/public-api/render";
 import { rateLimit, rateLimitHeaders } from "@/lib/public-api/rate-limit";
 import { clientIp } from "@/lib/public-api/request";
+import { withCpuTiming } from "@/lib/api-timing";
 
 /** Club colours live in the clubs catalogue — the skills document only carries level colours. */
 async function clubAccent(
@@ -30,7 +31,7 @@ async function clubAccent(
   };
 }
 
-export async function GET(request: NextRequest) {
+async function handleGet(request: NextRequest) {
   try {
     const rl = rateLimit(`skills:${clientIp(request)}`);
     if (!rl.ok) return publicTooMany();
@@ -150,4 +151,5 @@ export async function GET(request: NextRequest) {
   }
 }
 
+export const GET = withCpuTiming("skills.GET", handleGet);
 export { publicOptions as OPTIONS };

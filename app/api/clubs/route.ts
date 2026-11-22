@@ -9,6 +9,7 @@ import {
 } from "@/lib/public-api/render";
 import { rateLimit, rateLimitHeaders } from "@/lib/public-api/rate-limit";
 import { clientIp } from "@/lib/public-api/request";
+import { withCpuTiming } from "@/lib/api-timing";
 
 /**
  * GET /api/clubs          Top-level clubs plus Sprout's age classes.
@@ -18,7 +19,7 @@ import { clientIp } from "@/lib/public-api/request";
  * labels, programs, WhatsApp link and registration form fields. This is the
  * single source of truth both apps render — nothing club-shaped is bundled.
  */
-export async function GET(request: NextRequest) {
+async function handleGet(request: NextRequest) {
   try {
     const rl = rateLimit(`clubs:${clientIp(request)}`);
     if (!rl.ok) return publicTooMany();
@@ -45,4 +46,5 @@ export async function GET(request: NextRequest) {
   }
 }
 
+export const GET = withCpuTiming("clubs.GET", handleGet);
 export { publicOptions as OPTIONS };

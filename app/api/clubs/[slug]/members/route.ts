@@ -9,6 +9,7 @@ import {
 } from "@/lib/public-api/render";
 import { getDb } from "@/lib/mongodb";
 import { resolveSession, findUserById, fetchParticipants } from "@/lib/community-auth";
+import { withCpuTiming } from "@/lib/api-timing";
 
 const CLUB_JOIN_COL = "club_join_applications";
 
@@ -22,7 +23,7 @@ const SPROUT_SLUGS = ["sprout", "sprout-kids", "sprout-tweens", "sprout-teens"];
  * (or be an admin). First names only, so the roster never exposes more than
  * a chat group would.
  */
-export async function GET(
+async function handleGet(
   request: NextRequest,
   { params }: { params: Promise<{ slug: string }> },
 ) {
@@ -113,4 +114,5 @@ export async function GET(
   }
 }
 
+export const GET = withCpuTiming("clubs/[slug]/members.GET", handleGet);
 export { publicOptions as OPTIONS };

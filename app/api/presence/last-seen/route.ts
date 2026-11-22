@@ -1,11 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { resolveSession } from "@/lib/community-auth";
+import { withCpuTiming } from "@/lib/api-timing";
 
 const SUPABASE_URL =
   process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL || "";
 const SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || "";
 
-export async function POST(request: NextRequest) {
+async function handlePost(request: NextRequest) {
   const session = await resolveSession(request);
   if (!session) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -40,3 +41,5 @@ export async function POST(request: NextRequest) {
 
   return NextResponse.json({ ok: true });
 }
+
+export const POST = withCpuTiming("presence/last-seen.POST", handlePost);

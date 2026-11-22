@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { ObjectId } from "mongodb";
 import { getDb } from "@/lib/mongodb";
 import { resolveSession } from "@/lib/community-auth";
+import { withCpuTiming } from "@/lib/api-timing";
 
 // Per-club chat notification mute. Stored on the user record so the chat
 // webhook (/api/clubs/chat/notify) can skip muted members when pushing.
@@ -15,7 +16,7 @@ function userMatch(id: string) {
   };
 }
 
-export async function GET(request: NextRequest) {
+async function handleGet(request: NextRequest) {
   const user = await resolveSession(request);
   if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
@@ -31,7 +32,7 @@ export async function GET(request: NextRequest) {
   }
 }
 
-export async function POST(request: NextRequest) {
+async function handlePost(request: NextRequest) {
   const user = await resolveSession(request);
   if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
@@ -58,3 +59,6 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Failed to save chat settings" }, { status: 500 });
   }
 }
+
+export const GET = withCpuTiming("clubs/chat/mute.GET", handleGet);
+export const POST = withCpuTiming("clubs/chat/mute.POST", handlePost);

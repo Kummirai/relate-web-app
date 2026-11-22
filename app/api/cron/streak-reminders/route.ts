@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getDb } from "@/lib/mongodb";
 import { sendPushMessages, type PushMessage } from "@/lib/push";
+import { withCpuTiming } from "@/lib/api-timing";
 
 const PRAYERS = [
   "dawn",
@@ -74,7 +75,7 @@ function buildReminder(done: number, pastStreak: number) {
  * streak), and users who already reached the threshold get a "streak secured"
  * note. Requires CRON_SECRET when set (Vercel sends it automatically).
  */
-export async function GET(request: NextRequest) {
+async function handleGet(request: NextRequest) {
   const secret = process.env.CRON_SECRET;
   const auth = request.headers.get("authorization") || "";
   const isVercelCron = request.headers.get("x-vercel-cron") === "1";
@@ -104,10 +105,22 @@ export async function GET(request: NextRequest) {
       }
     }
 
-    const [streakDocs, tokenDocs] = await Promise.all([
-      db.collection("user_streaks").find({}).toArray(),
-      db.collection("push_tokens").find({}).toArray(),
-    ]);
+    const streakDocs = await db
+      .collection("user_streaks")
+      .find({}, { projection: { userId: 1, streaks: 1 } })
+      .toArray();
+    const streakUserIds = [
+      ...new Set(streakDocs.map((doc) => String(doc?.userId || "")).filter(Boolean)),
+    ];
+    const tokenDocs = streakUserIds.length
+      ? await db
+          .collection("push_tokens")
+          .find(
+            { userId: { $in: streakUserIds } },
+            { projection: { userId: 1, token: 1 } },
+          )
+          .toArray()
+      : [];
 
     const tokensByUser = new Map<string, string[]>();
     for (const doc of tokenDocs) {
@@ -156,3 +169,5 @@ export async function GET(request: NextRequest) {
     );
   }
 }
+
+export const GET = withCpuTiming("cron/streak-reminders.GET", handleGet);

@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { resolveUser } from "@/lib/community-auth";
 import { getDb } from "@/lib/mongodb";
+import { withCpuTiming } from "@/lib/api-timing";
 
-export async function GET(request: NextRequest) {
+async function handleGet(request: NextRequest) {
   try {
     const userId = await resolveUser(request);
     if (!userId) {
@@ -16,7 +17,7 @@ export async function GET(request: NextRequest) {
   }
 }
 
-export async function PUT(request: NextRequest) {
+async function handlePut(request: NextRequest) {
   try {
     const userId = await resolveUser(request);
     if (!userId) {
@@ -37,3 +38,6 @@ export async function PUT(request: NextRequest) {
     return NextResponse.json({ error: "Failed to save streaks" }, { status: 500 });
   }
 }
+
+export const GET = withCpuTiming("streaks.GET", handleGet);
+export const PUT = withCpuTiming("streaks.PUT", handlePut);

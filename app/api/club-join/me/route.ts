@@ -9,6 +9,7 @@ import {
 } from "@/lib/public-api/render";
 import { getLatestMembership } from "@/lib/club-join";
 import { resolveUser } from "@/lib/community-auth";
+import { withCpuTiming } from "@/lib/api-timing";
 
 /**
  * GET /api/club-join/me
@@ -17,7 +18,7 @@ import { resolveUser } from "@/lib/community-auth";
  *   belongs to today. Used to auto-fill the join form and to show the
  *   membership card.
  */
-export async function GET(request: NextRequest) {
+async function handleGet(request: NextRequest) {
   try {
     const rl = rateLimit(`club-join-me:${clientIp(request)}`, 30, 60_000);
     if (!rl.ok) return publicTooMany();
@@ -38,4 +39,5 @@ export async function GET(request: NextRequest) {
   }
 }
 
+export const GET = withCpuTiming("club-join/me.GET", handleGet);
 export { publicOptions as OPTIONS };

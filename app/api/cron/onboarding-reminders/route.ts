@@ -3,6 +3,7 @@ import { getDb } from "@/lib/mongodb";
 import { createNotification } from "@/lib/inapp-notify";
 import { sendPushMessages, getUserPushTokens, type PushMessage } from "@/lib/push";
 import { ONBOARDING_COLLECTION, getApproverId } from "@/lib/onboarding-induction";
+import { withCpuTiming } from "@/lib/api-timing";
 
 const TIME_ZONE = "Africa/Lusaka";
 /** Records the assignee still has to act on. "pending" means it is already with the approver. */
@@ -63,7 +64,7 @@ function buildReminder(status: string, daysLeft: number, dueKey: string) {
  *   review for a day or more.
  * Each stops on its own once the record moves on.
  */
-export async function GET(request: NextRequest) {
+async function handleGet(request: NextRequest) {
   const secret = process.env.CRON_SECRET;
   const auth = request.headers.get("authorization") || "";
   const isVercelCron = request.headers.get("x-vercel-cron") === "1";
@@ -76,6 +77,7 @@ export async function GET(request: NextRequest) {
   try {
     const db = await getDb();
     const today = dayKey(new Date());
+    const startOfTodayUtc = new Date(`${today}T00:00:00+02:00`);
     const force = hasSecret && request.nextUrl.searchParams.get("force") === "1";
 
     if (!force) {
@@ -93,10 +95,13 @@ export async function GET(request: NextRequest) {
 
     const docs = await db
       .collection(ONBOARDING_COLLECTION)
-      .find({
-        status: { $in: OUTSTANDING_STATUSES },
-        dueDate: { $type: "date" },
-      })
+      .find(
+        {
+          status: { $in: OUTSTANDING_STATUSES },
+          dueDate: { $type: "date" },
+        },
+        { projection: { userId: 1, status: 1, dueDate: 1 } },
+      )
       .toArray();
 
     const userIds = [
@@ -107,7 +112,10 @@ export async function GET(request: NextRequest) {
     const tokenDocs = userIds.length
       ? await db
           .collection("push_tokens")
-          .find({ userId: { $in: userIds } })
+          .find(
+            { userId: { $in: userIds } },
+            { projection: { userId: 1, token: 1 } },
+          )
           .toArray()
       : [];
 
@@ -159,11 +167,24 @@ export async function GET(request: NextRequest) {
     if (approverId) {
       const pending = await db
         .collection(ONBOARDING_COLLECTION)
-        .find({ status: "pending", submittedAt: { $type: "date" } })
+        .find(
+          {
+            status: "pending",
+            submittedAt: { $type: "date", $lt: startOfTodayUtc },
+          },
+          {
+            projection: {
+              userId: 1,
+              userName: 1,
+              userEmail: 1,
+              submittedAt: 1,
+            },
+          },
+        )
         .toArray();
-      const approverTokens = [
-        ...new Set(await getUserPushTokens(db, approverId)),
-      ];
+      const approverTokens = pending.length
+        ? [...new Set(await getUserPushTokens(db, approverId))]
+        : [];
       for (const doc of pending) {
         const waiting = daysBetween(dayKey(new Date(doc.submittedAt)), today);
         if (waiting < 1) continue;
@@ -207,3 +228,5 @@ export async function GET(request: NextRequest) {
     );
   }
 }
+
+export const GET = withCpuTiming("cron/onboarding-reminders.GET", handleGet);

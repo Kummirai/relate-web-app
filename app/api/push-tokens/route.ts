@@ -2,8 +2,9 @@ import { NextRequest, NextResponse } from "next/server";
 import { ObjectId } from "mongodb";
 import { getDb } from "@/lib/mongodb";
 import { resolveSession } from "@/lib/community-auth";
+import { withCpuTiming } from "@/lib/api-timing";
 
-export async function POST(request: NextRequest) {
+async function handlePost(request: NextRequest) {
   try {
     const user = await resolveSession(request);
     if (!user || !ObjectId.isValid(user.id)) {
@@ -35,3 +36,5 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Failed to register push token" }, { status: 500 });
   }
 }
+
+export const POST = withCpuTiming("push-tokens.POST", handlePost);
