@@ -59,8 +59,10 @@ const ADVANCE_PROMPTS: Record<string, string> = {
   evening: "The night is near — rest in His peace.",
 };
 const FALLBACK_SUN: SunMinutes = { sunrise: 6 * 60 + 15, noon: 12 * 60, sunset: 18 * 60 + 30 };
-const DUE_WINDOW_MS = 10 * 60_000;
+const DUE_WINDOW_MS = 70 * 60_000;
 const MAX_REMINDER_LOOKBACK_MS = 24 * 60 * 60_000;
+const REMINDER_DAY_START_HOUR = 3;
+const REMINDER_DAY_END_HOUR = 21;
 const VOTD_VERSION_ID = 3034;
 const GENERIC_VERSE = "“Your word is a lamp to my feet and a light to my path.” — Psalm 119:105";
 
@@ -372,7 +374,6 @@ export async function runScheduledReminders(
     const userId = text((doc as any)?.userId);
     const subscriptions = subscriptionsByUser.get(userId) || [];
     if (!userId || !subscriptions.length) continue;
-    users++;
 
     const prefs = doc as Record<string, any>;
     const tzOffset = integerIn(prefs.tzOffset, -120, -840, 840);
@@ -380,6 +381,9 @@ export async function runScheduledReminders(
     const lng = numberIn(prefs.lng, 28.2, -180, 180);
     const advanceMinutes = integerIn(prefs.advanceMinutes, 10, 0, 60);
     const localNow = localWallNow(now, tzOffset);
+    const localHour = localNow.getUTCHours();
+    if (localHour < REMINDER_DAY_START_HOUR || localHour > REMINDER_DAY_END_HOUR) continue;
+    users++;
     resultDayKey = localDayKey(localNow);
     const dayKeys = [resultDayKey];
     if (lookbackMs > DUE_WINDOW_MS) {
@@ -399,9 +403,11 @@ export async function runScheduledReminders(
     }
 
     const nowMs = localNow.getTime();
-    const windowedEvents = dueEvents.filter(
-      (event) => event.dueAt <= nowMs && event.dueAt >= nowMs - lookbackMs,
-    );
+    const windowedEvents = dueEvents.filter((event) => {
+      if (event.dueAt > nowMs || event.dueAt < nowMs - lookbackMs) return false;
+      const dueHour = new Date(event.dueAt).getUTCHours();
+      return dueHour >= REMINDER_DAY_START_HOUR && dueHour < REMINDER_DAY_END_HOUR;
+    });
 
     for (const event of windowedEvents) {
       due++;
