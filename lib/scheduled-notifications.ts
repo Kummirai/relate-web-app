@@ -26,6 +26,13 @@ export type ScheduledReminderResult = {
   skipped: number;
 };
 
+export type ScheduledReminderRunOptions = {
+  userIds?: string[];
+  lookbackMs?: number;
+};
+
+type DueScheduledEvent = ScheduledEvent & { dayKey: string };
+
 const PRAYER_KEYS = ["dawn", "sunrise", "noon", "afternoon", "sunset", "evening"] as const;
 const PRAYER_LABELS: Record<string, string> = {
   dawn: "Dawn",
@@ -53,6 +60,7 @@ const ADVANCE_PROMPTS: Record<string, string> = {
 };
 const FALLBACK_SUN: SunMinutes = { sunrise: 6 * 60 + 15, noon: 12 * 60, sunset: 18 * 60 + 30 };
 const DUE_WINDOW_MS = 10 * 60_000;
+const MAX_REMINDER_LOOKBACK_MS = 24 * 60 * 60_000;
 const VOTD_VERSION_ID = 3034;
 const GENERIC_VERSE = "“Your word is a lamp to my feet and a light to my path.” — Psalm 119:105";
 
@@ -323,11 +331,15 @@ async function claimEvent(
   }
 }
 
-export async function runScheduledReminders(now: Date = new Date()): Promise<ScheduledReminderResult> {
+export async function runScheduledReminders(
+  now: Date = new Date(),
+  options: ScheduledReminderRunOptions = {},
+): Promise<ScheduledReminderResult> {
   const db = await getDb();
+  const userIdsFilter = options.userIds?.length ? { userId: { $in: options.userIds } } : {};
   const prefsDocs = await db
     .collection("user_prayer_preferences")
-    .find({ enabled: { $ne: false } })
+    .find({ enabled: { $ne: false }, ...userIdsFilter })
     .toArray();
   const userIds = [...new Set(prefsDocs.map((doc: any) => text(doc?.userId)).filter(Boolean))];
   const subscriptionsByUser = new Map<string, WebPushSubscription[]>();
@@ -345,12 +357,16 @@ export async function runScheduledReminders(now: Date = new Date()): Promise<Sch
     }
   }
 
+  const lookbackMs = Math.min(
+    MAX_REMINDER_LOOKBACK_MS,
+    Math.max(DUE_WINDOW_MS, options.lookbackMs ?? DUE_WINDOW_MS),
+  );
   const sunCache = new Map<string, SunMinutes>();
   let due = 0;
   let sent = 0;
   let skipped = 0;
   let users = 0;
-  let dayKey = localDayKey(localWallNow(now, -120));
+  let resultDayKey = localDayKey(localWallNow(now, -120));
 
   for (const doc of prefsDocs) {
     const userId = text((doc as any)?.userId);
@@ -364,22 +380,37 @@ export async function runScheduledReminders(now: Date = new Date()): Promise<Sch
     const lng = numberIn(prefs.lng, 28.2, -180, 180);
     const advanceMinutes = integerIn(prefs.advanceMinutes, 10, 0, 60);
     const localNow = localWallNow(now, tzOffset);
-    dayKey = localDayKey(localNow);
-    const sun = await fetchSunMinutes(lat, lng, dayKey, tzOffset, sunCache);
-    const events = buildEvents(prefs, sun, dayKey, advanceMinutes);
+    resultDayKey = localDayKey(localNow);
+    const dayKeys = [resultDayKey];
+    if (lookbackMs > DUE_WINDOW_MS) {
+      const previousDayKey = localDayKey(
+        new Date(localNow.getTime() - MAX_REMINDER_LOOKBACK_MS),
+      );
+      if (previousDayKey !== resultDayKey) dayKeys.push(previousDayKey);
+    }
+
+    const dueEvents: DueScheduledEvent[] = [];
+    for (const eventDayKey of dayKeys) {
+      const sun = await fetchSunMinutes(lat, lng, eventDayKey, tzOffset, sunCache);
+      const events = buildEvents(prefs, sun, eventDayKey, advanceMinutes);
+      for (const event of events) {
+        dueEvents.push({ ...event, dayKey: eventDayKey });
+      }
+    }
+
     const nowMs = localNow.getTime();
-    const dueEvents = events.filter(
-      (event) => event.dueAt <= nowMs && event.dueAt >= nowMs - DUE_WINDOW_MS,
+    const windowedEvents = dueEvents.filter(
+      (event) => event.dueAt <= nowMs && event.dueAt >= nowMs - lookbackMs,
     );
 
-    for (const event of dueEvents) {
+    for (const event of windowedEvents) {
       due++;
-      const claimed = await claimEvent(db, userId, dayKey, event);
+      const claimed = await claimEvent(db, userId, event.dayKey, event);
       if (!claimed) {
         skipped++;
         continue;
       }
-      const body = event.votd ? await getVotdBody(dayKey) : event.body;
+      const body = event.votd ? await getVotdBody(event.dayKey) : event.body;
       sent += await sendWebPushToSubscriptions(
         subscriptions,
         event.title,
@@ -389,5 +420,5 @@ export async function runScheduledReminders(now: Date = new Date()): Promise<Sch
     }
   }
 
-  return { day: dayKey, users, due, sent, skipped };
+  return { day: resultDayKey, users, due, sent, skipped };
 }
