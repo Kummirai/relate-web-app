@@ -14,6 +14,7 @@ async function handleGet(request: NextRequest) {
 
   try {
     const result = await runScheduledReminders(new Date());
+    console.info("[cron] scheduled reminders", result);
     return NextResponse.json(result);
   } catch (error) {
     console.error("[cron] scheduled reminders failed", error);
