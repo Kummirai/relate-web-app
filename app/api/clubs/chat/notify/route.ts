@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { ObjectId } from "mongodb";
 import { getDb } from "@/lib/mongodb";
 import { resolveSession } from "@/lib/community-auth";
-import { sendPushMessages } from "@/lib/push";
+import { getPushTokensByUserIds, sendPushMessages } from "@/lib/push";
 
 const CLUB_JOIN_COL = "club_join_applications";
 const NOTIFIED_COL = "club_chat_notified";
@@ -110,12 +110,9 @@ export async function POST(request: NextRequest) {
       .filter((id) => ObjectId.isValid(id))
       .map((id) => new ObjectId(id));
 
-    const [club, tokens, users] = await Promise.all([
+    const [club, tokensByUser, users] = await Promise.all([
       db.collection("clubs").findOne({ slug }, { projection: { name: 1 } }),
-      db
-        .collection("push_tokens")
-        .find({ userId: { $in: userIds } })
-        .toArray(),
+      getPushTokensByUserIds(db, userIds),
       db
         .collection("user")
         .find(
@@ -143,7 +140,11 @@ export async function POST(request: NextRequest) {
         )
         .map((u: any) => String(u.id ?? u._id)),
     );
-    const targets = tokens.filter((t: any) => !mutedIds.has(String(t.userId)));
+    const targets = userIds
+      .filter((userId) => !mutedIds.has(userId))
+      .flatMap((userId) =>
+        (tokensByUser.get(userId) || []).map((to) => ({ userId, to })),
+      );
 
     const clubName = String(club?.name ?? "Club chat");
     const preview = text
@@ -153,15 +154,12 @@ export async function POST(request: NextRequest) {
       : "Sent a photo";
 
     await sendPushMessages(
-      targets
-        .map((t: any) => String(t.token ?? ""))
-        .filter(Boolean)
-        .map((to: string) => ({
-          to,
-          title: clubName,
-          body: `${senderName}: ${preview}`,
-          data: { route: "/club-chat", clubSlug: slug },
-        })),
+      targets.map(({ to }) => ({
+        to,
+        title: clubName,
+        body: `${senderName}: ${preview}`,
+        data: { route: "/club-chat", clubSlug: slug },
+      })),
     );
 
     return NextResponse.json({ ok: true });

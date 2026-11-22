@@ -184,6 +184,38 @@ async function getWebPushEndpoints(db: any, query: Record<string, unknown>): Pro
   }
 }
 
+export async function getPushTokensByUserIds(
+  db: any,
+  userIds: string[],
+): Promise<Map<string, string[]>> {
+  const ids = [...new Set(userIds.map((id) => String(id)).filter(Boolean))];
+  const tokensByUser = new Map<string, string[]>();
+  if (!ids.length) return tokensByUser;
+
+  const addToken = (userId: string, token: string) => {
+    if (!userId || !token) return;
+    const tokens = tokensByUser.get(userId) || [];
+    if (!tokens.includes(token)) tokens.push(token);
+    tokensByUser.set(userId, tokens);
+  };
+
+  const [nativeDocs, webDocs] = await Promise.all([
+    db
+      .collection("push_tokens")
+      .find({ userId: { $in: ids } })
+      .project({ userId: 1, token: 1 })
+      .toArray(),
+    db.collection(WEB_PUSH_COLLECTION).find({ userId: { $in: ids } }).toArray(),
+  ]);
+
+  for (const doc of nativeDocs) addToken(String(doc?.userId ?? ""), text(doc?.token));
+  for (const doc of webDocs) {
+    const subscription = toWebPushSubscription(doc);
+    if (subscription?.userId) addToken(subscription.userId, subscription.endpoint);
+  }
+  return tokensByUser;
+}
+
 export async function sendWebPushToSubscriptions(
   subscriptions: WebPushSubscription[],
   title: string,

@@ -23,6 +23,16 @@ async function handlePost(request: NextRequest) {
       "Web push is working on this device.",
       { route: "/", testPush: true },
     );
+    if (!subscriptions.length || sent === 0) {
+      return NextResponse.json(
+        {
+          success: false,
+          sent,
+          error: "No web push subscription was delivered. Re-enable notifications and try again.",
+        },
+        { status: 503 },
+      );
+    }
     return NextResponse.json({ success: true, sent });
   } catch {
     return NextResponse.json({ error: "Failed to send test notification" }, { status: 500 });

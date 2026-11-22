@@ -1,6 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getDb } from "@/lib/mongodb";
-import { sendPushMessages, type PushMessage } from "@/lib/push";
+import {
+  getPushTokensByUserIds,
+  sendPushMessages,
+  type PushMessage,
+} from "@/lib/push";
 import { withCpuTiming } from "@/lib/api-timing";
 
 const PRAYERS = [
@@ -111,26 +115,10 @@ async function handleGet(request: NextRequest) {
       .toArray();
     const streakUserIds = [
       ...new Set(streakDocs.map((doc) => String(doc?.userId || "")).filter(Boolean)),
-    ];
-    const tokenDocs = streakUserIds.length
-      ? await db
-          .collection("push_tokens")
-          .find(
-            { userId: { $in: streakUserIds } },
-            { projection: { userId: 1, token: 1 } },
-          )
-          .toArray()
-      : [];
-
-    const tokensByUser = new Map<string, string[]>();
-    for (const doc of tokenDocs) {
-      const userId = doc?.userId ? String(doc.userId) : "";
-      const token = typeof doc?.token === "string" ? doc.token : "";
-      if (!userId || !token) continue;
-      const list = tokensByUser.get(userId) || [];
-      if (!list.includes(token)) list.push(token);
-      tokensByUser.set(userId, list);
-    }
+    ] as string[];
+    const tokensByUser = streakUserIds.length
+      ? await getPushTokensByUserIds(db, streakUserIds)
+      : new Map<string, string[]>();
 
     const messages: PushMessage[] = [];
     for (const doc of streakDocs) {

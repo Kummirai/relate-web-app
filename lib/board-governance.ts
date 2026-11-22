@@ -1,6 +1,6 @@
 import { randomUUID } from "crypto";
 import { sendBoardEmails } from "./mailer";
-import { sendPushNotifications } from "./push";
+import { getPushTokensByUserIds, sendPushNotifications } from "./push";
 
 /**
  * Board governance domain: meetings, attendance RSVPs, minutes and action
@@ -495,16 +495,20 @@ export async function notifyBoardMembers(
   if (!remote.length) return;
 
   try {
-    const tokens = await db
-      .collection("push_tokens")
-      .find({ userId: { $in: remote.map((m) => m.id) } })
-      .toArray();
-    await sendPushNotifications(
-      tokens.map((t: any) => t.token).filter(Boolean),
-      notice.title,
-      notice.body,
-      { type: notice.type, ...(notice.data || {}) },
+    const tokensByUser = await getPushTokensByUserIds(
+      db,
+      remote.map((m) => m.id),
     );
+    const tokens: string[] = [];
+    for (const userTokens of tokensByUser.values()) {
+      for (const token of userTokens) {
+        if (!tokens.includes(token)) tokens.push(token);
+      }
+    }
+    await sendPushNotifications(tokens, notice.title, notice.body, {
+      type: notice.type,
+      ...(notice.data || {}),
+    });
   } catch (e) {
     console.error("[board] push notification failed", e);
   }

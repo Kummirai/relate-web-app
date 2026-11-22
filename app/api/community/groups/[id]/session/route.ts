@@ -11,7 +11,7 @@ import {
   makeAccessCode,
 } from "@/lib/daily";
 import { createNotification } from "@/lib/inapp-notify";
-import { sendPushNotifications } from "@/lib/push";
+import { getPushTokensByUserIds, sendPushNotifications } from "@/lib/push";
 
 /**
  * Live sessions for a group (Daily.co audio/video calls).
@@ -140,11 +140,13 @@ export async function POST(
         });
       }
       if (memberIds.length) {
-        const tokens = (
-          await db.collection("push_tokens").find({ userId: { $in: memberIds } }).toArray()
-        )
-          .map((t: any) => t.token)
-          .filter(Boolean);
+        const tokensByUser = await getPushTokensByUserIds(db, memberIds);
+        const tokens: string[] = [];
+        for (const memberId of memberIds) {
+          for (const token of tokensByUser.get(memberId) || []) {
+            if (!tokens.includes(token)) tokens.push(token);
+          }
+        }
         await sendPushNotifications(tokens, title, notifBody, data);
       }
 

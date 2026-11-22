@@ -1,7 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getDb } from "@/lib/mongodb";
 import { createNotification } from "@/lib/inapp-notify";
-import { sendPushMessages, getUserPushTokens, type PushMessage } from "@/lib/push";
+import {
+  getPushTokensByUserIds,
+  getUserPushTokens,
+  sendPushMessages,
+  type PushMessage,
+} from "@/lib/push";
 import { ONBOARDING_COLLECTION, getApproverId } from "@/lib/onboarding-induction";
 import { withCpuTiming } from "@/lib/api-timing";
 
@@ -108,26 +113,10 @@ async function handleGet(request: NextRequest) {
       ...new Set(
         docs.map((doc) => String(doc.userId || "")).filter(Boolean),
       ),
-    ];
-    const tokenDocs = userIds.length
-      ? await db
-          .collection("push_tokens")
-          .find(
-            { userId: { $in: userIds } },
-            { projection: { userId: 1, token: 1 } },
-          )
-          .toArray()
-      : [];
-
-    const tokensByUser = new Map<string, string[]>();
-    for (const doc of tokenDocs) {
-      const userId = doc?.userId ? String(doc.userId) : "";
-      const token = typeof doc?.token === "string" ? doc.token : "";
-      if (!userId || !token) continue;
-      const list = tokensByUser.get(userId) || [];
-      if (!list.includes(token)) list.push(token);
-      tokensByUser.set(userId, list);
-    }
+    ] as string[];
+    const tokensByUser = userIds.length
+      ? await getPushTokensByUserIds(db, userIds)
+      : new Map<string, string[]>();
 
     const messages: PushMessage[] = [];
     for (const doc of docs) {
