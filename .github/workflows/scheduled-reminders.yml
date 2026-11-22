@@ -1,6 +1,8 @@
 name: Scheduled reminders
 
 on:
+  push:
+    branches: [master]
   schedule:
     - cron: "*/5 * * * *"
   workflow_dispatch:
