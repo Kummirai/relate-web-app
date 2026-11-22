@@ -2,13 +2,21 @@ import { NextRequest, NextResponse } from "next/server";
 import { withCpuTiming } from "@/lib/api-timing";
 import { runScheduledReminders } from "@/lib/scheduled-notifications";
 
+function hasValidCronAuth(request: NextRequest, secret: string | undefined): boolean {
+  const auth = request.headers.get("authorization") || "";
+  if (!secret) return request.headers.get("x-vercel-cron") === "1";
+  if (auth === `Bearer ${secret}`) return true;
+  if (!auth.toLowerCase().startsWith("basic ")) return false;
+
+  const decoded = Buffer.from(auth.slice(6), "base64").toString("utf8");
+  const separator = decoded.indexOf(":");
+  if (separator < 0) return false;
+  return decoded.slice(separator + 1) === secret;
+}
+
 async function handleGet(request: NextRequest) {
   const secret = process.env.CRON_SECRET;
-  const auth = request.headers.get("authorization") || "";
-  const isVercelCron = request.headers.get("x-vercel-cron") === "1";
-  const hasSecret = Boolean(secret) && auth === `Bearer ${secret}`;
-  const authorized = secret ? hasSecret : isVercelCron;
-  if (!authorized) {
+  if (!hasValidCronAuth(request, secret)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
