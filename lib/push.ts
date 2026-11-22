@@ -147,18 +147,25 @@ async function deliverWebPush(subscription: WebPushSubscription, message: PushMe
     url: buildAppUrl(message.data || {}),
     icon: message.icon || DEFAULT_PUSH_ICON,
   });
-  try {
-    await sendNotification(subscription, payload, { TTL: 60, urgency: "normal" });
-    return true;
-  } catch (error: any) {
-    const status = Number(error?.statusCode ?? error?.status);
-    if (status === 404 || status === 410) {
-      await removeStaleSubscription(subscription.endpoint);
-    } else {
+  for (let attempt = 0; attempt < 2; attempt++) {
+    try {
+      await sendNotification(subscription, payload, { TTL: 43200, urgency: "normal" });
+      return true;
+    } catch (error: any) {
+      const status = Number(error?.statusCode ?? error?.status);
+      if (status === 404 || status === 410) {
+        await removeStaleSubscription(subscription.endpoint);
+        return false;
+      }
+      if (attempt === 0 && (status === 429 || status >= 500)) {
+        await new Promise((resolve) => setTimeout(resolve, 250));
+        continue;
+      }
       console.error("[push] web push failed", status || "", error?.message || error);
+      return false;
     }
-    return false;
   }
+  return false;
 }
 
 export async function getUserWebPushSubscriptions(

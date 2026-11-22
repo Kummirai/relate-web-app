@@ -81,19 +81,7 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // Claim the message before doing any work: whichever caller (webhook or
-    // app) gets here first sends the pushes, the other one stops.
     const messageId = String(record.id ?? "").trim();
-    if (messageId) {
-      try {
-        await db
-          .collection(NOTIFIED_COL)
-          .insertOne({ _id: messageId, slug, notifiedAt: new Date() });
-      } catch (err: any) {
-        if (err?.code === 11000) return NextResponse.json({ ok: true, duplicate: true });
-        throw err;
-      }
-    }
 
     const rows = await db
       .collection(CLUB_JOIN_COL)
@@ -145,6 +133,18 @@ export async function POST(request: NextRequest) {
       .flatMap((userId) =>
         (tokensByUser.get(userId) || []).map((to) => ({ userId, to })),
       );
+    if (!targets.length) return NextResponse.json({ ok: true });
+
+    if (messageId) {
+      try {
+        await db
+          .collection(NOTIFIED_COL)
+          .insertOne({ _id: messageId, slug, notifiedAt: new Date() });
+      } catch (err: any) {
+        if (err?.code === 11000) return NextResponse.json({ ok: true, duplicate: true });
+        throw err;
+      }
+    }
 
     const clubName = String(club?.name ?? "Club chat");
     const preview = text
