@@ -3,8 +3,8 @@ name: Prayer reminders
 on:
   push:
     branches: [master]
-  schedule:
-    - cron: "2,7,12,17,22,27,32,37,42,47,52,57 * * * *"
+  # The 5-minute schedule moved to QStash: GitHub throttles frequent cron
+  # schedules and was firing this only a few times a day.
   workflow_dispatch:
 
 permissions:
