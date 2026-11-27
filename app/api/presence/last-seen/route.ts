@@ -15,17 +15,23 @@ async function handlePost(request: NextRequest) {
     return NextResponse.json({ error: "Last seen is not configured" }, { status: 500 });
   }
 
+  // Upsert the row through PostgREST rather than the touch_user_last_seen RPC:
+  // the RPC was never deployed to the project, and the phone heartbeats at most
+  // every five minutes, so an unconditional write is cheap enough.
   const response = await fetch(
-    `${SUPABASE_URL}/rest/v1/rpc/touch_user_last_seen`,
+    `${SUPABASE_URL}/rest/v1/user_last_seen?on_conflict=user_id`,
     {
       method: "POST",
       headers: {
         apikey: SERVICE_ROLE_KEY,
         Authorization: `Bearer ${SERVICE_ROLE_KEY}`,
         "Content-Type": "application/json",
-        Prefer: "return=minimal",
+        Prefer: "resolution=merge-duplicates,return=minimal",
       },
-      body: JSON.stringify({ p_user_id: session.id }),
+      body: JSON.stringify({
+        user_id: session.id,
+        last_seen_at: new Date().toISOString(),
+      }),
       cache: "no-store",
     },
   );
