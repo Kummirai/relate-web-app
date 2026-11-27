@@ -9,7 +9,7 @@ if (!qstashUrl || !qstashToken) {
   process.exit(1);
 }
 
-const endpoint = `${qstashUrl.replace(/\/+$/, "")}/v2/schedules/${encodeURIComponent(destination)}`;
+const endpoint = `${qstashUrl.replace(/\/+$/, "")}/v2/schedules/${destination}`;
 const response = await fetch(endpoint, {
   method: "POST",
   headers: {

@@ -41,7 +41,7 @@ PWA prayer/reading reminders are sent by `/api/cron/scheduled-reminders`, which
 must run every 5 minutes. A QStash schedule drives it because GitHub Actions
 throttles frequent cron schedules (it was firing only a few times a day).
 
-Create it once in the Upstash console (QStash -> Schedules):
+Create it once (console or the script below). The schedule targets:
 
 - Destination: `https://relate-iota.vercel.app/api/cron/scheduled-reminders`
 - Method: `GET`
@@ -51,8 +51,8 @@ Create it once in the Upstash console (QStash -> Schedules):
 No auth header is needed on the schedule: the route verifies the
 `Upstash-Signature` JWT that QStash sends with every delivery.
 
-Environment variables (set in the backend project, local `.env` and Vercel
-Production). QStash supplies all four in its console under "Quickstart":
+Environment variables (set in the backend project, local `.env.local` and
+Vercel Production). QStash supplies all four in its console under "Quickstart":
 
 - `QSTASH_CURRENT_SIGNING_KEY`, `QSTASH_NEXT_SIGNING_KEY` — runtime verification
   of each delivery.
@@ -61,7 +61,7 @@ Production). QStash supplies all four in its console under "Quickstart":
 Create or update the schedule from the terminal:
 
 ```bash
-node scripts/qstash-schedule.mjs
+node --env-file=.env.local scripts/qstash-schedule.mjs
 ```
 
 The script uses schedule id `relate-scheduled-reminders`, so re-running it
