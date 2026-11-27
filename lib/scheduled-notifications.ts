@@ -24,6 +24,7 @@ export type ScheduledReminderResult = {
   due: number;
   sent: number;
   skipped: number;
+  next: string | null;
 };
 
 export type ScheduledReminderRunOptions = {
@@ -68,6 +69,18 @@ const VOTD_VERSION_ID = 3034;
 const GENERIC_VERSE = "“Your word is a lamp to my feet and a light to my path.” — Psalm 119:105";
 
 const votdCache = new Map<string, string>();
+
+function dayHourIsAwake(dueAt: number): boolean {
+  const hour = new Date(dueAt).getUTCHours();
+  return hour >= REMINDER_DAY_START_HOUR && hour < REMINDER_DAY_END_HOUR;
+}
+
+function wallClockLabel(dueAt: number): string {
+  const date = new Date(dueAt);
+  const hours = String(date.getUTCHours()).padStart(2, "0");
+  const minutes = String(date.getUTCMinutes()).padStart(2, "0");
+  return `${hours}:${minutes}`;
+}
 
 function text(value: unknown): string {
   if (value === null || value === undefined) return "";
@@ -354,6 +367,8 @@ export async function runScheduledReminders(
   let sent = 0;
   let skipped = 0;
   let users = 0;
+  let nextDueAt = Number.POSITIVE_INFINITY;
+  let nextLabel: string | null = null;
   let resultDayKey = localDayKey(localWallNow(now, -120));
 
   for (const doc of prefsDocs) {
@@ -391,8 +406,7 @@ export async function runScheduledReminders(
     const nowMs = localNow.getTime();
     const windowedEvents = dueEvents.filter((event) => {
       if (event.dueAt > nowMs || event.dueAt < nowMs - lookbackMs) return false;
-      const dueHour = new Date(event.dueAt).getUTCHours();
-      return dueHour >= REMINDER_DAY_START_HOUR && dueHour < REMINDER_DAY_END_HOUR;
+      return dayHourIsAwake(event.dueAt);
     });
 
     // Catch-up backfills a missed cron run. An advance warning whose prayer
@@ -409,6 +423,23 @@ export async function runScheduledReminders(
           return [{ ...event, title: `Prayer in ${minutesLeft} min · ${label}` }];
         })
       : windowedEvents;
+
+    let upcoming: ScheduledEvent[] = dueEvents.filter(
+      (event) => event.dueAt > nowMs && dayHourIsAwake(event.dueAt),
+    );
+    if (!upcoming.length) {
+      const tomorrowKey = localDayKey(new Date(localNow.getTime() + 86_400_000));
+      const sunTomorrow = await fetchSunMinutes(lat, lng, tomorrowKey, tzOffset, sunCache);
+      upcoming = buildEvents(prefs, sunTomorrow, tomorrowKey, advanceMinutes).filter(
+        (event) => dayHourIsAwake(event.dueAt),
+      );
+    }
+    for (const event of upcoming) {
+      if (event.dueAt < nextDueAt) {
+        nextDueAt = event.dueAt;
+        nextLabel = `${event.title} @ ${wallClockLabel(event.dueAt)}`;
+      }
+    }
 
     for (const event of readyEvents) {
       due++;
@@ -427,5 +458,5 @@ export async function runScheduledReminders(
     }
   }
 
-  return { day: resultDayKey, users, due, sent, skipped };
+  return { day: resultDayKey, users, due, sent, skipped, next: nextLabel };
 }
