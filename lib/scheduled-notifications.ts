@@ -262,21 +262,6 @@ function buildEvents(
     addPrayer("prayer", key, PRAYER_LABELS[key], times[key], {});
   }
 
-  const customs = Array.isArray(prefs.custom) ? prefs.custom : [];
-  for (const custom of customs) {
-    if (!custom || typeof custom !== "object") continue;
-    if ((custom as any).enabled === false) continue;
-    const id = text((custom as any).id) || text((custom as any).name);
-    const minute = parseTime((custom as any).time);
-    if (!id || minute === null) continue;
-    const label = text((custom as any).name) || "Custom prayer";
-    addPrayer("custom", id, label, minute, {
-      customPrayer: true,
-      route: "/prayer-history",
-      message: text((custom as any).message),
-    });
-  }
-
   if (booleanValue(prefs.votdEnabled, true)) {
     events.push({
       type: "votd",
