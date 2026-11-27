@@ -13,7 +13,7 @@ async function handlePost(request: NextRequest) {
 
     const result = await runScheduledReminders(new Date(), {
       userIds: [user.id],
-      lookbackMs: 24 * 60 * 60_000,
+      catchUp: true,
     });
     console.info("[cron] catch-up reminders", result);
     return NextResponse.json(result);

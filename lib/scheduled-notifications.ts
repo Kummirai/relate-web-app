@@ -29,6 +29,7 @@ export type ScheduledReminderResult = {
 export type ScheduledReminderRunOptions = {
   userIds?: string[];
   lookbackMs?: number;
+  catchUp?: boolean;
 };
 
 type DueScheduledEvent = ScheduledEvent & { dayKey: string };
@@ -394,7 +395,22 @@ export async function runScheduledReminders(
       return dueHour >= REMINDER_DAY_START_HOUR && dueHour < REMINDER_DAY_END_HOUR;
     });
 
-    for (const event of windowedEvents) {
+    // Catch-up backfills a missed cron run. An advance warning whose prayer
+    // already began is stale, so drop it; otherwise restate the real minutes
+    // left so it never claims "10 min" when only a few remain.
+    const readyEvents = options.catchUp
+      ? windowedEvents.flatMap((event) => {
+          if (!event.type.endsWith("-advance")) return [event];
+          const advance = Number((event.data as Record<string, unknown>).advanceMinutes);
+          if (!Number.isFinite(advance) || advance <= 0) return [];
+          const minutesLeft = Math.round((event.dueAt + advance * 60_000 - nowMs) / 60_000);
+          if (minutesLeft <= 0) return [];
+          const label = PRAYER_LABELS[event.eventKey] ?? event.eventKey;
+          return [{ ...event, title: `Prayer in ${minutesLeft} min · ${label}` }];
+        })
+      : windowedEvents;
+
+    for (const event of readyEvents) {
       due++;
       const claimed = await claimEvent(db, userId, event.dayKey, event);
       if (!claimed) {
