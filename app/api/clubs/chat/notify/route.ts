@@ -82,6 +82,11 @@ export async function POST(request: NextRequest) {
     }
 
     const messageId = String(record.id ?? "").trim();
+    // The install that sent the message must never be notified about it — not
+    // even through a subscription still filed under another account (account
+    // switch on the same device). The client supplies this id with its session.
+    const senderDeviceId =
+      typeof record.device_id === "string" ? record.device_id.trim().slice(0, 64) : "";
 
     const rows = await db
       .collection(CLUB_JOIN_COL)
@@ -100,7 +105,7 @@ export async function POST(request: NextRequest) {
 
     const [club, tokensByUser, users] = await Promise.all([
       db.collection("clubs").findOne({ slug }, { projection: { name: 1 } }),
-      getPushTokensByUserIds(db, userIds),
+      getPushTokensByUserIds(db, userIds, senderDeviceId || undefined),
       db
         .collection("user")
         .find(

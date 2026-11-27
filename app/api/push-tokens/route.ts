@@ -16,6 +16,7 @@ async function handlePost(request: NextRequest) {
     if (!token || token.length > 500) {
       return NextResponse.json({ error: "Push token is required" }, { status: 400 });
     }
+    const deviceId = typeof data.deviceId === "string" ? data.deviceId.trim().slice(0, 64) : "";
 
     const db = await getDb();
     await db.collection("push_tokens").updateOne(
@@ -25,11 +26,20 @@ async function handlePost(request: NextRequest) {
           userId: user.id,
           token,
           platform: typeof data.platform === "string" ? data.platform : "unknown",
+          ...(deviceId ? { deviceId } : {}),
           updatedAt: new Date(),
         },
       },
       { upsert: true },
     );
+    if (deviceId) {
+      // A device holds one account at a time: clear the device marker from
+      // rows still filed under a previous account so they don't exempt it.
+      await db.collection("push_tokens").updateMany(
+        { token, userId: { $ne: user.id } },
+        { $set: { deviceId: null } },
+      );
+    }
 
     return NextResponse.json({ success: true });
   } catch {

@@ -194,8 +194,10 @@ async function getWebPushEndpoints(db: any, query: Record<string, unknown>): Pro
 export async function getPushTokensByUserIds(
   db: any,
   userIds: string[],
+  excludeDeviceId?: string,
 ): Promise<Map<string, string[]>> {
   const ids = [...new Set(userIds.map((id) => String(id)).filter(Boolean))];
+  const skipDevice = text(excludeDeviceId);
   const tokensByUser = new Map<string, string[]>();
   if (!ids.length) return tokensByUser;
 
@@ -210,13 +212,19 @@ export async function getPushTokensByUserIds(
     db
       .collection("push_tokens")
       .find({ userId: { $in: ids } })
-      .project({ userId: 1, token: 1 })
+      .project({ userId: 1, token: 1, deviceId: 1 })
       .toArray(),
     db.collection(WEB_PUSH_COLLECTION).find({ userId: { $in: ids } }).toArray(),
   ]);
 
-  for (const doc of nativeDocs) addToken(String(doc?.userId ?? ""), text(doc?.token));
+  for (const doc of nativeDocs) {
+    // The install that sent the message never notifies itself, even when a
+    // stale subscription on that device is still filed under another account.
+    if (skipDevice && text(doc?.deviceId) === skipDevice) continue;
+    addToken(String(doc?.userId ?? ""), text(doc?.token));
+  }
   for (const doc of webDocs) {
+    if (skipDevice && text(doc?.deviceId) === skipDevice) continue;
     const subscription = toWebPushSubscription(doc);
     if (subscription?.userId) addToken(subscription.userId, subscription.endpoint);
   }

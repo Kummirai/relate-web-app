@@ -20,6 +20,7 @@ async function handlePost(request: NextRequest) {
     if (!/^https?:\/\//i.test(endpoint) || endpoint.length > 2048 || !p256dh || !auth) {
       return NextResponse.json({ error: "Invalid subscription" }, { status: 400 });
     }
+    const deviceId = typeof body?.deviceId === "string" ? body.deviceId.trim().slice(0, 64) : "";
 
     const db = await getDb();
     await db.collection(WEB_PUSH_COLLECTION).updateOne(
@@ -29,12 +30,21 @@ async function handlePost(request: NextRequest) {
           userId: user.id,
           endpoint,
           keys: { p256dh, auth },
+          ...(deviceId ? { deviceId } : {}),
           updatedAt: new Date(),
         },
         $setOnInsert: { createdAt: new Date() },
       },
       { upsert: true },
     );
+    if (deviceId) {
+      // A browser holds one account at a time: clear the device marker from
+      // rows still filed under a previous account so they don't exempt it.
+      await db.collection(WEB_PUSH_COLLECTION).updateMany(
+        { endpoint, userId: { $ne: user.id } },
+        { $set: { deviceId: null } },
+      );
+    }
 
     return NextResponse.json({ success: true });
   } catch {
