@@ -4,7 +4,6 @@ import { getDb } from "@/lib/mongodb";
 import { resolveSession } from "@/lib/community-auth";
 import { withCpuTiming } from "@/lib/api-timing";
 import { WEB_PUSH_COLLECTION } from "@/lib/push";
-import { planReminderQueueForUser } from "@/lib/reminder-schedule";
 
 async function handlePost(request: NextRequest) {
   try {
@@ -24,7 +23,7 @@ async function handlePost(request: NextRequest) {
     const deviceId = typeof body?.deviceId === "string" ? body.deviceId.trim().slice(0, 64) : "";
 
     const db = await getDb();
-    const result = await db.collection(WEB_PUSH_COLLECTION).updateOne(
+    await db.collection(WEB_PUSH_COLLECTION).updateOne(
       { userId: user.id, endpoint },
       {
         $set: {
@@ -45,15 +44,6 @@ async function handlePost(request: NextRequest) {
         { endpoint, userId: { $ne: user.id } },
         { $set: { deviceId: null } },
       );
-    }
-    if (result.upsertedCount) {
-      // First subscription for this browser: queue its reminders now instead
-      // of waiting for the next 12-hour plan run.
-      try {
-        await planReminderQueueForUser(user.id, request.nextUrl.origin, new Date());
-      } catch (error) {
-        console.error("[push/plan] new subscription plan failed", error);
-      }
     }
 
     return NextResponse.json({ success: true });

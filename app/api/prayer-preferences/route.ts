@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getDb } from "@/lib/mongodb";
 import { resolveSession } from "@/lib/community-auth";
-import { planReminderQueueForUser } from "@/lib/reminder-schedule";
 
 const DEFAULTS = {
   enabled: true,
@@ -103,26 +102,6 @@ export async function PUT(request: NextRequest) {
     }
 
     const db = await getDb();
-    const existing = await db
-      .collection("user_prayer_preferences")
-      .findOne({ userId: user.id });
-    // Prayer toggles are delivery-time checks; only a changed time, place or
-    // reading slot invalidates the delayed messages already in the queue.
-    const timeChanged =
-      (body.advanceMinutes !== undefined &&
-        body.advanceMinutes !==
-          integerValue(existing?.advanceMinutes, DEFAULTS.advanceMinutes, 0, 60)) ||
-      (body.lat !== undefined &&
-        body.lat !== numberValue(existing?.lat, DEFAULTS.lat, -90, 90)) ||
-      (body.lng !== undefined &&
-        body.lng !== numberValue(existing?.lng, DEFAULTS.lng, -180, 180)) ||
-      (body.tzOffset !== undefined &&
-        body.tzOffset !==
-          integerValue(existing?.tzOffset, DEFAULTS.tzOffset, -840, 840)) ||
-      (body.readingTime !== undefined &&
-        body.readingTime !==
-          timeValue(existing?.readingTime, DEFAULTS.readingTime));
-
     const update: Record<string, any> = { updatedAt: new Date() };
     if (body.disabled !== undefined) update.disabled = body.disabled;
     if (body.custom !== undefined) update.custom = body.custom;
@@ -140,13 +119,6 @@ export async function PUT(request: NextRequest) {
       { $set: update },
       { upsert: true },
     );
-    if (timeChanged) {
-      try {
-        await planReminderQueueForUser(user.id, request.nextUrl.origin, new Date());
-      } catch (error) {
-        console.error("[push/plan] settings replan failed", error);
-      }
-    }
     return NextResponse.json({ success: true });
   } catch {
     return NextResponse.json({ error: "Failed to save" }, { status: 500 });

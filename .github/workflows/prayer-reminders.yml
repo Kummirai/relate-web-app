@@ -1,0 +1,28 @@
+name: Prayer reminders
+
+on:
+  push:
+    branches: [master]
+  # The 5-minute schedule moved to QStash: GitHub throttles frequent cron
+  # schedules and was firing this only a few times a day.
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: scheduled-reminders
+  cancel-in-progress: false
+
+jobs:
+  trigger:
+    environment: Production
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Trigger scheduled reminders
+        run: |
+          curl --fail --silent --show-error --retry 2 --retry-delay 5 \
+            --request GET \
+            --header "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
+            "${{ secrets.SCHEDULED_REMINDERS_URL || 'https://relate-iota.vercel.app/api/cron/scheduled-reminders' }}"
