@@ -365,6 +365,7 @@ export type KitOverview = {
     issued: Record<KitItemKey, number>;
     restocked: Record<KitItemKey, number>;
     spend: number;
+    learners: number;
   }[];
   clubs: { clubSlug: string; clubName: string; issued: number; learners: number }[];
   dueList: {
@@ -501,17 +502,23 @@ export async function buildOverview(season: number): Promise<KitOverview> {
       issued: { book: 0, pencil: 0, pen: 0 },
       restocked: { book: 0, pencil: 0, pen: 0 },
       spend: 0,
+      learners: 0,
     };
+    const servedThisMonth = new Set<string>();
     for (const mv of movements) {
       const t = mv.date.getTime();
       if (t < start || t >= end || !isKitItem(mv.item)) continue;
-      if (mv.kind === "issue") row.issued[mv.item] += Number(mv.qty) || 0;
+      if (mv.kind === "issue") {
+        row.issued[mv.item] += Number(mv.qty) || 0;
+        if (mv.memberId) servedThisMonth.add(mv.memberId);
+      }
       if (mv.kind === "restock") {
         row.restocked[mv.item] += Number(mv.qty) || 0;
         row.spend += Number(mv.amount) || 0;
       }
       if (mv.kind === "opening") row.spend += Number(mv.amount) || 0;
     }
+    row.learners = servedThisMonth.size;
     months.push(row);
   }
 
