@@ -51,24 +51,24 @@ function buildReminder(done: number, pastStreak: number) {
   if (done >= STREAK_THRESHOLD) {
     return {
       title: "Streak secured",
-      body: `You have prayed ${done} times today. Your ${pastStreak + 1}-day prayer streak is safe.`,
+      body: `${done} prayers today, ${pastStreak + 1} days strong. "Pray continually." — 1 Thess. 5:17`,
     };
   }
   if (pastStreak > 0) {
     return {
       title: "Keep your streak alive",
-      body: `You are on a ${pastStreak}-day prayer streak. You have prayed ${done} of ${STREAK_THRESHOLD} today — pray ${remaining} more to keep it.`,
+      body: `${remaining} more ${remaining === 1 ? "prayer" : "prayers"} keeps your ${pastStreak}-day streak alive. "Devote yourselves to prayer." — Col. 4:2`,
     };
   }
   if (done > 0) {
     return {
       title: "Time to pray",
-      body: `You have prayed ${done} of ${STREAK_THRESHOLD} today. ${remaining} more ${remaining === 1 ? "starts" : "start"} a new streak.`,
+      body: `${remaining} more ${remaining === 1 ? "prayer starts" : "prayers start"} a new streak. "The prayer of a righteous person is powerful." — James 5:16`,
     };
   }
   return {
     title: "Time to pray",
-    body: "You have not prayed yet today. One prayer is all it takes to start a new streak.",
+    body: 'One prayer starts a streak. "Draw near to God, and He will draw near to you." — James 4:8',
   };
 }
 
