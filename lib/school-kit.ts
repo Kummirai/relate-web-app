@@ -101,6 +101,7 @@ type RawMovement = {
   clubSlug?: string | null;
   swapVerified?: boolean;
   note?: string;
+  season?: number;
 };
 
 export function isKitItem(value: unknown): value is KitItemKey {
@@ -397,7 +398,7 @@ export async function buildOverview(season: number): Promise<KitOverview> {
   }
 
   const spend = movements
-    .filter((m) => m.kind === "restock")
+    .filter((m) => m.kind === "restock" || m.kind === "opening")
     .reduce((sum, m) => sum + (Number(m.amount) || 0), 0);
 
   // League table of clubs, most issued first.
@@ -495,6 +496,7 @@ export async function buildOverview(season: number): Promise<KitOverview> {
         row.restocked[mv.item] += Number(mv.qty) || 0;
         row.spend += Number(mv.amount) || 0;
       }
+      if (mv.kind === "opening") row.spend += Number(mv.amount) || 0;
     }
     months.push(row);
   }
@@ -789,7 +791,9 @@ export async function createMovement(input: {
   }
 
   const unitCost =
-    input.kind === "restock" && amount > 0 && Math.abs(signedQty) > 0
+    (input.kind === "restock" || input.kind === "opening") &&
+    amount > 0 &&
+    Math.abs(signedQty) > 0
       ? Math.round((amount / Math.abs(signedQty)) * 100) / 100
       : null;
 
@@ -812,6 +816,170 @@ export async function createMovement(input: {
   });
 
   return { ok: true, stock: computeStock(await loadSeasonMovements(year)) };
+}
+
+type LedgerResult = {
+  ok: boolean;
+  error?: string;
+  status?: number;
+  stock?: Record<KitItemKey, ItemStock>;
+  movements?: KitMovement[];
+  season?: number;
+};
+
+/** Replays the ledger minus the edited row; refuses any negative stock. */
+async function stockGuard(
+  seasons: number[],
+  removedId: string,
+  replacement: RawMovement | null,
+): Promise<string | null> {
+  for (const season of new Set(seasons)) {
+    const rows = (await loadSeasonMovements(season)).filter(
+      (m) => String(m._id) !== removedId,
+    );
+    if (replacement) {
+      const date =
+        replacement.date instanceof Date
+          ? replacement.date
+          : new Date(replacement.date);
+      if (!isNaN(date.getTime()) && date.getFullYear() === season) {
+        rows.push(replacement);
+      }
+    }
+    const stock = computeStock(rows);
+    for (const key of KIT_ITEM_KEYS) {
+      if (stock[key].stock < 0) {
+        return `${KIT_ITEMS[key].short}: that would leave ${stock[key].stock} in stock. Record an adjustment or restock first.`;
+      }
+    }
+  }
+  return null;
+}
+
+function movementSeason(doc: RawMovement): number {
+  const date = doc.date instanceof Date ? doc.date : new Date(doc.date);
+  return isNaN(date.getTime()) ? new Date().getFullYear() : date.getFullYear();
+}
+
+export async function updateMovement(input: {
+  id: string;
+  item: unknown;
+  qty: unknown;
+  amount?: unknown;
+  date?: unknown;
+  note?: unknown;
+  adminName: string;
+  adminId: string;
+}): Promise<LedgerResult> {
+  if (!ObjectId.isValid(input.id)) {
+    return { ok: false, status: 400, error: "Unknown movement." };
+  }
+  if (!isKitItem(input.item)) {
+    return { ok: false, status: 400, error: "Unknown stationery item." };
+  }
+
+  const db = await getDb();
+  const _id = new ObjectId(input.id);
+  const doc = (await db.collection(KIT_COLLECTION).findOne({ _id })) as
+    | RawMovement
+    | null;
+  if (!doc) {
+    return { ok: false, status: 404, error: "That movement no longer exists." };
+  }
+
+  const qty = Number(input.qty);
+  const signedQty = doc.kind === "adjustment" ? qty : Math.abs(qty);
+  if (
+    !Number.isInteger(signedQty) ||
+    signedQty === 0 ||
+    Math.abs(signedQty) > 5000
+  ) {
+    return {
+      ok: false,
+      status: 400,
+      error:
+        doc.kind === "adjustment"
+          ? "Enter a whole-number correction, e.g. -3 or 5."
+          : "Quantity must be a whole number from 1 to 5000.",
+    };
+  }
+
+  const priced = doc.kind === "restock" || doc.kind === "opening";
+  const amount = priced ? Math.max(0, toNonNegNumber(input.amount)) : 0;
+  const date = movementDate(input.date);
+  const year = date.getFullYear();
+  const unitCost =
+    priced && amount > 0 && signedQty > 0
+      ? Math.round((amount / signedQty) * 100) / 100
+      : null;
+
+  const next: RawMovement = {
+    ...doc,
+    item: input.item,
+    qty: signedQty,
+    amount,
+    unitCost,
+    date,
+    season: year,
+    note: cleanText(input.note, 200),
+  };
+
+  const guard = await stockGuard([movementSeason(doc), year], input.id, next);
+  if (guard) return { ok: false, status: 409, error: guard };
+
+  await db.collection(KIT_COLLECTION).updateOne(
+    { _id },
+    {
+      $set: {
+        item: next.item,
+        qty: next.qty,
+        amount: next.amount,
+        unitCost: next.unitCost,
+        date: next.date,
+        season: next.season,
+        note: next.note,
+        updatedBy: input.adminId,
+        updatedByName: input.adminName,
+        updatedAt: new Date(),
+      },
+    },
+  );
+
+  return {
+    ok: true,
+    stock: computeStock(await loadSeasonMovements(year)),
+    movements: await listMovements(year),
+    season: year,
+  };
+}
+
+export async function deleteMovement(input: {
+  id: string;
+}): Promise<LedgerResult> {
+  if (!ObjectId.isValid(input.id)) {
+    return { ok: false, status: 400, error: "Unknown movement." };
+  }
+
+  const db = await getDb();
+  const _id = new ObjectId(input.id);
+  const doc = (await db.collection(KIT_COLLECTION).findOne({ _id })) as
+    | RawMovement
+    | null;
+  if (!doc) {
+    return { ok: false, status: 404, error: "That movement no longer exists." };
+  }
+
+  const year = movementSeason(doc);
+  const guard = await stockGuard([year], input.id, null);
+  if (guard) return { ok: false, status: 409, error: guard };
+
+  await db.collection(KIT_COLLECTION).deleteOne({ _id });
+  return {
+    ok: true,
+    stock: computeStock(await loadSeasonMovements(year)),
+    movements: await listMovements(year),
+    season: year,
+  };
 }
 
 export async function setExamCheck(input: {
