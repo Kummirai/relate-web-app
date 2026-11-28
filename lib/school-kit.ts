@@ -366,7 +366,7 @@ export type KitOverview = {
     restocked: Record<KitItemKey, number>;
     spend: number;
   }[];
-  clubs: { clubSlug: string; clubName: string; issued: number }[];
+  clubs: { clubSlug: string; clubName: string; issued: number; learners: number }[];
   dueList: {
     memberId: string;
     name: string;
@@ -401,9 +401,33 @@ export async function buildOverview(season: number): Promise<KitOverview> {
     .filter((m) => m.kind === "restock" || m.kind === "opening")
     .reduce((sum, m) => sum + (Number(m.amount) || 0), 0);
 
+  // Per-learner record, so we know each learner's home club.
+  const memberIds = [...served];
+  const learners = memberIds.length
+    ? await db
+        .collection(LEARNER_COLLECTION)
+        .find({ _id: { $in: memberIds.filter(ObjectId.isValid).map((id) => new ObjectId(id)) } })
+        .project({ name: 1, clubSlug: 1 })
+        .toArray()
+    : [];
+  const learnerById = new Map<string, any>(
+    learners.map((l: any) => [l._id.toString(), l]),
+  );
+
+  // Distinct learners reached, per club.
+  const learnersByClub = new Map<string, Set<string>>();
+  for (const mv of seasonIssues) {
+    if (!mv.memberId) continue;
+    const club = learnerById.get(mv.memberId)?.clubSlug || mv.clubSlug;
+    if (!club) continue;
+    const set = learnersByClub.get(club) ?? new Set<string>();
+    set.add(mv.memberId);
+    learnersByClub.set(club, set);
+  }
+
   // League table of clubs, most issued first.
   const clubNames = new Map<string, string>();
-  const clubSlugs = [...issuedByClub.keys()];
+  const clubSlugs = [...new Set([...issuedByClub.keys(), ...learnersByClub.keys()])];
   if (clubSlugs.length) {
     const clubDocs = await db
       .collection("clubs")
@@ -412,24 +436,14 @@ export async function buildOverview(season: number): Promise<KitOverview> {
       .toArray();
     for (const c of clubDocs) clubNames.set(c.slug, c.name || c.slug);
   }
-  const clubs = [...issuedByClub.entries()]
-    .map(([clubSlug, issued]) => ({
+  const clubs = clubSlugs
+    .map((clubSlug) => ({
       clubSlug,
       clubName: clubNames.get(clubSlug) ?? clubSlug,
-      issued,
+      issued: issuedByClub.get(clubSlug) ?? 0,
+      learners: learnersByClub.get(clubSlug)?.size ?? 0,
     }))
     .sort((a, b) => b.issued - a.issued);
-
-  // Per-learner latest issue, for the due list.
-  const memberIds = [...served];
-  const learners = await db
-    .collection(LEARNER_COLLECTION)
-    .find({ _id: { $in: memberIds.filter(ObjectId.isValid).map((id) => new ObjectId(id)) } })
-    .project({ name: 1, clubSlug: 1 })
-    .toArray();
-  const learnerById = new Map<string, any>(
-    learners.map((l: any) => [l._id.toString(), l]),
-  );
 
   const now = Date.now();
   const dueList: KitOverview["dueList"] = [];
