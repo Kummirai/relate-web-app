@@ -53,12 +53,6 @@ not by polling:
   Changing location, timezone, advance minutes or reading time re-plans that
   user's queue. A first-time push subscription plans immediately, and the PWA
   also calls `POST /api/scheduled-reminders/catch-up` on open.
-- Plan markers (`reminder_plans`, keyed by user) hold the last plan time and a
-  timing signature. Catch-up, the 12-hour run, and the re-plan paths skip
-  users planned within the last six hours with unchanged timing settings, so
-  opening the PWA repeatedly does not enqueue another day of QStash messages
-  (QStash itself only deduplicates for ten minutes). A new subscription always
-  forces a plan.
 
 Create or update the schedules from the terminal:
 

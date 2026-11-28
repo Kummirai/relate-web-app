@@ -63,12 +63,6 @@ export type PlanResult = {
   subscriptions: number;
   messages: number;
   published: number;
-  skipped: number;
-};
-
-export type UserPlanResult = {
-  planned: number;
-  skipped: boolean;
 };
 
 const PRAYER_KEYS = ["dawn", "sunrise", "noon", "afternoon", "sunset", "evening"] as const;
@@ -103,11 +97,6 @@ const VOTD_VERSION_ID = 3034;
 const VOTD_MINUTE = 7 * 60;
 const GENERIC_VERSE = "“Your word is a lamp to my feet and a light to my path.” — Psalm 119:105";
 const PLAN_WINDOW_MS = 24 * 60 * 60_000;
-// Plan markers keep app-open catch-ups and the 12-hour run from republishing
-// the same queue. QStash only deduplicates for 10 minutes, so without a marker
-// every PWA open would enqueue another full day of messages.
-const REMINDER_PLAN_COLLECTION = "reminder_plans";
-const RECENT_PLAN_MS = 6 * 60 * 60_000;
 
 const votdCache = new Map<string, string>();
 
@@ -468,45 +457,6 @@ async function releaseClaim(
   } catch {}
 }
 
-/** Only timing fields invalidate a queued reminder; toggles are checked at delivery. */
-function timingSignature(prefs: ReminderPrefs): string {
-  return [prefs.lat, prefs.lng, prefs.tzOffset, prefs.advanceMinutes, prefs.readingTime].join(
-    "|",
-  );
-}
-
-function markerIsRecent(marker: any, prefs: ReminderPrefs, now: Date): boolean {
-  const plannedAt = marker?.plannedAt instanceof Date ? marker.plannedAt.getTime() : NaN;
-  if (!Number.isFinite(plannedAt) || now.getTime() - plannedAt >= RECENT_PLAN_MS) return false;
-  return text(marker?.signature) === timingSignature(prefs);
-}
-
-async function recordPlan(
-  db: any,
-  userId: string,
-  prefs: ReminderPrefs,
-  now: Date,
-  messages: number,
-) {
-  try {
-    await db.collection(REMINDER_PLAN_COLLECTION).updateOne(
-      { _id: userId },
-      {
-        $set: {
-          userId,
-          signature: timingSignature(prefs),
-          plannedAt: now,
-          messages,
-        },
-      },
-      { upsert: true },
-    );
-  } catch (error) {
-    // The marker is an optimization; a failed write must not break planning.
-    console.error("[push/plan] failed to record plan marker", error);
-  }
-}
-
 async function expectedMinuteFor(
   payload: ReminderPayload,
   prefs: ReminderPrefs,
@@ -664,47 +614,27 @@ export async function planAllReminderQueues(
   }
 
   const sunCache = new Map<string, SunMinutes>();
-  const markers = new Map<string, any>();
-  if (userIds.length) {
-    const markerDocs = await db
-      .collection(REMINDER_PLAN_COLLECTION)
-      .find({ _id: { $in: userIds } })
-      .toArray();
-    for (const doc of markerDocs) markers.set(String(doc._id), doc);
-  }
-
   const messages: DelayedPublish[] = [];
-  const plannedUsers: { userId: string; prefs: ReminderPrefs; count: number }[] = [];
   let subscriptions = 0;
   let users = 0;
-  let skipped = 0;
   for (const [userId, endpoints] of endpointsByUser) {
     const prefs = prefsByUser.get(userId) ?? normalizePrefs(null);
-    if (markerIsRecent(markers.get(userId), prefs, now)) {
-      skipped++;
-      continue;
-    }
     const planned = await buildUserMessages(userId, endpoints, prefs, now, deliverUrl, sunCache);
     if (!planned.length) continue;
     users++;
     subscriptions += endpoints.length;
     messages.push(...planned);
-    plannedUsers.push({ userId, prefs, count: planned.length });
   }
 
   const published = await publishDelayedMessages(messages);
-  await Promise.all(
-    plannedUsers.map((entry) => recordPlan(db, entry.userId, entry.prefs, now, entry.count)),
-  );
-  return { users, subscriptions, messages: messages.length, published, skipped };
+  return { users, subscriptions, messages: messages.length, published };
 }
 
 export async function planReminderQueueForUser(
   userId: string,
   origin: string,
   now: Date = new Date(),
-  options: { force?: boolean } = {},
-): Promise<UserPlanResult> {
+): Promise<number> {
   const db = await getDb();
   const deliverUrl = `${origin}/api/push/deliver`;
   const subDocs = await db.collection(WEB_PUSH_COLLECTION).find({ userId }).toArray();
@@ -715,15 +645,10 @@ export async function planReminderQueueForUser(
       endpoints.push(subscription.endpoint);
     }
   }
-  if (!endpoints.length) return { planned: 0, skipped: false };
+  if (!endpoints.length) return 0;
 
   const prefsDoc = await db.collection("user_prayer_preferences").findOne({ userId });
   const prefs = normalizePrefs(prefsDoc);
-  if (!options.force) {
-    const marker = await db.collection(REMINDER_PLAN_COLLECTION).findOne({ _id: userId });
-    if (markerIsRecent(marker, prefs, now)) return { planned: 0, skipped: true };
-  }
-
   const messages = await buildUserMessages(
     userId,
     endpoints,
@@ -732,8 +657,6 @@ export async function planReminderQueueForUser(
     deliverUrl,
     new Map<string, SunMinutes>(),
   );
-  if (!messages.length) return { planned: 0, skipped: false };
-  const published = await publishDelayedMessages(messages);
-  await recordPlan(db, userId, prefs, now, messages.length);
-  return { planned: published, skipped: false };
+  if (!messages.length) return 0;
+  return publishDelayedMessages(messages);
 }

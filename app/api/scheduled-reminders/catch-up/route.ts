@@ -5,8 +5,8 @@ import { withCpuTiming } from "@/lib/api-timing";
 import { planReminderQueueForUser } from "@/lib/reminder-schedule";
 
 // The PWA calls this on open: it tops up the user's delayed-message queue
-// without waiting for the 12-hour plan run. A plan marker makes this a no-op
-// when the user was planned within the last six hours with unchanged settings.
+// without waiting for the 12-hour plan run. Publishing is deduplicated, so
+// repeat calls within the same window do not queue duplicate deliveries.
 async function handlePost(request: NextRequest) {
   try {
     const user = await resolveSession(request);
@@ -14,17 +14,13 @@ async function handlePost(request: NextRequest) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const outcome = await planReminderQueueForUser(
+    const published = await planReminderQueueForUser(
       user.id,
       new URL(request.url).origin,
       new Date(),
     );
-    console.info("[push/plan] user queue", {
-      userId: user.id,
-      planned: outcome.planned,
-      skipped: outcome.skipped,
-    });
-    return NextResponse.json({ ok: true, planned: outcome.planned, skipped: outcome.skipped });
+    console.info("[push/plan] user queue", { userId: user.id, published });
+    return NextResponse.json({ ok: true, planned: published });
   } catch (error) {
     console.error("[push/plan] user queue failed", error);
     return NextResponse.json(

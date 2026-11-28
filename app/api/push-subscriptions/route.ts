@@ -48,12 +48,9 @@ async function handlePost(request: NextRequest) {
     }
     if (result.upsertedCount) {
       // First subscription for this browser: queue its reminders now instead
-      // of waiting for the next 12-hour plan run. Force past the plan marker:
-      // a second device of an already-planned user still needs its own queue.
+      // of waiting for the next 12-hour plan run.
       try {
-        await planReminderQueueForUser(user.id, request.nextUrl.origin, new Date(), {
-          force: true,
-        });
+        await planReminderQueueForUser(user.id, request.nextUrl.origin, new Date());
       } catch (error) {
         console.error("[push/plan] new subscription plan failed", error);
       }
