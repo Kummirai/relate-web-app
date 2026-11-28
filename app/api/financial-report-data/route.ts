@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getDb } from "@/lib/mongodb";
 import { requireAdmin } from "@/lib/community-auth";
+import { buildStatement } from "@/lib/school-kit";
 
 const MONTHS = [
   "Jan", "Feb", "Mar", "Apr", "May", "Jun",
@@ -161,12 +162,29 @@ export async function GET(request: NextRequest) {
       balanceBroughtDown = Math.round((pi - pe) * 100) / 100;
     }
 
+    // School Kit statement for the month: opening → received → issued →
+    // closing per item, restock spend and learners helped. Admin figure only;
+    // saved reports keep the impact line (learners + items issued).
+    const statement = await buildStatement(period);
+    const schoolKit = statement
+      ? {
+          ...statement,
+          impact: {
+            learners: statement.learners,
+            books: statement.issued.book,
+            pencils: statement.issued.pencil,
+            pens: statement.issued.pen,
+          },
+        }
+      : null;
+
     return NextResponse.json({
       data: {
         foundersFund: Math.round(sponsorships * 100) / 100,
         amountsUsed: Math.round(amountsUsed * 100) / 100,
         balanceBroughtDown,
         period,
+        schoolKit,
       },
     });
   } catch (error) {

@@ -9,6 +9,19 @@ export function cleanText(value: unknown, max: number): string {
 }
 
 /**
+ * Published reports carry the School Kit's reach only — learners helped and
+ * items issued. Opening/closing stock and spend stay in the admin module.
+ */
+export function buildSchoolKitImpact(value: any) {
+  return {
+    learners: toNonNegNumber(value?.learners),
+    books: toNonNegNumber(value?.books),
+    pencils: toNonNegNumber(value?.pencils),
+    pens: toNonNegNumber(value?.pens),
+  };
+}
+
+/**
  * Normalizes a financial report payload into the document shape stored in the
  * `financial_reports` collection. Shared by the create and update routes so
  * edits never drift from new reports.
@@ -45,6 +58,7 @@ export function buildFinancialReport(body: any, fallbackName: string) {
       placements: toNonNegNumber(body?.impact?.placements),
       events: toNonNegNumber(body?.impact?.events),
     },
+    schoolKit: buildSchoolKitImpact(body?.schoolKit),
     otherActivities: cleanText(body?.otherActivities, 4000),
     notes: cleanText(body?.notes, 2000),
     customFields: Array.isArray(body?.customFields)

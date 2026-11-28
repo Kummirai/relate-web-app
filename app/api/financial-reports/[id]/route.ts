@@ -41,6 +41,7 @@ export async function GET(
         income: doc.income || {},
         expenses: doc.expenses || {},
         impact: doc.impact || {},
+        schoolKit: doc.schoolKit || null,
         otherActivities: doc.otherActivities || "",
         notes: doc.notes || "",
         customFields: doc.customFields || [],
